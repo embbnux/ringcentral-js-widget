@@ -41,6 +41,11 @@ function NavigationButton(props) {
         'div',
         { className: _styles2.default.icon },
         props.icon
+      ),
+      props.noticeCounts && props.noticeCounts > 0 && _react2.default.createElement(
+        'div',
+        { className: _styles2.default.notice },
+        props.noticeCounts
       )
     ),
     _react2.default.createElement(
@@ -59,6 +64,7 @@ NavigationButton.propTypes = {
   path: _react.PropTypes.string,
   active: _react.PropTypes.bool,
   label: _react.PropTypes.string,
+  noticeCounts: _react.PropTypes.number,
   width: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]).isRequired
 };
 
@@ -82,7 +88,8 @@ NavigationBar.propTypes = {
     icon: _react.PropTypes.node.isRequired,
     label: _react.PropTypes.string,
     path: _react.PropTypes.string.isRequired,
-    isActive: _react.PropTypes.func
+    isActive: _react.PropTypes.func,
+    noticeCounts: _react.PropTypes.number
   })),
   currentPath: _react.PropTypes.string.isRequired
 };
