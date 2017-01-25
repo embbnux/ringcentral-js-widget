@@ -25,6 +25,14 @@ var _styles2 = _interopRequireDefault(_styles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function NavigationButton(props) {
+  var notice = null;
+  if (props.noticeCounts && props.noticeCounts > 0) {
+    notice = _react2.default.createElement(
+      'div',
+      { className: _styles2.default.notice },
+      props.noticeCounts
+    );
+  }
   return _react2.default.createElement(
     _reactRouter.Link,
     {
@@ -42,11 +50,7 @@ function NavigationButton(props) {
         { className: _styles2.default.icon },
         props.icon
       ),
-      props.noticeCounts && props.noticeCounts > 0 && _react2.default.createElement(
-        'div',
-        { className: _styles2.default.notice },
-        props.noticeCounts
-      )
+      notice
     ),
     _react2.default.createElement(
       'div',
