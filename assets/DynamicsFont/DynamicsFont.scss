@@ -1,0 +1,556 @@
+@font-face {
+  font-family: 'dynamics_icon';
+  src:  url('./fonts/dynamics_icon.eot?ehx4d3');
+  src:  url('./fonts/dynamics_icon.eot?ehx4d3#iefix') format('embedded-opentype'),
+    url('./fonts/dynamics_icon.woff2?ehx4d3') format('woff2'),
+    url('./fonts/dynamics_icon.ttf?ehx4d3') format('truetype'),
+    url('./fonts/dynamics_icon.woff?ehx4d3') format('woff'),
+    url('./fonts/dynamics_icon.svg?ehx4d3#dynamics_icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dynamics_icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.clear {
+  composes: icon;
+}
+.clear:before {
+  content: "\e901";
+}
+.expand {
+  composes: icon;
+}
+.expand:before {
+  content: "\e902";
+}
+.information {
+  composes: icon;
+}
+.information:before {
+  content: "\e903";
+}
+.collapse {
+  composes: icon;
+}
+.collapse:before {
+  content: "\e949";
+}
+.close {
+  composes: icon;
+}
+.close:before {
+  content: "\e94a";
+}
+.outbound {
+  composes: icon;
+}
+.outbound:before {
+  content: "\e94b";
+}
+.missed {
+  composes: icon;
+}
+.missed:before {
+  content: "\e94c";
+}
+.inbound {
+  composes: icon;
+}
+.inbound:before {
+  content: "\e94d";
+}
+.record {
+  composes: icon;
+}
+.record:before {
+  content: "\e94e";
+}
+.call {
+  composes: icon;
+}
+.call:before {
+  content: "\e94f";
+}
+.add {
+  composes: icon;
+}
+.add:before {
+  content: "\e950";
+}
+.arrow {
+  composes: icon;
+}
+.arrow:before {
+  content: "\e951";
+}
+.callLog {
+  composes: icon;
+}
+.callLog:before {
+  content: "\e952";
+}
+.callHover {
+  composes: icon;
+}
+.callHover:before {
+  content: "\e953";
+}
+.dialHover {
+  composes: icon;
+}
+.dialHover:before {
+  content: "\e954";
+}
+.dial {
+  composes: icon;
+}
+.dial:before {
+  content: "\e955";
+}
+.edit {
+  composes: icon;
+}
+.edit:before {
+  content: "\e956";
+}
+.file {
+  composes: icon;
+}
+.file:before {
+  content: "\e957";
+}
+.historyHover {
+  composes: icon;
+}
+.historyHover:before {
+  content: "\e958";
+}
+.history {
+  composes: icon;
+}
+.history:before {
+  content: "\e959";
+}
+.logout {
+  composes: icon;
+}
+.logout:before {
+  content: "\e95a";
+}
+.settingHover {
+  composes: icon;
+}
+.settingHover:before {
+  content: "\e95b";
+}
+.setting {
+  composes: icon;
+}
+.setting:before {
+  content: "\e95c";
+}
+.trash {
+  composes: icon;
+}
+.trash:before {
+  content: "\e95d";
+}
+.delete {
+  composes: icon;
+}
+.delete:before {
+  content: "\e909";
+}
+.plus {
+  composes: icon;
+}
+.plus:before {
+  content: "\e90a";
+}
+.caretDownCircle {
+  composes: icon;
+}
+.caretDownCircle:before {
+  content: "\e90b";
+}
+.add2 {
+  composes: icon;
+}
+.add2:before {
+  content: "\e90e";
+}
+.arrowLeft {
+  composes: icon;
+}
+.arrowLeft:before {
+  content: "\e900";
+}
+.refresh {
+  composes: icon;
+}
+.refresh:before {
+  content: "\e906";
+}
+.save {
+  composes: icon;
+}
+.save:before {
+  content: "\e907";
+}
+.iconCallMute {
+  composes: icon;
+}
+.iconCallMute:before {
+  content: "\e924";
+}
+.iconCallUnmute {
+  composes: icon;
+}
+.iconCallUnmute:before {
+  content: "\e925";
+}
+.iconCallDial {
+  composes: icon;
+}
+.iconCallDial:before {
+  content: "\e92a";
+}
+.iconCallFlip {
+  composes: icon;
+}
+.iconCallFlip:before {
+  content: "\e92b";
+}
+.iconCallHangup {
+  composes: icon;
+}
+.iconCallHangup:before {
+  content: "\e92c";
+}
+.iconCallHold {
+  composes: icon;
+}
+.iconCallHold:before {
+  content: "\e92d";
+}
+.iconCallNoDial {
+  composes: icon;
+}
+.iconCallNoDial:before {
+  content: "\e92e";
+}
+.iconCallNoHold {
+  composes: icon;
+}
+.iconCallNoHold:before {
+  content: "\e92f";
+}
+.iconCallRecord {
+  composes: icon;
+}
+.iconCallRecord:before {
+  content: "\e930";
+}
+.iconCallStopRecord {
+  composes: icon;
+}
+.iconCallStopRecord:before {
+  content: "\e931";
+}
+.iconCallTransfer {
+  composes: icon;
+}
+.iconCallTransfer:before {
+  content: "\e932";
+}
+.iconOffice365 {
+  composes: icon;
+}
+.iconOffice365:before {
+  content: "\e933";
+}
+.iconPlay {
+  composes: icon;
+}
+.iconPlay:before {
+  content: "\e934";
+}
+.iconStatusBusy {
+  composes: icon;
+}
+.iconStatusBusy:before {
+  content: "\e935";
+}
+.iconStatusCalling {
+  composes: icon;
+}
+.iconStatusCalling:before {
+  content: "\e936";
+}
+.iconStatusHold {
+  composes: icon;
+}
+.iconStatusHold:before {
+  content: "\e937";
+}
+.iconStatusMute {
+  composes: icon;
+}
+.iconStatusMute:before {
+  content: "\e938";
+}
+.iconStatusRecord {
+  composes: icon;
+}
+.iconStatusRecord:before {
+  content: "\e939";
+}
+.iconCalling {
+  composes: icon;
+}
+.iconCalling:before {
+  content: "\e926";
+}
+.iconCallIncoming {
+  composes: icon;
+}
+.iconCallIncoming:before {
+  content: "\e927";
+}
+.iconCallMiss {
+  composes: icon;
+}
+.iconCallMiss:before {
+  content: "\e928";
+}
+.iconCallOutgoing {
+  composes: icon;
+}
+.iconCallOutgoing:before {
+  content: "\e929";
+}
+.iconCollapse {
+  composes: icon;
+}
+.iconCollapse:before {
+  content: "\e90f";
+}
+.checkboxSelected {
+  composes: icon;
+}
+.checkboxSelected:before {
+  content: "\e910";
+}
+.checkboxUnselected {
+  composes: icon;
+}
+.checkboxUnselected:before {
+  content: "\e911";
+}
+.iconAdd {
+  composes: icon;
+}
+.iconAdd:before {
+  content: "\e912";
+}
+.iconArrowRight {
+  composes: icon;
+}
+.iconArrowRight:before {
+  content: "\e913";
+}
+.iconBack {
+  composes: icon;
+}
+.iconBack:before {
+  content: "\e914";
+}
+.iconCallLog {
+  composes: icon;
+}
+.iconCallLog:before {
+  content: "\e915";
+}
+.iconCall {
+  composes: icon;
+}
+.iconCall:before {
+  content: "\e916";
+}
+.iconCheck {
+  composes: icon;
+}
+.iconCheck:before {
+  content: "\e917";
+}
+.iconConference {
+  composes: icon;
+}
+.iconConference:before {
+  content: "\e919";
+}
+.iconContact {
+  composes: icon;
+}
+.iconContact:before {
+  content: "\e91a";
+}
+.iconDial {
+  composes: icon;
+}
+.iconDial:before {
+  content: "\e91b";
+}
+.iconDisplay {
+  composes: icon;
+}
+.iconDisplay:before {
+  content: "\e91c";
+}
+.iconFax {
+  composes: icon;
+}
+.iconFax:before {
+  content: "\e91d";
+}
+.iconGoogle {
+  composes: icon;
+}
+.iconGoogle:before {
+  content: "\e91e";
+}
+.iconHangout {
+  composes: icon;
+}
+.iconHangout:before {
+  content: "\e91f";
+}
+.iconIInfo {
+  composes: icon;
+}
+.iconIInfo:before {
+  content: "\e920";
+}
+.iconMeeting {
+  composes: icon;
+}
+.iconMeeting:before {
+  content: "\e921";
+}
+.iconMessageAll {
+  composes: icon;
+}
+.iconMessageAll:before {
+  content: "\e922";
+}
+.iconMessageAllHover {
+  composes: icon;
+}
+.iconMessageAllHover:before {
+  content: "\e918";
+}
+.iconComposeText {
+  composes: icon;
+}
+.iconComposeText:before {
+  content: "\e923";
+}
+.iconReturn {
+  composes: icon;
+}
+.iconReturn:before {
+  content: "\e93a";
+}
+.iconSearch {
+  composes: icon;
+}
+.iconSearch:before {
+  content: "\e93b";
+}
+.iconSetting {
+  composes: icon;
+}
+.iconSetting:before {
+  content: "\e93c";
+}
+.iconTime {
+  composes: icon;
+}
+.iconTime:before {
+  content: "\e93d";
+}
+.iconVoice {
+  composes: icon;
+}
+.iconVoice:before {
+  content: "\e93e";
+}
+.iconRadioOff {
+  composes: icon;
+}
+.iconRadioOff:before {
+  content: "\e93f";
+}
+.iconRadioOn {
+  composes: icon;
+}
+.iconRadioOn:before {
+  content: "\e940";
+}
+.iconCalendar {
+  composes: icon;
+}
+.iconCalendar:before {
+  content: "\e942";
+}
+.iconDropbox {
+  composes: icon;
+}
+.iconDropbox:before {
+  content: "\e943";
+}
+.iconDropdownArrow {
+  composes: icon;
+}
+.iconDropdownArrow:before {
+  content: "\e944";
+}
+.iconIBtn {
+  composes: icon;
+}
+.iconIBtn:before {
+  content: "\e945";
+}
+.iconLogout {
+  composes: icon;
+}
+.iconLogout:before {
+  content: "\e946";
+}
+.iconSwitchOn {
+  composes: icon;
+}
+.iconSwitchOn:before {
+  content: "\e947";
+}
+.iconSwtichOff {
+  composes: icon;
+}
+.iconSwtichOff:before {
+  content: "\e948";
+}
+

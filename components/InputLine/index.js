@@ -23,7 +23,8 @@ function InputLine(props) {
     _Line2.default,
     {
       className: props.className,
-      onClick: props.onClick
+      onClick: props.onClick,
+      noBorder: props.noBorder
     },
     _react2.default.createElement(
       'div',
@@ -43,7 +44,8 @@ InputLine.propTypes = {
   label: _react.PropTypes.node,
   input: _react.PropTypes.node,
   className: _react.PropTypes.string,
-  onClick: _react.PropTypes.func
+  onClick: _react.PropTypes.func,
+  noBorder: _react.PropTypes.bool
 };
 
 exports.default = InputLine;

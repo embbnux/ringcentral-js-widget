@@ -33,7 +33,7 @@ $dial_input_height: 10%;
 }
 .dialButtons {
   @include full-size;
-  height: calc(90% - 5px);
+  height: calc(100% - 60px);
 }
 .dialPad {
   height: 80%;
@@ -42,6 +42,7 @@ $dial_input_height: 10%;
 .callBtnRow {
   height: 20%;
   text-align: center;
+  margin-top: -10px;
 }
 
 
@@ -80,8 +81,8 @@ $dial_input_height: 10%;
   transform: translate(15px, 22px) scale(0.42) rotateZ(-78deg);
 }
 .btnValue {
-  text-anchor: middle;
+  // text-anchor: middle;
   font-size: 165px;
   fill: #fff;
-  font-family: 'RCFont' !important;
+  font-family: 'dynamics_icon' !important;
 }

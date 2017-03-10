@@ -16,9 +16,9 @@ var _DialPad = require('../DialPad');
 
 var _DialPad2 = _interopRequireDefault(_DialPad);
 
-var _TextInput = require('../TextInput');
+var _DialTextInput = require('../DialTextInput');
 
-var _TextInput2 = _interopRequireDefault(_TextInput);
+var _DialTextInput2 = _interopRequireDefault(_DialTextInput);
 
 var _styles = require('./styles.scss');
 
@@ -33,20 +33,21 @@ function DialerPanel(_ref) {
       onCall = _ref.onCall,
       toNumber = _ref.toNumber;
 
+  var onCallFunc = function onCallFunc() {
+    !callButtonDisabled && onCall();
+  };
   return _react2.default.createElement(
     'div',
     { className: (0, _classnames2.default)(_styles2.default.root, className) },
-    _react2.default.createElement(
-      'div',
-      { className: _styles2.default.dial_input },
-      _react2.default.createElement(_TextInput2.default, {
-        className: _styles2.default.dialInput,
-        value: toNumber,
-        onChange: function onChange(event) {
-          keepToNumber(event.currentTarget.value);
-        }
-      })
-    ),
+    _react2.default.createElement(_DialTextInput2.default, {
+      value: toNumber,
+      onChangeEvent: function onChangeEvent(event) {
+        keepToNumber(event.currentTarget.value);
+      },
+      onDelete: function onDelete() {
+        keepToNumber('');
+      }
+    }),
     _react2.default.createElement(
       'div',
       { className: _styles2.default.dialButtons },
@@ -69,7 +70,7 @@ function DialerPanel(_ref) {
               'g',
               {
                 className: (0, _classnames2.default)(_styles2.default.btnSvgGroup, callButtonDisabled && _styles2.default.disabled),
-                onClick: onCall
+                onClick: onCallFunc
               },
               _react2.default.createElement('circle', {
                 className: _styles2.default.circle,
@@ -79,12 +80,13 @@ function DialerPanel(_ref) {
               }),
               _react2.default.createElement('text', {
                 className: _styles2.default.btnValue,
-                x: '250',
-                y: '330',
+                x: '0',
+                dx: '167.5155',
+                y: '0',
+                dy: '300',
                 dangerouslySetInnerHTML: {
-                  __html: '&#xae;'
-                }
-              })
+                  __html: '&#xe953;'
+                } })
             )
           )
         )

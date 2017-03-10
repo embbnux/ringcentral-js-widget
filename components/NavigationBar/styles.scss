@@ -2,11 +2,11 @@
 @import '../../lib/commonStyles/full-size';
 @import '../../lib/commonStyles/no-select';
 @import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/layout';
 
 .root {
   @include full-size;
-  min-height: 48px;
-  height: 10%;
+  height: $navigation-bar-height;
   box-sizing: border-box;
   background-color: $primary-color;
 }
@@ -49,14 +49,13 @@
 }
 .iconHolder {
   @include full-size;
-  height: 65%;
 }
 .icon {
   @include full-size;
-  @include vertical-align(bottom);
-  -webkit-font-smoothing: antialiased;
+ -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.3em;
+  line-height: $navigation-bar-height;
 }
 .labelHolder {
   @include full-size;
@@ -74,7 +73,7 @@
 
 .notice {
   position: absolute;
-  bottom: 1.2em;
+  bottom: 2em;
   right: calc(50% - 2em);;
   width: 1.4em;
   height: 1.4em;
