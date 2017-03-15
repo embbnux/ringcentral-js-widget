@@ -5,14 +5,13 @@
   @include full-size;
   font-family: Helvetica;
   box-sizing: content-box;
-  div {
+  * {
     box-sizing: content-box;
   }
 
   label {
     font-weight: normal;
     margin-bottom: 0;
-    box-sizing: content-box;
   }
 }
 
