@@ -4,6 +4,9 @@
 .root {
   @include full-size;
   padding-bottom: 0px;
+  * {
+    box-sizing: content-box;
+  }
 }
 
 .content {

@@ -6,9 +6,6 @@
   cursor: default;
   background: #fff;
   overflow: hidden;
-  * {
-    box-sizing: content-box;
-  }
   &:hover {
     background-color: #f5f5f5;
     border-bottom: 1px solid #efefef;
