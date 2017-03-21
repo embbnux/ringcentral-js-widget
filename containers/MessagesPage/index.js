@@ -104,7 +104,9 @@ var MessagesPage = function (_Component) {
       return recipients.map(function (recipient) {
         var phoneNumber = recipient.phoneNumber || recipient.extensionNumber;
         if (recipient.matchedNames) {
-          var matcherName = recipient.matchedNames.join('&');
+          var matcherName = recipient.matchedNames.map(function (matcher) {
+            return matcher.name;
+          }).join('&');
           if (matcherName.length > 0) {
             return matcherName;
           }
@@ -135,7 +137,9 @@ var MessagesPage = function (_Component) {
               return true;
             }
             if (recipient.matchedNames) {
-              var matcherName = recipient.matchedNames.join('&');
+              var matcherName = recipient.matchedNames.map(function (matcher) {
+                return matcher.name;
+              }).join('&');
               if (matcherName.length > 0) {
                 recipientName = matcherName;
               } else {
