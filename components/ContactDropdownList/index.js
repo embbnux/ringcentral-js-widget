@@ -29,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ContactItem(props) {
   return _react2.default.createElement(
     'li',
-    null,
+    { className: _styles2.default.contactItem },
     _react2.default.createElement(
       'a',
       { href: '#select-contact-item', onClick: props.onClick },
@@ -38,8 +38,13 @@ function ContactItem(props) {
         null,
         _react2.default.createElement(
           'span',
-          null,
+          { className: _styles2.default.name },
           props.name
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: _styles2.default.spliter },
+          '|'
         ),
         _react2.default.createElement(
           'span',
@@ -53,7 +58,12 @@ function ContactItem(props) {
         _react2.default.createElement(
           'span',
           null,
-          props.formatPhone(props.phoneNumber)
+          props.formatContactPhone(props.phoneNumber)
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: _styles2.default.spliter },
+          '|'
         ),
         _react2.default.createElement(
           'span',
@@ -67,7 +77,7 @@ function ContactItem(props) {
 
 ContactItem.propTypes = {
   onClick: _react.PropTypes.func.isRequired,
-  formatPhone: _react.PropTypes.func.isRequired,
+  formatContactPhone: _react.PropTypes.func.isRequired,
   name: _react.PropTypes.string.isRequired,
   entityType: _react.PropTypes.string.isRequired,
   phoneType: _react.PropTypes.string.isRequired,
@@ -91,7 +101,7 @@ function ContactDropdownList(props) {
         entityType: item.entityType,
         phoneType: item.phoneType,
         phoneNumber: item.phoneNumber,
-        formatPhone: props.formatPhone,
+        formatContactPhone: props.formatContactPhone,
         onClick: function onClick() {
           return props.addToRecipients({
             name: item.name,
@@ -113,7 +123,7 @@ ContactDropdownList.propTypes = {
     phoneType: _react.PropTypes.string.isRequired,
     phoneNumber: _react.PropTypes.string.isRequired
   })).isRequired,
-  formatPhone: _react.PropTypes.func.isRequired,
+  formatContactPhone: _react.PropTypes.func.isRequired,
   addToRecipients: _react.PropTypes.func.isRequired
 };
 

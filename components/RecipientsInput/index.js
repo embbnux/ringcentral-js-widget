@@ -124,39 +124,50 @@ var RecipientsInput = function (_Component) {
   (0, _createClass3.default)(RecipientsInput, [{
     key: 'render',
     value: function render() {
-      var relatedContactList = [];
-      if (this.props.value.length >= 3) {
-        relatedContactList = this.props.searchContactList;
-      }
+      var relatedContactList = this.props.value.length >= 3 ? this.props.searchContactList : [];
+      var label = this.props.label ? _react2.default.createElement(
+        'label',
+        null,
+        this.props.label
+      ) : null;
       return _react2.default.createElement(
         'div',
         { className: _styles2.default.container },
-        _react2.default.createElement(SelectedRecipients, {
-          items: this.props.recipients,
-          removeFromRecipients: this.props.removeFromRecipients
-        }),
-        _react2.default.createElement('input', {
-          name: 'receiver',
-          value: this.props.value,
-          onChange: this.props.onChange,
-          onKeyUp: this.props.onKeyUp,
-          onKeyDown: this.props.onKeyDown,
-          className: _styles2.default.numberInput,
-          maxLength: 30,
-          onFocus: this.onReceiversInputFocus,
-          onBlur: this.onReceiversInputBlur,
-          placeholder: this.props.placeholder,
-          autoComplete: 'off'
-        }),
-        _react2.default.createElement(_RemoveButton2.default, {
-          className: _styles2.default.removeButton,
-          onClick: this.props.onClean,
-          visibility: this.props.value.length > 0 && this.state.isFocusOnInput
-        }),
+        label,
+        _react2.default.createElement(
+          'div',
+          { className: _styles2.default.rightPanel },
+          _react2.default.createElement(SelectedRecipients, {
+            items: this.props.recipients,
+            removeFromRecipients: this.props.removeFromRecipients
+          }),
+          _react2.default.createElement(
+            'div',
+            { className: _styles2.default.inputField },
+            _react2.default.createElement('input', {
+              name: 'receiver',
+              value: this.props.value,
+              onChange: this.props.onChange,
+              onKeyUp: this.props.onKeyUp,
+              onKeyDown: this.props.onKeyDown,
+              className: _styles2.default.numberInput,
+              maxLength: 30,
+              onFocus: this.onReceiversInputFocus,
+              onBlur: this.onReceiversInputBlur,
+              placeholder: this.props.placeholder,
+              autoComplete: 'off'
+            })
+          ),
+          _react2.default.createElement(_RemoveButton2.default, {
+            className: _styles2.default.removeButton,
+            onClick: this.props.onClean,
+            visibility: this.props.value.length > 0 && this.state.isFocusOnInput
+          })
+        ),
         _react2.default.createElement(_ContactDropdownList2.default, {
           addToRecipients: this.props.addToRecipients,
           items: relatedContactList,
-          formatPhone: this.props.formatPhone,
+          formatContactPhone: this.props.formatContactPhone,
           className: _styles2.default.contactsDropdown,
           visibility: this.state.isFocusOnInput
         })
@@ -167,6 +178,7 @@ var RecipientsInput = function (_Component) {
 }(_react.Component);
 
 RecipientsInput.propTypes = {
+  label: _react.PropTypes.string,
   placeholder: _react.PropTypes.string,
   searchContactList: _react.PropTypes.arrayOf(_react.PropTypes.shape({
     name: _react.PropTypes.string.isRequired,
@@ -185,10 +197,11 @@ RecipientsInput.propTypes = {
   onKeyDown: _react.PropTypes.func,
   addToRecipients: _react.PropTypes.func.isRequired,
   removeFromRecipients: _react.PropTypes.func.isRequired,
-  formatPhone: _react.PropTypes.func.isRequired
+  formatContactPhone: _react.PropTypes.func.isRequired
 };
 
 RecipientsInput.defaultProps = {
+  label: null,
   placeholder: '',
   onKeyUp: function onKeyUp() {
     return null;

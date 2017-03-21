@@ -30,10 +30,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
-var _RcFont = require('../../assets/RcFont/RcFont.scss');
-
-var _RcFont2 = _interopRequireDefault(_RcFont);
-
 var _DynamicsFont = require('../../assets/DynamicsFont/DynamicsFont.scss');
 
 var _DynamicsFont2 = _interopRequireDefault(_DynamicsFont);
@@ -147,7 +143,7 @@ var ConversationPanel = function (_Component) {
                 type: 'submit',
                 value: _i18n2.default.getString('send', this.props.currentLocale),
                 className: _styles2.default.submitButton,
-                disabled: this.props.sendButtonDisabled || loading
+                disabled: this.props.sendButtonDisabled || loading || this.state.textValue.length === 0
               })
             )
           )
