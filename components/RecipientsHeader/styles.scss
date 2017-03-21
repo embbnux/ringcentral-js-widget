@@ -21,6 +21,11 @@
     &:focus {
       outline: none;
     }
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 }
 
