@@ -162,12 +162,13 @@ function mapDispatchToProps(dispatch, props) {
   var getMatcherContactList = void 0;
   if (props.contactMatcher && props.contactMatcher.ready) {
     getMatcherContactList = function getMatcherContactList(phoneNumber) {
-      return ['Embbnux Ji', 'Embbnux Ji2'];
-      // const matcherNames = props.contactMatcher.dataMapping[phoneNumber];
-      // if (matcherNames && matcherNames.length > 0) {
-      //   return matcherNames.map(matcher => matcher.name);
-      // }
-      // return [];
+      var matcherNames = props.contactMatcher.dataMapping[phoneNumber];
+      if (matcherNames && matcherNames.length > 0) {
+        return matcherNames.map(function (matcher) {
+          return matcher.name;
+        });
+      }
+      return [];
     };
 
     getMatcherContactName = function getMatcherContactName(phoneNumber) {
