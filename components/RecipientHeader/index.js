@@ -43,16 +43,22 @@ var _i18n2 = _interopRequireDefault(_i18n);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function RecipientName(props) {
+  var className = (0, _classnames2.default)(_styles2.default.recipient, props.className);
   return _react2.default.createElement(
     'a',
-    { href: '#recipient', className: _styles2.default.recipient, onClick: props.onClick },
+    { href: '#recipient', className: className, onClick: props.onClick },
     props.name
   );
 }
 
 RecipientName.propTypes = {
   name: _react.PropTypes.string.isRequired,
-  onClick: _react.PropTypes.func.isRequired
+  onClick: _react.PropTypes.func.isRequired,
+  className: _react.PropTypes.string
+};
+
+RecipientName.defaultProps = {
+  className: null
 };
 
 function MatchedNameList(props) {
@@ -96,11 +102,7 @@ var RecipientHeader = function (_Component) {
       });
     };
     _this.setDefaultMatchedName = function () {
-      _this.setState(function (preState) {
-        return {
-          showDropdownList: !preState.showDropdownList
-        };
-      });
+      _this.toggleDropdown();
     };
     return _this;
   }
@@ -151,7 +153,8 @@ var RecipientHeader = function (_Component) {
         null,
         _react2.default.createElement(RecipientName, {
           name: defaultRecipient,
-          onClick: this.toggleDropdown
+          onClick: this.toggleDropdown,
+          className: styls.dropdownButton
         }),
         this.props.dropdownIcon,
         _react2.default.createElement(MatchedNameList, {
