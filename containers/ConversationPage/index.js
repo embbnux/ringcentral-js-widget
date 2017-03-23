@@ -156,17 +156,16 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch, props) {
-  var getMatcherContactName = undefined;
-  var getMatcherContactList = undefined;
+  var getMatcherContactName = void 0;
+  var getMatcherContactList = void 0;
   if (props.contactMatcher && props.contactMatcher.ready) {
     getMatcherContactList = function getMatcherContactList(phoneNumber) {
-      var matcherNames = props.contactMatcher.dataMapping[phoneNumber];
-      if (matcherNames && matcherNames.length > 0) {
-        return matcherNames.map(function (matcher) {
-          return matcher.name;
-        });
-      }
-      return [];
+      return ['Embbnux Ji', 'Embbnux Ji2'];
+      // const matcherNames = props.contactMatcher.dataMapping[phoneNumber];
+      // if (matcherNames && matcherNames.length > 0) {
+      //   return matcherNames.map(matcher => matcher.name);
+      // }
+      // return [];
     };
 
     getMatcherContactName = function getMatcherContactName(phoneNumber) {
