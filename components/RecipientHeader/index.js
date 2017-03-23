@@ -154,7 +154,7 @@ var RecipientHeader = function (_Component) {
         _react2.default.createElement(RecipientName, {
           name: defaultRecipient,
           onClick: this.toggleDropdown,
-          className: styls.dropdownButton
+          className: _styles2.default.dropdownButton
         }),
         this.props.dropdownIcon,
         _react2.default.createElement(MatchedNameList, {
