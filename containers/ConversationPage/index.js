@@ -57,6 +57,7 @@ var ConversationPage = function (_Component) {
         formatPhone: this.props.formatNumber,
         formatDateTime: this.props.formatDateTime,
         changeDefaultRecipient: this.props.changeDefaultRecipient,
+        changeMatchedNames: this.props.changeMatchedNames,
         getRecipientName: function getRecipientName(recipient) {
           return _this2.getRecipientName(recipient);
         },
@@ -141,6 +142,7 @@ ConversationPage.childContextTypes = {
   formatDateTime: _react.PropTypes.func.isRequired,
   getRecipientName: _react.PropTypes.func.isRequired,
   changeDefaultRecipient: _react.PropTypes.func.isRequired,
+  changeMatchedNames: _react.PropTypes.func.isRequired,
   getMatcherContactList: _react.PropTypes.func.isRequired
 };
 
@@ -180,6 +182,7 @@ function mapDispatchToProps(dispatch, props) {
   return {
     replyToReceivers: props.conversation.replyToReceivers,
     changeDefaultRecipient: props.conversation.changeDefaultRecipient,
+    changeMatchedNames: props.conversation.changeMatchedNames,
     unloadConversation: function unloadConversation() {
       return props.conversation.unloadConversation();
     },

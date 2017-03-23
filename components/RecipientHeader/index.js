@@ -101,7 +101,18 @@ var RecipientHeader = function (_Component) {
         };
       });
     };
-    _this.setDefaultMatchedName = function () {
+    _this.setDefaultMatchedName = function (matchedName) {
+      var recipient = _this.props.recipient;
+      var phoneNumber = recipient.phoneNumber || recipient.extensionNumber;
+      var matchedNames = _this.context.getMatcherContactList(phoneNumber);
+      if (!matchedNames) {
+        return;
+      }
+      var newMatchedNames = matchedNames.filter(function (name) {
+        return name !== matchedName;
+      });
+      newMatchedNames = [matchedName].concat(newMatchedNames);
+      _this.context.changeMatchedNames(newMatchedNames);
       _this.toggleDropdown();
     };
     return _this;
@@ -182,7 +193,8 @@ RecipientHeader.propTypes = {
 
 RecipientHeader.contextTypes = {
   getRecipientName: _react.PropTypes.func.isRequired,
-  getMatcherContactList: _react.PropTypes.func.isRequired
+  getMatcherContactList: _react.PropTypes.func.isRequired,
+  changeMatchedNames: _react.PropTypes.func.isRequired
 };
 
 exports.default = RecipientHeader;

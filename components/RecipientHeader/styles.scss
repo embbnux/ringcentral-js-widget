@@ -33,4 +33,7 @@
 .dropdownButton {
   line-height: 36px;
   height: 36px;
+  &:hover {
+    background: transparent;
+  }
 }
