@@ -127,7 +127,8 @@ ConversationPage.propTypes = {
   formatNumber: _react.PropTypes.func.isRequired,
   formatDateTime: _react.PropTypes.func.isRequired,
   getMatcherContactName: _react.PropTypes.func,
-  getMatcherContactList: _react.PropTypes.func
+  getMatcherContactList: _react.PropTypes.func,
+  changeMatchedNames: _react.PropTypes.func.isRequired
 };
 
 ConversationPage.defaultProps = {
