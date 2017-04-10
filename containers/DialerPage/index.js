@@ -9,6 +9,10 @@ var _reactRedux = require('react-redux');
 
 var _react = require('react');
 
+var _formatNumber = require('ringcentral-integration/lib/formatNumber');
+
+var _formatNumber2 = _interopRequireDefault(_formatNumber);
+
 var _Locale = require('ringcentral-integration/modules/Locale');
 
 var _Locale2 = _interopRequireDefault(_Locale);
@@ -16,6 +20,10 @@ var _Locale2 = _interopRequireDefault(_Locale);
 var _CallingSettings = require('ringcentral-integration/modules/CallingSettings');
 
 var _CallingSettings2 = _interopRequireDefault(_CallingSettings);
+
+var _callingModes = require('ringcentral-integration/modules/CallingSettings/callingModes');
+
+var _callingModes2 = _interopRequireDefault(_callingModes);
 
 var _Call = require('ringcentral-integration/modules/Call');
 
@@ -44,14 +52,17 @@ function mapToProps(_, _ref) {
 
   return {
     currentLocale: locale.currentLocale,
-    callingMode: callingSettings.callingMode,
+    isWebphoneMode: callingSettings.callingMode === _callingModes2.default.webphone,
     callButtonDisabled: !call.isIdle || !connectivityMonitor.connectivity || rateLimiter.throttling,
-    toNumber: call.toNumber
+    toNumber: call.toNumber,
+    fromNumbers: call.fromNumbers,
+    fromNumber: call.fromNumber
   };
 }
 
 function mapToFunctions(_, _ref2) {
-  var call = _ref2.call;
+  var call = _ref2.call,
+      regionSettings = _ref2.regionSettings;
 
   return {
     keepToNumber: function keepToNumber(value) {
@@ -59,6 +70,16 @@ function mapToFunctions(_, _ref2) {
     },
     onCall: function onCall() {
       call.onCall();
+    },
+    changeFromNumber: function changeFromNumber(number) {
+      call.updateFromNumber(number);
+    },
+    formatPhone: function formatPhone(phoneNumber) {
+      return (0, _formatNumber2.default)({
+        phoneNumber: phoneNumber,
+        areaCode: regionSettings.areaCode,
+        countryCode: regionSettings.countryCode
+      });
     }
   };
 }

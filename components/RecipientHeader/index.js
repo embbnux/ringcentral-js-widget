@@ -32,6 +32,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _DynamicsFont = require('../../assets/DynamicsFont/DynamicsFont.scss');
+
+var _DynamicsFont2 = _interopRequireDefault(_DynamicsFont);
+
 var _styles = require('./styles.scss');
 
 var _styles2 = _interopRequireDefault(_styles);
@@ -66,6 +70,13 @@ function MatchedNameList(props) {
   return _react2.default.createElement(
     'div',
     { className: props.className },
+    _react2.default.createElement(RecipientName, {
+      name: _i18n2.default.getString('selectMatchedName', props.currentLocale),
+      className: _styles2.default.noClick,
+      onClick: function onClick() {
+        return null;
+      }
+    }),
     matchedNames.map(function (matchedName) {
       return _react2.default.createElement(RecipientName, {
         key: matchedName,
@@ -79,6 +90,8 @@ function MatchedNameList(props) {
 }
 
 MatchedNameList.propTypes = {
+  currentLocale: _react.PropTypes.string.isRequired,
+  isSelected: _react.PropTypes.bool.isRequired,
   className: _react.PropTypes.string.isRequired,
   matchedNames: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired
 };
@@ -139,19 +152,24 @@ var RecipientHeader = function (_Component) {
         );
       }
       var dropdownClass = this.props.dropdownClassName;
+      var dropdownArrowClass = (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.dropdownIcon);
       if (this.state.showDropdownList) {
         dropdownClass = (0, _classnames2.default)(dropdownClass, _styles2.default.active);
+        dropdownArrowClass = (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.dropdownActiveIcon);
       }
       var phoneNumber = recipient.phoneNumber || recipient.extensionNumber;
       var matchedNames = this.context.getMatcherContactList(phoneNumber);
-      var defaultRecipient = _i18n2.default.getString('selectMatchedName', this.props.currentLocale);
-      // if it have old data
+      var matchedNamesOnly = this.context.getMatcherContactNameList(phoneNumber);
+      var defaultRecipient = matchedNamesOnly.join('&');
+      // if it has old data
+      var isSelected = false;
       if (recipient.matchedNames && recipient.matchedNames[0]) {
         var firstMatchedName = recipient.matchedNames[0];
         var isFind = matchedNames.find(function (name) {
           return name === firstMatchedName;
         });
         if (isFind) {
+          isSelected = true;
           defaultRecipient = firstMatchedName;
         }
         var oldMatchedNames = recipient.matchedNames.slice().sort();
@@ -167,11 +185,16 @@ var RecipientHeader = function (_Component) {
           onClick: this.toggleDropdown,
           className: _styles2.default.dropdownButton
         }),
-        this.props.dropdownIcon,
+        _react2.default.createElement('i', {
+          className: dropdownArrowClass,
+          onClick: this.toggleDropdown
+        }),
         _react2.default.createElement(MatchedNameList, {
           matchedNames: matchedNames,
           className: dropdownClass,
-          setDefaultMatchedName: this.setDefaultMatchedName
+          setDefaultMatchedName: this.setDefaultMatchedName,
+          isSelected: isSelected,
+          currentLocale: this.props.currentLocale
         })
       );
     }
@@ -187,13 +210,13 @@ RecipientHeader.propTypes = {
     matchedNames: _react.PropTypes.array
   }).isRequired,
   currentLocale: _react.PropTypes.string.isRequired,
-  dropdownIcon: _react.PropTypes.node.isRequired,
   dropdownClassName: _react.PropTypes.string.isRequired
 };
 
 RecipientHeader.contextTypes = {
   getRecipientName: _react.PropTypes.func.isRequired,
   getMatcherContactList: _react.PropTypes.func.isRequired,
+  getMatcherContactNameList: _react.PropTypes.func.isRequired,
   changeMatchedNames: _react.PropTypes.func.isRequired
 };
 

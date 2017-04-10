@@ -197,7 +197,7 @@ var CallingSettingsPanel = function (_Component) {
         disabled: !hasChanges
       });
 
-      var ringout = this.state.callWith !== _callingOptions2.default.softphone ? _react2.default.createElement(
+      var ringout = this.state.callWith !== _callingOptions2.default.softphone && this.state.callWith !== _callingOptions2.default.browser ? _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(

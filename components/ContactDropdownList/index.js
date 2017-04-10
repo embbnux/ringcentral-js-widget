@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -27,9 +23,10 @@ var _phoneTypes2 = _interopRequireDefault(_phoneTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ContactItem(props) {
+  var className = (0, _classnames2.default)(_styles2.default.contactItem, props.active ? _styles2.default.active : null);
   return _react2.default.createElement(
     'li',
-    { className: _styles2.default.contactItem },
+    { className: className, onMouseOver: props.onHover },
     _react2.default.createElement(
       'a',
       { href: '#select-contact-item', onClick: props.onClick },
@@ -68,7 +65,7 @@ function ContactItem(props) {
         _react2.default.createElement(
           'span',
           { className: _styles2.default.label },
-          _phoneTypes2.default.getString('phoneType.' + props.phoneType)
+          props.phoneType === 'unknown' ? _phoneTypes2.default.getString('phoneType.' + props.phoneType) : props.phoneType
         )
       )
     )
@@ -81,7 +78,9 @@ ContactItem.propTypes = {
   name: _react.PropTypes.string.isRequired,
   entityType: _react.PropTypes.string.isRequired,
   phoneType: _react.PropTypes.string.isRequired,
-  phoneNumber: _react.PropTypes.string.isRequired
+  phoneNumber: _react.PropTypes.string.isRequired,
+  active: _react.PropTypes.bool.isRequired,
+  onHover: _react.PropTypes.func.isRequired
 };
 
 function ContactDropdownList(props) {
@@ -95,20 +94,25 @@ function ContactDropdownList(props) {
   return _react2.default.createElement(
     'ul',
     { className: listClassName },
-    items.map(function (item) {
+    items.map(function (item, index) {
       return _react2.default.createElement(ContactItem, {
+        active: props.selectedIndex === index,
         name: item.name,
         entityType: item.entityType,
         phoneType: item.phoneType,
         phoneNumber: item.phoneNumber,
         formatContactPhone: props.formatContactPhone,
+        onHover: function onHover() {
+          return props.setSelectedIndex(index);
+        },
         onClick: function onClick() {
           return props.addToRecipients({
             name: item.name,
             phoneNumber: item.phoneNumber
           });
-        },
-        key: (0, _stringify2.default)(item)
+        }
+        // eslint-disable-next-line react/no-array-index-key
+        , key: '' + index + item.phoneNumber + item.name + item.phoneType
       });
     })
   );
@@ -124,7 +128,9 @@ ContactDropdownList.propTypes = {
     phoneNumber: _react.PropTypes.string.isRequired
   })).isRequired,
   formatContactPhone: _react.PropTypes.func.isRequired,
-  addToRecipients: _react.PropTypes.func.isRequired
+  addToRecipients: _react.PropTypes.func.isRequired,
+  setSelectedIndex: _react.PropTypes.func.isRequired,
+  selectedIndex: _react.PropTypes.number.isRequired
 };
 
 ContactDropdownList.defaultProps = {

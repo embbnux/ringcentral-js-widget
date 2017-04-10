@@ -4,10 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  sendMessageFrom: 'Send Message From',
+  from: 'From',
   to: 'To',
   enterNameOrNumber: 'Enter Number or Name',
-  typeAnyToSend: 'Type any text to send',
+  typeMessage: 'Type message...',
   send: 'Send'
 };
 //# sourceMappingURL=en-GB.js.map

@@ -24,10 +24,6 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -70,7 +66,7 @@ function RecipientList(props) {
     { className: props.className },
     recipients.map(function (receiver) {
       return _react2.default.createElement(Recipient, {
-        key: (0, _stringify2.default)(receiver),
+        key: '' + receiver.extensionNumber + receiver.phoneNumber + receiver.name,
         name: props.getRecipientName(receiver),
         onClick: function onClick() {
           return props.setDefaultRecipient(receiver.extensionNumber || receiver.phoneNumber);
@@ -127,8 +123,8 @@ var RecipientsHeader = function (_Component) {
       if (recipients.length === 0) {
         return null;
       }
-      var dropdownIcon = _react2.default.createElement('i', { className: (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.dropdownIcon) });
       var dropdownClass = _styles2.default.dropdownList;
+      var dropdownArrowClass = (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.dropdownIcon);
       if (recipients.length === 1) {
         return _react2.default.createElement(
           'h1',
@@ -136,7 +132,6 @@ var RecipientsHeader = function (_Component) {
           _react2.default.createElement(_RecipientHeader2.default, {
             recipient: recipients[0],
             currentLocale: this.props.currentLocale,
-            dropdownIcon: dropdownIcon,
             dropdownClassName: dropdownClass
           })
         );
@@ -144,6 +139,7 @@ var RecipientsHeader = function (_Component) {
       var defaultRecipient = recipients[0];
       if (this.state.showDropdownList) {
         dropdownClass = (0, _classnames2.default)(dropdownClass, _styles2.default.active);
+        dropdownArrowClass = (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.dropdownActiveIcon);
       }
       return _react2.default.createElement(
         'h1',
@@ -152,7 +148,10 @@ var RecipientsHeader = function (_Component) {
           name: this.context.getRecipientName(defaultRecipient),
           onClick: this.toggleDropdown
         }),
-        dropdownIcon,
+        _react2.default.createElement('i', {
+          className: dropdownArrowClass,
+          onClick: this.toggleDropdown
+        }),
         _react2.default.createElement(RecipientList, {
           recipients: recipients,
           className: dropdownClass,
