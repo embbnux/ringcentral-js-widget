@@ -9,13 +9,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = require('classnames');
+var _Badge = require('../Badge');
 
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _styles = require('./styles.scss');
-
-var _styles2 = _interopRequireDefault(_styles);
+var _Badge2 = _interopRequireDefault(_Badge);
 
 var _i18n = require('./i18n');
 
@@ -31,11 +27,12 @@ function OfflineModeBadge(_ref) {
 
   if (offline) {
     return _react2.default.createElement(
-      'a',
+      _Badge2.default,
       {
-        href: '#offline-badge',
-        className: (0, _classnames2.default)(_styles2.default.root, className),
-        onClick: showOfflineAlert },
+        className: className,
+        name: 'offline',
+        onClick: showOfflineAlert
+      },
       _i18n2.default.getString('offlineMode', currentLocale)
     );
   }

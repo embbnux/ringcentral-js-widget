@@ -62,6 +62,10 @@ var _ConnectivityAlert = require('../../components/ConnectivityAlert');
 
 var _ConnectivityAlert2 = _interopRequireDefault(_ConnectivityAlert);
 
+var _WebphoneAlert = require('../../components/WebphoneAlert');
+
+var _WebphoneAlert2 = _interopRequireDefault(_WebphoneAlert);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AlertContainer = (0, _reactRedux.connect)(function (state, _ref) {
@@ -118,6 +122,10 @@ var AlertContainer = (0, _reactRedux.connect)(function (state, _ref) {
 
       if (_ConnectivityAlert2.default.handleMessage(message)) {
         return _ConnectivityAlert2.default;
+      }
+
+      if (_WebphoneAlert2.default.handleMessage(message)) {
+        return _WebphoneAlert2.default;
       }
 
       return undefined;

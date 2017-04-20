@@ -50,7 +50,7 @@ function RecipientName(props) {
   var className = (0, _classnames2.default)(_styles2.default.recipient, props.className);
   return _react2.default.createElement(
     'a',
-    { href: '#recipient', className: className, onClick: props.onClick },
+    { href: '#recipient', className: className, onClick: props.onClick, title: props.title },
     props.name
   );
 }
@@ -58,11 +58,13 @@ function RecipientName(props) {
 RecipientName.propTypes = {
   name: _react.PropTypes.string.isRequired,
   onClick: _react.PropTypes.func.isRequired,
-  className: _react.PropTypes.string
+  className: _react.PropTypes.string,
+  title: _react.PropTypes.string
 };
 
 RecipientName.defaultProps = {
-  className: null
+  className: null,
+  title: null
 };
 
 function MatchedNameList(props) {
@@ -81,6 +83,7 @@ function MatchedNameList(props) {
       return _react2.default.createElement(RecipientName, {
         key: matchedName,
         name: matchedName,
+        title: matchedName,
         onClick: function onClick() {
           return props.setDefaultMatchedName(matchedName);
         }
@@ -145,10 +148,11 @@ var RecipientHeader = function (_Component) {
       var recipient = this.props.recipient;
       var hasDropdown = this.hasDropdown();
       if (!hasDropdown) {
+        var recipientName = this.context.getRecipientName(recipient);
         return _react2.default.createElement(
           'span',
-          { className: _styles2.default.title },
-          this.context.getRecipientName(recipient)
+          { className: _styles2.default.title, title: recipientName },
+          recipientName
         );
       }
       var dropdownClass = this.props.dropdownClassName;
@@ -170,7 +174,7 @@ var RecipientHeader = function (_Component) {
         });
         if (isFind) {
           isSelected = true;
-          defaultRecipient = firstMatchedName;
+          defaultRecipient = firstMatchedName.slice(0, firstMatchedName.indexOf('|'));
         }
         var oldMatchedNames = recipient.matchedNames.slice().sort();
         if (matchedNames.sort().join('') === oldMatchedNames.join('')) {
@@ -182,6 +186,7 @@ var RecipientHeader = function (_Component) {
         null,
         _react2.default.createElement(RecipientName, {
           name: defaultRecipient,
+          title: defaultRecipient,
           onClick: this.toggleDropdown,
           className: _styles2.default.dropdownButton
         }),

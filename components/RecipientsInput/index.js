@@ -42,28 +42,36 @@ var _ContactDropdownList2 = _interopRequireDefault(_ContactDropdownList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function SelectedRecipientItem(props) {
-  var className = props.phoneNumber.length > 5 ? _styles2.default.blue : null;
+function SelectedRecipientItem(_ref) {
+  var phoneNumber = _ref.phoneNumber,
+      _ref$name = _ref.name,
+      name = _ref$name === undefined ? phoneNumber : _ref$name,
+      onRemove = _ref.onRemove;
+
+  var className = phoneNumber.length > 5 ? _styles2.default.blue : null;
   return _react2.default.createElement(
     'li',
     { className: className },
     _react2.default.createElement(
       'span',
       null,
-      props.name
+      name
     ),
     _react2.default.createElement(_RemoveButton2.default, {
       className: _styles2.default.removeReceiver,
-      onClick: props.onRemove,
+      onClick: onRemove,
       visibility: true
     })
   );
 }
 
 SelectedRecipientItem.propTypes = {
-  name: _react.PropTypes.string.isRequired,
+  name: _react.PropTypes.string,
   phoneNumber: _react.PropTypes.string.isRequired,
   onRemove: _react.PropTypes.func.isRequired
+};
+SelectedRecipientItem.defaultProps = {
+  name: undefined
 };
 
 function SelectedRecipients(props) {
@@ -91,7 +99,7 @@ SelectedRecipients.propTypes = {
   removeFromRecipients: _react.PropTypes.func.isRequired,
   items: _react2.default.PropTypes.arrayOf(_react.PropTypes.shape({
     phoneNumber: _react.PropTypes.string.isRequired,
-    name: _react.PropTypes.string.isRequired
+    name: _react.PropTypes.string
   })).isRequired
 };
 
@@ -105,34 +113,41 @@ var RecipientsInput = function (_Component) {
 
     _this.state = {
       isFocusOnInput: false,
-      selectedContactIndex: 0
+      selectedContactIndex: 0,
+      scrollDirection: null,
+      currentValue: props.value.replace(',', '')
     };
 
     _this.onReceiversInputFocus = function () {
       _this.setState({
-        isFocusOnInput: true,
-        selectedContactIndex: 0
+        isFocusOnInput: true
       });
     };
 
     _this.onReceiversInputBlur = function () {
       _this.setState({
-        isFocusOnInput: false,
-        selectedContactIndex: -1
+        isFocusOnInput: false
       });
     };
 
     _this.setSelectedIndex = function (index) {
       _this.setState({
-        selectedContactIndex: index
+        selectedContactIndex: index,
+        scrollDirection: null
       });
     };
-
+    _this.scrollOperation = function (direction) {
+      if (direction === 'ArrowDown' || direction === 'ArrowUp') {
+        _this.setState({
+          scrollDirection: direction
+        });
+      }
+    };
     _this.addSelectedContactIndex = function () {
-      var length = _this.props.searchContactList.length < 5 ? _this.props.searchContactList.length : 5;
+      var length = _this.props.searchContactList.length;
       if (_this.state.selectedContactIndex >= length - 1) {
         _this.setState({
-          selectedContactIndex: 0
+          selectedContactIndex: length - 1
         });
       } else {
         _this.setState(function (preState) {
@@ -144,7 +159,6 @@ var RecipientsInput = function (_Component) {
     };
 
     _this.reduceSelectedContactIndex = function () {
-      var length = _this.props.searchContactList.length < 5 ? _this.props.searchContactList.length : 5;
       if (_this.state.selectedContactIndex > 0) {
         _this.setState(function (preState) {
           return {
@@ -153,7 +167,7 @@ var RecipientsInput = function (_Component) {
         });
       } else {
         _this.setState({
-          selectedContactIndex: length - 1
+          selectedContactIndex: 0
         });
       }
     };
@@ -162,8 +176,10 @@ var RecipientsInput = function (_Component) {
       if (_this.state.isFocusOnInput && _this.props.value.length >= 3) {
         if (e.key === 'ArrowUp') {
           _this.reduceSelectedContactIndex();
+          _this.scrollOperation(e.key);
         } else if (e.key === 'ArrowDown') {
           _this.addSelectedContactIndex();
+          _this.scrollOperation(e.key);
         }
       } else {
         _this.setState({
@@ -176,10 +192,6 @@ var RecipientsInput = function (_Component) {
           return;
         }
         var relatedContactList = _this.props.value.length >= 3 ? _this.props.searchContactList : [];
-        // MAX 5
-        if (relatedContactList.length > 5) {
-          relatedContactList = relatedContactList.slice(0, 5);
-        }
         var currentSelected = relatedContactList[_this.state.selectedContactIndex];
         if (currentSelected) {
           _this.props.addToRecipients({
@@ -188,8 +200,8 @@ var RecipientsInput = function (_Component) {
           });
         } else {
           _this.props.addToRecipients({
-            name: _this.props.value,
-            phoneNumber: _this.props.value
+            name: _this.props.value.replace(',', ''),
+            phoneNumber: _this.props.value.replace(',', '')
           });
           _this.props.onClean();
         }
@@ -200,6 +212,22 @@ var RecipientsInput = function (_Component) {
   }
 
   (0, _createClass3.default)(RecipientsInput, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      this.setState({
+        currentValue: newProps.value.replace(',', '')
+      });
+      if (newProps.value && newProps.value !== this.props.value && this.props.value[this.props.value.length - 1] === ',') {
+        this.setState({
+          isFocusOnInput: true
+        });
+        this.props.addToRecipients({
+          name: this.props.value.replace(',', ''),
+          phoneNumber: this.props.value.replace(',', '')
+        }, false);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var relatedContactList = this.props.value.length >= 3 ? this.props.searchContactList : [];
@@ -208,11 +236,6 @@ var RecipientsInput = function (_Component) {
         null,
         this.props.label
       ) : null;
-      // MAX 5
-      if (relatedContactList.length > 5) {
-        relatedContactList = relatedContactList.slice(0, 5);
-      }
-
       return _react2.default.createElement(
         'div',
         { className: _styles2.default.container, onKeyDown: this.handleHotKey },
@@ -229,7 +252,7 @@ var RecipientsInput = function (_Component) {
             { className: _styles2.default.inputField },
             _react2.default.createElement('input', {
               name: 'receiver',
-              value: this.props.value,
+              value: this.state.currentValue,
               onChange: this.props.onChange,
               onKeyUp: this.props.onKeyUp,
               onKeyDown: this.props.onKeyDown,
@@ -248,13 +271,15 @@ var RecipientsInput = function (_Component) {
           })
         ),
         _react2.default.createElement(_ContactDropdownList2.default, {
+          scrollDirection: this.state.scrollDirection,
           selectedIndex: this.state.selectedContactIndex,
           setSelectedIndex: this.setSelectedIndex,
           addToRecipients: this.props.addToRecipients,
           items: relatedContactList,
           formatContactPhone: this.props.formatContactPhone,
           className: _styles2.default.contactsDropdown,
-          visibility: this.state.isFocusOnInput
+          visibility: this.state.isFocusOnInput,
+          titleEnabled: this.props.titleEnabled
         })
       );
     }
@@ -273,7 +298,7 @@ RecipientsInput.propTypes = {
   })).isRequired,
   recipients: _react.PropTypes.arrayOf(_react.PropTypes.shape({
     phoneNumber: _react.PropTypes.string.isRequired,
-    name: _react.PropTypes.string.isRequired
+    name: _react.PropTypes.string
   })).isRequired,
   value: _react.PropTypes.string.isRequired,
   onChange: _react.PropTypes.func.isRequired,
@@ -282,7 +307,8 @@ RecipientsInput.propTypes = {
   onKeyDown: _react.PropTypes.func,
   addToRecipients: _react.PropTypes.func.isRequired,
   removeFromRecipients: _react.PropTypes.func.isRequired,
-  formatContactPhone: _react.PropTypes.func.isRequired
+  formatContactPhone: _react.PropTypes.func.isRequired,
+  titleEnabled: _react.PropTypes.bool
 };
 
 RecipientsInput.defaultProps = {
@@ -293,7 +319,8 @@ RecipientsInput.defaultProps = {
   },
   onKeyDown: function onKeyDown() {
     return null;
-  }
+  },
+  titleEnabled: undefined
 };
 
 exports.default = RecipientsInput;

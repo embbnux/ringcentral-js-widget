@@ -50,9 +50,9 @@ var _i18n = require('./i18n');
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _Header = require('../Header');
+var _BackHeader = require('../BackHeader');
 
-var _Header2 = _interopRequireDefault(_Header);
+var _BackHeader2 = _interopRequireDefault(_BackHeader);
 
 var _Panel = require('../Panel');
 
@@ -74,9 +74,9 @@ var _TextInput = require('../TextInput');
 
 var _TextInput2 = _interopRequireDefault(_TextInput);
 
-var _Select = require('../Select');
+var _DropdownSelect = require('../DropdownSelect');
 
-var _Select2 = _interopRequireDefault(_Select);
+var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -116,17 +116,23 @@ var CallingSettingsPanel = function (_Component) {
       });
     };
 
-    _this.onCallWithChange = function (e) {
-      var callWith = e.currentTarget.value;
+    _this.onCallWithChange = function (callWith) {
       _this.setState({
         callWith: callWith,
         myLocation: _this.props.availableNumbers[callWith] && _this.props.availableNumbers[callWith][0] || ''
       });
     };
 
-    _this.onMyLocationChange = function (e) {
+    _this.onMyLocationChange = function (myLocation) {
       _this.setState({
-        myLocation: e.currentTarget.value
+        myLocation: myLocation
+      });
+    };
+
+    _this.onMyLocationTextChange = function (e) {
+      var myLocation = e.target.value;
+      _this.setState({
+        myLocation: myLocation
       });
     };
 
@@ -134,6 +140,11 @@ var CallingSettingsPanel = function (_Component) {
       _this.setState({
         ringoutPrompt: checked
       });
+    };
+
+    _this.renderHandler = function (option) {
+      var brand = _this.props.brand;
+      return (0, _formatMessage2.default)(_i18n2.default.getString(option, _this.props.currentLocale), { brand: brand });
     };
 
     _this.state = {
@@ -173,17 +184,11 @@ var CallingSettingsPanel = function (_Component) {
           myLocation = _props.myLocation,
           ringoutPrompt = _props.ringoutPrompt,
           onBackButtonClick = _props.onBackButtonClick,
-          brand = _props.brand,
           availableNumbers = _props.availableNumbers,
           className = _props.className;
 
       var buttons = [];
       var hasChanges = this.state.callWith !== callWith || this.state.myLocation !== myLocation || this.state.ringoutPrompt !== ringoutPrompt;
-      buttons.push({
-        label: _react2.default.createElement('i', { className: 'fa fa-chevron-left' }),
-        onClick: onBackButtonClick,
-        placement: 'left'
-      });
       buttons.push({
         label: _react2.default.createElement('i', { className: 'fa fa-undo' }),
         onClick: this.onReset,
@@ -210,15 +215,17 @@ var CallingSettingsPanel = function (_Component) {
           {
             className: _styles2.default.inputField,
             label: _i18n2.default.getString('myLocationLabel', currentLocale) },
-          availableNumbers[this.state.callWith] ? _react2.default.createElement(_Select2.default, {
+          availableNumbers[this.state.callWith] ? _react2.default.createElement(_DropdownSelect2.default, {
             className: _styles2.default.select,
             value: this.state.myLocation,
             onChange: this.onMyLocationChange,
-            options: availableNumbers[this.state.callWith]
+            options: availableNumbers[this.state.callWith],
+            dropdownAlign: 'left',
+            titleEnabled: true
           }) : _react2.default.createElement(_TextInput2.default, {
             value: this.state.myLocation,
             maxLength: 30,
-            onChange: this.onMyLocationChange })
+            onChange: this.onMyLocationTextChange })
         ),
         _react2.default.createElement(
           _IconField2.default,
@@ -232,12 +239,16 @@ var CallingSettingsPanel = function (_Component) {
           _i18n2.default.getString('press1ToStartCallLabel', currentLocale)
         )
       ) : null;
+
       return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(_styles2.default.root, className) },
         _react2.default.createElement(
-          _Header2.default,
-          { buttons: buttons },
+          _BackHeader2.default,
+          {
+            buttons: buttons,
+            onBackClick: onBackButtonClick
+          },
           _i18n2.default.getString('title', currentLocale)
         ),
         _react2.default.createElement(
@@ -248,14 +259,15 @@ var CallingSettingsPanel = function (_Component) {
             {
               className: _styles2.default.inputField,
               label: _i18n2.default.getString('makeCallsWith', currentLocale), noBorder: true },
-            _react2.default.createElement(_Select2.default, {
+            _react2.default.createElement(_DropdownSelect2.default, {
               className: _styles2.default.select,
               value: this.state.callWith,
               onChange: this.onCallWithChange,
               options: callWithOptions,
-              renderFunction: function renderFunction(option) {
-                return (0, _formatMessage2.default)(_i18n2.default.getString(option, currentLocale), { brand: brand });
-              }
+              dropdownAlign: 'left',
+              renderValue: this.renderHandler,
+              renderFunction: this.renderHandler,
+              titleEnabled: true
             })
           ),
           ringout
@@ -280,5 +292,9 @@ CallingSettingsPanel.propTypes = {
   availableNumbers: _react.PropTypes.object.isRequired,
   onBackButtonClick: _react.PropTypes.func.isRequired,
   onSave: _react.PropTypes.func.isRequired
+};
+
+CallingSettingsPanel.defaultProps = {
+  className: null
 };
 //# sourceMappingURL=index.js.map

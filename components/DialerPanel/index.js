@@ -134,7 +134,7 @@ function FromNumberSelect(_ref2) {
 }
 
 FromNumberSelect.propTypes = {
-  fromNumber: _react.PropTypes.string.isRequired,
+  fromNumber: _react.PropTypes.string,
   formatPhone: _react.PropTypes.func.isRequired,
   fromNumbers: _react.PropTypes.arrayOf(_react.PropTypes.shape({
     phoneNumber: _react.PropTypes.string,

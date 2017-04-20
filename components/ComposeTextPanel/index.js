@@ -125,8 +125,12 @@ var ComposeTextPanel = function (_Component) {
     };
 
     _this.addToRecipients = function (receiver) {
+      var shouldClean = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
       _this.props.addToNumber(receiver);
-      _this.props.cleanTypingToNumber();
+      if (shouldClean) {
+        _this.props.cleanTypingToNumber();
+      }
     };
 
     _this.removeFromRecipients = function (phoneNumber) {
@@ -187,7 +191,6 @@ var ComposeTextPanel = function (_Component) {
         formatPhone: this.props.formatPhone,
         onChange: this.onSenderChange
       }) : null;
-
       return _react2.default.createElement(
         'div',
         { className: _styles2.default.root },
@@ -209,7 +212,8 @@ var ComposeTextPanel = function (_Component) {
               removeFromRecipients: this.removeFromRecipients,
               searchContactList: this.props.searchContactList,
               onKeyUp: this.onReceiverInputKeyUp,
-              formatContactPhone: this.props.formatContactPhone
+              formatContactPhone: this.props.formatContactPhone,
+              titleEnabled: true
             })
           ),
           _react2.default.createElement(
@@ -274,7 +278,7 @@ ComposeTextPanel.propTypes = {
   senderNumber: _react.PropTypes.string,
   toNumbers: _react2.default.PropTypes.arrayOf(_react.PropTypes.shape({
     phoneNumber: _react.PropTypes.string.isRequired,
-    name: _react.PropTypes.string.isRequired
+    name: _react.PropTypes.string
   })).isRequired,
   outboundSMS: _react.PropTypes.bool
 };
