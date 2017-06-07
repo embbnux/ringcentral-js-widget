@@ -37,7 +37,8 @@ function SearchInput(props) {
       className: _styles2.default.input,
       maxLength: props.maxLength,
       placeholder: props.placeholder,
-      autoComplete: 'off'
+      autoComplete: 'off',
+      disabled: props.disabled
     })
   );
 }
@@ -46,13 +47,18 @@ SearchInput.propTypes = {
   className: _react.PropTypes.string,
   value: _react.PropTypes.string.isRequired,
   onChange: _react.PropTypes.func.isRequired,
-  onKeyUp: _react.PropTypes.func.isRequired,
-  maxLength: _react.PropTypes.number.isRequired,
-  placeholder: _react.PropTypes.string.isRequired
+  onKeyUp: _react.PropTypes.func,
+  maxLength: _react.PropTypes.number,
+  placeholder: _react.PropTypes.string,
+  disabled: _react.PropTypes.bool
 };
 
 SearchInput.defaultProps = {
-  className: null
+  className: null,
+  disabled: false,
+  placeholder: '',
+  maxLength: undefined,
+  onKeyUp: undefined
 };
 
 exports.default = SearchInput;

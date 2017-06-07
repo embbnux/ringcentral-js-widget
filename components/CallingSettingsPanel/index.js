@@ -185,7 +185,8 @@ var CallingSettingsPanel = function (_Component) {
           ringoutPrompt = _props.ringoutPrompt,
           onBackButtonClick = _props.onBackButtonClick,
           availableNumbers = _props.availableNumbers,
-          className = _props.className;
+          className = _props.className,
+          disabled = _props.disabled;
 
       var buttons = [];
       var hasChanges = this.state.callWith !== callWith || this.state.myLocation !== myLocation || this.state.ringoutPrompt !== ringoutPrompt;
@@ -220,6 +221,7 @@ var CallingSettingsPanel = function (_Component) {
             value: this.state.myLocation,
             onChange: this.onMyLocationChange,
             options: availableNumbers[this.state.callWith],
+            disabled: disabled,
             dropdownAlign: 'left',
             titleEnabled: true
           }) : _react2.default.createElement(_TextInput2.default, {
@@ -265,8 +267,9 @@ var CallingSettingsPanel = function (_Component) {
               onChange: this.onCallWithChange,
               options: callWithOptions,
               dropdownAlign: 'left',
-              renderValue: this.renderHandler,
               renderFunction: this.renderHandler,
+              renderValue: this.renderHandler,
+              disabled: disabled,
               titleEnabled: true
             })
           ),
@@ -291,10 +294,12 @@ CallingSettingsPanel.propTypes = {
   ringoutPrompt: _react.PropTypes.bool.isRequired,
   availableNumbers: _react.PropTypes.object.isRequired,
   onBackButtonClick: _react.PropTypes.func.isRequired,
-  onSave: _react.PropTypes.func.isRequired
+  onSave: _react.PropTypes.func.isRequired,
+  disabled: _react.PropTypes.bool
 };
 
 CallingSettingsPanel.defaultProps = {
-  className: null
+  className: null,
+  disabled: false
 };
 //# sourceMappingURL=index.js.map

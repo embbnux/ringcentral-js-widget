@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/RecipientHeader/i18n/it-IT.js"],"names":["selectMatchedName"],"mappings":";;;;;kBAAe;AACbA,qBAAmB;AADN,C","file":"it-IT.js","sourcesContent":["export default {\n  selectMatchedName: 'Seleziona un record corrispondente',\n};\n"]}

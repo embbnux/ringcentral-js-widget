@@ -37,6 +37,6 @@ WebphoneAlert.propTypes = {
 
 WebphoneAlert.handleMessage = function (_ref) {
   var message = _ref.message;
-  return message === _webphoneErrors2.default.connectFailed || message === _webphoneErrors2.default.browserNotSupported || message === _webphoneErrors2.default.webphoneCountOverLimit || message === _webphoneErrors2.default.notOutboundCallWithoutDL || message === _webphoneErrors2.default.getSipProvisionError;
+  return message === _webphoneErrors2.default.browserNotSupported || message === _webphoneErrors2.default.webphoneCountOverLimit || message === _webphoneErrors2.default.notOutboundCallWithoutDL;
 };
 //# sourceMappingURL=index.js.map

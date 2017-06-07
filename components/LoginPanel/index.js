@@ -67,8 +67,16 @@ var LoginPanel = function (_Component) {
           className = _props.className,
           onLoginButtonClick = _props.onLoginButtonClick,
           currentLocale = _props.currentLocale,
-          disabled = _props.disabled;
+          disabled = _props.disabled,
+          version = _props.version;
 
+      var versionDisplay = version ? _react2.default.createElement(
+        'div',
+        { className: _styles2.default.versionContainer },
+        _i18n2.default.getString('version', currentLocale),
+        ' ',
+        version
+      ) : null;
       return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(_styles2.default.root, className) },
@@ -79,7 +87,8 @@ var LoginPanel = function (_Component) {
             onClick: onLoginButtonClick,
             disabled: disabled },
           _i18n2.default.getString('loginButton', currentLocale)
-        )
+        ),
+        versionDisplay
       );
     }
   }]);
@@ -95,11 +104,13 @@ LoginPanel.propTypes = {
   clearProxyFrame: _react.PropTypes.func.isRequired,
   currentLocale: _react.PropTypes.string.isRequired,
   onLoginButtonClick: _react.PropTypes.func.isRequired,
-  disabled: _react.PropTypes.bool
+  disabled: _react.PropTypes.bool,
+  version: _react.PropTypes.string
 };
 
 LoginPanel.defaultProps = {
   className: null,
-  disabled: false
+  disabled: false,
+  version: undefined
 };
 //# sourceMappingURL=index.js.map

@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.propTypes = exports.mapToProps = exports.mapToFunctions = undefined;
 
+var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -37,18 +41,15 @@ var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function WelcomeContainer(props) {
+function WelcomeContainer(_ref) {
+  var children = _ref.children,
+      props = (0, _objectWithoutProperties3.default)(_ref, ['children']);
+
   return _react2.default.createElement(
     'div',
     { className: _styles2.default.root },
-    _react2.default.createElement(_LoginPanel2.default, {
-      currentLocale: props.currentLocale,
-      disabled: props.disabled,
-      setupProxyFrame: props.setupProxyFrame,
-      clearProxyFrame: props.clearProxyFrame,
-      onLoginButtonClick: props.onLoginButtonClick
-    }),
-    props.children
+    _react2.default.createElement(_LoginPanel2.default, props),
+    children
   );
 }
 
@@ -66,21 +67,23 @@ WelcomeContainer.defaultProps = {
   disabled: false
 };
 
-function mapToProps(_, _ref) {
-  var auth = _ref.auth,
-      locale = _ref.locale,
-      rateLimiter = _ref.rateLimiter,
-      connectivityMonitor = _ref.connectivityMonitor;
+function mapToProps(_, _ref2) {
+  var auth = _ref2.auth,
+      locale = _ref2.locale,
+      rateLimiter = _ref2.rateLimiter,
+      connectivityMonitor = _ref2.connectivityMonitor,
+      version = _ref2.version;
 
   return {
     currentLocale: locale.currentLocale,
-    disabled: !auth.proxyLoaded || rateLimiter.throttling || !connectivityMonitor.connectivity
+    disabled: !auth.proxyLoaded || rateLimiter.throttling || !connectivityMonitor.connectivity,
+    version: version
   };
 }
 
-function mapToFunctions(_, _ref2) {
-  var auth = _ref2.auth,
-      onLogin = _ref2.onLogin;
+function mapToFunctions(_, _ref3) {
+  var auth = _ref3.auth,
+      onLogin = _ref3.onLogin;
 
   return {
     setupProxyFrame: function setupProxyFrame() {
@@ -103,7 +106,8 @@ var propTypes = {
   rateLimiter: _react.PropTypes.instanceOf(_RateLimiter2.default).isRequired,
   connectivityMonitor: _react.PropTypes.instanceOf(_ConnectivityMonitor2.default).isRequired,
   mainUrl: _react.PropTypes.string,
-  onLogin: _react.PropTypes.func
+  onLogin: _react.PropTypes.func,
+  version: _react.PropTypes.string
 };
 
 WelcomePage.propTypes = propTypes;

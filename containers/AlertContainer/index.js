@@ -66,6 +66,10 @@ var _WebphoneAlert = require('../../components/WebphoneAlert');
 
 var _WebphoneAlert2 = _interopRequireDefault(_WebphoneAlert);
 
+var _RolesAndPermissionsAlert = require('../../components/RolesAndPermissionsAlert');
+
+var _RolesAndPermissionsAlert2 = _interopRequireDefault(_RolesAndPermissionsAlert);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AlertContainer = (0, _reactRedux.connect)(function (state, _ref) {
@@ -126,6 +130,13 @@ var AlertContainer = (0, _reactRedux.connect)(function (state, _ref) {
 
       if (_WebphoneAlert2.default.handleMessage(message)) {
         return _WebphoneAlert2.default;
+      }
+      if (_RolesAndPermissionsAlert2.default.handleMessage(message)) {
+        return function (props) {
+          return _react2.default.createElement(_RolesAndPermissionsAlert2.default, (0, _extends3.default)({}, props, {
+            brand: brand.fullName,
+            application: brand.application }));
+        };
       }
 
       return undefined;

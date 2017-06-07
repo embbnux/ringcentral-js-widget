@@ -125,12 +125,11 @@ var RegionSettings = function (_Component) {
     };
 
     _this.renderValue = function (value) {
-      // console.debug('renderValue:', value, this.props.availableCountries);
       var selectedOption = _this.props.availableCountries.find(function (country) {
         return country.isoCode === value;
       });
 
-      return '(+' + selectedOption.callingCode + ')\n        ' + _countryNames2.default.getString(selectedOption.isoCode, _this.props.currentLocale);
+      return '(+' + selectedOption.callingCode + ') ' + _countryNames2.default.getString(selectedOption.isoCode, _this.props.currentLocale);
     };
 
     _this.state = {
@@ -224,7 +223,8 @@ var RegionSettings = function (_Component) {
                 return option.isoCode;
               },
               renderFunction: this.renderHandler,
-              renderValue: this.renderValue
+              renderValue: this.renderValue,
+              titleEnabled: true
             })
           ),
           showAreaCode && _react2.default.createElement(

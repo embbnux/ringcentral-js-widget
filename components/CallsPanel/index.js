@@ -39,6 +39,7 @@ function CallsPanel(_ref) {
       areaCode = _ref.areaCode,
       countryCode = _ref.countryCode,
       onViewContact = _ref.onViewContact,
+      onCreateContact = _ref.onCreateContact,
       onLogCall = _ref.onLogCall,
       onClickToDial = _ref.onClickToDial,
       onClickToSms = _ref.onClickToSms,
@@ -51,7 +52,12 @@ function CallsPanel(_ref) {
       showSpinner = _ref.showSpinner,
       title = _ref.title,
       active = _ref.active,
-      loggingMap = _ref.loggingMap;
+      loggingMap = _ref.loggingMap,
+      webphoneAnswer = _ref.webphoneAnswer,
+      webphoneReject = _ref.webphoneReject,
+      webphoneHangup = _ref.webphoneHangup,
+      webphoneResume = _ref.webphoneResume,
+      enableContactFallback = _ref.enableContactFallback;
 
   var content = showSpinner ? _react2.default.createElement(_SpinnerOverlay2.default, null) : _react2.default.createElement(_CallList2.default, {
     currentLocale: currentLocale,
@@ -59,6 +65,7 @@ function CallsPanel(_ref) {
     areaCode: areaCode,
     countryCode: countryCode,
     onViewContact: onViewContact,
+    onCreateContact: onCreateContact,
     onLogCall: onLogCall,
     onClickToDial: onClickToDial,
     onClickToSms: onClickToSms,
@@ -69,7 +76,12 @@ function CallsPanel(_ref) {
     internalSmsPermission: internalSmsPermission,
     dateTimeFormatter: dateTimeFormatter,
     active: active,
-    loggingMap: loggingMap
+    loggingMap: loggingMap,
+    webphoneAnswer: webphoneAnswer,
+    webphoneReject: webphoneReject,
+    webphoneHangup: webphoneHangup,
+    webphoneResume: webphoneResume,
+    enableContactFallback: enableContactFallback
   });
   return _react2.default.createElement(
     'div',
@@ -93,6 +105,7 @@ CallsPanel.propTypes = {
   areaCode: _react.PropTypes.string.isRequired,
   countryCode: _react.PropTypes.string.isRequired,
   onViewContact: _react.PropTypes.func,
+  onCreateContact: _react.PropTypes.func,
   onClickToDial: _react.PropTypes.func,
   onClickToSms: _react.PropTypes.func,
   onLogCall: _react.PropTypes.func,
@@ -105,11 +118,17 @@ CallsPanel.propTypes = {
   showSpinner: _react.PropTypes.bool,
   title: _react.PropTypes.string,
   active: _react.PropTypes.bool,
-  loggingMap: _react.PropTypes.object
+  loggingMap: _react.PropTypes.object,
+  webphoneAnswer: _react.PropTypes.func,
+  webphoneReject: _react.PropTypes.func,
+  webphoneHangup: _react.PropTypes.func,
+  webphoneResume: _react.PropTypes.func,
+  enableContactFallback: _react.PropTypes.bool
 };
 
 CallsPanel.defaultProps = {
   onViewContact: undefined,
+  onCreateContact: undefined,
   onLogCall: undefined,
   onClickToDial: undefined,
   onClickToSms: undefined,
@@ -120,6 +139,11 @@ CallsPanel.defaultProps = {
   title: '',
   active: false,
   isLoggedContact: undefined,
-  loggingMap: {}
+  loggingMap: {},
+  webphoneAnswer: undefined,
+  webphoneReject: undefined,
+  webphoneHangup: undefined,
+  webphoneResume: undefined,
+  enableContactFallback: undefined
 };
 //# sourceMappingURL=index.js.map

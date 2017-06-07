@@ -34,7 +34,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function mapToProps(_, _ref) {
   var callingSettings = _ref.callingSettings,
       brand = _ref.brand,
-      locale = _ref.locale;
+      locale = _ref.locale,
+      webphone = _ref.webphone;
 
   return {
     brand: brand.fullName,
@@ -43,7 +44,8 @@ function mapToProps(_, _ref) {
     callWith: callingSettings.callWith,
     myLocation: callingSettings.myLocation,
     ringoutPrompt: callingSettings.ringoutPrompt,
-    availableNumbers: callingSettings.availableNumbers
+    availableNumbers: callingSettings.availableNumbers,
+    disabled: webphone && webphone.sessions.length > 0
   };
 }
 

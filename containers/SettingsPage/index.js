@@ -53,6 +53,10 @@ var _RolesAndPermissions = require('ringcentral-integration/modules/RolesAndPerm
 
 var _RolesAndPermissions2 = _interopRequireDefault(_RolesAndPermissions);
 
+var _Presence = require('ringcentral-integration/modules/Presence');
+
+var _Presence2 = _interopRequireDefault(_Presence);
+
 var _SettingsPanel = require('../../components/SettingsPanel');
 
 var _SettingsPanel2 = _interopRequireDefault(_SettingsPanel);
@@ -69,7 +73,9 @@ function mapToProps(_, _ref) {
       regionSettings = _ref.regionSettings,
       regionSettingsUrl = _ref.regionSettingsUrl,
       version = _ref.version,
-      rolesAndPermissions = _ref.rolesAndPermissions;
+      rolesAndPermissions = _ref.rolesAndPermissions,
+      presence = _ref.presence,
+      params = _ref.params;
 
   var loggedIn = auth.loginStatus === _loginStatus2.default.loggedIn;
   var loginNumber = loggedIn && accountInfo.ready && extensionInfo.ready ? (0, _formatNumber2.default)({
@@ -78,6 +84,7 @@ function mapToProps(_, _ref) {
     areaCode: regionSettings.areaCode
   }) : '';
   return {
+    showSpinner: !(accountInfo.ready && auth.ready && extensionInfo.ready && locale.ready && regionSettings.ready && rolesAndPermissions.ready),
     showRegion: loggedIn && brand.id === '1210' && (regionSettings.availableCountries.length > 1 || !!regionSettings.availableCountries.find(function (c) {
       return c.isoCode === 'US';
     }) || !!regionSettings.availableCountries.find(function (c) {
@@ -90,14 +97,19 @@ function mapToProps(_, _ref) {
     callingSettingsUrl: callingSettingsUrl,
     regionSettingsUrl: regionSettingsUrl,
     ringoutEnabled: rolesAndPermissions.ringoutEnabled,
-    outboundSMS: rolesAndPermissions.permissions.OutboundSMS
+    outboundSMS: !!rolesAndPermissions.permissions.OutboundSMS || !!rolesAndPermissions.permissions.InternalSMS,
+    isCallQueueMember: extensionInfo.isCallQueueMember,
+    dndStatus: presence && presence.dndStatus,
+    userStatus: presence && presence.userStatus,
+    showPresenceSettings: !!(params && params.showPresenceSettings)
   };
 }
 
 function mapToFunctions(_, _ref2) {
   var _this = this;
 
-  var auth = _ref2.auth;
+  var auth = _ref2.auth,
+      presence = _ref2.presence;
 
   return {
     onLogoutButtonClick: function () {
@@ -120,7 +132,12 @@ function mapToFunctions(_, _ref2) {
       return function onLogoutButtonClick() {
         return _ref3.apply(this, arguments);
       };
-    }()
+    }(),
+    setAvailable: presence && presence.setAvailable,
+    setBusy: presence && presence.setBusy,
+    setDoNotDisturb: presence && presence.setDoNotDisturb,
+    setInvisible: presence && presence.setInvisible,
+    toggleAcceptCallQueueCalls: presence && presence.toggleAcceptCallQueueCalls
   };
 }
 var SettingsPage = (0, _reactRedux.connect)(mapToProps, mapToFunctions)(_SettingsPanel2.default);
@@ -135,7 +152,8 @@ var propTypes = {
   callingSettingsUrl: _react.PropTypes.string.isRequired,
   regionSettingsUrl: _react.PropTypes.string.isRequired,
   version: _react.PropTypes.string.isRequired,
-  rolesAndPermissions: _react.PropTypes.instanceOf(_RolesAndPermissions2.default).isRequired
+  rolesAndPermissions: _react.PropTypes.instanceOf(_RolesAndPermissions2.default).isRequired,
+  presence: _react.PropTypes.instanceOf(_Presence2.default)
 };
 
 SettingsPage.propTypes = propTypes;

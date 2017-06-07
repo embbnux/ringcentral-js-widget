@@ -34,9 +34,8 @@ function Message(props) {
         className: (0, _classnames2.default)(_styles2.default[props.level]) },
       props.message,
       _react2.default.createElement(
-        'a',
+        'div',
         {
-          href: '#close-message',
           className: _styles2.default.dismiss,
           onClick: props.onDismiss },
         _react2.default.createElement('i', { className: _DynamicsFont2.default.close })

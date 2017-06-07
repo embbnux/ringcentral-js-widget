@@ -52,16 +52,18 @@ function mapToProps(_, _ref) {
 
   return {
     currentLocale: locale.currentLocale,
+    callingMode: callingSettings.callingMode,
     isWebphoneMode: callingSettings.callingMode === _callingModes2.default.webphone,
     callButtonDisabled: !call.isIdle || !connectivityMonitor.connectivity || rateLimiter.throttling,
     toNumber: call.toNumber,
-    fromNumbers: call.fromNumbers,
-    fromNumber: call.fromNumber
+    fromNumbers: callingSettings.fromNumbers,
+    fromNumber: callingSettings.fromNumber
   };
 }
 
 function mapToFunctions(_, _ref2) {
   var call = _ref2.call,
+      callingSettings = _ref2.callingSettings,
       regionSettings = _ref2.regionSettings;
 
   return {
@@ -71,14 +73,12 @@ function mapToFunctions(_, _ref2) {
     onCall: function onCall() {
       call.onCall();
     },
-    changeFromNumber: function changeFromNumber(number) {
-      call.updateFromNumber(number);
-    },
+    changeFromNumber: callingSettings.updateFromNumber,
     formatPhone: function formatPhone(phoneNumber) {
       return (0, _formatNumber2.default)({
         phoneNumber: phoneNumber,
-        areaCode: regionSettings.areaCode,
-        countryCode: regionSettings.countryCode
+        areaCode: regionSettings && regionSettings.areaCode,
+        countryCode: regionSettings && regionSettings.countryCode
       });
     }
   };

@@ -28,8 +28,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var BackHeader = function BackHeader(props) {
   var buttons = props.buttons;
+  var defaultBackButton = _react2.default.createElement('i', { className: (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.iconRotate) });
   buttons.push({
-    label: _react2.default.createElement('i', { className: (0, _classnames2.default)(_DynamicsFont2.default.arrow, _styles2.default.iconRotate) }),
+    label: props.backButton || defaultBackButton,
     onClick: props.onBackClick,
     placement: 'left'
   });
@@ -47,6 +48,7 @@ exports.default = BackHeader;
 BackHeader.propTypes = {
   className: _react.PropTypes.string,
   children: _react.PropTypes.node,
+  backButton: _react.PropTypes.node,
   buttons: _react.PropTypes.arrayOf(_react.PropTypes.shape({
     label: _react.PropTypes.node.isRequired,
     onClick: _react.PropTypes.funcs,
@@ -57,6 +59,7 @@ BackHeader.propTypes = {
 
 BackHeader.defaultProps = {
   className: '',
-  buttons: []
+  buttons: [],
+  backButton: undefined
 };
 //# sourceMappingURL=index.js.map

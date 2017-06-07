@@ -1,12 +1,9 @@
-@import '../../lib/commonStyles/full-size';;
+@import '../../lib/commonStyles/full-size';
 @import '../../lib/commonStyles/colors.scss';
 
 .root {
   @include full-size;
   box-sizing: border-box;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -14,107 +11,49 @@
   background: #ffffff;
 }
 
-.phoneBage {
-  background: #00d960;
-  padding: 0 10px;
-  text-align: center;
+.backButton {
+  color: $lightblack;
+  &:hover {
+    color: $lightblack;
+  }
 }
 
-.draggable {
+.backIcon {
+  transform: rotate(90deg);
   position: absolute;
-  top: 9px;
-  right: 10px;
-}
-
-.activeIcon {
-  padding-right: 2px;
-  position: relative;
-  top: -1px;
-}
-
-.minimizeButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 14px;
-}
-
-.connectStatus {
-  position: absolute;
+  top: 5px;
   left: 10px;
-  top: 28px;
-  color: #00d960;
-  font-size: 22px;
+}
+
+.backLabel {
+  position: absolute;
+  top: 5px;
+  left: 34px;
+}
+
+.userInfo {
+  margin-top: 10px;
 }
 
 .timeCounter {
   position: absolute;
   right: 10px;
-  top: 30px;
+  top: 35px;
   font-size: 13px;
 }
 
-.user {
-  text-align: center;
-  font-size: 13px;
-  color: #303030;
-  margin-bottom: 15px;
-}
-
-.buttonRow {
-  text-align: center;
-}
-
-.userAvatar {
-  font-size: 60px;
-  color: $primary-color;
-  margin-bottom: 5px;
-  i {
-    opacity: 0.7;
-  }
-}
-
-.userName {
-  font-size: 13px;
-  color: #797979;
-}
-
-.userPhoneNumber {
-  font-size: 16px;
-}
-
-.operationButton {
-  text-align: center;
-  display: inline-block;
-  padding: 5px 10px;
-  width: 30%;
-  box-sizing: border-box;
-}
-
-.button {
-  font-size: 25px;
-  border: 1px solid $primary-color;
-  width: 2em;
-  height: 2em;
-  border-radius: 1em;
-  line-height: 2.2em;
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.3;
+  color: $primary-color;
+  margin-bottom: 5px;
 }
 
-.buttonTitle {
-  font-size: 13px;
-  padding: 5px 0;
-  color: #797979;
+.icon {
+  display: block;
+  font-size: 54px;
 }
-
-.stopButton {
-  background: #ff4646;
-  border: none;
-  display: inline-block;
-  margin-top: 10px;
-  i {
-    color: #ffffff;
-  }
-}
-

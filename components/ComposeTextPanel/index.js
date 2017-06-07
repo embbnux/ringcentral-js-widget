@@ -52,38 +52,26 @@ var _MessageSenderAlert = require('../MessageSenderAlert');
 
 var _MessageSenderAlert2 = _interopRequireDefault(_MessageSenderAlert);
 
-var _Select = require('../Select');
+var _DropdownSelect = require('../DropdownSelect');
 
-var _Select2 = _interopRequireDefault(_Select);
+var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function SenderField(props) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'label',
-      null,
-      _i18n2.default.getString('from', props.currentLocale),
-      ':'
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: _styles2.default.senderInput },
-      _react2.default.createElement(_Select2.default, {
-        className: _styles2.default.senderSelect,
-        value: props.value,
-        onChange: props.onChange,
-        options: props.options,
-        paddingLeft: 0,
-        valueFunction: function valueFunction(option) {
-          return option;
-        },
-        renderFunction: props.formatPhone
-      })
-    )
-  );
+  return _react2.default.createElement(_DropdownSelect2.default, {
+    label: _i18n2.default.getString('from', props.currentLocale) + ':',
+    className: _styles2.default.senderSelect,
+    value: props.value,
+    onChange: props.onChange,
+    options: props.options,
+    paddingLeft: 0,
+    renderValue: props.formatPhone,
+    valueFunction: function valueFunction(value) {
+      return value;
+    },
+    renderFunction: props.formatPhone
+  });
 }
 
 SenderField.propTypes = {
@@ -106,8 +94,7 @@ var ComposeTextPanel = function (_Component) {
       showAlert: !_this.hasSenderNumbers() && _this.props.outboundSMS
     };
 
-    _this.onSenderChange = function (e) {
-      var value = e.currentTarget.value;
+    _this.onSenderChange = function (value) {
       _this.props.updateSenderNumber(value);
     };
 

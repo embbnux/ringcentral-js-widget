@@ -193,7 +193,7 @@ var RecipientsInput = function (_Component) {
         }
         var relatedContactList = _this.props.value.length >= 3 ? _this.props.searchContactList : [];
         var currentSelected = relatedContactList[_this.state.selectedContactIndex];
-        if (currentSelected) {
+        if (currentSelected && e.key === 'Enter') {
           _this.props.addToRecipients({
             name: currentSelected.name,
             phoneNumber: currentSelected.phoneNumber

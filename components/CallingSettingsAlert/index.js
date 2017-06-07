@@ -35,6 +35,8 @@ function CallingSettingsAlert(_ref) {
     case _callingSettingsMessages2.default.saveSuccessWithSoftphone:
     case _callingSettingsMessages2.default.firstLogin:
     case _callingSettingsMessages2.default.firstLoginOther:
+    case _callingSettingsMessages2.default.webphonePermissionRemoved:
+    case _callingSettingsMessages2.default.emergencyCallingNotAvailable:
       return _react2.default.createElement(_FormattedMessage2.default, {
         message: _i18n2.default.getString(message),
         values: { brand: brand }
