@@ -22,6 +22,8 @@ coverage
 
 # Dependency directory
 node_modules
+*/**/node_modules
+*/**/package-lock.json
 
 # Optional npm cache directory
 .npm
@@ -44,3 +46,9 @@ node_modules
 
 alias.config.js
 alias.json
+
+*/**/apiConfig.js
+*/**/testAccount.js
+
+*/**/.env
+*/**/*.log
