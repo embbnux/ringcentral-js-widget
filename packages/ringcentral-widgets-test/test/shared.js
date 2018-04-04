@@ -5,11 +5,12 @@ import getIntlDateTimeFormatter from 'ringcentral-integration/lib/getIntlDateTim
 import * as mock from 'ringcentral-integration/integration-test/mock';
 import ClientHistoryRequest from 'ringcentral-integration/integration-test/utils/ClientHistoryRequest';
 
-import { createPhone } from 'ringcentral-widgets-demo/dev-server/Phone';
+
 import App from 'ringcentral-widgets-demo/dev-server/containers/App';
 import brandConfig from 'ringcentral-widgets-demo/dev-server/brandConfig';
 import version from 'ringcentral-widgets-demo/dev-server/version';
 import prefix from 'ringcentral-widgets-demo/dev-server/prefix';
+import { createPhone } from 'ringcentral-widgets-demo/dev-server/Phone';
 import state from './state.json';
 
 const apiConfig = {
@@ -48,6 +49,8 @@ export const timeout = ms => new Promise(resolve => setTimeout(() => resolve(tru
 
 export const getWrapper = async () => {
   const phone = await getPhone();
+  debugger;
+  console.log(phone);
   return mount(<App phone={phone} />);
 };
 
