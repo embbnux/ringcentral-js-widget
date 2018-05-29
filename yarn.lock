@@ -9201,11 +9201,11 @@ ringcentral-client@^1.0.0-beta.1:
     form-data "^2.1.2"
     isomorphic-fetch "^2.2.1"
 
-ringcentral-web-phone@^0.4.5:
+"ringcentral-web-phone@https://github.com/embbnux/webphone-8x.git":
   version "0.4.5"
-  resolved "https://registry.yarnpkg.com/ringcentral-web-phone/-/ringcentral-web-phone-0.4.5.tgz#9c901cbbba8db03218b3b3ebc908f996aae21da6"
+  resolved "https://github.com/embbnux/webphone-8x.git#5cbaa429c9de2bf6ad43e9eb4479f1a31af88013"
   dependencies:
-    sip.js "^0.7.8"
+    sip.js "^0.8.4"
 
 ringcentral@^3.1.3:
   version "3.2.0"
@@ -9524,9 +9524,9 @@ sinon@^2.3.1:
     text-encoding "0.6.4"
     type-detect "^4.0.0"
 
-sip.js@^0.7.8:
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/sip.js/-/sip.js-0.7.8.tgz#48709ba13485bcc050869b77a93c21658095b430"
+sip.js@0.8.4, sip.js@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/sip.js/-/sip.js-0.8.4.tgz#26580ae46de9e0c2378999b693e623845dc70a50"
   dependencies:
     ws "^1.0.1"
   optionalDependencies:

@@ -88,7 +88,8 @@
     "ramda": "^0.25.0",
     "redux": "^3.5.2",
     "reselect": "^2.5.4",
-    "ringcentral-web-phone": "^0.4.5",
+    "ringcentral-web-phone": "https://github.com/embbnux/webphone-8x.git",
+    "sip.js": "0.8.4",
     "url-loader": "^1.0.1",
     "uuid": "^3.0.1",
     "yards": "^0.1.4"

@@ -217,6 +217,7 @@ export default class Call extends RcModule {
             });
           }
         } catch (error) {
+          console.error(error);
           if (!error.message && error.type && callErrors[error.type]) {
             // validate format error
             this._alert.warning({

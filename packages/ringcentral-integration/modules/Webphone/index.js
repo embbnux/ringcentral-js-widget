@@ -658,19 +658,19 @@ export default class Webphone extends RcModule {
       session.callStatus = sessionStatus.connected;
       this._updateSessions();
     });
-    session.on('hold', () => {
-      console.log('Event: hold');
-      session.callStatus = sessionStatus.onHold;
-      this._updateSessions();
-    });
-    session.on('unhold', () => {
-      console.log('Event: unhold');
-      session.callStatus = sessionStatus.connected;
-      this._updateSessions();
-    });
-    session.mediaHandler.on('userMediaFailed', () => {
-      this._audioSettings.onGetUserMediaError();
-    });
+    // session.on('hold', () => {
+    //   console.log('Event: hold');
+    //   session.callStatus = sessionStatus.onHold;
+    //   this._updateSessions();
+    // });
+    // session.on('unhold', () => {
+    //   console.log('Event: unhold');
+    //   session.callStatus = sessionStatus.connected;
+    //   this._updateSessions();
+    // });
+    // session.mediaHandler.on('userMediaFailed', () => {
+    //   this._audioSettings.onGetUserMediaError();
+    // });
   }
 
   _onInvite(session) {
@@ -799,11 +799,12 @@ export default class Webphone extends RcModule {
     if (!session) {
       return false;
     }
-    if (session.isOnHold().local) {
+    if (session.local_hold) {
       return true;
     }
     try {
       await session.hold();
+      session.callStatus = sessionStatus.onHold;
       this._updateSessions();
       return true;
     } catch (e) {
@@ -820,9 +821,10 @@ export default class Webphone extends RcModule {
       if (currentSessionId === sessionId) {
         return;
       }
-      if (session.isOnHold().local) {
+      if (session.local_hold) {
         return;
       }
+      session.callStatus = sessionStatus.onHold;
       session.hold();
     });
   }
@@ -834,9 +836,10 @@ export default class Webphone extends RcModule {
       return;
     }
     try {
-      if (session.isOnHold().local) {
+      if (session.local_hold) {
         this._holdOtherSession(session.id);
         await session.unhold();
+        session.callStatus = sessionStatus.connected;
         this._onCallStart(session);
       }
     } catch (e) {

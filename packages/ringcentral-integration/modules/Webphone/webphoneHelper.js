@@ -26,8 +26,8 @@ export function normalizeSession(session) {
     fromUserName: session.request.from.displayName,
     startTime: session.startTime && (new Date(session.startTime)).getTime(),
     creationTime: session.creationTime,
-    isOnHold: !!session.isOnHold().local,
-    isOnMute: !!session.isOnMute,
+    isOnHold: !!session.local_hold,
+    isOnMute: !!session.isOnMute, // need to update
     isOnFlip: !!session.isOnFlip,
     isOnTransfer: !!session.isOnTransfer,
     isToVoicemail: !!session.isToVoicemail,
