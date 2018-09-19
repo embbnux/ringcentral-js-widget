@@ -9,20 +9,24 @@ import brandConfig from './brandConfig';
 import version from './version';
 import prefix from './prefix';
 
-const phone = createPhone({
-  apiConfig, brandConfig, prefix, version
-});
+async function init() {
+  const phone = await createPhone({
+    apiConfig, brandConfig, prefix, version
+  });
 
-const store = createStore(phone.reducer);
+  const store = createStore(phone.reducer);
 
-phone.setStore(store);
+  phone.setStore(store);
 
-window.phone = phone;
+  window.phone = phone;
 
-ReactDOM.render(
-  <App
-    phone={phone}
-    icon={RcIcon}
-  />,
-  document.querySelector('div#viewport'),
-);
+  ReactDOM.render(
+    <App
+      phone={phone}
+      icon={RcIcon}
+    />,
+    document.querySelector('div#viewport'),
+  );
+}
+
+init();

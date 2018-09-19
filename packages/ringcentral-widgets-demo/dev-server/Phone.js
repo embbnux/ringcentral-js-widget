@@ -66,6 +66,8 @@ import DialerUI from 'ringcentral-widgets/modules/DialerUI';
 import ConferenceDialerUI from 'ringcentral-widgets/modules/ConferenceDialerUI';
 import ProxyFrameOAuth from 'ringcentral-widgets/modules/ProxyFrameOAuth';
 
+import createSDKStorage from 'ringcentral-integration/lib/createSDKStorage';
+
 @ModuleFactory({
   providers: [
     {
@@ -407,12 +409,14 @@ export default class BasePhone extends RcModule {
   }
 }
 
-export function createPhone({
+export async function createPhone({
   prefix = 'rc',
   version = '0.1.0',
   apiConfig,
   brandConfig,
 }) {
+  const storage = await createSDKStorage({ prefix: `sdk${prefix}` });
+
   @ModuleFactory({
     providers: [
       {
@@ -426,6 +430,7 @@ export function createPhone({
         provide: 'SdkConfig',
         useValue: {
           ...apiConfig,
+          localStorage: storage,
           cachePrefix: 'sdk-rc',
           clearCacheOnRefreshError: false,
         },
