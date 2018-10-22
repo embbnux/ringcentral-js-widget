@@ -1,0 +1,37 @@
+{
+  "uri": "https://platform.ringcentral.com/restapi/v1.0/account/208594004/extension/208594004/message-store/5475922005",
+  "id": 5475922005,
+  "to": [
+    {
+      "extensionNumber": "101",
+      "name": "Something1 New1"
+    }
+  ],
+  "from": {
+    "extensionNumber": "101",
+    "name": "Something1 New1"
+  },
+  "type": "Pager",
+  "creationTime": "2017-06-01T02:24:02.000Z",
+  "readStatus": "Read",
+  "priority": "Normal",
+  "attachments": [
+    {
+      "id": 5475922005,
+      "uri": "https://platform.ringcentral.com/restapi/v1.0/account/208594004/extension/208594004/message-store/5475922005/content/5475922005",
+      "type": "Text",
+      "contentType": "text/plain"
+    }
+  ],
+  "direction": "Inbound",
+  "availability": "Alive",
+  "subject": "test 2",
+  "messageStatus": "Sent",
+  "conversationId": 6015823250778200202,
+  "conversation": {
+    "id": "6015823250778200202",
+    "uri": "https://platform.ringcentral.com/restapi/v1.0/conversation/6015823250778200202"
+  },
+  "lastModifiedTime": "2017-06-30T02:24:08.238Z",
+  "pgToDepartment": false
+}
