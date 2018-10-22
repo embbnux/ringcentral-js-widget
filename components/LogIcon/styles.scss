@@ -1,0 +1,34 @@
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/full-size';
+@import '../../lib/commonStyles/text-ellipsis';
+
+.loggedIcon {
+  path {
+    stroke: $primary-color;
+  }
+}
+.unloggedIcon {
+  path {
+    stroke: $primary-color;
+  }
+}
+.logIcon {
+  display: flex;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    rect {
+      fill: $coin;
+    }
+    path {
+      stroke: $coin;
+    }
+  }
+}
+
+.isSaving {
+  // color: $ash;
+  // pointer-events: none;
+  // cursor: not-allowed;
+}

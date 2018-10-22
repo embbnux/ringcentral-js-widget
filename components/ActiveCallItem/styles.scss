@@ -1,0 +1,193 @@
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/fonts';
+// TODO: fix the whole style with flex
+$tmpWidth: calc(100% - 53px - 7px - 98px - 20px);
+$fixed-icon-width: 21px;
+
+.root {
+  display: block;
+  background: #fff;
+  width: 100%;
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 7px;
+  min-height: 62px;
+}
+
+// .root:first-child {
+//   margin-top: -5px;
+// }
+.wrapper {
+  position: relative;
+  padding: 13px 20px 18px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @include secondary-font;
+}
+
+
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  max-width: calc(100% - #{$fixed-icon-width});
+  padding-left: 6px;
+  padding-right: 8px;
+  box-sizing: border-box; // Add bellow style if you have calllog button on callitem
+  // max-width: calc(100% - 23px - 21px);
+}
+
+.activeCall {
+  color: $active;
+}
+
+@keyframes ringing {
+  0% {
+    text-shadow: 0px 0px 1px $active;
+  }
+  100% {
+    color: #2ce44d;
+    text-shadow: 0px 0px 10px #2ce44d;
+  }
+}
+
+.activeCall.ringing {
+  animation-name: ringing;
+  animation-direction: alternate;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.contactDisplay {
+  line-height: 25px; // max-width: $tmpWidth;
+  margin-bottom: 5px;
+  button {
+    font-size: 13px;
+  }
+  ul {
+    left: 0;
+    margin-left: 0;
+  }
+}
+
+.conferenceContactDisplay {
+  // margin: auto;
+  line-height: 50px;
+}
+
+.missed {
+  color: $missed;
+  button {
+    color: $missed;
+  }
+}
+
+.webphoneButtons {
+  text-align: right;
+  white-space: nowrap;
+  .webphoneButton+.webphoneButton {
+    margin-left: 5px;
+  }
+}
+
+.rejectButton,
+.answerButton {
+  width: 26px;
+  g,
+  path {
+    fill: #ffffff;
+  }
+}
+
+.disabled,
+.disabled * {
+  circle {
+    fill: #c7c7c7;
+  }
+  cursor: not-allowed;
+}
+
+.rejectButton {
+  circle {
+    fill: #ff4646;
+  }
+}
+
+.answerButton {
+  circle {
+    fill: $call-btn-color;
+  }
+}
+
+.active {
+  color: $active;
+  button {
+    color: $active;
+  }
+}
+
+.callDetail {
+  font-size: 12px;
+  top: 30px;
+  left: 45px; // max-width: $tmpWidth;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #979797;
+  .label {
+    margin-right: 5px;
+  }
+  .split {
+    margin: 0 5px;
+  }
+}
+
+.extendIcon {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  box-sizing: border-box;
+  border-radius: 8.5px;
+  width: 36px;
+  height: 17px;
+  margin-left: -18px;
+  margin-top: -8.5px;
+  cursor: pointer;
+  .extendInner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -5px;
+    margin-left: -4.5px;
+    z-index: 1;
+    height: 7px;
+    width: 7px;
+    border-left: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+  }
+  .extended {
+    margin-top: -1.5px;
+    transform: rotate(135deg);
+  }
+}
+
+.actionMenu {
+  height: 0;
+  transition: height 1s;
+  &.extended {
+    height: 30px;
+  }
+}
+
+.infoWrapper {
+  margin-left: 4px;
+}

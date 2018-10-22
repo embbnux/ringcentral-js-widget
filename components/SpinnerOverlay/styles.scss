@@ -1,0 +1,24 @@
+@import '../../lib/commonStyles/full-size';
+
+.root {
+  @include full-size;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+}
+
+.mask {
+  @include full-size;
+  background-color: rgba(0, 0, 0, 0.7);
+}

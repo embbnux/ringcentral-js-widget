@@ -1,0 +1,14 @@
+@import '../../lib/commonStyles/full-size';
+@import '../../lib/commonStyles/layout';
+
+.root {
+  @include full-size;
+}
+.tabContainer {
+  z-index: 11;
+}
+.main {
+  @include full-size;
+  max-height: calc(100% - #{$navigation-bar-height});
+  z-index: 10;
+}
