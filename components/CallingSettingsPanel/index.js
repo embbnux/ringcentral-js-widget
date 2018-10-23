@@ -97,6 +97,8 @@ var _SaveButton2 = _interopRequireDefault(_SaveButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var TooltipCom = typeof _rcTooltip2.default === 'function' ? _rcTooltip2.default : _rcTooltip2.default.default;
+
 var CallingSettingsPanel = function (_Component) {
   (0, _inherits3.default)(CallingSettingsPanel, _Component);
 
@@ -305,7 +307,7 @@ var CallingSettingsPanel = function (_Component) {
                 null,
                 _i18n2.default.getString('makeCallsWith', currentLocale),
                 _react2.default.createElement(
-                  _rcTooltip2.default,
+                  TooltipCom,
                   {
                     placement: 'bottom',
                     trigger: 'click',
