@@ -191,8 +191,8 @@ var AudioSettings = (_dec = (0, _di.Module)({
         if (_this2.ready && _this2._auth.loggedIn && _this2._rolesAndPermissions.webphoneEnabled && !_this2.userMedia) {
           // Make sure it only prompts once
           if (_this2.hasAutoPrompted) return;
-          _this2.getUserMedia();
           _this2.markAutoPrompted();
+          _this2.getUserMedia();
         }
       });
     }
@@ -356,12 +356,17 @@ var AudioSettings = (_dec = (0, _di.Module)({
 
               case 2:
                 _context4.prev = 2;
-                _context4.next = 5;
-                return navigator.mediaDevices.getUserMedia({ audio: true });
 
-              case 5:
+                if (!this._getUserMediaPromise) {
+                  this._getUserMediaPromise = navigator.mediaDevices.getUserMedia({ audio: true });
+                }
+                _context4.next = 6;
+                return this._getUserMediaPromise;
+
+              case 6:
                 stream = _context4.sent;
 
+                this._getUserMediaPromise = null;
                 this._onGetUserMediaSuccess();
                 if (typeof stream.getTracks === 'function') {
                   stream.getTracks().forEach(function (track) {
@@ -370,21 +375,22 @@ var AudioSettings = (_dec = (0, _di.Module)({
                 } else if (typeof stream.stop === 'function') {
                   stream.stop();
                 }
-                _context4.next = 13;
+                _context4.next = 16;
                 break;
 
-              case 10:
-                _context4.prev = 10;
+              case 12:
+                _context4.prev = 12;
                 _context4.t0 = _context4['catch'](2);
 
+                this._getUserMediaPromise = null;
                 this.onGetUserMediaError(_context4.t0);
 
-              case 13:
+              case 16:
               case 'end':
                 return _context4.stop();
             }
           }
-        }, _callee4, this, [[2, 10]]);
+        }, _callee4, this, [[2, 12]]);
       }));
 
       function getUserMedia() {
@@ -619,7 +625,7 @@ var AudioSettings = (_dec = (0, _di.Module)({
     get: function get() {
       var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
       if (isFirefox) {
-        return this.state.userMedia || this.availableDevices.length;
+        return this.state.userMedia || !!this.availableDevices.length;
       }
       // this detection method may not work in the future
       // currently there is no good way to detect this
