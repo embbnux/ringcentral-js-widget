@@ -625,7 +625,7 @@ var AudioSettings = (_dec = (0, _di.Module)({
     get: function get() {
       var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
       if (isFirefox) {
-        return this.state.userMedia || !!this.availableDevices.length;
+        return true;
       }
       // this detection method may not work in the future
       // currently there is no good way to detect this
