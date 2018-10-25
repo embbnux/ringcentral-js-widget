@@ -227,6 +227,16 @@ var CallItem = function (_Component) {
         return {
           extended: !preState.extended
         };
+      }, function () {
+        var _this$props = _this.props,
+            _this$props$onSizeCha = _this$props.onSizeChanged,
+            onSizeChanged = _this$props$onSizeCha === undefined ? undefined : _this$props$onSizeCha,
+            _this$props$renderInd = _this$props.renderIndex,
+            renderIndex = _this$props$renderInd === undefined ? undefined : _this$props$renderInd;
+
+        if (onSizeChanged) {
+          onSizeChanged(renderIndex, _this.state.extended);
+        }
       });
     };
 
@@ -368,6 +378,13 @@ var CallItem = function (_Component) {
         this.setState({
           selected: this.getInitialContactIndex(nextProps)
         });
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.extended !== prevState.extended) {
+        this.setState({ extended: this.props.extended });
       }
     }
   }, {
@@ -540,6 +557,8 @@ var CallItem = function (_Component) {
           enableContactFallback = _props.enableContactFallback,
           showContactDisplayPlaceholder = _props.showContactDisplayPlaceholder,
           sourceIcons = _props.sourceIcons,
+          phoneTypeRenderer = _props.phoneTypeRenderer,
+          phoneSourceNameRenderer = _props.phoneSourceNameRenderer,
           renderContactName = _props.renderContactName,
           renderExtraButton = _props.renderExtraButton,
           contactDisplayStyle = _props.contactDisplayStyle,
@@ -605,6 +624,8 @@ var CallItem = function (_Component) {
               selectClassName: _styles2.default.dropdownSelect,
               brand: brand,
               sourceIcons: sourceIcons,
+              phoneTypeRenderer: phoneTypeRenderer,
+              phoneSourceNameRenderer: phoneSourceNameRenderer,
               contactMatches: contactMatches,
               selected: this.state.selected,
               onSelectContact: this.onSelectContact,
@@ -668,6 +689,8 @@ exports.default = CallItem;
 
 
 CallItem.propTypes = {
+  renderIndex: _propTypes2.default.number,
+  extended: _propTypes2.default.bool,
   call: _propTypes2.default.shape({
     direction: _propTypes2.default.string.isRequired,
     telephonyStatus: _propTypes2.default.string,
@@ -709,15 +732,20 @@ CallItem.propTypes = {
   autoLog: _propTypes2.default.bool,
   showContactDisplayPlaceholder: _propTypes2.default.bool,
   sourceIcons: _propTypes2.default.object,
+  phoneTypeRenderer: _propTypes2.default.func,
+  phoneSourceNameRenderer: _propTypes2.default.func,
   renderContactName: _propTypes2.default.func,
   renderExtraButton: _propTypes2.default.func,
   contactDisplayStyle: _propTypes2.default.string,
   externalViewEntity: _propTypes2.default.func,
   externalHasEntity: _propTypes2.default.func,
-  readTextPermission: _propTypes2.default.bool
+  readTextPermission: _propTypes2.default.bool,
+  onSizeChanged: _propTypes2.default.func
 };
 
 CallItem.defaultProps = {
+  renderIndex: undefined,
+  extended: false,
   onLogCall: undefined,
   onClickToDial: undefined,
   onClickToSms: undefined,
@@ -736,11 +764,14 @@ CallItem.defaultProps = {
   showContactDisplayPlaceholder: true,
   autoLog: false,
   sourceIcons: undefined,
+  phoneTypeRenderer: undefined,
+  phoneSourceNameRenderer: undefined,
   renderContactName: undefined,
   renderExtraButton: undefined,
   contactDisplayStyle: undefined,
   externalViewEntity: undefined,
   externalHasEntity: undefined,
-  readTextPermission: true
+  readTextPermission: true,
+  onSizeChanged: undefined
 };
 //# sourceMappingURL=index.js.map

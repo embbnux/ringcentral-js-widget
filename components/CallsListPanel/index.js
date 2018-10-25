@@ -45,6 +45,10 @@ var _ActiveCallItem = require('../ActiveCallItem');
 
 var _ActiveCallItem2 = _interopRequireDefault(_ActiveCallItem);
 
+var _CallListV = require('../CallListV2');
+
+var _CallListV2 = _interopRequireDefault(_CallListV);
+
 var _CallList = require('../CallList');
 
 var _CallList2 = _interopRequireDefault(_CallList);
@@ -104,6 +108,8 @@ function ActiveCallList(_ref) {
       enableContactFallback = _ref.enableContactFallback,
       title = _ref.title,
       sourceIcons = _ref.sourceIcons,
+      phoneTypeRenderer = _ref.phoneTypeRenderer,
+      phoneSourceNameRenderer = _ref.phoneSourceNameRenderer,
       disableLinks = _ref.disableLinks,
       renderContactName = _ref.renderContactName,
       renderExtraButton = _ref.renderExtraButton,
@@ -150,6 +156,8 @@ function ActiveCallList(_ref) {
         enableContactFallback: enableContactFallback,
         autoLog: autoLog,
         sourceIcons: sourceIcons,
+        phoneTypeRenderer: phoneTypeRenderer,
+        phoneSourceNameRenderer: phoneSourceNameRenderer,
         disableLinks: disableLinks,
         renderContactName: renderContactName,
         renderExtraButton: renderExtraButton,
@@ -189,6 +197,8 @@ ActiveCallList.propTypes = {
   enableContactFallback: _propTypes2.default.bool,
   autoLog: _propTypes2.default.bool,
   sourceIcons: _propTypes2.default.object,
+  phoneTypeRenderer: _propTypes2.default.func,
+  phoneSourceNameRenderer: _propTypes2.default.func,
   disableLinks: _propTypes2.default.bool,
   renderContactName: _propTypes2.default.func,
   renderExtraButton: _propTypes2.default.func,
@@ -219,6 +229,8 @@ ActiveCallList.defaultProps = {
   createEntityTypes: undefined,
   webphoneToVoicemail: undefined,
   sourceIcons: undefined,
+  phoneTypeRenderer: undefined,
+  phoneSourceNameRenderer: undefined,
   disableLinks: false,
   renderContactName: undefined,
   renderExtraButton: undefined,
@@ -231,9 +243,19 @@ ActiveCallList.defaultProps = {
 var CallsListPanel = function (_Component) {
   (0, _inherits3.default)(CallsListPanel, _Component);
 
-  function CallsListPanel() {
+  function CallsListPanel(props) {
     (0, _classCallCheck3.default)(this, CallsListPanel);
-    return (0, _possibleConstructorReturn3.default)(this, (CallsListPanel.__proto__ || (0, _getPrototypeOf2.default)(CallsListPanel)).apply(this, arguments));
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (CallsListPanel.__proto__ || (0, _getPrototypeOf2.default)(CallsListPanel)).call(this, props));
+
+    _this.renderCallList = function () {};
+
+    _this._callListWrapper = _react2.default.createRef();
+    _this.state = {
+      listWidth: 0,
+      listHeight: 0
+    };
+    return _this;
   }
 
   (0, _createClass3.default)(CallsListPanel, [{
@@ -262,6 +284,9 @@ var CallsListPanel = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          useNewList = _props.useNewList,
+          width = _props.width,
+          height = _props.height,
           onlyHistory = _props.onlyHistory,
           activeRingCalls = _props.activeRingCalls,
           activeOnHoldCalls = _props.activeOnHoldCalls,
@@ -294,6 +319,8 @@ var CallsListPanel = function (_Component) {
           enableContactFallback = _props.enableContactFallback,
           webphoneToVoicemail = _props.webphoneToVoicemail,
           sourceIcons = _props.sourceIcons,
+          phoneTypeRenderer = _props.phoneTypeRenderer,
+          phoneSourceNameRenderer = _props.phoneSourceNameRenderer,
           onClickToDial = _props.onClickToDial,
           disableLinks = _props.disableLinks,
           disableClickToDial = _props.disableClickToDial,
@@ -326,9 +353,87 @@ var CallsListPanel = function (_Component) {
           readTextPermission = _props.readTextPermission,
           children = _props.children;
 
+
       if (showSpinner) {
         return _react2.default.createElement(_SpinnerOverlay2.default, null);
       }
+      var isShowMessageIcon = readTextPermission && !!onClickToSms;
+      var CallsListView = useNewList ? _react2.default.createElement(_CallListV2.default, {
+        width: width,
+        height: height,
+        brand: brand,
+        currentLocale: currentLocale,
+        calls: calls,
+        areaCode: areaCode,
+        countryCode: countryCode,
+        onViewContact: onViewContact,
+        onCreateContact: onCreateContact,
+        createEntityTypes: createEntityTypes,
+        onLogCall: onLogCall,
+        onClickToDial: onClickToDial,
+        onClickToSms: onClickToSms,
+        isLoggedContact: isLoggedContact,
+        disableLinks: disableLinks,
+        disableClickToDial: disableClickToDial,
+        outboundSmsPermission: outboundSmsPermission,
+        internalSmsPermission: internalSmsPermission,
+        dateTimeFormatter: dateTimeFormatter,
+        active: active,
+        loggingMap: loggingMap,
+        webphoneAnswer: webphoneAnswer,
+        webphoneReject: webphoneReject,
+        webphoneHangup: webphoneHangup,
+        webphoneResume: webphoneResume,
+        enableContactFallback: enableContactFallback,
+        autoLog: autoLog,
+        showContactDisplayPlaceholder: showContactDisplayPlaceholder,
+        sourceIcons: sourceIcons,
+        phoneTypeRenderer: phoneTypeRenderer,
+        phoneSourceNameRenderer: phoneSourceNameRenderer,
+        renderContactName: renderContactName,
+        renderExtraButton: renderExtraButton,
+        contactDisplayStyle: contactDisplayStyle,
+        externalViewEntity: externalViewEntity,
+        externalHasEntity: externalHasEntity,
+        readTextPermission: isShowMessageIcon
+      }) : _react2.default.createElement(_CallList2.default, {
+        brand: brand,
+        currentLocale: currentLocale,
+        calls: calls,
+        areaCode: areaCode,
+        countryCode: countryCode,
+        onViewContact: onViewContact,
+        onCreateContact: onCreateContact,
+        createEntityTypes: createEntityTypes,
+        onLogCall: onLogCall,
+        onClickToDial: onClickToDial,
+        onClickToSms: onClickToSms,
+        isLoggedContact: isLoggedContact,
+        disableLinks: disableLinks,
+        disableClickToDial: disableClickToDial,
+        outboundSmsPermission: outboundSmsPermission,
+        internalSmsPermission: internalSmsPermission,
+        dateTimeFormatter: dateTimeFormatter,
+        active: active,
+        loggingMap: loggingMap,
+        webphoneAnswer: webphoneAnswer,
+        webphoneReject: webphoneReject,
+        webphoneHangup: webphoneHangup,
+        webphoneResume: webphoneResume,
+        enableContactFallback: enableContactFallback,
+        autoLog: autoLog,
+        showContactDisplayPlaceholder: showContactDisplayPlaceholder,
+        sourceIcons: sourceIcons,
+        phoneTypeRenderer: phoneTypeRenderer,
+        phoneSourceNameRenderer: phoneSourceNameRenderer,
+        renderContactName: renderContactName,
+        renderExtraButton: renderExtraButton,
+        contactDisplayStyle: contactDisplayStyle,
+        externalViewEntity: externalViewEntity,
+        externalHasEntity: externalHasEntity,
+        readTextPermission: isShowMessageIcon
+      });
+
       var search = onSearchInputChange ? _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(_styles2.default.searchContainer) },
@@ -353,7 +458,8 @@ var CallsListPanel = function (_Component) {
             onClose: onCloseLogSection,
             clickOutToClose: false,
             containerStyles: sectionContainerStyles,
-            modalStyles: sectionModalStyles },
+            modalStyles: sectionModalStyles
+          },
           _react2.default.createElement(_LogSection2.default, {
             currentLocale: currentLocale,
             currentLog: currentLog,
@@ -375,7 +481,8 @@ var CallsListPanel = function (_Component) {
             containerStyles: (0, _classnames2.default)(_styles2.default.notificationContainer, notificationContainerStyles),
             modalStyles: _styles2.default.notificationModal,
             contentStyle: _styles2.default.notificationContent,
-            onClose: onCloseNotification },
+            onClose: onCloseNotification
+          },
           _react2.default.createElement(_LogNotification2.default, {
             showLogButton: showNotiLogButton,
             currentLocale: currentLocale,
@@ -389,7 +496,7 @@ var CallsListPanel = function (_Component) {
           })
         ) : null
       ) : null;
-      var isShowMessageIcon = readTextPermission && !!onClickToSms;
+
       var getCallList = function getCallList(calls, title) {
         return _react2.default.createElement(ActiveCallList, {
           title: title,
@@ -417,6 +524,8 @@ var CallsListPanel = function (_Component) {
           webphoneToVoicemail: webphoneToVoicemail,
           enableContactFallback: enableContactFallback,
           sourceIcons: sourceIcons,
+          phoneTypeRenderer: phoneTypeRenderer,
+          phoneSourceNameRenderer: phoneSourceNameRenderer,
           disableLinks: disableLinks,
           renderContactName: renderContactName,
           renderExtraButton: renderExtraButton,
@@ -429,47 +538,16 @@ var CallsListPanel = function (_Component) {
 
       var historyCall = showSpinner ? _react2.default.createElement(_SpinnerOverlay2.default, null) : _react2.default.createElement(
         'div',
-        { className: (0, _classnames2.default)(_styles2.default.list, className) },
+        {
+          className: (0, _classnames2.default)(_styles2.default.list, className),
+          ref: this._callListWrapper
+        },
         _react2.default.createElement(
           'div',
           { className: _styles2.default.listTitle },
           onlyHistory ? null : _i18n2.default.getString('historyCalls', currentLocale)
         ),
-        _react2.default.createElement(_CallList2.default, {
-          brand: brand,
-          currentLocale: currentLocale,
-          calls: calls,
-          areaCode: areaCode,
-          countryCode: countryCode,
-          onViewContact: onViewContact,
-          onCreateContact: onCreateContact,
-          createEntityTypes: createEntityTypes,
-          onLogCall: onLogCall,
-          onClickToDial: onClickToDial,
-          onClickToSms: onClickToSms,
-          isLoggedContact: isLoggedContact,
-          disableLinks: disableLinks,
-          disableClickToDial: disableClickToDial,
-          outboundSmsPermission: outboundSmsPermission,
-          internalSmsPermission: internalSmsPermission,
-          dateTimeFormatter: dateTimeFormatter,
-          active: active,
-          loggingMap: loggingMap,
-          webphoneAnswer: webphoneAnswer,
-          webphoneReject: webphoneReject,
-          webphoneHangup: webphoneHangup,
-          webphoneResume: webphoneResume,
-          enableContactFallback: enableContactFallback,
-          autoLog: autoLog,
-          showContactDisplayPlaceholder: showContactDisplayPlaceholder,
-          sourceIcons: sourceIcons,
-          renderContactName: renderContactName,
-          renderExtraButton: renderExtraButton,
-          contactDisplayStyle: contactDisplayStyle,
-          externalViewEntity: externalViewEntity,
-          externalHasEntity: externalHasEntity,
-          readTextPermission: isShowMessageIcon
-        })
+        CallsListView
       );
 
       var noCalls = _react2.default.createElement(
@@ -480,12 +558,16 @@ var CallsListPanel = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: (0, _classnames2.default)(_styles2.default.container, onSearchInputChange ? _styles2.default.containerWithSearch : null) },
+        {
+          className: (0, _classnames2.default)(_styles2.default.container, onSearchInputChange ? _styles2.default.containerWithSearch : null)
+        },
         children,
         search,
         _react2.default.createElement(
           'div',
-          { className: (0, _classnames2.default)(_styles2.default.root, currentLog && currentLog.showLog ? _styles2.default.hiddenScroll : '', className) },
+          {
+            className: (0, _classnames2.default)(_styles2.default.root, currentLog && currentLog.showLog ? _styles2.default.hiddenScroll : '', className)
+          },
           onlyHistory || getCallList(activeRingCalls, _i18n2.default.getString('ringCall', currentLocale)),
           onlyHistory || getCallList(activeCurrentCalls, _i18n2.default.getString('currentCall', currentLocale)),
           onlyHistory || getCallList(activeOnHoldCalls, _i18n2.default.getString('onHoldCall', currentLocale)),
@@ -503,6 +585,9 @@ exports.default = CallsListPanel;
 
 
 CallsListPanel.propTypes = {
+  useNewList: _propTypes2.default.bool,
+  width: _propTypes2.default.number,
+  height: _propTypes2.default.number,
   currentLocale: _propTypes2.default.string.isRequired,
   className: _propTypes2.default.string,
   activeRingCalls: _propTypes2.default.array.isRequired,
@@ -535,6 +620,8 @@ CallsListPanel.propTypes = {
   loggingMap: _propTypes2.default.object,
   onCallsEmpty: _propTypes2.default.func,
   sourceIcons: _propTypes2.default.object,
+  phoneTypeRenderer: _propTypes2.default.func,
+  phoneSourceNameRenderer: _propTypes2.default.func,
   calls: _propTypes2.default.arrayOf(_propTypes2.default.any).isRequired,
   onClickToDial: _propTypes2.default.func,
   disableLinks: _propTypes2.default.bool.isRequired,
@@ -570,6 +657,9 @@ CallsListPanel.propTypes = {
 };
 
 CallsListPanel.defaultProps = {
+  useNewList: false,
+  width: undefined,
+  height: undefined,
   className: undefined,
   brand: 'RingCentral',
   showContactDisplayPlaceholder: true,
@@ -593,6 +683,8 @@ CallsListPanel.defaultProps = {
   autoLog: false,
   onCallsEmpty: undefined,
   sourceIcons: undefined,
+  phoneTypeRenderer: undefined,
+  phoneSourceNameRenderer: undefined,
   onClickToDial: undefined,
   disableClickToDial: false,
   active: false,
