@@ -53,8 +53,6 @@ var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor
 
 require('core-js/fn/array/find');
 
-var _reselect = require('reselect');
-
 var _di = require('../../lib/di');
 
 var _RcModule2 = require('../../lib/RcModule');
@@ -83,9 +81,7 @@ var _normalizeNumber2 = _interopRequireDefault(_normalizeNumber);
 
 var _callMonitorHelper = require('./callMonitorHelper');
 
-var _getter = require('../../lib/getter');
-
-var _getter2 = _interopRequireDefault(_getter);
+var _selector = require('../../lib/selector');
 
 var _callLogHelpers = require('../../lib/callLogHelpers');
 
@@ -341,20 +337,36 @@ var CallMonitor = (_dec = (0, _di.Module)({
     _this.addSelector('otherDeviceCalls', _this._selectors.calls, function () {
       return _this._webphone && _this._webphone.lastEndedSessions;
     }, function (calls, lastEndedSessions) {
-      var sessionsCache = lastEndedSessions;
-      return calls.filter(function (callItem) {
+      return calls.reduce(function (_ref2, callItem) {
+        var sessionsCache = _ref2.sessionsCache,
+            res = _ref2.res;
+
         if (callItem.webphoneSession) {
-          return false;
+          return {
+            sessionsCache: sessionsCache,
+            res: res
+          };
         }
-        if (!sessionsCache) {
-          return true;
+
+        if (!sessionsCache || !sessionsCache.length) {
+          return {
+            sessionsCache: sessionsCache,
+            res: [].concat((0, _toConsumableArray3.default)(res), [callItem])
+          };
         }
-        var endCall = (0, _callMonitorHelper.matchWephoneSessionWithAcitveCall)(sessionsCache, callItem);
-        sessionsCache = sessionsCache.filter(function (x) {
-          return x !== endCall;
-        });
-        return !endCall;
-      });
+
+        var endCall = (0, _callMonitorHelper.matchWephoneSessionWithAcitveCall)(sessionsCache, [].concat((0, _toConsumableArray3.default)(res), [callItem]));
+
+        return {
+          sessionsCache: sessionsCache.filter(function (x) {
+            return x !== endCall;
+          }),
+          res: endCall ? res : [].concat((0, _toConsumableArray3.default)(res), [callItem])
+        };
+      }, {
+        sessionsCache: lastEndedSessions,
+        res: []
+      }).res;
     });
 
     _this.addSelector('uniqueNumbers', _this._selectors.normalizedCalls, function (normalizedCalls) {
@@ -412,7 +424,7 @@ var CallMonitor = (_dec = (0, _di.Module)({
   (0, _createClass3.default)(CallMonitor, [{
     key: '_onStateChange',
     value: function () {
-      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+      var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
         var _this2 = this;
 
         var uniqueNumbers, sessionIds, oldCalls, entities;
@@ -521,7 +533,7 @@ var CallMonitor = (_dec = (0, _di.Module)({
       }));
 
       function _onStateChange() {
-        return _ref2.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       }
 
       return _onStateChange;
@@ -700,44 +712,44 @@ var CallMonitor = (_dec = (0, _di.Module)({
     }
   }]);
   return CallMonitor;
-}(_RcModule3.default), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ringoutRingCalls', [_getter2.default], {
+}(_RcModule3.default), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ringoutRingCalls', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this4 = this;
 
-    return (0, _reselect.createSelector)(function () {
+    return [function () {
       return _this4.otherDeviceCalls;
     }, function (otherDeviceCalls) {
       return otherDeviceCalls.filter(function (callItem) {
         return (0, _callLogHelpers.isRingingInboundCall)(callItem);
       });
-    });
+    }];
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'ringoutCurrentCalls', [_getter2.default], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'ringoutCurrentCalls', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this5 = this;
 
-    return (0, _reselect.createSelector)(function () {
+    return [function () {
       return _this5.otherDeviceCalls;
     }, function (otherDeviceCalls) {
       return otherDeviceCalls.filter(function (callItem) {
         return !(0, _callLogHelpers.isRingingInboundCall)(callItem) && !(0, _callLogHelpers.isOnHold)(callItem);
       });
-    });
+    }];
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'ringoutOnHoldCalls', [_getter2.default], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'ringoutOnHoldCalls', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this6 = this;
 
-    return (0, _reselect.createSelector)(function () {
+    return [function () {
       return _this6.otherDeviceCalls;
     }, function (otherDeviceCalls) {
       return otherDeviceCalls.filter(function (callItem) {
         return (0, _callLogHelpers.isOnHold)(callItem);
       });
-    });
+    }];
   }
 })), _class2)) || _class);
 exports.default = CallMonitor;

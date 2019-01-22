@@ -55,17 +55,19 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11;
 
-var _reselect = require('reselect');
+var _normalizeNumber = require('../../lib/normalizeNumber');
+
+var _normalizeNumber2 = _interopRequireDefault(_normalizeNumber);
+
+var _messageDirection = require('../../enums/messageDirection');
+
+var _messageDirection2 = _interopRequireDefault(_messageDirection);
 
 var _RcModule2 = require('../../lib/RcModule');
 
 var _RcModule3 = _interopRequireDefault(_RcModule2);
 
 var _di = require('../../lib/di');
-
-var _getter = require('../../lib/getter');
-
-var _getter2 = _interopRequireDefault(_getter);
 
 var _ensureExist = require('../../lib/ensureExist');
 
@@ -86,6 +88,8 @@ var _cleanNumber2 = _interopRequireDefault(_cleanNumber);
 var _isBlank = require('../../lib/isBlank');
 
 var _isBlank2 = _interopRequireDefault(_isBlank);
+
+var _selector = require('../../lib/selector');
 
 var _messageSenderMessages = require('../MessageSender/messageSenderMessages');
 
@@ -150,6 +154,22 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
   return desc;
 }
 
+function mergeMessages(messages, oldMessages) {
+  var tmp = {};
+  var currentMessages = [];
+  messages.forEach(function (element) {
+    currentMessages.push(element);
+    tmp[element.id] = 1;
+  });
+
+  oldMessages.forEach(function (element) {
+    if (!tmp[element.id]) {
+      currentMessages.push(element);
+    }
+  });
+  return currentMessages;
+}
+
 function getEarliestTime(messages) {
   var newTime = Date.now();
   messages.forEach(function (message) {
@@ -171,11 +191,11 @@ function getUniqueNumbers(conversations) {
     }
   }
   conversations.forEach(function (message) {
-    if (message.from) {
+    if (message.from && message.direction === _messageDirection2.default.inbound) {
       var fromNumber = message.from.phoneNumber || message.from.extensionNumber;
       addIfNotExist(fromNumber);
     }
-    if (message.to && message.to.length > 0) {
+    if (message.to && message.to.length > 0 && message.direction === _messageDirection2.default.outbound) {
       message.to.forEach(function (toNumber) {
         if (!toNumber) {
           return;
@@ -190,9 +210,8 @@ function getUniqueNumbers(conversations) {
 
 var DEFAULT_PER_PAGE = 20;
 var DEFAULT_DAY_SPAN = 90;
-
 var Conversations = (_dec = (0, _di.Module)({
-  deps: ['Alert', 'Auth', 'Client', 'MessageSender', 'ExtensionInfo', 'MessageStore', 'RolesAndPermissions', { dep: 'ContactMatcher', optional: true }, { dep: 'ConversationLogger', optional: true }, { dep: 'ConversationsOptions', optional: true }]
+  deps: ['Alert', 'Auth', 'Client', 'MessageSender', 'ExtensionInfo', 'MessageStore', 'RolesAndPermissions', { dep: 'RegionSettings', optional: true }, { dep: 'ContactMatcher', optional: true }, { dep: 'ConversationLogger', optional: true }, { dep: 'ConversationsOptions', optional: true }]
 }), _dec(_class = (_class2 = function (_RcModule) {
   (0, _inherits3.default)(Conversations, _RcModule);
 
@@ -206,6 +225,7 @@ var Conversations = (_dec = (0, _di.Module)({
         rolesAndPermissions = _ref.rolesAndPermissions,
         contactMatcher = _ref.contactMatcher,
         conversationLogger = _ref.conversationLogger,
+        regionSettings = _ref.regionSettings,
         _ref$perPage = _ref.perPage,
         perPage = _ref$perPage === undefined ? DEFAULT_PER_PAGE : _ref$perPage,
         _ref$daySpan = _ref.daySpan,
@@ -214,7 +234,7 @@ var Conversations = (_dec = (0, _di.Module)({
         enableLoadOldMessages = _ref$enableLoadOldMes === undefined ? false : _ref$enableLoadOldMes,
         _ref$showMMSAttachmen = _ref.showMMSAttachment,
         showMMSAttachment = _ref$showMMSAttachmen === undefined ? false : _ref$showMMSAttachmen,
-        options = (0, _objectWithoutProperties3.default)(_ref, ['alert', 'auth', 'client', 'messageSender', 'extensionInfo', 'messageStore', 'rolesAndPermissions', 'contactMatcher', 'conversationLogger', 'perPage', 'daySpan', 'enableLoadOldMessages', 'showMMSAttachment']);
+        options = (0, _objectWithoutProperties3.default)(_ref, ['alert', 'auth', 'client', 'messageSender', 'extensionInfo', 'messageStore', 'rolesAndPermissions', 'contactMatcher', 'conversationLogger', 'regionSettings', 'perPage', 'daySpan', 'enableLoadOldMessages', 'showMMSAttachment']);
     (0, _classCallCheck3.default)(this, Conversations);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (Conversations.__proto__ || (0, _getPrototypeOf2.default)(Conversations)).call(this, (0, _extends3.default)({}, options, {
@@ -252,6 +272,7 @@ var Conversations = (_dec = (0, _di.Module)({
     _this._rolesAndPermissions = _ensureExist2.default.call(_this, rolesAndPermissions, 'rolesAndPermissions');
     _this._contactMatcher = contactMatcher;
     _this._conversationLogger = conversationLogger;
+    _this._regionSettings = regionSettings;
 
     _this._reducer = (0, _getReducer2.default)(_this.actionTypes);
 
@@ -263,6 +284,7 @@ var Conversations = (_dec = (0, _di.Module)({
     _this._olderMessagesExsited = true;
     _this._enableLoadOldMessages = enableLoadOldMessages;
     _this._showMMSAttachment = showMMSAttachment;
+    _this._lastConversaionList = [];
 
     if (_this._contactMatcher) {
       _this._contactMatcher.addQuerySource({
@@ -301,6 +323,16 @@ var Conversations = (_dec = (0, _di.Module)({
         if (this._contactMatcher) {
           this._contactMatcher.triggerMatch();
         }
+      } else if (this._lastConversaionList.length > this._messageStore.allConversations.length) {
+        this._lastConversaionList = this._messageStore.allConversations;
+        if (this.oldConversations.length) {
+          this.store.dispatch({
+            type: this.actionTypes.cleanOldConversatioans
+          });
+          this._olderDataExsited = true;
+        }
+      } else if (this._lastConversaionList.length < this._messageStore.allConversations.length) {
+        this._lastConversaionList = this._messageStore.allConversations;
       }
     }
   }, {
@@ -325,6 +357,7 @@ var Conversations = (_dec = (0, _di.Module)({
       this.store.dispatch({
         type: this.actionTypes.initSuccess
       });
+      this._lastConversaionList = this._messageStore.allConversations;
       if (this.allConversations.length <= this._perPage && this._enableLoadOldMessages && this._hasPermission) {
         this.fetchOldConversations();
       }
@@ -410,7 +443,7 @@ var Conversations = (_dec = (0, _di.Module)({
     key: 'fetchOldConversations',
     value: function () {
       var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-        var dateFrom, dateTo, typeFilter, currentPage, params, _ref5, records;
+        var dateFrom, dateTo, typeFilter, currentPage, params, _ref5, records, recordsLength, isIncreaseCurrentPage;
 
         return _regenerator2.default.wrap(function _callee3$(_context3) {
           while (1) {
@@ -464,19 +497,23 @@ var Conversations = (_dec = (0, _di.Module)({
               case 16:
                 _ref5 = _context3.sent;
                 records = _ref5.records;
+                recordsLength = records.length;
 
-                this._olderDataExsited = records.length === this._perPage;
+                this._olderDataExsited = recordsLength === this._perPage;
                 if (typeFilter === this.typeFilter && currentPage === this.currentPage) {
+                  isIncreaseCurrentPage = recordsLength && this._perPage * this.currentPage < recordsLength + this.filteredConversations.length;
+
                   this.store.dispatch({
                     type: this.actionTypes.fetchOldConverstaionsSuccess,
-                    records: records
+                    records: records,
+                    isIncreaseCurrentPage: isIncreaseCurrentPage
                   });
                 }
-                _context3.next = 25;
+                _context3.next = 26;
                 break;
 
-              case 22:
-                _context3.prev = 22;
+              case 23:
+                _context3.prev = 23;
                 _context3.t0 = _context3['catch'](13);
 
                 if (typeFilter === this.typeFilter && currentPage === this.currentPage) {
@@ -485,12 +522,12 @@ var Conversations = (_dec = (0, _di.Module)({
                   });
                 }
 
-              case 25:
+              case 26:
               case 'end':
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[13, 22]]);
+        }, _callee3, this, [[13, 23]]);
       }));
 
       function fetchOldConversations() {
@@ -510,7 +547,7 @@ var Conversations = (_dec = (0, _di.Module)({
               case 0:
                 currentPage = this.currentPage;
 
-                if (!((currentPage + 1) * this._perPage <= this.filteredConversations.length)) {
+                if (!(currentPage * this._perPage < this.filteredConversations.length)) {
                   _context4.next = 4;
                   break;
                 }
@@ -981,6 +1018,74 @@ var Conversations = (_dec = (0, _di.Module)({
       return deleteCoversation;
     }()
   }, {
+    key: 'addEntitys',
+    value: function addEntitys(entitys) {
+      this.store.dispatch({
+        type: this.actionTypes.addEntity,
+        entitys: entitys
+      });
+    }
+  }, {
+    key: 'removeEntity',
+    value: function removeEntity(entity) {
+      this.store.dispatch({
+        type: this.actionTypes.removeEntity,
+        entity: entity
+      });
+    }
+  }, {
+    key: 'addResponses',
+    value: function addResponses(responses) {
+      this.store.dispatch({
+        type: this.actionTypes.addResponses,
+        responses: responses
+      });
+    }
+  }, {
+    key: 'removeResponse',
+    value: function removeResponse(phoneNumber) {
+      this.store.dispatch({
+        type: this.actionTypes.removeResponse,
+        phoneNumber: phoneNumber
+      });
+    }
+  }, {
+    key: 'relateCorrespondentEntity',
+    value: function relateCorrespondentEntity(responses) {
+      var _this3 = this;
+
+      if (!this._contactMatcher || !this._conversationLogger || !this.correspondentMatch.length) {
+        return;
+      }
+      this.addResponses(responses);
+      var _regionSettings = this._regionSettings,
+          countryCode = _regionSettings.countryCode,
+          areaCode = _regionSettings.areaCode;
+
+      var formattedCorrespondentMatch = this.correspondentMatch.map(function (item) {
+        var formatted = (0, _normalizeNumber2.default)({
+          phoneNumber: item.phoneNumber,
+          countryCode: countryCode,
+          areaCode: areaCode
+        });
+        return {
+          phoneNumber: formatted,
+          id: item.rawId
+        };
+      });
+      formattedCorrespondentMatch.forEach(function (item) {
+        var phoneNumber = item.phoneNumber;
+
+        var conversationId = _this3.correspondentResponse[phoneNumber];
+        _this3._conversationLogger.logConversation({
+          entity: item,
+          conversationId: conversationId
+        });
+        _this3.removeEntity(item);
+        _this3.removeResponse(phoneNumber);
+      });
+    }
+  }, {
     key: 'status',
     get: function get() {
       return this.state.status;
@@ -1045,17 +1150,27 @@ var Conversations = (_dec = (0, _di.Module)({
     get: function get() {
       return this._rolesAndPermissions.hasReadMessagesPermission;
     }
+  }, {
+    key: 'correspondentMatch',
+    get: function get() {
+      return this.state.correspondentMatch;
+    }
+  }, {
+    key: 'correspondentResponse',
+    get: function get() {
+      return this.state.correspondentResponse;
+    }
   }]);
   return Conversations;
-}(_RcModule3.default), (_applyDecoratedDescriptor(_class2.prototype, 'updateSearchInput', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateSearchInput'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'updateTypeFilter', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateTypeFilter'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'fetchOldConversations', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'fetchOldConversations'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'loadNextPage', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'loadNextPage'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'resetCurrentPage', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'resetCurrentPage'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'loadConversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'loadConversation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'unloadConversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'unloadConversation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'fetchOldMessages', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'fetchOldMessages'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'updateMessageText', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateMessageText'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'replyToReceivers', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'replyToReceivers'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'deleteCoversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'deleteCoversation'), _class2.prototype), _descriptor = _applyDecoratedDescriptor(_class2.prototype, 'allConversations', [_getter2.default], {
+}(_RcModule3.default), (_applyDecoratedDescriptor(_class2.prototype, 'updateSearchInput', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateSearchInput'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'updateTypeFilter', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateTypeFilter'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'fetchOldConversations', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'fetchOldConversations'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'loadNextPage', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'loadNextPage'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'resetCurrentPage', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'resetCurrentPage'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'loadConversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'loadConversation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'unloadConversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'unloadConversation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'fetchOldMessages', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'fetchOldMessages'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'updateMessageText', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'updateMessageText'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'replyToReceivers', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'replyToReceivers'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'deleteCoversation', [_proxify2.default], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'deleteCoversation'), _class2.prototype), _descriptor = _applyDecoratedDescriptor(_class2.prototype, 'allConversations', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
-    var _this3 = this;
+    var _this4 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this3._messageStore.allConversations;
+    return [function () {
+      return _this4._messageStore.allConversations;
     }, function () {
-      return _this3.oldConversations;
+      return _this4.oldConversations;
     }, function (conversations, oldConversations) {
       if (oldConversations.length === 0) {
         return conversations;
@@ -1072,47 +1187,47 @@ var Conversations = (_dec = (0, _di.Module)({
       conversations.forEach(pushConversation);
       oldConversations.forEach(pushConversation);
       return newConversations;
-    });
+    }];
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'uniqueNumbers', [_getter2.default], {
-  enumerable: true,
-  initializer: function initializer() {
-    var _this4 = this;
-
-    return (0, _reselect.createSelector)(function () {
-      return _this4.pagingConversations;
-    }, getUniqueNumbers);
-  }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'allUniqueNumbers', [_getter2.default], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'uniqueNumbers', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this5 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this5.allConversations;
-    }, getUniqueNumbers);
+    return [function () {
+      return _this5.pagingConversations;
+    }, getUniqueNumbers];
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'effectiveSearchString', [_getter2.default], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'allUniqueNumbers', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this6 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this6.state.searchInput;
-    }, function (input) {
-      if (input.length >= 3) return input;
-      return '';
-    });
+    return [function () {
+      return _this6.allConversations;
+    }, getUniqueNumbers];
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'typeFilteredConversations', [_getter2.default], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'effectiveSearchString', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this7 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this7.allConversations;
+    return [function () {
+      return _this7.state.searchInput;
+    }, function (input) {
+      if (input.length >= 3) return input;
+      return '';
+    }];
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'typeFilteredConversations', [_selector.selector], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this8 = this;
+
+    return [function () {
+      return _this8.allConversations;
     }, function () {
-      return _this7.typeFilter;
+      return _this8.typeFilter;
     }, function (allConversations, typeFilter) {
       switch (typeFilter) {
         case _messageTypes2.default.text:
@@ -1123,28 +1238,28 @@ var Conversations = (_dec = (0, _di.Module)({
           return allConversations.filter(_messageHelper.messageIsFax);
         default:
           return allConversations.filter(function (conversation) {
-            return (_this7._rolesAndPermissions.readTextPermissions || !(0, _messageHelper.messageIsTextMessage)(conversation)) && (_this7._rolesAndPermissions.voicemailPermissions || !(0, _messageHelper.messageIsVoicemail)(conversation)) && (_this7._rolesAndPermissions.readFaxPermissions || !(0, _messageHelper.messageIsFax)(conversation));
+            return (_this8._rolesAndPermissions.readTextPermissions || !(0, _messageHelper.messageIsTextMessage)(conversation)) && (_this8._rolesAndPermissions.voicemailPermissions || !(0, _messageHelper.messageIsVoicemail)(conversation)) && (_this8._rolesAndPermissions.readFaxPermissions || !(0, _messageHelper.messageIsFax)(conversation));
           });
       }
-    });
+    }];
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'formatedConversations', [_getter2.default], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'formatedConversations', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
-    var _this8 = this;
+    var _this9 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this8.typeFilteredConversations;
+    return [function () {
+      return _this9.typeFilteredConversations;
     }, function () {
-      return _this8._extensionInfo.extensionNumber;
+      return _this9._extensionInfo.extensionNumber;
     }, function () {
-      return _this8._contactMatcher && _this8._contactMatcher.dataMapping;
+      return _this9._contactMatcher && _this9._contactMatcher.dataMapping;
     }, function () {
-      return _this8._conversationLogger && _this8._conversationLogger.loggingMap;
+      return _this9._conversationLogger && _this9._conversationLogger.loggingMap;
     }, function () {
-      return _this8._conversationLogger && _this8._conversationLogger.dataMapping;
+      return _this9._conversationLogger && _this9._conversationLogger.dataMapping;
     }, function () {
-      return _this8._auth.accessToken;
+      return _this9._auth.accessToken;
     }, function (conversations, extensionNumber) {
       var contactMapping = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
       var loggingMap = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
@@ -1161,7 +1276,7 @@ var Conversations = (_dec = (0, _di.Module)({
           var number = contact && (contact.phoneNumber || contact.extensionNumber);
           return number && contactMapping[number] && contactMapping[number].length ? matches.concat(contactMapping[number]) : matches;
         }, []);
-        var conversationLogId = _this8._conversationLogger ? _this8._conversationLogger.getConversationLogId(message) : null;
+        var conversationLogId = _this9._conversationLogger ? _this9._conversationLogger.getConversationLogId(message) : null;
         var isLogging = !!(conversationLogId && loggingMap[conversationLogId]);
         var conversationMatches = conversationLogMapping[conversationLogId] || [];
         var voicemailAttachment = null;
@@ -1177,7 +1292,7 @@ var Conversations = (_dec = (0, _di.Module)({
           unreadCounts = (0, _messageHelper.messageIsUnread)(message) ? 1 : 0;
         }
         var mmsAttachment = null;
-        if ((0, _messageHelper.messageIsTextMessage)(message) && (0, _isBlank2.default)(message.subject) && _this8._showMMSAttachment) {
+        if ((0, _messageHelper.messageIsTextMessage)(message) && (0, _isBlank2.default)(message.subject) && _this9._showMMSAttachment) {
           mmsAttachment = (0, _messageHelper.getMMSAttachment)(message);
         }
         return (0, _extends3.default)({}, message, {
@@ -1192,20 +1307,20 @@ var Conversations = (_dec = (0, _di.Module)({
           voicemailAttachment: voicemailAttachment,
           faxAttachment: faxAttachment,
           mmsAttachment: mmsAttachment,
-          lastMatchedCorrespondentEntity: _this8._conversationLogger && _this8._conversationLogger.getLastMatchedCorrespondentEntity(message) || null
+          lastMatchedCorrespondentEntity: _this9._conversationLogger && _this9._conversationLogger.getLastMatchedCorrespondentEntity(message) || null
         });
       });
-    });
+    }];
   }
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'filteredConversations', [_getter2.default], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'filteredConversations', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
-    var _this9 = this;
+    var _this10 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this9.formatedConversations;
+    return [function () {
+      return _this10.formatedConversations;
     }, function () {
-      return _this9.effectiveSearchString;
+      return _this10.effectiveSearchString;
     }, function (conversations, effectiveSearchString) {
       if (effectiveSearchString === '') {
         return conversations;
@@ -1253,7 +1368,7 @@ var Conversations = (_dec = (0, _di.Module)({
           }));
           return;
         }
-        var messageList = _this9._messageStore.conversationStore[message.conversationId] || [];
+        var messageList = _this10._messageStore.conversationStore[message.conversationId] || [];
         var matchedMessage = messageList.find(function (item) {
           return (item.subject || '').toLowerCase().indexOf(searchString) > -1;
         });
@@ -1265,52 +1380,52 @@ var Conversations = (_dec = (0, _di.Module)({
         }
       });
       return searchResults.sort(_messageHelper.sortSearchResults);
-    });
+    }];
   }
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'pagingConversations', [_getter2.default], {
-  enumerable: true,
-  initializer: function initializer() {
-    var _this10 = this;
-
-    return (0, _reselect.createSelector)(function () {
-      return _this10.filteredConversations;
-    }, function () {
-      return _this10.currentPage;
-    }, function (conversations, pageNumber) {
-      var lastIndex = pageNumber * _this10._perPage;
-      return conversations.slice(0, lastIndex);
-    });
-  }
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'earliestTime', [_getter2.default], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'pagingConversations', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this11 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this11.typeFilteredConversations;
-    }, getEarliestTime);
+    return [function () {
+      return _this11.filteredConversations;
+    }, function () {
+      return _this11.currentPage;
+    }, function (conversations, pageNumber) {
+      var lastIndex = pageNumber * _this11._perPage;
+      return conversations.slice(0, lastIndex);
+    }];
   }
-}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'currentConversation', [_getter2.default], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'earliestTime', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this12 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this12.currentConversationId;
+    return [function () {
+      return _this12.typeFilteredConversations;
+    }, getEarliestTime];
+  }
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'currentConversation', [_selector.selector], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this13 = this;
+
+    return [function () {
+      return _this13.currentConversationId;
     }, function () {
-      return _this12._extensionInfo.extensionNumber;
+      return _this13._extensionInfo.extensionNumber;
     }, function () {
-      return _this12._contactMatcher && _this12._contactMatcher.dataMapping;
+      return _this13._contactMatcher && _this13._contactMatcher.dataMapping;
     }, function () {
-      return _this12.oldMessages;
+      return _this13.oldMessages;
     }, function () {
-      return _this12._messageStore.conversationStore;
+      return _this13._messageStore.conversationStore;
     }, function () {
-      return _this12.allConversations;
+      return _this13.allConversations;
     }, function () {
-      return _this12._auth.accessToken;
+      return _this13._auth.accessToken;
     }, function () {
-      return _this12._conversationLogger && _this12._conversationLogger.dataMapping;
+      return _this13._conversationLogger && _this13._conversationLogger.dataMapping;
     }, function (conversationId, extensionNumber, contactMapping, oldMessages, conversationStore, conversations, accessToken) {
       var conversationLogMapping = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : {};
 
@@ -1319,8 +1434,8 @@ var Conversations = (_dec = (0, _di.Module)({
       });
       var messages = [].concat(conversationStore[conversationId] || []);
       var currentConversation = (0, _extends3.default)({}, conversation);
-      var allMessages = messages.concat(oldMessages).map(function (m) {
-        if (!_this12._showMMSAttachment) {
+      var allMessages = mergeMessages(messages, oldMessages).map(function (m) {
+        if (!_this13._showMMSAttachment) {
           return m;
         }
         var mmsAttachment = (0, _messageHelper.getMMSAttachment)(m, accessToken);
@@ -1337,7 +1452,7 @@ var Conversations = (_dec = (0, _di.Module)({
         var number = contact && (contact.phoneNumber || contact.extensionNumber);
         return number && contactMapping[number] && contactMapping[number].length ? matches.concat(contactMapping[number]) : matches;
       }, []);
-      var conversationLogId = _this12._conversationLogger ? _this12._conversationLogger.getConversationLogId(conversation) : null;
+      var conversationLogId = _this13._conversationLogger ? _this13._conversationLogger.getConversationLogId(conversation) : null;
       var conversationMatches = conversationLogMapping[conversationLogId] || [];
       currentConversation.correspondents = correspondents;
       currentConversation.correspondentMatches = correspondentMatches;
@@ -1345,30 +1460,30 @@ var Conversations = (_dec = (0, _di.Module)({
       currentConversation.messages = allMessages.reverse();
       currentConversation.senderNumber = (0, _messageHelper.getMyNumberFromMessage)({
         message: conversation,
-        myExtensionNumber: _this12._extensionInfo.extensionNumber
+        myExtensionNumber: _this13._extensionInfo.extensionNumber
       });
       currentConversation.recipients = (0, _messageHelper.getRecipientNumbersFromMessage)({
         message: conversation,
         myNumber: currentConversation.senderNumber
       });
       return currentConversation;
-    });
+    }];
   }
-}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'messageText', [_getter2.default], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'messageText', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
-    var _this13 = this;
+    var _this14 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this13.state.messageTexts;
+    return [function () {
+      return _this14.state.messageTexts;
     }, function () {
-      return _this13.currentConversationId;
+      return _this14.currentConversationId;
     }, function (messageTexts, conversationId) {
       var res = messageTexts.find(function (msg) {
         return (typeof msg === 'undefined' ? 'undefined' : (0, _typeof3.default)(msg)) === 'object' && msg.conversationId === conversationId;
       });
       return res ? res.text : '';
-    });
+    }];
   }
 })), _class2)) || _class);
 exports.default = Conversations;

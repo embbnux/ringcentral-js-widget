@@ -4,6 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _extends3 = require('babel-runtime/helpers/extends');
+
+var _extends4 = _interopRequireDefault(_extends3);
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _typeof2 = require('babel-runtime/helpers/typeof');
 
 var _typeof3 = _interopRequireDefault(_typeof2);
@@ -18,6 +30,8 @@ exports.getOldMessagesReducer = getOldMessagesReducer;
 exports.getFetchMessagesStatusReducer = getFetchMessagesStatusReducer;
 exports.getMessageTextsReducer = getMessageTextsReducer;
 exports.getConversationStatusReducer = getConversationStatusReducer;
+exports.getCorrespondentMatch = getCorrespondentMatch;
+exports.getCorrespondentResponse = getCorrespondentResponse;
 exports.default = getReducer;
 
 var _redux = require('redux');
@@ -126,12 +140,14 @@ function getCurrentPageReducer(types) {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var _ref5 = arguments[1];
-    var type = _ref5.type;
+    var type = _ref5.type,
+        isIncreaseCurrentPage = _ref5.isIncreaseCurrentPage;
 
     switch (type) {
       case types.increaseCurrentPage:
-      case types.fetchOldConverstaionsSuccess:
         return state + 1;
+      case types.fetchOldConverstaionsSuccess:
+        return isIncreaseCurrentPage ? state + 1 : state;
       case types.updateTypeFilter:
       case types.resetSuccess:
       case types.initSuccess:
@@ -245,6 +261,71 @@ function getConversationStatusReducer(types) {
     }
   };
 }
+function getCorrespondentMatch(types) {
+  return function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var _ref11 = arguments[1];
+    var type = _ref11.type,
+        _ref11$entitys = _ref11.entitys,
+        entitys = _ref11$entitys === undefined ? [] : _ref11$entitys,
+        _ref11$entity = _ref11.entity,
+        entity = _ref11$entity === undefined ? {} : _ref11$entity;
+
+    switch (type) {
+      case types.addEntity:
+        {
+          var newState = [].concat((0, _toConsumableArray3.default)(entitys));
+          return newState;
+        }
+      case types.removeEntity:
+        {
+          var _newState = [].concat((0, _toConsumableArray3.default)(state));
+          var filteredState = _newState.filter(function (item) {
+            return item.rawId !== entity.id && item.id !== entity.id;
+          });
+          return filteredState;
+        }
+      default:
+        return state;
+    }
+  };
+}
+function getCorrespondentResponse(types) {
+  return function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var _ref12 = arguments[1];
+    var type = _ref12.type,
+        _ref12$responses = _ref12.responses,
+        responses = _ref12$responses === undefined ? [] : _ref12$responses,
+        _ref12$phoneNumber = _ref12.phoneNumber,
+        phoneNumber = _ref12$phoneNumber === undefined ? '' : _ref12$phoneNumber;
+
+    switch (type) {
+      case types.addResponses:
+        {
+          var formatResponses = responses.reduce(function (accumulator, response) {
+            var to = response.to,
+                from = response.from,
+                direction = response.direction,
+                id = response.conversation.id;
+
+            var number = direction === 'Inbound' ? from : to[0];
+            phoneNumber = number.phoneNumber || number.extensionNumber;
+            return (0, _extends4.default)({}, accumulator, (0, _defineProperty3.default)({}, phoneNumber, id));
+          }, {});
+          return formatResponses;
+        }
+      case types.removeResponse:
+        {
+          var newState = (0, _extends4.default)({}, state);
+          delete newState[phoneNumber];
+          return newState;
+        }
+      default:
+        return state;
+    }
+  };
+}
 
 function getReducer(types) {
   return (0, _redux.combineReducers)({
@@ -258,7 +339,9 @@ function getReducer(types) {
     oldMessages: getOldMessagesReducer(types),
     fetchMessagesStatus: getFetchMessagesStatusReducer(types),
     messageTexts: getMessageTextsReducer(types),
-    conversationStatus: getConversationStatusReducer(types)
+    conversationStatus: getConversationStatusReducer(types),
+    correspondentMatch: getCorrespondentMatch(types),
+    correspondentResponse: getCorrespondentResponse(types)
   });
 }
 //# sourceMappingURL=getReducer.js.map

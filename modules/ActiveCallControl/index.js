@@ -45,13 +45,9 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
-var _reselect = require('reselect');
-
-var _getter = require('../../lib/getter');
-
-var _getter2 = _interopRequireDefault(_getter);
+var _selector = require('../../lib/selector');
 
 var _di = require('../../lib/di');
 
@@ -172,11 +168,13 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
       actionTypes: _actionTypes2.default
     })));
 
-    _initDefineProp(_this, 'recordingId', _descriptor, _this);
+    _initDefineProp(_this, 'callPartyIdMap', _descriptor, _this);
 
-    _initDefineProp(_this, 'activeSession', _descriptor2, _this);
+    _initDefineProp(_this, 'recordingId', _descriptor2, _this);
 
-    _initDefineProp(_this, 'activeSessions', _descriptor3, _this);
+    _initDefineProp(_this, 'activeSession', _descriptor3, _this);
+
+    _initDefineProp(_this, 'activeSessions', _descriptor4, _this);
 
     _this._client = client;
     if (!disableCache) {
@@ -416,7 +414,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
                 }
 
                 _context4.next = 8;
-                return this.getPartyData(this.activeSessions[sessionId], sessionId);
+                return this.getPartyData(sessionId);
 
               case 8:
                 result = _context4.sent;
@@ -611,6 +609,13 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
       return patch;
     }()
   }, {
+    key: 'getActiveSession',
+    value: function getActiveSession(sessionId) {
+      var partyId = this.callPartyIdMap[sessionId];
+      var activeSession = this.activeSessions[sessionId];
+      return activeSession && activeSession[partyId];
+    }
+  }, {
     key: 'mute',
     value: function () {
       var _ref9 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(sessionId) {
@@ -620,7 +625,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context7.prev = _context7.next) {
               case 0:
                 _context7.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).mute;
                 _context7.next = 5;
                 return this.patch({
@@ -672,7 +677,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context8.prev = _context8.next) {
               case 0:
                 _context8.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).mute;
                 _context8.next = 5;
                 return this.patch({
@@ -725,7 +730,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context9.prev = _context9.next) {
               case 0:
                 _context9.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).record;
                 _context9.next = 5;
                 return this._client.service._platform.post(url);
@@ -736,7 +741,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
 
                 this.store.dispatch({
                   type: this.actionTypes.startRecord,
-                  sessionId: sessionId,
+                  activeSession: activeSession,
                   response: response
                 });
                 _context9.next = 13;
@@ -766,6 +771,13 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
       return startRecord;
     }()
   }, {
+    key: 'getRecordingId',
+    value: function getRecordingId(sessionId) {
+      var partyId = this.callPartyIdMap[sessionId];
+      var recodingId = this.recordingIds[sessionId];
+      return recodingId[partyId].id;
+    }
+  }, {
     key: 'stopRecord',
     value: function () {
       var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(sessionId) {
@@ -775,8 +787,8 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context10.prev = _context10.next) {
               case 0:
                 _context10.prev = 0;
-                activeSession = this.activeSessions[sessionId];
-                recordingId = this.recordingIds[sessionId].id;
+                activeSession = this.getActiveSession(sessionId);
+                recordingId = this.getRecordingId(sessionId);
 
                 activeSession.recordingId = recordingId;
                 url = (0, _helpers.requestURI)(activeSession).stopRecord;
@@ -789,7 +801,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
                 });
                 this.store.dispatch({
                   type: this.actionTypes.stopRecord,
-                  sessionId: sessionId
+                  activeSession: activeSession
                 });
                 _context10.next = 12;
                 break;
@@ -823,7 +835,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context11.prev = _context11.next) {
               case 0:
                 _context11.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).hangUp;
                 _context11.next = 5;
                 return this._client.service._platform.delete(url);
@@ -871,7 +883,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context12.prev = _context12.next) {
               case 0:
                 _context12.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).reject;
                 _context12.next = 5;
                 return this._client.service._platform.post(url);
@@ -916,17 +928,21 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context13.prev = _context13.next) {
               case 0:
                 _context13.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).hold;
                 _context13.next = 5;
                 return this._client.service._platform.post(url);
 
               case 5:
-                _context13.next = 10;
+                this.store.dispatch({
+                  type: this.actionTypes.hold,
+                  activeSession: activeSession
+                });
+                _context13.next = 11;
                 break;
 
-              case 7:
-                _context13.prev = 7;
+              case 8:
+                _context13.prev = 8;
                 _context13.t0 = _context13['catch'](0);
 
                 if ((0, _helpers.confictError)(_context13.t0)) {
@@ -939,12 +955,12 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
                   });
                 }
 
-              case 10:
+              case 11:
               case 'end':
                 return _context13.stop();
             }
           }
-        }, _callee13, this, [[0, 7]]);
+        }, _callee13, this, [[0, 8]]);
       }));
 
       function hold(_x9) {
@@ -963,17 +979,21 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context14.prev = _context14.next) {
               case 0:
                 _context14.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).unHold;
                 _context14.next = 5;
                 return this._client.service._platform.post(url);
 
               case 5:
-                _context14.next = 10;
+                this.store.dispatch({
+                  type: this.actionTypes.unhold,
+                  activeSession: activeSession
+                });
+                _context14.next = 11;
                 break;
 
-              case 7:
-                _context14.prev = 7;
+              case 8:
+                _context14.prev = 8;
                 _context14.t0 = _context14['catch'](0);
 
                 if ((0, _helpers.confictError)(_context14.t0)) {
@@ -986,12 +1006,12 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
                   });
                 }
 
-              case 10:
+              case 11:
               case 'end':
                 return _context14.stop();
             }
           }
-        }, _callee14, this, [[0, 7]]);
+        }, _callee14, this, [[0, 8]]);
       }));
 
       function unHold(_x10) {
@@ -1012,7 +1032,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context15.prev = _context15.next) {
               case 0:
                 _context15.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).transfer;
                 _context15.next = 5;
                 return this._numberValidate.validateNumbers([transferNumber]);
@@ -1083,7 +1103,7 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
             switch (_context16.prev = _context16.next) {
               case 0:
                 _context16.prev = 0;
-                activeSession = this.activeSessions[sessionId];
+                activeSession = this.getActiveSession(sessionId);
                 url = (0, _helpers.requestURI)(activeSession).flip;
                 _context16.next = 5;
                 return this._client.service._platform.post(url, {
@@ -1158,26 +1178,37 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
   }, {
     key: 'getPartyData',
     value: function () {
-      var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee19(item, sessionId) {
-        var url, _response, response, errRgx;
+      var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee19(sessionId) {
+        var activeSession, url, telephonySessionId, partyId, _response, response, errRgx;
 
         return _regenerator2.default.wrap(function _callee19$(_context19) {
           while (1) {
             switch (_context19.prev = _context19.next) {
               case 0:
-                url = (0, _helpers.requestURI)(item).getPartyData;
-                _context19.prev = 1;
-                _context19.next = 4;
+                activeSession = this.getActiveSession(sessionId);
+                url = (0, _helpers.requestURI)(activeSession).getPartyData;
+                telephonySessionId = activeSession.telephonySessionId, partyId = activeSession.partyId;
+
+                if (!(!telephonySessionId || !partyId)) {
+                  _context19.next = 5;
+                  break;
+                }
+
+                return _context19.abrupt('return');
+
+              case 5:
+                _context19.prev = 5;
+                _context19.next = 8;
                 return this._client.service._platform.get(url);
 
-              case 4:
+              case 8:
                 _response = _context19.sent;
                 response = JSON.parse(_response._text);
                 return _context19.abrupt('return', response);
 
-              case 9:
-                _context19.prev = 9;
-                _context19.t0 = _context19['catch'](1);
+              case 13:
+                _context19.prev = 13;
+                _context19.t0 = _context19['catch'](5);
                 errRgx = /4[0-9][0-9]/g;
 
                 if (errRgx.test(_context19.t0.message)) {
@@ -1185,15 +1216,15 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
                 }
                 throw _context19.t0;
 
-              case 14:
+              case 18:
               case 'end':
                 return _context19.stop();
             }
           }
-        }, _callee19, this, [[1, 9]]);
+        }, _callee19, this, [[5, 13]]);
       }));
 
-      function getPartyData(_x15, _x16) {
+      function getPartyData(_x15) {
         return _ref21.apply(this, arguments);
       }
 
@@ -1251,54 +1282,76 @@ var ActiveCallControl = (_dec = (0, _di.Module)({
     }
   }]);
   return ActiveCallControl;
-}(_Pollable3.default), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'recordingId', [_getter2.default], {
+}(_Pollable3.default), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'callPartyIdMap', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this5 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this5.activeSessionId;
-    }, function () {
-      return _this5.recordingIds;
-    }, function (activeSessionId, recordingIds) {
-      return recordingIds[activeSessionId];
-    });
+    return [function () {
+      return _this5._callMonitor.calls;
+    }, function (calls) {
+      return calls.reduce(function (accumulator, call) {
+        var sessionId = call.sessionId,
+            partyId = call.partyId;
+
+        accumulator[sessionId] = partyId;
+        return accumulator;
+      }, {});
+    }];
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'activeSession', [_getter2.default], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'recordingId', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this6 = this;
 
-    return (0, _reselect.createSelector)(function () {
+    return [function () {
       return _this6.activeSessionId;
     }, function () {
-      return _this6.activeSessions;
-    }, function (activeSessionId, activeSessions) {
-      return activeSessions[activeSessionId];
-    });
+      return _this6.recordingIds;
+    }, function (activeSessionId, recordingIds) {
+      return recordingIds[activeSessionId];
+    }];
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'activeSessions', [_getter2.default], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'activeSession', [_selector.selector], {
   enumerable: true,
   initializer: function initializer() {
     var _this7 = this;
 
-    return (0, _reselect.createSelector)(function () {
-      return _this7._callMonitor.calls;
+    return [function () {
+      return _this7.activeSessionId;
     }, function () {
-      return _this7.activeSessionsStatus;
+      return _this7.activeSessions;
+    }, function (sessionId) {
+      return _this7.getActiveSession(sessionId);
+    }];
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'activeSessions', [_selector.selector], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this8 = this;
+
+    return [function () {
+      return _this8._callMonitor.calls;
+    }, function () {
+      return _this8.activeSessionsStatus;
     }, function (calls, activeSessionsStatus) {
       var reducer = function reducer(accumulator, call) {
-        var sessionId = call.sessionId;
+        var sessionId = call.sessionId,
+            partyId = call.partyId;
 
-        var activeSessionStatus = activeSessionsStatus[sessionId];
-        accumulator[sessionId] = (0, _helpers.normalizeSession)({
+        var activeSessionStatuses = activeSessionsStatus[sessionId];
+        var activeSessionStatus = activeSessionStatuses && activeSessionStatuses[partyId] || {};
+        if (!accumulator[sessionId]) {
+          accumulator[sessionId] = {};
+        }
+        accumulator[sessionId][partyId] = (0, _helpers.normalizeSession)({
           call: call,
           activeSessionStatus: activeSessionStatus
         });
         return accumulator;
       };
       return calls.reduce(reducer, {});
-    });
+    }];
   }
 })), _class2)) || _class);
 exports.default = ActiveCallControl;

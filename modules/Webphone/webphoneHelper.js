@@ -132,7 +132,7 @@ function isRing(session) {
 }
 
 function isOnHold(session) {
-  return !!(session && session.callStatus === _sessionStatus2.default.onHold);
+  return !!(session && session.isOnHold);
 }
 
 function sortByCreationTimeDesc(l, r) {

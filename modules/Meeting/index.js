@@ -17,6 +17,14 @@ var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
 var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
@@ -285,18 +293,44 @@ var Meeting = (_dec = (0, _di.Module)({
       });
     }
   }, {
+    key: 'getMobileDialingNumberTpl',
+    value: function getMobileDialingNumberTpl(dialInNumbers, meetingId) {
+      return dialInNumbers.map(function (_ref2) {
+        var country = _ref2.country,
+            formattedNumber = _ref2.formattedNumber,
+            _ref2$location = _ref2.location,
+            location = _ref2$location === undefined ? '' : _ref2$location;
+
+        var filterFormattedNumber = formattedNumber.replace(/\s|-/g, '');
+        return '+' + country.callingCode + filterFormattedNumber + ',,' + meetingId + '# ' + location;
+      }).join('\n    ');
+    }
+  }, {
+    key: 'getPhoneDialingNumberTpl',
+    value: function getPhoneDialingNumberTpl(dialInNumbers) {
+      return dialInNumbers.map(function (_ref3) {
+        var country = _ref3.country,
+            formattedNumber = _ref3.formattedNumber,
+            _ref3$location = _ref3.location,
+            location = _ref3$location === undefined ? '' : _ref3$location;
+
+        var filterFormattedNumber = formattedNumber.replace(/-/g, ' ');
+        return '+' + country.callingCode + ' ' + filterFormattedNumber + location;
+      }).join('\n    ');
+    }
+  }, {
     key: 'schedule',
     value: function () {
-      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(meeting) {
+      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(meeting) {
         var _this3 = this;
 
-        var _ref3 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-            _ref3$isAlertSuccess = _ref3.isAlertSuccess,
-            isAlertSuccess = _ref3$isAlertSuccess === undefined ? true : _ref3$isAlertSuccess;
+        var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+            _ref5$isAlertSuccess = _ref5.isAlertSuccess,
+            isAlertSuccess = _ref5$isAlertSuccess === undefined ? true : _ref5$isAlertSuccess;
 
         var opener = arguments[2];
 
-        var formattedMeeting, resp, serviceInfo, result, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, error;
+        var formattedMeeting, _ref6, _ref7, resp, serviceInfo, mobileDialingNumberTpl, phoneDialingNumberTpl, result, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, error, _errors$apiResponse$j, errorCode, permissionName;
 
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
@@ -320,15 +354,14 @@ var Meeting = (_dec = (0, _di.Module)({
                 this._validate(meeting);
                 formattedMeeting = this._format(meeting);
                 _context.next = 9;
-                return this._client.account().extension().meeting().post(formattedMeeting);
+                return _promise2.default.all([this._client.account().extension().meeting().post(formattedMeeting), this._client.account().extension().meeting().serviceInfo().get()]);
 
               case 9:
-                resp = _context.sent;
-                _context.next = 12;
-                return this._client.account().extension().meeting().serviceInfo().get();
+                _ref6 = _context.sent;
+                _ref7 = (0, _slicedToArray3.default)(_ref6, 2);
+                resp = _ref7[0];
+                serviceInfo = _ref7[1];
 
-              case 12:
-                serviceInfo = _context.sent;
 
                 this.store.dispatch({
                   type: this.actionTypes.scheduled,
@@ -336,6 +369,11 @@ var Meeting = (_dec = (0, _di.Module)({
                     _saved: meeting._saved
                   })
                 });
+                mobileDialingNumberTpl = this.getMobileDialingNumberTpl(serviceInfo.dialInNumbers, resp.id);
+                phoneDialingNumberTpl = this.getPhoneDialingNumberTpl(serviceInfo.dialInNumbers, resp.id);
+
+                serviceInfo.mobileDialingNumberTpl = mobileDialingNumberTpl;
+                serviceInfo.phoneDialingNumberTpl = phoneDialingNumberTpl;
                 result = {
                   meeting: resp,
                   serviceInfo: serviceInfo,
@@ -343,14 +381,14 @@ var Meeting = (_dec = (0, _di.Module)({
                 };
 
                 if (!(typeof this.scheduledHook === 'function')) {
-                  _context.next = 18;
+                  _context.next = 22;
                   break;
                 }
 
-                _context.next = 18;
+                _context.next = 22;
                 return this.scheduledHook(result, opener);
 
-              case 18:
+              case 22:
                 // Reload meeting info
                 this._initMeeting();
                 // Notify user the meeting has been scheduled
@@ -363,8 +401,8 @@ var Meeting = (_dec = (0, _di.Module)({
                 }
                 return _context.abrupt('return', result);
 
-              case 23:
-                _context.prev = 23;
+              case 27:
+                _context.prev = 27;
                 _context.t0 = _context['catch'](3);
 
                 this.store.dispatch({
@@ -372,66 +410,84 @@ var Meeting = (_dec = (0, _di.Module)({
                 });
 
                 if (!(_context.t0 instanceof MeetingErrors)) {
-                  _context.next = 46;
+                  _context.next = 52;
                   break;
                 }
 
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context.prev = 30;
+                _context.prev = 34;
 
                 for (_iterator = (0, _getIterator3.default)(_context.t0.all); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   error = _step.value;
 
                   this._alert.warning(error);
                 }
-                _context.next = 38;
+                _context.next = 42;
                 break;
-
-              case 34:
-                _context.prev = 34;
-                _context.t1 = _context['catch'](30);
-                _didIteratorError = true;
-                _iteratorError = _context.t1;
 
               case 38:
                 _context.prev = 38;
-                _context.prev = 39;
+                _context.t1 = _context['catch'](34);
+                _didIteratorError = true;
+                _iteratorError = _context.t1;
+
+              case 42:
+                _context.prev = 42;
+                _context.prev = 43;
 
                 if (!_iteratorNormalCompletion && _iterator.return) {
                   _iterator.return();
                 }
 
-              case 41:
-                _context.prev = 41;
+              case 45:
+                _context.prev = 45;
 
                 if (!_didIteratorError) {
-                  _context.next = 44;
+                  _context.next = 48;
                   break;
                 }
 
                 throw _iteratorError;
 
-              case 44:
-                return _context.finish(41);
+              case 48:
+                return _context.finish(45);
 
-              case 45:
-                return _context.finish(38);
+              case 49:
+                return _context.finish(42);
 
-              case 46:
+              case 50:
+                _context.next = 53;
+                break;
+
+              case 52:
+                if (_context.t0 && _context.t0.apiResponse) {
+                  _errors$apiResponse$j = _context.t0.apiResponse.json(), errorCode = _errors$apiResponse$j.errorCode, permissionName = _errors$apiResponse$j.permissionName;
+
+                  if (errorCode === 'InsufficientPermissions' && permissionName) {
+                    this._alert.danger({
+                      message: _meetingStatus2.default.insufficientPermissions,
+                      payload: {
+                        permissionName: permissionName
+                      }
+                    });
+                  }
+                }
+
+              case 53:
                 return _context.abrupt('return', null);
 
-              case 47:
+              case 54:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 23], [30, 34, 38, 46], [39,, 41, 45]]);
+        }, _callee, this, [[3, 27], [34, 38, 42, 50], [43,, 45, 49]]);
       }));
 
       function schedule(_x2) {
-        return _ref2.apply(this, arguments);
+        return _ref4.apply(this, arguments);
       }
 
       return schedule;
