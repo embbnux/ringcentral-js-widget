@@ -65,13 +65,13 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 var OAuth = exports.OAuth = (_dec = (0, _nextCore.injectable)({
   name: 'OAuth'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)('PortManager')(target, undefined, 2);
+  return (0, _nextCore.optional)('PortManager')(target, undefined, 6);
 }, _dec3 = function _dec3(target, key) {
   return (0, _nextCore.optional)('TabManager')(target, undefined, 7);
 }, _dec4 = function _dec4(target, key) {
   return (0, _nextCore.optional)('OAuthOptions')(target, undefined, 8);
-}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _Client.Client === "undefined" ? Object : _Client.Client, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _Auth.Auth === "undefined" ? Object : _Auth.Auth, typeof _services.Toast === "undefined" ? Object : _services.Toast, typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _services.Brand === "undefined" ? Object : _services.Brand, Object, typeof OAuthOptions === "undefined" ? Object : OAuthOptions]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = /*#__PURE__*/function (_OAuthBase) {
-  function OAuth(_client, _router, _portManager, _auth, _toast, _locale, _brand, _tabManager, _oAuthOptions) {
+}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _Client.Client === "undefined" ? Object : _Client.Client, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _Auth.Auth === "undefined" ? Object : _Auth.Auth, typeof _services.Toast === "undefined" ? Object : _services.Toast, typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _services.Brand === "undefined" ? Object : _services.Brand, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, Object, typeof OAuthOptions === "undefined" ? Object : OAuthOptions]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = /*#__PURE__*/function (_OAuthBase) {
+  function OAuth(_client, _router, _auth, _toast, _locale, _brand, _portManager, _tabManager, _oAuthOptions) {
     var _oAuthOptions2;
     var _this;
     _classCallCheck(this, OAuth);
@@ -85,11 +85,11 @@ var OAuth = exports.OAuth = (_dec = (0, _nextCore.injectable)({
     _this = _callSuper(this, OAuth, [_auth, _toast, _locale, _brand, _tabManager, _oAuthOptions]);
     _this._client = _client;
     _this._router = _router;
-    _this._portManager = _portManager;
     _this._auth = _auth;
     _this._toast = _toast;
     _this._locale = _locale;
     _this._brand = _brand;
+    _this._portManager = _portManager;
     _this._tabManager = _tabManager;
     _this._oAuthOptions = _oAuthOptions;
     _this._uuid = (0, _uuid.v4)();

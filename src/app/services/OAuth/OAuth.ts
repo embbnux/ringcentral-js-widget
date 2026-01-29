@@ -35,12 +35,12 @@ export class OAuth extends OAuthBase {
   constructor(
     protected _client: Client,
     protected _router: RouterPlugin,
-    @optional('PortManager')
-    protected _portManager?: PortManager,
     protected override _auth: Auth,
     protected override _toast: Toast,
     protected override _locale: Locale,
     protected override _brand: Brand,
+    @optional('PortManager')
+    protected _portManager?: PortManager,
     @optional('TabManager')
     protected override _tabManager?: any,
     @optional('OAuthOptions')
