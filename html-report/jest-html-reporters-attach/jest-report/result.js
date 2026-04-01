@@ -1,0 +1,5874 @@
+"use strict";
+
+window.jest_html_reporters_callback__({
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 77,
+  "numPassedTests": 600,
+  "numPendingTestSuites": 4,
+  "numPendingTests": 64,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 81,
+  "numTotalTests": 664,
+  "startTime": 1768447420860,
+  "success": false,
+  "testResults": [{
+    "numFailingTests": 0,
+    "numPassingTests": 39,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447430346,
+      "runtime": 6738,
+      "slow": true,
+      "start": 1768447423608
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/messageHelper/index.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["filterNumbers"],
+      "duration": 20,
+      "failureMessages": [],
+      "fullName": "filterNumbers should return filtered numbers with phoneNumber",
+      "status": "passed",
+      "title": "should return filtered numbers with phoneNumber"
+    }, {
+      "ancestorTitles": ["filterNumbers"],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "filterNumbers should return filtered numbers with extensionNumber",
+      "status": "passed",
+      "title": "should return filtered numbers with extensionNumber"
+    }, {
+      "ancestorTitles": ["messageIsDeleted"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "messageIsDeleted should return true when message is deleted",
+      "status": "passed",
+      "title": "should return true when message is deleted"
+    }, {
+      "ancestorTitles": ["messageIsDeleted"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsDeleted should return false when message is Alive",
+      "status": "passed",
+      "title": "should return false when message is Alive"
+    }, {
+      "ancestorTitles": ["messageIsDeleted"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsDeleted should return true when message is Purged",
+      "status": "passed",
+      "title": "should return true when message is Purged"
+    }, {
+      "ancestorTitles": ["messageIsTextMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsTextMessage should return true when message type is SMS",
+      "status": "passed",
+      "title": "should return true when message type is SMS"
+    }, {
+      "ancestorTitles": ["messageIsTextMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsTextMessage should return true when message type is Pager",
+      "status": "passed",
+      "title": "should return true when message type is Pager"
+    }, {
+      "ancestorTitles": ["messageIsTextMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsTextMessage should return false when message type is Fax",
+      "status": "passed",
+      "title": "should return false when message type is Fax"
+    }, {
+      "ancestorTitles": ["messageIsTextMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsTextMessage should return false when message type is VoiceMail",
+      "status": "passed",
+      "title": "should return false when message type is VoiceMail"
+    }, {
+      "ancestorTitles": ["messageIsFax"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsFax should return true when message type is Fax",
+      "status": "passed",
+      "title": "should return true when message type is Fax"
+    }, {
+      "ancestorTitles": ["messageIsFax"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsFax should return false when message type is SMS",
+      "status": "passed",
+      "title": "should return false when message type is SMS"
+    }, {
+      "ancestorTitles": ["messageIsVoicemail"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsVoicemail should return true when message type is VoiceMail",
+      "status": "passed",
+      "title": "should return true when message type is VoiceMail"
+    }, {
+      "ancestorTitles": ["messageIsVoicemail"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsVoicemail should return false when message type is SMS",
+      "status": "passed",
+      "title": "should return false when message type is SMS"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is SMS and Alive",
+      "status": "passed",
+      "title": "should return true when message type is SMS and Alive"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is Pager and Alive",
+      "status": "passed",
+      "title": "should return true when message type is Pager and Alive"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is Fax and Alive",
+      "status": "passed",
+      "title": "should return true when message type is Fax and Alive"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is VoiceMail and Alive",
+      "status": "passed",
+      "title": "should return true when message type is VoiceMail and Alive"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is SMS and Deleted",
+      "status": "passed",
+      "title": "should return true when message type is SMS and Deleted"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is Pager and Deleted",
+      "status": "passed",
+      "title": "should return true when message type is Pager and Deleted"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return false when message type is Fax and Deleted",
+      "status": "passed",
+      "title": "should return false when message type is Fax and Deleted"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 81,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return true when message type is Fax and Inbound",
+      "status": "passed",
+      "title": "should return true when message type is Fax and Inbound"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return false when message type is Fax and Queued",
+      "status": "passed",
+      "title": "should return false when message type is Fax and Queued"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return false when message type is Fax and sending failed",
+      "status": "passed",
+      "title": "should return false when message type is Fax and sending failed"
+    }, {
+      "ancestorTitles": ["messageIsAcceptable"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "messageIsAcceptable should return false when message type is VoiceMail and Deleted",
+      "status": "passed",
+      "title": "should return false when message type is VoiceMail and Deleted"
+    }, {
+      "ancestorTitles": ["getMyNumberFromMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getMyNumberFromMessage should return my number correctly when message type is outbound SMS",
+      "status": "passed",
+      "title": "should return my number correctly when message type is outbound SMS"
+    }, {
+      "ancestorTitles": ["getMyNumberFromMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getMyNumberFromMessage should return my number correctly when message type is inbound SMS",
+      "status": "passed",
+      "title": "should return my number correctly when message type is inbound SMS"
+    }, {
+      "ancestorTitles": ["getMyNumberFromMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getMyNumberFromMessage should return my number correctly when message type is outbound Pager",
+      "status": "passed",
+      "title": "should return my number correctly when message type is outbound Pager"
+    }, {
+      "ancestorTitles": ["getMyNumberFromMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getMyNumberFromMessage should return my number correctly when message type is inbound Pager",
+      "status": "passed",
+      "title": "should return my number correctly when message type is inbound Pager"
+    }, {
+      "ancestorTitles": ["getRecipientNumbersFromMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getRecipientNumbersFromMessage should return recipient numbers correctly when message type is outbound SMS",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is outbound SMS"
+    }, {
+      "ancestorTitles": ["getRecipientNumbersFromMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getRecipientNumbersFromMessage should return recipient numbers correctly when message type is inbound SMS",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is inbound SMS"
+    }, {
+      "ancestorTitles": ["getRecipientNumbersFromMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getRecipientNumbersFromMessage should return recipient numbers correctly when message type is outbound Pager",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is outbound Pager"
+    }, {
+      "ancestorTitles": ["getRecipientNumbersFromMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getRecipientNumbersFromMessage should return recipient numbers correctly when message type is inbound Pager",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is inbound Pager"
+    }, {
+      "ancestorTitles": ["getRecipientNumbersFromMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getRecipientNumbersFromMessage should return recipient numbers correctly when message send to user self",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message send to user self"
+    }, {
+      "ancestorTitles": ["getRecipients"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getRecipients should return recipient numbers correctly when message type is outbound SMS",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is outbound SMS"
+    }, {
+      "ancestorTitles": ["getRecipients"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getRecipients should return recipient numbers correctly when message type is outbound Pager",
+      "status": "passed",
+      "title": "should return recipient numbers correctly when message type is outbound Pager"
+    }, {
+      "ancestorTitles": ["sortByDate"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "sortByDate should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["sortByDate"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "sortByDate should sort object by creationTime in descending order",
+      "status": "passed",
+      "title": "should sort object by creationTime in descending order"
+    }, {
+      "ancestorTitles": ["normalizeInstantEvent"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "normalizeInstantEvent should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["normalizeInstantEvent"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "normalizeInstantEvent should convert the \"id\" and \"conversationId\" property to number",
+      "status": "passed",
+      "title": "should convert the \"id\" and \"conversationId\" property to number"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 33,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447430435,
+      "runtime": 7348,
+      "slow": true,
+      "start": 1768447423087
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/di/test/registry.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["Registry", "#registerModule"],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Registry #registerModule should registry module basically",
+      "status": "passed",
+      "title": "should registry module basically"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModule"],
+      "duration": 39,
+      "failureMessages": [],
+      "fullName": "Registry #registerModule should throw when module is not a class",
+      "status": "passed",
+      "title": "should throw when module is not a class"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModule"],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "Registry #registerModule should throw when metadata is not an Object",
+      "status": "passed",
+      "title": "should throw when metadata is not an Object"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModule"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry #registerModule should support empty object without deps",
+      "status": "passed",
+      "title": "should support empty object without deps"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModule"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry #registerModule should throw when deps is not an Array",
+      "status": "passed",
+      "title": "should throw when deps is not an Array"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModuleProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry #registerModuleProvider should registry moduleProvider basically",
+      "status": "passed",
+      "title": "should registry moduleProvider basically"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModuleProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry #registerModuleProvider should throw when moduleFactory is not a class",
+      "status": "passed",
+      "title": "should throw when moduleFactory is not a class"
+    }, {
+      "ancestorTitles": ["Registry", "#registerModuleProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry #registerModuleProvider should ensure metadata is an Object",
+      "status": "passed",
+      "title": "should ensure metadata is an Object"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should return empty array when no provider is found",
+      "status": "passed",
+      "title": "should return empty array when no provider is found"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should return original provider when no parent is found",
+      "status": "passed",
+      "title": "should return original provider when no parent is found"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 120,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should cache inheritance computation",
+      "status": "passed",
+      "title": "should cache inheritance computation"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should merge metadata",
+      "status": "passed",
+      "title": "should merge metadata"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should support multiple level inheritance",
+      "status": "passed",
+      "title": "should support multiple level inheritance"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should support empty provider inheritance",
+      "status": "passed",
+      "title": "should support empty provider inheritance"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance should also inherit metadata",
+      "status": "passed",
+      "title": "should also inherit metadata"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider overwrite"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider overwrite should overwrive previously defined provider",
+      "status": "passed",
+      "title": "should overwrive previously defined provider"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider overwrite"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider overwrite should overwirte parent provider by child provider",
+      "status": "passed",
+      "title": "should overwirte parent provider by child provider"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider merge value"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider merge value should be able to merge values",
+      "status": "passed",
+      "title": "should be able to merge values"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider merge value"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider merge value should support deep merge values",
+      "status": "passed",
+      "title": "should support deep merge values"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider merge value"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider merge value should support deep multiple merge values",
+      "status": "passed",
+      "title": "should support deep multiple merge values"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider merge value"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider merge value should throw when parent provider is not a value provider",
+      "status": "passed",
+      "title": "should throw when parent provider is not a value provider"
+    }, {
+      "ancestorTitles": ["Registry", "moduleFactory inheritance", "provider merge value"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry moduleFactory inheritance provider merge value should throw when parent provider is not an Object",
+      "status": "passed",
+      "title": "should throw when parent provider is not an Object"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should return empty array when no metadata is found",
+      "status": "passed",
+      "title": "should return empty array when no metadata is found"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should return original metadata when parent module is not found",
+      "status": "passed",
+      "title": "should return original metadata when parent module is not found"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance cache inheritance computation",
+      "status": "passed",
+      "title": "cache inheritance computation"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should merge deps metadata",
+      "status": "passed",
+      "title": "should merge deps metadata"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should merge multiple layer inheritance",
+      "status": "passed",
+      "title": "should merge multiple layer inheritance"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should support empty deps inheritance",
+      "status": "passed",
+      "title": "should support empty deps inheritance"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance should support multiple layer merge",
+      "status": "passed",
+      "title": "should support multiple layer merge"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance", "#mergeDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance #mergeDependencies should be not optional when parent is not optional",
+      "status": "passed",
+      "title": "should be not optional when parent is not optional"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance", "#mergeDependencies"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance #mergeDependencies should be not optional when child is not optional",
+      "status": "passed",
+      "title": "should be not optional when child is not optional"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance", "#mergeDependencies"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance #mergeDependencies should be not optional when parent and child are both not optional",
+      "status": "passed",
+      "title": "should be not optional when parent and child are both not optional"
+    }, {
+      "ancestorTitles": ["Registry", "module inheritance", "#mergeDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Registry module inheritance #mergeDependencies should be optional when parent and child are both optional",
+      "status": "passed",
+      "title": "should be optional when parent and child are both optional"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431004,
+      "runtime": 7658,
+      "slow": true,
+      "start": 1768447423346
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/hasNoAreaCode.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber is ServiceNumber",
+      "status": "passed",
+      "title": "should return false if phoneNumber is ServiceNumber"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber is hasPlus",
+      "status": "passed",
+      "title": "should return false if phoneNumber is hasPlus"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 98,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber length is not 7",
+      "status": "passed",
+      "title": "should return false if phoneNumber length is not 7"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber length is 7 and countryCode is not CA or US",
+      "status": "passed",
+      "title": "should return false if phoneNumber length is 7 and countryCode is not CA or US"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber length is 7, countryCode is CA and has areaCode",
+      "status": "passed",
+      "title": "should return false if phoneNumber length is 7, countryCode is CA and has areaCode"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return false if phoneNumber length is 7, countryCode is US and has areaCode",
+      "status": "passed",
+      "title": "should return false if phoneNumber length is 7, countryCode is US and has areaCode"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return true if phoneNumber length is 7, countryCode is US and has not areaCode",
+      "status": "passed",
+      "title": "should return true if phoneNumber length is 7, countryCode is US and has not areaCode"
+    }, {
+      "ancestorTitles": ["hasNoAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "hasNoAreaCode should return true if phoneNumber length is 7, countryCode is CA and has not areaCode",
+      "status": "passed",
+      "title": "should return true if phoneNumber length is 7, countryCode is CA and has not areaCode"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 43,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431395,
+      "runtime": 8450,
+      "slow": true,
+      "start": 1768447422945
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/di/test/injector.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["Injector", "#resolveModuleProvider"],
+      "duration": 154,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider should throw when provider class does not exist",
+      "status": "passed",
+      "title": "should throw when provider class does not exist"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider should not calculate provider if already exists",
+      "status": "passed",
+      "title": "should not calculate provider if already exists"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ExistingProvider"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ExistingProvider should support ClassProvider",
+      "status": "passed",
+      "title": "should support ClassProvider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ExistingProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ExistingProvider shold throw when use existing parent ModuleFactory provider",
+      "status": "passed",
+      "title": "shold throw when use existing parent ModuleFactory provider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ExistingProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ExistingProvider should support ValueProvider",
+      "status": "passed",
+      "title": "should support ValueProvider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ExistingProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ExistingProvider should support FactoryProvider",
+      "status": "passed",
+      "title": "should support FactoryProvider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "hierarchical providers"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider hierarchical providers should be copied to local container",
+      "status": "passed",
+      "title": "should be copied to local container"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should process ValueProvider correctly",
+      "status": "passed",
+      "title": "should process ValueProvider correctly"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should support object type",
+      "status": "passed",
+      "title": "should support object type"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should support number type",
+      "status": "passed",
+      "title": "should support number type"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should support string type",
+      "status": "passed",
+      "title": "should support string type"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should support boolean type",
+      "status": "passed",
+      "title": "should support boolean type"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should support array type",
+      "status": "passed",
+      "title": "should support array type"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ValueProvider"],
+      "duration": 13,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ValueProvider should recognize spread flag",
+      "status": "passed",
+      "title": "should recognize spread flag"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "FactoryProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider FactoryProvider should support factory provider",
+      "status": "passed",
+      "title": "should support factory provider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "FactoryProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider FactoryProvider should support deps",
+      "status": "passed",
+      "title": "should support deps"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "FactoryProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider FactoryProvider should support optional deps",
+      "status": "passed",
+      "title": "should support optional deps"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ClassProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ClassProvider should support ClassProvider",
+      "status": "passed",
+      "title": "should support ClassProvider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ClassProvider"],
+      "duration": 118,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ClassProvider should resolve dependent providers when resolving class provider",
+      "status": "passed",
+      "title": "should resolve dependent providers when resolving class provider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ClassProvider"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ClassProvider should resolve dependent providers in ancestor moduleFactory",
+      "status": "passed",
+      "title": "should resolve dependent providers in ancestor moduleFactory"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleProvider", "ClassProvider"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleProvider ClassProvider should throw when provider can not be resolved",
+      "status": "passed",
+      "title": "should throw when provider can not be resolved"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should throw an error when circular dependency is found",
+      "status": "passed",
+      "title": "should throw an error when circular dependency is found"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should resolve dependent provider when it can not be found",
+      "status": "passed",
+      "title": "should resolve dependent provider when it can not be found"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should resolve dependent moduleFactory provider",
+      "status": "passed",
+      "title": "should resolve dependent moduleFactory provider"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should support optional dependency",
+      "status": "passed",
+      "title": "should support optional dependency"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should support throw an error when dep is not optional and it can not be found",
+      "status": "passed",
+      "title": "should support throw an error when dep is not optional and it can not be found"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should resolve optional dependency when it exists",
+      "status": "passed",
+      "title": "should resolve optional dependency when it exists"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should spread values when it is marked as spread",
+      "status": "passed",
+      "title": "should spread values when it is marked as spread"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveDependencies"],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "Injector #resolveDependencies should inject injector instance",
+      "status": "passed",
+      "title": "should inject injector instance"
+    }, {
+      "ancestorTitles": ["Injector", "resolveModuleProviderForChildren"],
+      "duration": 71,
+      "failureMessages": [],
+      "fullName": "Injector resolveModuleProviderForChildren should resolve module provider for child injectors",
+      "status": "passed",
+      "title": "should resolve module provider for child injectors"
+    }, {
+      "ancestorTitles": ["Injector", "resolveModuleProviderForChildren"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector resolveModuleProviderForChildren should resolve module from parent injector",
+      "status": "passed",
+      "title": "should resolve module from parent injector"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleFactoryProvider"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleFactoryProvider should throw an error when try to resolve itself",
+      "status": "passed",
+      "title": "should throw an error when try to resolve itself"
+    }, {
+      "ancestorTitles": ["Injector", "#resolveModuleFactoryProvider"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #resolveModuleFactoryProvider should bootstrap a new Injector",
+      "status": "passed",
+      "title": "should bootstrap a new Injector"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap should return provider is it has already been resolved",
+      "status": "passed",
+      "title": "should return provider is it has already been resolved"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should recognize Value Provider",
+      "status": "passed",
+      "title": "should recognize Value Provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should process Value Provider",
+      "status": "passed",
+      "title": "should process Value Provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should process Class Provider",
+      "status": "passed",
+      "title": "should process Class Provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should process Existing Provider",
+      "status": "passed",
+      "title": "should process Existing Provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 33,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should process Factory Provider",
+      "status": "passed",
+      "title": "should process Factory Provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "provider categorize"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap provider categorize should throw an error when invalid provider is found",
+      "status": "passed",
+      "title": "should throw an error when invalid provider is found"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "resolving provider process"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap resolving provider process should not resolve provider when it exists",
+      "status": "passed",
+      "title": "should not resolve provider when it exists"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap", "resolving provider process"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap resolving provider process should try to resolve module factory provider",
+      "status": "passed",
+      "title": "should try to resolve module factory provider"
+    }, {
+      "ancestorTitles": ["Injector", "#_bootstrap"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Injector #_bootstrap inject module providers into root instance",
+      "status": "passed",
+      "title": "inject module providers into root instance"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431411,
+      "runtime": 7416,
+      "slow": true,
+      "start": 1768447423995
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/validateNumbers.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["validateNumbers"],
+      "duration": 236,
+      "failureMessages": [],
+      "fullName": "validateNumbers should return result numbers if phoneNumbers is valid",
+      "status": "passed",
+      "title": "should return result numbers if phoneNumbers is valid"
+    }, {
+      "ancestorTitles": ["validateNumbers"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "validateNumbers should return result true if one number is special number",
+      "status": "passed",
+      "title": "should return result true if one number is special number"
+    }, {
+      "ancestorTitles": ["validateNumbers"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateNumbers should return result true if one number is not an extension number",
+      "status": "passed",
+      "title": "should return result true if one number is not an extension number"
+    }, {
+      "ancestorTitles": ["validateNumbers"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "validateNumbers should throw error if one number is not an valid number",
+      "status": "passed",
+      "title": "should throw error if one number is not an valid number"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 6,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431450,
+      "runtime": 6928,
+      "slow": true,
+      "start": 1768447424522
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/detectBrowserLocale/index.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should return default locale of en-US in node",
+      "status": "passed",
+      "title": "should return default locale of en-US in node"
+    }, {
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should accept defaultLocale parameter and use that as default",
+      "status": "passed",
+      "title": "should accept defaultLocale parameter and use that as default"
+    }, {
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should use navigator.languages[0] as default if available",
+      "status": "passed",
+      "title": "should use navigator.languages[0] as default if available"
+    }, {
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should try to check navigator.language if navigator.languages is not availble",
+      "status": "passed",
+      "title": "should try to check navigator.language if navigator.languages is not availble"
+    }, {
+      "ancestorTitles": ["detectDefaultLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "detectDefaultLocale should fall back to default if navigator does not have language info",
+      "status": "passed",
+      "title": "should fall back to default if navigator does not have language info"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431895,
+      "runtime": 7633,
+      "slow": true,
+      "start": 1768447424262
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/contactHelper.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["uniqueContactItems"],
+      "duration": 161,
+      "failureMessages": [],
+      "fullName": "uniqueContactItems should return contact items uniqued by contact id",
+      "status": "passed",
+      "title": "should return contact items uniqued by contact id"
+    }, {
+      "ancestorTitles": ["uniqueContactItems"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "uniqueContactItems should return contact items uniqued by contact object reference",
+      "status": "passed",
+      "title": "should return contact items uniqued by contact object reference"
+    }, {
+      "ancestorTitles": ["SortContactItemsByName"],
+      "duration": 21,
+      "failureMessages": [],
+      "fullName": "SortContactItemsByName should return contact items sorted by contact name",
+      "status": "passed",
+      "title": "should return contact items sorted by contact name"
+    }, {
+      "ancestorTitles": ["GroupByFirstLetterOfName"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "GroupByFirstLetterOfName should return contact groups grouped by first letter of contact name",
+      "status": "passed",
+      "title": "should return contact groups grouped by first letter of contact name"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 19,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431849,
+      "runtime": 8840,
+      "slow": true,
+      "start": 1768447423009
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/di/test/features.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 11,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support spreadValues in ModuleFactory",
+      "status": "passed",
+      "title": "should support spreadValues in ModuleFactory"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 144,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support spread flag in FactoryProvider",
+      "status": "passed",
+      "title": "should support spread flag in FactoryProvider"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should inject modules",
+      "status": "passed",
+      "title": "should inject modules"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should inject dependencies",
+      "status": "passed",
+      "title": "should inject dependencies"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support useExisting values",
+      "status": "passed",
+      "title": "should support useExisting values"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features dependency name should be consistent with provider token",
+      "status": "passed",
+      "title": "dependency name should be consistent with provider token"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should handle circular dependency",
+      "status": "passed",
+      "title": "should handle circular dependency"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support private provider injection",
+      "status": "passed",
+      "title": "should support private provider injection"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 53,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should also inject injector into module",
+      "status": "passed",
+      "title": "should also inject injector into module"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support ModuleFactory inheritance",
+      "status": "passed",
+      "title": "should support ModuleFactory inheritance"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 12,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support value inheritance",
+      "status": "passed",
+      "title": "should support value inheritance"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support value overwrite",
+      "status": "passed",
+      "title": "should support value overwrite"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should throw when module deps is not found",
+      "status": "passed",
+      "title": "should throw when module deps is not found"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should not throw when module deps is optional",
+      "status": "passed",
+      "title": "should not throw when module deps is optional"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should inheritant deps correctly",
+      "status": "passed",
+      "title": "should inheritant deps correctly"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should get value if provided when module deps is optional",
+      "status": "passed",
+      "title": "should get value if provided when module deps is optional"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support @Library decorator",
+      "status": "passed",
+      "title": "should support @Library decorator"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should support hierarchical injector and reverse resolve",
+      "status": "passed",
+      "title": "should support hierarchical injector and reverse resolve"
+    }, {
+      "ancestorTitles": ["Dependency Injection Features"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Dependency Injection Features should make sure module will not be affected by decorator",
+      "status": "passed",
+      "title": "should make sure module will not be affected by decorator"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447431942,
+      "runtime": 7845,
+      "slow": true,
+      "start": 1768447424097
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/fetchWithRetry.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["backoffDelay"],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "backoffDelay should return 1000ms for the first retry",
+      "status": "passed",
+      "title": "should return 1000ms for the first retry"
+    }, {
+      "ancestorTitles": ["backoffDelay"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "backoffDelay should return 2000ms for the second retry",
+      "status": "passed",
+      "title": "should return 2000ms for the second retry"
+    }, {
+      "ancestorTitles": ["backoffDelay"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "backoffDelay should return 4000ms for the third retry",
+      "status": "passed",
+      "title": "should return 4000ms for the third retry"
+    }, {
+      "ancestorTitles": ["backoffDelay"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "backoffDelay should return 8000ms for the fourth retry",
+      "status": "passed",
+      "title": "should return 8000ms for the fourth retry"
+    }, {
+      "ancestorTitles": ["backoffDelay"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "backoffDelay should return 16000ms for the fifth retry",
+      "status": "passed",
+      "title": "should return 16000ms for the fifth retry"
+    }, {
+      "ancestorTitles": ["isRetirableStatus"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "isRetirableStatus should return true for status 500 <599",
+      "status": "passed",
+      "title": "should return true for status 500 <599"
+    }, {
+      "ancestorTitles": ["isRetirableStatus"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "isRetirableStatus should return true for status 429",
+      "status": "passed",
+      "title": "should return true for status 429"
+    }, {
+      "ancestorTitles": ["isRetirableStatus"],
+      "duration": 140,
+      "failureMessages": [],
+      "fullName": "isRetirableStatus should return false for status <500",
+      "status": "passed",
+      "title": "should return false for status <500"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 5,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432585,
+      "runtime": 2123,
+      "slow": false,
+      "start": 1768447430462
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/isValidNumber.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["isValidNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "isValidNumber should return false if phoneNumber is blank",
+      "status": "passed",
+      "title": "should return false if phoneNumber is blank"
+    }, {
+      "ancestorTitles": ["isValidNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "isValidNumber should return false if cleanNumber is blank",
+      "status": "passed",
+      "title": "should return false if cleanNumber is blank"
+    }, {
+      "ancestorTitles": ["isValidNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "isValidNumber should return true if phoneNumber is extensionNumber",
+      "status": "passed",
+      "title": "should return true if phoneNumber is extensionNumber"
+    }, {
+      "ancestorTitles": ["isValidNumber"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "isValidNumber should return true if phoneNumber is valid",
+      "status": "passed",
+      "title": "should return true if phoneNumber is valid"
+    }, {
+      "ancestorTitles": ["isValidNumber"],
+      "duration": 90,
+      "failureMessages": [],
+      "fullName": "isValidNumber should return true if phoneNumber is e164 format",
+      "status": "passed",
+      "title": "should return true if phoneNumber is e164 format"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432648,
+      "runtime": 2044,
+      "slow": false,
+      "start": 1768447430604
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/di/test/decorator.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["Module and Library decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Module and Library decorator metadata should be registered",
+      "status": "passed",
+      "title": "metadata should be registered"
+    }, {
+      "ancestorTitles": ["Module and Library decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Module and Library decorator Module metadata should be regitered",
+      "status": "passed",
+      "title": "Module metadata should be regitered"
+    }, {
+      "ancestorTitles": ["Module and Library decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Module and Library decorator Support empty module metadata",
+      "status": "passed",
+      "title": "Support empty module metadata"
+    }, {
+      "ancestorTitles": ["Module and Library decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Module and Library decorator Throw an error when register invalid module",
+      "status": "passed",
+      "title": "Throw an error when register invalid module"
+    }, {
+      "ancestorTitles": ["ModuleFactory decorator"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "ModuleFactory decorator metadata should be registered",
+      "status": "passed",
+      "title": "metadata should be registered"
+    }, {
+      "ancestorTitles": ["ModuleFactory decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "ModuleFactory decorator should register metadata",
+      "status": "passed",
+      "title": "should register metadata"
+    }, {
+      "ancestorTitles": ["ModuleFactory decorator"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "ModuleFactory decorator should throw error when metadata is invalid",
+      "status": "passed",
+      "title": "should throw error when metadata is invalid"
+    }, {
+      "ancestorTitles": ["ModuleFactory decorator"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "ModuleFactory decorator should throw error when providers is invalid",
+      "status": "passed",
+      "title": "should throw error when providers is invalid"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432665,
+      "runtime": 1175,
+      "slow": false,
+      "start": 1768447431490
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/chunkMessage.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "chunkMessage should return empty array when no text specified",
+      "status": "passed",
+      "title": "should return empty array when no text specified"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "chunkMessage should throw error when maxLength is not a number",
+      "status": "passed",
+      "title": "should throw error when maxLength is not a number"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "chunkMessage should throw error when maxLength is less than 1",
+      "status": "passed",
+      "title": "should throw error when maxLength is less than 1"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "chunkMessage should return only 1 chunk",
+      "status": "passed",
+      "title": "should return only 1 chunk"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "chunkMessage should not break word",
+      "status": "passed",
+      "title": "should not break word"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "chunkMessage should not break link",
+      "status": "passed",
+      "title": "should not break link"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "chunkMessage should split into 2 chunks",
+      "status": "passed",
+      "title": "should split into 2 chunks"
+    }, {
+      "ancestorTitles": ["chunkMessage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "chunkMessage should split into 3 chunks",
+      "status": "passed",
+      "title": "should split into 3 chunks"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 6,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432681,
+      "runtime": 1194,
+      "slow": false,
+      "start": 1768447431487
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/di/test/container.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["Container", "#has"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Container #has should search locally firstly",
+      "status": "passed",
+      "title": "should search locally firstly"
+    }, {
+      "ancestorTitles": ["Container", "#has"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Container #has should search from parent container",
+      "status": "passed",
+      "title": "should search from parent container"
+    }, {
+      "ancestorTitles": ["Container", "#has"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Container #has should return false when no record is found",
+      "status": "passed",
+      "title": "should return false when no record is found"
+    }, {
+      "ancestorTitles": ["Container", "#get"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "Container #get should search locally firstly",
+      "status": "passed",
+      "title": "should search locally firstly"
+    }, {
+      "ancestorTitles": ["Container", "#get"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Container #get should search from parent container",
+      "status": "passed",
+      "title": "should search from parent container"
+    }, {
+      "ancestorTitles": ["Container", "#get"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Container #get should throw an error when no record is found",
+      "status": "passed",
+      "title": "should throw an error when no record is found"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432732,
+      "runtime": 1635,
+      "slow": false,
+      "start": 1768447431097
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/getModuleStatusReducer/index.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["getModuleStatusReducer"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer should return a reducer",
+      "status": "passed",
+      "title": "should return a reducer"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should have initial state of moduleStatuses.pending",
+      "status": "passed",
+      "title": "should have initial state of moduleStatuses.pending"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should return original state if type is not recognized",
+      "status": "passed",
+      "title": "should return original state if type is not recognized"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should return moduleStatuses.initializing on init",
+      "status": "passed",
+      "title": "should return moduleStatuses.initializing on init"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should return moduleStatuses.ready on initSuccess",
+      "status": "passed",
+      "title": "should return moduleStatuses.ready on initSuccess"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should return moduleStatuses.resetting on reset",
+      "status": "passed",
+      "title": "should return moduleStatuses.resetting on reset"
+    }, {
+      "ancestorTitles": ["getModuleStatusReducer", "defaultDataReducer"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getModuleStatusReducer defaultDataReducer should return moduleStatuses.pending on resetSuccess",
+      "status": "passed",
+      "title": "should return moduleStatuses.pending on resetSuccess"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 10,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447432875,
+      "runtime": 1274,
+      "slow": false,
+      "start": 1768447431601
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/cleanNumber/cleanNumber.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return numeric values if number only contains numeric values",
+      "status": "passed",
+      "title": "should return numeric values if number only contains numeric values"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return '' if number is iamn%@onedi!@$%^&()_=\\][';/.,~nu><.,,?/mber",
+      "status": "passed",
+      "title": "should return '' if number is iamn%@onedi!@$%^&()_=\\][';/.,~nu><.,,?/mber"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return numeric values with * if number contains numeric values and *",
+      "status": "passed",
+      "title": "should return numeric values with * if number contains numeric values and *"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return leading * if number contains leading *",
+      "status": "passed",
+      "title": "should return leading * if number contains leading *"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return numeric values with * if number contains numeric values and #",
+      "status": "passed",
+      "title": "should return numeric values with * if number contains numeric values and #"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return leading * if number contains leading #",
+      "status": "passed",
+      "title": "should return leading * if number contains leading #"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return leading + if number contains leading +",
+      "status": "passed",
+      "title": "should return leading + if number contains leading +"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should not return + if + is not leading",
+      "status": "passed",
+      "title": "should not return + if + is not leading"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return numeric value with +, * if number is +abc*10d1",
+      "status": "passed",
+      "title": "should return numeric value with +, * if number is +abc*10d1"
+    }, {
+      "ancestorTitles": ["cleanNumber"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "cleanNumber should return numeric value with +, * if number is +abc#10d1",
+      "status": "passed",
+      "title": "should return numeric value with +, * if number is +abc#10d1"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 9,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433239,
+      "runtime": 1261,
+      "slow": false,
+      "start": 1768447431978
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/MemoryStorage/index.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["MemoryStorage"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage should be a constructor function",
+      "status": "passed",
+      "title": "should be a constructor function"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have function getItem",
+      "status": "passed",
+      "title": "should have function getItem"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have function setItem",
+      "status": "passed",
+      "title": "should have function setItem"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have function removeItem",
+      "status": "passed",
+      "title": "should have function removeItem"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should behave similar to localStorage with getItem, setItem, and removeItem",
+      "status": "passed",
+      "title": "should behave similar to localStorage with getItem, setItem, and removeItem"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have function key",
+      "status": "passed",
+      "title": "should have function key"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have property length",
+      "status": "passed",
+      "title": "should have property length"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should have the correct length",
+      "status": "passed",
+      "title": "should have the correct length"
+    }, {
+      "ancestorTitles": ["MemoryStorage", "MemoryStorage instance"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "MemoryStorage MemoryStorage instance should return storage keys with key function",
+      "status": "passed",
+      "title": "should return storage keys with key function"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 10,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433268,
+      "runtime": 1333,
+      "slow": false,
+      "start": 1768447431935
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/validateAreaCode/validateAreaCode.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is 650",
+      "status": "passed",
+      "title": "should return true when areaCode is 650"
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is \"\"",
+      "status": "passed",
+      "title": "should return true when areaCode is \"\""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is \" \"",
+      "status": "passed",
+      "title": "should return true when areaCode is \" \""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is \"   \"",
+      "status": "passed",
+      "title": "should return true when areaCode is \"   \""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is \"    \"",
+      "status": "passed",
+      "title": "should return true when areaCode is \"    \""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return true when areaCode is undefined",
+      "status": "passed",
+      "title": "should return true when areaCode is undefined"
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return false when areaCode is null",
+      "status": "passed",
+      "title": "should return false when areaCode is null"
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return false when areaCode is \"011\"",
+      "status": "passed",
+      "title": "should return false when areaCode is \"011\""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return false when areaCode is \"11\"",
+      "status": "passed",
+      "title": "should return false when areaCode is \"11\""
+    }, {
+      "ancestorTitles": ["validateAreaCode"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "validateAreaCode should return false when areaCode is \"1122\"",
+      "status": "passed",
+      "title": "should return false when areaCode is \"1122\""
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 28,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433280,
+      "runtime": 8828,
+      "slow": true,
+      "start": 1768447424452
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/RcModule/RcModule.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["RcModule"],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "RcModule should be a constructor function",
+      "status": "passed",
+      "title": "should be a constructor function"
+    }, {
+      "ancestorTitles": ["RcModule"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule should return a RcModule instance",
+      "status": "passed",
+      "title": "should return a RcModule instance"
+    }, {
+      "ancestorTitles": ["RcModule", "constructor parameters", "getState"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule constructor parameters getState should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["RcModule", "prefix"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule prefix should be null-like or string",
+      "status": "passed",
+      "title": "should be null-like or string"
+    }, {
+      "ancestorTitles": ["RcModule", "actionType"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule actionType should be put to `actionTypes` instance property if present",
+      "status": "passed",
+      "title": "should be put to `actionTypes` instance property if present"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "actionTypes"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties actionTypes should be undefined if not set in options",
+      "status": "passed",
+      "title": "should be undefined if not set in options"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "actionTypes"],
+      "duration": 77,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties actionTypes should should be prefixed if prefix is set",
+      "status": "passed",
+      "title": "should should be prefixed if prefix is set"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "reducer"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties reducer should have a default reducer",
+      "status": "passed",
+      "title": "should have a default reducer"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "reducer", "default reducer"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties reducer default reducer should return null as initial state",
+      "status": "passed",
+      "title": "should return null as initial state"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "reducer", "default reducer"],
+      "duration": 46,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties reducer default reducer should ignore unknown actionTypes",
+      "status": "passed",
+      "title": "should ignore unknown actionTypes"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "store"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties store should throw error if trying to access before setStore",
+      "status": "passed",
+      "title": "should throw error if trying to access before setStore"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "store"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties store should return a store object after setStore",
+      "status": "passed",
+      "title": "should return a store object after setStore"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "state"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties state should return initial state after setStore with store",
+      "status": "passed",
+      "title": "should return initial state after setStore with store"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "state"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties state should return new state after action has been dispatched",
+      "status": "passed",
+      "title": "should return new state after action has been dispatched"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "prefix"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties prefix should be undefined if not defined in options",
+      "status": "passed",
+      "title": "should be undefined if not defined in options"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "prefix"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties prefix should return prefix string if defined in options",
+      "status": "passed",
+      "title": "should return prefix string if defined in options"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "modulePath"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties modulePath should be `root` for root modules",
+      "status": "passed",
+      "title": "should be `root` for root modules"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance", "RcModule instance properties", "modulePath"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance RcModule instance properties modulePath should return `.` delimited module structure path",
+      "status": "passed",
+      "title": "should return `.` delimited module structure path"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should accept a store object",
+      "status": "passed",
+      "title": "should accept a store object"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should only be called on root module",
+      "status": "passed",
+      "title": "should only be called on root module"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should set store to the subModules as well",
+      "status": "passed",
+      "title": "should set store to the subModules as well"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should trigger initialize function if exists",
+      "status": "passed",
+      "title": "should trigger initialize function if exists"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "setStore"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods setStore should only be called once",
+      "status": "passed",
+      "title": "should only be called once"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "addModule"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods addModule should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "addModule"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods addModule should throw if property of the same name exists",
+      "status": "passed",
+      "title": "should throw if property of the same name exists"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "addModule"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods addModule should set modulePath for the subModule",
+      "status": "passed",
+      "title": "should set modulePath for the subModule"
+    }, {
+      "ancestorTitles": ["RcModule", "RcModule instance methods", "addModule"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcModule RcModule instance methods addModule subModule path should only be set once",
+      "status": "passed",
+      "title": "subModule path should only be set once"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433466,
+      "runtime": 9471,
+      "slow": true,
+      "start": 1768447423995
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/BrowserLogger.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["BrowserLogger"],
+      "duration": 10,
+      "failureMessages": [],
+      "fullName": "BrowserLogger check logger",
+      "status": "passed",
+      "title": "check logger"
+    }, {
+      "ancestorTitles": ["BrowserLogger"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "BrowserLogger should enable logger when enabled is true",
+      "status": "passed",
+      "title": "should enable logger when enabled is true"
+    }, {
+      "ancestorTitles": ["BrowserLogger"],
+      "duration": 87,
+      "failureMessages": [],
+      "fullName": "BrowserLogger should disable logger when enabled is false",
+      "status": "passed",
+      "title": "should disable logger when enabled is false"
+    }, {
+      "ancestorTitles": ["BrowserLogger"],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "BrowserLogger should downloadLogs when has storageTransport",
+      "status": "passed",
+      "title": "should downloadLogs when has storageTransport"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 9,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433469,
+      "runtime": 1353,
+      "slow": false,
+      "start": 1768447432116
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RTCAudioMeter.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["RTCAudioMeter", "_initialize"],
+      "duration": 38,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter _initialize check _initialize",
+      "status": "passed",
+      "title": "check _initialize"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "updateInputStream"],
+      "duration": 33,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter updateInputStream should update the input stream",
+      "status": "passed",
+      "title": "should update the input stream"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "updateInputStream"],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter updateInputStream should reject if there is no audioContext or audioNode",
+      "status": "passed",
+      "title": "should reject if there is no audioContext or audioNode"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "updateInputStream"],
+      "duration": 156,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter updateInputStream should disconnect the old audio source if it exists",
+      "status": "passed",
+      "title": "should disconnect the old audio source if it exists"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "updateInputStream"],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter updateInputStream should activate audioContext if it is suspended",
+      "status": "passed",
+      "title": "should activate audioContext if it is suspended"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "updateInputStream"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter updateInputStream should create a media element source if input is an HTMLMediaElement",
+      "status": "passed",
+      "title": "should create a media element source if input is an HTMLMediaElement"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "getMicLevel"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter getMicLevel should return 0 if audioContext or audioNode is not available",
+      "status": "passed",
+      "title": "should return 0 if audioContext or audioNode is not available"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "getMicLevel"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter getMicLevel should return the mic level",
+      "status": "passed",
+      "title": "should return the mic level"
+    }, {
+      "ancestorTitles": ["RTCAudioMeter", "getMicLevel"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RTCAudioMeter getMicLevel should return 0 if there is an error",
+      "status": "passed",
+      "title": "should return 0 if there is an error"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433852,
+      "runtime": 1234,
+      "slow": false,
+      "start": 1768447432618
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/localeRegExp.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["localeRegExp"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "localeRegExp should be a regular expression",
+      "status": "passed",
+      "title": "should be a regular expression"
+    }, {
+      "ancestorTitles": ["localeRegExp"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "localeRegExp should recognize locale formatted strings",
+      "status": "passed",
+      "title": "should recognize locale formatted strings"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 21,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447433993,
+      "runtime": 1287,
+      "slow": false,
+      "start": 1768447432706
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/formatDuration/formatDuration.test.ts",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["formatDuration"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDuration with number or string type value"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDuration with number or string type value formatted string should be expected",
+      "status": "passed",
+      "title": "formatted string should be expected"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDuration with NaN or undefined"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDuration with NaN or undefined formatted string should be expected",
+      "status": "passed",
+      "title": "formatted string should be expected"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDuration with NaN or undefined"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDuration with NaN or undefined formatted string should be expected with custom invalid",
+      "status": "passed",
+      "title": "formatted string should be expected with custom invalid"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should format duration correctly for seconds",
+      "status": "passed",
+      "title": "should format duration correctly for seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should format duration correctly for minutes and seconds",
+      "status": "passed",
+      "title": "should format duration correctly for minutes and seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should format duration correctly for hours, minutes and seconds",
+      "status": "passed",
+      "title": "should format duration correctly for hours, minutes and seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should format duration correctly for days, hours, minutes and seconds",
+      "status": "passed",
+      "title": "should format duration correctly for days, hours, minutes and seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should format duration correctly for more than one month",
+      "status": "passed",
+      "title": "should format duration correctly for more than one month"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should return empty string for null or undefined duration",
+      "status": "passed",
+      "title": "should return empty string for null or undefined duration"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale should return empty string for zero duration",
+      "status": "passed",
+      "title": "should return empty string for zero duration"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should omit zero seconds when minutes are non-zero",
+      "status": "passed",
+      "title": "should omit zero seconds when minutes are non-zero"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should omit zero minutes and seconds when hours are non-zero",
+      "status": "passed",
+      "title": "should omit zero minutes and seconds when hours are non-zero"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should omit zero hours, minutes and seconds when days are non-zero",
+      "status": "passed",
+      "title": "should omit zero hours, minutes and seconds when days are non-zero"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should omit only trailing zero seconds",
+      "status": "passed",
+      "title": "should omit only trailing zero seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should omit trailing zero minutes and seconds",
+      "status": "passed",
+      "title": "should omit trailing zero minutes and seconds"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should keep non-zero middle units even if trailing units are zero",
+      "status": "passed",
+      "title": "should keep non-zero middle units even if trailing units are zero"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should handle complex scenarios with multiple trailing zeros",
+      "status": "passed",
+      "title": "should handle complex scenarios with multiple trailing zeros"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 34,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should handle scenarios with zero middle units but non-zero trailing units",
+      "status": "passed",
+      "title": "should handle scenarios with zero middle units but non-zero trailing units"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should format exact hour durations correctly",
+      "status": "passed",
+      "title": "should format exact hour durations correctly"
+    }, {
+      "ancestorTitles": ["formatDuration", "formatDurationWithLocale", "omitting trailing zero units"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "formatDuration formatDurationWithLocale omitting trailing zero units should format exact day durations correctly",
+      "status": "passed",
+      "title": "should format exact day durations correctly"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447434086,
+      "runtime": 1394,
+      "slow": false,
+      "start": 1768447432692
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/isBlank.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["isBlank"],
+      "duration": 162,
+      "failureMessages": [],
+      "fullName": "isBlank should return true when string is blank",
+      "status": "passed",
+      "title": "should return true when string is blank"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 28,
+      "failureMessages": [],
+      "fullName": "isBlank should return true when string is null",
+      "status": "passed",
+      "title": "should return true when string is null"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "isBlank should return true when string is undefined",
+      "status": "passed",
+      "title": "should return true when string is undefined"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "isBlank should return true when string is one space",
+      "status": "passed",
+      "title": "should return true when string is one space"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 27,
+      "failureMessages": [],
+      "fullName": "isBlank should return true when string is multiply space",
+      "status": "passed",
+      "title": "should return true when string is multiply space"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "isBlank should return false when string is not blank with number",
+      "status": "passed",
+      "title": "should return false when string is not blank with number"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "isBlank should return false when string is not blank with letter",
+      "status": "passed",
+      "title": "should return false when string is not blank with letter"
+    }, {
+      "ancestorTitles": ["isBlank"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "isBlank should return false when string is not blank with letter and space",
+      "status": "passed",
+      "title": "should return false when string is not blank with letter and space"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 11,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447434104,
+      "runtime": 1339,
+      "slow": false,
+      "start": 1768447432765
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/RCI-7625-formatDateFromNow.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return the time if the date is today",
+      "status": "passed",
+      "title": "should return the time if the date is today"
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return \"yesterday\" if the date is yesterday and startTimeMode is \"withoutTime\"",
+      "status": "passed",
+      "title": "should return \"yesterday\" if the date is yesterday and startTimeMode is \"withoutTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return \"yesterday, time\" if the date is yesterday and startTimeMode is \"withTime\"",
+      "status": "passed",
+      "title": "should return \"yesterday, time\" if the date is yesterday and startTimeMode is \"withTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return the day of the week if the date is within the current week and startTimeMode is \"withoutTime\"",
+      "status": "passed",
+      "title": "should return the day of the week if the date is within the current week and startTimeMode is \"withoutTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return \"day of the week, time\" if the date is within the current week and startTimeMode is \"withTime\"",
+      "status": "passed",
+      "title": "should return \"day of the week, time\" if the date is within the current week and startTimeMode is \"withTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return the date in \"M/D\" format if the date is within the current year and startTimeMode is \"withoutTime\"",
+      "status": "passed",
+      "title": "should return the date in \"M/D\" format if the date is within the current year and startTimeMode is \"withoutTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return \"M/D, time\" if the date is within the current year and startTimeMode is \"withTime\"",
+      "status": "passed",
+      "title": "should return \"M/D, time\" if the date is within the current year and startTimeMode is \"withTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return the date in localized format if the date is not within the current year and startTimeMode is \"withoutTime\"",
+      "status": "passed",
+      "title": "should return the date in localized format if the date is not within the current year and startTimeMode is \"withoutTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return \"localized format, time\" if the date is not within the current year and startTimeMode is \"withTime\"",
+      "status": "passed",
+      "title": "should return \"localized format, time\" if the date is not within the current year and startTimeMode is \"withTime\""
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return an empty string if startTime is undefined",
+      "status": "passed",
+      "title": "should return an empty string if startTime is undefined"
+    }, {
+      "ancestorTitles": ["formatDateFromNow"],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "formatDateFromNow should return an empty string if startTime is null",
+      "status": "passed",
+      "title": "should return an empty string if startTime is null"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 12,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447434115,
+      "runtime": 1280,
+      "slow": false,
+      "start": 1768447432835
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/lib/getIntlDateTimeFormatter/index.test.js",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": ["getFormatter"],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "getFormatter should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["getFormatter"],
+      "duration": 188,
+      "failureMessages": [],
+      "fullName": "getFormatter should return a Intl.DateTimeFormatter instance",
+      "status": "passed",
+      "title": "should return a Intl.DateTimeFormatter instance"
+    }, {
+      "ancestorTitles": ["getFormatter"],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "getFormatter should cache and reuse instance if locale and options are identical",
+      "status": "passed",
+      "title": "should cache and reuse instance if locale and options are identical"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter should be a function",
+      "status": "passed",
+      "title": "should be a function"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter should return a function",
+      "status": "passed",
+      "title": "should return a function"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter should allow customizing options",
+      "status": "passed",
+      "title": "should allow customizing options"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should format timestamp to date-time string if type === \"long\"",
+      "status": "passed",
+      "title": "should format timestamp to date-time string if type === \"long\""
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should format timestamp to date string if type === \"date\"",
+      "status": "passed",
+      "title": "should format timestamp to date string if type === \"date\""
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should format timestamp to time string if type === \"time\"",
+      "status": "passed",
+      "title": "should format timestamp to time string if type === \"time\""
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should format timestamp to time string if type is not defined and time is today",
+      "status": "passed",
+      "title": "should format timestamp to time string if type is not defined and time is today"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 0,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should format timestamp to date string if type is not defined and time is not today",
+      "status": "passed",
+      "title": "should format timestamp to date string if type is not defined and time is not today"
+    }, {
+      "ancestorTitles": ["getIntlDateTimeFormatter", "intlDateTimeFormatter"],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "getIntlDateTimeFormatter intlDateTimeFormatter should support iso formatted timestamp string",
+      "status": "passed",
+      "title": "should support iso formatted timestamp string"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 7,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447445026,
+      "runtime": 11658,
+      "slow": true,
+      "start": 1768447433368
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/AccountContacts/AccountContactHelper.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 135,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 95,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 59,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 98,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }, {
+      "ancestorTitles": [],
+      "duration": 10,
+      "failureMessages": [],
+      "fullName": "multiple site - contact match",
+      "status": "passed",
+      "title": "multiple site - contact match"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 7,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447445860,
+      "runtime": 12588,
+      "slow": true,
+      "start": 1768447433272
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Brand/processAssets.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 97,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"null\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"null\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"undefined\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"undefined\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \".\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \".\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"./\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"./\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"https://fake.com\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"https://fake.com\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit Test for processAssets - origin \"https://fake.com//\"",
+      "status": "passed",
+      "title": "Unit Test for processAssets - origin \"https://fake.com//\""
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447446634,
+      "runtime": 12762,
+      "slow": true,
+      "start": 1768447433872
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/UserGuide.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 72,
+      "failureMessages": [],
+      "fullName": "UserGuide Module \"setPreLoadImageStatus\" action",
+      "status": "passed",
+      "title": "UserGuide Module \"setPreLoadImageStatus\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "UserGuide Module \"setGuides\" action",
+      "status": "passed",
+      "title": "UserGuide Module \"setGuides\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "UserGuide Module \"setCarousel\" action",
+      "status": "passed",
+      "title": "UserGuide Module \"setCarousel\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "UserGuide Module \"_migrateGuides\" action",
+      "status": "passed",
+      "title": "UserGuide Module \"_migrateGuides\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447446715,
+      "runtime": 12615,
+      "slow": true,
+      "start": 1768447434100
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Softphone.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 12,
+      "failureMessages": [],
+      "fullName": "Softphone Module \"startToConnect\" action with phoneNumber: 1650126789",
+      "status": "passed",
+      "title": "Softphone Module \"startToConnect\" action with phoneNumber: 1650126789"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Softphone Module \"connectComplete\" action",
+      "status": "passed",
+      "title": "Softphone Module \"connectComplete\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447446979,
+      "runtime": 12793,
+      "slow": true,
+      "start": 1768447434186
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Ringout.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 21,
+      "failureMessages": [],
+      "fullName": "Ringout Module \"setRingoutStatus\" action",
+      "status": "passed",
+      "title": "Ringout Module \"setRingoutStatus\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 3,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447447368,
+      "runtime": 14079,
+      "slow": true,
+      "start": 1768447433289
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/AccountContacts/AccountContacts.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 106,
+      "failureMessages": [],
+      "fullName": "Check fetch image Success in AccountContacts",
+      "status": "passed",
+      "title": "Check fetch image Success in AccountContacts"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Check batch fetch presence success in AccountContacts",
+      "status": "passed",
+      "title": "Check batch fetch presence success in AccountContacts"
+    }, {
+      "ancestorTitles": [],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "Check mobile and contact phone numbers are included in AccountContacts",
+      "status": "passed",
+      "title": "Check mobile and contact phone numbers are included in AccountContacts"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447448069,
+      "runtime": 14475,
+      "slow": true,
+      "start": 1768447433594
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/VolumeInspector.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 155,
+      "failureMessages": [],
+      "fullName": "VolumeInspector Module test",
+      "status": "passed",
+      "title": "VolumeInspector Module test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 9,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447448838,
+      "runtime": 14755,
+      "slow": true,
+      "start": 1768447434083
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Subscription.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 161,
+      "failureMessages": [],
+      "fullName": "Subscription::on notification event",
+      "status": "passed",
+      "title": "Subscription::on notification event"
+    }, {
+      "ancestorTitles": [],
+      "duration": 32,
+      "failureMessages": [],
+      "fullName": "Subscription::on removeSuccess event",
+      "status": "passed",
+      "title": "Subscription::on removeSuccess event"
+    }, {
+      "ancestorTitles": [],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "Subscription::on removeError event",
+      "status": "passed",
+      "title": "Subscription::on removeError event"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Subscription::on renewSuccess event",
+      "status": "passed",
+      "title": "Subscription::on renewSuccess event"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Subscription::on renewError event when ready=true",
+      "status": "passed",
+      "title": "Subscription::on renewError event when ready=true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Subscription::on renewError event when ready=false",
+      "status": "passed",
+      "title": "Subscription::on renewError event when ready=false"
+    }, {
+      "ancestorTitles": [],
+      "duration": 16,
+      "failureMessages": [],
+      "fullName": "Subscription::on subscribeSuccess event",
+      "status": "passed",
+      "title": "Subscription::on subscribeSuccess event"
+    }, {
+      "ancestorTitles": [],
+      "duration": 17,
+      "failureMessages": [],
+      "fullName": "Subscription::on subscribeError event when ready=true",
+      "status": "passed",
+      "title": "Subscription::on subscribeError event when ready=true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "Subscription::on subscribeError event when ready=false",
+      "status": "passed",
+      "title": "Subscription::on subscribeError event when ready=false"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447448800,
+      "runtime": 14466,
+      "slow": true,
+      "start": 1768447434334
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RingCentralExtensions.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 113,
+      "failureMessages": [],
+      "fullName": "RingCentralExtensions Test",
+      "status": "passed",
+      "title": "RingCentralExtensions Test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 0,
+    "numPendingTests": 34,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447450721,
+      "runtime": 17832,
+      "slow": true,
+      "start": 1768447432889
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Meeting/Meeting.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Initialize Meeting module",
+      "status": "pending",
+      "title": "Initialize Meeting module"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is off",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is off"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings when enableServiceWebSettings is off",
+      "status": "pending",
+      "title": "Check generalDefaultSettings when enableServiceWebSettings is off"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings when enableServiceWebSettings is off",
+      "status": "pending",
+      "title": "Check generalDefaultSettings when enableServiceWebSettings is off"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check generalDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check generalDefaultSettings when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check pmiDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check generalDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check generalDefaultSettings lock data when enableServiceWebSettings is on",
+      "status": "pending",
+      "title": "Check generalDefaultSettings lock data when enableServiceWebSettings is on"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "increase meeting code coverage",
+      "status": "pending",
+      "title": "increase meeting code coverage"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "increase meeting code coverage",
+      "status": "pending",
+      "title": "increase meeting code coverage"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 0,
+    "numPendingTests": 4,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447451458,
+      "runtime": 6213,
+      "slow": true,
+      "start": 1768447445245
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RegionSettings.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "RegionSettings Module \"_setData\" action",
+      "status": "pending",
+      "title": "RegionSettings Module \"_setData\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "RegionSettings Module \"_setData\" action",
+      "status": "pending",
+      "title": "RegionSettings Module \"_setData\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "RegionSettings Module \"_setData\" action",
+      "status": "pending",
+      "title": "RegionSettings Module \"_setData\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check RegionSettings alert (when app init)",
+      "status": "pending",
+      "title": "Check RegionSettings alert (when app init)"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447451696,
+      "runtime": 4904,
+      "slow": false,
+      "start": 1768447446792
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RateLimiter.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "RateLimiter Module \"startThrottle\" action",
+      "status": "passed",
+      "title": "RateLimiter Module \"startThrottle\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RateLimiter Module \"stopThrottle\" action",
+      "status": "passed",
+      "title": "RateLimiter Module \"stopThrottle\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 5,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447452123,
+      "runtime": 6190,
+      "slow": true,
+      "start": 1768447445933
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RecentCalls.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "RecentCalls Module \"initLoad\" action",
+      "status": "passed",
+      "title": "RecentCalls Module \"initLoad\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RecentCalls Module \"loadSuccess\" action",
+      "status": "passed",
+      "title": "RecentCalls Module \"loadSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 85,
+      "failureMessages": [],
+      "fullName": "RecentCalls Module \"loadSuccess\" action",
+      "status": "passed",
+      "title": "RecentCalls Module \"loadSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RecentCalls Module \"cleanUpCalls\" action",
+      "status": "passed",
+      "title": "RecentCalls Module \"cleanUpCalls\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RecentCalls Module \"cleanUpCalls\" action",
+      "status": "passed",
+      "title": "RecentCalls Module \"cleanUpCalls\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 3,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447452307,
+      "runtime": 5297,
+      "slow": true,
+      "start": 1768447447010
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/QuickAccess.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "QuickAccess Module \"updatePageStatus\" action",
+      "status": "passed",
+      "title": "QuickAccess Module \"updatePageStatus\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "QuickAccess Module \"updatePageStatus\" action",
+      "status": "passed",
+      "title": "QuickAccess Module \"updatePageStatus\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "QuickAccess Module \"updatePageStatus\" action",
+      "status": "passed",
+      "title": "QuickAccess Module \"updatePageStatus\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 0,
+    "numPendingTests": 6,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447453417,
+      "runtime": 19789,
+      "slow": true,
+      "start": 1768447433628
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Webphone.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check forward data",
+      "status": "pending",
+      "title": "Check forward data"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check forward data",
+      "status": "pending",
+      "title": "Check forward data"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check transfer data",
+      "status": "pending",
+      "title": "Check transfer data"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check transfer data",
+      "status": "pending",
+      "title": "Check transfer data"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check startWarmTransfer data",
+      "status": "pending",
+      "title": "Check startWarmTransfer data"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "Check startWarmTransfer data",
+      "status": "pending",
+      "title": "Check startWarmTransfer data"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447453881,
+      "runtime": 4903,
+      "slow": false,
+      "start": 1768447448978
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/MediaRecorderHelper.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 29,
+      "failureMessages": [],
+      "fullName": "MediaRecorderHelper Module test",
+      "status": "passed",
+      "title": "MediaRecorderHelper Module test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 14,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447454991,
+      "runtime": 6624,
+      "slow": true,
+      "start": 1768447448367
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/NumberValidate.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "get available extension test",
+      "status": "passed",
+      "title": "get available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "get available extension test",
+      "status": "passed",
+      "title": "get available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 139,
+      "failureMessages": [],
+      "fullName": "get available extension test",
+      "status": "passed",
+      "title": "get available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 42,
+      "failureMessages": [],
+      "fullName": "get available extension test",
+      "status": "passed",
+      "title": "get available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "is available extension test",
+      "status": "passed",
+      "title": "is available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "is available extension test",
+      "status": "passed",
+      "title": "is available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "is available extension test",
+      "status": "passed",
+      "title": "is available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "is available extension test",
+      "status": "passed",
+      "title": "is available extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "is not an extension test",
+      "status": "passed",
+      "title": "is not an extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "is not an extension test",
+      "status": "passed",
+      "title": "is not an extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "is not an extension test",
+      "status": "passed",
+      "title": "is not an extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "is company extension test",
+      "status": "passed",
+      "title": "is company extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "is company extension test",
+      "status": "passed",
+      "title": "is company extension test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "validate with number parser test",
+      "status": "passed",
+      "title": "validate with number parser test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447455734,
+      "runtime": 8348,
+      "slow": true,
+      "start": 1768447447386
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Presence.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 12,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447456385,
+      "runtime": 7438,
+      "slow": true,
+      "start": 1768447448947
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/MessageSender.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 146,
+      "failureMessages": [],
+      "fullName": "Message Sender Module \"sendStatus\" state with setSendStatus: idle",
+      "status": "passed",
+      "title": "Message Sender Module \"sendStatus\" state with setSendStatus: idle"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Message Sender Module \"sendStatus\" state with setSendStatus: sending",
+      "status": "passed",
+      "title": "Message Sender Module \"sendStatus\" state with setSendStatus: sending"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module \"sendStatus\" state with setSendStatus: validating",
+      "status": "passed",
+      "title": "Message Sender Module \"sendStatus\" state with setSendStatus: validating"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert textEmpty when send with undefined text",
+      "status": "passed",
+      "title": "Message Sender Module should alert textEmpty when send with undefined text"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert textEmpty when send with blank text",
+      "status": "passed",
+      "title": "Message Sender Module should alert textEmpty when send with blank text"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert textEmpty when send with whitespace text",
+      "status": "passed",
+      "title": "Message Sender Module should alert textEmpty when send with whitespace text"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert textTooLong when send with long text",
+      "status": "passed",
+      "title": "Message Sender Module should alert textTooLong when send with long text"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert multipartTextTooLong when send with long text",
+      "status": "passed",
+      "title": "Message Sender Module should alert multipartTextTooLong when send with long text"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should alert recipientsEmpty when to numbers empty",
+      "status": "passed",
+      "title": "Message Sender Module should alert recipientsEmpty when to numbers empty"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should send pager successfully",
+      "status": "passed",
+      "title": "Message Sender Module should send pager successfully"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should send SMS successfully",
+      "status": "passed",
+      "title": "Message Sender Module should send SMS successfully"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Message Sender Module should send SMS and Pager successfully",
+      "status": "passed",
+      "title": "Message Sender Module should send SMS and Pager successfully"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 21,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447456613,
+      "runtime": 9893,
+      "slow": true,
+      "start": 1768447446720
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/RcVideo.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 110,
+      "failureMessages": [],
+      "fullName": "RcVideo Module initial state",
+      "status": "passed",
+      "title": "RcVideo Module initial state"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "RcVideoOptions is consistent with optionValue",
+      "status": "passed",
+      "title": "RcVideoOptions is consistent with optionValue"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state personalVideo",
+      "status": "passed",
+      "title": "RcVideo Module state personalVideo"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state savedDefaultSetting",
+      "status": "passed",
+      "title": "RcVideo Module state savedDefaultSetting"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state meeting",
+      "status": "passed",
+      "title": "RcVideo Module state meeting"
+    }, {
+      "ancestorTitles": [],
+      "duration": 104,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state videoStatus",
+      "status": "passed",
+      "title": "RcVideo Module state videoStatus"
+    }, {
+      "ancestorTitles": [],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state preferences and settingLocks",
+      "status": "passed",
+      "title": "RcVideo Module state preferences and settingLocks"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state isPreferencesChanged",
+      "status": "passed",
+      "title": "RcVideo Module state isPreferencesChanged"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state delegator",
+      "status": "passed",
+      "title": "RcVideo Module state delegator"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "RcVideo Module state delegators",
+      "status": "passed",
+      "title": "RcVideo Module state delegators"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 14,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447456864,
+      "runtime": 5152,
+      "slow": true,
+      "start": 1768447451712
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/DateTimeFormat.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 24,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {} & error: false",
+      "status": "passed",
+      "title": "addFormatter function with {} & error: false"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"name\":null} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"name\":null} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"name\":\"\"} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"name\":\"\"} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"name\":\"\"} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"name\":\"\"} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 170,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"formatter\":123} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"formatter\":123} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"formatter\":{}} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"formatter\":{}} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "addFormatter function with {\"formatter\":\"bar\"} & error: true",
+      "status": "passed",
+      "title": "addFormatter function with {\"formatter\":\"bar\"} & error: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 107,
+      "failureMessages": [],
+      "fullName": "formatDateTime function should call named formatter",
+      "status": "passed",
+      "title": "formatDateTime function should call named formatter"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "formatDateTime function should pass utcTimestamp, locale, type to formatter",
+      "status": "passed",
+      "title": "formatDateTime function should pass utcTimestamp, locale, type to formatter"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "formatDateTime function should default locale to this._locale.currentLocale",
+      "status": "passed",
+      "title": "formatDateTime function should default locale to this._locale.currentLocale"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "formatDate function should call formatDateTime with type set to \"date\"",
+      "status": "passed",
+      "title": "formatDate function should call formatDateTime with type set to \"date\""
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "formatTime function should call formatDateTime with type set to \"time\"",
+      "status": "passed",
+      "title": "formatTime function should call formatDateTime with type set to \"time\""
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447457223,
+      "runtime": 5487,
+      "slow": true,
+      "start": 1768447451736
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/LocaleSettings.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "LocaleSettings Module \"_saveLocale\" action",
+      "status": "passed",
+      "title": "LocaleSettings Module \"_saveLocale\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 256,
+      "failureMessages": [],
+      "fullName": "LocaleSettings Module \"_saveLocale\" action",
+      "status": "passed",
+      "title": "LocaleSettings Module \"_saveLocale\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447457796,
+      "runtime": 6892,
+      "slow": true,
+      "start": 1768447450904
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Locale.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 16,
+      "failureMessages": [],
+      "fullName": "Set locale success and toggle debug Mode",
+      "status": "passed",
+      "title": "Set locale success and toggle debug Mode"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 7,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447459324,
+      "runtime": 6749,
+      "slow": true,
+      "start": 1768447452575
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/ExtensionInfo.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "Polling is on by default",
+      "status": "passed",
+      "title": "Polling is on by default"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Polling is controlled by options",
+      "status": "passed",
+      "title": "Polling is controlled by options"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Polling is controlled by options",
+      "status": "passed",
+      "title": "Polling is controlled by options"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Request status 403 handling",
+      "status": "passed",
+      "title": "Request status 403 handling"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "extensionInfo.info has a fallback value of {}",
+      "status": "passed",
+      "title": "extensionInfo.info has a fallback value of {}"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447460022,
+      "runtime": 7822,
+      "slow": true,
+      "start": 1768447452200
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/GenericMeeting.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "GenericMeeting Module \"setMeetingUpdatingStatus\" action",
+      "status": "passed",
+      "title": "GenericMeeting Module \"setMeetingUpdatingStatus\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 17,
+    "numPendingTests": 4,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447460734,
+      "runtime": 6835,
+      "slow": true,
+      "start": 1768447453899
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/DataFetcherV2.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "DataSource default ttl",
+      "status": "passed",
+      "title": "DataSource default ttl"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "DataSource default ttl",
+      "status": "passed",
+      "title": "DataSource default ttl"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "DataSource default timeToRetry",
+      "status": "passed",
+      "title": "DataSource default timeToRetry"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource default timeToRetry",
+      "status": "passed",
+      "title": "DataSource default timeToRetry"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource default retryIntervals",
+      "status": "passed",
+      "title": "DataSource default retryIntervals"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "DataSource default retryIntervals",
+      "status": "passed",
+      "title": "DataSource default retryIntervals"
+    }, {
+      "ancestorTitles": [],
+      "duration": 253,
+      "failureMessages": [],
+      "fullName": "DataSource default pollingInterval",
+      "status": "passed",
+      "title": "DataSource default pollingInterval"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource default pollingInterval",
+      "status": "passed",
+      "title": "DataSource default pollingInterval"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource default pollingInterval",
+      "status": "passed",
+      "title": "DataSource default pollingInterval"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource default pollingInterval",
+      "status": "passed",
+      "title": "DataSource default pollingInterval"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "DataSource pollingInterval constraint",
+      "status": "passed",
+      "title": "DataSource pollingInterval constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "DataSource pollingInterval constraint",
+      "status": "passed",
+      "title": "DataSource pollingInterval constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "DataSource cleanOnReset constraint",
+      "status": "passed",
+      "title": "DataSource cleanOnReset constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "DataSource cleanOnReset constraint",
+      "status": "passed",
+      "title": "DataSource cleanOnReset constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "DataSource cleanOnReset constraint",
+      "status": "passed",
+      "title": "DataSource cleanOnReset constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "DataSource cleanOnReset constraint",
+      "status": "passed",
+      "title": "DataSource cleanOnReset constraint"
+    }, {
+      "ancestorTitles": [],
+      "duration": 107,
+      "failureMessages": [],
+      "fullName": "dataFetcher.register",
+      "status": "passed",
+      "title": "dataFetcher.register"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "DataFetcher::onReset",
+      "status": "pending",
+      "title": "DataFetcher::onReset"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "DataFetcher::onReset",
+      "status": "pending",
+      "title": "DataFetcher::onReset"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "DataFetcher::onReset",
+      "status": "pending",
+      "title": "DataFetcher::onReset"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "DataFetcher::onReset",
+      "status": "pending",
+      "title": "DataFetcher::onReset"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447462696,
+      "runtime": 9077,
+      "slow": true,
+      "start": 1768447453619
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/DataMatcher.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 116,
+      "failureMessages": [],
+      "fullName": "DataMatcher Module \"insertMatchEntries\" action",
+      "status": "passed",
+      "title": "DataMatcher Module \"insertMatchEntries\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 12,
+      "failureMessages": [],
+      "fullName": "DataMatcher Module \"_cleanUp\" action",
+      "status": "passed",
+      "title": "DataMatcher Module \"_cleanUp\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 10,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447464926,
+      "runtime": 9164,
+      "slow": true,
+      "start": 1768447455762
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/ContactSearch.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setSearchStatus\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setSearchStatus\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 33,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setPrepareSearch\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setPrepareSearch\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 19,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setSearchSuccess\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setSearchSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setSearchSuccess\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setSearchSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 21,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setSearchSuccess\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setSearchSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setSearchSuccess\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setSearchSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setContactSearch\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setContactSearch\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"setContactSearch\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"setContactSearch\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"cleanUp\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"cleanUp\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "ContactSearch Module \"resetContactSearch\" action",
+      "status": "passed",
+      "title": "ContactSearch Module \"resetContactSearch\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447464996,
+      "runtime": 9885,
+      "slow": true,
+      "start": 1768447455111
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/CallingSettings.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "Save call settings should workable",
+      "status": "passed",
+      "title": "Save call settings should workable"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "From number state should be changed after trigger 'actionType'",
+      "status": "passed",
+      "title": "From number state should be changed after trigger 'actionType'"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "From number state should be changed after trigger 'actionType'",
+      "status": "passed",
+      "title": "From number state should be changed after trigger 'actionType'"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Show call with Jupiter default to ON",
+      "status": "passed",
+      "title": "Show call with Jupiter default to ON"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Show call with Jupiter default to ON",
+      "status": "passed",
+      "title": "Show call with Jupiter default to ON"
+    }, {
+      "ancestorTitles": [],
+      "duration": 197,
+      "failureMessages": [],
+      "fullName": "Emergency call available default to OFF",
+      "status": "passed",
+      "title": "Emergency call available default to OFF"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Emergency call available default to OFF",
+      "status": "passed",
+      "title": "Emergency call available default to OFF"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Japan emergency notification structure",
+      "status": "passed",
+      "title": "Japan emergency notification structure"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447466096,
+      "runtime": 8281,
+      "slow": true,
+      "start": 1768447457815
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/CallHistory.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "CallHistory Module \"filterSuccess\" action",
+      "status": "passed",
+      "title": "CallHistory Module \"filterSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "CallHistory Module \"setSearchInput\" action",
+      "status": "passed",
+      "title": "CallHistory Module \"setSearchInput\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "CallHistory Module \"setEndedCalls\" action",
+      "status": "passed",
+      "title": "CallHistory Module \"setEndedCalls\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 260,
+      "failureMessages": [],
+      "fullName": "CallHistory Module \"removeEndedCalls\" action",
+      "status": "passed",
+      "title": "CallHistory Module \"removeEndedCalls\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447467249,
+      "runtime": 10155,
+      "slow": true,
+      "start": 1768447457094
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/ComposeText.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "ComposeText Module should send SMS successfully",
+      "status": "passed",
+      "title": "ComposeText Module should send SMS successfully"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 3,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447467275,
+      "runtime": 10634,
+      "slow": true,
+      "start": 1768447456641
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/ConnectivityMonitor.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "ConnectivityMonitor Module \"setNetworkLoss\" action",
+      "status": "passed",
+      "title": "ConnectivityMonitor Module \"setNetworkLoss\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "ConnectivityMonitor Module \"setConnectSuccess\" action",
+      "status": "passed",
+      "title": "ConnectivityMonitor Module \"setConnectSuccess\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "ConnectivityMonitor Module \"setConnectFail\" action",
+      "status": "passed",
+      "title": "ConnectivityMonitor Module \"setConnectFail\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447467974,
+      "runtime": 11570,
+      "slow": true,
+      "start": 1768447456404
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Conversations.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Conversations Module should fetch old conversations successfully",
+      "status": "passed",
+      "title": "Conversations Module should fetch old conversations successfully"
+    }, {
+      "ancestorTitles": [],
+      "duration": 11,
+      "failureMessages": [],
+      "fullName": "Conversations Module should fetch old messages successfully",
+      "status": "passed",
+      "title": "Conversations Module should fetch old messages successfully"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447468605,
+      "runtime": 11232,
+      "slow": true,
+      "start": 1768447457373
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/CallLog.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "CallLog Module \"resetData\" action",
+      "status": "passed",
+      "title": "CallLog Module \"resetData\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "CallLog Module \"clearToken\" action",
+      "status": "passed",
+      "title": "CallLog Module \"clearToken\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 78,
+      "failureMessages": [],
+      "fullName": "CallLog Module \"filterExpiredCalls\" action",
+      "status": "passed",
+      "title": "CallLog Module \"filterExpiredCalls\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "CallLog Module \"syncSuccess\" action",
+      "status": "passed",
+      "title": "CallLog Module \"syncSuccess\" action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447469227,
+      "runtime": 8466,
+      "slow": true,
+      "start": 1768447460761
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Analytics.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "should add extend track props after call addEventsExtendedProps",
+      "status": "passed",
+      "title": "should add extend track props after call addEventsExtendedProps"
+    }, {
+      "ancestorTitles": [],
+      "duration": 168,
+      "failureMessages": [],
+      "fullName": "should not add extend track props after call addEventsExtendedProps with error params",
+      "status": "passed",
+      "title": "should not add extend track props after call addEventsExtendedProps with error params"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 3,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447469236,
+      "runtime": 6487,
+      "slow": true,
+      "start": 1768447462749
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Alert.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Check alert state with allowDuplicates: true",
+      "status": "passed",
+      "title": "Check alert state with allowDuplicates: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 87,
+      "failureMessages": [],
+      "fullName": "Check alert state with allowDuplicates: false",
+      "status": "passed",
+      "title": "Check alert state with allowDuplicates: false"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "Check alert state with other action",
+      "status": "passed",
+      "title": "Check alert state with other action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447469482,
+      "runtime": 9570,
+      "slow": true,
+      "start": 1768447459912
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Call.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 9,
+      "failureMessages": [],
+      "fullName": "Call Module \"connect\" action with isConference: true",
+      "status": "passed",
+      "title": "Call Module \"connect\" action with isConference: true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Call Module \"connect\" action with isConference: false",
+      "status": "passed",
+      "title": "Call Module \"connect\" action with isConference: false"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Call Module \"callStatus\" state with connect action: connectSuccess",
+      "status": "passed",
+      "title": "Call Module \"callStatus\" state with connect action: connectSuccess"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Call Module \"callStatus\" state with connect action: connectError",
+      "status": "passed",
+      "title": "Call Module \"callStatus\" state with connect action: connectError"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 3,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447470173,
+      "runtime": 10115,
+      "slow": true,
+      "start": 1768447460058
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/Auth.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "Check loginStatus",
+      "status": "passed",
+      "title": "Check loginStatus"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "Check token",
+      "status": "passed",
+      "title": "Check token"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Check isFreshLogin",
+      "status": "passed",
+      "title": "Check isFreshLogin"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 4,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447471519,
+      "runtime": 6404,
+      "slow": true,
+      "start": 1768447465115
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/AccountInfo.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "CleanOnReset is always enabled",
+      "status": "passed",
+      "title": "CleanOnReset is always enabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "Should logout if ReadCompanyInfo feature is missing: ReadCompanyInfo=true",
+      "status": "passed",
+      "title": "Should logout if ReadCompanyInfo feature is missing: ReadCompanyInfo=true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "Should logout if ReadCompanyInfo feature is missing: ReadCompanyInfo=false",
+      "status": "passed",
+      "title": "Should logout if ReadCompanyInfo feature is missing: ReadCompanyInfo=false"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447471815,
+      "runtime": 5683,
+      "slow": true,
+      "start": 1768447466132
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/sortDialInNumbers.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "RCI-4452:sortDialInNumbers",
+      "status": "passed",
+      "title": "RCI-4452:sortDialInNumbers"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 11,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447471975,
+      "runtime": 4526,
+      "slow": false,
+      "start": 1768447467449
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/renameTurkey.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 27,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Test",
+      "status": "passed",
+      "title": "Rename Turkey Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 144,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Country Test",
+      "status": "passed",
+      "title": "Rename Turkey Country Test"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Rename Turkey Countries Test",
+      "status": "passed",
+      "title": "Rename Turkey Countries Test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 15,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447471980,
+      "runtime": 4714,
+      "slow": false,
+      "start": 1768447467266
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/validateIsOffline.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 20,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 146,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "validateIsOffline::basic",
+      "status": "passed",
+      "title": "validateIsOffline::basic"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 2,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447473973,
+      "runtime": 5865,
+      "slow": true,
+      "start": 1768447468108
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/rateLimitThrottle.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 105,
+      "failureMessages": [],
+      "fullName": "rateLimitThrottle::basics",
+      "status": "passed",
+      "title": "rateLimitThrottle::basics"
+    }, {
+      "ancestorTitles": [],
+      "duration": 732,
+      "failureMessages": [],
+      "fullName": "rateLimitThrottle::queue",
+      "status": "passed",
+      "title": "rateLimitThrottle::queue"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 0,
+    "numPendingTests": 16,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447474709,
+      "runtime": 5984,
+      "slow": true,
+      "start": 1768447468725
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/permissionsHelper.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": null,
+      "failureMessages": [],
+      "fullName": "ClickToCallPermission::basic",
+      "status": "pending",
+      "title": "ClickToCallPermission::basic"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 6,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447475541,
+      "runtime": 5932,
+      "slow": true,
+      "start": 1768447469609
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/concurrentExecute.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }, {
+      "ancestorTitles": [],
+      "duration": 155,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }, {
+      "ancestorTitles": [],
+      "duration": 13,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }, {
+      "ancestorTitles": [],
+      "duration": 117,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }, {
+      "ancestorTitles": [],
+      "duration": 30,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "concurrentExecute",
+      "status": "passed",
+      "title": "concurrentExecute"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447476714,
+      "runtime": 7409,
+      "slow": true,
+      "start": 1768447469305
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/createApp.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 535,
+      "failureMessages": [],
+      "fullName": "CreateApp::basic",
+      "status": "passed",
+      "title": "CreateApp::basic"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447476993,
+      "runtime": 6806,
+      "slow": true,
+      "start": 1768447470187
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/checkShouldHidePhoneNumber.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }, {
+      "ancestorTitles": [],
+      "duration": 2,
+      "failureMessages": [],
+      "fullName": "Unit test: checkShouldHidePhoneNumber",
+      "status": "passed",
+      "title": "Unit test: checkShouldHidePhoneNumber"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 5,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447479272,
+      "runtime": 7673,
+      "slow": true,
+      "start": 1768447471599
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/checkShouldHideContactUser.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "checkShouldHideContactUser::basic",
+      "status": "passed",
+      "title": "checkShouldHideContactUser::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 98,
+      "failureMessages": [],
+      "fullName": "checkShouldHideContactUser::basic",
+      "status": "passed",
+      "title": "checkShouldHideContactUser::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "checkShouldHideContactUser::basic",
+      "status": "passed",
+      "title": "checkShouldHideContactUser::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 20,
+      "failureMessages": [],
+      "fullName": "checkShouldHideContactUser::basic",
+      "status": "passed",
+      "title": "checkShouldHideContactUser::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "checkShouldHideContactUser::basic",
+      "status": "passed",
+      "title": "checkShouldHideContactUser::basic"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447479765,
+      "runtime": 7925,
+      "slow": true,
+      "start": 1768447471840
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/channel.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 15,
+      "failureMessages": [],
+      "fullName": "Channel Test",
+      "status": "passed",
+      "title": "Channel Test"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447479898,
+      "runtime": 7763,
+      "slow": true,
+      "start": 1768447472135
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/audioHelper.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 261,
+      "failureMessages": [],
+      "fullName": "AudioHelper::playSound",
+      "status": "passed",
+      "title": "AudioHelper::playSound"
+    }, {
+      "ancestorTitles": [],
+      "duration": 6,
+      "failureMessages": [],
+      "fullName": "AudioHelper::stopSound",
+      "status": "passed",
+      "title": "AudioHelper::stopSound"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "AudioHelper::NoEnabled",
+      "status": "passed",
+      "title": "AudioHelper::NoEnabled"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "AudioHelper::NoUrl",
+      "status": "passed",
+      "title": "AudioHelper::NoUrl"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "AudioHelper::NoDeviceId",
+      "status": "passed",
+      "title": "AudioHelper::NoDeviceId"
+    }, {
+      "ancestorTitles": [],
+      "duration": 5,
+      "failureMessages": [],
+      "fullName": "AudioHelper::setSinkId error",
+      "status": "passed",
+      "title": "AudioHelper::setSinkId error"
+    }, {
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "AudioHelper::playAudio error",
+      "status": "passed",
+      "title": "AudioHelper::playAudio error"
+    }, {
+      "ancestorTitles": [],
+      "duration": 7,
+      "failureMessages": [],
+      "fullName": "AudioHelper::setDeviceId",
+      "status": "passed",
+      "title": "AudioHelper::setDeviceId"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 8,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447480311,
+      "runtime": 15356,
+      "slow": true,
+      "start": 1768447464955
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-modules/ActiveCallControl.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 8,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module \"updateActiveSessions\" action",
+      "status": "passed",
+      "title": "ActiveCallControl Module \"updateActiveSessions\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 59,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module with setCallControlBusyTimestamp and clearCallControlBusyTimestamp",
+      "status": "passed",
+      "title": "ActiveCallControl Module with setCallControlBusyTimestamp and clearCallControlBusyTimestamp"
+    }, {
+      "ancestorTitles": [],
+      "duration": 28,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module \"setActiveSessionId\" action and \"removeActiveSession\" action",
+      "status": "passed",
+      "title": "ActiveCallControl Module \"setActiveSessionId\" action and \"removeActiveSession\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 10,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module \"getValidPhoneNumber\" action",
+      "status": "passed",
+      "title": "ActiveCallControl Module \"getValidPhoneNumber\" action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 55,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module Hold Session action",
+      "status": "passed",
+      "title": "ActiveCallControl Module Hold Session action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 110,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module Forward Session action",
+      "status": "passed",
+      "title": "ActiveCallControl Module Forward Session action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module Hold Other Calls action",
+      "status": "passed",
+      "title": "ActiveCallControl Module Hold Other Calls action"
+    }, {
+      "ancestorTitles": [],
+      "duration": 32,
+      "failureMessages": [],
+      "fullName": "ActiveCallControl Module answerAndEnd action",
+      "status": "passed",
+      "title": "ActiveCallControl Module answerAndEnd action"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 6,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447480963,
+      "runtime": 6970,
+      "slow": true,
+      "start": 1768447473993
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/SipInstanceManager.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::getInstance::Basic",
+      "status": "passed",
+      "title": "SipInstanceManager::getInstance::Basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::setInstanceInactive",
+      "status": "passed",
+      "title": "SipInstanceManager::setInstanceInactive"
+    }, {
+      "ancestorTitles": [],
+      "duration": 23,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::getInstance::CleanData",
+      "status": "passed",
+      "title": "SipInstanceManager::getInstance::CleanData"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::getInstance::CleanExpiredData",
+      "status": "passed",
+      "title": "SipInstanceManager::getInstance::CleanExpiredData"
+    }, {
+      "ancestorTitles": [],
+      "duration": 4,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::getInstance::ReuseInactiveId",
+      "status": "passed",
+      "title": "SipInstanceManager::getInstance::ReuseInactiveId"
+    }, {
+      "ancestorTitles": [],
+      "duration": 3,
+      "failureMessages": [],
+      "fullName": "SipInstanceManager::getInstance::ReuseLatestInactiveId",
+      "status": "passed",
+      "title": "SipInstanceManager::getInstance::ReuseLatestInactiveId"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447481287,
+      "runtime": 9053,
+      "slow": true,
+      "start": 1768447472234
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/StorageBase.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 20,
+      "failureMessages": [],
+      "fullName": "DataReducer::basic",
+      "status": "passed",
+      "title": "DataReducer::basic"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447481497,
+      "runtime": 5909,
+      "slow": true,
+      "start": 1768447475588
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/ObjectProxy.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 38,
+      "failureMessages": [],
+      "fullName": "UT for ObjectProxy",
+      "status": "passed",
+      "title": "UT for ObjectProxy"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 1,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447482842,
+      "runtime": 7828,
+      "slow": true,
+      "start": 1768447475014
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/RcModuleV2.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 1027,
+      "failureMessages": [],
+      "fullName": "Compatibility::RcModuleV1",
+      "status": "passed",
+      "title": "Compatibility::RcModuleV1"
+    }]
+  }, {
+    "numFailingTests": 0,
+    "numPassingTests": 15,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "perfStats": {
+      "end": 1768447484567,
+      "runtime": 15256,
+      "slow": true,
+      "start": 1768447469311
+    },
+    "testFilePath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/test/spec-lib/debounce-throttle.test.tsx",
+    "failureMessage": null,
+    "testResults": [{
+      "ancestorTitles": [],
+      "duration": 1745,
+      "failureMessages": [],
+      "fullName": "Debounce::basic",
+      "status": "passed",
+      "title": "Debounce::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 419,
+      "failureMessages": [],
+      "fullName": "Debounce::this",
+      "status": "passed",
+      "title": "Debounce::this"
+    }, {
+      "ancestorTitles": [],
+      "duration": 417,
+      "failureMessages": [],
+      "fullName": "Debounce::args",
+      "status": "passed",
+      "title": "Debounce::args"
+    }, {
+      "ancestorTitles": [],
+      "duration": 134,
+      "failureMessages": [],
+      "fullName": "Debounce::return value",
+      "status": "passed",
+      "title": "Debounce::return value"
+    }, {
+      "ancestorTitles": [],
+      "duration": 416,
+      "failureMessages": [],
+      "fullName": "Debounce::leading",
+      "status": "passed",
+      "title": "Debounce::leading"
+    }, {
+      "ancestorTitles": [],
+      "duration": 420,
+      "failureMessages": [],
+      "fullName": "Debounce::leading without trailing",
+      "status": "passed",
+      "title": "Debounce::leading without trailing"
+    }, {
+      "ancestorTitles": [],
+      "duration": 420,
+      "failureMessages": [],
+      "fullName": "Debounce::leading=false, trailing=false should behave as trailing=true",
+      "status": "passed",
+      "title": "Debounce::leading=false, trailing=false should behave as trailing=true"
+    }, {
+      "ancestorTitles": [],
+      "duration": 488,
+      "failureMessages": [],
+      "fullName": "Debounce::maxThreshold",
+      "status": "passed",
+      "title": "Debounce::maxThreshold"
+    }, {
+      "ancestorTitles": [],
+      "duration": 137,
+      "failureMessages": [],
+      "fullName": "Debounce::cancel",
+      "status": "passed",
+      "title": "Debounce::cancel"
+    }, {
+      "ancestorTitles": [],
+      "duration": 134,
+      "failureMessages": [],
+      "fullName": "Debounce::flush",
+      "status": "passed",
+      "title": "Debounce::flush"
+    }, {
+      "ancestorTitles": [],
+      "duration": 400,
+      "failureMessages": [],
+      "fullName": "Throttle::basic",
+      "status": "passed",
+      "title": "Throttle::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1668,
+      "failureMessages": [],
+      "fullName": "PromisedDebounce::basic",
+      "status": "passed",
+      "title": "PromisedDebounce::basic"
+    }, {
+      "ancestorTitles": [],
+      "duration": 1617,
+      "failureMessages": [],
+      "fullName": "PromisedDebounce::promise",
+      "status": "passed",
+      "title": "PromisedDebounce::promise"
+    }, {
+      "ancestorTitles": [],
+      "duration": 147,
+      "failureMessages": [],
+      "fullName": "PromisedDebounce::cancel",
+      "status": "passed",
+      "title": "PromisedDebounce::cancel"
+    }, {
+      "ancestorTitles": [],
+      "duration": 14,
+      "failureMessages": [],
+      "fullName": "PromisedDebounce::flush",
+      "status": "passed",
+      "title": "PromisedDebounce::flush"
+    }]
+  }],
+  "config": {
+    "bail": 0,
+    "changedFilesWithAncestor": false,
+    "ci": false,
+    "collectCoverage": false,
+    "collectCoverageFrom": [],
+    "coverageDirectory": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/coverage",
+    "coverageProvider": "babel",
+    "coverageReporters": ["json", "text", "lcov", "clover"],
+    "detectLeaks": false,
+    "detectOpenHandles": false,
+    "errorOnDeprecated": false,
+    "expand": false,
+    "findRelatedTests": false,
+    "forceExit": false,
+    "globalSetup": "/Users/embbnux.ji/work/ringcentral-widgets/packages/test-utils/scripts/global-setup.js",
+    "json": false,
+    "lastCommit": false,
+    "listTests": false,
+    "logHeapUsage": false,
+    "maxConcurrency": 5,
+    "maxWorkers": 11,
+    "noStackTrace": false,
+    "nonFlagArgs": [],
+    "notify": false,
+    "notifyMode": "failure-change",
+    "onlyChanged": false,
+    "onlyFailures": false,
+    "openHandlesTimeout": 1000,
+    "passWithNoTests": false,
+    "projects": ["packages/ringcentral-integration"],
+    "reporters": [["default", {}], ["/Users/embbnux.ji/work/ringcentral-widgets/node_modules/jest-html-reporters/index.js", {
+      "publicPath": "<rootDir>/html-report",
+      "filename": "jest-report.html",
+      "failureMessageOnly": false
+    }]],
+    "rootDir": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration",
+    "runTestsByPath": false,
+    "seed": 1700713529,
+    "skipFilter": false,
+    "snapshotFormat": {
+      "escapeString": false,
+      "printBasicPrototype": false
+    },
+    "testFailureExitCode": 1,
+    "testPathPattern": "",
+    "testSequencer": "/Users/embbnux.ji/work/ringcentral-widgets/node_modules/@jest/test-sequencer/build/index.js",
+    "updateSnapshot": "new",
+    "useStderr": false,
+    "watch": false,
+    "watchAll": false,
+    "watchman": true,
+    "workerThreads": false
+  },
+  "endTime": 1768447484868,
+  "_reporterOptions": {
+    "publicPath": "/Users/embbnux.ji/work/ringcentral-widgets/packages/ringcentral-integration/html-report",
+    "filename": "jest-report.html",
+    "expand": false,
+    "pageTitle": "",
+    "hideIcon": false,
+    "testCommand": "",
+    "openReport": false,
+    "failureMessageOnly": false,
+    "enableMergeData": false,
+    "dataMergeLevel": 1,
+    "inlineSource": false,
+    "urlForTestFiles": "",
+    "darkTheme": false,
+    "includeConsoleLog": false,
+    "stripSkippedTest": false
+  },
+  "logInfoMapping": {},
+  "attachInfos": {}
+});
+//# sourceMappingURL=result.js.map
