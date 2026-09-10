@@ -1,0 +1,17 @@
+@import '../../lib/commonStyles/colors';
+
+.root {
+  color: $primary-color;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  outline: none;
+}
+.root:hover {
+  color: $primary-color-highlight;
+}
+
+.root.disabled,
+.root.dislabed:hover {
+  color: #999 !important;
+  cursor: not-allowed;
+}

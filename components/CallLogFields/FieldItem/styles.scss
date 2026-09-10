@@ -1,0 +1,29 @@
+@import '../../../lib/commonStyles/colors.scss';
+@import '../../../lib/commonStyles/full-size';
+@import '../../../lib/commonStyles/vertical-align';
+
+.row {
+  padding: 10px 0 6px 0;
+}
+
+.row {
+  .ticketSelectList {
+    width: calc(100% - 31px);
+    margin-left: 31px;
+  }
+}
+
+.selectLabel {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.radio {
+  margin-right: 0;
+  margin-left: -8px;
+}
+
+.radioLabel {
+  margin-bottom: 3.5px;
+}

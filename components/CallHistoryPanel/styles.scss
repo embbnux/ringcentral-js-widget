@@ -1,0 +1,8 @@
+@import '../../lib/commonStyles/variable';
+
+.empty {
+  @include display_flex;
+  @include flex-center;
+
+  height: 100%;
+}

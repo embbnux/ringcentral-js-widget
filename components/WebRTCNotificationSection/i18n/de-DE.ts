@@ -1,0 +1,20 @@
+/* eslint-disable */
+export default {
+  forward: 'Weiterl.',
+  ignore: 'Ignorieren',
+  toVoicemail: 'An Voicemail',
+  answer: 'Antworten',
+  endAndAnswer: 'Beenden und antworten',
+  holdAndAnswer: 'Halten & beantw.',
+  custom: 'Individuell gestalten',
+  more: 'Mehr',
+} as const;
+
+// @key: @#@"forward"@#@ @source: @#@"Forward"@#@
+// @key: @#@"ignore"@#@ @source: @#@"Ignore"@#@
+// @key: @#@"toVoicemail"@#@ @source: @#@"To Voicemail"@#@
+// @key: @#@"answer"@#@ @source: @#@"Answer"@#@
+// @key: @#@"endAndAnswer"@#@ @source: @#@"End & Answer"@#@
+// @key: @#@"holdAndAnswer"@#@ @source: @#@"Hold & Answer"@#@
+// @key: @#@"custom"@#@ @source: @#@"Custom"@#@
+// @key: @#@"more"@#@ @source: @#@"More"@#@

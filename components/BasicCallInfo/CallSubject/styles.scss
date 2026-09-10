@@ -1,0 +1,14 @@
+@import '../../../lib/commonStyles/colors';
+@import '../../../lib/commonStyles/full-size';
+@import '../../../lib/commonStyles/text-ellipsis';
+@import '../../../lib/commonStyles/variable.scss';
+
+.subject {
+  position: relative;
+  margin-bottom: 0.5em;
+  .matchName {
+    font-size: 18px;
+    font-weight: 500;
+    @include text-ellipsis;
+  }
+}

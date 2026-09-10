@@ -1,0 +1,57 @@
+"use strict";
+
+require("core-js/modules/es.array.slice.js");
+require("core-js/modules/es.object.define-properties.js");
+require("core-js/modules/es.object.define-property.js");
+require("core-js/modules/es.object.freeze.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CallHistoryItem = void 0;
+require("core-js/modules/es.function.name.js");
+var _callDirections = require("@ringcentral-integration/commons/enums/callDirections");
+var _juno = require("@ringcentral/juno");
+var _clsx = _interopRequireDefault(require("clsx"));
+var _react = _interopRequireDefault(require("react"));
+var _CallHistoryActions = require("../CallHistoryActions");
+var _CallIcon = require("../CallIcon");
+var _styles = _interopRequireDefault(require("./styles.scss"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+var Item = _juno.styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 64px;\n  box-sizing: border-box;\n  padding: ", ";\n  border-bottom: 1px solid ", ";\n"])), function (_ref) {
+  var isWide = _ref.isWide;
+  return isWide ? (0, _juno.spacing)(3, 4) : (0, _juno.spacing)(3);
+}, (0, _juno.palette2)('neutral', 'l02'));
+var CallHistoryItem = exports.CallHistoryItem = function CallHistoryItem(_ref2) {
+  var call = _ref2.call,
+    actionMenu = _ref2.actionMenu,
+    _ref2$isWide = _ref2.isWide,
+    isWide = _ref2$isWide === void 0 ? true : _ref2$isWide;
+  var displayName = call.direction === _callDirections.callDirection.outbound ? call.toName : call.fromName;
+  return /*#__PURE__*/_react["default"].createElement(Item, {
+    isWide: isWide,
+    "data-sign": "callHistoryItem"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])([_styles["default"].left, !isWide && _styles["default"].classic])
+  }, /*#__PURE__*/_react["default"].createElement(_CallIcon.CallIcon, call), /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])([_styles["default"].info, !isWide && _styles["default"].classic])
+  }, /*#__PURE__*/_react["default"].createElement(_juno.RcText, {
+    variant: "body1",
+    noWrap: true,
+    color: "neutral.f06",
+    "data-sign": "matchedName",
+    className: _styles["default"].name,
+    title: displayName
+  }, displayName), /*#__PURE__*/_react["default"].createElement(_juno.RcTypography, {
+    variant: "caption1",
+    color: "neutral.f04",
+    "data-sign": "callTime"
+  }, call.callTime))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _styles["default"].right
+  }, /*#__PURE__*/_react["default"].createElement(_CallHistoryActions.CallHistoryActions, {
+    actionMenu: actionMenu,
+    isWide: isWide
+  })));
+};
+//# sourceMappingURL=CallHistoryItem.js.map

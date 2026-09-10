@@ -1,0 +1,58 @@
+/* eslint-disable */
+export default {
+  mute: 'Dempen',
+  unmute: 'Dempen uitschakelen',
+  hangup: 'Ophangen',
+  reject: 'Weigeren',
+  hold: 'Wacht',
+  onHold: 'In de wacht',
+  transfer: 'Doorschakelen',
+  more: 'Meer',
+  stopRecord: 'Opname stoppen',
+  record: 'Opnemen',
+  showKeypad: 'Toetsenblok',
+  hideKeypad: 'Toetsenblok verbergen',
+  unHold: 'Uit de wacht',
+  forward: 'Doorverbinden',
+  ignore: 'Negeren',
+  voicemail: 'Naar voicemail',
+  custom: 'Aangepast',
+  answerAndEnd: 'Beantwoorden en beëindigen',
+  answerAndHold: 'Beantwoorden en in de wacht zetten',
+  answer: 'Beantwoorden',
+  completeTransfer: 'Doorverbinden voltooien',
+  reply: 'Beantwoorden',
+  add: 'Toevoegen',
+  mergeCall: 'Samenvoegen met actieve oproep',
+  endCallForEveryone: 'Oproep voor iedereen beëindigen',
+  leaveCall: 'Oproep verlaten',
+  leaveOrEndCall: 'Oproep verlaten of beëindigen?',
+} as const;
+
+// @key: @#@"mute"@#@ @source: @#@"Mute"@#@
+// @key: @#@"unmute"@#@ @source: @#@"Unmute"@#@
+// @key: @#@"hangup"@#@ @source: @#@"Hang up"@#@
+// @key: @#@"reject"@#@ @source: @#@"Reject"@#@
+// @key: @#@"hold"@#@ @source: @#@"Hold"@#@
+// @key: @#@"onHold"@#@ @source: @#@"On Hold"@#@
+// @key: @#@"transfer"@#@ @source: @#@"Transfer"@#@
+// @key: @#@"more"@#@ @source: @#@"More"@#@
+// @key: @#@"stopRecord"@#@ @source: @#@"Stop Recording"@#@
+// @key: @#@"record"@#@ @source: @#@"Record"@#@
+// @key: @#@"showKeypad"@#@ @source: @#@"Keypad"@#@
+// @key: @#@"hideKeypad"@#@ @source: @#@"Hide Keypad"@#@
+// @key: @#@"unHold"@#@ @source: @#@"Unhold"@#@
+// @key: @#@"forward"@#@ @source: @#@"Forward"@#@
+// @key: @#@"ignore"@#@ @source: @#@"Ignore"@#@
+// @key: @#@"voicemail"@#@ @source: @#@"To Voicemail"@#@
+// @key: @#@"custom"@#@ @source: @#@"Custom"@#@
+// @key: @#@"answerAndEnd"@#@ @source: @#@"Answer & End"@#@
+// @key: @#@"answerAndHold"@#@ @source: @#@"Answer & Hold"@#@
+// @key: @#@"answer"@#@ @source: @#@"Answer"@#@
+// @key: @#@"completeTransfer"@#@ @source: @#@"Complete transfer"@#@
+// @key: @#@"reply"@#@ @source: @#@"Reply"@#@
+// @key: @#@"add"@#@ @source: @#@"Add"@#@
+// @key: @#@"mergeCall"@#@ @source: @#@"Merge with active call"@#@
+// @key: @#@"endCallForEveryone"@#@ @source: @#@"End call for everyone"@#@
+// @key: @#@"leaveCall"@#@ @source: @#@"Leave call"@#@
+// @key: @#@"leaveOrEndCall"@#@ @source: @#@"Leave or end call?"@#@

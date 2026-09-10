@@ -1,0 +1,38 @@
+// overwrite from webpack config
+// ringcentral-js-widgets/ringcentral-widgets/lib/getBaseWebpackConfig/getBaseWebpackConfig.ts
+@import 'theme';
+
+$rc-blue: #066fac !default;
+$bigRed: #dc0202 !default;
+$darkRed: #c90213 !default;
+$tomato: #f95b5c !default;
+$orange: #ff8800 !default;
+$leaf: #5fb95c !default;
+$dark: #333 !default;
+$night: #2f2f2f !default;
+$ash: #666666 !default;
+$coin: #999999 !default;
+$smoke: #c7c7c7 !default;
+$silver: #e2e2e2 !default;
+$egg: #f9f9f9 !default;
+$snow: #ffffff !default;
+$rc-orange: #e07800 !default;
+$darkergray: #797979 !default;
+$darkgray: #808080 !default;
+$gray: #eeeeee !default;
+$bggray: #e0e0e0 !default;
+$lightergray: #efefef !default;
+$lightgray: #fcfcfc !default;
+$grey-light: #797979 !default;
+$missed: #d8232a !default;
+$active: #23b23d !default;
+$primary-color: $rc-blue !default;
+$primary-color-highlight: rgba(6, 132, 189, 0.4) !default;
+$primary-color-highlight-solid: rgba(173, 210, 227, 1) !default;
+$line-panel-background-color: #f6f6f6 !default;
+$call-btn-color: #5fb95c !default;
+$extension-background-color: #66d17b !default;
+$sms-bubble-background-color: #d5f3fd !default;
+$brand-font-color: $rc-blue !default;
+$brand-font-color-highlight: rgba(6, 132, 189, 0.4) !default;
+$jupiter-background-color: #f5f6fb !default;

@@ -1,0 +1,26 @@
+"use strict";
+
+require("core-js/modules/es.object.define-property.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CallSubject = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _toolTipDelayTime = require("../../../lib/toolTipDelayTime");
+var _Tooltip = require("../../Rcui/Tooltip");
+var _styles = _interopRequireDefault(require("./styles.scss"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+var CallSubject = exports.CallSubject = function CallSubject(_ref) {
+  var subject = _ref.subject;
+  if (!subject) return null;
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    className: _styles["default"].subject
+  }, /*#__PURE__*/_react["default"].createElement(_Tooltip.Tooltip, {
+    title: subject,
+    enterDelay: _toolTipDelayTime.TOOLTIP_LONG_DELAY_TIME
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: _styles["default"].matchName,
+    "data-sign": "matchName"
+  }, subject)));
+};
+//# sourceMappingURL=CallSubject.js.map

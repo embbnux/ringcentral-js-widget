@@ -1,0 +1,93 @@
+@import '../../lib/commonStyles/variable.scss';
+
+$icon-color: #757575;
+$lightning-page-space: 16px;
+$classic-page-space: 12px;
+
+.panelContainer {
+  box-shadow: inset 0 -12px 6px -10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.panel {
+  height: 100%;
+  border-top: 1px solid rgb(219, 219, 219);
+  display: flex;
+  flex-direction: column;
+
+  header {
+    margin: 4px 0 0 8px;
+    [sf-classic] & {
+      position: absolute;
+      margin: 12px 0 0 4px;
+    }
+  }
+  main {
+    overflow: auto;
+    height: 100%;
+  }
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+
+  [sf-classic] & {
+    min-height: 90px;
+  }
+}
+
+.root {
+  padding: 0 $lightning-page-space;
+
+  [sf-classic] & {
+    padding: 0 $classic-page-space;
+  }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #212121;
+  margin-top: 7.5px;
+  margin-bottom: 8.5px;
+  flex: 1 1 auto;
+}
+
+.infoList {
+  padding: 0px !important;
+}
+
+.infoMain {
+  [sf-classic] & {
+    padding-left: 36px !important;
+  }
+}
+
+.rightIcon {
+  align-self: flex-start;
+  margin-top: 8px;
+
+  [sf-classic] & {
+    transform: translateX(12px);
+  }
+}
+
+.content {
+  align-items: start;
+  flex-direction: column;
+}

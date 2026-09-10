@@ -1,0 +1,34 @@
+@import '../../lib/commonStyles/colors';
+
+$icon-width: 50%;
+$icon-min-width: 120px;
+
+.iconLine {
+  display: block;
+}
+
+.iconLine > [class*='content'] {
+  max-width: calc(100% - 38px);
+}
+
+.iconLine > [class*='iconHolder'] {
+  min-width: 38px;
+}
+
+.dropdownIcon {
+  display: inline-block;
+}
+
+.presenceList {
+  display: none;
+}
+
+.showDropdown {
+  .presenceList {
+    display: block;
+  }
+  .dropdownIcon {
+    transform: rotate(180deg);
+    color: $primary-color;
+  }
+}

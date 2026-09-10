@@ -1,0 +1,1 @@
+{"version":3,"file":"en-US.js","names":["dialPlaceholder"],"sources":["components/Rcui/RecipientsInput/i18n/en-US.ts"],"sourcesContent":["export default {\n  dialPlaceholder: 'Enter name or number',\n} as const;\n"],"mappings":";;;;;;;oCAAe;EACbA,eAAe,EAAE;AACnB,CAAC","ignoreList":[]}

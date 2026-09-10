@@ -1,0 +1,39 @@
+@import '../../lib/commonStyles/full-size';
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/fonts';
+
+.root {
+  @include full-size;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+.spinner {
+  z-index: 1;
+}
+
+.noCalls {
+  color: $darkgray;
+  font-size: 14px;
+  text-align: center;
+  line-height: 180px;
+}
+
+.notificationContainer {
+  // Reason of important
+  // Historical, in order to allow logSection & logNotification with a same mask.
+  // We added some hacky things here.
+  top: 35px !important;
+  height: auto !important;
+  .notificationModal {
+    margin: 0 20px;
+    height: auto;
+    .notificationContent {
+      height: auto;
+    }
+  }
+}
+
+.maskStyle {
+  top: calc(-20% + 84px);
+}

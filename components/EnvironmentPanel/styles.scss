@@ -1,0 +1,40 @@
+@import '../../lib/commonStyles/full-size';
+@import '../../lib/commonStyles/layout.scss';
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/fonts.scss';
+@import '../../lib/commonStyles/buttons.scss';
+
+.root {
+  @include full-size;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 30;
+  flex-direction: column;
+  display: flex;
+}
+
+.main {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.saveButtonLine {
+  padding-bottom: 20px;
+  flex: none;
+}
+
+.saveButton {
+  display: block;
+  @include big-submit-button;
+
+  &.disabled {
+    @include big-submit-button-disabled;
+  }
+}
+
+.comment {
+  padding: 0 20px 20px;
+  color: red;
+}

@@ -1,0 +1,253 @@
+@use 'sass:math';
+
+@import '../../lib/commonStyles/colors';
+
+$padding-horizontal: 20px;
+$avatar-basis: 45.5px;
+$button-basis: 68.5px;
+$ringout-button-size: 24px;
+
+.cursorPointer {
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
+}
+
+.cursorUnset {
+  cursor: unset;
+  * {
+    cursor: unset;
+  }
+}
+
+.strechVertical {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+}
+
+.callItemContainer {
+  padding: $padding-horizontal * math.div(3, 4) $padding-horizontal;
+  border-bottom: 1px solid #e2e2e2;
+
+  .wrapper {
+    overflow: visible;
+
+    .content {
+      overflow: hidden;
+      flex-shrink: 1;
+      width: calc(100% - #{$avatar-basis} - #{$button-basis});
+    }
+
+    .actionIconsBox {
+      display: flex;
+      justify-content: center;
+
+      .extraButton {
+        display: flex;
+        align-items: center;
+        margin-left: math.div($padding-horizontal, 2);
+      }
+    }
+
+    .webphoneButton {
+      flex-basis: $button-basis;
+
+      &:not(:last-of-type) {
+        margin-right: math.div($padding-horizontal, 2);
+      }
+
+      .answerButton,
+      .mergeButton,
+      .holdButton,
+      .rejectButton {
+        width: 24px;
+      }
+
+      .answerButton,
+      .rejectButton {
+        g,
+        path {
+          fill: $snow;
+        }
+      }
+
+      .answerButton {
+        circle {
+          fill: $call-btn-color;
+        }
+      }
+
+      .mergeButton {
+        circle {
+          fill: $snow;
+          stroke: $primary-color;
+          stroke-width: 15px;
+        }
+
+        g,
+        path {
+          fill: $primary-color;
+        }
+      }
+
+      .disabled,
+      .disabled * {
+        circle {
+          fill: $smoke;
+        }
+
+        cursor: not-allowed;
+      }
+
+      .rejectButton {
+        circle {
+          fill: #ff4646;
+        }
+      }
+
+      .holdButton {
+        circle {
+          fill: $snow;
+          stroke: $primary-color;
+          stroke-width: 15px;
+        }
+
+        g,
+        path {
+          fill: $primary-color;
+        }
+      }
+
+      .holdButton.active {
+        circle {
+          fill: $primary-color;
+        }
+
+        g,
+        path {
+          fill: $snow;
+        }
+      }
+    }
+
+    .ringoutButtons {
+      display: flex;
+    }
+
+    .ringoutButton {
+      height: $ringout-button-size;
+      &:not(:last-of-type) {
+        margin-right: math.div($padding-horizontal, 2);
+      }
+
+      .switchButton,
+      .transferButton,
+      .endButton {
+        width: $ringout-button-size;
+        height: $ringout-button-size;
+      }
+
+      .endButton {
+        circle {
+          fill: #f95b5c;
+        }
+
+        g,
+        path {
+          fill: $snow;
+        }
+
+        &.disabled {
+          circle {
+            fill: $smoke;
+          }
+        }
+      }
+
+      .transferButton {
+        &.disabled {
+          circle {
+            stroke: $smoke;
+          }
+
+          g,
+          path {
+            fill: $smoke;
+          }
+        }
+      }
+
+      .switchButton {
+        circle {
+          fill: #5fb95c;
+        }
+
+        &.disabled {
+          circle {
+            fill: $smoke;
+          }
+        }
+      }
+
+      .disabled,
+      .disabled * {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.callDetail {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 5px;
+  color: #979797;
+
+  .label {
+    margin-right: 5px;
+  }
+
+  .split {
+    margin: 0 5px;
+  }
+}
+
+// overwrite <DropDownSelect/>
+.contactDisplay,
+.contactDisplay * {
+  color: $night !important;
+  max-width: 100%;
+
+  .selectIcon {
+    display: none;
+  }
+}
+
+.switchDialog {
+  .RcDialog-paper {
+    margin: 20px;
+  }
+}
+
+.switchDialogImage {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.switchDialogContent {
+  word-break: break-word;
+}
+
+.answerHoldButton {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

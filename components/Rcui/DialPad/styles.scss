@@ -1,0 +1,8 @@
+@import '../../../lib/commonStyles/full-size';
+
+.root {
+  @include full-size;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["_phoneContext","require","_default","exports","PhoneProvider"],"sources":["lib/PhoneProvider/index.ts"],"sourcesContent":["import { PhoneProvider } from '../phoneContext';\n\nexport default PhoneProvider;\n"],"mappings":";;;;;;;AAAA,IAAAA,aAAA,GAAAC,OAAA;AAAgD,IAAAC,QAAA,GAAAC,OAAA,cAEjCC,2BAAa","ignoreList":[]}

@@ -1,0 +1,284 @@
+@use 'sass:math';
+
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/buttons';
+@import '../../lib/commonStyles/fonts';
+@import '../../lib/commonStyles/variable';
+
+$content-padding: 20px;
+$content-bottom: 16px;
+$row-space: 10px;
+$checkbox-right-margin: 4px;
+$security-margin: 8px;
+
+.videoPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  label[class*='Switch'] {
+    flex-shrink: 0;
+  }
+}
+
+.videoConfig {
+  height: 100%;
+  overflow-y: auto;
+  font-family: $juno-font-family;
+}
+
+.meetingContent {
+  padding: 0 0 $content-bottom;
+}
+
+.meetingSection {
+  padding: 0 $content-padding;
+  input {
+    @extend .normalFontSize;
+  }
+}
+
+.noBottomMargin {
+  margin-bottom: 8px !important;
+}
+
+.select {
+  flex-grow: 1;
+  width: 50%;
+}
+
+$hour-minute-space: 12px;
+.hourDuration,
+.datePicker {
+  display: inline-flex;
+  width: calc(50% - #{math.div($hour-minute-space, 2)});
+
+  div[class*='selectMenu'] {
+    @extend .normalFontSize;
+  }
+}
+.minuteDuration,
+.timePicker {
+  display: inline-flex;
+  width: calc(50% - #{math.div($hour-minute-space, 2)});
+  margin-left: $hour-minute-space;
+
+  div[class*='selectMenu'] {
+    @extend .normalFontSize;
+  }
+}
+
+.pmiLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+
+  span.text {
+    flex: 0 0 auto;
+    max-width: 200px;
+  }
+
+  span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.normalFontSize {
+  font-size: $primary-font-size !important;
+}
+
+.normalLabel {
+  @extend .normalFontSize;
+  font-weight: normal;
+  line-height: 22px;
+  padding: 5px 0;
+}
+
+label.labelPlacementStartRoot {
+  margin: 0;
+  padding: 0 ($content-padding - $checkbox-right-margin * 2) 0 $content-padding;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .labelText {
+    @extend .normalLabel;
+  }
+}
+
+label.labelPlacementTopRoot {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  > span {
+    width: 100%;
+  }
+
+  .labelText {
+    @extend .normalLabel;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+label.labelPlacementEndRoot {
+  margin: 0;
+  padding: 0 $content-padding 0 0;
+  display: flex;
+  align-items: flex-start;
+
+  .labelText {
+    @extend .normalLabel;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// RCTextField
+:global .myinput {
+  font-size: 0.875rem !important;
+}
+
+.passwordInput {
+  padding: 4px $content-padding 8px !important;
+
+  & > div > div > button {
+    padding: 0 !important;
+  }
+
+  .passwordLabel {
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    left: inherit !important;
+  }
+
+  input {
+    @extend .normalFontSize;
+  }
+
+  input::-ms-clear {
+    display: none;
+  }
+  input::-o-clear {
+    display: none;
+  }
+
+  & > div > div > div > div[type='button'] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+.subPrefixPadding {
+  padding-left: $content-padding + 34px !important;
+}
+
+.boxSelectWrapper {
+  padding: 4px $content-padding 8px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.boxSelect {
+  max-width: 100% !important;
+  & > div {
+    margin-top: 0 !important;
+    & > div {
+      display: block !important;
+      @extend .normalFontSize;
+    }
+  }
+}
+
+.boxSelectMenuItem {
+  display: block !important;
+  line-height: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.checkboxSeparate {
+  margin: -2px 0 -2px 10px;
+}
+
+.iconCombine {
+  @extend .checkboxSeparate;
+  display: flex;
+  align-items: center;
+}
+
+$win-scroll-bar-width: 17px;
+
+.tooltip {
+  max-width: 100% !important;
+}
+
+.popper {
+  margin-right: 15px !important;
+  margin-left: 25px !important;
+}
+
+.popperOfWin {
+  margin-left: 20px;
+  margin-right: calc(15px + #{$win-scroll-bar-width}) !important;
+}
+
+.lockButton {
+  padding-top: 2px;
+}
+.normalSize {
+  font-size: 14px !important;
+}
+.pmiAlertContainer {
+  margin: 4px $content-padding 8px;
+  padding: 8px !important;
+  & > div[class*='RcAlert-message'] {
+    @extend .normalSize;
+  }
+}
+
+.extraSecurityMargin {
+  margin-bottom: $security-margin;
+}
+
+.gutterTop {
+  padding-top: 16px;
+}
+
+.flexVertical {
+  display: flex;
+  align-items: center;
+  & > span {
+    margin-left: 4px;
+  }
+}
+
+.allowCursor {
+  pointer-events: all !important;
+}
+
+.preLine {
+  white-space: pre-line;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.pmiChangeConfirmContainer {
+  margin: 4px $content-padding 8px;
+  padding: 8px 0 !important;
+}
+
+.noUnderLine {
+  text-decoration: none !important;
+}

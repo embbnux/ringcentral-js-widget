@@ -1,0 +1,49 @@
+@import '../../lib/commonStyles/colors.scss';
+@import '../../lib/commonStyles/text-ellipsis.scss';
+@import '../../lib/commonStyles/variable.scss';
+
+$back-margin-left: 8px;
+$back-margin-left-classic: 6px;
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  @include flex_height($header-height);
+  position: relative;
+  &.classic {
+    .back {
+      margin-left: $back-margin-left-classic;
+      flex-shrink: 0;
+    }
+    .title {
+      font-size: 12px;
+    }
+    .emptyRightIcon {
+      width: $back-margin-left-classic + 32px;
+    }
+  }
+
+  .back {
+    z-index: 1;
+    margin-left: $back-margin-left;
+    flex-shrink: 0;
+  }
+
+  .title {
+    @include text-ellipsis;
+  }
+  // 32px is back icon's width
+  .emptyRightIcon {
+    width: $back-margin-left + 32px;
+  }
+}
+
+.iconRotate {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.rightIcon {
+  flex-shrink: 0;
+}

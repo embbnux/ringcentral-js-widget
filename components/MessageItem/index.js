@@ -1,0 +1,721 @@
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+require("core-js/modules/es.symbol.js");
+require("core-js/modules/es.symbol.description.js");
+require("core-js/modules/es.symbol.iterator.js");
+require("core-js/modules/es.symbol.to-primitive.js");
+require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.for-each.js");
+require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.date.to-primitive.js");
+require("core-js/modules/es.number.constructor.js");
+require("core-js/modules/es.object.create.js");
+require("core-js/modules/es.object.define-properties.js");
+require("core-js/modules/es.object.define-property.js");
+require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.get-own-property-descriptors.js");
+require("core-js/modules/es.object.get-prototype-of.js");
+require("core-js/modules/es.object.keys.js");
+require("core-js/modules/es.promise.js");
+require("core-js/modules/es.reflect.construct.js");
+require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/es.weak-map.js");
+require("core-js/modules/web.dom-collections.for-each.js");
+require("core-js/modules/web.dom-collections.iterator.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+require("core-js/modules/es.array.concat.js");
+require("core-js/modules/es.array.find-index.js");
+require("core-js/modules/es.array.map.js");
+require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.function.name.js");
+require("core-js/modules/es.object.set-prototype-of.js");
+require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.parse-int.js");
+var _extensionTypes = require("@ringcentral-integration/commons/enums/extensionTypes");
+var _messageDirection = _interopRequireDefault(require("@ringcentral-integration/commons/enums/messageDirection"));
+var _messageTypes = _interopRequireDefault(require("@ringcentral-integration/commons/enums/messageTypes"));
+var _formatDuration = require("@ringcentral-integration/commons/lib/formatDuration");
+var _messageHelper = require("@ringcentral-integration/commons/lib/messageHelper");
+var _parseNumber = _interopRequireDefault(require("@ringcentral-integration/commons/lib/parseNumber"));
+var _utils = require("@ringcentral-integration/utils");
+var _clsx = _interopRequireDefault(require("clsx"));
+var _react = _interopRequireWildcard(require("react"));
+var _checkShouldHideContactUser = require("../../lib/checkShouldHideContactUser");
+var _checkShouldHidePhoneNumber = require("../../lib/checkShouldHidePhoneNumber");
+var _ActionMenuList = _interopRequireDefault(require("../ActionMenuList"));
+var _ContactDisplay = _interopRequireDefault(require("../ContactDisplay"));
+var _SlideMenu = _interopRequireDefault(require("../SlideMenu"));
+var _VoicemailPlayer = _interopRequireDefault(require("../VoicemailPlayer"));
+var _ConversationIcon = require("./ConversationIcon");
+var _i18n = _interopRequireDefault(require("./i18n"));
+var _styles = _interopRequireDefault(require("./styles.scss"));
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+var MessageItem = /*#__PURE__*/function (_Component) {
+  function MessageItem(props) {
+    var _this;
+    _classCallCheck(this, MessageItem);
+    _this = _callSuper(this, MessageItem, [props]);
+    _this._userSelection = false;
+    _this.contactDisplay = void 0;
+    _this._mounted = false;
+    _this.toggleExtended = function () {
+      _this.setState(function (preState) {
+        return {
+          extended: !preState.extended
+        };
+      });
+    };
+    _this.preventEventPropagating = function (e) {
+      if (e.target !== e.currentTarget) {
+        e.stopPropagation();
+      }
+    };
+    _this.onSelectContact = function (value, idx) {
+      var _this$props = _this.props,
+        showContactDisplayPlaceholder = _this$props.showContactDisplayPlaceholder,
+        autoLog = _this$props.autoLog,
+        conversation = _this$props.conversation,
+        shouldLogSelectRecord = _this$props.shouldLogSelectRecord,
+        onSelectContact = _this$props.onSelectContact;
+      var selected = showContactDisplayPlaceholder ? parseInt(idx, 10) - 1 : parseInt(idx, 10);
+      _this._userSelection = true;
+      _this.setState({
+        selected: selected
+      });
+      if (autoLog) {
+        _this.logConversation({
+          redirect: false,
+          selected: selected,
+          prefill: false
+        });
+      }
+      if (shouldLogSelectRecord && typeof onSelectContact === 'function') {
+        onSelectContact({
+          correspondentEntity: _this.getSelectedContact(selected),
+          conversation: conversation
+        });
+      }
+    };
+    _this.getSelectedContact = function () {
+      var selected = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this.state.selected;
+      var contactMatches = _this.props.conversation.correspondentMatches;
+      return (
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        selected > -1 && contactMatches[selected] ||
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        contactMatches.length === 1 && contactMatches[0] || null
+      );
+    };
+    _this.viewSelectedContact = function () {
+      if (typeof _this.props.onViewContact === 'function') {
+        _this.props.onViewContact({
+          contact: _this.getSelectedContact(),
+          contactMatches: _this.getMatchEntities(),
+          phoneNumber: _this.getPhoneNumber(),
+          matchEntitiesIds: _this.getMatchEntitiesIds()
+        });
+      }
+    };
+    _this.createSelectedContact = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(entityType) {
+        var phoneNumber;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              if (!(typeof _this.props.onCreateContact === 'function' && _this._mounted && !_this.state.isCreating)) {
+                _context.n = 2;
+                break;
+              }
+              _this.setState({
+                isCreating: true
+              });
+              // console.log('start to create: isCreating...', this.state.isCreating);
+              phoneNumber = _this.getPhoneNumber();
+              _context.n = 1;
+              return _this.props.onCreateContact({
+                phoneNumber: phoneNumber,
+                name: _this.props.enableContactFallback ? _this.getFallbackContactName() : '',
+                entityType: entityType
+              });
+            case 1:
+              if (_this._mounted) {
+                _this.setState({
+                  isCreating: false
+                });
+                // console.log('created: isCreating...', this.state.isCreating);
+              }
+            case 2:
+              return _context.a(2);
+          }
+        }, _callee);
+      }));
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    _this.logConversation = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var _ref3,
+        _ref3$redirect,
+        redirect,
+        selected,
+        _ref3$prefill,
+        prefill,
+        _args2 = arguments;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.n) {
+          case 0:
+            _ref3 = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : {}, _ref3$redirect = _ref3.redirect, redirect = _ref3$redirect === void 0 ? true : _ref3$redirect, selected = _ref3.selected, _ref3$prefill = _ref3.prefill, prefill = _ref3$prefill === void 0 ? true : _ref3$prefill;
+            if (!(typeof _this.props.onLogConversation === 'function' && _this._mounted && !_this.state.isLogging)) {
+              _context2.n = 2;
+              break;
+            }
+            _this.setState({
+              isLogging: true
+            });
+            _context2.n = 1;
+            return _this.props.onLogConversation({
+              correspondentEntity: _this.getSelectedContact(selected),
+              conversationId: _this.props.conversation.conversationId,
+              redirect: redirect,
+              prefill: prefill
+            });
+          case 1:
+            if (_this._mounted) {
+              _this.setState({
+                isLogging: false
+              });
+            }
+          case 2:
+            return _context2.a(2);
+        }
+      }, _callee2);
+    }));
+    _this.clickToDial = function () {
+      if (_this.props.onClickToDial) {
+        var contact = _this.getSelectedContact() || {};
+        var phoneNumber = _this.getPhoneNumber();
+        if (phoneNumber) {
+          _this.props.onClickToDial(_objectSpread(_objectSpread({}, contact), {}, {
+            phoneNumber: phoneNumber,
+            fromType: _this.props.conversation.type
+          }));
+        }
+      }
+    };
+    _this.onClickToSms = function () {
+      if (_this.props.onClickToSms) {
+        var contact = _this.getSelectedContact() || {};
+        var phoneNumber = _this.getPhoneNumber();
+        if (phoneNumber) {
+          // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
+          _this.props.updateTypeFilter(_messageTypes["default"].text);
+          _this.props.onClickToSms(_objectSpread(_objectSpread({}, contact), {}, {
+            phoneNumber: phoneNumber
+          }));
+        }
+      }
+    };
+    _this.onClickItem = function (e) {
+      if (_this.contactDisplay && _this.contactDisplay.contains(e.target)) {
+        return;
+      }
+      _this.toggleExtended();
+    };
+    _this.onClickWrapper = function (e) {
+      if (_this.contactDisplay && _this.contactDisplay.contains(e.target)) {
+        return;
+      }
+      if ((0, _messageHelper.messageIsTextMessage)(_this.props.conversation)) {
+        _this.props.showConversationDetail(_this.props.conversation.conversationId);
+      }
+    };
+    _this.onPlayVoicemail = function () {
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+      if (_this.props.conversation.unreadCounts > 0) {
+        _this.props.readMessage(_this.props.conversation.conversationId);
+      }
+    };
+    _this.onMarkMessage = function () {
+      if (_this.props.conversation.unreadCounts === 0) {
+        _this.props.markMessage(_this.props.conversation.conversationId);
+      }
+    };
+    _this.onUnmarkMessage = function () {
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+      if (_this.props.conversation.unreadCounts > 0) {
+        _this.props.unmarkMessage(_this.props.conversation.conversationId);
+      }
+    };
+    _this.onPreviewFax = function (uri) {
+      // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
+      _this.props.previewFaxMessages(uri, _this.props.conversation.conversationId);
+    };
+    _this.onDeleteMessage = function () {
+      // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
+      _this.props.deleteMessage(_this.props.conversation.conversationId);
+    };
+    _this.externalViewEntity = function () {
+      var _this$props2 = _this.props,
+        externalViewEntity = _this$props2.externalViewEntity,
+        conversation = _this$props2.conversation;
+      return externalViewEntity === null || externalViewEntity === void 0 ? void 0 : externalViewEntity(conversation);
+    };
+    _this.getDisableClickToSms = function () {
+      var _this$props3 = _this.props,
+        areaCode = _this$props3.areaCode,
+        countryCode = _this$props3.countryCode,
+        onClickToSms = _this$props3.onClickToSms,
+        internalSmsPermission = _this$props3.internalSmsPermission,
+        outboundSmsPermission = _this$props3.outboundSmsPermission,
+        maxExtensionNumberLength = _this$props3.maxExtensionNumberLength;
+      var phoneNumber = _this.getPhoneNumber();
+      var disableClickToSms = false;
+      if (phoneNumber) {
+        var parsedInfo = (0, _parseNumber["default"])({
+          phoneNumber: phoneNumber,
+          // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'CountryCo... Remove this comment to see the full error message
+          countryCode: countryCode,
+          areaCode: areaCode,
+          maxExtensionLength: maxExtensionNumberLength
+        });
+        var isExtension = !parsedInfo.hasPlus && parsedInfo.number &&
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        parsedInfo.number.length <= maxExtensionNumberLength;
+        disableClickToSms = !(onClickToSms && (isExtension ? internalSmsPermission : outboundSmsPermission));
+      }
+      return disableClickToSms;
+    };
+    _this.state = {
+      selected: _this.getInitialContactIndex(),
+      isLogging: false,
+      isCreating: false,
+      extended: false
+    };
+
+    /* [RCINT-4301] onSelection would trigger some state changes that would push new
+     * properties before the state has been changed. Which would reset the selected value.
+     */
+    return _this;
+  }
+  _inherits(MessageItem, _Component);
+  return _createClass(MessageItem, [{
+    key: "componentDidMount",
+    value:
+    // @ts-expect-error TS(4114): This member must have an 'override' modifier becau... Remove this comment to see the full error message
+    function componentDidMount() {
+      this._mounted = true;
+    }
+
+    // @ts-expect-error TS(4114): This member must have an 'override' modifier becau... Remove this comment to see the full error message
+  }, {
+    key: "UNSAFE_componentWillReceiveProps",
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
+      if (!this._userSelection && (nextProps.conversation.conversationMatches !== this.props.conversation.conversationMatches || nextProps.conversation.correspondentMatches !== this.props.conversation.correspondentMatches)) {
+        this.setState({
+          selected: this.getInitialContactIndex(nextProps)
+        });
+      }
+    }
+
+    // @ts-expect-error TS(4114): This member must have an 'override' modifier becau... Remove this comment to see the full error message
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._mounted = false;
+    }
+  }, {
+    key: "getInitialContactIndex",
+    value: function getInitialContactIndex() {
+      var nextProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props;
+      var _nextProps$conversati = nextProps.conversation,
+        correspondentMatches = _nextProps$conversati.correspondentMatches,
+        lastMatchedCorrespondentEntity = _nextProps$conversati.lastMatchedCorrespondentEntity;
+      if (lastMatchedCorrespondentEntity) {
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        var index = correspondentMatches.findIndex(function (contact) {
+          return contact.id === lastMatchedCorrespondentEntity.id;
+        });
+        if (index > -1) return index;
+      }
+      return this.props.showContactDisplayPlaceholder ? -1 : 0;
+    }
+  }, {
+    key: "getMatchEntities",
+    value: function getMatchEntities() {
+      return this.props.conversation.correspondentMatches || [];
+    }
+  }, {
+    key: "getMatchEntitiesIds",
+    value: function getMatchEntitiesIds() {
+      var contactMatches = this.props.conversation.correspondentMatches || [];
+      return contactMatches.map(function (item) {
+        return item.id;
+      });
+    }
+  }, {
+    key: "getPhoneNumber",
+    value: function getPhoneNumber() {
+      var correspondents = this.props.conversation.correspondents;
+      return (
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        correspondents.length === 1 &&
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        correspondents[0] && (
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        correspondents[0].phoneNumber || correspondents[0].extensionNumber) || undefined
+      );
+    }
+  }, {
+    key: "getGroupPhoneNumbers",
+    value: function getGroupPhoneNumbers() {
+      var correspondents = this.props.conversation.correspondents;
+      var groupNumbers =
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+      correspondents.length > 1 ?
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+      correspondents.map(function (correspondent) {
+        return correspondent.extensionNumber || correspondent.phoneNumber || undefined;
+      }) : null;
+      return groupNumbers;
+    }
+  }, {
+    key: "getFallbackContactName",
+    value: function getFallbackContactName() {
+      var correspondents = this.props.conversation.correspondents;
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+      return correspondents.length === 1 && correspondents[0].name || undefined;
+    }
+  }, {
+    key: "getDetail",
+    value: function getDetail() {
+      var _this$props4 = this.props,
+        conversation = _this$props4.conversation,
+        currentLocale = _this$props4.currentLocale;
+      if ((0, _messageHelper.messageIsTextMessage)(conversation)) {
+        if (conversation.mmsAttachments && conversation.mmsAttachments.length > 0) {
+          var count = conversation.mmsAttachments.length;
+          if (count === 1) {
+            return (0, _utils.format)(_i18n["default"].getString('mmsWithOneAttachment', currentLocale));
+          }
+          return (0, _utils.format)(_i18n["default"].getString('mmsWithAttachments', currentLocale), {
+            count: count
+          });
+        }
+        return conversation.subject;
+      }
+      if (conversation.voicemailAttachment) {
+        var duration = conversation.voicemailAttachment.duration;
+        return "".concat(_i18n["default"].getString('voiceMessage', currentLocale), " (").concat((0, _formatDuration.formatDuration)(duration), ")");
+      }
+      if ((0, _messageHelper.messageIsFax)(conversation)) {
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        var pageCount = +conversation.faxPageCount;
+        var nameKey = pageCount === 1 ? 'page' : 'pages';
+        if (conversation.direction === _messageDirection["default"].inbound) {
+          return "".concat(_i18n["default"].getString('faxReceived', currentLocale), "(").concat(pageCount, " ").concat(_i18n["default"].getString(nameKey, currentLocale), ")");
+        }
+        return "".concat(_i18n["default"].getString('faxSent', currentLocale), "(").concat(pageCount, " ").concat(_i18n["default"].getString(nameKey, currentLocale), ")");
+      }
+      return '';
+    }
+  }, {
+    key: "dateTimeFormatter",
+    value: function dateTimeFormatter(creationTime) {
+      try {
+        return this.props.dateTimeFormatter({
+          utcTimestamp: creationTime
+        });
+      } catch (e) {
+        console.error('Format date time error', creationTime);
+        return creationTime;
+      }
+    }
+  }, {
+    key: "render",
+    value:
+    // @ts-expect-error TS(4114): This member must have an 'override' modifier becau... Remove this comment to see the full error message
+    function render() {
+      var _this2 = this,
+        _this$getSelectedCont,
+        _this$getSelectedCont2;
+      var _this$props5 = this.props,
+        areaCode = _this$props5.areaCode,
+        brand = _this$props5.brand,
+        countryCode = _this$props5.countryCode,
+        currentLocale = _this$props5.currentLocale,
+        currentSiteCode = _this$props5.currentSiteCode,
+        isMultipleSiteEnabled = _this$props5.isMultipleSiteEnabled,
+        _this$props5$conversa = _this$props5.conversation,
+        conversationId = _this$props5$conversa.conversationId,
+        unreadCounts = _this$props5$conversa.unreadCounts,
+        correspondents = _this$props5$conversa.correspondents,
+        correspondentMatches = _this$props5$conversa.correspondentMatches,
+        creationTime = _this$props5$conversa.creationTime,
+        isLogging = _this$props5$conversa.isLogging,
+        conversationMatches = _this$props5$conversa.conversationMatches,
+        type = _this$props5$conversa.type,
+        direction = _this$props5$conversa.direction,
+        voicemailAttachment = _this$props5$conversa.voicemailAttachment,
+        faxAttachment = _this$props5$conversa.faxAttachment,
+        parentDisableLinks = _this$props5.disableLinks,
+        disableCallButton = _this$props5.disableCallButton,
+        disableClickToDial = _this$props5.disableClickToDial,
+        onClickToDial = _this$props5.onClickToDial,
+        onClickToSms = _this$props5.onClickToSms,
+        onLogConversation = _this$props5.onLogConversation,
+        onViewContact = _this$props5.onViewContact,
+        onCreateContact = _this$props5.onCreateContact,
+        _shouldHideEntityButton = _this$props5.shouldHideEntityButton,
+        createEntityTypes = _this$props5.createEntityTypes,
+        enableContactFallback = _this$props5.enableContactFallback,
+        contactPlaceholder = _this$props5.contactPlaceholder,
+        showContactDisplayPlaceholder = _this$props5.showContactDisplayPlaceholder,
+        sourceIcons = _this$props5.sourceIcons,
+        phoneTypeRenderer = _this$props5.phoneTypeRenderer,
+        phoneSourceNameRenderer = _this$props5.phoneSourceNameRenderer,
+        showGroupNumberName = _this$props5.showGroupNumberName,
+        renderExtraButton = _this$props5.renderExtraButton,
+        renderActionMenuExtraButton = _this$props5.renderActionMenuExtraButton,
+        onFaxDownload = _this$props5.onFaxDownload,
+        showChooseEntityModal = _this$props5.showChooseEntityModal,
+        renderContactList = _this$props5.renderContactList,
+        dropdownClassName = _this$props5.dropdownClassName,
+        enableCDC = _this$props5.enableCDC,
+        renderContactName = _this$props5.renderContactName,
+        externalHasEntity = _this$props5.externalHasEntity,
+        externalViewEntity = _this$props5.externalViewEntity,
+        formatPhone = _this$props5.formatPhone,
+        conversation = _this$props5.conversation;
+      var disableLinks = parentDisableLinks;
+      var isVoicemail = type === _messageTypes["default"].voiceMail;
+      var isFax = type === _messageTypes["default"].fax;
+      if (isVoicemail && !voicemailAttachment) {
+        disableLinks = true;
+      }
+      if (isFax && !faxAttachment) {
+        disableLinks = true;
+      }
+      var groupNumbers = this.getGroupPhoneNumbers();
+      var phoneNumber = this.getPhoneNumber();
+      /**
+       * TODO:
+       * * Group message is supported for internal paging:
+       * * What is the requirement when a hidden contact is part of a group conversation?
+       * * Is it possible to ignore this edge case initially as group conversations are rare, especially when most people use glip now for internal conversations?
+       */
+      var shouldHideNumber = enableCDC &&
+      // @ts-expect-error TS(2345): Argument of type 'any[] | undefined' is not assign... Remove this comment to see the full error message
+      (0, _checkShouldHidePhoneNumber.checkShouldHidePhoneNumber)(phoneNumber, correspondentMatches);
+      var isContactMatchesHidden =
+      // @ts-expect-error TS(2345): Argument of type 'any[] | undefined' is not assign... Remove this comment to see the full error message
+      enableCDC && (0, _checkShouldHideContactUser.checkShouldHideContactUser)(correspondentMatches);
+      var fallbackName = this.getFallbackContactName();
+      var detail = this.getDetail();
+      var disableClickToSms = this.getDisableClickToSms();
+      var player;
+      var slideMenuHeight = 60;
+      if (isVoicemail) {
+        player = /*#__PURE__*/_react["default"].createElement(_VoicemailPlayer["default"], {
+          className: _styles["default"].player,
+          uri: voicemailAttachment.uri,
+          duration: voicemailAttachment.duration,
+          onPlay: this.onPlayVoicemail,
+          disabled: disableLinks,
+          currentLocale: currentLocale
+        });
+        slideMenuHeight = 88;
+      }
+      var extraButton = renderExtraButton ? renderExtraButton(conversation, {
+        logConversation: this.logConversation,
+        isLogging: isLogging || this.state.isLogging
+      }) : null;
+      var msgItem = "".concat(type, "MessageItem");
+      var defaultContactDisplay = /*#__PURE__*/_react["default"].createElement(_ContactDisplay["default"], {
+        formatPhone: formatPhone,
+        reference: function reference(ref) {
+          _this2.contactDisplay = ref;
+        },
+        className: (0, _clsx["default"])(_styles["default"].contactDisplay, unreadCounts && _styles["default"].unread),
+        unread: !!unreadCounts,
+        selectedClassName: _styles["default"].selectedValue,
+        selectClassName: _styles["default"].dropdownSelect,
+        brand: brand
+        // @ts-expect-error TS(2322): Type 'any[] | undefined' is not assignable to type... Remove this comment to see the full error message
+        ,
+        contactMatches: correspondentMatches,
+        selected: this.state.selected,
+        onSelectContact: this.onSelectContact,
+        disabled: disableLinks,
+        isLogging: isLogging || this.state.isLogging,
+        fallBackName: fallbackName,
+        areaCode: areaCode,
+        countryCode: countryCode,
+        phoneNumber: shouldHideNumber ? null : phoneNumber
+        // @ts-expect-error TS(2322): Type 'any[] | null' is not assignable to type 'str... Remove this comment to see the full error message
+        ,
+        groupNumbers: groupNumbers,
+        showGroupNumberName: showGroupNumberName,
+        currentLocale: currentLocale,
+        currentSiteCode: currentSiteCode,
+        isMultipleSiteEnabled: isMultipleSiteEnabled,
+        enableContactFallback: enableContactFallback,
+        stopPropagation: false,
+        showType: false,
+        showPlaceholder: showContactDisplayPlaceholder,
+        placeholder: contactPlaceholder,
+        sourceIcons: sourceIcons,
+        phoneTypeRenderer: phoneTypeRenderer,
+        phoneSourceNameRenderer: phoneSourceNameRenderer,
+        dropdownRenderFunction: renderContactList,
+        dropdownClassName: dropdownClassName
+      });
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        "data-sign": msgItem,
+        "data-id": conversationId,
+        className: _styles["default"].root,
+        onClick: this.onClickItem
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        "data-sign": "unread",
+        className: (0, _clsx["default"])(_styles["default"].wrapper, unreadCounts && _styles["default"].unread),
+        onClick: this.onClickWrapper
+      }, /*#__PURE__*/_react["default"].createElement(_ConversationIcon.ConversationIcon, {
+        group: correspondents && correspondents.length > 1,
+        type: type,
+        currentLocale: currentLocale,
+        direction: direction
+      }), /*#__PURE__*/_react["default"].createElement("div", {
+        className: (0, _clsx["default"])(_styles["default"].infoWrapper, !extraButton && _styles["default"].embellishInfoWrapper)
+      }, renderContactName ? renderContactName({
+        conversation: conversation,
+        phoneNumber: phoneNumber,
+        unread: !!unreadCounts,
+        defaultContactDisplay: defaultContactDisplay
+      }) : defaultContactDisplay, /*#__PURE__*/_react["default"].createElement("div", {
+        className: _styles["default"].detailsWithTime
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        "data-sign": "msgDetail",
+        className: _styles["default"].details,
+        title: detail
+      }, detail), /*#__PURE__*/_react["default"].createElement("div", {
+        className: _styles["default"].separatrix
+      }, "|"), /*#__PURE__*/_react["default"].createElement("div", {
+        "data-sign": "msgCreateTime",
+        className: _styles["default"].creationTime
+      }, this.dateTimeFormatter(creationTime)))), extraButton), /*#__PURE__*/_react["default"].createElement(_SlideMenu["default"], {
+        extended: this.state.extended,
+        onToggle: this.toggleExtended,
+        extendIconClassName: _styles["default"].extendIcon,
+        className: _styles["default"].slideMenu,
+        minHeight: 0,
+        maxHeight: slideMenuHeight
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: _styles["default"].playContainer,
+        onClick: this.preventEventPropagating
+      }, player), /*#__PURE__*/_react["default"].createElement(_ActionMenuList["default"]
+      // @ts-expect-error TS(2322): Type '{ shouldHideEntityButton: boolean | undefine... Remove this comment to see the full error message
+      , {
+        shouldHideEntityButton: function shouldHideEntityButton() {
+          if (_shouldHideEntityButton) {
+            return _shouldHideEntityButton(conversation);
+          }
+          return isContactMatchesHidden;
+        },
+        className: _styles["default"].actionMenuList,
+        type: type,
+        currentLocale: currentLocale,
+        onLog: isVoicemail || isFax || renderExtraButton ? undefined : onLogConversation && this.logConversation,
+        onViewEntity: onViewContact && this.viewSelectedContact,
+        onCreateEntity: onCreateContact && this.createSelectedContact,
+        createEntityTypes: createEntityTypes,
+        hasEntity:
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        correspondents.length === 1 &&
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        !!correspondentMatches.length && ((_this$getSelectedCont = (_this$getSelectedCont2 = this.getSelectedContact()) === null || _this$getSelectedCont2 === void 0 ? void 0 : _this$getSelectedCont2.type) !== null && _this$getSelectedCont !== void 0 ? _this$getSelectedCont : '') !== _extensionTypes.extensionTypes.ivrMenu,
+        onClickToDial: !isFax ? onClickToDial && this.clickToDial : undefined,
+        onClickToSms: isVoicemail ? onClickToSms && this.onClickToSms : undefined,
+        disableClickToSms: disableClickToSms,
+        phoneNumber: phoneNumber,
+        disableLinks: disableLinks,
+        disableCallButton: disableCallButton,
+        disableClickToDial: disableClickToDial,
+        isLogging: isLogging || this.state.isLogging
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        ,
+        isLogged: conversationMatches.length > 0,
+        isCreating: this.state.isCreating,
+        addLogTitle: _i18n["default"].getString('addLog', currentLocale),
+        editLogTitle: _i18n["default"].getString('editLog', currentLocale),
+        callTitle: _i18n["default"].getString('call', currentLocale),
+        textTitle: _i18n["default"].getString('text', currentLocale),
+        createEntityTitle: _i18n["default"].getString('addEntity', currentLocale),
+        viewEntityTitle: _i18n["default"].getString('viewDetails', currentLocale),
+        stopPropagation: false,
+        onDelete: isVoicemail || isFax ? this.onDeleteMessage : undefined,
+        deleteTitle: _i18n["default"].getString('delete', currentLocale)
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
+        ,
+        marked: unreadCounts > 0,
+        onMark: isVoicemail || isFax && direction === _messageDirection["default"].inbound ? this.onMarkMessage : undefined,
+        onUnmark: isVoicemail || isFax && direction === _messageDirection["default"].inbound ? this.onUnmarkMessage : undefined,
+        onPreview: isFax ? this.onPreviewFax : undefined,
+        markTitle: _i18n["default"].getString('mark', currentLocale),
+        unmarkTitle: _i18n["default"].getString('unmark', currentLocale),
+        faxAttachment: faxAttachment,
+        previewTitle: _i18n["default"].getString('preview', currentLocale),
+        downloadTitle: _i18n["default"].getString('download', currentLocale),
+        onFaxDownload: onFaxDownload,
+        showChooseEntityModal: showChooseEntityModal,
+        externalViewEntity: externalViewEntity && this.externalViewEntity,
+        externalHasEntity: externalHasEntity === null || externalHasEntity === void 0 ? void 0 : externalHasEntity(conversation),
+        extraButton: renderActionMenuExtraButton === null || renderActionMenuExtraButton === void 0 ? void 0 : renderActionMenuExtraButton(conversation)
+      })));
+    }
+  }]);
+}(_react.Component);
+MessageItem.defaultProps = {
+  currentSiteCode: '',
+  isMultipleSiteEnabled: false,
+  disableClickToDial: false,
+  disableLinks: false,
+  disableCallButton: false,
+  autoLog: false,
+  showContactDisplayPlaceholder: true,
+  contactPlaceholder: '',
+  showGroupNumberName: false,
+  deleteMessage: function deleteMessage() {},
+  internalSmsPermission: true,
+  outboundSmsPermission: true,
+  showChooseEntityModal: true,
+  shouldLogSelectRecord: false,
+  // @ts-expect-error TS(2322): Type 'null' is not assignable to type 'string | un... Remove this comment to see the full error message
+  dropdownClassName: null,
+  enableCDC: false,
+  maxExtensionNumberLength: 6
+};
+var _default = exports["default"] = MessageItem;
+//# sourceMappingURL=index.js.map

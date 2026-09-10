@@ -1,0 +1,193 @@
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/fonts';
+@import '../../lib/commonStyles/text-ellipsis';
+
+.container {
+  @include primary-font;
+  position: relative;
+  display: flex;
+  color: $night;
+  margin-top: 10px;
+  margin: 10px 20px 0 20px;
+
+  * {
+    box-sizing: content-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.label {
+  font-size: 15px;
+  font-weight: normal !important;
+  line-height: 29px;
+  font-weight: 200;
+  min-width: 46px;
+}
+
+.rightPanel {
+  font-size: 15px;
+  display: block;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.removeButton {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  right: 2px;
+  width: 14px;
+}
+
+.inputField {
+  position: relative;
+  padding-right: 20px;
+  input::-ms-clear {
+    display: none;
+  }
+}
+
+.numberInput {
+  color: #303030;
+  font-size: 15px;
+  line-height: 20px;
+  width: 100%;
+  height: 27px;
+  border-radius: 3px;
+  border: 0;
+  outline: 0;
+  &::placeholder {
+    font-size: 13px;
+    color: #a9a9a9;
+  }
+}
+.numberInput::-ms-clear {
+  display: none;
+}
+
+.contactsDropdown {
+  width: 100%;
+}
+
+.selectReceivers {
+  margin: 2px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    position: relative;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    line-height: 1;
+    margin-bottom: 2px;
+    max-width: 90%;
+    @include text-ellipsis;
+    padding: 5px 23px 5px 10px;
+    margin-right: 5px;
+  }
+
+  .phoneNumber {
+    background-color: $primary-color;
+    opacity: 0.6;
+  }
+  .extension {
+    background-color: $extension-background-color;
+  }
+}
+
+.removeReceiver {
+  position: absolute;
+  right: 7px;
+  width: 10px;
+  color: #ffffff !important;
+}
+
+.rcuiStyle {
+  width: 100%;
+  .inputField {
+    padding: 0;
+  }
+  .numberInput {
+    border-bottom: solid 1px;
+    border-radius: 0;
+    background: none;
+  }
+}
+.dropdownList {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 100%;
+  z-index: 5;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333;
+  text-align: left;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);
+  max-height: 265px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  li {
+    padding: 7px 10px 8px 10px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  li.active {
+    color: $primary-color;
+
+    .name {
+      color: $primary-color;
+    }
+  }
+}
+
+.contactItem {
+  color: #797979;
+  font-size: 13px;
+}
+
+.name {
+  color: #303030;
+  font-weight: bold;
+}
+
+.phoneSourceLabel {
+  @include text-ellipsis;
+}
+
+.splitter {
+  padding: 0 5px;
+}
+
+.nameSection {
+  @include text-ellipsis;
+}
+
+.phoneNumberSection {
+  @include text-ellipsis;
+}
+
+.clickable {
+  cursor: pointer;
+}

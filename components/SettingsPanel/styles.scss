@@ -1,0 +1,93 @@
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/full-size';
+@import '../../lib/commonStyles/fonts';
+
+:global {
+  .popover-content {
+    padding: 9px;
+    font-size: 12px;
+  }
+}
+
+.root {
+  @include full-size;
+}
+.content {
+  @include full-size;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: $line-panel-background-color;
+}
+
+.contentWithHeader {
+  //FIXME: intend to leave this blank, look like there's no app using this style.
+  // Should be removed in the future.
+  // See https://git_domain/integration/integration-apps/-/merge_requests/11035/
+}
+
+.section {
+  padding-top: 8px;
+}
+
+.loginNumber {
+  @include secondary-font;
+}
+.versionContainer {
+  @include secondary-font;
+  padding: 10px 20px;
+}
+
+.iconInfo {
+  top: 2px;
+  cursor: pointer;
+  margin-left: 6px;
+  margin-right: 6px;
+  position: relative;
+  color: $primary-color;
+  font-size: 16px !important;
+}
+
+.settingsSection {
+  padding: 7px 0;
+  .group {
+    margin-top: -8px;
+  }
+}
+
+.sectionTitle {
+  color: #666;
+  font-size: 12px;
+  padding: 0 10px;
+  margin-bottom: -2px;
+}
+
+.disableText {
+  color: $smoke;
+}
+
+.logoutIcon {
+  font-size: 16px;
+}
+
+.tooltipIcon {
+  position: relative;
+  top: 3px;
+}
+
+.tooltipIcon2 {
+  position: relative;
+  vertical-align: text-top;
+  left: 2px;
+}
+
+.selectSection {
+  margin-top: 10px;
+}
+
+.buttonIcon {
+  line-height: 0;
+}
+
+.subTitle {
+  @include secondary-font;
+}

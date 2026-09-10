@@ -1,0 +1,28 @@
+import clsx from 'clsx';
+import type { FunctionComponent, HTMLAttributes } from 'react';
+import React from 'react';
+
+import styles from './styles.scss';
+
+type AnimationPanelProps = {
+  children?: React.ReactNode;
+  open: boolean;
+  className?: string;
+} & Pick<HTMLAttributes<HTMLDivElement>, 'style'>;
+export const AnimationPanel: FunctionComponent<AnimationPanelProps> = ({
+  children,
+  className,
+  open,
+  style,
+  ...rest
+}) => {
+  return (
+    <div
+      className={clsx(styles.root, open ? styles.active : null, className)}
+      style={style}
+      data-sign={(rest as any)['data-sign']}
+    >
+      {children}
+    </div>
+  );
+};

@@ -1,0 +1,52 @@
+@import '../../lib/commonStyles/variable.scss';
+
+.main {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  h4 {
+    font-size: 12px;
+    color: #757575;
+  }
+  .search {
+    margin: 12px 16px;
+    position: relative;
+    font-size: 14px;
+    .placeholder {
+      position: absolute;
+      top: 7px;
+      left: 38px;
+      z-index: 1;
+      height: 100%;
+      width: calc(100% - 41px - 16px);
+      color: #bfbfbf;
+      pointer-events: none;
+      @include text-ellipsis;
+    }
+  }
+  .listContainer {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.text {
+  .title {
+    margin: 4px 0 0 16px;
+    color: #757575;
+  }
+  color: rgb(158, 158, 158);
+  word-break: break-all;
+}
+
+.hint {
+  font-size: 12px;
+  margin: 4px 16px 0 16px;
+  color: rgba(117, 117, 117, 0.82);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 15px;
+}

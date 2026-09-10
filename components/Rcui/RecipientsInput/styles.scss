@@ -1,0 +1,26 @@
+@import '../../../lib/commonStyles/colors';
+
+.root {
+  border-bottom: 1px solid $silver;
+}
+
+.inputRoot {
+  width: 100%;
+}
+
+.input {
+  margin: 7px 0 !important;
+  text-align: center;
+
+  [sf-classic] & {
+    margin: 5px 0 !important;
+  }
+}
+
+.deleteIcon {
+  padding-right: 5px;
+}
+
+.textFieldRoot {
+  margin-bottom: 7px !important;
+}

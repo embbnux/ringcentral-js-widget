@@ -1,0 +1,133 @@
+@import '../../lib/commonStyles/colors';
+@import '../../lib/commonStyles/fonts';
+@import '../../lib/commonStyles/text-ellipsis';
+
+.container {
+  @include primary-font;
+  position: relative;
+  display: flex;
+  color: $night;
+  margin-top: 10px;
+  margin: 10px 20px 0 20px;
+
+  * {
+    box-sizing: content-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.label {
+  font-size: 15px;
+  font-weight: normal !important;
+  line-height: 29px;
+  font-weight: 200;
+  min-width: 46px;
+  @include text-ellipsis;
+}
+
+.rightPanel {
+  font-size: 15px;
+  display: block;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.removeButton {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  right: 2px;
+  width: 14px;
+}
+
+.inputField {
+  position: relative;
+  padding-right: 20px;
+  input::-ms-clear {
+    display: none;
+  }
+}
+
+.numberInput {
+  color: #303030;
+  font-size: 15px;
+  line-height: 20px;
+  width: 100%;
+  height: 27px;
+  border-radius: 3px;
+  border: 0;
+  outline: 0;
+  &::placeholder {
+    font-size: 13px;
+    color: #a9a9a9;
+  }
+}
+.numberInput::-ms-clear {
+  display: none;
+}
+
+.contactsDropdown {
+  width: 100%;
+}
+
+.selectReceivers {
+  margin: 2px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  .warningRecipient {
+    color: #f54c3d;
+    background: #f9ebe9;
+    border-radius: 100px;
+    border: 1px solid #f54c3d;
+    padding: 4px 23px 4px 10px;
+  }
+
+  li {
+    position: relative;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    line-height: 1;
+    margin-bottom: 2px;
+    max-width: 90%;
+    @include text-ellipsis;
+    padding: 5px 23px 5px 10px;
+    margin-right: 5px;
+  }
+
+  .phoneNumber {
+    background-color: $primary-color;
+    opacity: 0.6;
+  }
+  .extension {
+    background-color: $extension-background-color;
+  }
+}
+
+.removeReceiver {
+  position: absolute;
+  right: 7px;
+  width: 10px;
+  color: #ffffff !important;
+}
+
+.rcuiStyle {
+  width: 100%;
+  .inputField {
+    padding: 0;
+  }
+  .numberInput {
+    border-bottom: solid 1px;
+    border-radius: 0;
+    background: none;
+  }
+}

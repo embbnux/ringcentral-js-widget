@@ -1,0 +1,268 @@
+@use 'sass:math';
+
+@import '~@ringcentral-integration/widgets/lib/commonStyles/fonts';
+@import '~@ringcentral-integration/widgets/lib/commonStyles/variable';
+@import './variable.scss';
+
+.videoConfig {
+  height: 100%;
+  overflow-y: auto;
+  font-family: $juno-font-family;
+}
+
+.meetingContent {
+  padding: 0 0 10px;
+}
+
+.meetingSection {
+  padding: 0px 20px;
+  input {
+    @extend .normalFontSize;
+  }
+}
+
+.noBottomMargin {
+  margin-bottom: 0px !important;
+}
+
+.pmiLabel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.normalFontSize {
+  font-size: $primary-font-size !important;
+}
+
+div.videoConfig div.meetingSettings div.accordion {
+  background: transparent;
+  box-shadow: none;
+}
+
+$date-time-space: 12px;
+div.meetingSettings div.meetingDatePicker {
+  display: inline-flex;
+  width: calc(50% - #{math.div($date-time-space, 2)});
+}
+div.meetingSettings div.meetingTimePicker {
+  display: inline-flex;
+  width: calc(50% - #{math.div($date-time-space, 2)});
+  margin-left: 12px;
+}
+.select {
+  flex-grow: 1;
+  width: 50%;
+}
+.meetingTitle {
+  margin-top: 12px;
+}
+
+$hour-minute-space: 12px;
+.hourDuration {
+  display: inline-flex;
+  width: calc(50% - #{math.div($hour-minute-space, 2)});
+
+  div[class*='selectMenu'] {
+    @extend .normalFontSize;
+  }
+}
+.minuteDuration {
+  display: inline-flex;
+  width: calc(50% - #{math.div($hour-minute-space, 2)});
+  margin-left: $hour-minute-space;
+
+  div[class*='selectMenu'] {
+    @extend .normalFontSize;
+  }
+}
+
+div.videoConfig div.accordionSummaryDisabled {
+  opacity: inherit;
+  user-select: inherit;
+}
+
+div.videoConfig div.accordion div.accordionSummary {
+  font-weight: bold;
+  height: 32px;
+  @extend .normalFontSize;
+  padding: 0 $panel-side-padding !important;
+  min-height: 32px;
+}
+
+div.accordionSummaryContent {
+  margin: 0 0;
+}
+
+div.videoConfig div.accordion div.accordionDetails {
+  padding: 0;
+  border: 0;
+  flex-direction: column;
+}
+
+.toggleGroup {
+  width: 100%;
+}
+
+.labelPlacement {
+  margin: 0;
+  justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  & > span[class*='RcCheckbox'] {
+    margin-top: -2px;
+    margin-bottom: -2px;
+  }
+}
+div.accordion div.toggleGroup label.labelPlacementStart {
+  @extend .labelPlacement;
+  padding: 0 ($panel-side-padding - math.div($checkbox-ripple-width, 2)) 0
+    $panel-side-padding;
+}
+
+div.accordion div.toggleGroup label.labelPlacementEnd {
+  @extend .labelPlacement;
+  padding: 0 $panel-side-padding 0
+    ($panel-side-padding - math.div($checkbox-ripple-width, 2));
+}
+
+.optionLabel {
+  margin-right: 23px;
+}
+
+.recurringNote {
+  @include secondary-font;
+  padding: 4px $panel-side-padding 0;
+}
+
+// RCTextField
+:global .myinput {
+  font-size: 0.875rem !important;
+}
+
+.sideMargin {
+  padding-left: $panel-side-padding !important;
+  padding-right: $panel-side-padding !important;
+}
+
+.alertContainer {
+  margin: 4px $panel-side-padding 0;
+  padding: 8px !important;
+  & > div[class*='RcAlert-message'] {
+    font-size: 14px !important;
+  }
+}
+
+.selectOption {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.boxSelectMenuItem {
+  display: block !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fullWidthLabel {
+  width: 100%;
+}
+
+.passwordField {
+  padding-top: 4px;
+  @extend .sideMargin;
+
+  & > div > div > button {
+    padding: 0 !important;
+  }
+
+  label {
+    width: 100% !important;
+  }
+  input {
+    @extend .normalFontSize;
+  }
+  input::-ms-clear {
+    display: none;
+  }
+  input::-o-clear {
+    display: none;
+  }
+}
+
+.labelContent {
+  display: flex;
+  align-items: flex-start;
+  padding: 5px 0;
+  @extend .normalFontSize;
+  font-weight: normal;
+  line-height: 22px;
+  .placementLeft {
+    flex: 1;
+  }
+  .placementRight {
+    display: inline-flex;
+    align-items: flex-end;
+    cursor: pointer;
+    padding: 2px 0;
+  }
+}
+
+.boxSelect {
+  & > div {
+    margin-top: 0 !important;
+    & > div {
+      display: block !important;
+      line-height: 18px;
+      @extend .normalFontSize;
+    }
+  }
+}
+
+.autoFullWidth {
+  max-width: none !important;
+  width: 100% !important;
+  & > div {
+    @extend .forceFullWidth;
+  }
+}
+
+.forceFullWidth {
+  width: 100% !important;
+}
+
+.boxSelectWrapper {
+  @extend .forceFullWidth;
+  font-size: 14px !important;
+  line-height: 22px;
+  display: block !important;
+  padding-left: 8px !important;
+}
+
+.hackWidth {
+  width: 0;
+}
+
+.lockedIcon {
+  color: $locked-color;
+  padding: 8px 0 8px 8px !important;
+}
+
+.subPrefixPadding {
+  padding-left: $panel-side-padding + 34px !important;
+}
+
+.recurringDescribe {
+  margin: 4px 20px 0 20px !important;
+  font-size: 14px !important;
+  background-color: #f0f1f4;
+  padding: 8px;
+  border-radius: 1px;
+  line-height: 20px !important;
+}
+
+.lockButton {
+  padding-top: 2px;
+}

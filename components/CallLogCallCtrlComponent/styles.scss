@@ -1,0 +1,200 @@
+@import '../../lib/commonStyles/colors.scss';
+@import '../../lib/commonStyles/fonts.scss';
+$width: 41px;
+$smallActionWidth: 16px;
+$smallIconColor: #9ca1a7;
+
+.overflowEllipsis {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.root {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button {
+    box-sizing: border-box;
+    width: $width;
+    height: $width;
+  }
+
+  $width: 36px;
+  &.classic {
+    .button {
+      width: $width;
+      height: $width;
+    }
+  }
+}
+
+.hangup {
+  circle {
+    fill: #ff4646;
+  }
+  g,
+  path {
+    fill: #ffffff;
+  }
+}
+.buttonDisabled {
+  circle {
+    fill: $lightgray;
+    stroke: $gray;
+  }
+  path {
+    fill: $primary-color-highlight-solid;
+  }
+  g {
+    cursor: default;
+
+    &:hover {
+      circle {
+        stroke: $gray;
+      }
+    }
+  }
+}
+
+.buttonActive {
+  circle {
+    fill: $primary-color;
+    stroke: $primary-color;
+  }
+  path {
+    fill: #ffffff;
+  }
+}
+
+.moreActionItem {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 32px;
+  max-width: 138px;
+  .actionText {
+    margin-left: 6px;
+    @extend .overflowEllipsis;
+  }
+  &.withSubText {
+    flex-direction: column;
+    text-align: center;
+    align-items: flex-start;
+    height: 56px;
+    min-height: 56px;
+    justify-content: center;
+    > span.actionText {
+      color: rgb(33, 33, 33);
+      font-size: 15px;
+      font-weight: normal;
+      letter-spacing: 0px;
+      line-height: 22px;
+      @extend .overflowEllipsis;
+    }
+    > span.subText {
+      color: rgb(129, 146, 175);
+      font-size: 12px;
+      font-weight: normal;
+      letter-spacing: 0px;
+      line-height: 16px;
+      @extend .overflowEllipsis;
+    }
+  }
+}
+
+.smallDialpad {
+  border-radius: 4px 4px 0px 0px;
+  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.dialpadIconActive {
+  circle {
+    fill: $rc-blue;
+  }
+  svg > g > path {
+    fill: white;
+  }
+}
+
+.endIcon {
+  box-sizing: border-box;
+  path {
+    fill: #ff4646;
+  }
+}
+
+.moreActionIcon {
+  box-sizing: border-box;
+
+  path {
+    fill: $smallIconColor;
+  }
+}
+
+.moreActionIconActive {
+  path {
+    fill: $primary-color;
+  }
+}
+
+.holdActive {
+  path {
+    fill: $primary-color;
+  }
+}
+
+.recordingIcon {
+  circle:nth-child(2) {
+    stroke-width: 1;
+  }
+}
+
+.recordingDisabled {
+  circle:nth-child(1) {
+    fill: '#eee';
+  }
+  circle:nth-child(2) {
+    stroke: '#eee';
+  }
+}
+
+.answer {
+  circle {
+    fill: $call-btn-color;
+  }
+  g,
+  path {
+    fill: #ffffff;
+  }
+}
+
+.rootButtonActive {
+  circle {
+    fill: $rc-blue;
+  }
+  svg > path {
+    fill: white;
+  }
+}
+
+.forwardPopover {
+  max-height: 300px !important;
+  max-width: 170px !important;
+  span[class*='actionText'] {
+    margin-left: 0;
+  }
+}
+
+.answerButton {
+  cursor: pointer;
+}

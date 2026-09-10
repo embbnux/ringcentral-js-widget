@@ -1,0 +1,35 @@
+$content-padding: 20px;
+$normal-font-size: 14px;
+
+div.accordion {
+  box-shadow: none !important;
+  background-color: transparent !important;
+
+  div.accordionSummary {
+    font-weight: bold;
+    color: #212121;
+    height: 32px;
+    font-size: $normal-font-size;
+    padding: 0 $content-padding !important;
+    min-height: 32px;
+
+    &.accordionSummaryDisabled {
+      opacity: inherit;
+      user-select: inherit;
+    }
+
+    div.accordionSummaryContent {
+      margin: 0 0;
+    }
+  }
+
+  div.accordionDetails {
+    padding: 0;
+    border: 0;
+    flex-direction: column;
+
+    div.toggleGroup {
+      width: 100%;
+    }
+  }
+}

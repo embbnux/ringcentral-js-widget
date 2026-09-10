@@ -1,0 +1,42 @@
+"use strict";
+
+require("core-js/modules/es.object.define-property.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SearchResult = void 0;
+require("core-js/modules/es.array.concat.js");
+require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.map.js");
+require("core-js/modules/es.object.to-string.js");
+var _juno = require("@ringcentral/juno");
+var _react = _interopRequireDefault(require("react"));
+var _i18n = _interopRequireDefault(require("./i18n"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+var SearchResult = exports.SearchResult = function SearchResult(_ref) {
+  var _ref$renderListItem = _ref.renderListItem,
+    renderListItem = _ref$renderListItem === void 0 ? function () {
+      return null;
+    } : _ref$renderListItem,
+    _ref$classes = _ref.classes,
+    classes = _ref$classes === void 0 ? {} : _ref$classes,
+    _ref$tipWhenNoOptions = _ref.tipWhenNoOptions,
+    tipWhenNoOptions = _ref$tipWhenNoOptions === void 0 ? '' : _ref$tipWhenNoOptions,
+    options = _ref.options,
+    filteredOptions = _ref.filteredOptions,
+    filter = _ref.filter,
+    currentLocale = _ref.currentLocale;
+  var noResultMessage = _i18n["default"].getString('noResultFoundFor', currentLocale);
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, options.length ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: classes.root,
+    "data-sign": "searchResult"
+  }, filteredOptions.length > 0 ? /*#__PURE__*/_react["default"].createElement(_juno.RcList, null, filteredOptions.map(function (option, index) {
+    return renderListItem({
+      option: option,
+      index: index
+    });
+  })) : /*#__PURE__*/_react["default"].createElement("div", {
+    className: classes.noResult
+  }, "".concat(noResultMessage, " \"").concat(filter, "\""))) : tipWhenNoOptions || null);
+};
+//# sourceMappingURL=SearchResult.js.map

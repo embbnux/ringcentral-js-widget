@@ -1,0 +1,29 @@
+@import '../../../lib/commonStyles/variable';
+
+.left {
+  @include display_flex;
+
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(100% - 96px - 16px); // 96px action menu width; 16px padding
+
+  &.classic {
+    width: calc(100% - 68px - 4px); // 68px action menu width; 4px padding
+  }
+}
+
+.info {
+  margin-left: 12px;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+
+  &.classic {
+    max-width: 60px;
+    margin-left: 12px;
+  }
+}
+
+.name {
+  margin-bottom: 2px;
+}

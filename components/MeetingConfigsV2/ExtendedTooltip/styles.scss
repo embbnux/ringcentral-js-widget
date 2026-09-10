@@ -1,0 +1,21 @@
+@import '../variable.scss';
+
+$win-scroll-bar-width: 17px;
+
+.tooltip {
+  max-width: 100% !important;
+}
+
+.popperLeftSide {
+  margin-left: calc(#{$panel-side-padding} + 4px);
+}
+
+.popper {
+  @extend .popperLeftSide;
+  margin-right: calc(#{$panel-side-padding} - 5px);
+}
+
+.popperOfWin {
+  @extend .popperLeftSide;
+  margin-right: calc(#{$panel-side-padding} - 5px + #{$win-scroll-bar-width});
+}

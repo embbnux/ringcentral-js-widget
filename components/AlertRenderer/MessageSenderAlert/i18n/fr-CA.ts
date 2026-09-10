@@ -1,0 +1,86 @@
+/* eslint-disable */
+import { messageSenderMessages } from '@ringcentral-integration/commons/modules/MessageSender';
+
+export default {
+  [messageSenderMessages.sendSuccess]: 'Envoi réussi.',
+  [messageSenderMessages.sendError]:
+    'Une erreur est survenue lors de l’envoi du message.',
+  [messageSenderMessages.numberValidateError]:
+    'Erreur de validation du numéro de téléphone.',
+  [messageSenderMessages.textEmpty]: 'Veuillez entrer le texte à envoyer.',
+  [messageSenderMessages.noPermission]:
+    'Vous n’êtes pas autorisé à envoyer des messages.',
+  [messageSenderMessages.senderEmpty]:
+    'Vous devez sélectionner un numéro parmi les numéros de téléphone pour envoyer.',
+  [messageSenderMessages.noToNumber]:
+    'Veuillez entrer un numéro de téléphone valide.',
+  [messageSenderMessages.recipientsEmpty]:
+    'Veuillez entrer un numéro de destinataire valide.',
+  [messageSenderMessages.textTooLong]:
+    'Le texte est trop long (limite : 1 000).',
+  [messageSenderMessages.multipartTextTooLong]:
+    'Le texte est trop long (limite : 5 000).',
+  [messageSenderMessages.recipientNumberInvalids]:
+    'Veuillez entrer un numéro de téléphone valide.',
+  [messageSenderMessages.noAreaCode]:
+    'Veuillez configurer l’{areaCodeLink} pour utiliser des numéros de téléphone locaux à 7 chiffres.',
+  [messageSenderMessages.specialNumber]:
+    'L’envoi de textos à des numéros d’urgence ou à des numéros pour services spéciaux n’est pas pris en charge.',
+  [messageSenderMessages.connectFailed]:
+    'Échec de la connexion. Veuillez réessayer plus tard.',
+  [messageSenderMessages.internalError]:
+    'Connexion impossible en raison d’erreurs internes. Veuillez réessayer plus tard.',
+  [messageSenderMessages.notAnExtension]: 'Le numéro de poste n’existe pas.',
+  [messageSenderMessages.networkError]:
+    'Connexion impossible en raison de problèmes de réseau. Veuillez réessayer plus tard.',
+  [messageSenderMessages.senderNumberInvalid]:
+    'Un numéro de téléphone valide est nécessaire pour envoyer des textos à des destinataires en dehors de votre entreprise. Veuillez communiquer avec votre administrateur afin qu’il ajoute un numéro direct à votre compte.',
+  [messageSenderMessages.notSmsToExtension]:
+    'Impossible d’envoyer à un numéro de poste avec le numéro de téléphone principal. Si vous souhaitez envoyer à un numéro de poste, veuillez simplement entrer ce numéro.',
+  [messageSenderMessages.internationalSMSNotSupported]:
+    'L’envoi de textos vers un numéro de téléphone international n’est pas pris en charge.',
+  [messageSenderMessages.noInternalSMSPermission]:
+    'Vous n’êtes pas autorisé à envoyer des messages. Veuillez communiquer avec l’administrateur de votre compte {brand} pour effectuer une mise à niveau.',
+  [messageSenderMessages.noSMSPermission]:
+    'Vous n’êtes pas autorisé à envoyer des messages à des destinataires qui ne font pas partie de votre entreprise.',
+  [messageSenderMessages.attachmentCountLimitation]:
+    'Un message ne peut pas contenir plus de 10 pièces jointes',
+  [messageSenderMessages.attachmentSizeLimitation]:
+    'La taille totale des pièces jointes ne doit pas dépasser 1,5 Mo par message.',
+  [messageSenderMessages.noAttachmentToExtension]:
+    'Vous ne pouvez pas envoyer de MMS à un poste.',
+  areaCode: 'indicatif régional',
+  [messageSenderMessages.sending]:
+    'Le message est envoyé… Il pourrait s’écouler quelques minutes avant que ne ce soit terminé.',
+  [messageSenderMessages.shortNumbersNotAvailable]:
+    'L’envoi de SMS vers des numéros courts n’est pas disponible.',
+} as const;
+
+// @key: @#@"[messageSenderMessages.sendSuccess]"@#@ @source: @#@"Send Success."@#@
+// @key: @#@"[messageSenderMessages.sendError]"@#@ @source: @#@"Something wrong happened when send message."@#@
+// @key: @#@"[messageSenderMessages.numberValidateError]"@#@ @source: @#@"Phone Number Validate Error."@#@
+// @key: @#@"[messageSenderMessages.textEmpty]"@#@ @source: @#@"Please enter the text to be sent."@#@
+// @key: @#@"[messageSenderMessages.noPermission]"@#@ @source: @#@"You have no permission to send message."@#@
+// @key: @#@"[messageSenderMessages.senderEmpty]"@#@ @source: @#@"You must select a number from your phone numbers to send"@#@
+// @key: @#@"[messageSenderMessages.noToNumber]"@#@ @source: @#@"Please enter a valid phone number."@#@
+// @key: @#@"[messageSenderMessages.recipientsEmpty]"@#@ @source: @#@"Please enter a valid receiver number."@#@
+// @key: @#@"[messageSenderMessages.textTooLong]"@#@ @source: @#@"You can enter up to 1,000 characters."@#@
+// @key: @#@"[messageSenderMessages.multipartTextTooLong]"@#@ @source: @#@"You can enter up to 5,000 characters."@#@
+// @key: @#@"[messageSenderMessages.recipientNumberInvalids]"@#@ @source: @#@"Please enter a valid phone number."@#@
+// @key: @#@"[messageSenderMessages.noAreaCode]"@#@ @source: @#@"Please set {areaCodeLink} to use 7-digit local phone numbers."@#@
+// @key: @#@"[messageSenderMessages.specialNumber]"@#@ @source: @#@"Sending text to emergency/special service numbers is not supported."@#@
+// @key: @#@"[messageSenderMessages.connectFailed]"@#@ @source: @#@"Connection failed. Please try again later."@#@
+// @key: @#@"[messageSenderMessages.internalError]"@#@ @source: @#@"Cannot connect due to internal errors. Please try again later."@#@
+// @key: @#@"[messageSenderMessages.notAnExtension]"@#@ @source: @#@"The extension number does not exist."@#@
+// @key: @#@"[messageSenderMessages.networkError]"@#@ @source: @#@"Cannot connect due to network issues. Please try again later."@#@
+// @key: @#@"[messageSenderMessages.senderNumberInvalid]"@#@ @source: @#@"A valid Phone Number is required to send text message to recipients outside of your company, Please contact your Administrator to add a direct number to your account."@#@
+// @key: @#@"[messageSenderMessages.notSmsToExtension]"@#@ @source: @#@"Cannot send to an extension number with main phone number. If you want to send to an extension number, please just enter extension number."@#@
+// @key: @#@"[messageSenderMessages.internationalSMSNotSupported]"@#@ @source: @#@"Sending SMS to international phone number is not supported."@#@
+// @key: @#@"[messageSenderMessages.noInternalSMSPermission]"@#@ @source: @#@"You don't have permission to send messages. Please contact your {brand} account administrator for upgrade."@#@
+// @key: @#@"[messageSenderMessages.noSMSPermission]"@#@ @source: @#@"You don't have permission to send messages to recipients outside of your organization."@#@
+// @key: @#@"[messageSenderMessages.attachmentCountLimitation]"@#@ @source: @#@"Can't be more than 10 attachments per message"@#@
+// @key: @#@"[messageSenderMessages.attachmentSizeLimitation]"@#@ @source: @#@"The over all attachment size can't be larger than 1.5 MB per message."@#@
+// @key: @#@"[messageSenderMessages.noAttachmentToExtension]"@#@ @source: @#@"It isn't supported to send MMS to an extension."@#@
+// @key: @#@"areaCode"@#@ @source: @#@"area code"@#@
+// @key: @#@"[messageSenderMessages.sending]"@#@ @source: @#@"Message being sent…It may take a couple of minutes to complete."@#@
+// @key: @#@"[messageSenderMessages.shortNumbersNotAvailable]"@#@ @source: @#@"Sending SMS to short numbers is not available."@#@
