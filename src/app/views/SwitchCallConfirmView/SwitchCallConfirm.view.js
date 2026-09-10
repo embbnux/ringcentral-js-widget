@@ -181,7 +181,7 @@ var SwitchCallConfirmView = exports.SwitchCallConfirmView = (_dec = (0, _nextCor
       var _this$call;
       return {
         contactName: this.contactName,
-        confirmContext: ((_this$call = this.call) === null || _this$call === void 0 ? void 0 : _this$call.isConferenceCall) ? (0, _i18n.t)('conferenceCallSwitchConfirmContext') : (0, _i18n.t)('comfirmContext', {
+        confirmContext: (_this$call = this.call) !== null && _this$call !== void 0 && _this$call.isConferenceCall ? (0, _i18n.t)('conferenceCallSwitchConfirmContext') : (0, _i18n.t)('comfirmContext', {
           displayName: this.contactName
         })
       };

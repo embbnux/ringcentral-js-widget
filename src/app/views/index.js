@@ -316,4 +316,15 @@ Object.keys(_CallsListViewSpring).forEach(function (key) {
     }
   });
 });
+var _ConnectingView = require("./ConnectingView");
+Object.keys(_ConnectingView).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ConnectingView[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ConnectingView[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

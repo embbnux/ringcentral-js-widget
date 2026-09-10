@@ -157,7 +157,7 @@ var ActiveCallsView = exports.ActiveCallsView = (_dec = (0, _nextCore.injectable
     _this._defaultOnCallsEmpty = function () {
       var _this$_webphone;
       var isWebRTC = _this._callingSettings.callingMode === _services5.callingModes.webphone;
-      if (isWebRTC && !((_this$_webphone = _this._webphone) === null || _this$_webphone === void 0 ? void 0 : _this$_webphone.sessions.length)) {
+      if (isWebRTC && !((_this$_webphone = _this._webphone) !== null && _this$_webphone !== void 0 && _this$_webphone.sessions.length)) {
         _this._router.push('/dialer');
       }
     };
@@ -207,7 +207,7 @@ var ActiveCallsView = exports.ActiveCallsView = (_dec = (0, _nextCore.injectable
         showMergeCall: showMergeCall,
         showHoldOnOtherDevice: showHoldOnOtherDevice,
         showSwitchCall: !!(showSwitchCall && isWebRTC && !this._connectivityManager.webphoneUnavailable),
-        autoLog: !!((_this$_callLogger2 = this._callLogger) === null || _this$_callLogger2 === void 0 ? void 0 : _this$_callLogger2.autoLog),
+        autoLog: !!((_this$_callLogger2 = this._callLogger) !== null && _this$_callLogger2 !== void 0 && _this$_callLogger2.autoLog),
         isWebRTC: isWebRTC,
         conferenceCallParties: [],
         useV2: !!useV2,
@@ -609,7 +609,7 @@ var ActiveCallsView = exports.ActiveCallsView = (_dec = (0, _nextCore.injectable
             var call = _this2._callMonitor.allCalls.find(function (call) {
               return call.webphoneSession === webphoneSession;
             });
-            if (call === null || call === void 0 ? void 0 : call.telephonySession) {
+            if (call !== null && call !== void 0 && call.telephonySession) {
               return (0, _services5.isHolding)({
                 status: call.telephonySession.status
               });

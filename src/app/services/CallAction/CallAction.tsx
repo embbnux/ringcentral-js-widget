@@ -83,7 +83,7 @@ type CallAllInfo<T extends boolean = false> = {
   session: ActiveSession;
 };
 
-const CALLING_ROUTE_PATH = '/calling';
+export const CALLING_ROUTE_PATH = '/calling';
 
 /**
  * group all call actions in this service, which use in latest version of spring-ui
@@ -417,27 +417,6 @@ export class CallAction extends RcModule {
     return this._callMonitor.allCalls.map((call) =>
       this.getAllInfoByTelephonySessionId<true>(call.telephonySessionId!),
     );
-  }
-
-  @computed
-  get preInsertCallInfoList() {
-    return this._preinsertCall.preinsertCalls.map((call) => {
-      const isInbound = call.direction === 'Inbound';
-      const meta = this.getCallMetaInfo(call.telephonySessionId!) || {
-        open: true,
-        currentPath: isInbound ? 'incoming' : 'controls',
-        minimized: isInbound
-          ? this.existRingingOpenCallMetaInfo?.meta?.minimized ?? true
-          : false,
-        actionsDisabled: true,
-        expanded: null,
-      };
-
-      return {
-        call,
-        meta,
-      };
-    });
   }
 
   @computed
@@ -1259,7 +1238,7 @@ export class CallAction extends RcModule {
   trackCallEventResult(call: Call) {
     if (process.env.NODE_ENV !== 'production') {
       if (this._portManager.shared && !this._portManager.isServer) {
-        console.warn(
+        this.logger.warn(
           'trackCallEventResult should not be called in client port',
         );
       }

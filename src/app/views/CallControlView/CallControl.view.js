@@ -135,7 +135,7 @@ var CallControlView = exports.CallControlView = (_dec = (0, _nextCore.injectable
         lastCallInfo = _ref.lastCallInfo,
         session = _ref.session;
       var layout = _callCtrlLayouts.callCtrlLayouts.normalCtrl;
-      if (session === null || session === void 0 ? void 0 : session.warmTransferSessionId) {
+      if (session !== null && session !== void 0 && session.warmTransferSessionId) {
         return _callCtrlLayouts.callCtrlLayouts.completeTransferCtrl;
       }
       if (!conferenceCallEquipped) {

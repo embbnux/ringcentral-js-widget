@@ -143,7 +143,7 @@ var ForwardingNumber = exports.ForwardingNumber = (_dec = (0, _nextCore.injectab
     get: function get() {
       return (0, _ramda.filter)(function (phoneNumber) {
         var _phoneNumber$features;
-        return !!(((_phoneNumber$features = phoneNumber.features) === null || _phoneNumber$features === void 0 ? void 0 : _phoneNumber$features.includes('CallFlip')) && phoneNumber.phoneNumber);
+        return !!((_phoneNumber$features = phoneNumber.features) !== null && _phoneNumber$features !== void 0 && _phoneNumber$features.includes('CallFlip') && phoneNumber.phoneNumber);
       }, this.numbers);
     }
   }, {
@@ -151,7 +151,7 @@ var ForwardingNumber = exports.ForwardingNumber = (_dec = (0, _nextCore.injectab
     get: function get() {
       return (0, _ramda.filter)(function (phoneNumber) {
         var _phoneNumber$features2;
-        return !!(((_phoneNumber$features2 = phoneNumber.features) === null || _phoneNumber$features2 === void 0 ? void 0 : _phoneNumber$features2.includes('CallForwarding')) && phoneNumber.phoneNumber);
+        return !!((_phoneNumber$features2 = phoneNumber.features) !== null && _phoneNumber$features2 !== void 0 && _phoneNumber$features2.includes('CallForwarding') && phoneNumber.phoneNumber);
       }, this.numbers);
     }
   }]);

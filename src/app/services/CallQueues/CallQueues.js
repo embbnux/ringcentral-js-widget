@@ -24,7 +24,6 @@ require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.iterator.js");
@@ -39,12 +38,10 @@ require("core-js/modules/es.array.sort.js");
 require("core-js/modules/es.date.now.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.to-string.js");
-var _subscriptionFilters = require("@ringcentral-integration/commons/enums/subscriptionFilters");
 var _fetchList = _interopRequireDefault(require("@ringcentral-integration/commons/lib/fetchList"));
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
-var _rxjs = require("rxjs");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _class, _class2, _descriptor;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -63,9 +60,6 @@ function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstruct
 function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
 function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
 function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _superPropGet(t, o, e, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
-function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
-function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
@@ -74,11 +68,8 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var DEFAULT_TTL = 5 * 60 * 1000; // 5 min
 var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   name: 'CallQueues'
-}), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)('Subscription')(target, undefined, 4);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.DataFetcher === "undefined" ? Object : _services.DataFetcher, typeof Subscription === "undefined" ? Object : Subscription]), _dec5 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", []), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", []), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", []), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String, Array]), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
-  function CallQueues(_client, _extensionFeatures, _storage, _dataFetcher, _subscription) {
-    var _this$_subscription;
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.DataFetcher === "undefined" ? Object : _services.DataFetcher]), _dec4 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", []), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String, Array]), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
+  function CallQueues(_client, _extensionFeatures, _storage, _dataFetcher) {
     var _this;
     _classCallCheck(this, CallQueues);
     _this = _callSuper(this, CallQueues, [_dataFetcher]);
@@ -86,7 +77,6 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
     _this._extensionFeatures = _extensionFeatures;
     _this._storage = _storage;
     _this._dataFetcher = _dataFetcher;
-    _this._subscription = _subscription;
     _this._source = new _services.DataSource({
       key: 'callQueues',
       polling: false,
@@ -133,83 +123,28 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
         return _this.readyCheckFunction();
       },
       permissionCheckFunction: function permissionCheckFunction() {
-        return _this.permissionCheckFunction();
-      }
-    });
-    _this._grantSource = new _services.DataSource({
-      key: 'extensionGrants',
-      polling: false,
-      disableCache: false,
-      cleanOnReset: true,
-      ttl: DEFAULT_TTL,
-      fetchFunction: function () {
-        var _fetchFunction2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-          var data;
-          return _regenerator().w(function (_context4) {
-            while (1) switch (_context4.n) {
-              case 0:
-                _context4.n = 1;
-                return (0, _fetchList["default"])(/*#__PURE__*/function () {
-                  var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(params) {
-                    var response;
-                    return _regenerator().w(function (_context3) {
-                      while (1) switch (_context3.n) {
-                        case 0:
-                          _context3.n = 1;
-                          return _this._client.service.platform().get('/restapi/v1.0/account/~/extension/~/grant', params);
-                        case 1:
-                          response = _context3.v;
-                          return _context3.a(2, response.json());
-                      }
-                    }, _callee3);
-                  }));
-                  return function (_x2) {
-                    return _ref2.apply(this, arguments);
-                  };
-                }());
-              case 1:
-                data = _context4.v;
-                return _context4.a(2, data);
-            }
-          }, _callee4);
-        }));
-        function fetchFunction() {
-          return _fetchFunction2.apply(this, arguments);
-        }
-        return fetchFunction;
-      }(),
-      readyCheckFunction: function readyCheckFunction() {
-        return _this.readyCheckFunction();
-      },
-      permissionCheckFunction: function permissionCheckFunction() {
-        return _this.permissionCheckFunction();
+        return _this.callQueuePermissionCheckFunction();
       }
     });
     _initializerDefineProperty(_this, "smsRecipientsCache", _descriptor, _this);
     _this._storage.enable(_this);
     _this._dataFetcher.register(_this._source);
-    _this._dataFetcher.register(_this._grantSource);
-    (_this$_subscription = _this._subscription) === null || _this$_subscription === void 0 ? void 0 : _this$_subscription.register(_this, {
-      filters: [_subscriptionFilters.subscriptionFilters.extensionGrants]
-    });
     return _this;
   }
   _inherits(CallQueues, _DataFetcherConsumer);
   return _createClass(CallQueues, [{
-    key: "grants",
+    key: "map",
     get: function get() {
-      return this._dataFetcher.getData(this._grantSource) || [];
-    }
-  }, {
-    key: "grantsMap",
-    get: function get() {
+      if (!this.data) {
+        return {};
+      }
       var result = {};
-      var _iterator = _createForOfIteratorHelper(this.grants),
+      var _iterator = _createForOfIteratorHelper(this.data),
         _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var grant = _step.value;
-          result[grant.extension.id] = grant;
+          var queue = _step.value;
+          result[queue.id] = queue;
         }
       } catch (err) {
         _iterator.e(err);
@@ -219,62 +154,9 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
       return result;
     }
   }, {
-    key: "map",
-    get: function get() {
-      if (!this.data) {
-        return {};
-      }
-      var result = {};
-      var _iterator2 = _createForOfIteratorHelper(this.data),
-        _step2;
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var queue = _step2.value;
-          result[queue.id] = {
-            queueId: queue.id,
-            queueInfo: queue,
-            smsRecipients: this.smsRecipientsCache[queue.id],
-            grant: this.grantsMap[queue.id]
-          };
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-      return result;
-    }
-  }, {
-    key: "getQueueMetadata",
-    value: function getQueueMetadata(queueId) {
+    key: "getQueue",
+    value: function getQueue(queueId) {
       return this.map[queueId];
-    }
-  }, {
-    key: "onInitOnce",
-    value: function onInitOnce() {
-      var _this$_subscription2,
-        _this2 = this;
-      _superPropGet(CallQueues, "onInitOnce", this, 3)([]);
-      (_this$_subscription2 = this._subscription) === null || _this$_subscription2 === void 0 ? void 0 : _this$_subscription2.fromMessage$(/\/extension\/.*.\/grant/).pipe((0, _rxjs.tap)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-        var _t;
-        return _regenerator().w(function (_context5) {
-          while (1) switch (_context5.p = _context5.n) {
-            case 0:
-              _context5.p = 0;
-              _context5.n = 1;
-              return _this2.refetchGrants();
-            case 1:
-              _context5.n = 3;
-              break;
-            case 2:
-              _context5.p = 2;
-              _t = _context5.v;
-              _this2.logger.error('grant update error', _t);
-            case 3:
-              return _context5.a(2);
-          }
-        }, _callee5, null, [[0, 2]]);
-      }))), _nextCore.takeUntilAppDestroy).subscribe();
     }
   }, {
     key: "resetData",
@@ -288,8 +170,7 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "isCacheExpired",
     value: function isCacheExpired(queueId) {
-      var map = this.map[queueId];
-      var cacheEntry = map === null || map === void 0 ? void 0 : map.smsRecipients;
+      var cacheEntry = this.smsRecipientsCache[queueId];
       if (!cacheEntry) {
         return true;
       }
@@ -303,8 +184,7 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getSmsRecipientsLoading",
     value: function getSmsRecipientsLoading(queueId) {
-      var map = this.map[queueId];
-      var cacheEntry = map === null || map === void 0 ? void 0 : map.smsRecipients;
+      var cacheEntry = this.smsRecipientsCache[queueId];
       return (cacheEntry === null || cacheEntry === void 0 ? void 0 : cacheEntry.loading) || false;
     }
   }, {
@@ -339,45 +219,45 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "loadSmsRecipients",
     value: (function () {
-      var _loadSmsRecipients = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(queueId) {
+      var _loadSmsRecipients = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(queueId) {
         var _this$_extensionFeatu, _this$_extensionFeatu2;
         var force,
           ableToFetchSmsRecipients,
           recipients,
-          _args6 = arguments,
-          _t2;
-        return _regenerator().w(function (_context6) {
-          while (1) switch (_context6.p = _context6.n) {
+          _args3 = arguments,
+          _t;
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.p = _context3.n) {
             case 0:
-              force = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : false;
-              ableToFetchSmsRecipients = !((_this$_extensionFeatu = this._extensionFeatures.features) === null || _this$_extensionFeatu === void 0 ? void 0 : (_this$_extensionFeatu2 = _this$_extensionFeatu.CallQueueSmsRecipient) === null || _this$_extensionFeatu2 === void 0 ? void 0 : _this$_extensionFeatu2.available); // Check if we need to fetch
+              force = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : false;
+              ableToFetchSmsRecipients = !((_this$_extensionFeatu = this._extensionFeatures.features) !== null && _this$_extensionFeatu !== void 0 && (_this$_extensionFeatu2 = _this$_extensionFeatu.CallQueueSmsRecipient) !== null && _this$_extensionFeatu2 !== void 0 && _this$_extensionFeatu2.available); // Check if we need to fetch
               if (!(ableToFetchSmsRecipients || !force && !this.isCacheExpired(queueId))) {
-                _context6.n = 1;
+                _context3.n = 1;
                 break;
               }
-              return _context6.a(2, this.getSmsRecipients(queueId));
+              return _context3.a(2, this.getSmsRecipients(queueId));
             case 1:
               // Set loading state
               this.setSmsRecipientsLoading(queueId, true);
-              _context6.p = 2;
-              _context6.n = 3;
+              _context3.p = 2;
+              _context3.n = 3;
               return this._getCallQueuesSmsRecipients(queueId);
             case 3:
-              recipients = _context6.v;
+              recipients = _context3.v;
               // Update cache
               this.setSmsRecipients(queueId, recipients);
-              return _context6.a(2, recipients);
+              return _context3.a(2, recipients);
             case 4:
-              _context6.p = 4;
-              _t2 = _context6.v;
+              _context3.p = 4;
+              _t = _context3.v;
               // Set loading to false on error
               this.setSmsRecipientsLoading(queueId, false);
-              this.logger.error('loadSmsRecipients error', _t2);
-              return _context6.a(2, []);
+              this.logger.error('loadSmsRecipients error', _t);
+              return _context3.a(2, []);
           }
-        }, _callee6, this, [[2, 4]]);
+        }, _callee3, this, [[2, 4]]);
       }));
-      function loadSmsRecipients(_x3) {
+      function loadSmsRecipients(_x2) {
         return _loadSmsRecipients.apply(this, arguments);
       }
       return loadSmsRecipients;
@@ -389,8 +269,7 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getSmsRecipients",
     value: function getSmsRecipients(queueId) {
-      var map = this.map[queueId];
-      var cacheEntry = map === null || map === void 0 ? void 0 : map.smsRecipients;
+      var cacheEntry = this.smsRecipientsCache[queueId];
       return (cacheEntry === null || cacheEntry === void 0 ? void 0 : cacheEntry.data) || [];
     }
 
@@ -402,25 +281,16 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
     value: function refetchCallQueues() {
       return this.fetchData();
     }
-
-    /**
-     * Fetch function for DataSource
-     */
-  }, {
-    key: "refetchGrants",
-    value: function refetchGrants() {
-      return this._dataFetcher.fetchData(this._grantSource);
-    }
   }, {
     key: "readyCheckFunction",
     value: function readyCheckFunction() {
       return this._extensionFeatures.ready;
     }
   }, {
-    key: "permissionCheckFunction",
-    value: function permissionCheckFunction() {
-      var _this$_extensionFeatu3, _this$_extensionFeatu4, _this$_extensionFeatu5;
-      return (_this$_extensionFeatu3 = (_this$_extensionFeatu4 = this._extensionFeatures.features) === null || _this$_extensionFeatu4 === void 0 ? void 0 : (_this$_extensionFeatu5 = _this$_extensionFeatu4.CallQueuePickup) === null || _this$_extensionFeatu5 === void 0 ? void 0 : _this$_extensionFeatu5.available) !== null && _this$_extensionFeatu3 !== void 0 ? _this$_extensionFeatu3 : false;
+    key: "callQueuePermissionCheckFunction",
+    value: function callQueuePermissionCheckFunction() {
+      var _this$_extensionFeatu3, _this$_extensionFeatu4, _this$_extensionFeatu5, _this$_extensionFeatu6;
+      return !!((_this$_extensionFeatu3 = this._extensionFeatures.features) !== null && _this$_extensionFeatu3 !== void 0 && (_this$_extensionFeatu4 = _this$_extensionFeatu3.CallQueuePickup) !== null && _this$_extensionFeatu4 !== void 0 && _this$_extensionFeatu4.available || (_this$_extensionFeatu5 = this._extensionFeatures.features) !== null && _this$_extensionFeatu5 !== void 0 && (_this$_extensionFeatu6 = _this$_extensionFeatu5.CallQueueSmsRecipient) !== null && _this$_extensionFeatu6 !== void 0 && _this$_extensionFeatu6.available);
     }
 
     /**
@@ -429,41 +299,41 @@ var CallQueues = exports.CallQueues = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_getCallQueuesSmsRecipients",
     value: (function () {
-      var _getCallQueuesSmsRecipients2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(queueId) {
-        var res, data, _t3;
-        return _regenerator().w(function (_context7) {
-          while (1) switch (_context7.p = _context7.n) {
+      var _getCallQueuesSmsRecipients2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(queueId) {
+        var res, data, _t2;
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.p = _context4.n) {
             case 0:
-              _context7.p = 0;
-              _context7.n = 1;
-              return this._client.service.platform().get("/restapi/v1.0/account/~/call-queues/".concat(queueId, "/sms-recipients"));
+              _context4.p = 0;
+              _context4.n = 1;
+              return this._client.service.platform().get("/restapi/v1.0/account/~/extension/".concat(queueId, "/sms-recipients"));
             case 1:
-              res = _context7.v;
-              _context7.n = 2;
+              res = _context4.v;
+              _context4.n = 2;
               return res.json();
             case 2:
-              data = _context7.v;
-              return _context7.a(2, data.smsRecipients || []);
+              data = _context4.v;
+              return _context4.a(2, data.smsRecipients || []);
             case 3:
-              _context7.p = 3;
-              _t3 = _context7.v;
-              this.logger.error('getCallQueuesSmsRecipients error', _t3);
-              return _context7.a(2, []);
+              _context4.p = 3;
+              _t2 = _context4.v;
+              this.logger.error('getCallQueuesSmsRecipients error', _t2);
+              return _context4.a(2, []);
           }
-        }, _callee7, this, [[0, 3]]);
+        }, _callee4, this, [[0, 3]]);
       }));
-      function _getCallQueuesSmsRecipients(_x4) {
+      function _getCallQueuesSmsRecipients(_x3) {
         return _getCallQueuesSmsRecipients2.apply(this, arguments);
       }
       return _getCallQueuesSmsRecipients;
     }())
   }]);
-}(_services.DataFetcherConsumer), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "smsRecipientsCache", [_nextCore.storage, _nextCore.state, _dec5], {
+}(_services.DataFetcherConsumer), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "smsRecipientsCache", [_nextCore.storage, _nextCore.state, _dec4], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "grantsMap", [_nextCore.computed, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "grantsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "map", [_nextCore.computed, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "map"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setSmsRecipientsLoading", [_nextCore.action, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "setSmsRecipientsLoading"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setSmsRecipients", [_nextCore.action, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "setSmsRecipients"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadSmsRecipients", [_dec14, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "loadSmsRecipients"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "map", [_nextCore.computed, _dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "map"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setSmsRecipientsLoading", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setSmsRecipientsLoading"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setSmsRecipients", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "setSmsRecipients"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadSmsRecipients", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "loadSmsRecipients"), _class2.prototype), _class2)) || _class) || _class) || _class);
 //# sourceMappingURL=CallQueues.js.map

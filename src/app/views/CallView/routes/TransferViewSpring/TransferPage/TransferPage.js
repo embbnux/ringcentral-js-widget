@@ -74,10 +74,12 @@ var TransferPage = exports.TransferPage = function TransferPage(_ref) {
     onBackClick: function onBackClick() {
       return onAction('activeCall');
     }
-  }, t('transferTo')), /*#__PURE__*/_react["default"].createElement("div", {
+  }, t('transferTo')), /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "transferPage",
-    className: "flex flex-col items-center gap-8 pt-8 flex-auto"
-  }, /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
+    className: "flex flex-col items-center pt-4 flex-auto"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])('w-full flex flex-col', contactSearchExpanded ? 'flex-auto min-h-0' : 'flex-none')
+  }, /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
     defaultTab: "company",
     source: "transfer",
     open: contactSearchExpanded,
@@ -88,8 +90,8 @@ var TransferPage = exports.TransferPage = function TransferPage(_ref) {
     onSelect: setRecipients,
     onRemove: clearRecipient,
     onExpanded: setContactSearchExpanded
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(contactSearchExpanded && 'hidden')
+  })), /*#__PURE__*/_react["default"].createElement("main", {
+    className: (0, _clsx["default"])('flex flex-col flex-auto items-center overflow-auto pb-3 gap-8 pt-6 w-full h-0', contactSearchExpanded && 'hidden')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
     "data-sign": "dialPad",
     volume: callVolume,
@@ -97,7 +99,7 @@ var TransferPage = exports.TransferPage = function TransferPage(_ref) {
     sounds: _springUi.DialerPadSoundsMPEG,
     size: "medium",
     className: "gap-y-2"
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])('grid grid-cols-3 gap-x-1', contactSearchExpanded && 'hidden')
   }, enableWarmTransfer && /*#__PURE__*/_react["default"].createElement("div", {
     className: iconContainerClassName
@@ -141,6 +143,6 @@ var TransferPage = exports.TransferPage = function TransferPage(_ref) {
     }
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "typography-descriptorMini text-center"
-  }, t('toVoicemail')))))));
+  }, t('toVoicemail'))))))));
 };
 //# sourceMappingURL=TransferPage.js.map

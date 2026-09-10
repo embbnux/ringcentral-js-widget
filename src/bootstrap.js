@@ -71,7 +71,7 @@ var _default = exports["default"] = (0, _nextMicro.exposeMicroApp)({
         return true;
       }
     }
-  }, _services.AccountInfo, _services.Auth, _services4.ActiveCallControl, _services4.CallMonitor, _services2.ContactSearch, _services2.ContactMatcher, _services4.AudioSettings, _services4.Webphone, _services2.CompanyContacts, _services4.Softphone, _services4.Call, _services.RateLimiter, _views2.DialerView, _services.ExtensionInfo, _services4.CallingSettings,
+  }, _services.AccountInfo, _services.Auth, _services4.ActiveCallControl, _services4.CallMonitor, _services2.ContactSearch, _services2.ContactMatcher, _services4.AudioSettings, _services4.Webphone, _services2.CompanyContacts, _services4.Softphone, _services4.Call, _services.RateLimiter, _views2.DialerView, _services.ExtensionInfo, _services4.CallerId, _services4.CallingSettings,
   // TODO: check optional injections
   _views.ModalView, _services3.SleepDetector, _nextCore.RouterPlugin, _plugins.ThemePlugin, _services3.Brand, _services3.Locale, _services2.Contacts, {
     provide: _nextCore.RouterOptions,
@@ -89,9 +89,10 @@ var _default = exports["default"] = (0, _nextMicro.exposeMicroApp)({
   }, {
     provide: 'SdkConfig',
     useValue: {
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      server: process.env.SERVER,
+      clientId: 'JP9sPJnkSeKMVS6jdsEAeA',
+      clientSecret: 'Sx2ndvhVTdyANgfuNqZFRwPEFvuIrCQnqpdeSIqFioVQ',
+      // server: 'https://api-rcapps.ringcentral.com',
+      server: 'https://api-xmrupxmn.intlabs_domain',
       cachePrefix: "sdk-".concat(brandConfig.code)
     }
   }, {

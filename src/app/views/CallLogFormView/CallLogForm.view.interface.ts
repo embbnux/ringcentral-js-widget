@@ -1,4 +1,5 @@
 import type { Call } from '@ringcentral-integration/commons/interfaces/Call.interface';
+import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 import { InputSelectWidgetProps } from '../../components/InputSelectWidgetSpring/InputSelectWidget.interface';
@@ -17,8 +18,19 @@ export interface CallLogFormViewProps {
   variant?: 'expanded' | 'history' | 'postCall';
 }
 
-export type CallLogFormViewPanelProps = {
+export type UpdateCallLogOptions = {
+  markDirty?: boolean;
+  /**
+   * The task field keys the user actually edited. When provided, only these
+   * keys are considered for dirty-tracking and merged into the task, so
+   * untouched fields (e.g. async contact-match results) are not clobbered.
+   */
+  changedKeys?: string[];
+};
+
+export type CallLogFormViewPanelProps = PropsWithChildren<{
   disabled: boolean;
+  formKey?: string;
   formRef?: React.ReactElement;
   editSectionSchema: {
     uiOrder: string[];
@@ -30,7 +42,7 @@ export type CallLogFormViewPanelProps = {
     string,
     ReferenceWidgetProps | InputSelectWidgetProps
   >;
-  onUpdateCallLog: (formData: any) => void;
-} & CallLogFormViewProps;
+  onUpdateCallLog: (formData: any, options?: UpdateCallLogOptions) => void;
+} & CallLogFormViewProps>;
 
 export { ReferenceWidgetProps };

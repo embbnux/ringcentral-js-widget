@@ -159,9 +159,10 @@ var ReferenceWidget = exports.ReferenceWidget = function ReferenceWidget(filedPr
     anchorEl: anchorEl
   });
   var renderTags = (0, _react.useCallback)(function (values, getTagProps) {
+    var selectedItems = values;
     if (!showChips) {
-      var _values$;
-      if (!values || values.length === 0) {
+      var _selectedItems$;
+      if (!selectedItems || selectedItems.length === 0) {
         return null;
       }
       return /*#__PURE__*/_react["default"].createElement("span", {
@@ -169,14 +170,12 @@ var ReferenceWidget = exports.ReferenceWidget = function ReferenceWidget(filedPr
         style: {
           maxWidth: '75%'
         } // tailwind css not computing max-w-[75%]
-      }, ((_values$ = values[0]) === null || _values$ === void 0 ? void 0 : _values$.name) || '');
+      }, ((_selectedItems$ = selectedItems[0]) === null || _selectedItems$ === void 0 ? void 0 : _selectedItems$.name) || '');
     }
-    return values.map(function (item, index) {
+    return selectedItems.map(function (item, index) {
       var tagProps = getTagProps(item, index);
-      var _ref2 = item,
-        id = _ref2.id,
-        name = _ref2.name,
-        type = _ref2.type;
+      var id = item.id,
+        name = item.name;
       return /*#__PURE__*/_react["default"].createElement(_springUi.Chip, _extends({
         "data-sign": "chip-".concat(id !== null && id !== void 0 ? id : index),
         key: index
@@ -299,9 +298,13 @@ var ReferenceWidget = exports.ReferenceWidget = function ReferenceWidget(filedPr
         addEntityMenu.onSelect(option.type);
         handleMenuClose();
       }
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      className: "mr-2"
-    }, option.icon), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, option.label));
+    }, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "mr-2 flex"
+    }, option.icon), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, {
+      classes: {
+        primaryText: 'truncate min-w-0'
+      }
+    }, option.label));
   })), searchOpened && /*#__PURE__*/_react["default"].createElement(_ReferenceSearchPanel.ReferenceSearchPanel, {
     expandMode: expandMode,
     onBack: function onBack() {

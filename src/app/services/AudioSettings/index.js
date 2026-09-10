@@ -30,4 +30,15 @@ Object.keys(_AudioSettings2).forEach(function (key) {
     }
   });
 });
+var _NoiseReductionLike = require("./NoiseReductionLike");
+Object.keys(_NoiseReductionLike).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _NoiseReductionLike[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _NoiseReductionLike[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

@@ -75,21 +75,23 @@ var ForwardPage = exports.ForwardPage = function ForwardPage(props) {
       return onAction('activeCall');
     },
     "data-sign": "forwardPageHeader"
-  }, t('forwardTitle')), /*#__PURE__*/_react["default"].createElement("div", {
+  }, t('forwardTitle')), /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "forwardPage",
-    className: "flex flex-col items-center gap-8 pt-8 flex-auto"
-  }, /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
+    className: "flex flex-col items-center pt-4 flex-auto"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])('w-full flex flex-col', contactSearchExpanded ? 'flex-auto min-h-0' : 'flex-none')
+  }, /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
     defaultTab: "company",
     open: contactSearchExpanded,
     componentType: "DialTextField",
     inputValue: toNumber,
     recipient: recipients[0],
-    onInputValueChange: onToNumberChange,
+    onInputValueChange: setToNumber,
     onSelect: setRecipients,
     onRemove: clearRecipient,
     onExpanded: setContactSearchExpanded
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(contactSearchExpanded && 'hidden')
+  })), /*#__PURE__*/_react["default"].createElement("main", {
+    className: (0, _clsx["default"])('flex flex-col flex-auto items-center overflow-auto pb-2 gap-8 pt-6 w-full h-0', contactSearchExpanded && 'hidden')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
     "data-sign": "dialPad",
     volume: callVolume,
@@ -97,7 +99,7 @@ var ForwardPage = exports.ForwardPage = function ForwardPage(props) {
     size: "medium",
     sinkId: outputDeviceId,
     className: "gap-y-2"
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(contactSearchExpanded && 'hidden')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
     TooltipProps: {
@@ -113,6 +115,6 @@ var ForwardPage = exports.ForwardPage = function ForwardPage(props) {
     onClick: function onClick() {
       onAction('startForward');
     }
-  })))));
+  }))))));
 };
 //# sourceMappingURL=ForwardPage.js.map

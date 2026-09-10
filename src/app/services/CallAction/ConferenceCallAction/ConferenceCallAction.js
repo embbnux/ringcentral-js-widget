@@ -215,7 +215,7 @@ var ConferenceCallAction = exports.ConferenceCallAction = (_dec = (0, _nextCore.
         className: "flex flex-col gap-2 mt-2"
       }, /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
         fullWidth: true,
-        size: "xlarge",
+        size: "medium",
         "data-sign": "confirmMerge",
         onClick: function onClick() {
           action === null || action === void 0 ? void 0 : action.confirm({
@@ -225,7 +225,7 @@ var ConferenceCallAction = exports.ConferenceCallAction = (_dec = (0, _nextCore.
       }, t('mergeConfirm')), /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
         fullWidth: true,
         "data-sign": "cancelMerge",
-        size: "xlarge",
+        size: "medium",
         variant: "outlined",
         onClick: function onClick() {
           action === null || action === void 0 ? void 0 : action.cancel();
@@ -257,7 +257,7 @@ var ConferenceCallAction = exports.ConferenceCallAction = (_dec = (0, _nextCore.
         "data-sign": "participantsListModal"
       }, /*#__PURE__*/_react["default"].createElement("h3", {
         "data-sign": "participantsHeader",
-        className: "font-bold m-4 typography-title"
+        className: "m-4 typography-subtitleBold"
       }, t('participants'), " (", length, ")"), /*#__PURE__*/_react["default"].createElement(_springUi.List, null, conferenceParticipantsInfoFnList === null || conferenceParticipantsInfoFnList === void 0 ? void 0 : conferenceParticipantsInfoFnList.map(function (conferenceParticipantInfoFn, index) {
         var _activeCallInfo$meta;
         var _conferenceParticipan = conferenceParticipantInfoFn({
@@ -275,8 +275,9 @@ var ConferenceCallAction = exports.ConferenceCallAction = (_dec = (0, _nextCore.
         var primaryDisplay = isHost ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, result, " (".concat(t('host'), ")")) : result;
         return /*#__PURE__*/_react["default"].createElement(_springUi.ListItem, {
           key: "".concat(call.telephonySessionId, "-").concat(index),
-          size: "large",
+          size: "auto",
           divider: false,
+          className: "h-[54px]",
           "data-sign": isHost ? "participantItemHost" : "participantItem"
         }, /*#__PURE__*/_react["default"].createElement(Avatar, null), /*#__PURE__*/_react["default"].createElement(_springUi.ListItemText, {
           primary:

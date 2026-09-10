@@ -109,7 +109,7 @@ var CallLogCallCtrlView = exports.CallLogCallCtrlView = (_dec = (0, _nextCore.in
       var isEnablePickup = !!this._activeCallControl.pickUpCallDataMap[telephonySessionId];
       var allowPickupCall = isEnablePickup && isWebphone;
       var isCurrentCall = this._callMonitor.activeCurrentCallTelephonySessionId === telephonySessionId;
-      var isCallQueueCall = !!((_this$_activeCallCont6 = this._activeCallControl.getSession(telephonySessionId)) === null || _this$_activeCallCont6 === void 0 ? void 0 : _this$_activeCallCont6.callQueueName);
+      var isCallQueueCall = !!((_this$_activeCallCont6 = this._activeCallControl.getSession(telephonySessionId)) !== null && _this$_activeCallCont6 !== void 0 && _this$_activeCallCont6.callQueueName);
       return {
         isWebphone: isWebphone,
         currentSession: currentSession,

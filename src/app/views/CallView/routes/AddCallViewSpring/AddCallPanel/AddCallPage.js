@@ -88,7 +88,7 @@ var AddCallPage = exports.AddCallPage = function AddCallPage(props) {
     options: fromNumbers
   })), /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "addCallPage",
-    className: "flex flex-col items-center mt-2 flex-auto gap-y-2"
+    className: "flex flex-col items-center mt-2 flex-auto gap-y-2 overflow-hidden"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex flex-col w-full h-full"
   }, /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
@@ -102,7 +102,7 @@ var AddCallPage = exports.AddCallPage = function AddCallPage(props) {
     onRemove: clearRecipient,
     onExpanded: setContactSearchExpanded
   }), /*#__PURE__*/_react["default"].createElement("main", {
-    className: (0, _clsx["default"])('px-10 py-2 flex flex-col items-center flex-auto', contactSearchExpanded && 'hidden')
+    className: (0, _clsx["default"])('px-10 py-2 flex flex-col items-center flex-auto overflow-auto pb-2', contactSearchExpanded && 'hidden')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
     "data-sign": "dialPad",
     volume: callVolume,

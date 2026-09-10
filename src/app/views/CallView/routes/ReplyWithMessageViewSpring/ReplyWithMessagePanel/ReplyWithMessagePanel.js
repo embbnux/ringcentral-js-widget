@@ -101,7 +101,7 @@ var ReplyWithMessagePanel = exports.ReplyWithMessagePanel = function ReplyWithMe
     maxRow = _useSpringTextareaDyn.maxRow;
   return /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "replyWithMessagePage",
-    className: "flex flex-col h-full"
+    className: "flex flex-col h-full overflow-hidden"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "call-information",
     className: "mt-5 mx-2 gap-1 flex items-center flex-none"
@@ -129,7 +129,9 @@ var ReplyWithMessagePanel = exports.ReplyWithMessagePanel = function ReplyWithMe
   })), /*#__PURE__*/_react["default"].createElement("p", {
     className: "typography-descriptorMini text-neutral-b0",
     "data-sign": "userPhoneNumber"
-  }, displayPhoneNumber))), /*#__PURE__*/_react["default"].createElement(_springUi.List, {
+  }, displayPhoneNumber))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex-auto flex flex-col overflow-auto"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.List, {
     className: "mt-8 flex-none"
   }, options.map(function (item, index) {
     return /*#__PURE__*/_react["default"].createElement(_springUi.ListItem, {
@@ -152,7 +154,7 @@ var ReplyWithMessagePanel = exports.ReplyWithMessagePanel = function ReplyWithMe
       "data-sign": "sendIcon"
     }));
   })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "mt-5 mb-3 mx-4 flex-auto overflow-hidden",
+    className: "mt-5 mb-3 mx-4 overflow-hidden flex-auto min-h-44",
     ref: textareaContainerRef,
     "data-sign": "customMessage"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Textarea, {
@@ -184,6 +186,6 @@ var ReplyWithMessagePanel = exports.ReplyWithMessagePanel = function ReplyWithMe
         e.preventDefault();
       }
     }
-  })));
+  }))));
 };
 //# sourceMappingURL=ReplyWithMessagePanel.js.map

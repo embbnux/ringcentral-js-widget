@@ -442,7 +442,7 @@ var CallLogSection = exports.CallLogSection = (_dec = (0, _nextCore.injectable)(
 
               // Do save
               curr = this.callsMappingState[identify];
-              if (!(curr === null || curr === void 0 ? void 0 : curr.isSaving)) {
+              if (!(curr !== null && curr !== void 0 && curr.isSaving)) {
                 _context0.n = 1;
                 break;
               }

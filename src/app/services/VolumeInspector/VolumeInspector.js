@@ -654,7 +654,7 @@ var VolumeInspector = exports.VolumeInspector = (_dec = (0, _nextCore.injectable
               this.stopPlayback();
               this.setTestState(_const.TEST_STATE.IDLE);
               this.setType(null);
-              if (!(this._audioSettings.enableActiveCallAudioControl && this.shouldRecoverCallToUnMute && ((_this$_callAction3 = this._callAction) === null || _this$_callAction3 === void 0 ? void 0 : (_this$_callAction3$di = _this$_callAction3.displayCallAllInfo) === null || _this$_callAction3$di === void 0 ? void 0 : (_this$_callAction3$di2 = _this$_callAction3$di.session) === null || _this$_callAction3$di2 === void 0 ? void 0 : _this$_callAction3$di2.isOnMute))) {
+              if (!(this._audioSettings.enableActiveCallAudioControl && this.shouldRecoverCallToUnMute && (_this$_callAction3 = this._callAction) !== null && _this$_callAction3 !== void 0 && (_this$_callAction3$di = _this$_callAction3.displayCallAllInfo) !== null && _this$_callAction3$di !== void 0 && (_this$_callAction3$di2 = _this$_callAction3$di.session) !== null && _this$_callAction3$di2 !== void 0 && _this$_callAction3$di2.isOnMute)) {
                 _context17.n = 1;
                 break;
               }

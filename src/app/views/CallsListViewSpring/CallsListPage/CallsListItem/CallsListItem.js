@@ -73,7 +73,7 @@ var _CallsListItem = function _CallsListItem(_ref) {
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "text-right min-h-11 max-w-[30%]"
   }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "typography-descriptor text-neutral-b2",
+    className: "typography-descriptor text-neutral-b2 inline-block max-w-full truncate",
     "data-sign": "callStartTime"
   }, startTime), logged), /*#__PURE__*/_react["default"].createElement(_components.ActionMenuList, {
     buttons: buttons

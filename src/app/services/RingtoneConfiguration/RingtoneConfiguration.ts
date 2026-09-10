@@ -79,8 +79,8 @@ export class RingtoneConfiguration extends RcModule {
     );
   }
 
-  @track(trackEvents.uploadRingtone)
   @delegate('server')
+  @track(trackEvents.uploadRingtone)
   async uploadCustomRingtone(ringtone: RingtoneItem, showAlert?: boolean) {
     this._pushCustomRingtone(ringtone);
     if (showAlert) {
@@ -92,8 +92,8 @@ export class RingtoneConfiguration extends RcModule {
     }
   }
 
-  @track(trackEvents.deleteRingtone)
   @delegate('server')
+  @track(trackEvents.deleteRingtone)
   async removeCustomRingtone(id: string) {
     const hasCustomRingtone = this.customRingtoneList.find(
       (ringtone) => ringtone.id === id,

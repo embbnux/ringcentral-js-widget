@@ -23,6 +23,7 @@ exports.InputSelectWidget = void 0;
 require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.object.to-string.js");
+var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
@@ -40,42 +41,54 @@ var InputSelectWidget = exports.InputSelectWidget = function InputSelectWidget(f
   var _ref = props,
     options = _ref.options,
     maxLength = _ref.maxLength;
-  var _useState = (0, _react.useState)(formData !== null && formData !== void 0 ? formData : ''),
+  var _useDebouncedFieldSta = (0, _reactHooks.useDebouncedFieldState)({
+      value: formData !== null && formData !== void 0 ? formData : '',
+      onChange: onChange,
+      shouldDebounceOnChange: true
+    }),
+    inputValue = _useDebouncedFieldSta.inputValue,
+    setInputValue = _useDebouncedFieldSta.setInputValue,
+    focusInput = _useDebouncedFieldSta.focusInput,
+    blurInput = _useDebouncedFieldSta.blurInput;
+  var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    inputValue = _useState2[0],
-    setInputValue = _useState2[1];
-  var _useState3 = (0, _react.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isOpen = _useState4[0],
-    setIsOpen = _useState4[1];
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
   var isFromDropdownRef = (0, _react.useRef)(false);
+  var inputRef = (0, _react.useRef)(null);
   var autoOptions = options.map(function (opt) {
     return {
       id: opt,
       label: opt
     };
   });
-  (0, _react.useEffect)(function () {
-    setInputValue(formData !== null && formData !== void 0 ? formData : '');
-  }, [formData]);
   var handleInputChange = (0, _react.useCallback)(function (rawInputValue) {
-    var newInputValue = trimStrToLen(rawInputValue, maxLength);
+    var _inputRef$current;
+    var actualInputValue = (_inputRef$current = inputRef.current) === null || _inputRef$current === void 0 ? void 0 : _inputRef$current.value;
+    var isOverMaxLength = maxLength !== undefined && rawInputValue.length > maxLength;
+
+    // Spring Autocomplete can report a duplicated over-limit value when editing
+    // a maxLength input under heavy rendering pressure. The DOM input already
+    // has the correct browser-applied edit and caret position, so prefer it in
+    // that case to avoid rewriting the controlled value and moving the caret.
+    var valueToApply = isOverMaxLength && actualInputValue !== undefined ? actualInputValue : rawInputValue;
+    var newInputValue = trimStrToLen(valueToApply, maxLength);
     if (!isFromDropdownRef.current) {
       setInputValue(newInputValue);
-      onChange(newInputValue);
     }
     isFromDropdownRef.current = false;
-  }, [onChange, maxLength]);
+  }, [setInputValue, maxLength]);
   var handleChange = (0, _react.useCallback)(function (selectedItems) {
     var _selectedItems$;
     var selectedValue = ((_selectedItems$ = selectedItems[0]) === null || _selectedItems$ === void 0 ? void 0 : _selectedItems$.label) || '';
     isFromDropdownRef.current = true;
     if (selectedValue) {
-      setInputValue(selectedValue);
-      onChange(selectedValue);
+      setInputValue(selectedValue, {
+        flush: true
+      });
     }
     setIsOpen(false);
-  }, [onChange]);
+  }, [setInputValue]);
   var handleToggleClick = (0, _react.useCallback)(function () {
     setIsOpen(!isOpen);
   }, [isOpen]);
@@ -94,6 +107,7 @@ var InputSelectWidget = exports.InputSelectWidget = function InputSelectWidget(f
     value: [] // Keep value as empty array since we're using inputValue for the actual value
     ,
     inputValue: inputValue,
+    inputRef: inputRef,
     onInputChange: handleInputChange,
     onChange: handleChange,
     onClose: handleClose,
@@ -107,7 +121,9 @@ var InputSelectWidget = exports.InputSelectWidget = function InputSelectWidget(f
     toggleWithInput: false,
     open: isOpen,
     inputProps: {
-      maxLength: maxLength
+      maxLength: maxLength,
+      onFocus: focusInput,
+      onBlur: blurInput
     },
     size: "medium"
   }));

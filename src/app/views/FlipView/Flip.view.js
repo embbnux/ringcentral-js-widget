@@ -104,7 +104,7 @@ var FlipView = exports.FlipView = (_dec = (0, _nextCore.injectable)({
       var _this$session;
       return {
         sessionId: this.sessionId,
-        isOnFlip: !!((_this$session = this.session) === null || _this$session === void 0 ? void 0 : _this$session.isOnFlip),
+        isOnFlip: !!((_this$session = this.session) !== null && _this$session !== void 0 && _this$session.isOnFlip),
         currentLocale: this._locale.currentLocale,
         flipNumbers: this._forwardingNumber.flipNumbers,
         session: this.session

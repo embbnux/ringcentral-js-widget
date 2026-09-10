@@ -95,7 +95,7 @@ var _default = exports["default"] = {
   matches: '{numberOfMatches} corrispondenze',
   maybe: 'Forse: {contactName}',
   optedOut: "Il destinatario ha annullato l'adesione.",
-  optOutAlertTooltip: "Il destinatario deve effettuare nuovamente l'abbonamento per ricevere SMS da questo numero."
+  optOutAlertTooltip: 'Il destinatario deve riattivare la ricezione per ricevere SMS da questo numero.'
 }; // @key: @#@"to"@#@ @source: @#@"To"@#@
 // @key: @#@"from"@#@ @source: @#@"From"@#@
 // @key: @#@"ext"@#@ @source: @#@"Ext."@#@

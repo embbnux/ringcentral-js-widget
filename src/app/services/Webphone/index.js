@@ -96,4 +96,15 @@ Object.keys(_Webphone2).forEach(function (key) {
     }
   });
 });
+var _webphoneLogSanitizer = require("./webphoneLogSanitizer");
+Object.keys(_webphoneLogSanitizer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _webphoneLogSanitizer[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _webphoneLogSanitizer[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

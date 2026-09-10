@@ -55,7 +55,7 @@ var getWarmTransferSession = function getWarmTransferSession(_ref) {
   var mainLog = _ref.mainLog,
     transferLog = _ref.transferLog,
     activeTelephonySessionId = _ref.activeTelephonySessionId;
-  if (!transferLog || !(transferLog === null || transferLog === void 0 ? void 0 : transferLog.call) || (transferLog === null || transferLog === void 0 ? void 0 : (_transferLog$call = transferLog.call) === null || _transferLog$call === void 0 ? void 0 : _transferLog$call.telephonySessionId) !== activeTelephonySessionId) {
+  if (!transferLog || !(transferLog !== null && transferLog !== void 0 && transferLog.call) || (transferLog === null || transferLog === void 0 ? void 0 : (_transferLog$call = transferLog.call) === null || _transferLog$call === void 0 ? void 0 : _transferLog$call.telephonySessionId) !== activeTelephonySessionId) {
     return {
       activeLog: mainLog,
       subLog: transferLog

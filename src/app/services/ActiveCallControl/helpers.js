@@ -300,7 +300,7 @@ function getWebphoneReplyMessageOption(params) {
   }
   var replyType = WEBPHONE_REPLY_TYPE.callBack;
   var callbackDirection;
-  if ((_params$replyWithPatt3 = params.replyWithPattern) === null || _params$replyWithPatt3 === void 0 ? void 0 : _params$replyWithPatt3.pattern.includes('CallMe')) {
+  if ((_params$replyWithPatt3 = params.replyWithPattern) !== null && _params$replyWithPatt3 !== void 0 && _params$replyWithPatt3.pattern.includes('CallMe')) {
     callbackDirection = "1";
   } else {
     callbackDirection = "0";
@@ -425,7 +425,7 @@ function isConnectedCall(session) {
   var status = (_session$party1 = session.party) === null || _session$party1 === void 0 ? void 0 : _session$party1.status.code;
   var party = session.party;
   var reason = party === null || party === void 0 ? void 0 : (_party$status3 = party.status) === null || _party$status3 === void 0 ? void 0 : _party$status3.reason;
-  if (!(session === null || session === void 0 ? void 0 : (_session$party10 = session.party) === null || _session$party10 === void 0 ? void 0 : (_session$party10$stat = _session$party10.status) === null || _session$party10$stat === void 0 ? void 0 : _session$party10$stat.code)) {
+  if (!(session !== null && session !== void 0 && (_session$party10 = session.party) !== null && _session$party10 !== void 0 && (_session$party10$stat = _session$party10.status) !== null && _session$party10$stat !== void 0 && _session$party10$stat.code)) {
     return false;
   }
   return !(status === _Session.PartyStatusCode.disconnected && reason !== 'CallSwitch' || status === _Session.PartyStatusCode.gone);

@@ -15,6 +15,10 @@ import validator from '@rjsf/validator-ajv8';
 import clsx from 'clsx';
 import React, { Component } from 'react';
 
+type CallLogPanelSimpleProps = CallLogPanelProps & {
+  children?: React.ReactNode;
+};
+
 const getWarmTransferSession = ({
   mainLog,
   transferLog,
@@ -42,10 +46,10 @@ const getWarmTransferSession = ({
 };
 
 export default class CallLogPanel extends Component<
-  CallLogPanelProps,
+  CallLogPanelSimpleProps,
   { showConferenceCallParticipants: boolean }
 > {
-  constructor(props: CallLogPanelProps) {
+  constructor(props: CallLogPanelSimpleProps) {
     super(props);
     this.state = {
       showConferenceCallParticipants: false,

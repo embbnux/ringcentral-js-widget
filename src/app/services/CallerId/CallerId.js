@@ -8,12 +8,16 @@ require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.for-each.js");
+require("core-js/modules/es.array.from.js");
+require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.date.to-primitive.js");
+require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.object.define-properties.js");
@@ -25,18 +29,23 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
+require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CallerId = void 0;
+exports.DEFAULT_CALLER_ID_FEATURES = exports.CallerId = void 0;
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _ramda = require("ramda");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class, _class2;
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -57,11 +66,14 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
+var DEFAULT_CALLER_ID_FEATURES = exports.DEFAULT_CALLER_ID_FEATURES = [
+// for backward compatibility, still use RingOut if available
+'RingOut', 'AdditionalSoftphone', 'MobileApp', 'RingMe', 'Alternate'];
 var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
   name: 'CallerId'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)('CallerIdOptions')(target, undefined, 2);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.DataFetcher === "undefined" ? Object : _services.DataFetcher, typeof CallerIdOptions === "undefined" ? Object : CallerIdOptions]), _dec5 = (0, _nextCore.computed)(function (_ref) {
+  return (0, _nextCore.optional)('CallerIdOptions')(target, undefined, 3);
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.DataFetcher === "undefined" ? Object : _services.DataFetcher, typeof CallerIdOptions === "undefined" ? Object : CallerIdOptions]), _dec5 = (0, _nextCore.computed)(function (_ref) {
   var data = _ref.data;
   return [data];
 }), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", []), _dec8 = (0, _nextCore.computed)(function (_ref2) {
@@ -73,12 +85,16 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
 }), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _nextCore.computed)(function (_ref4) {
   var byFeature = _ref4.byFeature;
   return [byFeature];
-}), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = (0, _nextCore.delegate)('server'), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [String, Object]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
-  function CallerId(_client, _dataFetcher, _callerIdOptions) {
+}), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = (0, _nextCore.computed)(function (_ref5) {
+  var byFeature = _ref5.byFeature;
+  return [byFeature];
+}), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [String, typeof CallerIdFeature === "undefined" ? Object : CallerIdFeature]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
+  function CallerId(_client, _extensionFeatures, _dataFetcher, _callerIdOptions) {
     var _this;
     _classCallCheck(this, CallerId);
     _this = _callSuper(this, CallerId, [_dataFetcher]);
     _this._client = _client;
+    _this._extensionFeatures = _extensionFeatures;
     _this._dataFetcher = _dataFetcher;
     _this._callerIdOptions = _callerIdOptions;
     _this._source = new _services.DataSource(_objectSpread(_objectSpread({}, _this._callerIdOptions), {}, {
@@ -102,13 +118,31 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
           return _fetchFunction.apply(this, arguments);
         }
         return fetchFunction;
-      }()
+      }(),
+      readyCheckFunction: function readyCheckFunction() {
+        return _this._extensionFeatures.ready;
+      },
+      permissionCheckFunction: function permissionCheckFunction() {
+        return _this.hasReadAccess;
+      }
     }));
     _this._dataFetcher.register(_this._source);
     return _this;
   }
   _inherits(CallerId, _DataFetcherConsumer);
   return _createClass(CallerId, [{
+    key: "hasReadAccess",
+    get: function get() {
+      var _this$_extensionFeatu, _this$_extensionFeatu2, _this$_extensionFeatu3;
+      return (_this$_extensionFeatu = (_this$_extensionFeatu2 = this._extensionFeatures.features) === null || _this$_extensionFeatu2 === void 0 ? void 0 : (_this$_extensionFeatu3 = _this$_extensionFeatu2.ReadOutboundCallerId) === null || _this$_extensionFeatu3 === void 0 ? void 0 : _this$_extensionFeatu3.available) !== null && _this$_extensionFeatu !== void 0 ? _this$_extensionFeatu : false;
+    }
+  }, {
+    key: "hasWriteAccess",
+    get: function get() {
+      var _this$_extensionFeatu4, _this$_extensionFeatu5, _this$_extensionFeatu6;
+      return (_this$_extensionFeatu4 = (_this$_extensionFeatu5 = this._extensionFeatures.features) === null || _this$_extensionFeatu5 === void 0 ? void 0 : (_this$_extensionFeatu6 = _this$_extensionFeatu5.EditOutboundCallerId) === null || _this$_extensionFeatu6 === void 0 ? void 0 : _this$_extensionFeatu6.available) !== null && _this$_extensionFeatu4 !== void 0 ? _this$_extensionFeatu4 : false;
+    }
+  }, {
     key: "byDevice",
     get: function get() {
       var _this$data$byDevice, _this$data;
@@ -123,18 +157,83 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "ringOut",
     get: function get() {
-      var _find;
-      return (_find = (0, _ramda.find)(function (item) {
-        return item.feature === 'RingOut';
-      }, this.byFeature)) === null || _find === void 0 ? void 0 : _find.callerId;
+      return this.getCallerIdByFeature('RingOut');
     }
   }, {
     key: "faxNumber",
     get: function get() {
-      var _find2, _find2$callerId, _find2$callerId$phone;
-      return (_find2 = (0, _ramda.find)(function (item) {
+      var _find, _find$callerId, _find$callerId$phoneI;
+      return (_find = (0, _ramda.find)(function (item) {
         return item.feature === 'FaxNumber';
-      }, this.byFeature)) === null || _find2 === void 0 ? void 0 : (_find2$callerId = _find2.callerId) === null || _find2$callerId === void 0 ? void 0 : (_find2$callerId$phone = _find2$callerId.phoneInfo) === null || _find2$callerId$phone === void 0 ? void 0 : _find2$callerId$phone.phoneNumber;
+      }, this.byFeature)) === null || _find === void 0 ? void 0 : (_find$callerId = _find.callerId) === null || _find$callerId === void 0 ? void 0 : (_find$callerId$phoneI = _find$callerId.phoneInfo) === null || _find$callerId$phoneI === void 0 ? void 0 : _find$callerId$phoneI.phoneNumber;
+    }
+
+    /**
+     * Caller ID feature fallback for cases where user cannot choose caller ID.
+     */
+  }, {
+    key: "defaultCallerId",
+    get: function get() {
+      return this.getDefaultCallerId();
+    }
+  }, {
+    key: "getCallerIdByFeature",
+    value: function getCallerIdByFeature(feature) {
+      var _find2;
+      return (_find2 = (0, _ramda.find)(function (item) {
+        return item.feature === feature;
+      }, this.byFeature)) === null || _find2 === void 0 ? void 0 : _find2.callerId;
+    }
+  }, {
+    key: "getDefaultCallerId",
+    value: function getDefaultCallerId() {
+      var _this$getDefaultCalle;
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return (_this$getDefaultCalle = this.getDefaultCallerIdWithFeature(options)) === null || _this$getDefaultCalle === void 0 ? void 0 : _this$getDefaultCalle.callerId;
+    }
+  }, {
+    key: "getDefaultCallerIdWithFeature",
+    value: function getDefaultCallerIdWithFeature() {
+      var _this2 = this;
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var _options$features = options.features,
+        features = _options$features === void 0 ? DEFAULT_CALLER_ID_FEATURES : _options$features;
+      var _iterator = _createForOfIteratorHelper(features),
+        _step;
+      try {
+        var _loop = function _loop() {
+            var feature = _step.value;
+            var callerIdByFeature = (0, _ramda.find)(function (item) {
+              return item.feature === feature;
+            }, _this2.byFeature);
+            if (_this2._hasCallerIdValue(callerIdByFeature === null || callerIdByFeature === void 0 ? void 0 : callerIdByFeature.callerId, options)) {
+              return {
+                v: callerIdByFeature
+              };
+            }
+          },
+          _ret;
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          _ret = _loop();
+          if (_ret) return _ret.v;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      return (0, _ramda.find)(function (item) {
+        return _this2._hasCallerIdValue(item.callerId, options);
+      }, this.byFeature);
+    }
+  }, {
+    key: "_hasCallerIdValue",
+    value: function _hasCallerIdValue(callerId) {
+      var _callerId$phoneInfo, _callerId$phoneInfo2, _callerId$phoneInfo3;
+      var _ref6 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref6$includeBlocked = _ref6.includeBlocked,
+        includeBlocked = _ref6$includeBlocked === void 0 ? true : _ref6$includeBlocked;
+      return !!(includeBlocked && (callerId === null || callerId === void 0 ? void 0 : callerId.type) === 'Blocked' || callerId !== null && callerId !== void 0 && (_callerId$phoneInfo = callerId.phoneInfo) !== null && _callerId$phoneInfo !== void 0 && _callerId$phoneInfo.id || callerId !== null && callerId !== void 0 && (_callerId$phoneInfo2 = callerId.phoneInfo) !== null && _callerId$phoneInfo2 !== void 0 && _callerId$phoneInfo2.uri || callerId !== null && callerId !== void 0 && (_callerId$phoneInfo3 = callerId.phoneInfo) !== null && _callerId$phoneInfo3 !== void 0 && _callerId$phoneInfo3.phoneNumber);
     }
   }, {
     key: "setDefaultCallerId",
@@ -144,6 +243,12 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.n) {
             case 0:
+              if (this.hasWriteAccess) {
+                _context2.n = 1;
+                break;
+              }
+              throw new Error('No permission to edit outbound caller ID');
+            case 1:
               payload = {
                 byFeature: [{
                   feature: feature,
@@ -156,16 +261,16 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
                   }
                 }]
               };
-              _context2.n = 1;
-              return this._client.service.platform().put('/restapi/v1.0/account/~/extension/~/caller-id', payload);
-            case 1:
-              res = _context2.v;
               _context2.n = 2;
-              return res.json();
+              return this._client.service.platform().put('/restapi/v1.0/account/~/extension/~/caller-id', payload);
             case 2:
+              res = _context2.v;
+              _context2.n = 3;
+              return res.json();
+            case 3:
               result = _context2.v;
               this.updateData(result);
-            case 3:
+            case 4:
               return _context2.a(2);
           }
         }, _callee2, this);
@@ -176,5 +281,5 @@ var CallerId = exports.CallerId = (_dec = (0, _nextCore.injectable)({
       return setDefaultCallerId;
     }()
   }]);
-}(_services.DataFetcherConsumer), _applyDecoratedDescriptor(_class2.prototype, "byDevice", [_dec5, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "byDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "byFeature", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "byFeature"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringOut", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "ringOut"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "faxNumber", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "faxNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setDefaultCallerId", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "setDefaultCallerId"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}(_services.DataFetcherConsumer), _applyDecoratedDescriptor(_class2.prototype, "byDevice", [_dec5, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "byDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "byFeature", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "byFeature"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringOut", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "ringOut"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "faxNumber", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "faxNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "defaultCallerId", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "defaultCallerId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setDefaultCallerId", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "setDefaultCallerId"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=CallerId.js.map

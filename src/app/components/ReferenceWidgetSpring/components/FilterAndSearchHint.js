@@ -11,7 +11,7 @@ var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireDefault(require("react"));
 var _i18n = require("./i18n");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-var lineStyle = 'flex gap-3 items-center w-full py-3.5 px-4';
+var lineStyle = 'flex gap-3 items-center w-full py-2.5 px-3';
 var FilterAndSearchHint = exports.FilterAndSearchHint = function FilterAndSearchHint(_ref) {
   var searchValue = _ref.searchValue,
     onClickHandler = _ref.onClickHandler,

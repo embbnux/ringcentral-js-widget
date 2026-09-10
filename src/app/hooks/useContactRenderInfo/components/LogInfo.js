@@ -24,11 +24,15 @@ var LogInfo = exports.LogInfo = function LogInfo(_ref) {
   }) : logged ? /*#__PURE__*/_react["default"].createElement(_springUi.Tag, {
     "data-sign": "loggedCall",
     color: "success",
-    variant: "inverted"
+    variant: "inverted",
+    className: "max-w-full truncate",
+    title: t('logged')
   }, t('logged')) : /*#__PURE__*/_react["default"].createElement(_springUi.Tag, {
     "data-sign": "unloggedCall",
     color: "neutral",
-    variant: "inverted"
+    variant: "inverted",
+    className: "max-w-full truncate",
+    title: t('unlogged')
   }, t('unlogged')));
 };
 //# sourceMappingURL=LogInfo.js.map

@@ -35,9 +35,9 @@ var CallButtonContainer = exports.CallButtonContainer = function CallButtonConta
     onMouseOver: onMouseOver,
     onMouseLeave: onMouseLeave,
     "data-button-container": true,
-    className: (0, _springUi.twMerge)('inline-flex items-center justify-start flex-col', size === 'small' && 'gap-1', size === 'large' && 'gap-1', size === 'xlarge' && 'gap-2 w-20', className)
+    className: (0, _springUi.twMerge)('inline-flex items-center justify-start flex-col flex-1 min-w-0', size === 'small' && 'gap-1', size === 'large' && 'gap-1', size === 'xlarge' && 'gap-2 w-20', className)
   }, children, label && /*#__PURE__*/_react["default"].createElement("div", {
-    className: "typography-descriptorMini text-center"
+    className: "typography-descriptorMini text-center break-words w-full"
   }, label)));
 };
 var CUSTOM_SIZE_MAP = {

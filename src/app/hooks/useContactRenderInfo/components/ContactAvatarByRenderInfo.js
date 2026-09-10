@@ -33,7 +33,7 @@ var ContactAvatarByRenderInfo = exports.ContactAvatarByRenderInfo = function Con
     contact: renderInfo.matchedContact,
     contactName:
     // when be queue number contact, not use the name for render the queue avatar
-    ((_renderInfo$matchedCo = renderInfo.matchedContact) === null || _renderInfo$matchedCo === void 0 ? void 0 : _renderInfo$matchedCo.isCallQueueNumber) ? undefined :
+    (_renderInfo$matchedCo = renderInfo.matchedContact) !== null && _renderInfo$matchedCo !== void 0 && _renderInfo$matchedCo.isCallQueueNumber ? undefined :
     // should use the matched contact name first to prevent using multi matches display name
     ((_renderInfo$matchedCo2 = renderInfo.matchedContact) === null || _renderInfo$matchedCo2 === void 0 ? void 0 : _renderInfo$matchedCo2.name) || (renderInfo.type === 'callerIdName' &&
     // only when not be queue call can use callerId as display avatar

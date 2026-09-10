@@ -22,7 +22,7 @@ var SpringUIDateWidget = exports.SpringUIDateWidget = function SpringUIDateWidge
     size: "medium",
     variant: "outlined",
     onChange: function onChange(date) {
-      var convertedDate = (schema === null || schema === void 0 ? void 0 : schema.convertDateFunction) ? schema.convertDateFunction(date) : date;
+      var convertedDate = schema !== null && schema !== void 0 && schema.convertDateFunction ? schema.convertDateFunction(date) : date;
       _onChange(convertedDate);
     },
     disabled: disabled || readonly,

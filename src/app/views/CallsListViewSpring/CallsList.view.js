@@ -57,7 +57,7 @@ var _CallViewState = require("../CallView/services/CallViewState");
 var _DialerView = require("../DialerView");
 var _CallsListPage = require("./CallsListPage");
 var _i18n = _interopRequireWildcard(require("./i18n"));
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t2 in e) "default" !== _t2 && {}.hasOwnProperty.call(e, _t2) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t2)) && (i.get || i.set) ? o(f, _t2, i) : f[_t2] = e[_t2]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -98,7 +98,7 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
   return (0, _nextCore.optional)()(target, undefined, 12);
 }, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)('CallsListViewOptions')(target, undefined, 13);
-}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _CallViewState.CallViewState === "undefined" ? Object : _CallViewState.CallViewState, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _services5.CallHistory === "undefined" ? Object : _services5.CallHistory, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services5.Call === "undefined" ? Object : _services5.Call, typeof _services3.MessageStore === "undefined" ? Object : _services3.MessageStore, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _DialerView.DialerView === "undefined" ? Object : _DialerView.DialerView, typeof _services3.ComposeText === "undefined" ? Object : _services3.ComposeText, typeof _services5.CallLogTasks === "undefined" ? Object : _services5.CallLogTasks, typeof CallsListViewSpringOptions === "undefined" ? Object : CallsListViewSpringOptions]), _dec8 = (0, _nextCore.dynamic)('SmartNotes'), _dec9 = Reflect.metadata("design:type", typeof SmartNotes === "undefined" ? Object : SmartNotes), _dec0 = (0, _nextCore.dynamic)('CallsListItemViewableManager'), _dec1 = Reflect.metadata("design:type", typeof CallsListItemViewableManager === "undefined" ? Object : CallsListItemViewableManager), _dec10 = (0, _nextCore.dynamic)('Theme'), _dec11 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec12 = Reflect.metadata("design:type", typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType]), _dec15 = (0, _nextCore.delegate)('server'), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType]), _dec18 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _CallViewState.CallViewState === "undefined" ? Object : _CallViewState.CallViewState, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _services5.CallHistory === "undefined" ? Object : _services5.CallHistory, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services5.Call === "undefined" ? Object : _services5.Call, typeof _services3.MessageStore === "undefined" ? Object : _services3.MessageStore, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _DialerView.DialerView === "undefined" ? Object : _DialerView.DialerView, typeof _services3.ComposeText === "undefined" ? Object : _services3.ComposeText, typeof _services5.CallLogTasks === "undefined" ? Object : _services5.CallLogTasks, typeof CallsListViewSpringOptions === "undefined" ? Object : CallsListViewSpringOptions]), _dec8 = (0, _nextCore.dynamic)('SmartNotes'), _dec9 = Reflect.metadata("design:type", typeof SmartNotes === "undefined" ? Object : SmartNotes), _dec0 = (0, _nextCore.dynamic)('CallsListItemViewableManager'), _dec1 = Reflect.metadata("design:type", typeof CallsListItemViewableManager === "undefined" ? Object : CallsListItemViewableManager), _dec10 = (0, _nextCore.dynamic)('Theme'), _dec11 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec12 = (0, _nextCore.dynamic)('MessageSender'), _dec13 = Reflect.metadata("design:type", typeof _services3.MessageSender === "undefined" ? Object : _services3.MessageSender), _dec14 = Reflect.metadata("design:type", typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType]), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType]), _dec20 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof ViewCallsFilterType === "undefined" ? Object : ViewCallsFilterType, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function CallsListViewSpring(_callViewState, _connectivityManager, _callHistory, _rateLimiter, _call, _messageStore, _router, _appFeatures, _toast, _integrationConfig, _dialerView, _composeText, _callLogTasks, _callsListViewOptions) {
     var _this;
     _classCallCheck(this, CallsListViewSpring);
@@ -120,6 +120,7 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
     _initializerDefineProperty(_this, "_smartNotes", _descriptor, _this);
     _initializerDefineProperty(_this, "_callsListItemViewableManager", _descriptor2, _this);
     _initializerDefineProperty(_this, "_theme", _descriptor3, _this);
+    _initializerDefineProperty(_this, "_messageSender", _descriptor4, _this);
     _this.useCallHistoryItemInfo = function (call, _ref) {
       var selectIndex = _ref.selectIndex,
         _ref$variant = _ref.variant,
@@ -138,6 +139,7 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
         DelayComponent: DelayComponent
       });
       var _useConnector = (0, _nextCore.useConnector)(function () {
+          var _this$_messageSender$, _this$_messageSender;
           return {
             disableLinks: _this.disableLinks,
             isOfflineMode: _this._connectivityManager.isOfflineMode,
@@ -146,7 +148,8 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
             restricted: _this._rateLimiter.restricted,
             isIdle: Boolean(_this._call && _this._call.isIdle),
             hasInternalSMSPermission: _this._appFeatures.hasInternalSMSPermission,
-            hasOutboundSMSPermission: _this._appFeatures.hasOutboundSMSPermission
+            hasOutboundSMSPermission: _this._appFeatures.hasOutboundSMSPermission,
+            hasSmsPermission: (_this$_messageSender$ = (_this$_messageSender = _this._messageSender) === null || _this$_messageSender === void 0 ? void 0 : _this$_messageSender.hasSmsPermission) !== null && _this$_messageSender$ !== void 0 ? _this$_messageSender$ : _this._appFeatures.hasComposeTextPermission
             // isCDCEnabled: this._appFeatures.isCDCEnabled,
           };
         }),
@@ -157,7 +160,8 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
         isIdle = _useConnector.isIdle,
         disableLinks = _useConnector.disableLinks,
         hasInternalSMSPermission = _useConnector.hasInternalSMSPermission,
-        hasOutboundSMSPermission = _useConnector.hasOutboundSMSPermission;
+        hasOutboundSMSPermission = _useConnector.hasOutboundSMSPermission,
+        hasSmsPermission = _useConnector.hasSmsPermission;
       var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
         t = _useLocale.t;
       var renderInfo = info.renderInfo,
@@ -190,7 +194,7 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
             type: 'call',
             disabled: isOfflineMode || isWebphoneUnavailableMode || isWebphoneInitializing || restricted || !isIdle || disableLinks
           });
-          if (_this._appFeatures.hasComposeTextPermission) {
+          if (hasSmsPermission) {
             actions.push({
               type: 'text',
               disabled: disableLinks || (type === 'extensionNumber' ? !hasInternalSMSPermission : !hasOutboundSMSPermission)
@@ -223,7 +227,7 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
         // });
 
         return actions;
-      }, [dialToPhoneNumber, disableLinks, formattedPhoneNumber, hasInternalSMSPermission, hasOutboundSMSPermission, isConferenceCall, isIdle, isOfflineMode, isWebphoneInitializing, isWebphoneUnavailableMode, matchedContact, restricted, showViewLogIcon, t, type, variant]);
+      }, [dialToPhoneNumber, disableLinks, formattedPhoneNumber, hasInternalSMSPermission, hasOutboundSMSPermission, hasSmsPermission, isConferenceCall, isIdle, isOfflineMode, isWebphoneInitializing, isWebphoneUnavailableMode, matchedContact, restricted, showViewLogIcon, t, type, variant]);
       return {
         info: info,
         actions: actions
@@ -333,8 +337,8 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
         };
       }();
     };
-    _initializerDefineProperty(_this, "viewCallsFilter", _descriptor4, _this);
-    _initializerDefineProperty(_this, "lastPositions", _descriptor5, _this);
+    _initializerDefineProperty(_this, "viewCallsFilter", _descriptor5, _this);
+    _initializerDefineProperty(_this, "lastPositions", _descriptor6, _this);
     return _this;
   }
   _inherits(CallsListViewSpring, _RcViewModule);
@@ -560,19 +564,24 @@ var CallsListViewSpring = exports.CallsListViewSpring = (_dec = (0, _nextCore.in
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "viewCallsFilter", [_nextCore.state, _dec12], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_messageSender", [_dec12, _dec13], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "viewCallsFilter", [_nextCore.state, _dec14], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return 'all';
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setViewCallsFilter", [_nextCore.action, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_setViewCallsFilter"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setViewCallsFilter", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "setViewCallsFilter"), _class2.prototype), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "lastPositions", [_nextCore.state, _dec18], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setViewCallsFilter", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "_setViewCallsFilter"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setViewCallsFilter", [_dec17, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "setViewCallsFilter"), _class2.prototype), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "lastPositions", [_nextCore.state, _dec20], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setLastPosition", [_nextCore.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastPosition", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "viewCalls", [_nextCore.computed, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "viewCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "latestCalls", [_nextCore.computed, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "latestCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "viewCallsFilterSelections", [_nextCore.computed, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "viewCallsFilterSelections"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class); // export type OnCallsListActionsType = ReturnType<UseCallsListActions>;
+}), _applyDecoratedDescriptor(_class2.prototype, "_setLastPosition", [_nextCore.action, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastPosition", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "viewCalls", [_nextCore.computed, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "viewCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "latestCalls", [_nextCore.computed, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "latestCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "viewCallsFilterSelections", [_nextCore.computed, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "viewCallsFilterSelections"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class); // export type OnCallsListActionsType = ReturnType<UseCallsListActions>;
 //# sourceMappingURL=CallsList.view.js.map

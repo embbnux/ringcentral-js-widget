@@ -44,6 +44,7 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.object.values.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/es.weak-set.js");
 require("core-js/modules/esnext.global-this.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -66,7 +67,8 @@ var _i18n = require("./i18n");
 var _recordStatus = require("./recordStatus");
 var _sessionStatus = require("./sessionStatus");
 var _webphoneHelper = require("./webphoneHelper");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _webphoneLogSanitizer = require("./webphoneLogSanitizer");
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -76,13 +78,13 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
 function _superPropGet(t, o, e, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
 function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
 function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
@@ -127,27 +129,27 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 17);
 }, _dec6 = function _dec6(target, key) {
   return (0, _nextCore.optional)('Prefix')(target, undefined, 18);
-}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _nextCore.Initiator === "undefined" ? Object : _nextCore.Initiator, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _AudioSettings.AudioSettings === "undefined" ? Object : _AudioSettings.AudioSettings, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.ExtensionDevice === "undefined" ? Object : _services.ExtensionDevice, typeof _services.RingCentralExtensions === "undefined" ? Object : _services.RingCentralExtensions, typeof WebphoneOptions === "undefined" ? Object : WebphoneOptions, typeof _services.WebSocketSubscription === "undefined" ? Object : _services.WebSocketSubscription, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, String]), _dec9 = Reflect.metadata("design:type", String), _dec0 = Reflect.metadata("design:type", String), _dec1 = Reflect.metadata("design:type", Array), _dec10 = Reflect.metadata("design:type", Array), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [Array]), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Array]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [String]), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [String]), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec36 = (0, _services.track)(_trackEvents.trackEvents.inboundWebRTCCallConnected), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('mainClient'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [String]), _dec42 = (0, _nextCore.delegate)('mainClient'), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", [String]), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", [String]), _dec48 = (0, _nextCore.delegate)('mainClient'), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", [String]), _dec51 = (0, _nextCore.delegate)('mainClient'), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [String, String]), _dec54 = (0, _nextCore.delegate)('mainClient'), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [String, Function]), _dec57 = (0, _nextCore.delegate)('mainClient'), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", [String]), _dec60 = (0, _nextCore.delegate)('mainClient'), _dec61 = Reflect.metadata("design:type", Function), _dec62 = Reflect.metadata("design:paramtypes", [String, Function]), _dec63 = (0, _nextCore.delegate)('mainClient'), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", [String, Function]), _dec66 = (0, _nextCore.delegate)('mainClient'), _dec67 = Reflect.metadata("design:type", Function), _dec68 = Reflect.metadata("design:paramtypes", [String]), _dec69 = (0, _nextCore.delegate)('mainClient'), _dec70 = Reflect.metadata("design:type", Function), _dec71 = Reflect.metadata("design:paramtypes", [String, Function]), _dec72 = (0, _nextCore.delegate)('mainClient'), _dec73 = Reflect.metadata("design:type", Function), _dec74 = Reflect.metadata("design:paramtypes", [String]), _dec75 = (0, _nextCore.delegate)('mainClient'), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", [String, String]), _dec78 = (0, _nextCore.delegate)('mainClient'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", [String, String]), _dec81 = (0, _nextCore.delegate)('mainClient'), _dec82 = Reflect.metadata("design:type", Function), _dec83 = Reflect.metadata("design:paramtypes", [String]), _dec84 = (0, _nextCore.delegate)('mainClient'), _dec85 = Reflect.metadata("design:type", Function), _dec86 = Reflect.metadata("design:paramtypes", [String, String]), _dec87 = (0, _nextCore.delegate)('mainClient'), _dec88 = Reflect.metadata("design:type", Function), _dec89 = Reflect.metadata("design:paramtypes", [String, String]), _dec90 = (0, _nextCore.delegate)('mainClient'), _dec91 = Reflect.metadata("design:type", Function), _dec92 = Reflect.metadata("design:paramtypes", [String, Function]), _dec93 = (0, _nextCore.delegate)('mainClient'), _dec94 = Reflect.metadata("design:type", Function), _dec95 = Reflect.metadata("design:paramtypes", [String]), _dec96 = (0, _nextCore.delegate)('mainClient'), _dec97 = Reflect.metadata("design:type", Function), _dec98 = Reflect.metadata("design:paramtypes", [String, typeof SessionReplyOptions === "undefined" ? Object : SessionReplyOptions, Function]), _dec99 = (0, _nextCore.delegate)('mainClient'), _dec100 = Reflect.metadata("design:type", Function), _dec101 = Reflect.metadata("design:paramtypes", [Object]), _dec102 = (0, _nextCore.delegate)('mainClient'), _dec103 = Reflect.metadata("design:type", Function), _dec104 = Reflect.metadata("design:paramtypes", [typeof SwitchCallActiveCallParams === "undefined" ? Object : SwitchCallActiveCallParams, String]), _dec105 = (0, _nextCore.delegate)('mainClient'), _dec106 = Reflect.metadata("design:type", Function), _dec107 = Reflect.metadata("design:paramtypes", [typeof TPickupInboundCall === "undefined" ? Object : TPickupInboundCall]), _dec108 = (0, _nextCore.delegate)('mainClient'), _dec109 = Reflect.metadata("design:type", Function), _dec110 = Reflect.metadata("design:paramtypes", [String, Object]), _dec111 = (0, _nextCore.delegate)('mainClient'), _dec112 = Reflect.metadata("design:type", Function), _dec113 = Reflect.metadata("design:paramtypes", []), _dec114 = (0, _nextCore.delegate)('mainClient'), _dec115 = Reflect.metadata("design:type", Function), _dec116 = Reflect.metadata("design:paramtypes", [String]), _dec117 = (0, _nextCore.computed)(function (_ref) {
+}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _nextCore.Initiator === "undefined" ? Object : _nextCore.Initiator, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _AudioSettings.AudioSettings === "undefined" ? Object : _AudioSettings.AudioSettings, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.ExtensionDevice === "undefined" ? Object : _services.ExtensionDevice, typeof _services.RingCentralExtensions === "undefined" ? Object : _services.RingCentralExtensions, typeof WebphoneOptions === "undefined" ? Object : WebphoneOptions, typeof _services.WebSocketSubscription === "undefined" ? Object : _services.WebSocketSubscription, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, String]), _dec9 = (0, _nextCore.dynamic)('NoiseReduction'), _dec0 = Reflect.metadata("design:type", typeof NoiseReductionLike === "undefined" ? Object : NoiseReductionLike), _dec1 = Reflect.metadata("design:type", String), _dec10 = Reflect.metadata("design:type", String), _dec11 = Reflect.metadata("design:type", Array), _dec12 = Reflect.metadata("design:type", Array), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [Array]), _dec15 = (0, _nextCore.delegate)('server'), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [Array]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [String]), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec35 = (0, _nextCore.delegate)('server'), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", [typeof NormalizedSession === "undefined" ? Object : NormalizedSession]), _dec38 = (0, _services.track)(_trackEvents.trackEvents.inboundWebRTCCallConnected), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", []), _dec41 = (0, _nextCore.delegate)('mainClient'), _dec42 = Reflect.metadata("design:type", Function), _dec43 = Reflect.metadata("design:paramtypes", [String]), _dec44 = (0, _nextCore.delegate)('mainClient'), _dec45 = Reflect.metadata("design:type", Function), _dec46 = Reflect.metadata("design:paramtypes", [String]), _dec47 = (0, _nextCore.delegate)('server'), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", [String]), _dec50 = (0, _nextCore.delegate)('mainClient'), _dec51 = Reflect.metadata("design:type", Function), _dec52 = Reflect.metadata("design:paramtypes", [String]), _dec53 = (0, _nextCore.delegate)('mainClient'), _dec54 = Reflect.metadata("design:type", Function), _dec55 = Reflect.metadata("design:paramtypes", [String, String]), _dec56 = (0, _nextCore.delegate)('mainClient'), _dec57 = Reflect.metadata("design:type", Function), _dec58 = Reflect.metadata("design:paramtypes", [String, Function]), _dec59 = (0, _nextCore.delegate)('mainClient'), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", [String]), _dec62 = (0, _nextCore.delegate)('mainClient'), _dec63 = Reflect.metadata("design:type", Function), _dec64 = Reflect.metadata("design:paramtypes", [String, Function]), _dec65 = (0, _nextCore.delegate)('mainClient'), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", [String, Function]), _dec68 = (0, _nextCore.delegate)('mainClient'), _dec69 = Reflect.metadata("design:type", Function), _dec70 = Reflect.metadata("design:paramtypes", [String]), _dec71 = (0, _nextCore.delegate)('mainClient'), _dec72 = Reflect.metadata("design:type", Function), _dec73 = Reflect.metadata("design:paramtypes", [String, Function]), _dec74 = (0, _nextCore.delegate)('mainClient'), _dec75 = Reflect.metadata("design:type", Function), _dec76 = Reflect.metadata("design:paramtypes", [String]), _dec77 = (0, _nextCore.delegate)('mainClient'), _dec78 = Reflect.metadata("design:type", Function), _dec79 = Reflect.metadata("design:paramtypes", [String, String]), _dec80 = (0, _nextCore.delegate)('mainClient'), _dec81 = Reflect.metadata("design:type", Function), _dec82 = Reflect.metadata("design:paramtypes", [String, String]), _dec83 = (0, _nextCore.delegate)('mainClient'), _dec84 = Reflect.metadata("design:type", Function), _dec85 = Reflect.metadata("design:paramtypes", [String]), _dec86 = (0, _nextCore.delegate)('mainClient'), _dec87 = Reflect.metadata("design:type", Function), _dec88 = Reflect.metadata("design:paramtypes", [String, String]), _dec89 = (0, _nextCore.delegate)('mainClient'), _dec90 = Reflect.metadata("design:type", Function), _dec91 = Reflect.metadata("design:paramtypes", [String, String]), _dec92 = (0, _nextCore.delegate)('mainClient'), _dec93 = Reflect.metadata("design:type", Function), _dec94 = Reflect.metadata("design:paramtypes", [String, Function]), _dec95 = (0, _nextCore.delegate)('mainClient'), _dec96 = Reflect.metadata("design:type", Function), _dec97 = Reflect.metadata("design:paramtypes", [String]), _dec98 = (0, _nextCore.delegate)('mainClient'), _dec99 = Reflect.metadata("design:type", Function), _dec100 = Reflect.metadata("design:paramtypes", [String, typeof SessionReplyOptions === "undefined" ? Object : SessionReplyOptions, Function]), _dec101 = (0, _nextCore.delegate)('mainClient'), _dec102 = Reflect.metadata("design:type", Function), _dec103 = Reflect.metadata("design:paramtypes", [Object]), _dec104 = (0, _nextCore.delegate)('mainClient'), _dec105 = Reflect.metadata("design:type", Function), _dec106 = Reflect.metadata("design:paramtypes", [typeof SwitchCallActiveCallParams === "undefined" ? Object : SwitchCallActiveCallParams, String]), _dec107 = (0, _nextCore.delegate)('mainClient'), _dec108 = Reflect.metadata("design:type", Function), _dec109 = Reflect.metadata("design:paramtypes", [typeof TPickupInboundCall === "undefined" ? Object : TPickupInboundCall]), _dec110 = (0, _nextCore.delegate)('mainClient'), _dec111 = Reflect.metadata("design:type", Function), _dec112 = Reflect.metadata("design:paramtypes", [String, Object]), _dec113 = (0, _nextCore.delegate)('mainClient'), _dec114 = Reflect.metadata("design:type", Function), _dec115 = Reflect.metadata("design:paramtypes", []), _dec116 = (0, _nextCore.delegate)('mainClient'), _dec117 = Reflect.metadata("design:type", Function), _dec118 = Reflect.metadata("design:paramtypes", [String]), _dec119 = (0, _nextCore.computed)(function (_ref) {
   var sessions = _ref.sessions;
   return [sessions];
-}), _dec118 = Reflect.metadata("design:type", Function), _dec119 = Reflect.metadata("design:paramtypes", []), _dec120 = (0, _nextCore.computed)(function (_ref2) {
+}), _dec120 = Reflect.metadata("design:type", Function), _dec121 = Reflect.metadata("design:paramtypes", []), _dec122 = (0, _nextCore.computed)(function (_ref2) {
   var activeSessionId = _ref2.activeSessionId,
     sessions = _ref2.sessions;
   return [activeSessionId, sessions];
-}), _dec121 = Reflect.metadata("design:type", Function), _dec122 = Reflect.metadata("design:paramtypes", []), _dec123 = (0, _nextCore.computed)(function (_ref3) {
+}), _dec123 = Reflect.metadata("design:type", Function), _dec124 = Reflect.metadata("design:paramtypes", []), _dec125 = (0, _nextCore.computed)(function (_ref3) {
   var ringSessionId = _ref3.ringSessionId,
     sessions = _ref3.sessions;
   return [ringSessionId, sessions];
-}), _dec124 = Reflect.metadata("design:type", Function), _dec125 = Reflect.metadata("design:paramtypes", []), _dec126 = (0, _nextCore.computed)(function (_ref4) {
+}), _dec126 = Reflect.metadata("design:type", Function), _dec127 = Reflect.metadata("design:paramtypes", []), _dec128 = (0, _nextCore.computed)(function (_ref4) {
   var sessions = _ref4.sessions;
   return [sessions];
-}), _dec127 = Reflect.metadata("design:type", Function), _dec128 = Reflect.metadata("design:paramtypes", []), _dec129 = (0, _nextCore.computed)(function (_ref5) {
+}), _dec129 = Reflect.metadata("design:type", Function), _dec130 = Reflect.metadata("design:paramtypes", []), _dec131 = (0, _nextCore.computed)(function (_ref5) {
   var sessions = _ref5.sessions;
   return [sessions];
-}), _dec130 = Reflect.metadata("design:type", Function), _dec131 = Reflect.metadata("design:paramtypes", []), _dec132 = (0, _nextCore.computed)(function (_ref6) {
+}), _dec132 = Reflect.metadata("design:type", Function), _dec133 = Reflect.metadata("design:paramtypes", []), _dec134 = (0, _nextCore.computed)(function (_ref6) {
   var ringSessions = _ref6.ringSessions;
   return [ringSessions];
-}), _dec133 = Reflect.metadata("design:type", Function), _dec134 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_WebphoneBase) {
+}), _dec135 = Reflect.metadata("design:type", Function), _dec136 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_WebphoneBase) {
   function Webphone(_initiator, _regionSettings, _numberValidate, _auth, _toast, _client, _appFeatures, _extensionFeatures, _brand, _audioSettings, _storage, _portManager, _extensionDevice, _ringCentralExtensions, _webphoneOptions, _subscription, _contactMatcher, _availabilityMonitor, _prefix) {
     var _this$_webphoneOption, _this$_webphoneOption2;
     var _this;
@@ -172,6 +174,8 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     _this._contactMatcher = _contactMatcher;
     _this._availabilityMonitor = _availabilityMonitor;
     _this._prefix = _prefix;
+    _this._noiseReductionBoundHandlers = new WeakSet();
+    _initializerDefineProperty(_this, "_noiseReduction", _descriptor, _this);
     _this.invite$ = new _rxjs.Subject();
     _this._end$ = new _rxjs.Subject();
     /**
@@ -193,10 +197,10 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     _this.checkMainTab = function () {
       return _this.isMainClient;
     };
-    _initializerDefineProperty(_this, "activeSessionId", _descriptor, _this);
-    _initializerDefineProperty(_this, "ringSessionId", _descriptor2, _this);
-    _initializerDefineProperty(_this, "lastEndedSessions", _descriptor3, _this);
-    _initializerDefineProperty(_this, "sessions", _descriptor4, _this);
+    _initializerDefineProperty(_this, "activeSessionId", _descriptor2, _this);
+    _initializerDefineProperty(_this, "ringSessionId", _descriptor3, _this);
+    _initializerDefineProperty(_this, "lastEndedSessions", _descriptor4, _this);
+    _initializerDefineProperty(_this, "sessions", _descriptor5, _this);
     globalThis.externalClearTimeout = clearTimeout;
     globalThis.externalSetTimeout = setTimeout;
     var enableContactMatchWhenNewCall = (_this$_webphoneOption = (_this$_webphoneOption2 = _this._webphoneOptions) === null || _this$_webphoneOption2 === void 0 ? void 0 : _this$_webphoneOption2.enableContactMatchWhenNewCall) !== null && _this$_webphoneOption !== void 0 ? _this$_webphoneOption : true;
@@ -599,7 +603,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "_onAccepted",
     value: function _onAccepted(session) {
       var _this2 = this;
-      this.logger.log('initWebphoneSessionEvents', session);
+      this.logger.log('initWebphoneSessionEvents', (0, _webphoneLogSanitizer.formatWebphoneSessionSummary)(session));
       session.on('accepted', /*#__PURE__*/function () {
         var _ref12 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(incomingResponse) {
           return _regenerator().w(function (_context0) {
@@ -634,7 +638,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
           return _regenerator().w(function (_context1) {
             while (1) switch (_context1.n) {
               case 0:
-                _this2.logger.log('progress...', incomingResponse);
+                _this2.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('progress', incomingResponse));
                 session.__rc_callStatus = _sessionStatus.sessionStatus.connecting;
                 (0, _webphoneHelper.extractHeadersData)(session, incomingResponse.headers);
                 _this2.invite$.next(session);
@@ -667,7 +671,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
           return _regenerator().w(function (_context11) {
             while (1) switch (_context11.n) {
               case 0:
-                _this2.logger.log('Failed', cause);
+                _this2.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('Failed', cause));
                 session.__rc_callStatus = _sessionStatus.sessionStatus.finished;
                 _context11.n = 1;
                 return _this2._onCallEnd(session);
@@ -685,7 +689,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
           return _regenerator().w(function (_context12) {
             while (1) switch (_context12.n) {
               case 0:
-                _this2.logger.log('Terminated', e);
+                _this2.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('Terminated', e));
                 _this2._end$.next([session, e]);
                 session.__rc_callStatus = _sessionStatus.sessionStatus.finished;
                 _context12.n = 1;
@@ -718,7 +722,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
           return _regenerator().w(function (_context14) {
             while (1) switch (_context14.n) {
               case 0:
-                _this2.logger.log('replaced', newSession);
+                _this2.logger.log('replaced', (0, _webphoneLogSanitizer.formatWebphoneSessionSummary)(newSession));
                 session.__rc_callStatus = _sessionStatus.sessionStatus.replaced;
                 newSession.__rc_callStatus = _sessionStatus.sessionStatus.connected;
                 newSession.__rc_direction = _callDirections["default"].inbound;
@@ -764,17 +768,37 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
         }, _callee16);
       })));
       session.on('SessionDescriptionHandler-created', function () {
-        // @ts-ignore
-        session.sessionDescriptionHandler.on('userMediaFailed', function () {
-          _this2._audioSettings.onGetUserMediaError();
-        });
+        _this2._bindSessionDescriptionHandler(session);
+      });
+      this._bindSessionDescriptionHandler(session);
+      session.on('terminated', function () {
+        var _this2$_noiseReductio;
+        (_this2$_noiseReductio = _this2._noiseReduction) === null || _this2$_noiseReductio === void 0 ? void 0 : _this2$_noiseReductio.reset(session.id);
+      });
+    }
+  }, {
+    key: "_bindSessionDescriptionHandler",
+    value: function _bindSessionDescriptionHandler(session) {
+      var _this3 = this;
+      // @ts-ignore - sessionDescriptionHandler comes from SIP.js / ringcentral-web-phone
+      var sessionDescriptionHandler = session.sessionDescriptionHandler;
+      if (!sessionDescriptionHandler || this._noiseReductionBoundHandlers.has(sessionDescriptionHandler)) {
+        return;
+      }
+      this._noiseReductionBoundHandlers.add(sessionDescriptionHandler);
+      sessionDescriptionHandler.on('userMediaFailed', function () {
+        _this3._audioSettings.onGetUserMediaError();
+      });
+      sessionDescriptionHandler.on('userMedia', function (stream) {
+        var _this3$_noiseReductio;
+        (_this3$_noiseReductio = _this3._noiseReduction) === null || _this3$_noiseReductio === void 0 ? void 0 : _this3$_noiseReductio.denoiser(session.id, stream);
       });
     }
   }, {
     key: "_onInvite",
     value: function () {
       var _onInvite2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee19(session) {
-        var _this3 = this;
+        var _this4 = this;
         return _regenerator().w(function (_context19) {
           while (1) switch (_context19.n) {
             case 0:
@@ -788,9 +812,9 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                 return _regenerator().w(function (_context17) {
                   while (1) switch (_context17.n) {
                     case 0:
-                      _this3.logger.log('Ringing Rejected');
+                      _this4.logger.log('Ringing Rejected');
                       _context17.n = 1;
-                      return _this3._onCallEnd(session);
+                      return _this4._onCallEnd(session);
                     case 1:
                       return _context17.a(2);
                   }
@@ -801,10 +825,10 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                   return _regenerator().w(function (_context18) {
                     while (1) switch (_context18.n) {
                       case 0:
-                        _this3.logger.log('Ringing Terminated', e);
-                        _this3._end$.next([session, e]);
+                        _this4.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('Ringing Terminated', e));
+                        _this4._end$.next([session, e]);
                         _context18.n = 1;
-                        return _this3._onCallEnd(session);
+                        return _this4._onCallEnd(session);
                       case 1:
                         return _context18.a(2);
                     }
@@ -1139,7 +1163,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "mute",
     value: function () {
       var _mute = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee27(sessionId, errorHandler) {
-        var _this4 = this;
+        var _this5 = this;
         var _t8;
         return _regenerator().w(function (_context27) {
           while (1) switch (_context27.p = _context27.n) {
@@ -1153,7 +1177,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                         session.__rc_isOnMute = true;
                         session.mute();
                         _context26.n = 1;
-                        return _this4._updateSessions();
+                        return _this5._updateSessions();
                       case 1:
                         return _context26.a(2);
                     }
@@ -1188,7 +1212,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "unmute",
     value: function () {
       var _unmute = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee29(sessionId) {
-        var _this5 = this;
+        var _this6 = this;
         return _regenerator().w(function (_context29) {
           while (1) switch (_context29.n) {
             case 0:
@@ -1200,7 +1224,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                         session.__rc_isOnMute = false;
                         session.unmute();
                         _context28.n = 1;
-                        return _this5._updateSessions();
+                        return _this6._updateSessions();
                       case 1:
                         return _context28.a(2);
                     }
@@ -1275,7 +1299,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "_holdOtherSession",
     value: function () {
       var _holdOtherSession2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee32(currentSessionId) {
-        var _this6 = this;
+        var _this7 = this;
         return _regenerator().w(function (_context32) {
           while (1) switch (_context32.n) {
             case 0:
@@ -1307,7 +1331,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                         return session.hold();
                       case 4:
                         session.__rc_callStatus = _sessionStatus.sessionStatus.onHold;
-                        _this6._onCallHold(session);
+                        _this7._onCallHold(session);
                       case 5:
                         return _context31.a(2);
                     }
@@ -2124,13 +2148,13 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "ensureAbleToMakeCall",
     value: function () {
       var _ensureAbleToMakeCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee47() {
-        var _this7 = this;
+        var _this8 = this;
         var readyToMakCall$, notAble$, webphone, shouldRecover, realtimeReady;
         return _regenerator().w(function (_context47) {
           while (1) switch (_context47.n) {
             case 0:
               readyToMakCall$ = (0, _nextCore.fromWatchValue)(this, function () {
-                return [_this7.ready, _this7.connected];
+                return [_this8.ready, _this8.connected];
               }, {
                 multiple: true
               }).pipe((0, _rxjs.filter)(function (_ref28) {
@@ -2142,13 +2166,13 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
               notAble$ = (0, _rxjs.merge)(
               // when have error code, also means not able to make call, webphone not connected successfully
               (0, _nextCore.fromWatchValue)(this, function () {
-                return _this7.errorCode;
+                return _this8.errorCode;
               }).pipe((0, _rxjs.filter)(Boolean)), (0, _rxjs.timer)(30 * 1000)).pipe((0, _rxjs.map)(function () {
                 return null;
               }));
               _context47.n = 1;
               return (0, _rxjs.firstValueFrom)((0, _rxjs.race)([readyToMakCall$.pipe((0, _rxjs.switchMap)(function () {
-                return _this7.ensureWebphoneInstance();
+                return _this8.ensureWebphoneInstance();
               })), notAble$]));
             case 1:
               webphone = _context47.v;
@@ -2313,7 +2337,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "updateSessionMatchedContact",
     value: function () {
       var _updateSessionMatchedContact = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52(sessionId, contact) {
-        var _this8 = this;
+        var _this9 = this;
         return _regenerator().w(function (_context52) {
           while (1) switch (_context52.n) {
             case 0:
@@ -2324,7 +2348,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                       case 0:
                         session.__rc_contactMatch = contact;
                         _context51.n = 1;
-                        return _this8._updateSessions();
+                        return _this9._updateSessions();
                       case 1:
                         return _context51.a(2);
                     }
@@ -2367,7 +2391,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     key: "toggleMinimized",
     value: function () {
       var _toggleMinimized = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee55(sessionId) {
-        var _this9 = this;
+        var _this0 = this;
         return _regenerator().w(function (_context55) {
           while (1) switch (_context55.n) {
             case 0:
@@ -2378,7 +2402,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
                       case 0:
                         session.__rc_minimized = !session.__rc_minimized;
                         _context54.n = 1;
-                        return _this9._updateSessions();
+                        return _this0._updateSessions();
                       case 1:
                         return _context54.a(2);
                     }
@@ -2651,19 +2675,19 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "onWebphoneRegistered",
     value: function onWebphoneRegistered(handler) {
-      var _this0 = this;
+      var _this1 = this;
       this._eventEmitter.on(_events.EVENTS.webphoneRegistered, handler);
       return function () {
-        _this0._eventEmitter.off(_events.EVENTS.webphoneRegistered, handler);
+        _this1._eventEmitter.off(_events.EVENTS.webphoneRegistered, handler);
       };
     }
   }, {
     key: "onWebphoneUnregistered",
     value: function onWebphoneUnregistered(handler) {
-      var _this1 = this;
+      var _this10 = this;
       this._eventEmitter.on(_events.EVENTS.webphoneUnregistered, handler);
       return function () {
-        _this1._eventEmitter.off(_events.EVENTS.webphoneUnregistered, handler);
+        _this10._eventEmitter.off(_events.EVENTS.webphoneUnregistered, handler);
       };
     }
   }, {
@@ -2710,12 +2734,12 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "activeSession",
     get: function get() {
-      var _this10 = this;
+      var _this11 = this;
       if (!this.activeSessionId) {
         return null;
       }
       var activeSession = (0, _ramda.find)(function (session) {
-        return session.id === _this10.activeSessionId;
+        return session.id === _this11.activeSessionId;
       }, this.sessions);
       return activeSession;
     }
@@ -2726,12 +2750,12 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "ringSession",
     get: function get() {
-      var _this11 = this;
+      var _this12 = this;
       if (!this.ringSessionId) {
         return null;
       }
       var session = (0, _ramda.find)(function (session) {
-        return session.id === _this11.ringSessionId;
+        return session.id === _this12.ringSessionId;
       }, this.sessions);
       return session;
     }
@@ -2799,33 +2823,38 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
       }, this.sessions);
     }
   }]);
-}(_WebphoneBase2.WebphoneBase), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "activeSessionId", [_nextCore.state, _dec9], {
+}(_WebphoneBase2.WebphoneBase), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_noiseReduction", [_dec9, _dec0], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "activeSessionId", [_nextCore.state, _dec1], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "ringSessionId", [_nextCore.state, _dec0], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "ringSessionId", [_nextCore.state, _dec10], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "lastEndedSessions", [_nextCore.state, _dec1], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "lastEndedSessions", [_nextCore.state, _dec11], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "sessions", [_nextCore.state, _dec10], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "sessions", [_nextCore.state, _dec12], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return [];
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_updateSessionsState", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateSessionsState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateSessionsState", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSessionsState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setActiveSessionId", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setActiveSessionId", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallRing", [_nextCore.action, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallRing"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallRing", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallRing"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallStart", [_nextCore.action, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallStart"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallStart", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallStart"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallEnd", [_nextCore.action, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallEnd", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_trackCallAnswer", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "_trackCallAnswer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answer", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reject", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "reject"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "emitIgnoreEvent", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "emitIgnoreEvent"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resume", [_dec48, _dec49, _dec50], Object.getOwnPropertyDescriptor(_class2.prototype, "resume"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forward", [_dec51, _dec52, _dec53], Object.getOwnPropertyDescriptor(_class2.prototype, "forward"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mute", [_dec54, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "mute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unmute", [_dec57, _dec58, _dec59], Object.getOwnPropertyDescriptor(_class2.prototype, "unmute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hold", [_dec60, _dec61, _dec62], Object.getOwnPropertyDescriptor(_class2.prototype, "hold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unhold", [_dec63, _dec64, _dec65], Object.getOwnPropertyDescriptor(_class2.prototype, "unhold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startRecord", [_dec66, _dec67, _dec68], Object.getOwnPropertyDescriptor(_class2.prototype, "startRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecord", [_dec69, _dec70, _dec71], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "park", [_dec72, _dec73, _dec74], Object.getOwnPropertyDescriptor(_class2.prototype, "park"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transfer", [_dec75, _dec76, _dec77], Object.getOwnPropertyDescriptor(_class2.prototype, "transfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startWarmTransfer", [_dec78, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "startWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "completeWarmTransfer", [_dec81, _dec82, _dec83], Object.getOwnPropertyDescriptor(_class2.prototype, "completeWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "flip", [_dec84, _dec85, _dec86], Object.getOwnPropertyDescriptor(_class2.prototype, "flip"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendDTMF", [_dec87, _dec88, _dec89], Object.getOwnPropertyDescriptor(_class2.prototype, "sendDTMF"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hangup", [_dec90, _dec91, _dec92], Object.getOwnPropertyDescriptor(_class2.prototype, "hangup"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toVoiceMail", [_dec93, _dec94, _dec95], Object.getOwnPropertyDescriptor(_class2.prototype, "toVoiceMail"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replyWithMessage", [_dec96, _dec97, _dec98], Object.getOwnPropertyDescriptor(_class2.prototype, "replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "makeCall", [_dec99, _dec100, _dec101], Object.getOwnPropertyDescriptor(_class2.prototype, "makeCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "switchCall", [_dec102, _dec103, _dec104], Object.getOwnPropertyDescriptor(_class2.prototype, "switchCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "pickupInboundCall", [_dec105, _dec106, _dec107], Object.getOwnPropertyDescriptor(_class2.prototype, "pickupInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateSessionMatchedContact", [_dec108, _dec109, _dec110], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSessionMatchedContact"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateSessions", [_dec111, _dec112, _dec113], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toggleMinimized", [_dec114, _dec115, _dec116], Object.getOwnPropertyDescriptor(_class2.prototype, "toggleMinimized"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionPhoneNumbers", [_dec117, _dec118, _dec119], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSession", [_dec120, _dec121, _dec122], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSession", [_dec123, _dec124, _dec125], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSessions", [_dec126, _dec127, _dec128], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onHoldSessions", [_dec129, _dec130, _dec131], Object.getOwnPropertyDescriptor(_class2.prototype, "onHoldSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringingCallOnView", [_dec132, _dec133, _dec134], Object.getOwnPropertyDescriptor(_class2.prototype, "ringingCallOnView"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_updateSessionsState", [_nextCore.action, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateSessionsState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateSessionsState", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSessionsState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setActiveSessionId", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setActiveSessionId", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallRing", [_nextCore.action, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallRing"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallRing", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallRing"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallStart", [_nextCore.action, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallStart"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallStart", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallStart"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setStateOnCallEnd", [_nextCore.action, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "_setStateOnCallEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setStateOnCallEnd", [_dec35, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "setStateOnCallEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_trackCallAnswer", [_dec38, _dec39, _dec40], Object.getOwnPropertyDescriptor(_class2.prototype, "_trackCallAnswer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answer", [_dec41, _dec42, _dec43], Object.getOwnPropertyDescriptor(_class2.prototype, "answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reject", [_dec44, _dec45, _dec46], Object.getOwnPropertyDescriptor(_class2.prototype, "reject"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "emitIgnoreEvent", [_dec47, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "emitIgnoreEvent"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resume", [_dec50, _dec51, _dec52], Object.getOwnPropertyDescriptor(_class2.prototype, "resume"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forward", [_dec53, _dec54, _dec55], Object.getOwnPropertyDescriptor(_class2.prototype, "forward"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mute", [_dec56, _dec57, _dec58], Object.getOwnPropertyDescriptor(_class2.prototype, "mute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unmute", [_dec59, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "unmute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hold", [_dec62, _dec63, _dec64], Object.getOwnPropertyDescriptor(_class2.prototype, "hold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unhold", [_dec65, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "unhold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startRecord", [_dec68, _dec69, _dec70], Object.getOwnPropertyDescriptor(_class2.prototype, "startRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecord", [_dec71, _dec72, _dec73], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "park", [_dec74, _dec75, _dec76], Object.getOwnPropertyDescriptor(_class2.prototype, "park"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transfer", [_dec77, _dec78, _dec79], Object.getOwnPropertyDescriptor(_class2.prototype, "transfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startWarmTransfer", [_dec80, _dec81, _dec82], Object.getOwnPropertyDescriptor(_class2.prototype, "startWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "completeWarmTransfer", [_dec83, _dec84, _dec85], Object.getOwnPropertyDescriptor(_class2.prototype, "completeWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "flip", [_dec86, _dec87, _dec88], Object.getOwnPropertyDescriptor(_class2.prototype, "flip"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendDTMF", [_dec89, _dec90, _dec91], Object.getOwnPropertyDescriptor(_class2.prototype, "sendDTMF"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hangup", [_dec92, _dec93, _dec94], Object.getOwnPropertyDescriptor(_class2.prototype, "hangup"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toVoiceMail", [_dec95, _dec96, _dec97], Object.getOwnPropertyDescriptor(_class2.prototype, "toVoiceMail"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replyWithMessage", [_dec98, _dec99, _dec100], Object.getOwnPropertyDescriptor(_class2.prototype, "replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "makeCall", [_dec101, _dec102, _dec103], Object.getOwnPropertyDescriptor(_class2.prototype, "makeCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "switchCall", [_dec104, _dec105, _dec106], Object.getOwnPropertyDescriptor(_class2.prototype, "switchCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "pickupInboundCall", [_dec107, _dec108, _dec109], Object.getOwnPropertyDescriptor(_class2.prototype, "pickupInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateSessionMatchedContact", [_dec110, _dec111, _dec112], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSessionMatchedContact"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateSessions", [_dec113, _dec114, _dec115], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toggleMinimized", [_dec116, _dec117, _dec118], Object.getOwnPropertyDescriptor(_class2.prototype, "toggleMinimized"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionPhoneNumbers", [_dec119, _dec120, _dec121], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSession", [_dec122, _dec123, _dec124], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSession", [_dec125, _dec126, _dec127], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSessions", [_dec128, _dec129, _dec130], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onHoldSessions", [_dec131, _dec132, _dec133], Object.getOwnPropertyDescriptor(_class2.prototype, "onHoldSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringingCallOnView", [_dec134, _dec135, _dec136], Object.getOwnPropertyDescriptor(_class2.prototype, "ringingCallOnView"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Webphone.js.map

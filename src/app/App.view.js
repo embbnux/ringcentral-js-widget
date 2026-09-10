@@ -97,7 +97,7 @@ var PhoneAppView = exports.PhoneAppView = (_dec = (0, _nextCore.injectable)({
         exact: true,
         strict: false
       });
-      if (match === null || match === void 0 ? void 0 : match.isExact) {
+      if (match !== null && match !== void 0 && match.isExact) {
         _this._router.push('/dialer');
       }
     });

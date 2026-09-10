@@ -95,7 +95,7 @@ var _default = exports["default"] = {
   matches: '{numberOfMatches} 个匹配项',
   maybe: '可能的匹配项：{contactName}',
   optedOut: '接收者已退订。',
-  optOutAlertTooltip: '接收者必须重新订阅，才能接收来自此号码的短信。'
+  optOutAlertTooltip: '收件人必须重新订阅，才能接收来自此号码的短信。'
 }; // @key: @#@"to"@#@ @source: @#@"To"@#@
 // @key: @#@"from"@#@ @source: @#@"From"@#@
 // @key: @#@"ext"@#@ @source: @#@"Ext."@#@

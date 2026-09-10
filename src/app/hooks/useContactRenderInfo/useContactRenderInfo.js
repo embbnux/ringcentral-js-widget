@@ -80,17 +80,19 @@ var useContactRenderInfoFromCall = exports.useContactRenderInfoFromCall = functi
   // active call control api return the wrong data during the call process in XMN-up, so we use webphone data only for webphone call, not have correct callerIdName, so we use the webphone data
   var callerId = isInbound ? webphoneSession === null || webphoneSession === void 0 ? void 0 : webphoneSession.fromUserName : webphoneSession === null || webphoneSession === void 0 ? void 0 : webphoneSession.toUserName;
   var callSelectionInfo = call.callSelectionInfo;
-  var renderInfo = (0, _utils.getContactDisplayInfo)({
-    callerId: callerId,
-    queueName: callQueueName,
-    matches: matches,
-    phoneNumber: phoneNumber,
-    extensionNumber: extensionNumber,
-    phoneNumberDisplayMode: phoneNumberDisplayMode,
-    displaySelection: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection,
-    selections: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections,
-    getDefaultCrmMatch: contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch
-  });
+  var renderInfo = (0, _react.useMemo)(function () {
+    return (0, _utils.getContactDisplayInfo)({
+      callerId: callerId,
+      queueName: callQueueName,
+      matches: matches,
+      phoneNumber: phoneNumber,
+      extensionNumber: extensionNumber,
+      phoneNumberDisplayMode: phoneNumberDisplayMode,
+      displaySelection: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection,
+      selections: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections,
+      getDefaultCrmMatch: contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch
+    });
+  }, [callerId, callQueueName, matches, phoneNumber, extensionNumber, phoneNumberDisplayMode, callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection, callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections, contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch]);
   var getContactDisplayTextFn = (0, _components3.useGetContactDisplayTextFn)();
 
   // TODO: the conference view able still not support
@@ -189,38 +191,41 @@ var useContactRenderInfoFromCall = exports.useContactRenderInfoFromCall = functi
       size: size
     });
   }, [isConferenceCall, renderInfo, isQueue]);
+  var DisplayName = (0, _react.useCallback)(function (props) {
+    if (isConferenceCall) {
+      var text = conferenceParticipantsInfoFnList === null || conferenceParticipantsInfoFnList === void 0 ? void 0 : conferenceParticipantsInfoFnList.map(function (fn) {
+        return (
+          // the conference call participant show the phone number for group name
+          fn({
+            phoneNumberDisplayMode: 'phoneNumber'
+          })
+        );
+      }).filter(function (x) {
+        return !x.data.isHost;
+      }).map(function (x) {
+        return x.displayName;
+      }).join(', ');
+      // TODO: the conference view able still not support
+      return /*#__PURE__*/_react["default"].createElement("span", {
+        title: text,
+        className: "truncate"
+      }, text);
+    }
+    return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
+      info: renderInfo,
+      callQueueName: callQueueName
+    }, props));
+  }, [isConferenceCall, conferenceParticipantsInfoFnList, renderInfo, callQueueName]);
   return {
-    DisplayName: function DisplayName(props) {
-      if (isConferenceCall) {
-        var text = conferenceParticipantsInfoFnList === null || conferenceParticipantsInfoFnList === void 0 ? void 0 : conferenceParticipantsInfoFnList.map(function (fn) {
-          return (
-            // the conference call participant show the phone number for group name
-            fn({
-              phoneNumberDisplayMode: 'phoneNumber'
-            })
-          );
-        }).filter(function (x) {
-          return !x.data.isHost;
-        }).map(function (x) {
-          return x.displayName;
-        }).join(', ');
-        // TODO: the conference view able still not support
-        return /*#__PURE__*/_react["default"].createElement("span", {
-          title: text,
-          className: "truncate"
-        }, text);
-      }
-      return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
-        info: renderInfo,
-        callQueueName: callQueueName
-      }, props));
-    },
-    displayPhoneNumber: isInbound ? (options === null || options === void 0 ? void 0 : options.hideBlockedFromInfo) ? fromInfoHideBlocked : fromInfo : toInfo,
+    DisplayName: DisplayName,
+    // eslint-disable-next-line no-nested-ternary
+    displayPhoneNumber: isInbound ? options !== null && options !== void 0 && options.hideBlockedFromInfo ? fromInfoHideBlocked : fromInfo : toInfo,
     Avatar: Avatar,
     myCallerId: isInbound ? toInfo : fromInfo,
     duration: /*#__PURE__*/_react["default"].createElement(_DurationCounter.DurationCounter, {
       startTime: startTime,
-      offset: offset
+      offset: offset,
+      compensateSystemTime: true
     }),
     CallStatus: CallStatus,
     OnOtherDevice: otherDevice ? OnOtherDevice : null,
@@ -270,10 +275,36 @@ var useContactRenderInfoFromCallHistory = exports.useContactRenderInfoFromCallHi
   var queueCallDisplayMode = result === _callResults.callResults.answeredElsewhere || ringingElsewhere;
   var answeredByDelegate = currentCallLog.delegate;
   var hasAiNotes = currentCallLog.hasSmartNote;
+  var aiNoteNode = (0, _react.useMemo)(function () {
+    if (hasAiNotes) {
+      var text = t('notes');
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "flex items-center gap-1",
+        title: text
+      }, /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
+        size: "small",
+        symbol: _springIcon.SmartNotesMd
+      }), /*#__PURE__*/_react["default"].createElement("span", {
+        "data-sign": "aiNote",
+        className: "truncate min-w-0"
+      }, text));
+    }
+    return null;
+  }, [hasAiNotes, t]);
   var Status = (0, _react.useCallback)(function (_ref7) {
     var _ref7$mode = _ref7.mode,
       mode = _ref7$mode === void 0 ? 'text' : _ref7$mode;
     if (!result || !direction) return null;
+    var statusIconSign = 'outgoing-icon';
+    var statusIcon = _springIcon.OutgoingCallMd;
+    if (isInbound) {
+      statusIconSign = 'incoming-icon';
+      statusIcon = _springIcon.IncomingCallMd;
+    }
+    if (isMissed) {
+      statusIconSign = 'missed-icon';
+      statusIcon = _springIcon.MissedCallMd;
+    }
     var queueCallRender = function queueCallRender() {
       var answeredByText = answeredByDelegate ? "".concat(t('answeredBy'), " ").concat(answeredByDelegate === null || answeredByDelegate === void 0 ? void 0 : answeredByDelegate.name) : undefined;
       var queueCallDisplayModeNode = answeredByDelegate ? /*#__PURE__*/_react["default"].createElement("span", {
@@ -308,18 +339,13 @@ var useContactRenderInfoFromCallHistory = exports.useContactRenderInfoFromCallHi
       "data-sign": "status-".concat(isMissed ? 'missed' : direction.toLowerCase())
     }, /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
       size: "small",
-      "data-sign": isMissed ? 'missed-icon' : isInbound ? 'incoming-icon' : 'outgoing-icon',
-      symbol: isMissed ? _springIcon.MissedCallMd : isInbound ? _springIcon.IncomingCallMd : _springIcon.OutgoingCallMd,
+      "data-sign": statusIconSign,
+      symbol: statusIcon,
       className: isMissed ? 'text-inherit' : undefined
     }), /*#__PURE__*/_react["default"].createElement("span", {
       "data-sign": "duration"
-    }, isMissed ? t('Missed') : duration), hasAiNotes && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
-      size: "small",
-      symbol: _springIcon.SmartNotesMd
-    }), /*#__PURE__*/_react["default"].createElement("span", {
-      "data-sign": "aiNote"
-    }, t('notes'))));
-  }, [queueCallDisplayMode, answeredByDelegate, direction, duration, hasAiNotes, isInbound, isMissed, result, t]);
+    }, isMissed ? t('Missed') : duration), aiNoteNode);
+  }, [queueCallDisplayMode, answeredByDelegate, aiNoteNode, direction, duration, isInbound, isMissed, result, t]);
   var isQueue = (0, _CallHistory.isQueueHistoryCall)(currentCallLog);
   var callQueueName = (0, _helpers2.getDisplayCallQueueName)(currentCallLog);
   var callFrom = currentCallLog.from || {};
@@ -330,17 +356,19 @@ var useContactRenderInfoFromCallHistory = exports.useContactRenderInfoFromCallHi
   var matches = isInbound ? currentCallLog.fromMatches : currentCallLog.toMatches;
   var serverName = isInbound ? callFrom.name : callTo.name;
   var callSelectionInfo = currentCallLog.callSelectionInfo;
-  var renderInfo = (0, _utils.getContactDisplayInfo)({
-    serverName: serverName,
-    queueName: callQueueName,
-    matches: matches,
-    phoneNumber: phoneNumber,
-    extensionNumber: extensionNumber,
-    phoneNumberDisplayMode: phoneNumberDisplayMode,
-    displaySelection: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection,
-    selections: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections,
-    getDefaultCrmMatch: contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch
-  });
+  var renderInfo = (0, _react.useMemo)(function () {
+    return (0, _utils.getContactDisplayInfo)({
+      serverName: serverName,
+      queueName: callQueueName,
+      matches: matches,
+      phoneNumber: phoneNumber,
+      extensionNumber: extensionNumber,
+      phoneNumberDisplayMode: phoneNumberDisplayMode,
+      displaySelection: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection,
+      selections: callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections,
+      getDefaultCrmMatch: contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch
+    });
+  }, [serverName, callQueueName, matches, phoneNumber, extensionNumber, phoneNumberDisplayMode, callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.displayedSelection, callSelectionInfo === null || callSelectionInfo === void 0 ? void 0 : callSelectionInfo.selections, contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDefaultCrmMatch]);
   var isConferenceCall = Boolean(currentCallLog.isConferenceCall);
   var fromInfo = (0, _components3.useFormatExtOrPhoneNumber)(callFrom);
   var fromInfoHideBlocked = (0, _components3.useFormatExtOrPhoneNumber)(callFrom, hideBlockedFromInfo);
@@ -365,7 +393,7 @@ var useContactRenderInfoFromCallHistory = exports.useContactRenderInfoFromCallHi
    */
   var getActionInfo = function getActionInfo() {
     var matchedContact = renderInfo.matchedContact;
-    if (matchedContact === null || matchedContact === void 0 ? void 0 : matchedContact.name) {
+    if (matchedContact !== null && matchedContact !== void 0 && matchedContact.name) {
       return {
         phoneNumber: formattedPhoneNumber,
         name: matchedContact.name,
@@ -379,16 +407,20 @@ var useContactRenderInfoFromCallHistory = exports.useContactRenderInfoFromCallHi
     }
     return undefined;
   };
+  var DisplayName = (0, _react.useCallback)(function (props) {
+    // in call history be conference call, we show that be conference call
+    if (isConferenceCall) return /*#__PURE__*/_react["default"].createElement("span", {
+      className: "truncate w-full"
+    }, t('conferenceCall'));
+    return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
+      info: renderInfo,
+      callQueueName: callQueueName,
+      isMissed: isMissed
+    }, props));
+  }, [isConferenceCall, renderInfo, callQueueName, isMissed, t]);
   return {
-    DisplayName: function DisplayName(props) {
-      // in call history be conference call, we show that be conference call
-      if (isConferenceCall) return /*#__PURE__*/_react["default"].createElement("span", null, t('conferenceCall'));
-      return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
-        info: renderInfo,
-        callQueueName: callQueueName,
-        isMissed: isMissed
-      }, props));
-    },
+    DisplayName: DisplayName,
+    // eslint-disable-next-line no-nested-ternary
     displayPhoneNumber: isInbound ? hideBlockedFromInfo ? fromInfoHideBlocked : fromInfo : toInfo,
     Avatar: Avatar,
     myCallerIdTitle: isInbound ? t('to') : t('from'),
@@ -493,7 +525,8 @@ var useContactRenderInfoFromConversation = exports.useContactRenderInfoFromConve
           phoneNumber: correspondent.phoneNumber,
           extensionNumber: correspondent.extensionNumber,
           matches: correspondentMatchesList[index],
-          displaySelection: (contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDisplayedSelectedEntity) ? contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDisplayedSelectedEntity(conversationMatches, conversation.conversationId) : selectedIndex ? correspondentMatchesList[index][selectedIndex] : undefined,
+          // eslint-disable-next-line no-nested-ternary
+          displaySelection: contactRendererOptions !== null && contactRendererOptions !== void 0 && contactRendererOptions.getDisplayedSelectedEntity ? contactRendererOptions === null || contactRendererOptions === void 0 ? void 0 : contactRendererOptions.getDisplayedSelectedEntity(conversationMatches, conversation.conversationId) : selectedIndex ? correspondentMatchesList[index][selectedIndex] : undefined,
           selections: nonSupportSelectionType ? undefined : conversationMatches,
           // TODO: support the multiple match display in multiple correspondents scenario
           alwaysShowFirstMatch: isMultipleCorrespondent,
@@ -523,7 +556,8 @@ var useContactRenderInfoFromConversation = exports.useContactRenderInfoFromConve
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
     symbol: _springIcon.InfoMd,
     className: "text-warning-f",
-    size: "small"
+    size: "small",
+    "data-sign": "optOutAlertIcon"
   })), /*#__PURE__*/_react["default"].createElement("span", {
     className: "truncate",
     title: t('optedOut')
@@ -544,7 +578,8 @@ var useContactRenderInfoFromConversation = exports.useContactRenderInfoFromConve
   var matchedContact = (_displayInfoList$ = displayInfoList[0]) === null || _displayInfoList$ === void 0 ? void 0 : _displayInfoList$.matchedContact;
   var signalSourceInfo = (0, _react.useMemo)(function () {
     if (signalTo) {
-      return isInbound ? callFrom : callTo ? callTo[0] : undefined;
+      if (isInbound) return callFrom;
+      if (callTo) return callTo[0];
     }
     return undefined;
   }, [callFrom, callTo, isInbound, signalTo]);
@@ -584,7 +619,7 @@ var useContactRenderInfoFromConversation = exports.useContactRenderInfoFromConve
    */
   var getActionInfo = function getActionInfo() {
     if (signalSourceInfo) {
-      if (matchedContact === null || matchedContact === void 0 ? void 0 : matchedContact.name) {
+      if (matchedContact !== null && matchedContact !== void 0 && matchedContact.name) {
         return {
           phoneNumber: formattedPhoneNumber,
           name: matchedContact.name,
@@ -599,31 +634,33 @@ var useContactRenderInfoFromConversation = exports.useContactRenderInfoFromConve
     }
     return undefined;
   };
+  var Unread = (0, _react.useCallback)(function (props) {
+    return unreadCounts > 0 ? /*#__PURE__*/_react["default"].createElement(_springUi.Badge, _extends({
+      variant: "contained",
+      type: "dot",
+      size: "medium",
+      color: "warning",
+      count: unreadCounts
+    }, props)) : null;
+  }, [unreadCounts]);
+  var DisplayName = (0, _react.useCallback)(function (props) {
+    if ((displayInfoList === null || displayInfoList === void 0 ? void 0 : displayInfoList.length) > 1 || displayInfoList[0].type === 'phoneNumber') {
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "truncate self-stretch",
+        title: displayName
+      }, displayName);
+    }
+    return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
+      info: displayInfoList[0]
+    }, props));
+  }, [displayInfoList, displayName]);
   return {
-    DisplayName: function DisplayName(props) {
-      if ((displayInfoList === null || displayInfoList === void 0 ? void 0 : displayInfoList.length) > 1 || displayInfoList[0].type === 'phoneNumber') {
-        return /*#__PURE__*/_react["default"].createElement("div", {
-          className: "truncate self-stretch",
-          title: displayName
-        }, displayName);
-      }
-      return /*#__PURE__*/_react["default"].createElement(_components3.ContactDisplayRender, _extends({
-        info: displayInfoList[0]
-      }, props));
-    },
+    DisplayName: DisplayName,
     formattedPhoneNumber: formattedPhoneNumber,
     correspondentsDisplayInfoMap: correspondentsDisplayInfoMap,
     displayType: signalTo ? displayInfoList[0].type : 'multiple',
     displayDescription: displayDescription,
-    Unread: function Unread(props) {
-      return unreadCounts > 0 ? /*#__PURE__*/_react["default"].createElement(_springUi.Badge, _extends({
-        variant: "contained",
-        type: "dot",
-        size: "medium",
-        color: "warning",
-        count: unreadCounts
-      }, props)) : null;
-    },
+    Unread: Unread,
     Avatar: Avatar,
     creationTime: creationTime,
     // basic info

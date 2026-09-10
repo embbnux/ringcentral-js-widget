@@ -95,7 +95,7 @@ var QuickCallActionView = exports.QuickCallActionView = (_dec = (0, _nextCore.in
       return this._callAction.displayCallList.filter(function (call) {
         var _this2$_callAction$ac, _this2$_callAction$ac2;
         var metaInfo = _this2._callAction.getCallMetaInfo(call.telephonySessionId);
-        return !(metaInfo === null || metaInfo === void 0 ? void 0 : metaInfo.open) && !(0, _services.isOtherDeviceCall)(call) &&
+        return !(metaInfo !== null && metaInfo !== void 0 && metaInfo.open) && !(0, _services.isOtherDeviceCall)(call) &&
         // exist active call also should not include in swapCall list
         call.telephonySessionId !== ((_this2$_callAction$ac = _this2._callAction.activeCallInfo) === null || _this2$_callAction$ac === void 0 ? void 0 : (_this2$_callAction$ac2 = _this2$_callAction$ac.call) === null || _this2$_callAction$ac2 === void 0 ? void 0 : _this2$_callAction$ac2.telephonySessionId);
       });
@@ -133,7 +133,7 @@ var QuickCallActionView = exports.QuickCallActionView = (_dec = (0, _nextCore.in
         };
       }
       var actionInfo = this._callAction.announcementInfo;
-      if (!(actionInfo === null || actionInfo === void 0 ? void 0 : actionInfo.meta)) {
+      if (!(actionInfo !== null && actionInfo !== void 0 && actionInfo.meta)) {
         return {
           hidden: true
         };

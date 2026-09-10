@@ -32,8 +32,10 @@ var ReferenceMenuList = exports.ReferenceMenuList = function ReferenceMenuList(_
   var integrationConfig = (0, _nextCore.useContainer)('IntegrationConfig');
   var noItem = list.length === 0;
   var viewableCrmEntity = Boolean(integrationConfig === null || integrationConfig === void 0 ? void 0 : integrationConfig.viewExternalEntity);
+
+  //TODO: [SHRINK CTI] Provide compact menu here when available
   return /*#__PURE__*/_react["default"].createElement(_springUi.MenuList, {
-    className: "overflow-auto pb-2",
+    className: "overflow-auto",
     "data-sign": label
   }, showGroupLabel && /*#__PURE__*/_react["default"].createElement(_springUi.MenuItem, {
     "data-sign": "referenceGroupLabel",
@@ -94,6 +96,7 @@ var ReferenceMenuList = exports.ReferenceMenuList = function ReferenceMenuList(_
         className: "flex gap-1 absolute right-0 top-0 h-full items-center bg-inherit pl-4 pr-2 group-hover:translate-x-0 group-[.sui-focus-visible-within]:translate-x-0 translate-x-full"
       }, /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
         symbol: _springIcon.ArrowRightUpMd,
+        "aria-label": (0, _i18n.t)('viewRecord'),
         TooltipProps: {
           title: (0, _i18n.t)('viewRecord')
         },
@@ -154,6 +157,7 @@ var ReferenceListView = function ReferenceListView(_ref2) {
       })
     }), clickable && /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
       symbol: _springIcon.ArrowRightUpMd,
+      "aria-label": (0, _i18n.t)('viewRecord'),
       TooltipProps: {
         title: (0, _i18n.t)('viewRecord')
       },

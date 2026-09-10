@@ -20,7 +20,7 @@ require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.useReferencePopper = exports.ReferenceMainContent = void 0;
+exports.useReferencePopper = exports.referencePopperMiddlewares = exports.ReferenceMainContent = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
@@ -33,6 +33,7 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
+var _reactDom = require("@floating-ui/react-dom");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 var _FilterAndSearchHint = require("./FilterAndSearchHint");
@@ -49,17 +50,35 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-var ReferenceMainContent = exports.ReferenceMainContent = function ReferenceMainContent(_ref) {
-  var filterTerm = _ref.filterTerm,
-    formKey = _ref.formKey,
-    allDisplayList = _ref.allDisplayList,
-    currentValue = _ref.currentValue,
-    onItemClick = _ref.onItemClick,
-    enableSearch = _ref.enableSearch,
-    errorHint = _ref.errorHint,
-    searchFn = _ref.searchFn,
-    useMenuList = _ref.useMenuList,
-    getIcon = _ref.getIcon;
+var referencePopperMiddlewares = exports.referencePopperMiddlewares = [(0, _reactDom.flip)({
+  padding: 12
+}), (0, _reactDom.shift)({
+  padding: 12
+}), (0, _reactDom.size)({
+  padding: 12,
+  apply: function apply(_ref) {
+    var availableWidth = _ref.availableWidth,
+      availableHeight = _ref.availableHeight,
+      elements = _ref.elements;
+    // jsdom reports 0 available space; do not collapse the popper to 0px.
+    if (availableWidth > 0) {
+      elements.floating.style.maxWidth = "".concat(availableWidth, "px");
+    }
+    if (availableHeight > 0) {
+      elements.floating.style.maxHeight = "".concat(availableHeight, "px");
+    }
+  }
+})];
+var ReferenceMainContent = exports.ReferenceMainContent = function ReferenceMainContent(_ref2) {
+  var filterTerm = _ref2.filterTerm,
+    allDisplayList = _ref2.allDisplayList,
+    currentValue = _ref2.currentValue,
+    onItemClick = _ref2.onItemClick,
+    enableSearch = _ref2.enableSearch,
+    errorHint = _ref2.errorHint,
+    searchFn = _ref2.searchFn,
+    useMenuList = _ref2.useMenuList,
+    getIcon = _ref2.getIcon;
   var selectedMap = (0, _react.useMemo)(function () {
     return currentValue.reduce(function (acc, item) {
       acc[item.id] = true;
@@ -106,7 +125,7 @@ var ReferenceMainContent = exports.ReferenceMainContent = function ReferenceMain
     enableSearch: enableSearch,
     errorHint: errorHint
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "overflow-y-auto overflow-x-hidden max-h-80"
+    className: "overflow-y-auto overflow-x-hidden flex-auto"
   }, displayList.map(function (displayListItem) {
     return /*#__PURE__*/_react["default"].createElement(_ReferenceList.ReferenceList, {
       onItemClick: onItemClick,
@@ -124,32 +143,30 @@ var ReferenceMainContent = exports.ReferenceMainContent = function ReferenceMain
     });
   })));
 };
-var ReferencePopperComponent = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) {
-  var referenceProps = _ref2.referenceProps,
-    rest = _objectWithoutProperties(_ref2, _excluded);
+var ReferencePopperComponent = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
+  var referenceProps = _ref3.referenceProps,
+    rest = _objectWithoutProperties(_ref3, _excluded);
   return /*#__PURE__*/_react["default"].createElement(_springUi.Popper, _extends({}, rest, {
     ref: ref,
     "data-sign": 'call-log-reference-popper',
-    padding: {
-      bottom: 60
-    }
+    middlewares: referencePopperMiddlewares
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "bg-neutral-base rounded-sui-sm shadow-sui-md border border-neutral-b4 overflow-hidden",
+    className: "bg-neutral-base rounded-sui-sm shadow-sui-md border border-neutral-b4 overflow-hidden flex flex-col h-full",
     "data-sign": "".concat(referenceProps.formKey, "-popper")
   }, /*#__PURE__*/_react["default"].createElement(ReferenceMainContent, referenceProps)));
 });
-var useReferencePopper = exports.useReferencePopper = function useReferencePopper(_ref3) {
-  var filterTerm = _ref3.filterTerm,
-    allDisplayList = _ref3.allDisplayList,
-    currentValue = _ref3.currentValue,
-    formKey = _ref3.formKey,
-    onItemClick = _ref3.onItemClick,
-    _ref3$enableSearch = _ref3.enableSearch,
-    enableSearch = _ref3$enableSearch === void 0 ? true : _ref3$enableSearch,
-    searchFn = _ref3.searchFn,
-    useMenuList = _ref3.useMenuList,
-    getIcon = _ref3.getIcon,
-    _anchorEl = _ref3.anchorEl;
+var useReferencePopper = exports.useReferencePopper = function useReferencePopper(_ref4) {
+  var filterTerm = _ref4.filterTerm,
+    allDisplayList = _ref4.allDisplayList,
+    currentValue = _ref4.currentValue,
+    formKey = _ref4.formKey,
+    onItemClick = _ref4.onItemClick,
+    _ref4$enableSearch = _ref4.enableSearch,
+    enableSearch = _ref4$enableSearch === void 0 ? true : _ref4$enableSearch,
+    searchFn = _ref4.searchFn,
+    useMenuList = _ref4.useMenuList,
+    getIcon = _ref4.getIcon,
+    _anchorEl = _ref4.anchorEl;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   var MemoizedReferencePopperComponent = (0, _react.useCallback)(/*#__PURE__*/(0, _react.forwardRef)(function (props, ref) {
     return /*#__PURE__*/_react["default"].createElement(ReferencePopperComponent, _extends({}, props, {

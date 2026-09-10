@@ -151,7 +151,7 @@ var useCallActionButtons = exports.useCallActionButtons = function useCallAction
       hangUp: function hangUp() {
         return {
           label: t('end'),
-          tooltip: t((options === null || options === void 0 ? void 0 : options.isConferenceCall) ? 'leaveCall' : 'endCall'),
+          tooltip: t(options !== null && options !== void 0 && options.isConferenceCall ? 'leaveCall' : 'endCall'),
           color: 'danger',
           symbol: _springIcon.CallFilledMd,
           variant: 'contained',

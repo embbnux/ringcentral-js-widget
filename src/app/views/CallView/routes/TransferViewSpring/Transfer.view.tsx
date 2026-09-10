@@ -131,6 +131,7 @@ export class TransferView extends RcViewModule {
                 this._toast.warning({
                   message: t('toVoiceMailError'),
                 });
+                this._transferViewOptions?.onToVoicemailFailedDataTrack?.();
               }
             }
             break;

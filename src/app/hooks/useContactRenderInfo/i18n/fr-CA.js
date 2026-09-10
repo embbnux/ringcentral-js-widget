@@ -20,7 +20,7 @@ var _default = exports["default"] = {
   onHold: 'En attente',
   day: 'jour',
   hr: 'h',
-  min: ' min',
+  min: 'min',
   sec: 's',
   yesterday: 'Hier',
   notes: 'Notes de l’IA',

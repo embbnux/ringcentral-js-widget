@@ -57,7 +57,7 @@ var _isEqual = _interopRequireDefault(require("lodash/isEqual"));
 var _ramda = require("ramda");
 var _react = _interopRequireDefault(require("react"));
 var _i18n = _interopRequireWildcard(require("./i18n"));
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 /* eslint-disable react-hooks/rules-of-hooks */
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t4 in e) "default" !== _t4 && {}.hasOwnProperty.call(e, _t4) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t4)) && (i.get || i.set) ? o(f, _t4, i) : f[_t4] = e[_t4]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -137,7 +137,7 @@ var AudioSettings = exports.AudioSettings = (_dec = (0, _nextCore.injectable)({
   name: 'AudioSettings'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('AudioSettingsOptions')(target, undefined, 7);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services2.ToastManager === "undefined" ? Object : _services2.ToastManager, typeof AudioSettingsOptions === "undefined" ? Object : AudioSettingsOptions]), _dec5 = Reflect.metadata("design:type", typeof AudioSettingsData === "undefined" ? Object : AudioSettingsData), _dec6 = Reflect.metadata("design:type", Array), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", []), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Array]), _dec16 = (0, _nextCore.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [Array]), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [typeof AudioSettingsData === "undefined" ? Object : AudioSettingsData]), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _nextCore.delegate)('mainClient'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('mainClient'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [Boolean]), _dec30 = (0, _nextCore.delegate)('all'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", [Number]), _dec39 = (0, _nextCore.delegate)('server'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _dec42 = (0, _nextCore.delegate)('server'), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", [Object]), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", [void 0]), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", []), _dec50 = (0, _nextCore.delegate)('server'), _dec51 = Reflect.metadata("design:type", Function), _dec52 = Reflect.metadata("design:paramtypes", [String]), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", []), _dec55 = (0, _nextCore.delegate)('server'), _dec56 = Reflect.metadata("design:type", Function), _dec57 = Reflect.metadata("design:paramtypes", [String]), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", []), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services2.ToastManager === "undefined" ? Object : _services2.ToastManager, typeof AudioSettingsOptions === "undefined" ? Object : AudioSettingsOptions]), _dec5 = (0, _nextCore.dynamic)('NoiseReduction'), _dec6 = Reflect.metadata("design:type", typeof NoiseReductionLike === "undefined" ? Object : NoiseReductionLike), _dec7 = Reflect.metadata("design:type", typeof AudioSettingsData === "undefined" ? Object : AudioSettingsData), _dec8 = Reflect.metadata("design:type", Array), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [Array]), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [Array]), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [typeof AudioSettingsData === "undefined" ? Object : AudioSettingsData]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _nextCore.delegate)('mainClient'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = (0, _nextCore.delegate)('mainClient'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [Boolean]), _dec32 = (0, _nextCore.delegate)('all'), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", []), _dec35 = (0, _nextCore.delegate)('server'), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = (0, _nextCore.delegate)('server'), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", [Number]), _dec41 = (0, _nextCore.delegate)('server'), _dec42 = Reflect.metadata("design:type", Function), _dec43 = Reflect.metadata("design:paramtypes", []), _dec44 = (0, _nextCore.delegate)('server'), _dec45 = Reflect.metadata("design:type", Function), _dec46 = Reflect.metadata("design:paramtypes", [Object]), _dec47 = (0, _nextCore.delegate)('server'), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", [void 0]), _dec50 = Reflect.metadata("design:type", Function), _dec51 = Reflect.metadata("design:paramtypes", []), _dec52 = (0, _nextCore.delegate)('server'), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", [String]), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", []), _dec57 = (0, _nextCore.delegate)('server'), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", [String]), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", []), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function AudioSettings(_auth, _toast, _brand, _storage, _appFeatures, _portManager, _toastManager, _audioSettingsOptions) {
     var _this;
     _classCallCheck(this, AudioSettings);
@@ -154,10 +154,11 @@ var AudioSettings = exports.AudioSettings = (_dec = (0, _nextCore.injectable)({
     _this._getUserMediaPromise = null;
     // in spring-ui, we always show the check media alert
     _this._showCheckMediaAlert = process.env.THEME_SYSTEM === 'spring-ui';
-    _initializerDefineProperty(_this, "data", _descriptor, _this);
-    _initializerDefineProperty(_this, "availableDevices", _descriptor2, _this);
-    _initializerDefineProperty(_this, "hasUserMedia", _descriptor3, _this);
-    _initializerDefineProperty(_this, "noPermissionToast", _descriptor4, _this);
+    _initializerDefineProperty(_this, "_noiseReduction", _descriptor, _this);
+    _initializerDefineProperty(_this, "data", _descriptor2, _this);
+    _initializerDefineProperty(_this, "availableDevices", _descriptor3, _this);
+    _initializerDefineProperty(_this, "hasUserMedia", _descriptor4, _this);
+    _initializerDefineProperty(_this, "noPermissionToast", _descriptor5, _this);
     _this._storage.enable(_this, {
       migrations: [['data', 'AudioSettings-data']]
     });
@@ -1138,6 +1139,18 @@ var AudioSettings = exports.AudioSettings = (_dec = (0, _nextCore.injectable)({
       return this.data.isAGCEnabled;
     }
   }, {
+    key: "isNoiseReductionEnabled",
+    get: function get() {
+      var _this$_noiseReduction, _this$_noiseReduction2;
+      return (_this$_noiseReduction = (_this$_noiseReduction2 = this._noiseReduction) === null || _this$_noiseReduction2 === void 0 ? void 0 : _this$_noiseReduction2.enabled) !== null && _this$_noiseReduction !== void 0 ? _this$_noiseReduction : false;
+    }
+  }, {
+    key: "setNoiseReductionEnabled",
+    value: function setNoiseReductionEnabled(enabled) {
+      var _this$_noiseReduction3;
+      (_this$_noiseReduction3 = this._noiseReduction) === null || _this$_noiseReduction3 === void 0 ? void 0 : _this$_noiseReduction3.setEnabled(enabled);
+    }
+  }, {
     key: "isSupportAGC",
     get: function get() {
       try {
@@ -1150,28 +1163,33 @@ var AudioSettings = exports.AudioSettings = (_dec = (0, _nextCore.injectable)({
       }
     }
   }]);
-}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.userStorage, _nextCore.state, _dec5], {
+}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_noiseReduction", [_dec5, _dec6], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.userStorage, _nextCore.state, _dec7], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return _objectSpread({}, DEFAULT_VALUE);
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "availableDevices", [_nextCore.state, _dec6], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "availableDevices", [_nextCore.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "hasUserMedia", [_nextCore.state], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "hasUserMedia", [_nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setHasAutoPrompted", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "setHasAutoPrompted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUserMediaError", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setUserMediaError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setUserMediaSuccess", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_setUserMediaSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUserMediaSuccess", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "setUserMediaSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAvailableDevices", [_nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAvailableDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAvailableDevices", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "setAvailableDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setData", [_nextCore.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "markAutoPrompted", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "markAutoPrompted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onInit", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "onInit"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAutoGainControl", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "setAutoGainControl"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ensureGetUserMediaPermission", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "ensureGetUserMediaPermission"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onGetUserMediaSuccess", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "_onGetUserMediaSuccess"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "noPermissionToast", [_nextCore.portal], {
+}), _applyDecoratedDescriptor(_class2.prototype, "setHasAutoPrompted", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setHasAutoPrompted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUserMediaError", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "setUserMediaError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setUserMediaSuccess", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_setUserMediaSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUserMediaSuccess", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "setUserMediaSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAvailableDevices", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAvailableDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAvailableDevices", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "setAvailableDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setData", [_nextCore.action, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "_setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "markAutoPrompted", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "markAutoPrompted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onInit", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "onInit"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAutoGainControl", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "setAutoGainControl"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ensureGetUserMediaPermission", [_dec32, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "ensureGetUserMediaPermission"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onGetUserMediaSuccess", [_dec35, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "_onGetUserMediaSuccess"), _class2.prototype), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "noPermissionToast", [_nextCore.portal], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -1215,22 +1233,27 @@ var AudioSettings = exports.AudioSettings = (_dec = (0, _nextCore.injectable)({
           })),
           "data-sign": "checkPermissionAction"
         }, t('checkPermission'));
-        return /*#__PURE__*/_react["default"].createElement(_FormattedMessage["default"], {
+        return /*#__PURE__*/_react["default"].createElement("div", {
+          className: "typography-descriptorMini"
+        }, /*#__PURE__*/_react["default"].createElement(_FormattedMessage["default"], {
           message: t('checkMediaPermission'),
           values: {
-            checkPermissionAction: checkPermissionAction,
+            checkPermissionAction: process.env.THEME_SYSTEM === 'spring-ui' ? null // action on new line in spring ui - added separately
+            : checkPermissionAction,
             brandName: _this8._brand.name
-          }
-        });
+          },
+          tagName: 'div'
+        }), process.env.THEME_SYSTEM === 'spring-ui' && /*#__PURE__*/_react["default"].createElement("div", null, checkPermissionAction));
       },
       props: function props() {
         return {
           level: 'warning',
           ttl: 0,
-          group: _this8.identifier
+          group: _this8.identifier,
+          startSlot: null
         };
       }
     });
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "showPermissionAlert", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "showPermissionAlert"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onGetUserMediaError", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "onGetUserMediaError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "checkAudioAvailable", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "checkAudioAvailable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setData", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "outputDeviceId", [_nextCore.computed, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "outputDeviceId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setOutputDevice", [_dec50, _dec51, _dec52], Object.getOwnPropertyDescriptor(_class2.prototype, "setOutputDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "inputDeviceId", [_nextCore.computed, _dec53, _dec54], Object.getOwnPropertyDescriptor(_class2.prototype, "inputDeviceId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInputDevice", [_dec55, _dec56, _dec57], Object.getOwnPropertyDescriptor(_class2.prototype, "setInputDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableOutputDevices", [_nextCore.computed, _dec58, _dec59], Object.getOwnPropertyDescriptor(_class2.prototype, "availableOutputDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableRingtoneDevices", [_nextCore.computed, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "availableRingtoneDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableInputDevices", [_nextCore.computed, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "availableInputDevices"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "showPermissionAlert", [_dec38, _dec39, _dec40], Object.getOwnPropertyDescriptor(_class2.prototype, "showPermissionAlert"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onGetUserMediaError", [_dec41, _dec42, _dec43], Object.getOwnPropertyDescriptor(_class2.prototype, "onGetUserMediaError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "checkAudioAvailable", [_dec44, _dec45, _dec46], Object.getOwnPropertyDescriptor(_class2.prototype, "checkAudioAvailable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setData", [_dec47, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "outputDeviceId", [_nextCore.computed, _dec50, _dec51], Object.getOwnPropertyDescriptor(_class2.prototype, "outputDeviceId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setOutputDevice", [_dec52, _dec53, _dec54], Object.getOwnPropertyDescriptor(_class2.prototype, "setOutputDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "inputDeviceId", [_nextCore.computed, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "inputDeviceId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInputDevice", [_dec57, _dec58, _dec59], Object.getOwnPropertyDescriptor(_class2.prototype, "setInputDevice"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableOutputDevices", [_nextCore.computed, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "availableOutputDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableRingtoneDevices", [_nextCore.computed, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "availableRingtoneDevices"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableInputDevices", [_nextCore.computed, _dec64, _dec65], Object.getOwnPropertyDescriptor(_class2.prototype, "availableInputDevices"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=AudioSettings.js.map

@@ -7,6 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  matchedRecordsTips: '{matchedCount} vorgeschlag. Datensätze'
+  matchedRecordsTips: '{matchedCount} Vorschläge'
 }; // @key: @#@"matchedRecordsTips"@#@ @source: @#@"{matchedCount} suggested records"@#@
 //# sourceMappingURL=de-DE.js.map

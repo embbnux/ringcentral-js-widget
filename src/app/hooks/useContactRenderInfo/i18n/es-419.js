@@ -20,8 +20,8 @@ var _default = exports["default"] = {
   onHold: 'En espera',
   day: 'día',
   hr: 'h',
-  min: 'min',
-  sec: 's',
+  min: 'mín.',
+  sec: 'seg',
   yesterday: 'Ayer',
   notes: 'Notas por IA',
   logged: 'Registrada',
@@ -95,7 +95,7 @@ var _default = exports["default"] = {
   matches: '{numberOfMatches} coincidencias',
   maybe: 'Quizás: {contactName}',
   optedOut: 'El destinatario canceló la suscripción.',
-  optOutAlertTooltip: 'El destinatario debe volver a suscribirse para recibir mensajes de este número.'
+  optOutAlertTooltip: 'El destinatario debe volver a suscribirse para recibir mensajes de texto de este número.'
 }; // @key: @#@"to"@#@ @source: @#@"To"@#@
 // @key: @#@"from"@#@ @source: @#@"From"@#@
 // @key: @#@"ext"@#@ @source: @#@"Ext."@#@

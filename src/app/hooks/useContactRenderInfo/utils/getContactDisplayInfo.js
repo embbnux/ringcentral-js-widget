@@ -68,7 +68,7 @@ var getContactDisplayInfo = exports.getContactDisplayInfo = function getContactD
      */
     if (queueName) {
       // in platform when have caller id set in queue will group with queue name and caller id
-      if (callerIdName === null || callerIdName === void 0 ? void 0 : callerIdName.startsWith("".concat(queueName, " -"))) {
+      if (callerIdName !== null && callerIdName !== void 0 && callerIdName.startsWith("".concat(queueName, " -"))) {
         return callerIdName.slice(queueName.length + 2)
         // trim the start and end space
         .trim();
@@ -92,7 +92,7 @@ var getContactDisplayInfo = exports.getContactDisplayInfo = function getContactD
     return (0, _i18n.t)('unknownNumber');
   };
   var contactGetter = function contactGetter() {
-    if (matches.length === 0 && !(selections === null || selections === void 0 ? void 0 : selections.length)) return null;
+    if (matches.length === 0 && !(selections !== null && selections !== void 0 && selections.length)) return null;
     if (displaySelection) {
       return {
         contact: displaySelection,

@@ -120,6 +120,17 @@ export class CallLogTasks extends RcModule {
     };
   }
 
+  @action
+  updateCallStates(updates: Record<string, Partial<CallLogStatus>>) {
+    Object.entries(updates).forEach(([identify, newValue]) => {
+      const originalState = this.callsMappingState[identify];
+      this.callsMappingState[identify] = {
+        ...originalState,
+        ...newValue,
+      };
+    });
+  }
+
   @delegate('server')
   async updateCallLogState(identify: string) {
     this.update(identify, {

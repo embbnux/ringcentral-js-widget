@@ -8,9 +8,11 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   saveLogSucceed: 'Llamada registrada.',
+  editLoggingPreferences: 'Editar preferencia de registro',
   saveError: 'No se puede registrar la llamada debido a un error del servidor.',
   reportIssue: 'Informar un problema'
 }; // @key: @#@"saveLogSucceed"@#@ @source: @#@"Call logged."@#@
+// @key: @#@"editLoggingPreferences"@#@ @source: @#@"Edit logging preference"@#@
 // @key: @#@"saveError"@#@ @source: @#@"Unable to log call due to server error."@#@
 // @key: @#@"reportIssue"@#@ @source: @#@"Report an issue"@#@
 //# sourceMappingURL=es-419.js.map

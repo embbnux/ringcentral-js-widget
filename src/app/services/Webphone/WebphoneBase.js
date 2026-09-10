@@ -57,8 +57,10 @@ var _outgoing = _interopRequireDefault(require("./audio/outgoing.mp3"));
 var _connectionStatus = require("./connectionStatus");
 var _events2 = require("./events");
 var _i18n = require("./i18n");
+var _setSinkId = require("./setSinkId");
 var _webphoneHelper = require("./webphoneHelper");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _dec137, _dec138, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
+var _webphoneLogSanitizer = require("./webphoneLogSanitizer");
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -98,7 +100,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
   return [that.ready, that._audioSettings.supportDevices, that._audioSettings.ringtoneDeviceId];
 }), _dec89 = Reflect.metadata("design:type", Function), _dec90 = Reflect.metadata("design:paramtypes", []), _dec91 = (0, _nextCore.computed)(function (that) {
   return [that.ready, that._audioSettings.supportDevices, that._audioSettings.outputDeviceId];
-}), _dec92 = Reflect.metadata("design:type", Function), _dec93 = Reflect.metadata("design:paramtypes", []), _dec94 = (0, _nextCore.delegate)('server'), _dec95 = Reflect.metadata("design:type", Function), _dec96 = Reflect.metadata("design:paramtypes", []), _dec97 = (0, _nextCore.delegate)('server'), _dec98 = Reflect.metadata("design:type", Function), _dec99 = Reflect.metadata("design:paramtypes", []), _dec100 = (0, _nextCore.delegate)('server'), _dec101 = Reflect.metadata("design:type", Function), _dec102 = Reflect.metadata("design:paramtypes", [String, String, String, String]), _dec103 = (0, _nextCore.delegate)('mainClient'), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", []), _dec106 = (0, _nextCore.delegate)('mainClient'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [void 0]), _dec109 = (0, _nextCore.delegate)('mainClient'), _dec110 = Reflect.metadata("design:type", Function), _dec111 = Reflect.metadata("design:paramtypes", [Object]), _dec112 = (0, _nextCore.delegate)('mainClient'), _dec113 = Reflect.metadata("design:type", Function), _dec114 = Reflect.metadata("design:paramtypes", []), _dec115 = (0, _nextCore.delegate)('mainClient'), _dec116 = Reflect.metadata("design:type", Function), _dec117 = Reflect.metadata("design:paramtypes", []), _dec118 = (0, _nextCore.delegate)('mainClient'), _dec119 = Reflect.metadata("design:type", Function), _dec120 = Reflect.metadata("design:paramtypes", [Object]), _dec121 = (0, _nextCore.delegate)('mainClient'), _dec122 = Reflect.metadata("design:type", Function), _dec123 = Reflect.metadata("design:paramtypes", []), _dec124 = (0, _nextCore.delegate)('mainClient'), _dec125 = Reflect.metadata("design:type", Function), _dec126 = Reflect.metadata("design:paramtypes", [Object]), _dec127 = (0, _nextCore.delegate)('server'), _dec128 = Reflect.metadata("design:type", Function), _dec129 = Reflect.metadata("design:paramtypes", [Object]), _dec130 = (0, _nextCore.delegate)('mainClient'), _dec131 = Reflect.metadata("design:type", Function), _dec132 = Reflect.metadata("design:paramtypes", []), _dec133 = (0, _nextCore.delegate)('mainClient'), _dec134 = Reflect.metadata("design:type", Function), _dec135 = Reflect.metadata("design:paramtypes", []), _dec136 = (0, _nextCore.delegate)('mainClient'), _dec137 = Reflect.metadata("design:type", Function), _dec138 = Reflect.metadata("design:paramtypes", [Object]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec92 = Reflect.metadata("design:type", Function), _dec93 = Reflect.metadata("design:paramtypes", []), _dec94 = (0, _nextCore.delegate)('server'), _dec95 = Reflect.metadata("design:type", Function), _dec96 = Reflect.metadata("design:paramtypes", []), _dec97 = (0, _nextCore.delegate)('server'), _dec98 = Reflect.metadata("design:type", Function), _dec99 = Reflect.metadata("design:paramtypes", []), _dec100 = (0, _nextCore.delegate)('mainClient'), _dec101 = Reflect.metadata("design:type", Function), _dec102 = Reflect.metadata("design:paramtypes", []), _dec103 = (0, _nextCore.delegate)('mainClient'), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", [void 0]), _dec106 = (0, _nextCore.delegate)('mainClient'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [Object]), _dec109 = (0, _nextCore.delegate)('mainClient'), _dec110 = Reflect.metadata("design:type", Function), _dec111 = Reflect.metadata("design:paramtypes", []), _dec112 = (0, _nextCore.delegate)('mainClient'), _dec113 = Reflect.metadata("design:type", Function), _dec114 = Reflect.metadata("design:paramtypes", []), _dec115 = (0, _nextCore.delegate)('mainClient'), _dec116 = Reflect.metadata("design:type", Function), _dec117 = Reflect.metadata("design:paramtypes", [Object]), _dec118 = (0, _nextCore.delegate)('mainClient'), _dec119 = Reflect.metadata("design:type", Function), _dec120 = Reflect.metadata("design:paramtypes", []), _dec121 = (0, _nextCore.delegate)('mainClient'), _dec122 = Reflect.metadata("design:type", Function), _dec123 = Reflect.metadata("design:paramtypes", [Object]), _dec124 = (0, _nextCore.delegate)('server'), _dec125 = Reflect.metadata("design:type", Function), _dec126 = Reflect.metadata("design:paramtypes", [Object]), _dec127 = (0, _nextCore.delegate)('mainClient'), _dec128 = Reflect.metadata("design:type", Function), _dec129 = Reflect.metadata("design:paramtypes", []), _dec130 = (0, _nextCore.delegate)('mainClient'), _dec131 = Reflect.metadata("design:type", Function), _dec132 = Reflect.metadata("design:paramtypes", []), _dec133 = (0, _nextCore.delegate)('mainClient'), _dec134 = Reflect.metadata("design:type", Function), _dec135 = Reflect.metadata("design:paramtypes", [Object]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function WebphoneBase(_brand, _auth, _toast, _client, _numberValidate, _appFeatures, _extensionFeatures, _extensionDevice, _audioSettings, _storage, _portManager, _ringCentralExtensions, _webphoneOptions, _subscription, _prefix) {
     var _this;
     _classCallCheck(this, WebphoneBase);
@@ -156,6 +158,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
       _this.handleLogout();
     }
     if (globalThis.document) {
+      (0, _setSinkId.patchSafariSetSinkId)();
       _this.handleListeners();
       _this._sipInstanceManager = new _SipInstanceManager.SipInstanceManager("".concat(_this._prefix, "-webphone-inactive-sip-instance"));
     }
@@ -563,6 +566,20 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
       this.data.outgoingAudioDataUrl = null;
     }
   }, {
+    key: "_setRemoteVideoSinkId",
+    value: function _setRemoteVideoSinkId() {
+      var _this3 = this;
+      if (!this._remoteVideo || !this._audioSettings.supportDevices) {
+        return;
+      }
+      (0, _setSinkId.setSinkIdSafely)(this._remoteVideo, this._audioSettings.outputDeviceId, function (error) {
+        if ((0, _setSinkId.isSinkIdPermissionError)(error)) {
+          return;
+        }
+        _this3.logger.warn('setSinkId failed', error);
+      });
+    }
+  }, {
     key: "_prepareVideoElement",
     value: function _prepareVideoElement() {
       this._remoteVideo = document.createElement('video');
@@ -576,11 +593,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
       document.body.appendChild(this._remoteVideo);
       document.body.appendChild(this._localVideo);
       this._remoteVideo.volume = this._audioSettings.callVolume;
-      if (this._audioSettings.supportDevices) {
-        if (this._remoteVideo.setSinkId && this._audioSettings.outputDeviceId) {
-          this._remoteVideo.setSinkId(this._audioSettings.outputDeviceId);
-        }
-      }
+      this._setRemoteVideoSinkId();
     }
   }, {
     key: "_destroyVideoElement",
@@ -597,68 +610,68 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
   }, {
     key: "initialize",
     value: function initialize() {
-      var _this3 = this;
+      var _this4 = this;
       if (!this.disconnected) {
         this.setStateOnUnregistered();
       }
       (0, _nextCore.watch)(this, function () {
-        return _this3.shouldUpdateRingtoneVolume;
+        return _this4.shouldUpdateRingtoneVolume;
       }, function () {
-        if (_this3.ready && _this3._webphone && _this3._webphone.userAgent) {
-          _this3._webphone.userAgent.audioHelper.setVolume(_this3._audioSettings.ringtoneVolume);
+        if (_this4.ready && _this4._webphone && _this4._webphone.userAgent) {
+          _this4._webphone.userAgent.audioHelper.setVolume(_this4._audioSettings.ringtoneVolume);
         }
       });
       (0, _nextCore.watch)(this, function () {
-        return _this3._audioSettings.callVolume;
+        return _this4._audioSettings.callVolume;
       }, function () {
-        if (_this3.ready && _this3._remoteVideo) {
-          _this3._remoteVideo.volume = _this3._audioSettings.callVolume;
+        if (_this4.ready && _this4._remoteVideo) {
+          _this4._remoteVideo.volume = _this4._audioSettings.callVolume;
         }
       });
       (0, _nextCore.watch)(this, function () {
-        return _this3.shouldSetSinkId;
+        return _this4.shouldSetSinkId;
       }, function () {
-        if (_this3.ready && _this3._audioSettings.supportDevices && _this3._remoteVideo && _this3._remoteVideo.setSinkId) {
-          _this3._remoteVideo.setSinkId(_this3._audioSettings.outputDeviceId);
+        if (_this4.ready && _this4._audioSettings.supportDevices && _this4._remoteVideo) {
+          _this4._setRemoteVideoSinkId();
         }
       });
       (0, _nextCore.watch)(this, function () {
-        return _this3.shouldSetRingtoneSinkId;
+        return _this4.shouldSetRingtoneSinkId;
       }, function () {
-        if (_this3.ready && _this3._audioSettings.supportDevices && _this3._webphone && _this3._webphone.userAgent && _this3._webphone.userAgent.audioHelper &&
+        if (_this4.ready && _this4._audioSettings.supportDevices && _this4._webphone && _this4._webphone.userAgent && _this4._webphone.userAgent.audioHelper &&
         // @ts-expect-error
-        _this3._webphone.userAgent.audioHelper.setDeviceId) {
+        _this4._webphone.userAgent.audioHelper.setDeviceId) {
           // @ts-expect-error
-          _this3._webphone.userAgent.audioHelper.setDeviceId(_this3._audioSettings.ringtoneDeviceId);
+          _this4._webphone.userAgent.audioHelper.setDeviceId(_this4._audioSettings.ringtoneDeviceId);
         }
       });
     }
   }, {
     key: "handleListeners",
     value: function handleListeners() {
-      var _this4 = this;
+      var _this5 = this;
       if (globalThis.document) {
         if (document.readyState === 'loading') {
           window.addEventListener('load', function () {
-            _this4._prepareVideoElement();
+            _this5._prepareVideoElement();
           });
         } else {
           this._prepareVideoElement();
         }
         window.addEventListener('beforeunload', function () {
-          if (!_this4._webphone) {
+          if (!_this5._webphone) {
             return;
           }
-          if (Object.keys(_this4.originalSessions).length > 0) {
+          if (Object.keys(_this5.originalSessions).length > 0) {
             return;
           }
-          _this4._removedWebphoneAtBeforeUnload = true;
+          _this5._removedWebphoneAtBeforeUnload = true;
           // disconnect webphone at beforeunload if there are not active sessions
-          _this4._disconnect();
+          _this5._disconnect();
           // set timeout to reconnect web phone is before unload cancel
           setTimeout(function () {
-            _this4._removedWebphoneAtBeforeUnload = false;
-            _this4.connect({
+            _this5._removedWebphoneAtBeforeUnload = false;
+            _this5.connect({
               force: true,
               skipConnectDelay: true,
               skipDLCheck: true
@@ -667,15 +680,15 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
         });
         window.addEventListener('pagehide', function () {
           // mark current instance id as inactive, so app can reuse it after refresh
-          if (_this4._sipInstanceId) {
-            _this4._sipInstanceManager.setInstanceInactive(_this4._sipInstanceId, _this4._auth.endpointId);
-            _this4._sipInstanceId = null;
+          if (_this5._sipInstanceId) {
+            _this5._sipInstanceManager.setInstanceInactive(_this5._sipInstanceId, _this5._auth.endpointId);
+            _this5._sipInstanceId = null;
           }
           // disconnect if web phone is not disconnected at beforeunload
-          if (!_this4._removedWebphoneAtBeforeUnload && (!_this4._portManager.shared || _this4._portManager.shared && _this4._portManager.isMainTab)) {
-            _this4._disconnect();
+          if (!_this5._removedWebphoneAtBeforeUnload && (!_this5._portManager.shared || _this5._portManager.shared && _this5._portManager.isMainTab)) {
+            _this5._disconnect();
           }
-          _this4._destroyVideoElement();
+          _this5._destroyVideoElement();
         });
       }
     }
@@ -874,11 +887,13 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
     value: function () {
       var _webphoneLogConnector2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(level, category, label, content) {
         var _this$_browserLogger;
+        var cappedContent;
         return _regenerator().w(function (_context16) {
           while (1) switch (_context16.n) {
             case 0:
-              // TODO: filter by log level
-              (_this$_browserLogger = this._browserLogger) === null || _this$_browserLogger === void 0 ? void 0 : _this$_browserLogger.log(category, label, content);
+              // Cap length to avoid bloated logs and cyclic JSON from SIP/WebRTC (e.g. candidates)
+              cappedContent = (0, _webphoneLogSanitizer.truncateLogContent)(content);
+              (_this$_browserLogger = this._browserLogger) === null || _this$_browserLogger === void 0 ? void 0 : _this$_browserLogger.log(category, label, cappedContent);
             case 1:
               return _context16.a(2);
           }
@@ -894,20 +909,20 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
     value: function () {
       var _createWebphone2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee20(provisionData) {
         var _this$_webphoneOption,
-          _this5 = this,
+          _this6 = this,
           _this$_webphoneOption2;
         var webphone;
         return _regenerator().w(function (_context20) {
           while (1) switch (_context20.n) {
             case 0:
-              this.logger.log("_createWebphone", provisionData);
+              this.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('_createWebphone', provisionData));
               _context20.n = 1;
               return this._removeWebphone();
             case 1:
               if (!this._sipInstanceId) {
                 this._sipInstanceId = this._sipInstanceManager.getInstanceId(this._auth.endpointId);
               }
-              webphone = new _ringcentralWebPhone["default"](provisionData, _objectSpread({
+              webphone = new _ringcentralWebPhone["default"](provisionData, _objectSpread(_objectSpread({
                 appKey: this._webphoneOptions.appKey,
                 appName: (0, _core.removeNonISO8859Chars)(this._webphoneOptions.appName),
                 appVersion: this._webphoneOptions.appVersion,
@@ -917,7 +932,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                 builtinEnabled: false,
                 // use custom log connector to filter out time strings as it will be duplicated
                 connector: function connector() {
-                  return _this5._webphoneLogConnector.apply(_this5, arguments);
+                  return _this6._webphoneLogConnector.apply(_this6, arguments);
                 },
                 audioHelper: {
                   enabled: true // enables audio feedback when web phone is ringing or making a call
@@ -927,11 +942,14 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                   local: this._localVideo
                 },
                 enableQos: (0, _webphoneHelper.isChrome)(),
-                enableMidLinesInSDP: (0, _webphoneHelper.isEnableMidLinesInSDP)(),
                 instanceId: this._sipInstanceId,
                 // reuse sip instance id to avoid 603 issue at reconnection
                 autoStop: false
-              }, (_this$_webphoneOption2 = this._webphoneOptions.webphoneSDKOptions) !== null && _this$_webphoneOption2 !== void 0 ? _this$_webphoneOption2 : {}));
+              }, (_this$_webphoneOption2 = this._webphoneOptions.webphoneSDKOptions) !== null && _this$_webphoneOption2 !== void 0 ? _this$_webphoneOption2 : {}), {}, {
+                enableDefaultModifiers: false,
+                enableMidLinesInSDP: (0, _webphoneHelper.isEnableMidLinesInSDP)(),
+                modifiers: []
+              }));
               this.rcWebphoneInstance$.next(webphone);
               // @ts-ignore
               webphone.userAgent.audioHelper = new _AudioHelper.WebphoneAudioHelper({
@@ -941,13 +959,13 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
               webphone.userAgent.audioHelper.setVolume(this._audioSettings.ringtoneVolume);
               // Webphone userAgent registered event
               webphone.userAgent.on('registered', function () {
-                if (!_this5.connected) {
-                  _this5._onWebphoneRegistered(provisionData);
+                if (!_this6.connected) {
+                  _this6._onWebphoneRegistered(provisionData);
                 }
               });
               webphone.userAgent.on('unregistered', function (e) {
                 console.log('web phone unregistered event', e);
-                _this5._onWebphoneUnregistered();
+                _this6._onWebphoneUnregistered();
               });
               webphone.userAgent.on('registrationFailed', function (response, cause) {
                 console.error('Webphone Register Error:', response, cause);
@@ -961,7 +979,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                   return;
                 }
                 // don't handled in connection is disconnecting
-                if (_this5.disconnected || _this5.disconnecting) {
+                if (_this6.disconnected || _this6.disconnecting) {
                   return;
                 }
                 var errorCode;
@@ -1006,14 +1024,14 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                       break;
                     }
                 }
-                _this5._onConnectError({
+                _this6._onConnectError({
                   errorCode: errorCode,
                   statusCode: statusCode
                 });
               });
               webphone.userAgent.on('invite', function (session) {
-                _this5.logger.log("invite", session);
-                _this5._onInvite(session);
+                _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('invite', session));
+                _this6._onInvite(session);
               });
               // webphone.userAgent.on('inviteSent', (session) => {
               //   console.log('UA invite');
@@ -1023,21 +1041,21 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
               // TODO: should check that type issue in ringcentral-web-phone
               // @ts-ignore
               webphone.userAgent.on('provisionUpdate', function (e) {
-                _this5.logger.log("provisionUpdate", e);
-                if (Object.keys(_this5.originalSessions).length === 0) {
-                  _this5._toast.warning({
+                _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('provisionUpdate', e));
+                if (Object.keys(_this6.originalSessions).length === 0) {
+                  _this6._toast.warning({
                     message: (0, _i18n.t)('provisionUpdate'),
                     allowDuplicates: false,
-                    group: _this5.identifier
+                    group: _this6.identifier
                   });
-                  _this5.connect({
+                  _this6.connect({
                     force: true,
                     skipDLCheck: true,
                     skipConnectDelay: true
                   });
                   return;
                 }
-                _this5._reconnectAfterSessionEnd = {
+                _this6._reconnectAfterSessionEnd = {
                   reason: (0, _i18n.t)('provisionUpdate')
                 };
               });
@@ -1047,19 +1065,19 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                   return _regenerator().w(function (_context17) {
                     while (1) switch (_context17.n) {
                       case 0:
-                        _this5.logger.log("connecting", e);
+                        _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('connecting', e));
                         // reconnecting event
-                        if (!(_this5.connected || _this5.connectError)) {
+                        if (!(_this6.connected || _this6.connectError)) {
                           _context17.n = 1;
                           break;
                         }
-                        _this5._toast.warning({
+                        _this6._toast.warning({
                           message: (0, _i18n.t)('serverConnecting'),
                           allowDuplicates: false,
-                          group: _this5.identifier
+                          group: _this6.identifier
                         });
                         _context17.n = 1;
-                        return _this5.setStateOnReconnect();
+                        return _this6.setStateOnReconnect();
                       case 1:
                         return _context17.a(2);
                     }
@@ -1075,11 +1093,11 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                   return _regenerator().w(function (_context18) {
                     while (1) switch (_context18.n) {
                       case 0:
-                        _this5.logger.log("closed", e);
+                        _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('closed', e));
                         _context18.n = 1;
-                        return _this5.setRetryCounts(20);
+                        return _this6.setRetryCounts(20);
                       case 1:
-                        _this5._onConnectError({
+                        _this6._onConnectError({
                           errorCode: 'connectFailed',
                           ttl: 0
                         });
@@ -1093,16 +1111,16 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                 };
               }());
               webphone.userAgent.transport.on('transportError', function (e) {
-                _this5.logger.log("transportError", e);
+                _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('transportError', e));
               });
               webphone.userAgent.transport.on('wsConnectionError', /*#__PURE__*/function () {
                 var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee19(e) {
                   return _regenerator().w(function (_context19) {
                     while (1) switch (_context19.n) {
                       case 0:
-                        _this5.logger.log("wsConnectionError", e);
+                        _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('wsConnectionError', e));
                         _context19.n = 1;
-                        return _this5.setConnectionStatus(_connectionStatus.connectionStatus.connectError);
+                        return _this6.setConnectionStatus(_connectionStatus.connectionStatus.connectError);
                       case 1:
                         return _context19.a(2);
                     }
@@ -1114,16 +1132,16 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
               }());
               // Timeout to switch back to primary server
               webphone.userAgent.transport.on('switchBackProxy', function (e) {
-                _this5.logger.log("switchBackProxy", e);
-                if (Object.keys(_this5.originalSessions).length === 0) {
-                  _this5.connect({
+                _this6.logger.log((0, _webphoneLogSanitizer.formatTransportEventSummary)('switchBackProxy', e));
+                if (Object.keys(_this6.originalSessions).length === 0) {
+                  _this6.connect({
                     skipConnectDelay: true,
                     force: true,
                     skipDLCheck: true
                   });
                   return;
                 }
-                _this5._reconnectAfterSessionEnd = {
+                _this6._reconnectAfterSessionEnd = {
                   reason: null
                 };
               });
@@ -1423,7 +1441,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
     value: (function () {
       var _connect3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee25() {
         var _connectDelay,
-          _this6 = this;
+          _this7 = this;
         var _ref8,
           _ref8$force,
           force,
@@ -1603,8 +1621,8 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
                 connectTimeoutTTL: connectTimeoutTTL
               });
               this._connectTimeout = setTimeout(function () {
-                _this6._connectTimeout = null;
-                _this6._connect();
+                _this7._connectTimeout = null;
+                _this7._connect();
               }, connectTimeoutTTL);
             case 22:
               return _context25.a(2);
@@ -1632,15 +1650,15 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
   }, {
     key: "_scheduleRealtimeRecoveryRetry",
     value: function _scheduleRealtimeRecoveryRetry(delay) {
-      var _this7 = this;
+      var _this8 = this;
       this._clearRealtimeRecoveryRetryTimeout();
       this._realtimeRecoveryRetryTimeout = setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee26() {
         return _regenerator().w(function (_context26) {
           while (1) switch (_context26.n) {
             case 0:
-              _this7._realtimeRecoveryRetryTimeout = null;
-              if (_this7.connectError && _this7._auth.loggedIn) {
-                _this7.connect({
+              _this8._realtimeRecoveryRetryTimeout = null;
+              if (_this8.connectError && _this8._auth.loggedIn) {
+                _this8.connect({
                   skipConnectDelay: true,
                   force: true,
                   skipDLCheck: true
@@ -1655,7 +1673,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
   }, {
     key: "showErrorToast",
     value: function showErrorToast(_ref0) {
-      var _this8 = this;
+      var _this9 = this;
       var errorCode = _ref0.errorCode,
         _ref0$statusCode = _ref0.statusCode,
         statusCode = _ref0$statusCode === void 0 ? this.statusCode : _ref0$statusCode,
@@ -1667,22 +1685,22 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
           if (statusCode && isConnecting) {
             return (0, _i18n.t)('registeringWithStatusCode', {
               errorCode: statusCode,
-              brandName: _this8._brand.name
+              brandName: _this9._brand.name
             });
           }
           if (statusCode) {
             return (0, _i18n.t)('failWithStatusCode', {
               errorCode: statusCode,
-              brandName: _this8._brand.name
+              brandName: _this9._brand.name
             });
           }
           if (isConnecting) {
             return (0, _i18n.t)('registeringWithoutStatusCode', {
-              brandName: _this8._brand.name
+              brandName: _this9._brand.name
             });
           }
           return (0, _i18n.t)('failWithoutStatusCode', {
-            brandName: _this8._brand.name
+            brandName: _this9._brand.name
           });
         }
         return (0, _i18n.t)(errorCode);
@@ -2314,5 +2332,5 @@ var WebphoneBase = exports.WebphoneBase = (_dec = function _dec(target, key) {
       outgoingAudioDataUrl: null
     };
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setRingtoneIntoStorage", [_nextCore.action, _dec75, _dec76], Object.getOwnPropertyDescriptor(_class2.prototype, "_setRingtoneIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setIncomingAudioIntoStorage", [_nextCore.action, _dec77, _dec78], Object.getOwnPropertyDescriptor(_class2.prototype, "_setIncomingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_resetIncomingAudio", [_nextCore.action, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "_resetIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setOutgoingAudioIntoStorage", [_nextCore.action, _dec81, _dec82], Object.getOwnPropertyDescriptor(_class2.prototype, "_setOutgoingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_resetOutgoingAudio", [_nextCore.action, _dec83, _dec84], Object.getOwnPropertyDescriptor(_class2.prototype, "_resetOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldUpdateRingtoneVolume", [_dec85, _dec86, _dec87], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldUpdateRingtoneVolume"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldSetRingtoneSinkId", [_dec88, _dec89, _dec90], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldSetRingtoneSinkId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldSetSinkId", [_dec91, _dec92, _dec93], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldSetSinkId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sipProvision", [_dec94, _dec95, _dec96], Object.getOwnPropertyDescriptor(_class2.prototype, "_sipProvision"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetchDL", [_dec97, _dec98, _dec99], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetchDL"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_webphoneLogConnector", [_dec100, _dec101, _dec102], Object.getOwnPropertyDescriptor(_class2.prototype, "_webphoneLogConnector"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_connect", [_dec103, _dec104, _dec105], Object.getOwnPropertyDescriptor(_class2.prototype, "_connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connect", [_dec106, _dec107, _dec108], Object.getOwnPropertyDescriptor(_class2.prototype, "connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onConnectError", [_dec109, _dec110, _dec111], Object.getOwnPropertyDescriptor(_class2.prototype, "_onConnectError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "disableMainClient", [_dec112, _dec113, _dec114], Object.getOwnPropertyDescriptor(_class2.prototype, "disableMainClient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "disconnect", [_dec115, _dec116, _dec117], Object.getOwnPropertyDescriptor(_class2.prototype, "disconnect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setOutgoingAudio", [_dec118, _dec119, _dec120], Object.getOwnPropertyDescriptor(_class2.prototype, "setOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetOutgoingAudio", [_dec121, _dec122, _dec123], Object.getOwnPropertyDescriptor(_class2.prototype, "resetOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIncomingAudio", [_dec124, _dec125, _dec126], Object.getOwnPropertyDescriptor(_class2.prototype, "setIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIncomingAudioIntoStorage", [_dec127, _dec128, _dec129], Object.getOwnPropertyDescriptor(_class2.prototype, "setIncomingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadClientAudio", [_dec130, _dec131, _dec132], Object.getOwnPropertyDescriptor(_class2.prototype, "loadClientAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetIncomingAudio", [_dec133, _dec134, _dec135], Object.getOwnPropertyDescriptor(_class2.prototype, "resetIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setRingtone", [_dec136, _dec137, _dec138], Object.getOwnPropertyDescriptor(_class2.prototype, "setRingtone"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setRingtoneIntoStorage", [_nextCore.action, _dec75, _dec76], Object.getOwnPropertyDescriptor(_class2.prototype, "_setRingtoneIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setIncomingAudioIntoStorage", [_nextCore.action, _dec77, _dec78], Object.getOwnPropertyDescriptor(_class2.prototype, "_setIncomingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_resetIncomingAudio", [_nextCore.action, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "_resetIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setOutgoingAudioIntoStorage", [_nextCore.action, _dec81, _dec82], Object.getOwnPropertyDescriptor(_class2.prototype, "_setOutgoingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_resetOutgoingAudio", [_nextCore.action, _dec83, _dec84], Object.getOwnPropertyDescriptor(_class2.prototype, "_resetOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldUpdateRingtoneVolume", [_dec85, _dec86, _dec87], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldUpdateRingtoneVolume"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldSetRingtoneSinkId", [_dec88, _dec89, _dec90], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldSetRingtoneSinkId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "shouldSetSinkId", [_dec91, _dec92, _dec93], Object.getOwnPropertyDescriptor(_class2.prototype, "shouldSetSinkId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sipProvision", [_dec94, _dec95, _dec96], Object.getOwnPropertyDescriptor(_class2.prototype, "_sipProvision"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetchDL", [_dec97, _dec98, _dec99], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetchDL"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_connect", [_dec100, _dec101, _dec102], Object.getOwnPropertyDescriptor(_class2.prototype, "_connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connect", [_dec103, _dec104, _dec105], Object.getOwnPropertyDescriptor(_class2.prototype, "connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onConnectError", [_dec106, _dec107, _dec108], Object.getOwnPropertyDescriptor(_class2.prototype, "_onConnectError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "disableMainClient", [_dec109, _dec110, _dec111], Object.getOwnPropertyDescriptor(_class2.prototype, "disableMainClient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "disconnect", [_dec112, _dec113, _dec114], Object.getOwnPropertyDescriptor(_class2.prototype, "disconnect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setOutgoingAudio", [_dec115, _dec116, _dec117], Object.getOwnPropertyDescriptor(_class2.prototype, "setOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetOutgoingAudio", [_dec118, _dec119, _dec120], Object.getOwnPropertyDescriptor(_class2.prototype, "resetOutgoingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIncomingAudio", [_dec121, _dec122, _dec123], Object.getOwnPropertyDescriptor(_class2.prototype, "setIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIncomingAudioIntoStorage", [_dec124, _dec125, _dec126], Object.getOwnPropertyDescriptor(_class2.prototype, "setIncomingAudioIntoStorage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadClientAudio", [_dec127, _dec128, _dec129], Object.getOwnPropertyDescriptor(_class2.prototype, "loadClientAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetIncomingAudio", [_dec130, _dec131, _dec132], Object.getOwnPropertyDescriptor(_class2.prototype, "resetIncomingAudio"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setRingtone", [_dec133, _dec134, _dec135], Object.getOwnPropertyDescriptor(_class2.prototype, "setRingtone"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=WebphoneBase.js.map

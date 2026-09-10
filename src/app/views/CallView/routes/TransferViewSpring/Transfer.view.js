@@ -135,7 +135,7 @@ var TransferView = exports.TransferView = (_dec = (0, _nextCore.injectable)({
         onAction: function () {
           var _onAction = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(actionType) {
             var _this2$_transferViewO, _this2$_transferViewO2, _this2$_transferViewO3, _this2$_transferViewO4;
-            var state, recipients, toNumber, handlers, _this2$_transferViewO5, _this2$_transferViewO6, id, _t;
+            var state, recipients, toNumber, handlers, _this2$_transferViewO5, _this2$_transferViewO6, id, _this2$_transferViewO7, _this2$_transferViewO8, _t;
             return _regenerator().w(function (_context) {
               while (1) switch (_context.n) {
                 case 0:
@@ -171,6 +171,7 @@ var TransferView = exports.TransferView = (_dec = (0, _nextCore.injectable)({
                     _this2._toast.warning({
                       message: (0, _i18n.t)('toVoiceMailError')
                     });
+                    (_this2$_transferViewO7 = _this2._transferViewOptions) === null || _this2$_transferViewO7 === void 0 ? void 0 : (_this2$_transferViewO8 = _this2$_transferViewO7.onToVoicemailFailedDataTrack) === null || _this2$_transferViewO8 === void 0 ? void 0 : _this2$_transferViewO8.call(_this2$_transferViewO7);
                   }
                   return _context.a(3, 9);
                 case 7:

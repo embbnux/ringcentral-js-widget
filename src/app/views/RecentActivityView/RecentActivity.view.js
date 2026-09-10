@@ -80,15 +80,15 @@ var RecentActivityView = exports.RecentActivityView = (_dec = (0, _nextCore.inje
   name: 'RecentActivityView'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('RecentActivityViewOptions')(target, undefined, 4);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services3.DateTimeFormat === "undefined" ? Object : _services3.DateTimeFormat, typeof _services4.RecentCalls === "undefined" ? Object : _services4.RecentCalls, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof RecentActivityViewOptions === "undefined" ? Object : RecentActivityViewOptions]), _dec5 = (0, _nextCore.dynamic)('RecentMessages'), _dec6 = Reflect.metadata("design:type", typeof RecentMessages === "undefined" ? Object : RecentMessages), _dec7 = (0, _services.track)(function (_, entry) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services3.DateTimeFormat === "undefined" ? Object : _services3.DateTimeFormat, typeof _services4.RecentCalls === "undefined" ? Object : _services4.RecentCalls, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof RecentActivityViewOptions === "undefined" ? Object : RecentActivityViewOptions]), _dec5 = (0, _nextCore.dynamic)('RecentMessages'), _dec6 = Reflect.metadata("design:type", typeof RecentMessages === "undefined" ? Object : RecentMessages), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = (0, _services.track)(function (_, entry) {
   return [_trackEvents.trackEvents.clickRecentActivity, {
     Entry: entry
   }];
-}), _dec8 = (0, _nextCore.delegate)('server'), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String]), _dec1 = (0, _services.track)(function (_, tabName, entry) {
+}), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String]), _dec1 = (0, _nextCore.delegate)('server'), _dec10 = (0, _services.track)(function (_, tabName, entry) {
   return [trackTabsMap[tabName], {
     Entry: entry
   }];
-}), _dec10 = (0, _nextCore.delegate)('server'), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [String, String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [String, String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function RecentActivityView(_locale, _dateTimeFormat, _recentCalls, _contactMatcher, _recentActivityViewOptions) {
     var _this;
     _classCallCheck(this, RecentActivityView);

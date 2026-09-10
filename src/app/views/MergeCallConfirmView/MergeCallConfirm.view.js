@@ -189,7 +189,7 @@ var MergeCallConfirmView = exports.MergeCallConfirmView = (_dec = (0, _nextCore.
       var contextData = this.contextData;
       if (!contextData) return false;
       var session = this._activeCallControl.getSession(contextData.telephonySessionId);
-      return !!(session === null || session === void 0 ? void 0 : session.isConferenceCall);
+      return !!(session !== null && session !== void 0 && session.isConferenceCall);
     }
   }, {
     key: "onClose",

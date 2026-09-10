@@ -44,6 +44,7 @@ var _views = require("@ringcentral-integration/micro-contacts/src/app/views");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _react = _interopRequireWildcard(require("react"));
 var _services = require("../../../../services");
+var _ConnectingView = require("../../../ConnectingView");
 var _DialerView = require("../../../DialerView");
 var _services2 = require("../../services");
 var _AddCallPanel = require("./AddCallPanel");
@@ -79,11 +80,11 @@ function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.ke
 var AddCallView = exports.AddCallView = (_dec = (0, _nextCore.injectable)({
   name: 'AddCallView'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 6);
+  return (0, _nextCore.optional)()(target, undefined, 7);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)('AddCallViewOptions')(target, undefined, 7);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services.CallingSettings === "undefined" ? Object : _services.CallingSettings, typeof _services.CallAction === "undefined" ? Object : _services.CallAction, typeof _services2.CallViewState === "undefined" ? Object : _services2.CallViewState, typeof _services.Call === "undefined" ? Object : _services.Call, typeof _DialerView.DialerView === "undefined" ? Object : _DialerView.DialerView, typeof _views.ContactSearchView === "undefined" ? Object : _views.ContactSearchView, typeof _services.AudioSettings === "undefined" ? Object : _services.AudioSettings, typeof AddCallViewOptions === "undefined" ? Object : AddCallViewOptions]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function AddCallView(_callingSettings, _callAction, _callViewState, _call, _dialerView, _contactSearchView, _audioSettings, _addCallViewOptions) {
+  return (0, _nextCore.optional)('AddCallViewOptions')(target, undefined, 8);
+}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services.CallingSettings === "undefined" ? Object : _services.CallingSettings, typeof _services.CallAction === "undefined" ? Object : _services.CallAction, typeof _services2.CallViewState === "undefined" ? Object : _services2.CallViewState, typeof _services.Call === "undefined" ? Object : _services.Call, typeof _DialerView.DialerView === "undefined" ? Object : _DialerView.DialerView, typeof _views.ContactSearchView === "undefined" ? Object : _views.ContactSearchView, typeof _ConnectingView.ConnectingView === "undefined" ? Object : _ConnectingView.ConnectingView, typeof _services.AudioSettings === "undefined" ? Object : _services.AudioSettings, typeof AddCallViewOptions === "undefined" ? Object : AddCallViewOptions]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function AddCallView(_callingSettings, _callAction, _callViewState, _call, _dialerView, _contactSearchView, _connectingView, _audioSettings, _addCallViewOptions) {
     var _this;
     _classCallCheck(this, AddCallView);
     _this = _callSuper(this, AddCallView);
@@ -93,6 +94,7 @@ var AddCallView = exports.AddCallView = (_dec = (0, _nextCore.injectable)({
     _this._call = _call;
     _this._dialerView = _dialerView;
     _this._contactSearchView = _contactSearchView;
+    _this._connectingView = _connectingView;
     _this._audioSettings = _audioSettings;
     _this._addCallViewOptions = _addCallViewOptions;
     return _this;
@@ -122,7 +124,7 @@ var AddCallView = exports.AddCallView = (_dec = (0, _nextCore.injectable)({
         recipients: this._dialerView.recipients,
         callVolume: (_this$_audioSettings$ = (_this$_audioSettings = this._audioSettings) === null || _this$_audioSettings === void 0 ? void 0 : _this$_audioSettings.callVolume) !== null && _this$_audioSettings$ !== void 0 ? _this$_audioSettings$ : 1,
         outputDeviceId: (_this$_audioSettings$2 = (_this$_audioSettings2 = this._audioSettings) === null || _this$_audioSettings2 === void 0 ? void 0 : _this$_audioSettings2.outputDeviceId) !== null && _this$_audioSettings$2 !== void 0 ? _this$_audioSettings$2 : '',
-        actionButtonDisabled: this._callAction.callActionsDisabled || !this._call.isIdle,
+        actionButtonDisabled: this._connectingView.isConnecting || this._callAction.callActionsDisabled || !this._call.isIdle,
         isWebphoneMode: this._callingSettings.isWebphoneMode,
         showAnonymous: this._dialerView.isShowAnonymous,
         disableFromField: this._dialerView.disableFromField,
@@ -144,7 +146,9 @@ var AddCallView = exports.AddCallView = (_dec = (0, _nextCore.injectable)({
               });
             case 1:
               makeCallSuccess = _context.v;
-              if (makeCallSuccess) this._callViewState._setView('activeCall');
+              if (makeCallSuccess && !this._connectingView.isConnecting) {
+                this._callViewState._setView('activeCall');
+              }
             case 2:
               return _context.a(2);
           }
@@ -256,9 +260,9 @@ var AddCallView = exports.AddCallView = (_dec = (0, _nextCore.injectable)({
         return _objectSpread(_objectSpread({}, props), uiProps);
       });
       var Component = ((_this$_addCallViewOpt = this._addCallViewOptions) === null || _this$_addCallViewOpt === void 0 ? void 0 : _this$_addCallViewOpt.component) || _AddCallPanel.AddCallPage;
-      return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions, {
+      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions, {
         ContactSearch: this._contactSearchView.component
-      }));
+      })), /*#__PURE__*/_react["default"].createElement(this._connectingView.component, null));
     }
   }]);
 }(_nextCore.RcViewModule), _applyDecoratedDescriptor(_class2.prototype, "startAdd", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "startAdd"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);

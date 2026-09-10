@@ -208,7 +208,8 @@ var Expanded = function Expanded(_ref3) {
         "data-sign": expanded ? 'folded' : 'unfolded'
       }) : undefined
     }), /*#__PURE__*/_react["default"].createElement("div", {
-      "data-sign": "callerInfo"
+      "data-sign": "callerInfo",
+      className: "overflow-auto flex-auto pb-2"
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "mt-6 flex justify-center"
     }, /*#__PURE__*/_react["default"].createElement(Avatar, {
@@ -232,9 +233,9 @@ var Expanded = function Expanded(_ref3) {
     }, displayPhoneNumber), OnOtherDevice && /*#__PURE__*/_react["default"].createElement(OnOtherDevice, null), !callQueueName && myCallerId && /*#__PURE__*/_react["default"].createElement("p", {
       className: "typography-descriptorMini text-neutral-b2",
       "data-sign": "callToNumber"
-    }, t('to'), ": ", myCallerId))), /*#__PURE__*/_react["default"].createElement("div", {
+    }, t('to'), ": ", myCallerId)), /*#__PURE__*/_react["default"].createElement("div", {
       className: "flex flex-col justify-center items-center mt-6"
-    }, children), /*#__PURE__*/_react["default"].createElement(_components2.AppFooterNav, null)) // </FocusTrap>);
+    }, children)), /*#__PURE__*/_react["default"].createElement(_components2.AppFooterNav, null)) // </FocusTrap>);
   );
 };
 var IncomingCallPage = exports.IncomingCallPage = function IncomingCallPage(props) {

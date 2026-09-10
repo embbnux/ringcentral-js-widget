@@ -8,12 +8,13 @@ require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.date.to-string.js");
+require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.function.name.js");
+require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.weak-map.js");
@@ -29,6 +30,8 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.string.replace.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _rjsfSpring = require("@ringcentral-integration/rjsf-spring");
@@ -44,6 +47,7 @@ var _SpringUIDateWidget = require("../../../components/SpringUIDateWidget");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -59,7 +63,7 @@ var referenceWidgetName = "uif-reference-widget";
 var inputSelectWidgetName = "input-select-widget";
 var springuiDateWidgetName = "springui-date";
 var fields = _defineProperty(_defineProperty(_defineProperty({}, referenceWidgetName, _ReferenceWidgetSpring.ReferenceWidget), inputSelectWidgetName, _InputSelectWidgetSpring.InputSelectWidget), springuiDateWidgetName, _SpringUIDateWidget.SpringUIDateWidget);
-var _CallLogFormPage = function _CallLogFormPage(props) {
+var CallLogFormPageContent = function CallLogFormPageContent(props) {
   var task = props.task,
     editSectionSchema = props.editSectionSchema,
     referenceFields = props.referenceFields,
@@ -119,16 +123,24 @@ var _CallLogFormPage = function _CallLogFormPage(props) {
     _useAsyncState2 = _slicedToArray(_useAsyncState, 2),
     innerFirstFields = _useAsyncState2[0],
     setInnerFirstField = _useAsyncState2[1];
-  var handleChange = (0, _springUi.useEventCallback)(function (_ref) {
+  var handleChange = (0, _springUi.useEventCallback)(function (_ref, id) {
     var formData = _ref.formData;
-    onUpdateCallLog(formData);
+    // RJSF passes the id of the field that changed (e.g. `root_subject`).
+    // Strip the `root_` prefix to recover the task field key so we only mark
+    // the field the user actually edited as dirty, instead of diffing the
+    // whole formData (which races against async contact-match population).
+    var changedKey = (id === null || id === void 0 ? void 0 : id.replace(/^root_/, '')) || undefined;
+    onUpdateCallLog(formData, {
+      markDirty: Boolean(id),
+      changedKeys: changedKey ? [changedKey] : undefined
+    });
     setInnerFirstField((0, _pick["default"])(formData, innerFirstFieldKeys));
   });
   var formData = (0, _react.useMemo)(function () {
     return _objectSpread(_objectSpread({}, innerFirstFields), outerDirectlyState);
   }, [innerFirstFields, outerDirectlyState]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])('pb-2 px-4 flex-grow', variant === 'expanded' && 'overflow-y-auto overflow-x-hidden'),
+    className: (0, _clsx["default"])('pb-2 px-3 flex-grow', variant === 'expanded' && 'overflow-y-auto overflow-x-hidden'),
     "data-sign": "call-log-panel"
   }, /*#__PURE__*/_react["default"].createElement(_rjsfSpring.Form, {
     schema: formSchema,
@@ -140,6 +152,12 @@ var _CallLogFormPage = function _CallLogFormPage(props) {
     formData: formData,
     uiSchema: _uiSchema
   })), children);
+};
+var _CallLogFormPage = function _CallLogFormPage(props) {
+  var _props$formKey;
+  return /*#__PURE__*/_react["default"].createElement(CallLogFormPageContent, _extends({
+    key: (_props$formKey = props.formKey) !== null && _props$formKey !== void 0 ? _props$formKey : 'default'
+  }, props));
 };
 _CallLogFormPage.displayName = 'CallLogFormPage';
 var CallLogFormPage = exports.CallLogFormPage = /*#__PURE__*/(0, _react.memo)(_CallLogFormPage);

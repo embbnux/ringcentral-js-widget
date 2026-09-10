@@ -91,7 +91,7 @@ var PostCallView = exports.PostCallView = (_dec = (0, _nextCore.injectable)({
         return _regenerator().w(function (_context) {
           while (1) switch (_context.n) {
             case 0:
-              if (!((_this$_postCallViewOp = this._postCallViewOptions) === null || _this$_postCallViewOp === void 0 ? void 0 : _this$_postCallViewOp.onBeforeGoBack)) {
+              if (!((_this$_postCallViewOp = this._postCallViewOptions) !== null && _this$_postCallViewOp !== void 0 && _this$_postCallViewOp.onBeforeGoBack)) {
                 _context.n = 1;
                 break;
               }

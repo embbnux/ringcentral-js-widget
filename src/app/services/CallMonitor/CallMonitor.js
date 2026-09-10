@@ -5,7 +5,6 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
-require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.sort.js");
@@ -26,6 +25,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CallMonitor = void 0;
+require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.find-index.js");
 require("core-js/modules/es.array.for-each.js");
@@ -58,17 +58,18 @@ var _Call = require("../Call");
 var _PreinsertCall = require("../PreinsertCall");
 var _Webphone = require("../Webphone");
 var _callEvents = require("./callEvents");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _class, _class2, _descriptor;
+var _const = require("./const");
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -93,9 +94,9 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 10);
 }, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)('CallMonitorOptions')(target, undefined, 11);
-}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _ActiveCallControl.ActiveCallControl === "undefined" ? Object : _ActiveCallControl.ActiveCallControl, typeof _PreinsertCall.PreinsertCall === "undefined" ? Object : _PreinsertCall.PreinsertCall, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _Call.Call === "undefined" ? Object : _Call.Call, typeof _services2.ActivityMatcher === "undefined" ? Object : _services2.ActivityMatcher, typeof CallMonitorOptions === "undefined" ? Object : CallMonitorOptions]), _dec8 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Object]), _dec1 = (0, _services.track)(_trackEvents.trackEvents.callInboundCallConnected), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _services.track)(_trackEvents.trackEvents.callOutboundRingOutCallConnected), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = (0, _services.track)(_trackEvents.trackEvents.clickCallItem), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = (0, _services.track)(_trackEvents.trackEvents.clickHoldAllCalls), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _services.track)(_trackEvents.trackEvents.clickHangupAllCalls), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _services.track)(_trackEvents.trackEvents.clickRejectAllCalls), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _services.track)(_trackEvents.trackEvents.clickAddCallControl), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _services.track)(_trackEvents.trackEvents.clickHangupMergeCallControl), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = (0, _services.track)(function () {
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _ActiveCallControl.ActiveCallControl === "undefined" ? Object : _ActiveCallControl.ActiveCallControl, typeof _PreinsertCall.PreinsertCall === "undefined" ? Object : _PreinsertCall.PreinsertCall, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _Call.Call === "undefined" ? Object : _Call.Call, typeof _services2.ActivityMatcher === "undefined" ? Object : _services2.ActivityMatcher, typeof CallMonitorOptions === "undefined" ? Object : CallMonitorOptions]), _dec8 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec9 = Reflect.metadata("design:type", Array), _dec0 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [typeof ICall === "undefined" ? Object : ICall]), _dec13 = (0, _services.track)(_trackEvents.trackEvents.callInboundCallConnected), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = (0, _services.track)(_trackEvents.trackEvents.callOutboundRingOutCallConnected), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = (0, _services.track)(_trackEvents.trackEvents.clickCallItem), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _services.track)(_trackEvents.trackEvents.clickHoldAllCalls), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _services.track)(_trackEvents.trackEvents.clickHangupAllCalls), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = (0, _services.track)(_trackEvents.trackEvents.clickRejectAllCalls), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", []), _dec31 = (0, _services.track)(_trackEvents.trackEvents.clickAddCallControl), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", []), _dec34 = (0, _services.track)(_trackEvents.trackEvents.clickHangupMergeCallControl), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", []), _dec37 = (0, _services.track)(function () {
   return [_trackEvents.trackEvents.clickMergeMergeCallControl];
-}), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec36 = (0, _services.track)(_trackEvents.trackEvents.clickCloseConfirmMergeModal), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _services.track)(_trackEvents.trackEvents.clickMergeConfirmMergeModal), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _dec42 = (0, _services.track)(_trackEvents.trackEvents.clickAddCallsOnHold), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", []), _dec45 = (0, _services.track)(_trackEvents.trackEvents.clickMergeCallsOnHold), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", []), _dec48 = (0, _services.track)(_trackEvents.trackEvents.clickHangupCallsOnHold), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", []), _dec51 = (0, _services.track)(_trackEvents.trackEvents.clickParticipantAreaCallControl), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", []), _dec54 = Reflect.metadata("design:type", Function), _dec55 = Reflect.metadata("design:paramtypes", []), _dec56 = Reflect.metadata("design:type", Function), _dec57 = Reflect.metadata("design:paramtypes", []), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", []), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", []), _dec40 = (0, _services.track)(_trackEvents.trackEvents.clickCloseConfirmMergeModal), _dec41 = Reflect.metadata("design:type", Function), _dec42 = Reflect.metadata("design:paramtypes", []), _dec43 = (0, _services.track)(_trackEvents.trackEvents.clickMergeConfirmMergeModal), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", []), _dec46 = (0, _services.track)(_trackEvents.trackEvents.clickAddCallsOnHold), _dec47 = Reflect.metadata("design:type", Function), _dec48 = Reflect.metadata("design:paramtypes", []), _dec49 = (0, _services.track)(_trackEvents.trackEvents.clickMergeCallsOnHold), _dec50 = Reflect.metadata("design:type", Function), _dec51 = Reflect.metadata("design:paramtypes", []), _dec52 = (0, _services.track)(_trackEvents.trackEvents.clickHangupCallsOnHold), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", []), _dec55 = (0, _services.track)(_trackEvents.trackEvents.clickParticipantAreaCallControl), _dec56 = Reflect.metadata("design:type", Function), _dec57 = Reflect.metadata("design:paramtypes", []), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", []), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", []), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", []), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function CallMonitor(_accountInfo, _storage, _presence, _extensionInfo, _numberFormatter, _activeCallControl, _preInsertCall, _webphone, _contactMatcher, _call, _activityMatcher, _callMonitorOptions) {
     var _this$_callMonitorOpt, _this$_callMonitorOpt2, _this$_activityMatche;
     var _this;
@@ -114,6 +115,8 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
     _this._activityMatcher = _activityMatcher;
     _this._callMonitorOptions = _callMonitorOptions;
     _this._eventEmitter = new _events.EventEmitter();
+    _initializerDefineProperty(_this, "_recentCallDirectionMap", _descriptor, _this);
+    _initializerDefineProperty(_this, "_recentCallDirectionSessionIds", _descriptor2, _this);
     _this._enableContactMatchWhenNewCall = (_this$_callMonitorOpt = (_this$_callMonitorOpt2 = _this._callMonitorOptions) === null || _this$_callMonitorOpt2 === void 0 ? void 0 : _this$_callMonitorOpt2.enableContactMatchWhenNewCall) !== null && _this$_callMonitorOpt !== void 0 ? _this$_callMonitorOpt : true;
     /**
      * use state to trigger event, so the event can trigger in every clients and server, alway use when you want to listen the event in component
@@ -126,10 +129,13 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
         next = _ref2[1];
       return prev < next;
     }), (0, _rxjs.distinctUntilChanged)(), (0, _rxjs.filter)(Boolean), (0, _rxjs.share)());
-    _initializerDefineProperty(_this, "callMatched", _descriptor, _this);
+    _initializerDefineProperty(_this, "callMatched", _descriptor3, _this);
     _this.fromCallAnsweredElsewhere = _this._activeCallControl.fromCallAnsweredElsewhere;
     _this.fromMissedCalls = _this._activeCallControl.fromMissedCalls;
     _this._storage.enable(_this);
+    _this.onNewCall(function (call) {
+      _this._storeRecentCallDirection(call);
+    });
     if (_this._enableContactMatchWhenNewCall) {
       var _this$_contactMatcher;
       (_this$_contactMatcher = _this._contactMatcher) === null || _this$_contactMatcher === void 0 ? void 0 : _this$_contactMatcher.addQuerySource({
@@ -195,6 +201,34 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       return this;
     }
   }, {
+    key: "_storeRecentCallDirection",
+    value: function _storeRecentCallDirection(call) {
+      var sessionId = call.sessionId,
+        direction = call.direction;
+      if (!sessionId || !direction) {
+        return;
+      }
+      var sessionIds = this._recentCallDirectionSessionIds.filter(function (recentSessionId) {
+        return recentSessionId !== sessionId;
+      });
+      sessionIds.push(sessionId);
+      var expiredSessionIds = sessionIds.slice(0, sessionIds.length - _const.RECENT_CALL_DIRECTIONS_LIMIT);
+      var nextDirectionMap = _objectSpread(_objectSpread({}, this._recentCallDirectionMap), {}, _defineProperty({}, sessionId, direction));
+      expiredSessionIds.forEach(function (expiredSessionId) {
+        delete nextDirectionMap[expiredSessionId];
+      });
+      this._recentCallDirectionSessionIds = sessionIds.slice(-_const.RECENT_CALL_DIRECTIONS_LIMIT);
+      this._recentCallDirectionMap = nextDirectionMap;
+    }
+  }, {
+    key: "getRecentCallDirection",
+    value: function getRecentCallDirection(sessionId) {
+      if (!sessionId) {
+        return undefined;
+      }
+      return this._recentCallDirectionMap[sessionId];
+    }
+  }, {
     key: "onInitOnce",
     value: function onInitOnce() {
       var _this2 = this;
@@ -245,7 +279,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       var _this$_call$toNumberE,
         _this3 = this;
       // no ringing calls
-      if (this._call && oldCalls.length && !this.allCalls.length && ((_this$_call$toNumberE = this._call.toNumberEntities) === null || _this$_call$toNumberE === void 0 ? void 0 : _this$_call$toNumberE.length)) {
+      if (this._call && oldCalls.length && !this.allCalls.length && (_this$_call$toNumberE = this._call.toNumberEntities) !== null && _this$_call$toNumberE !== void 0 && _this$_call$toNumberE.length) {
         this._call.cleanToNumberEntities();
       }
       var entities = this._call ? (0, _ramda.sort)(_callLogHelpers.sortByStartTime, this._call.toNumberEntities) : [];
@@ -386,7 +420,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       var _this4 = this;
       // mapping and sort
       var result = this._activeCallControl.sessions.reduce(function (acc, curr) {
-        var _party$status, _this4$_contactMatche, _this4$_contactMatche2, _this4$_activityMatch, _this4$_activityMatch2;
+        var _party$status, _this4$_contactMatche, _this4$_contactMatche2, _this4$_contactMatche3, _this4$_activityMatch, _this4$_activityMatch2;
         // sessionId arrives when telephony session event push and it's a required
         // reference https://github.com/ringcentral/ringcentral-call-js/blob/master/src/Session.ts
 
@@ -414,16 +448,19 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
           });
           id = presenceCall === null || presenceCall === void 0 ? void 0 : presenceCall.id;
         }
-        // normalize number for ensure the number is matcher mapping with same key
         var fromNumber = _this4._numberFormatter.normalizeNumber(from === null || from === void 0 ? void 0 : from.phoneNumber);
         var toNumber = _this4._numberFormatter.normalizeNumber(to === null || to === void 0 ? void 0 : to.phoneNumber);
+        var _ref4 = ((_this4$_contactMatche = _this4._contactMatcher) === null || _this4$_contactMatche === void 0 ? void 0 : _this4$_contactMatche.findMatchesFromCall(curr)) || {
+            fromMatches: [],
+            toMatches: []
+          },
+          fromMatches = _ref4.fromMatches,
+          toMatches = _ref4.toMatches;
         var toName = to === null || to === void 0 ? void 0 : to.name;
         var fromName = from === null || from === void 0 ? void 0 : from.name;
         var partyId = party === null || party === void 0 ? void 0 : party.id;
-        var contactMapping = (_this4$_contactMatche = (_this4$_contactMatche2 = _this4._contactMatcher) === null || _this4$_contactMatche2 === void 0 ? void 0 : _this4$_contactMatche2.dataMapping) !== null && _this4$_contactMatche !== void 0 ? _this4$_contactMatche : {};
+        var contactMapping = (_this4$_contactMatche2 = (_this4$_contactMatche3 = _this4._contactMatcher) === null || _this4$_contactMatche3 === void 0 ? void 0 : _this4$_contactMatche3.dataMapping) !== null && _this4$_contactMatche2 !== void 0 ? _this4$_contactMatche2 : {};
         var activityMapping = (_this4$_activityMatch = (_this4$_activityMatch2 = _this4._activityMatcher) === null || _this4$_activityMatch2 === void 0 ? void 0 : _this4$_activityMatch2.dataMapping) !== null && _this4$_activityMatch !== void 0 ? _this4$_activityMatch : {};
-        var fromMatches = fromNumber && contactMapping[fromNumber] || [];
-        var toMatches = toNumber && contactMapping[toNumber] || [];
         var toNumberEntity = _this4.callMatched[sessionId];
         var activityMatches = activityMapping[sessionId] || [];
         var conferenceParticipantsMatchesList = process.env.THEME_SYSTEM === 'spring-ui' ? conferenceParticipants.map(function (curr) {
@@ -610,12 +647,12 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       var uniqueNumbersSet = new Set();
       this.allCalls.forEach(function (callItem) {
         var _callItem$from, _callItem$to;
-        if ((_callItem$from = callItem.from) === null || _callItem$from === void 0 ? void 0 : _callItem$from.phoneNumber) {
+        if ((_callItem$from = callItem.from) !== null && _callItem$from !== void 0 && _callItem$from.phoneNumber) {
           uniqueNumbersSet.add(
           // normalize number for ensure the number is matcher mapping with same key
           _this5._numberFormatter.normalizeNumber(callItem.from.phoneNumber));
         }
-        if ((_callItem$to = callItem.to) === null || _callItem$to === void 0 ? void 0 : _callItem$to.phoneNumber) {
+        if ((_callItem$to = callItem.to) !== null && _callItem$to !== void 0 && _callItem$to.phoneNumber) {
           uniqueNumbersSet.add(_this5._numberFormatter.normalizeNumber(callItem.to.phoneNumber));
         }
         if (process.env.THEME_SYSTEM === 'spring-ui') {
@@ -633,14 +670,28 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       return Array.from(uniqueNumbersSet);
     }
   }]);
-}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "callMatched", [_nextCore.storage, _nextCore.state, _dec8], {
+}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_recentCallDirectionMap", [_nextCore.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setMatchedData", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setMatchedData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "inboundCallConnectedTrack", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "inboundCallConnectedTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "outboundCallConnectedTrack", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "outboundCallConnectedTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callItemClickTrack", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "callItemClickTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickHoldTrack", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickHoldTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickHangupTrack", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickRejectTrack", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickRejectTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickAddTrack", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickAddTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mergeControlClickHangupTrack", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "mergeControlClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickMergeTrack", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "confirmMergeClickCloseTrack", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "confirmMergeClickCloseTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "confirmMergeClickMergeTrack", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "confirmMergeClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickAddTrack", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickAddTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickMergeTrack", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickHangupTrack", [_dec48, _dec49, _dec50], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickParticipantAreaTrack", [_dec51, _dec52, _dec53], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickParticipantAreaTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsInfo", [_nextCore.computed, _dec54, _dec55], Object.getOwnPropertyDescriptor(_class2.prototype, "callsInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeOnHoldCalls", [_nextCore.computed, _dec56, _dec57], Object.getOwnPropertyDescriptor(_class2.prototype, "activeOnHoldCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeCurrentCalls", [_nextCore.computed, _dec58, _dec59], Object.getOwnPropertyDescriptor(_class2.prototype, "activeCurrentCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deviceCallsMap", [_nextCore.computed, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "deviceCallsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "uniqueNumbers", [_nextCore.computed, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "uniqueNumbers"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_recentCallDirectionSessionIds", [_nextCore.state, _dec9], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return [];
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "callMatched", [_nextCore.storage, _nextCore.state, _dec0], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return {};
+  }
+}), _applyDecoratedDescriptor(_class2.prototype, "setMatchedData", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "setMatchedData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_storeRecentCallDirection", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_storeRecentCallDirection"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "inboundCallConnectedTrack", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "inboundCallConnectedTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "outboundCallConnectedTrack", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "outboundCallConnectedTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callItemClickTrack", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "callItemClickTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickHoldTrack", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickHoldTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickHangupTrack", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallsClickRejectTrack", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallsClickRejectTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickAddTrack", [_dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickAddTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mergeControlClickHangupTrack", [_dec34, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "mergeControlClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickMergeTrack", [_dec37, _dec38, _dec39], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "confirmMergeClickCloseTrack", [_dec40, _dec41, _dec42], Object.getOwnPropertyDescriptor(_class2.prototype, "confirmMergeClickCloseTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "confirmMergeClickMergeTrack", [_dec43, _dec44, _dec45], Object.getOwnPropertyDescriptor(_class2.prototype, "confirmMergeClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickAddTrack", [_dec46, _dec47, _dec48], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickAddTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickMergeTrack", [_dec49, _dec50, _dec51], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickMergeTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsOnHoldClickHangupTrack", [_dec52, _dec53, _dec54], Object.getOwnPropertyDescriptor(_class2.prototype, "callsOnHoldClickHangupTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callControlClickParticipantAreaTrack", [_dec55, _dec56, _dec57], Object.getOwnPropertyDescriptor(_class2.prototype, "callControlClickParticipantAreaTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callsInfo", [_nextCore.computed, _dec58, _dec59], Object.getOwnPropertyDescriptor(_class2.prototype, "callsInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeOnHoldCalls", [_nextCore.computed, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "activeOnHoldCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeCurrentCalls", [_nextCore.computed, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "activeCurrentCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deviceCallsMap", [_nextCore.computed, _dec64, _dec65], Object.getOwnPropertyDescriptor(_class2.prototype, "deviceCallsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "uniqueNumbers", [_nextCore.computed, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "uniqueNumbers"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 var addIntoTargetDevice = function addIntoTargetDevice(targetDevice, call) {
   targetDevice.all.push(call);
   var ringing = (0, _ActiveCallControl.isRingingCall)(call);

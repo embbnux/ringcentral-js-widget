@@ -251,7 +251,7 @@ var CallHistoryView = exports.CallHistoryView = (_dec = (0, _nextCore.injectable
         }()) : undefined,
         onClickToDial: this._dialerView && this._appFeatures.isCallingEnabled ? function (recipient) {
           var _this2$_call;
-          if ((_this2$_call = _this2._call) === null || _this2$_call === void 0 ? void 0 : _this2$_call.isIdle) {
+          if ((_this2$_call = _this2._call) !== null && _this2$_call !== void 0 && _this2$_call.isIdle) {
             var _this2$_dialerView;
             _this2._router.push(dialerRoute, _defineProperty({}, _views2.SyncTabId.DIALPAD, 'keypad'));
             (_this2$_dialerView = _this2._dialerView) === null || _this2$_dialerView === void 0 ? void 0 : _this2$_dialerView.call({

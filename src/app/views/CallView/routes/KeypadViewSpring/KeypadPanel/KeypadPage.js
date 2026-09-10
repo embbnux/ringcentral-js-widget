@@ -24,14 +24,14 @@ exports.KeypadPage = void 0;
 require("core-js/modules/es.array.is-array.js");
 var _hooks = require("@ringcentral-integration/micro-core/src/app/hooks");
 var _reactHooks = require("@ringcentral-integration/react-hooks");
-var _KeypadOffSp = _interopRequireDefault(require("@ringcentral/juno-icon/es6/KeypadOffSp.js"));
+var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 var _rxjs = require("rxjs");
 var _CallControlPanel = require("../../CallControlViewSpring/CallControlPanel");
 var _i18n = _interopRequireDefault(require("../i18n"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -60,8 +60,8 @@ var KeypadPage = exports.KeypadPage = function KeypadPage(props) {
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var render = (0, _CallControlPanel.useCallControlLayout)(call, {
-    main: /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex justify-center items-center mb-6 -mt-6"
+    header: /*#__PURE__*/_react["default"].createElement("div", {
+      className: "flex justify-center items-center"
     }, /*#__PURE__*/_react["default"].createElement(_springUi.DialTextField, {
       inputRef: inputRef,
       variant: "quiet",
@@ -76,14 +76,17 @@ var KeypadPage = exports.KeypadPage = function KeypadPage(props) {
         onAction('sendDTMF', newValue);
       },
       className: "max-w-[250px]"
-    })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
+    })),
+    main: /*#__PURE__*/_react["default"].createElement("div", {
+      className: "-mt-6"
+    }, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
       "data-sign": "dialPad",
       volume: callVolume,
       sounds: _springUi.DialerPadSoundsMPEG,
       size: "medium",
       sinkId: outputDeviceId,
       className: "gap-y-2"
-    }))),
+    })),
     footer: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_springUi.CallButton, {
       className: "-mt-3",
       "data-sign": "sendDTMF",
@@ -100,10 +103,8 @@ var KeypadPage = exports.KeypadPage = function KeypadPage(props) {
       color: "secondary",
       TooltipProps: {
         title: t('hideKeypad')
-      }
-      // TODO: wait spring version icon
-      ,
-      symbol: _KeypadOffSp["default"],
+      },
+      symbol: _springIcon.DialpadOffMd,
       onClick: function onClick() {
         return onAction('activeCall');
       }
@@ -117,6 +118,6 @@ var KeypadPage = exports.KeypadPage = function KeypadPage(props) {
     expanded: expanded,
     onExpand: onExpand
   });
-  return render;
+  return /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, render);
 };
 //# sourceMappingURL=KeypadPage.js.map

@@ -70,7 +70,7 @@ var DialerPage = exports.DialerPage = /*#__PURE__*/(0, _react.forwardRef)(functi
   var formatPhone = (0, _components.useFormattedPhoneNumberFn)();
   return /*#__PURE__*/_react["default"].createElement(_springUi.Dialer, null, /*#__PURE__*/_react["default"].createElement("div", {
     ref: ref,
-    className: (0, _clsx["default"])('flex flex-col pt-3 gap-2 w-full h-full relative overflow-auto', className)
+    className: (0, _clsx["default"])('flex flex-col pt-3 gap-2 w-full h-full relative overflow-hidden', className)
   }, isWebphoneMode && /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex justify-center"
   }, /*#__PURE__*/_react["default"].createElement(_MyCallerIdDropdown.MyCallerIdDropdown, {
@@ -114,7 +114,7 @@ var DialerPage = exports.DialerPage = /*#__PURE__*/(0, _react.forwardRef)(functi
     onRemove: clearRecipient,
     onExpanded: setContactSearchExpanded
   }), /*#__PURE__*/_react["default"].createElement("main", {
-    className: (0, _clsx["default"])('px-10 py-2 flex flex-col items-center flex-auto', contactSearchExpanded && 'hidden')
+    className: (0, _clsx["default"])('px-10 py-2 flex flex-col items-center flex-auto overflow-auto pb-2', contactSearchExpanded && 'hidden')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.DialPad, {
     "data-sign": "dialPad",
     volume: callVolume,

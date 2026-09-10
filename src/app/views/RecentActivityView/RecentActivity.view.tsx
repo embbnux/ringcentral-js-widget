@@ -64,15 +64,16 @@ export class RecentActivityView extends RcViewModule {
   @dynamic('RecentMessages')
   protected readonly _recentMessages?: RecentMessages;
 
+  @delegate('server')
   @track((_: RecentActivityView, entry: string) => [
     trackEvents.clickRecentActivity,
     { Entry: entry },
   ])
-  @delegate('server')
   async trackClickToggle(entry: string) {
     //
   }
 
+  @delegate('server')
   @track(
     (
       _: RecentActivityView,
@@ -80,7 +81,6 @@ export class RecentActivityView extends RcViewModule {
       entry: string,
     ) => [trackTabsMap[tabName], { Entry: entry }],
   )
-  @delegate('server')
   async trackClickTab(tabName: string, entry: string) {
     //
   }

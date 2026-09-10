@@ -58,10 +58,11 @@ var _phoneNumber = require("@ringcentral-integration/phone-number");
 var _DialerPanel = require("@ringcentral-integration/widgets/components/DialerPanel");
 var _react = _interopRequireWildcard(require("react"));
 var _services4 = require("../../services");
+var _ConnectingView = require("../ConnectingView");
 var _DialerPage = require("./DialerPage");
 var _i18n = _interopRequireWildcard(require("./i18n"));
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t4 in e) "default" !== _t4 && {}.hasOwnProperty.call(e, _t4) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t4)) && (i.get || i.set) ? o(f, _t4, i) : f[_t4] = e[_t4]); return f; })(e, t); }
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t3 in e) "default" !== _t3 && {}.hasOwnProperty.call(e, _t3) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t3)) && (i.get || i.set) ? o(f, _t3, i) : f[_t3] = e[_t3]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -99,23 +100,23 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 12);
 }, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)('DialerViewOptions')(target, undefined, 13);
-}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services4.CallingSettings === "undefined" ? Object : _services4.CallingSettings, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services4.Call === "undefined" ? Object : _services4.Call, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services4.Webphone === "undefined" ? Object : _services4.Webphone, typeof _services4.AudioSettings === "undefined" ? Object : _services4.AudioSettings, typeof _services2.ContactSearch === "undefined" ? Object : _services2.ContactSearch, typeof DialerViewOptions === "undefined" ? Object : DialerViewOptions]), _dec8 = (0, _nextCore.dynamic)('AppFeatures'), _dec9 = Reflect.metadata("design:type", typeof AppFeatures === "undefined" ? Object : AppFeatures), _dec0 = (0, _nextCore.dynamic)('CallAction'), _dec1 = Reflect.metadata("design:type", typeof _services4.CallAction === "undefined" ? Object : _services4.CallAction), _dec10 = (0, _nextCore.dynamic)('ContactSearchView'), _dec11 = Reflect.metadata("design:type", typeof ContactSearchView === "undefined" ? Object : ContactSearchView), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String]), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Boolean]), _dec16 = Reflect.metadata("design:type", typeof Recipient === "undefined" ? Object : Recipient), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [typeof Recipient === "undefined" ? Object : Recipient]), _dec19 = (0, _nextCore.computed)(function (that) {
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services4.CallingSettings === "undefined" ? Object : _services4.CallingSettings, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services4.Call === "undefined" ? Object : _services4.Call, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services4.Webphone === "undefined" ? Object : _services4.Webphone, typeof _services4.AudioSettings === "undefined" ? Object : _services4.AudioSettings, typeof _services2.ContactSearch === "undefined" ? Object : _services2.ContactSearch, typeof DialerViewOptions === "undefined" ? Object : DialerViewOptions]), _dec8 = (0, _nextCore.dynamic)('ConnectingView'), _dec9 = Reflect.metadata("design:type", typeof _ConnectingView.ConnectingView === "undefined" ? Object : _ConnectingView.ConnectingView), _dec0 = (0, _nextCore.dynamic)('CallAction'), _dec1 = Reflect.metadata("design:type", typeof _services4.CallAction === "undefined" ? Object : _services4.CallAction), _dec10 = (0, _nextCore.dynamic)('ContactSearchView'), _dec11 = Reflect.metadata("design:type", typeof ContactSearchView === "undefined" ? Object : ContactSearchView), _dec12 = (0, _nextCore.delegate)('server'), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [typeof DialerViewCallParams === "undefined" ? Object : DialerViewCallParams]), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [String]), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [Boolean]), _dec19 = Reflect.metadata("design:type", typeof Recipient === "undefined" ? Object : Recipient), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [typeof Recipient === "undefined" ? Object : Recipient]), _dec22 = (0, _nextCore.computed)(function (that) {
   return [that.recipient];
-}), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _nextCore.computed)(function (that) {
+}), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _nextCore.computed)(function (that) {
   var _that$_contactSearch;
   return [(_that$_contactSearch = that._contactSearch) === null || _that$_contactSearch === void 0 ? void 0 : _that$_contactSearch.sortedResult, that.toNumberField];
-}), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [void 0]), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec33 = (0, _services.track)(function (that, eventName, contactType) {
+}), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [void 0]), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [Object]), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('server'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec42 = (0, _services.track)(function (that, eventName, contactType) {
   return [eventName, {
     contactType: contactType,
     location: 'Dialpad'
   }];
-}), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [String, String]), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", [typeof Recipient === "undefined" ? Object : Recipient]), _dec39 = (0, _nextCore.delegate)('server'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _dec42 = (0, _services.track)(function (that, trackCallMadeFrom) {
+}), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", [String, String]), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", [typeof Recipient === "undefined" ? Object : Recipient]), _dec48 = (0, _nextCore.delegate)('server'), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", []), _dec51 = (0, _nextCore.delegate)('server'), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [typeof DialerViewCallParams === "undefined" ? Object : DialerViewCallParams]), _dec54 = (0, _services.track)(function (that, trackCallMadeFrom) {
   var callingOption = (0, _getCallingOption.getCallingOption)(that._callingSettings.callingMode);
   return [_trackEvents.trackEvents.callMade, {
     callingOption: callingOption,
     Location: trackCallMadeFrom
   }];
-}), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", [String]), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", [typeof DialerViewCallParams === "undefined" ? Object : DialerViewCallParams]), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", []), _dec50 = (0, _nextCore.delegate)('server'), _dec51 = Reflect.metadata("design:type", Function), _dec52 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [String]), _dec57 = Reflect.metadata("design:type", Function), _dec58 = Reflect.metadata("design:paramtypes", []), _dec59 = (0, _nextCore.delegate)('server'), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function DialerView(_callingSettings, _connectivityManager, _locale, _rateLimiter, _regionSettings, _toast, _call, _extensionFeatures, _accountInfo, _portManager, _webphone, _audioSettings, _contactSearch, _dialerViewOptions) {
     var _this;
     _classCallCheck(this, DialerView);
@@ -134,11 +135,14 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
     _this._audioSettings = _audioSettings;
     _this._contactSearch = _contactSearch;
     _this._dialerViewOptions = _dialerViewOptions;
-    _initializerDefineProperty(_this, "_appFeatures", _descriptor, _this);
+    _initializerDefineProperty(_this, "_connectingView", _descriptor, _this);
     _initializerDefineProperty(_this, "_callAction", _descriptor2, _this);
     _initializerDefineProperty(_this, "_contactSearchView", _descriptor3, _this);
     _this._latestCallTime = 0;
-    _this._lastSearchInput = '';
+    /**
+     * register hook for call, will be called before make call
+     * only execute when callVerify pass in server port(worker mode)
+     */
     _this._callHooks = [];
     /**
      * verify is that call can be continue before make call
@@ -151,6 +155,32 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }
   _inherits(DialerView, _RcViewModule);
   return _createClass(DialerView, [{
+    key: "callVerifyOnServer",
+    value: (
+    /**
+     * verify is that call can be continue before make call
+     */
+    function () {
+      var _callVerifyOnServer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(params) {
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              if (!this.callVerify) {
+                _context.n = 1;
+                break;
+              }
+              return _context.a(2, this.callVerify(params));
+            case 1:
+              return _context.a(2, true);
+          }
+        }, _callee, this);
+      }));
+      function callVerifyOnServer(_x) {
+        return _callVerifyOnServer.apply(this, arguments);
+      }
+      return callVerifyOnServer;
+    }())
+  }, {
     key: "_setToNumberField",
     value: function _setToNumberField(val) {
       this.toNumberField = val;
@@ -184,7 +214,8 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "isCallButtonDisabled",
     get: function get() {
-      return !this._call.isIdle || this._connectivityManager.isOfflineMode || this._connectivityManager.isWebphoneUnavailableMode || this._connectivityManager.isWebphoneInitializing || this._rateLimiter.restricted;
+      var _this$_connectingView;
+      return ((_this$_connectingView = this._connectingView) === null || _this$_connectingView === void 0 ? void 0 : _this$_connectingView.isConnecting) || !this._call.isIdle || this._connectivityManager.isOfflineMode || this._connectivityManager.isWebphoneUnavailableMode || this._connectivityManager.isWebphoneInitializing || this._rateLimiter.restricted;
     }
   }, {
     key: "showSpinner",
@@ -195,23 +226,24 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
     key: "disableFromField",
     get: function get() {
       var _this$_extensionFeatu, _this$_extensionFeatu2;
-      return !!(this._extensionFeatures.ready && !((_this$_extensionFeatu = this._extensionFeatures.features) === null || _this$_extensionFeatu === void 0 ? void 0 : (_this$_extensionFeatu2 = _this$_extensionFeatu.EditOutboundCallerId) === null || _this$_extensionFeatu2 === void 0 ? void 0 : _this$_extensionFeatu2.available));
+      return !!(this._extensionFeatures.ready && !((_this$_extensionFeatu = this._extensionFeatures.features) !== null && _this$_extensionFeatu !== void 0 && (_this$_extensionFeatu2 = _this$_extensionFeatu.EditOutboundCallerId) !== null && _this$_extensionFeatu2 !== void 0 && _this$_extensionFeatu2.available));
     }
   }, {
     key: "isShowAnonymous",
     get: function get() {
       var _this$_extensionFeatu3, _this$_extensionFeatu4;
-      return !!(this._extensionFeatures.ready && ((_this$_extensionFeatu3 = this._extensionFeatures.features) === null || _this$_extensionFeatu3 === void 0 ? void 0 : (_this$_extensionFeatu4 = _this$_extensionFeatu3.BlockingCallerId) === null || _this$_extensionFeatu4 === void 0 ? void 0 : _this$_extensionFeatu4.available));
+      return !!(this._extensionFeatures.ready && (_this$_extensionFeatu3 = this._extensionFeatures.features) !== null && _this$_extensionFeatu3 !== void 0 && (_this$_extensionFeatu4 = _this$_extensionFeatu3.BlockingCallerId) !== null && _this$_extensionFeatu4 !== void 0 && _this$_extensionFeatu4.available);
     }
   }, {
     key: "onReset",
     value: function onReset() {
+      var _this$_connectingView2;
+      (_this$_connectingView2 = this._connectingView) === null || _this$_connectingView2 === void 0 ? void 0 : _this$_connectingView2.resetPreinsertConnecting();
       this.resetState({
         toNumberField: '',
         isLastInputFromDialpad: false,
         recipient: null
       });
-      this._lastSearchInput = '';
     }
   }, {
     key: "resetState",
@@ -232,12 +264,59 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
       this.recipient = recipient;
     }
   }, {
+    key: "_prepareCallState",
+    value: function () {
+      var _prepareCallState2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(_ref2) {
+        var toNumberField, recipient, callerId, latestCallTime, usePreinsertConnecting, preinsertConnectingToken;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
+            case 0:
+              toNumberField = _ref2.toNumberField, recipient = _ref2.recipient, callerId = _ref2.callerId, latestCallTime = _ref2.latestCallTime, usePreinsertConnecting = _ref2.usePreinsertConnecting;
+              this._latestCallTime = latestCallTime;
+              preinsertConnectingToken = usePreinsertConnecting && this._connectingView ? this._connectingView.preparePreinsertConnecting({
+                callerId: callerId,
+                recipient: recipient,
+                toNumberField: toNumberField
+              }) : 0;
+              this.resetState({
+                toNumberField: toNumberField,
+                isLastInputFromDialpad: false,
+                recipient: recipient
+              });
+              return _context2.a(2, preinsertConnectingToken);
+          }
+        }, _callee2, this);
+      }));
+      function _prepareCallState(_x2) {
+        return _prepareCallState2.apply(this, arguments);
+      }
+      return _prepareCallState;
+    }()
+  }, {
+    key: "_resetCallState",
+    value: function () {
+      var _resetCallState2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
+            case 0:
+              this.resetState();
+            case 1:
+              return _context3.a(2);
+          }
+        }, _callee3, this);
+      }));
+      function _resetCallState() {
+        return _resetCallState2.apply(this, arguments);
+      }
+      return _resetCallState;
+    }()
+  }, {
     key: "clearToNumberField",
     value: function () {
-      var _clearToNumberField = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var _clearToNumberField = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
         var _this$_contactSearch;
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
             case 0:
               this._setToNumberField('');
               // spring-ui version already clear the search related state into ContactSearch service
@@ -245,9 +324,9 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
                 (_this$_contactSearch = this._contactSearch) === null || _this$_contactSearch === void 0 ? void 0 : _this$_contactSearch.clearAndReset();
               }
             case 1:
-              return _context.a(2);
+              return _context4.a(2);
           }
-        }, _callee, this);
+        }, _callee4, this);
       }));
       function clearToNumberField() {
         return _clearToNumberField.apply(this, arguments);
@@ -257,19 +336,19 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setToNumberField",
     value: function () {
-      var _setToNumberField2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(phoneNumber) {
+      var _setToNumberField2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(phoneNumber) {
         var fromDialPad,
           _this$_dialerViewOpti,
           hasMinimumLengthForSearch,
           contactSearch,
           showExecSearch,
-          _args2 = arguments;
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.n) {
+          _args5 = arguments;
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.n) {
             case 0:
-              fromDialPad = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : false;
+              fromDialPad = _args5.length > 1 && _args5[1] !== undefined ? _args5[1] : false;
               if (!(this.toNumberField !== phoneNumber)) {
-                _context2.n = 3;
+                _context5.n = 3;
                 break;
               }
               this.resetState({
@@ -282,16 +361,16 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
               hasMinimumLengthForSearch = (this.toNumberField || '').length >= 3;
               contactSearch = this._contactSearch;
               if (!(!hasMinimumLengthForSearch || !contactSearch)) {
-                _context2.n = 1;
+                _context5.n = 1;
                 break;
               }
-              return _context2.a(2);
+              return _context5.a(2);
             case 1:
               if (!(process.env.THEME_SYSTEM === 'spring-ui')) {
-                _context2.n = 2;
+                _context5.n = 2;
                 break;
               }
-              return _context2.a(2);
+              return _context5.a(2);
             case 2:
               showExecSearch = (_this$_dialerViewOpti = this._dialerViewOptions) === null || _this$_dialerViewOpti === void 0 ? void 0 : _this$_dialerViewOpti.useV2;
               if (showExecSearch) {
@@ -301,11 +380,11 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
                 });
               }
             case 3:
-              return _context2.a(2);
+              return _context5.a(2);
           }
-        }, _callee2, this);
+        }, _callee5, this);
       }));
-      function setToNumberField(_x) {
+      function setToNumberField(_x3) {
         return _setToNumberField2.apply(this, arguments);
       }
       return setToNumberField;
@@ -313,15 +392,15 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "triggerEventTracking",
     value: function () {
-      var _triggerEventTracking = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(eventName, contactType) {
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.n) {
+      var _triggerEventTracking = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(eventName, contactType) {
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.n) {
             case 0:
-              return _context3.a(2);
+              return _context6.a(2);
           }
-        }, _callee3);
+        }, _callee6);
       }));
-      function triggerEventTracking(_x2, _x3) {
+      function triggerEventTracking(_x4, _x5) {
         return _triggerEventTracking.apply(this, arguments);
       }
       return triggerEventTracking;
@@ -329,22 +408,21 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setRecipient",
     value: function () {
-      var _setRecipient2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(recipient) {
-        return _regenerator().w(function (_context4) {
-          while (1) switch (_context4.n) {
+      var _setRecipient2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(recipient) {
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.n) {
             case 0:
-              this._lastSearchInput = this.toNumberField;
               this.resetState({
                 toNumberField: '',
                 isLastInputFromDialpad: false,
                 recipient: recipient
               });
             case 1:
-              return _context4.a(2);
+              return _context7.a(2);
           }
-        }, _callee4, this);
+        }, _callee7, this);
       }));
-      function setRecipient(_x4) {
+      function setRecipient(_x6) {
         return _setRecipient2.apply(this, arguments);
       }
       return setRecipient;
@@ -352,9 +430,9 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "clearRecipient",
     value: function () {
-      var _clearRecipient = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-        return _regenerator().w(function (_context5) {
-          while (1) switch (_context5.n) {
+      var _clearRecipient = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.n) {
             case 0:
               this.resetState({
                 toNumberField: '',
@@ -362,9 +440,9 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
                 recipient: null
               });
             case 1:
-              return _context5.a(2);
+              return _context8.a(2);
           }
-        }, _callee5, this);
+        }, _callee8, this);
       }));
       function clearRecipient() {
         return _clearRecipient.apply(this, arguments);
@@ -374,47 +452,47 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "triggerHook",
     value: function () {
-      var _triggerHook = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(_ref2) {
-        var _ref2$phoneNumber, phoneNumber, recipient, fromNumber, _iterator, _step, hook, _t;
-        return _regenerator().w(function (_context6) {
-          while (1) switch (_context6.p = _context6.n) {
+      var _triggerHook = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(_ref3) {
+        var _ref3$phoneNumber, phoneNumber, recipient, fromNumber, _iterator, _step, hook, _t;
+        return _regenerator().w(function (_context9) {
+          while (1) switch (_context9.p = _context9.n) {
             case 0:
-              _ref2$phoneNumber = _ref2.phoneNumber, phoneNumber = _ref2$phoneNumber === void 0 ? '' : _ref2$phoneNumber, recipient = _ref2.recipient, fromNumber = _ref2.fromNumber;
+              _ref3$phoneNumber = _ref3.phoneNumber, phoneNumber = _ref3$phoneNumber === void 0 ? '' : _ref3$phoneNumber, recipient = _ref3.recipient, fromNumber = _ref3.fromNumber;
               _iterator = _createForOfIteratorHelper(this._callHooks);
-              _context6.p = 1;
+              _context9.p = 1;
               _iterator.s();
             case 2:
               if ((_step = _iterator.n()).done) {
-                _context6.n = 4;
+                _context9.n = 4;
                 break;
               }
               hook = _step.value;
-              _context6.n = 3;
+              _context9.n = 3;
               return hook({
                 phoneNumber: phoneNumber,
                 recipient: recipient,
                 fromNumber: fromNumber
               });
             case 3:
-              _context6.n = 2;
+              _context9.n = 2;
               break;
             case 4:
-              _context6.n = 6;
+              _context9.n = 6;
               break;
             case 5:
-              _context6.p = 5;
-              _t = _context6.v;
+              _context9.p = 5;
+              _t = _context9.v;
               _iterator.e(_t);
             case 6:
-              _context6.p = 6;
+              _context9.p = 6;
               _iterator.f();
-              return _context6.f(6);
+              return _context9.f(6);
             case 7:
-              return _context6.a(2);
+              return _context9.a(2);
           }
-        }, _callee6, this, [[1, 5, 6, 7]]);
+        }, _callee9, this, [[1, 5, 6, 7]]);
       }));
-      function triggerHook(_x5) {
+      function triggerHook(_x7) {
         return _triggerHook.apply(this, arguments);
       }
       return triggerHook;
@@ -427,105 +505,179 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "call",
     value: function () {
-      var _call2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(_ref3) {
-        var _ref3$phoneNumber, phoneNumber, recipient, fromNumber, trackCallMadeFrom, _ref3$clickDialerToCa, clickDialerToCall, _this$_callAction, _this$_callAction$che, hasReachedMaxCalls, continueCall, _parse, hasInvalidChars, isValid, isValidNumber, _t2, _t3;
-        return _regenerator().w(function (_context7) {
-          while (1) switch (_context7.p = _context7.n) {
+      var _call2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(_ref4) {
+        var _ref4$phoneNumber, phoneNumber, recipient, fromNumber, trackCallMadeFrom, _ref4$clickDialerToCa, clickDialerToCall, usePreinsertConnecting, _this$_callAction, _this$_callAction$che, hasReachedMaxCalls, normalizedRecipient, _this$_connectingView3, preinsertConnectingToken, continueCall, _this$_connectingView4, _parse, hasInvalidChars, isValid, isValidNumber, session, _t2;
+        return _regenerator().w(function (_context0) {
+          while (1) switch (_context0.p = _context0.n) {
             case 0:
-              _ref3$phoneNumber = _ref3.phoneNumber, phoneNumber = _ref3$phoneNumber === void 0 ? '' : _ref3$phoneNumber, recipient = _ref3.recipient, fromNumber = _ref3.fromNumber, trackCallMadeFrom = _ref3.trackCallMadeFrom, _ref3$clickDialerToCa = _ref3.clickDialerToCall, clickDialerToCall = _ref3$clickDialerToCa === void 0 ? false : _ref3$clickDialerToCa;
-              if (!(process.env.THEME_SYSTEM === 'spring-ui')) {
-                _context7.n = 2;
+              _ref4$phoneNumber = _ref4.phoneNumber, phoneNumber = _ref4$phoneNumber === void 0 ? '' : _ref4$phoneNumber, recipient = _ref4.recipient, fromNumber = _ref4.fromNumber, trackCallMadeFrom = _ref4.trackCallMadeFrom, _ref4$clickDialerToCa = _ref4.clickDialerToCall, clickDialerToCall = _ref4$clickDialerToCa === void 0 ? false : _ref4$clickDialerToCa;
+              usePreinsertConnecting = this._callingSettings.isWebphoneMode;
+              if (!(this._connectingView && usePreinsertConnecting && this._connectingView.isConnecting)) {
+                _context0.n = 1;
                 break;
               }
-              _context7.n = 1;
-              return (_this$_callAction = this._callAction) === null || _this$_callAction === void 0 ? void 0 : (_this$_callAction$che = _this$_callAction.checkReachToMaxExistCalls) === null || _this$_callAction$che === void 0 ? void 0 : _this$_callAction$che.call(_this$_callAction);
+              return _context0.a(2);
             case 1:
-              hasReachedMaxCalls = _context7.v;
-              if (!hasReachedMaxCalls) {
-                _context7.n = 2;
+              if (!(process.env.THEME_SYSTEM === 'spring-ui')) {
+                _context0.n = 3;
                 break;
               }
-              return _context7.a(2);
+              _context0.n = 2;
+              return (_this$_callAction = this._callAction) === null || _this$_callAction === void 0 ? void 0 : (_this$_callAction$che = _this$_callAction.checkReachToMaxExistCalls) === null || _this$_callAction$che === void 0 ? void 0 : _this$_callAction$che.call(_this$_callAction);
             case 2:
+              hasReachedMaxCalls = _context0.v;
+              if (!hasReachedMaxCalls) {
+                _context0.n = 3;
+                break;
+              }
+              return _context0.a(2);
+            case 3:
               if (phoneNumber) {
                 phoneNumber = phoneNumber.trim();
               }
-              if (recipient === null || recipient === void 0 ? void 0 : recipient.phoneNumber) {
-                recipient.phoneNumber = recipient.phoneNumber.trim();
-              }
-              if (!(phoneNumber || recipient)) {
-                _context7.n = 11;
+              normalizedRecipient = recipient ? _objectSpread(_objectSpread({}, recipient), {}, {
+                phoneNumber: recipient.phoneNumber ? recipient.phoneNumber.trim() : recipient.phoneNumber
+              }) : undefined;
+              if (!(phoneNumber || normalizedRecipient)) {
+                _context0.n = 21;
                 break;
               }
-              this._latestCallTime = Date.now();
-              this.resetState({
+              _context0.n = 4;
+              return this._prepareCallState({
                 toNumberField: phoneNumber,
-                isLastInputFromDialpad: false,
-                recipient: recipient || null
+                recipient: normalizedRecipient || null,
+                callerId: fromNumber || this._callingSettings.fromNumber || '',
+                latestCallTime: Date.now(),
+                usePreinsertConnecting: usePreinsertConnecting
               });
-              if (!this.callVerify) {
-                _context7.n = 4;
-                break;
-              }
-              _context7.n = 3;
-              return this.callVerify({
-                phoneNumber: phoneNumber,
-                recipient: recipient
-              });
-            case 3:
-              _t2 = _context7.v;
-              _context7.n = 5;
-              break;
             case 4:
-              _t2 = true;
+              preinsertConnectingToken = _context0.v;
+              _context0.n = 5;
+              return this.callVerifyOnServer({
+                phoneNumber: phoneNumber,
+                recipient: normalizedRecipient
+              });
             case 5:
-              continueCall = _t2;
-              if (continueCall) {
-                _context7.n = 6;
+              continueCall = _context0.v;
+              if (!(usePreinsertConnecting && (_this$_connectingView3 = this._connectingView) !== null && _this$_connectingView3 !== void 0 && _this$_connectingView3.isPreinsertConnectingCancelled(preinsertConnectingToken))) {
+                _context0.n = 6;
                 break;
               }
-              return _context7.a(2);
+              this._connectingView.clearPreinsertConnectingCancel(preinsertConnectingToken);
+              return _context0.a(2);
             case 6:
-              _context7.n = 7;
+              if (continueCall) {
+                _context0.n = 8;
+                break;
+              }
+              if (!(this._connectingView && usePreinsertConnecting)) {
+                _context0.n = 7;
+                break;
+              }
+              _context0.n = 7;
+              return this._connectingView.setPreinsertConnectingOnServer(false);
+            case 7:
+              return _context0.a(2);
+            case 8:
+              _context0.p = 8;
+              if (!(usePreinsertConnecting && (_this$_connectingView4 = this._connectingView) !== null && _this$_connectingView4 !== void 0 && _this$_connectingView4.isPreinsertConnectingCancelled(preinsertConnectingToken))) {
+                _context0.n = 9;
+                break;
+              }
+              this._connectingView.clearPreinsertConnectingCancel(preinsertConnectingToken);
+              return _context0.a(2);
+            case 9:
+              _context0.n = 10;
               return this.triggerHook({
                 phoneNumber: phoneNumber,
-                recipient: recipient,
+                recipient: normalizedRecipient,
                 fromNumber: fromNumber
               });
-            case 7:
+            case 10:
+              if (!(this._connectingView && usePreinsertConnecting && this._connectingView.isPreinsertConnectingCancelled(preinsertConnectingToken))) {
+                _context0.n = 11;
+                break;
+              }
+              this._connectingView.clearPreinsertConnectingCancel(preinsertConnectingToken);
+              return _context0.a(2);
+            case 11:
               // for data tracking
               _parse = (0, _phoneNumber.parse)({
-                input: this._lastSearchInput || this.toNumberField
+                input: phoneNumber || (normalizedRecipient === null || normalizedRecipient === void 0 ? void 0 : normalizedRecipient.phoneNumber) || (normalizedRecipient === null || normalizedRecipient === void 0 ? void 0 : normalizedRecipient.extension) || ''
               }), hasInvalidChars = _parse.hasInvalidChars, isValid = _parse.isValid;
               isValidNumber = !hasInvalidChars && isValid;
-              _context7.p = 8;
-              _context7.n = 9;
+              _context0.n = 12;
               return this._call.call({
-                phoneNumber: this.toNumberField,
-                recipient: this.recipient,
+                phoneNumber: phoneNumber,
+                recipient: normalizedRecipient,
                 fromNumber: fromNumber,
                 clickDialerToCall: clickDialerToCall,
                 isValidNumber: isValidNumber
               });
-            case 9:
+            case 12:
+              session = _context0.v;
+              if (!(this._connectingView && usePreinsertConnecting)) {
+                _context0.n = 13;
+                break;
+              }
+              _context0.n = 13;
+              return this._connectingView.setPreinsertConnectingWebphoneSessionIdOnServer(preinsertConnectingToken, session === null || session === void 0 ? void 0 : session.id);
+            case 13:
+              if (!(this._connectingView && usePreinsertConnecting && this._connectingView.isPreinsertConnectingCancelled(preinsertConnectingToken))) {
+                _context0.n = 15;
+                break;
+              }
+              if (!(session !== null && session !== void 0 && session.id)) {
+                _context0.n = 14;
+                break;
+              }
+              _context0.n = 14;
+              return this._connectingView.cancelPreinsertConnectingCall(session.id);
+            case 14:
+              this._connectingView.clearPreinsertConnectingCancel(preinsertConnectingToken);
+              return _context0.a(2);
+            case 15:
+              if (!(session === null)) {
+                _context0.n = 17;
+                break;
+              }
+              if (!(this._connectingView && usePreinsertConnecting)) {
+                _context0.n = 16;
+                break;
+              }
+              _context0.n = 16;
+              return this._connectingView.setPreinsertConnectingOnServer(false);
+            case 16:
+              return _context0.a(2);
+            case 17:
               if (
               // spring-ui project have new data tracking system, not need this track anymore
               process.env.THEME_SYSTEM !== 'spring-ui' && trackCallMadeFrom) {
                 this.trackCallMade(trackCallMadeFrom);
               }
-              this.resetState();
-              _context7.n = 11;
+              _context0.n = 18;
+              return this._resetCallState();
+            case 18:
+              _context0.n = 21;
               break;
-            case 10:
-              _context7.p = 10;
-              _t3 = _context7.v;
-              console.log('[DialerView] make call error', _t3);
-            case 11:
-              return _context7.a(2);
+            case 19:
+              _context0.p = 19;
+              _t2 = _context0.v;
+              if (!(this._connectingView && usePreinsertConnecting)) {
+                _context0.n = 20;
+                break;
+              }
+              this._connectingView.clearPreinsertConnectingCancel(preinsertConnectingToken);
+              _context0.n = 20;
+              return this._connectingView.setPreinsertConnectingOnServer(false);
+            case 20:
+              this.logger.log('make call error', _t2);
+            case 21:
+              return _context0.a(2);
           }
-        }, _callee7, this, [[8, 10]]);
+        }, _callee0, this, [[8, 19]]);
       }));
-      function call(_x6) {
+      function call(_x8) {
         return _call2.apply(this, arguments);
       }
       return call;
@@ -542,24 +694,24 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_loadLastPhoneNumber",
     value: function () {
-      var _loadLastPhoneNumber2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
-        return _regenerator().w(function (_context8) {
-          while (1) switch (_context8.n) {
+      var _loadLastPhoneNumber2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
+        return _regenerator().w(function (_context1) {
+          while (1) switch (_context1.n) {
             case 0:
               if (!(!this._call.lastRecipient && !this._call.lastPhoneNumber)) {
-                _context8.n = 1;
+                _context1.n = 1;
                 break;
               }
               this._toast.warning({
                 message: (0, _i18n.t)('noToNumber')
               });
-              return _context8.a(2);
+              return _context1.a(2);
             case 1:
               this._loadLastPhoneNumberAction();
             case 2:
-              return _context8.a(2);
+              return _context1.a(2);
           }
-        }, _callee8, this);
+        }, _callee1, this);
       }));
       function _loadLastPhoneNumber() {
         return _loadLastPhoneNumber2.apply(this, arguments);
@@ -569,37 +721,37 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "onCallButtonClick",
     value: function () {
-      var _onCallButtonClick = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
-        var _ref4,
+      var _onCallButtonClick = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
+        var _ref5,
           fromNumber,
           fromSessionId,
           clickDialerToCall,
-          _args9 = arguments;
-        return _regenerator().w(function (_context9) {
-          while (1) switch (_context9.n) {
+          _args10 = arguments;
+        return _regenerator().w(function (_context10) {
+          while (1) switch (_context10.n) {
             case 0:
-              _ref4 = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : {}, fromNumber = _ref4.fromNumber, fromSessionId = _ref4.fromSessionId, clickDialerToCall = _ref4.clickDialerToCall;
+              _ref5 = _args10.length > 0 && _args10[0] !== undefined ? _args10[0] : {}, fromNumber = _ref5.fromNumber, fromSessionId = _ref5.fromSessionId, clickDialerToCall = _ref5.clickDialerToCall;
               if (!("".concat(this.toNumberField).trim().length === 0 && !this.recipient)) {
-                _context9.n = 1;
+                _context10.n = 1;
                 break;
               }
               this._loadLastPhoneNumber();
-              return _context9.a(2, false);
+              return _context10.a(2, false);
             case 1:
               this.trackCallingEvent('Dialer');
               this._onBeforeCall(fromSessionId);
               if (!(this._portManager.shared && !this._portManager.isWorkerMode && this._webphone && this._callingSettings.isWebphoneMode &&
               // TODO: handle `hasCallSessions:true` case
               !this._webphone.hasCallSessions)) {
-                _context9.n = 2;
+                _context10.n = 2;
                 break;
               }
-              _context9.n = 2;
+              _context10.n = 2;
               return this._webphone.switchWebphoneInstance({
                 forceDisconnect: true
               });
             case 2:
-              _context9.n = 3;
+              _context10.n = 3;
               return this.call({
                 phoneNumber: this.toNumberField,
                 recipient: this.recipient,
@@ -608,9 +760,9 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
                 trackCallMadeFrom: 'Dialer'
               });
             case 3:
-              return _context9.a(2, true);
+              return _context10.a(2, true);
           }
-        }, _callee9, this);
+        }, _callee10, this);
       }));
       function onCallButtonClick() {
         return _onCallButtonClick.apply(this, arguments);
@@ -645,7 +797,7 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
         // if call out with extension number then only match main company number
       })) === null || _normalizeNumber === void 0 ? void 0 : _normalizeNumber.split('*')[0];
       // use includes since after we introduced EDP, the number dialed at to field maybe different to server parsed number.
-      if (((phoneNumber === null || phoneNumber === void 0 ? void 0 : phoneNumber.includes(formattedPhoneNumber)) || (phoneNumber === null || phoneNumber === void 0 ? void 0 : phoneNumber.includes(originalPhoneNumber)) || phoneNumber === this._call.lastValidatedToNumber) && Date.now() - this._latestCallTime <= TIMEOUT) {
+      if ((phoneNumber !== null && phoneNumber !== void 0 && phoneNumber.includes(formattedPhoneNumber) || phoneNumber !== null && phoneNumber !== void 0 && phoneNumber.includes(originalPhoneNumber) || phoneNumber === this._call.lastValidatedToNumber) && Date.now() - this._latestCallTime <= TIMEOUT) {
         this._latestCallTime = 0;
         return true;
       }
@@ -671,7 +823,7 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
         outputDeviceId: (_this$_audioSettings$2 = (_this$_audioSettings2 = this._audioSettings) === null || _this$_audioSettings2 === void 0 ? void 0 : _this$_audioSettings2.outputDeviceId) !== null && _this$_audioSettings$2 !== void 0 ? _this$_audioSettings$2 : '',
         isLastInputFromDialpad: this.isLastInputFromDialpad,
         disableFromField: this.disableFromField,
-        useV2: !!((_this$_dialerViewOpti2 = this._dialerViewOptions) === null || _this$_dialerViewOpti2 === void 0 ? void 0 : _this$_dialerViewOpti2.useV2),
+        useV2: !!((_this$_dialerViewOpti2 = this._dialerViewOptions) !== null && _this$_dialerViewOpti2 !== void 0 && _this$_dialerViewOpti2.useV2),
         showAnonymous: this.isShowAnonymous,
         // do not enable this feature for now
         isSmartNoteEnabled: false
@@ -714,21 +866,21 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
           return _this2.clearRecipient();
         },
         searchContact: function () {
-          var _searchContact = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(searchString) {
+          var _searchContact = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee11(searchString) {
             var _this2$_contactSearch;
-            return _regenerator().w(function (_context0) {
-              while (1) switch (_context0.n) {
+            return _regenerator().w(function (_context11) {
+              while (1) switch (_context11.n) {
                 case 0:
-                  _context0.n = 1;
+                  _context11.n = 1;
                   return (_this2$_contactSearch = _this2._contactSearch) === null || _this2$_contactSearch === void 0 ? void 0 : _this2$_contactSearch.debouncedSearch({
                     searchString: searchString
                   });
                 case 1:
-                  return _context0.a(2);
+                  return _context11.a(2);
               }
-            }, _callee0);
+            }, _callee11);
           }));
-          function searchContact(_x7) {
+          function searchContact(_x9) {
             return _searchContact.apply(this, arguments);
           }
           return searchContact;
@@ -753,6 +905,7 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
         uiFunctions = _useRef.current;
       var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
         t = _useLocale.t;
+
       // TODO: fix type
       var _props = (0, _nextCore.useConnector)(function () {
         var uiProps = _this3.getUIProps(props);
@@ -765,13 +918,13 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
           title: t('phoneTitle')
         }, null), /*#__PURE__*/_react["default"].createElement(_Component, _extends({}, _props, uiFunctions, {
           ContactSearch: (_this$_contactSearchV = this._contactSearchView) === null || _this$_contactSearchV === void 0 ? void 0 : _this$_contactSearchV.component
-        })));
+        })), this._connectingView && /*#__PURE__*/_react["default"].createElement(this._connectingView.component, null));
       }
       var Component = ((_this$_dialerViewOpti4 = this._dialerViewOptions) === null || _this$_dialerViewOpti4 === void 0 ? void 0 : _this$_dialerViewOpti4.component) || _DialerPanel.DialerPanel;
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions));
     }
   }]);
-}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_appFeatures", [_dec8, _dec9], {
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_connectingView", [_dec8, _dec9], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -786,26 +939,26 @@ var DialerView = exports.DialerView = (_dec = (0, _nextCore.injectable)({
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "toNumberField", [_nextCore.state], {
+}), _applyDecoratedDescriptor(_class2.prototype, "callVerifyOnServer", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "callVerifyOnServer"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "toNumberField", [_nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return '';
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setToNumberField", [_nextCore.action, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "_setToNumberField"), _class2.prototype), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "isLastInputFromDialpad", [_nextCore.state], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setToNumberField", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "_setToNumberField"), _class2.prototype), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "isLastInputFromDialpad", [_nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setIsLastInputFromDialpad", [_nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "setIsLastInputFromDialpad"), _class2.prototype), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "recipient", [_nextCore.state, _dec16], {
+}), _applyDecoratedDescriptor(_class2.prototype, "setIsLastInputFromDialpad", [_nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "setIsLastInputFromDialpad"), _class2.prototype), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "recipient", [_nextCore.state, _dec19], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setRecipient", [_nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "_setRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "recipients", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "recipients"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "searchContactList", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "searchContactList"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetState", [_nextCore.action, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "resetState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearToNumberField", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "clearToNumberField"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setToNumberField", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "setToNumberField"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "triggerEventTracking", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "triggerEventTracking"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setRecipient", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "setRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearRecipient", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "clearRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackCallMade", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "trackCallMade"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "call", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "call"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadLastPhoneNumberAction", [_nextCore.action, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadLastPhoneNumberAction"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadLastPhoneNumber", [_dec50, _dec51, _dec52], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadLastPhoneNumber"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setRecipient", [_nextCore.action, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "_setRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "recipients", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "recipients"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "searchContactList", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "searchContactList"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetState", [_nextCore.action, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "resetState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_prepareCallState", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "_prepareCallState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_resetCallState", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "_resetCallState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearToNumberField", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "clearToNumberField"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setToNumberField", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "setToNumberField"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "triggerEventTracking", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "triggerEventTracking"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setRecipient", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "setRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearRecipient", [_dec48, _dec49, _dec50], Object.getOwnPropertyDescriptor(_class2.prototype, "clearRecipient"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "triggerHook", [_dec51, _dec52, _dec53], Object.getOwnPropertyDescriptor(_class2.prototype, "triggerHook"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackCallMade", [_dec54, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "trackCallMade"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadLastPhoneNumberAction", [_nextCore.action, _dec57, _dec58], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadLastPhoneNumberAction"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadLastPhoneNumber", [_dec59, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadLastPhoneNumber"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Dialer.view.js.map

@@ -64,7 +64,7 @@ export const MergeCallConfirmation: FunctionComponent<
             labelPlacement: 'end',
           }}
           checked={doNotAsk}
-          onChange={(ev, checked) => {
+          onChange={(ev: any, checked: boolean) => {
             setDoNotAsk(checked);
           }}
         />

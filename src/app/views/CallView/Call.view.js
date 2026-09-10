@@ -20,7 +20,9 @@ require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.object.create.js");
+require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
+require("core-js/modules/es.object.get-own-property-descriptors.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
@@ -66,9 +68,12 @@ var _PostCallViewSpring = require("./routes/PostCallViewSpring");
 var _ReplyWithMessageViewSpring = require("./routes/ReplyWithMessageViewSpring");
 var _TransferViewSpring = require("./routes/TransferViewSpring");
 var _services3 = require("./services");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t2 in e) "default" !== _t2 && {}.hasOwnProperty.call(e, _t2) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t2)) && (i.get || i.set) ? o(f, _t2, i) : f[_t2] = e[_t2]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -109,8 +114,10 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 21);
 }, _dec3 = function _dec3(target, key) {
   return (0, _nextCore.optional)('CallViewOptions')(target, undefined, 22);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services2.CallAction === "undefined" ? Object : _services2.CallAction, typeof _services2.CallMonitor === "undefined" ? Object : _services2.CallMonitor, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _nextCore.Root === "undefined" ? Object : _nextCore.Root, typeof _services3.CallViewState === "undefined" ? Object : _services3.CallViewState, typeof _KeypadViewSpring.KeypadView === "undefined" ? Object : _KeypadViewSpring.KeypadView, typeof _IncomingCallViewSpring.IncomingCallView === "undefined" ? Object : _IncomingCallViewSpring.IncomingCallView, typeof _ActiveCallsViewSpring.ActiveCallsView === "undefined" ? Object : _ActiveCallsViewSpring.ActiveCallsView, typeof _TransferViewSpring.TransferView === "undefined" ? Object : _TransferViewSpring.TransferView, typeof _CallControlViewSpring.CallControlView === "undefined" ? Object : _CallControlViewSpring.CallControlView, typeof _ForwardViewSpring.ForwardView === "undefined" ? Object : _ForwardViewSpring.ForwardView, typeof _ReplyWithMessageViewSpring.ReplyWithMessageView === "undefined" ? Object : _ReplyWithMessageViewSpring.ReplyWithMessageView, typeof _PostCallViewSpring.PostCallView === "undefined" ? Object : _PostCallViewSpring.PostCallView, typeof _AddCallViewSpring.AddCallView === "undefined" ? Object : _AddCallViewSpring.AddCallView, typeof _QuickCallActionView.QuickCallActionView === "undefined" ? Object : _QuickCallActionView.QuickCallActionView, typeof _services2.ActiveCallControl === "undefined" ? Object : _services2.ActiveCallControl, typeof _services2.PreinsertCall === "undefined" ? Object : _services2.PreinsertCall, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.RingCentralExtensions === "undefined" ? Object : _services.RingCentralExtensions, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services2.Webphone === "undefined" ? Object : _services2.Webphone, typeof _CallLogFormView.CallLogFormView === "undefined" ? Object : _CallLogFormView.CallLogFormView, typeof CallViewOptions === "undefined" ? Object : CallViewOptions]), _dec6 = Reflect.metadata("design:type", String), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [String]), _dec9 = (0, _nextCore.delegate)('server'), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [String]), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _nextCore.dynamic)('SmartNotes'), _dec13 = Reflect.metadata("design:type", typeof SmartNotes === "undefined" ? Object : SmartNotes), _dec14 = (0, _nextCore.dynamic)('SmartNotesView'), _dec15 = Reflect.metadata("design:type", typeof SmartNotesView === "undefined" ? Object : SmartNotesView), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [typeof Call === "undefined" ? Object : Call]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof CallLogFormViewProps === "undefined" ? Object : CallLogFormViewProps]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Object]), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function CallView(_callAction, _callMonitor, _syncTabView, _root, _callViewState, _keypadView, _incomingCallView, _activeCallsView, _transferView, _callControlView, _forwardView, _replyWithMessageView, _postCallView, _addCallView, _quickCallActionView, _activeCallControl, _preInsertCall, _portManager, _ringCentralExtensions, _rateLimiter, _webphone, _callLogFormView, _callViewOptions) {
+}, _dec4 = function _dec4(target, key) {
+  return (0, _nextCore.optional)('SmartNotesLogView')(target, undefined, 23);
+}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _services2.CallAction === "undefined" ? Object : _services2.CallAction, typeof _services2.CallMonitor === "undefined" ? Object : _services2.CallMonitor, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _nextCore.Root === "undefined" ? Object : _nextCore.Root, typeof _services3.CallViewState === "undefined" ? Object : _services3.CallViewState, typeof _KeypadViewSpring.KeypadView === "undefined" ? Object : _KeypadViewSpring.KeypadView, typeof _IncomingCallViewSpring.IncomingCallView === "undefined" ? Object : _IncomingCallViewSpring.IncomingCallView, typeof _ActiveCallsViewSpring.ActiveCallsView === "undefined" ? Object : _ActiveCallsViewSpring.ActiveCallsView, typeof _TransferViewSpring.TransferView === "undefined" ? Object : _TransferViewSpring.TransferView, typeof _CallControlViewSpring.CallControlView === "undefined" ? Object : _CallControlViewSpring.CallControlView, typeof _ForwardViewSpring.ForwardView === "undefined" ? Object : _ForwardViewSpring.ForwardView, typeof _ReplyWithMessageViewSpring.ReplyWithMessageView === "undefined" ? Object : _ReplyWithMessageViewSpring.ReplyWithMessageView, typeof _PostCallViewSpring.PostCallView === "undefined" ? Object : _PostCallViewSpring.PostCallView, typeof _AddCallViewSpring.AddCallView === "undefined" ? Object : _AddCallViewSpring.AddCallView, typeof _QuickCallActionView.QuickCallActionView === "undefined" ? Object : _QuickCallActionView.QuickCallActionView, typeof _services2.ActiveCallControl === "undefined" ? Object : _services2.ActiveCallControl, typeof _services2.PreinsertCall === "undefined" ? Object : _services2.PreinsertCall, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.RingCentralExtensions === "undefined" ? Object : _services.RingCentralExtensions, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services2.Webphone === "undefined" ? Object : _services2.Webphone, typeof _CallLogFormView.CallLogFormView === "undefined" ? Object : _CallLogFormView.CallLogFormView, typeof CallViewOptions === "undefined" ? Object : CallViewOptions, Object]), _dec7 = Reflect.metadata("design:type", String), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String]), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = (0, _nextCore.dynamic)('SmartNotes'), _dec14 = Reflect.metadata("design:type", typeof SmartNotes === "undefined" ? Object : SmartNotes), _dec15 = (0, _nextCore.dynamic)('SmartNotesView'), _dec16 = Reflect.metadata("design:type", typeof SmartNotesView === "undefined" ? Object : SmartNotesView), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [typeof Call === "undefined" ? Object : Call]), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [typeof CallLogFormViewProps === "undefined" ? Object : CallLogFormViewProps]), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", [Object]), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", []), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function CallView(_callAction, _callMonitor, _syncTabView, _root, _callViewState, _keypadView, _incomingCallView, _activeCallsView, _transferView, _callControlView, _forwardView, _replyWithMessageView, _postCallView, _addCallView, _quickCallActionView, _activeCallControl, _preInsertCall, _portManager, _ringCentralExtensions, _rateLimiter, _webphone, _callLogFormView, _callViewOptions, _smartNotesLogView) {
     var _this;
     _classCallCheck(this, CallView);
     _this = _callSuper(this, CallView);
@@ -137,6 +144,7 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
     _this._webphone = _webphone;
     _this._callLogFormView = _callLogFormView;
     _this._callViewOptions = _callViewOptions;
+    _this._smartNotesLogView = _smartNotesLogView;
     _initializerDefineProperty(_this, "closedOtherTelephonySessionId", _descriptor, _this);
     _initializerDefineProperty(_this, "_smartNotes", _descriptor2, _this);
     _initializerDefineProperty(_this, "_smartNotesView", _descriptor3, _this);
@@ -440,12 +448,17 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
       }
       var isDisplayCall = this._callAction.isFullSizeDisplayCall(newTelephonySessionId);
       if (!isDisplayCall) return;
+      var targetTelephonySessionId = transferringOriginalTelephonySessionId || newTelephonySessionId;
+      var isPreinsertCancelled = this._preInsertCall.isCancelledPreinsertSession(targetTelephonySessionId);
+      if (isPreinsertCancelled && this._preInsertCall.isPreinsertStatusEnd(targetTelephonySessionId) || this._preInsertCall.isPreinsertStatusIgnored(targetTelephonySessionId)) {
+        this.logger.log("preinsert call ended, not into post call page", targetTelephonySessionId);
+        return;
+      }
       var transferringOriginalInfo = transferringOriginalTelephonySessionId && this._callAction.getAllInfoByTelephonySessionId(transferringOriginalTelephonySessionId);
       var shouldIntoPostCall = transferringOriginalInfo ?
       // if that be transferring original call, only when that be connected able to into post call page, because when hangup the transfer target directly, that not need into post call page, keep in original call page
       ['CallConnected'].includes((_transferringOriginal = transferringOriginalInfo.call) === null || _transferringOriginal === void 0 ? void 0 : _transferringOriginal.telephonyStatus) : ['CallConnected', 'OnHold'].includes(currCall.telephonyStatus);
       if (!shouldIntoPostCall) return;
-      var targetTelephonySessionId = transferringOriginalTelephonySessionId || newTelephonySessionId;
       this.logger.log("redirect to post call page", targetTelephonySessionId);
       this._callViewState._setPostCallView(targetTelephonySessionId);
       return newTelephonySessionId;
@@ -552,11 +565,15 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
                 variant: afterCallEnd ? 'history' : 'expanded',
                 info: info,
                 mode: "post-call",
+                logNotesButton: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _this5._smartNotesLogView && /*#__PURE__*/_react["default"].createElement(_this5._smartNotesLogView.component, {
+                  telephonySessionId: info === null || info === void 0 ? void 0 : info.telephonySessionId,
+                  sessionId: info === null || info === void 0 ? void 0 : info.sessionId
+                })),
                 "data-sign": "ai-notes-panel",
                 "data-tab-type": "history"
               }) : null
             });
-          } else if (variant === 'expanded' && ((_this5$_smartNotes = _this5._smartNotes) === null || _this5$_smartNotes === void 0 ? void 0 : _this5$_smartNotes.hasPermission)) {
+          } else if (variant === 'expanded' && (_this5$_smartNotes = _this5._smartNotes) !== null && _this5$_smartNotes !== void 0 && _this5$_smartNotes.hasPermission) {
             result.push({
               id: _views.CallLogSyncTabId.AI_NOTE,
               label: t('aiNoteTitleInActiveCall'),
@@ -577,16 +594,27 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
       }
       return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, tabs.length === 1 ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, variant !== 'expanded' && /*#__PURE__*/_react["default"].createElement(_springUi.Divider, {
         className: "mx-4"
-      }), tabs[0].component) : /*#__PURE__*/_react["default"].createElement(this._syncTabView.component, {
+      }), tabs[0].component) : /*#__PURE__*/_react["default"].createElement(this._syncTabView.component, _extends({
         id: _views.SyncTabId.CALL_LOG,
         "data-sign": "call-log-tabs",
-        variant: "standard",
+        variant: !afterCallEnd ? 'scrollable' : 'standard' // scrollable for during call
+        ,
         pill: afterCallEnd,
         tabs: tabs,
-        className: (0, _clsx["default"])('flex-none', afterCallEnd && 'px-4'),
-        tabClassName: "flex-none w-auto",
-        tabRootClassName: "h-8"
-      }));
+        onActiveChange: function onActiveChange(value) {
+          if (value === _views.CallLogSyncTabId.AI_NOTE) {
+            var _this5$_callViewOptio, _this5$_callViewOptio2;
+            (_this5$_callViewOptio = _this5._callViewOptions) === null || _this5$_callViewOptio === void 0 ? void 0 : (_this5$_callViewOptio2 = _this5$_callViewOptio.onAiNotesTabViewed) === null || _this5$_callViewOptio2 === void 0 ? void 0 : _this5$_callViewOptio2.call(_this5$_callViewOptio);
+          }
+        },
+        className: (0, _clsx["default"])('flex-none', afterCallEnd && 'px-3'),
+        tabClassName: "flex-none w-auto"
+      }, afterCallEnd && {
+        tabLabelClassName: 'typography-mainText max-w-[40%]',
+        classes: {
+          tabList: '!py-0'
+        }
+      })));
     }
   }, {
     key: "CallLogArea",
@@ -608,7 +636,7 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
       var isPostCall = view === 'postCall';
       var shouldRender = isPostCall || !isPostCall && (expanded ||
       // when first time end call, the call will be dismiss, and expanded be false but still should keep the dom render to avoid user typing be interrupted
-      !(info === null || info === void 0 ? void 0 : info.call));
+      !(info !== null && info !== void 0 && info.call));
       var call = (0, _services2.useLatestExistCall)(info);
       var renderInfo = call || postCallCallLog;
       var logSectionRef = (0, _react.useRef)(null);
@@ -616,7 +644,7 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
         if (isPostCall) {
           var activeElement = document.activeElement;
           var logSection = logSectionRef.current;
-          if (activeElement && (logSection === null || logSection === void 0 ? void 0 : logSection.contains(activeElement))) {
+          if (activeElement && logSection !== null && logSection !== void 0 && logSection.contains(activeElement)) {
             _this6.logger.log('still active inside the log section, scroll into view');
             activeElement.scrollIntoView();
           }
@@ -743,7 +771,18 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
       var view = (0, _nextCore.useConnector)(function () {
         return _this9._callViewState.view;
       });
-      var activeRenderCallInfo = (0, _services2.useActiveCallInfoWithPreinsert)(this._callAction);
+      var activeCallInfo = (0, _nextCore.useConnector)(function () {
+        return _this9._callAction.activeCallInfo;
+      });
+      var latestActiveCall = (0, _services2.useLatestExistCall)(activeCallInfo);
+      var activeRenderCallInfo = (0, _react.useMemo)(function () {
+        if (activeCallInfo) {
+          return !activeCallInfo.call ? // when active call be ended, the call will be not exist directly, but the end event still not emit to other service, like callHistory, so need to use latest call to avoid that render a blank page cause the page jump to dialer then to history, keep the call instance to avoid that
+          _objectSpread(_objectSpread({}, activeCallInfo), {}, {
+            call: latestActiveCall
+          }) : activeCallInfo;
+        }
+      }, [activeCallInfo, latestActiveCall]);
       var modeView = (0, _react.useMemo)(function () {
         switch (view) {
           case 'callList':
@@ -776,22 +815,22 @@ var CallView = exports.CallView = (_dec = (0, _nextCore.injectable)({
       return /*#__PURE__*/_react["default"].createElement(_components.AppMainContent, null, modeView, /*#__PURE__*/_react["default"].createElement(this.CallLogArea, null));
     }
   }]);
-}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "closedOtherTelephonySessionId", [_nextCore.state, _dec6], {
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "closedOtherTelephonySessionId", [_nextCore.state, _dec7], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setClosedOtherTelephonySessionId", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "_setClosedOtherTelephonySessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setClosedOtherTelephonySessionId", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "setClosedOtherTelephonySessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "showQuickCallAction", [_nextCore.computed, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "showQuickCallAction"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_smartNotes", [_dec12, _dec13], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setClosedOtherTelephonySessionId", [_nextCore.action, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "_setClosedOtherTelephonySessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setClosedOtherTelephonySessionId", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "setClosedOtherTelephonySessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "showQuickCallAction", [_nextCore.computed, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "showQuickCallAction"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_smartNotes", [_dec13, _dec14], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_smartNotesView", [_dec14, _dec15], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_smartNotesView", [_dec15, _dec16], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "processNewCall", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "processNewCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "processExpandedCall", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "processExpandedCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "enableSmartNote", [_nextCore.computed, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "enableSmartNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallDetailForm", [_nextCore.autobind, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "CallDetailForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallLogArea", [_nextCore.autobind, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "CallLogArea"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallItem", [_nextCore.autobind, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "CallItem"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "Announcement", [_nextCore.autobind, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "Announcement"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "IncomingCallList", [_nextCore.autobind, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "IncomingCallList"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "processNewCall", [_nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "processNewCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "processExpandedCall", [_nextCore.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "processExpandedCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "enableSmartNote", [_nextCore.computed, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "enableSmartNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallDetailForm", [_nextCore.autobind, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "CallDetailForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallLogArea", [_nextCore.autobind, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "CallLogArea"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "CallItem", [_nextCore.autobind, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "CallItem"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "Announcement", [_nextCore.autobind, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "Announcement"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "IncomingCallList", [_nextCore.autobind, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "IncomingCallList"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Call.view.js.map

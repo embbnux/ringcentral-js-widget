@@ -4,10 +4,14 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
+require("core-js/modules/es.array.from.js");
+require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.date.to-primitive.js");
+require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
@@ -18,12 +22,15 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.reflect.get.js");
+require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CallLog = void 0;
+require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.index-of.js");
@@ -48,12 +55,19 @@ var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _utils = require("@ringcentral-integration/utils");
 var _rxjs = require("rxjs");
+var _CallMonitor = require("../CallMonitor");
 var _helper = require("./helper");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _class, _class2, _descriptor, _descriptor2;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -91,13 +105,13 @@ var presenceRegExp = /\/presence\?detailedTelephonyState=true/;
 var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
   name: 'CallLog'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.inject)('Subscription')(target, undefined, 4);
+  return (0, _nextCore.inject)('Subscription')(target, undefined, 5);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 6);
+  return (0, _nextCore.optional)()(target, undefined, 7);
 }, _dec4 = function _dec4(target, key) {
-  return (0, _nextCore.optional)('CallLogOptions')(target, undefined, 7);
-}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof Subscription === "undefined" ? Object : Subscription, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof CallLogOptions === "undefined" ? Object : CallLogOptions]), _dec7 = Reflect.metadata("design:type", typeof CallLogData === "undefined" ? Object : CallLogData), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", []), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", []), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [Number]), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [typeof SyncSuccessOptions === "undefined" ? Object : SyncSuccessOptions]), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = (0, _nextCore.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [typeof Pick === "undefined" ? Object : Pick]), _dec19 = (0, _nextCore.delegate)('server'), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [typeof SyncType === "undefined" ? Object : SyncType]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [void 0]), _dec31 = (0, _nextCore.delegate)('server'), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
-  function CallLog(_auth, _client, _extensionPhoneNumber, _extensionInfo, _subscription, _appFeatures, _storage, _callLogOptions) {
+  return (0, _nextCore.optional)('CallLogOptions')(target, undefined, 8);
+}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _CallMonitor.CallMonitor === "undefined" ? Object : _CallMonitor.CallMonitor, typeof Subscription === "undefined" ? Object : Subscription, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof CallLogOptions === "undefined" ? Object : CallLogOptions]), _dec7 = Reflect.metadata("design:type", typeof CallLogData === "undefined" ? Object : CallLogData), _dec8 = Reflect.metadata("design:type", typeof SideLoadedCallLogData === "undefined" ? Object : SideLoadedCallLogData), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [typeof CallLogRecords === "undefined" ? Object : CallLogRecords]), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [Number]), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [typeof SyncSuccessOptions === "undefined" ? Object : SyncSuccessOptions]), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof Pick === "undefined" ? Object : Pick]), _dec24 = (0, _nextCore.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [typeof SyncType === "undefined" ? Object : SyncType]), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [void 0]), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+  function CallLog(_auth, _client, _extensionPhoneNumber, _extensionInfo, _callMonitor, _subscription, _appFeatures, _storage, _callLogOptions) {
     var _this$_callLogOptions, _this$_callLogOptions2;
     var _this;
     _classCallCheck(this, CallLog);
@@ -106,6 +120,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
     _this._client = _client;
     _this._extensionPhoneNumber = _extensionPhoneNumber;
     _this._extensionInfo = _extensionInfo;
+    _this._callMonitor = _callMonitor;
     _this._subscription = _subscription;
     _this._appFeatures = _appFeatures;
     _this._storage = _storage;
@@ -115,6 +130,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
     _this._timeoutId = null;
     _this._handleSyncApiError = null;
     _initializerDefineProperty(_this, "data", _descriptor, _this);
+    _initializerDefineProperty(_this, "_sideLoadedData", _descriptor2, _this);
     var disableCache = (_this$_callLogOptions = (_this$_callLogOptions2 = _this._callLogOptions) === null || _this$_callLogOptions2 === void 0 ? void 0 : _this$_callLogOptions2.disableCache) !== null && _this$_callLogOptions !== void 0 ? _this$_callLogOptions : false;
     if (!disableCache) {
       var _this$_storage;
@@ -137,6 +153,36 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       };
     }
   }, {
+    key: "clearSideLoadedCalls",
+    value: function clearSideLoadedCalls() {
+      this._sideLoadedData = {
+        list: [],
+        map: {}
+      };
+    }
+  }, {
+    key: "replaceSideLoadedCalls",
+    value: function replaceSideLoadedCalls() {
+      var _this2 = this;
+      var records = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      if (!this._enableSideLoadedCalls) {
+        this.clearSideLoadedCalls();
+        return;
+      }
+      var nextData = {
+        list: [],
+        map: {}
+      };
+      (0, _helper.processRecords)(records).forEach(function (call) {
+        if (!call.id || _this2._hasWrongRecentCallDirection(call)) {
+          return;
+        }
+        nextData.list.push(call.id);
+        nextData.map[call.id] = call;
+      });
+      this._sideLoadedData = nextData;
+    }
+  }, {
     key: "clearToken",
     value: function clearToken() {
       this.data.token = null;
@@ -145,16 +191,16 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "filterExpiredCalls",
     value: function filterExpiredCalls(daySpan) {
-      var _this2 = this;
+      var _this3 = this;
       if (daySpan) {
         var cutOffTime = (0, _getDateFrom["default"])(daySpan).getTime();
         var newList = [];
         this.data.list.forEach(function (id) {
-          var call = _this2.data.map[id];
+          var call = _this3.data.map[id];
           if (call.startTime > cutOffTime) {
             newList.push(id);
           } else {
-            delete _this2.data.map[id];
+            delete _this3.data.map[id];
           }
         });
         this.data.list = newList;
@@ -163,7 +209,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "syncSuccess",
     value: function syncSuccess(_ref) {
-      var _this3 = this;
+      var _this4 = this;
       var timestamp = _ref.timestamp,
         syncToken = _ref.syncToken,
         _ref$records = _ref.records,
@@ -177,26 +223,34 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       var cutOffTime = daySpan && (0, _getDateFrom["default"])(daySpan).getTime();
       // filter old calls
       this.data.list.forEach(function (id) {
-        var call = _this3.data.map[id];
-        if (call.startTime > cutOffTime) {
+        var call = _this4.data.map[id];
+        if (call.startTime > cutOffTime && !_this4._hasWrongRecentCallDirection(call)) {
           newState.push(id);
         } else {
-          delete _this3.data.map[id];
+          delete _this4.data.map[id];
         }
       });
       (0, _helper.processRecords)(records, supplementRecords).forEach(function (call) {
-        var checkState = _this3._limitDaySpan && call.startTime > cutOffTime || !_this3._limitDaySpan;
+        if (_this4._hasWrongRecentCallDirection(call)) {
+          var index = newState.indexOf(call.id);
+          if (index > -1) {
+            newState.splice(index, 1);
+          }
+          delete _this4.data.map[call.id];
+          return;
+        }
+        var checkState = _this4._limitDaySpan && call.startTime > cutOffTime || !_this4._limitDaySpan;
         if (checkState) {
-          if (!_this3.data.map[call.id]) {
+          if (!_this4.data.map[call.id]) {
             newState.push(call.id);
           }
-          _this3.data.map[call.id] = call;
-          if (_this3._enableDeleted && call.deleted) {
-            var index = newState.indexOf(call.id);
-            if (index > -1) {
-              newState.splice(index, 1);
+          _this4.data.map[call.id] = call;
+          if (_this4._enableDeleted && call.deleted) {
+            var _index = newState.indexOf(call.id);
+            if (_index > -1) {
+              newState.splice(_index, 1);
             }
-            delete _this3.data.map[call.id];
+            delete _this4.data.map[call.id];
           }
         }
       });
@@ -278,6 +332,12 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       return (_this$_callLogOptions23 = (_this$_callLogOptions24 = this._callLogOptions) === null || _this$_callLogOptions24 === void 0 ? void 0 : _this$_callLogOptions24.enableDeleted) !== null && _this$_callLogOptions23 !== void 0 ? _this$_callLogOptions23 : false;
     }
   }, {
+    key: "_enableSideLoadedCalls",
+    get: function get() {
+      var _this$_callLogOptions25, _this$_callLogOptions26;
+      return (_this$_callLogOptions25 = (_this$_callLogOptions26 = this._callLogOptions) === null || _this$_callLogOptions26 === void 0 ? void 0 : _this$_callLogOptions26.enableSideLoadedCalls) !== null && _this$_callLogOptions25 !== void 0 ? _this$_callLogOptions25 : false;
+    }
+  }, {
     key: "_shouldInit",
     value: function _shouldInit() {
       return !!(_superPropGet(CallLog, "_shouldInit", this, 3)([]) && this._auth.loggedIn);
@@ -345,27 +405,28 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       this._clearTimeout();
       this._promise = null;
       this.resetData();
+      this.clearSideLoadedCalls();
     }
   }, {
     key: "onInitOnce",
     value: function onInitOnce() {
-      var _this4 = this;
+      var _this5 = this;
       var hasReadExtensionCallLog$ = (0, _nextCore.fromWatchValue)(this, function () {
-        return _this4._appFeatures.hasReadExtensionCallLog;
+        return _this5._appFeatures.hasReadExtensionCallLog;
       });
       var haveNewCallEnded$ = this._subscription.fromMessage$(presenceRegExp).pipe((0, _rxjs.filter)(function (data) {
         return Boolean(data.activeCalls && (0, _callLogHelpers.hasEndedCalls)(data.activeCalls));
       }));
       this.readyState$.pipe((0, _rxjs.switchMap)(function () {
-        return _this4.ready ? hasReadExtensionCallLog$ : _rxjs.EMPTY;
+        return _this5.ready ? hasReadExtensionCallLog$ : _rxjs.EMPTY;
       }), (0, _rxjs.switchMap)(function (hasReadExtensionCallLog) {
         return hasReadExtensionCallLog ? haveNewCallEnded$ : _rxjs.EMPTY;
       }), (0, _rxjs.delay)(SYNC_DELAY), (0, _rxjs.tap)(function () {
-        _this4.logger.log('have new active call ended, wait 30s for sync again');
+        _this5.logger.log('have new active call ended, wait 30s for sync again');
       }), (0, _rxjs.switchMap)(function () {
-        return _this4.sync();
+        return _this5.sync();
       }), (0, _rxjs.tap)(function () {
-        _this4.logger.log('active call ended sync done');
+        _this5.logger.log('active call ended sync done');
       }), _nextCore.takeUntilAppDestroy).subscribe();
     }
   }, {
@@ -408,45 +469,82 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       return _init;
     }()
   }, {
+    key: "_isCallVisibleInCallLogList",
+    value: function _isCallVisibleInCallLogList(call, cutoffTime) {
+      if (cutoffTime !== null && call.startTime <= cutoffTime) {
+        return false;
+      }
+      if (this._hasWrongRecentCallDirection(call)) {
+        return false;
+      }
+      // * in new version of app, only when the call have telephonySessionId will be show in our app
+      if (process.env.THEME_SYSTEM === 'spring-ui' && !call.telephonySessionId) {
+        return false;
+      }
+      if (
+      // [RCINT-3472] calls with result === 'stopped' seems to be useless
+      call.result === _callResults.callResults.stopped ||
+      // [RCINT-51111] calls with result === 'busy'
+      call.result === _callResults.callResults.busy ||
+      // [RCINT-6839] Call processing result is undefined
+      call.result === _callResults.callResults.unknown ||
+      // Outgoing fax sending has failed
+      // TODO: Types of Legacy, remove for checking type?
+      // @ts-ignore
+      call.result === _callResults.callResults.faxSendError ||
+      // Incoming fax has failed to be received
+      call.result === _callResults.callResults.faxReceiptError ||
+      // Outgoing fax has failed because of no answer
+      call.result === _callResults.callResults.callFailed ||
+      // Error Internal error occurred when receiving fax
+      // TODO: Types of Legacy, remove for checking type?
+      // @ts-ignore
+      call.result === _callResults.callResults.faxReceipt) {
+        return false;
+      }
+      return true;
+    }
+
+    /**
+     * some how the call direction in call log is different from the call direction in call monitor, that is a wrong data from platform, we need remove that.
+     */
+  }, {
+    key: "_hasWrongRecentCallDirection",
+    value: function _hasWrongRecentCallDirection(call) {
+      var recentDirection = this._callMonitor.getRecentCallDirection(call.sessionId);
+      return Boolean(recentDirection && call.direction && recentDirection !== call.direction);
+    }
+  }, {
     key: "calls",
     get: function get() {
-      var _this5 = this;
+      var _this6 = this;
       /**
        * old call log data structure migration
        */
       if (_typeof(this.data.list[0]) === 'object') {
         return [];
       }
+      var callIds;
+      if (!this._enableSideLoadedCalls) {
+        callIds = this.data.list;
+      } else {
+        var sideLoadedIds = this._sideLoadedData.list.filter(function (id) {
+          return !_this6.data.map[id];
+        });
+        callIds = sideLoadedIds.length > 0 ? [].concat(_toConsumableArray(this.data.list), _toConsumableArray(sideLoadedIds)) : this.data.list;
+      }
+      var cutoffTime = this._limitDaySpan && this._daySpan ? (0, _getDateFrom["default"])(this._daySpan).getTime() : null;
 
       // TODO: make sure removeDuplicateIntermediateCalls is necessary here
       var calls = (0, _callLogHelpers.removeInboundRingOutLegs)((0, _callLogHelpers.removeDuplicateIntermediateCalls)(
       // https://developers.ringcentral.com/api-reference/Call-Log/readUserCallLog
       //@ts-ignore
-      this.data.list.reduce(function (acc, id) {
-        var call = _this5.data.map[id];
-        var valid =
-        // * in new version of app, only when the call have telephonySessionId will be show in our app
-        (process.env.THEME_SYSTEM === 'spring-ui' ? call.telephonySessionId : true) &&
-        // [RCINT-3472] calls with result === 'stopped' seems to be useless
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.stopped &&
-        // [RCINT-51111] calls with result === 'busy'
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.busy &&
-        // [RCINT-6839]
-        // Call processing result is undefined
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.unknown &&
-        // Outgoing fax sending has failed
-        // TODO: Types of Legacy, remove for checking type?
-        // @ts-ignore
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.faxSendError &&
-        // Incoming fax has failed to be received
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.faxReceiptError &&
-        // Outgoing fax has failed because of no answer
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.callFailed &&
-        // Error Internal error occurred when receiving fax
-        // TODO: Types of Legacy, remove for checking type?
-        // @ts-ignore
-        (call === null || call === void 0 ? void 0 : call.result) !== _callResults.callResults.faxReceipt;
-        if (valid) {
+      callIds.reduce(function (acc, id) {
+        var call = _this6.data.map[id] || (_this6._enableSideLoadedCalls ? _this6._sideLoadedData.map[id] : null);
+        if (!call) {
+          return acc;
+        }
+        if (_this6._isCallVisibleInCallLogList(call, cutoffTime)) {
           acc.push(call);
         }
         return acc;
@@ -485,7 +583,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
     key: "_fetch",
     value: function () {
       var _fetch2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(fromToParams) {
-        var _this6 = this;
+        var _this7 = this;
         var perPageParam, fetchFn, data, _t2;
         return _regenerator().w(function (_context4) {
           while (1) switch (_context4.p = _context4.n) {
@@ -494,7 +592,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
                 perPage: this._listRecordCount
               } : {};
               fetchFn = function fetchFn(params) {
-                return _this6._client.account().extension().callLog().list(_objectSpread(_objectSpread(_objectSpread({}, params), fromToParams), perPageParam));
+                return _this7._client.account().extension().callLog().list(_objectSpread(_objectSpread(_objectSpread({}, params), fromToParams), perPageParam));
               };
               if (!this._limitSupplement) {
                 _context4.n = 4;
@@ -728,7 +826,7 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
     key: "sync",
     value: function () {
       var _sync3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
-        var _this7 = this;
+        var _this8 = this;
         var syncType,
           _args0 = arguments;
         return _regenerator().w(function (_context0) {
@@ -751,21 +849,21 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
                   while (1) switch (_context9.n) {
                     case 0:
                       _context9.n = 1;
-                      return _this7._promise;
+                      return _this8._promise;
                     case 1:
-                      _this7._promise = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+                      _this8._promise = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
                         return _regenerator().w(function (_context8) {
                           while (1) switch (_context8.n) {
                             case 0:
                               _context8.n = 1;
                               return (0, _utils.sleep)(300);
                             case 1:
-                              return _context8.a(2, _this7._sync(syncType));
+                              return _context8.a(2, _this8._sync(syncType));
                           }
                         }, _callee8);
                       }))();
-                      _this7._queueSync = null;
-                      return _context9.a(2, _this7._promise);
+                      _this8._queueSync = null;
+                      return _context9.a(2, _this8._promise);
                   }
                 }, _callee9);
               }))();
@@ -809,28 +907,28 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_startPolling",
     value: function _startPolling() {
-      var _this8 = this;
+      var _this9 = this;
       var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.timestamp + this.pollingInterval + 10 - Date.now();
       this._clearTimeout();
       this._timeoutId = setTimeout(function () {
-        _this8._timeoutId = null;
-        if (!_this8.timestamp || Date.now() - _this8.timestamp > _this8.ttl) {
-          _this8.fetchData();
+        _this9._timeoutId = null;
+        if (!_this9.timestamp || Date.now() - _this9.timestamp > _this9.ttl) {
+          _this9.fetchData();
         } else {
-          _this8._startPolling();
+          _this9._startPolling();
         }
       }, t);
     }
   }, {
     key: "_retry",
     value: function _retry() {
-      var _this9 = this;
+      var _this0 = this;
       var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.timeToRetry;
       this._clearTimeout();
       this._timeoutId = setTimeout(function () {
-        _this9._timeoutId = null;
-        if (!_this9.timestamp || Date.now() - _this9.timestamp > _this9.ttl) {
-          _this9.fetchData();
+        _this0._timeoutId = null;
+        if (!_this0.timestamp || Date.now() - _this0.timestamp > _this0.ttl) {
+          _this0.fetchData();
         }
       }, t);
     }
@@ -847,5 +945,15 @@ var CallLog = exports.CallLog = (_dec = (0, _nextCore.injectable)({
       timestamp: null
     };
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearToken", [_nextCore.action, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "clearToken"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "filterExpiredCalls", [_nextCore.action, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "filterExpiredCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncSuccess", [_nextCore.action, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "syncSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "calls", [_nextCore.computed, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "calls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetch", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_iSync", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "_iSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fSync", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "_fSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sync", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "_sync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sync", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "sync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fetchData", [_dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "fetchData"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_sideLoadedData", [_nextCore.state, _dec8], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return {
+      list: [],
+      map: {}
+    };
+  }
+}), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearSideLoadedCalls", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "clearSideLoadedCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replaceSideLoadedCalls", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "replaceSideLoadedCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearToken", [_nextCore.action, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "clearToken"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "filterExpiredCalls", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "filterExpiredCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncSuccess", [_nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "syncSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "calls", [_nextCore.computed, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "calls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetch", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_iSync", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "_iSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fSync", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "_fSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sync", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "_sync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sync", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "sync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fetchData", [_dec36, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "fetchData"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=CallLog.js.map

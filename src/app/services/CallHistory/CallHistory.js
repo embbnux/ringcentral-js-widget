@@ -296,7 +296,7 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
       // this means the initial batch of call logs are already loaded when the watchers are set
       // so we need to trigger the match manually for those to be matched
       (_this$_contactMatcher = this._contactMatcher) === null || _this$_contactMatcher === void 0 ? void 0 : _this$_contactMatcher.triggerMatch({
-        ignoreCache: !!((_this$_callHistoryOpt5 = this._callHistoryOptions) === null || _this$_callHistoryOpt5 === void 0 ? void 0 : _this$_callHistoryOpt5.contactMatchIgnoreCache)
+        ignoreCache: !!((_this$_callHistoryOpt5 = this._callHistoryOptions) !== null && _this$_callHistoryOpt5 !== void 0 && _this$_callHistoryOpt5.contactMatchIgnoreCache)
       });
       (_this$_activityMatche2 = this._activityMatcher) === null || _this$_activityMatche2 === void 0 ? void 0 : _this$_activityMatche2.triggerMatch();
       this.removeExpiredEndedCalls();
@@ -362,13 +362,13 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
       }, function (_ref2) {
         var _ref3 = _slicedToArray(_ref2, 3),
           _ref3$ = _ref3[0],
-          currentCalls = _ref3$ === void 0 ? [] : _ref3$,
+          callLogCalls = _ref3$ === void 0 ? [] : _ref3$,
           _ref3$2 = _ref3[1],
           activeCalls = _ref3$2 === void 0 ? [] : _ref3$2,
           ready = _ref3[2];
         if (!ready) return;
         var ids = {};
-        currentCalls.forEach(function (call) {
+        callLogCalls.forEach(function (call) {
           ids[call.telephonySessionId] = true;
         });
         // if a callQueue call has been ignored, it will be added to endedCalls, when it comes back again, need to remove this from endedCalls
@@ -547,37 +547,9 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
       }).sort(_callLogHelpers.sortByStartTime);
     }
   }, {
-    key: "enableFullPhoneNumberMatch",
-    get: function get() {
-      var _this$_callHistoryOpt6, _this$_callHistoryOpt7;
-      return (_this$_callHistoryOpt6 = (_this$_callHistoryOpt7 = this._callHistoryOptions) === null || _this$_callHistoryOpt7 === void 0 ? void 0 : _this$_callHistoryOpt7.enableFullPhoneNumberMatch) !== null && _this$_callHistoryOpt6 !== void 0 ? _this$_callHistoryOpt6 : false;
-    }
-
-    /**
-     * Allow sub class to have different find matches logic.
-     * @param contactMapping
-     * @param call
-     * @returns
-     */
-  }, {
-    key: "findMatches",
-    value: function findMatches(contactMapping, call) {
-      var pickNumber = this.enableFullPhoneNumberMatch ? _callHistoryHelper.pickFullPhoneNumber : _callHistoryHelper.pickPhoneOrExtensionNumber;
-      var fromNumber = call.from && pickNumber(call.from.phoneNumber, call.from.extensionNumber);
-      var toNumber = call.to && pickNumber(call.to.phoneNumber, call.to.extensionNumber);
-      var fromMatches = fromNumber && contactMapping[fromNumber] || [];
-      var toMatches = toNumber && contactMapping[toNumber] || [];
-      return {
-        fromMatches: fromMatches,
-        toMatches: toMatches
-      };
-    }
-  }, {
     key: "callsInfo",
     get: function get() {
-      var _this$_contactMatcher2,
-        _this$_contactMatcher3,
-        _this$_activityMatche3,
+      var _this$_activityMatche3,
         _this$_activityMatche4,
         _this$_callMonitor$ca,
         _this7 = this;
@@ -588,17 +560,20 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
         telephonySessionIdCallMap: {},
         calls: []
       };
-      var contactMapping = (_this$_contactMatcher2 = (_this$_contactMatcher3 = this._contactMatcher) === null || _this$_contactMatcher3 === void 0 ? void 0 : _this$_contactMatcher3.dataMapping) !== null && _this$_contactMatcher2 !== void 0 ? _this$_contactMatcher2 : {};
       var activityMapping = (_this$_activityMatche3 = (_this$_activityMatche4 = this._activityMatcher) === null || _this$_activityMatche4 === void 0 ? void 0 : _this$_activityMatche4.dataMapping) !== null && _this$_activityMatche3 !== void 0 ? _this$_activityMatche3 : {};
       var callMatched = (_this$_callMonitor$ca = this._callMonitor.callMatched) !== null && _this$_callMonitor$ca !== void 0 ? _this$_callMonitor$ca : {};
       var telephonySessionIds = {};
       var calls = this.normalizedCalls.map(function (call) {
+        var _this7$_contactMatche;
         telephonySessionIds[call.telephonySessionId] = true;
         var fromName = call.from.name || call.from.phoneNumber;
         var toName = call.to.name || call.to.phoneNumber;
-        var _this7$findMatches = _this7.findMatches(contactMapping, call),
-          fromMatches = _this7$findMatches.fromMatches,
-          toMatches = _this7$findMatches.toMatches;
+        var _ref4 = ((_this7$_contactMatche = _this7._contactMatcher) === null || _this7$_contactMatche === void 0 ? void 0 : _this7$_contactMatche.findMatchesFromCall(call)) || {
+            fromMatches: [],
+            toMatches: []
+          },
+          fromMatches = _ref4.fromMatches,
+          toMatches = _ref4.toMatches;
         var activityMatches = activityMapping[call.sessionId] || [];
         var matched = callMatched[call.sessionId];
         var item = _objectSpread(_objectSpread({}, call), {}, {
@@ -618,11 +593,14 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
       var filteredEndedCalls = this.endedCalls.filter(function (call) {
         return !telephonySessionIds[call.telephonySessionId];
       }).map(function (call) {
+        var _this7$_contactMatche2;
         var activityMatches = activityMapping[call.sessionId] || [];
-        var fromNumber = call.from && (call.from.phoneNumber || call.from.extensionNumber);
-        var toNumber = call.to && (call.to.phoneNumber || call.to.extensionNumber);
-        var fromMatches = fromNumber && contactMapping[fromNumber] || [];
-        var toMatches = toNumber && contactMapping[toNumber] || [];
+        var _ref5 = ((_this7$_contactMatche2 = _this7._contactMatcher) === null || _this7$_contactMatche2 === void 0 ? void 0 : _this7$_contactMatche2.findMatchesFromCall(call)) || {
+            fromMatches: [],
+            toMatches: []
+          },
+          fromMatches = _ref5.fromMatches,
+          toMatches = _ref5.toMatches;
         var item = _objectSpread(_objectSpread({}, call), {}, {
           activityMatches: activityMatches,
           fromMatches: fromMatches,
@@ -786,7 +764,7 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
     get: function get() {
       var _this$_activityMatche5,
         _this8 = this;
-      if ((_this$_activityMatche5 = this._activityMatcher) === null || _this$_activityMatche5 === void 0 ? void 0 : _this$_activityMatche5.dataMapping) {
+      if ((_this$_activityMatche5 = this._activityMatcher) !== null && _this$_activityMatche5 !== void 0 && _this$_activityMatche5.dataMapping) {
         var newCalls = this.filterCalls.map(function (call) {
           var _this8$_activityMatch;
           return _objectSpread(_objectSpread({}, call), {}, {
@@ -820,8 +798,8 @@ var CallHistory = exports.CallHistory = (_dec = (0, _nextCore.injectable)({
     get: function get() {
       var output = [];
       var numberMap = {};
-      this.normalizedCalls.forEach((0, _callHistoryHelper.addNumbersFromCall)(output, numberMap, this.enableFullPhoneNumberMatch));
-      this.endedCalls.forEach((0, _callHistoryHelper.addNumbersFromCall)(output, numberMap, this.enableFullPhoneNumberMatch));
+      this.normalizedCalls.forEach((0, _callHistoryHelper.addNumbersFromCall)(output, numberMap));
+      this.endedCalls.forEach((0, _callHistoryHelper.addNumbersFromCall)(output, numberMap));
       return output;
     }
   }, {

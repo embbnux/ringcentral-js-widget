@@ -6,11 +6,15 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.from.js");
+require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.date.to-primitive.js");
+require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.object.define-properties.js");
@@ -20,6 +24,8 @@ require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
+require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
@@ -29,6 +35,7 @@ exports.CallLogTasks = void 0;
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.date.now.js");
+require("core-js/modules/es.object.entries.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.to-string.js");
@@ -44,8 +51,14 @@ var _Call = require("../Call");
 var _CallHistory = require("../CallHistory");
 var _CallMonitor = require("../CallMonitor");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _class, _class2, _descriptor, _descriptor2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class, _class2, _descriptor, _descriptor2;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -71,7 +84,7 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var DEFAULT_ISSUE_TACKING_SETTINGS_URL = '/settings/issuesTracking';
 var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
   name: 'CallLogTasks'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Toast === "undefined" ? Object : _services.Toast, typeof _services.ToastManager === "undefined" ? Object : _services.ToastManager, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _CallMonitor.CallMonitor === "undefined" ? Object : _CallMonitor.CallMonitor, typeof _CallHistory.CallHistory === "undefined" ? Object : _CallHistory.CallHistory, typeof DialerView === "undefined" ? Object : DialerView, typeof _Call.Call === "undefined" ? Object : _Call.Call, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof CallsMapping === "undefined" ? Object : CallsMapping), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof Partial === "undefined" ? Object : Partial]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String]), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String]), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [String]), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [Array]), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Toast === "undefined" ? Object : _services.Toast, typeof _services.ToastManager === "undefined" ? Object : _services.ToastManager, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _CallMonitor.CallMonitor === "undefined" ? Object : _CallMonitor.CallMonitor, typeof _CallHistory.CallHistory === "undefined" ? Object : _CallHistory.CallHistory, typeof DialerView === "undefined" ? Object : DialerView, typeof _Call.Call === "undefined" ? Object : _Call.Call, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof CallsMapping === "undefined" ? Object : CallsMapping), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof Partial === "undefined" ? Object : Partial]), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof Record === "undefined" ? Object : Record]), _dec9 = (0, _nextCore.delegate)('server'), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [String]), _dec10 = (0, _nextCore.delegate)('server'), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [String]), _dec16 = (0, _nextCore.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [String]), _dec19 = (0, _nextCore.delegate)('server'), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [Array]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function CallLogTasks(_router, _toast, _toastManager, _storage, _callMonitor, _callHistory, _dialerView, _call, _portManager) {
     var _this;
     _classCallCheck(this, CallLogTasks);
@@ -189,6 +202,18 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
       this.callsMappingState[identify] = _objectSpread(_objectSpread({}, originalState), newValue);
     }
   }, {
+    key: "updateCallStates",
+    value: function updateCallStates(updates) {
+      var _this3 = this;
+      Object.entries(updates).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+          identify = _ref2[0],
+          newValue = _ref2[1];
+        var originalState = _this3.callsMappingState[identify];
+        _this3.callsMappingState[identify] = _objectSpread(_objectSpread({}, originalState), newValue);
+      });
+    }
+  }, {
     key: "updateCallLogState",
     value: function () {
       var _updateCallLogState = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(identify) {
@@ -287,7 +312,7 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
     key: "saveError",
     value: function () {
       var _saveError = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(identify) {
-        var _this3 = this;
+        var _this4 = this;
         var withoutToast,
           _args8 = arguments;
         return _regenerator().w(function (_context8) {
@@ -301,7 +326,7 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
               });
               if (!withoutToast) {
                 this.uniqueManager.unique(function () {
-                  return _this3._toast.open(_this3.saveErrorToast);
+                  return _this4._toast.open(_this4.saveErrorToast);
                 }, 'keep');
               }
             case 1:
@@ -338,9 +363,9 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "deleteTask",
     value: function deleteTask(ids) {
-      var _this4 = this;
+      var _this5 = this;
       ids.forEach(function (id) {
-        delete _this4.callsMappingState[id];
+        delete _this5.callsMappingState[id];
       });
     }
 
@@ -352,12 +377,12 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_cleanCache",
     value: function _cleanCache() {
-      var _this5 = this;
+      var _this6 = this;
       var expiredTaskIds = [];
 
       // only keep the data that will be show in our app
       this.taskIds.forEach(function (taskId) {
-        if (!_this5._callHistory.getCallBySessionId(taskId)) {
+        if (!_this6._callHistory.getCallBySessionId(taskId)) {
           expiredTaskIds.push(taskId);
         }
       });
@@ -376,9 +401,9 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "loggedMap",
     get: function get() {
-      var _this6 = this;
+      var _this7 = this;
       return Object.keys(this.callsMappingState).reduce(function (acc, key) {
-        acc[key] = _this6.callsMappingState[key].isSucceed;
+        acc[key] = _this7.callsMappingState[key].isSucceed;
         return acc;
       }, {});
     }
@@ -407,12 +432,12 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "update", [_nextCore.action, _dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "update"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateCallLogState", [_dec7, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "updateCallLogState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "saveSuccess", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "saveSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "saving", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "saving"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "markAsUnSaving", [_dec14, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "markAsUnSaving"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "saveErrorToast", [_nextCore.portal], {
+}), _applyDecoratedDescriptor(_class2.prototype, "update", [_nextCore.action, _dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "update"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateCallStates", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "updateCallStates"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateCallLogState", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "updateCallLogState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "saveSuccess", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "saveSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "saving", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "saving"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "markAsUnSaving", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "markAsUnSaving"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "saveErrorToast", [_nextCore.portal], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
-    var _this7 = this;
+    var _this8 = this;
     return this._toast.create({
       view: function view() {
         // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -420,7 +445,7 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
           action = _useToastItemView.action;
         return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, (0, _i18n.t)('saveError'), /*#__PURE__*/_react["default"].createElement(_springUi.Link, {
           onClick: function onClick() {
-            _this7._router.push(DEFAULT_ISSUE_TACKING_SETTINGS_URL);
+            _this8._router.push(DEFAULT_ISSUE_TACKING_SETTINGS_URL);
             action === null || action === void 0 ? void 0 : action.close();
           }
         }, ' ', (0, _i18n.t)('reportIssue')));
@@ -433,5 +458,5 @@ var CallLogTasks = exports.CallLogTasks = (_dec = (0, _nextCore.injectable)({
       }
     });
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "saveError", [_dec17, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "saveError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deleteTask", [_nextCore.action, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "deleteTask"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loggedMap", [_nextCore.computed, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "loggedMap"), _class2.prototype), _class2)) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "saveError", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "saveError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deleteTask", [_nextCore.action, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "deleteTask"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loggedMap", [_nextCore.computed, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "loggedMap"), _class2.prototype), _class2)) || _class) || _class) || _class);
 //# sourceMappingURL=CallLogTasks.js.map

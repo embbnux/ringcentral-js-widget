@@ -258,8 +258,8 @@ var ReferenceSearchPanel = exports.ReferenceSearchPanel = function ReferenceSear
         addEntityMenu.onSelect(option.type);
         handleMenuClose();
       }
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      className: "mr-2"
+    }, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "mr-2 flex"
     }, option.icon), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, option.label));
   })));
 };

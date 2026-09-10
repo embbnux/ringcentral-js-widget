@@ -62,12 +62,21 @@ import type {
   DeviceCallsMapInfo,
 } from './CallMonitor.interface';
 import { type CallEvent, callEvents } from './callEvents';
+import { RECENT_CALL_DIRECTIONS_LIMIT } from './const';
+
+type CallDirection = NonNullable<ICall['direction']>;
 
 @injectable({
   name: 'CallMonitor',
 })
 export class CallMonitor extends RcModule {
   private _eventEmitter = new EventEmitter();
+
+  @state
+  protected _recentCallDirectionMap: Record<string, CallDirection> = {};
+
+  @state
+  protected _recentCallDirectionSessionIds: string[] = [];
 
   private _enableContactMatchWhenNewCall: boolean =
     this._callMonitorOptions?.enableContactMatchWhenNewCall ?? true;
@@ -100,6 +109,10 @@ export class CallMonitor extends RcModule {
   ) {
     super();
     this._storage.enable(this);
+
+    this.onNewCall((call) => {
+      this._storeRecentCallDirection(call);
+    });
 
     if (this._enableContactMatchWhenNewCall) {
       this._contactMatcher?.addQuerySource({
@@ -156,6 +169,46 @@ export class CallMonitor extends RcModule {
   onCallUpdated(callback: CallEventCallback) {
     this._eventEmitter.on(callEvents.callUpdated, callback);
     return this;
+  }
+
+  @action
+  protected _storeRecentCallDirection(call: ICall) {
+    const { sessionId, direction } = call;
+
+    if (!sessionId || !direction) {
+      return;
+    }
+
+    const sessionIds = this._recentCallDirectionSessionIds.filter(
+      (recentSessionId) => recentSessionId !== sessionId,
+    );
+    sessionIds.push(sessionId);
+
+    const expiredSessionIds = sessionIds.slice(
+      0,
+      sessionIds.length - RECENT_CALL_DIRECTIONS_LIMIT,
+    );
+    const nextDirectionMap = {
+      ...this._recentCallDirectionMap,
+      [sessionId]: direction,
+    };
+
+    expiredSessionIds.forEach((expiredSessionId) => {
+      delete nextDirectionMap[expiredSessionId];
+    });
+
+    this._recentCallDirectionSessionIds = sessionIds.slice(
+      -RECENT_CALL_DIRECTIONS_LIMIT,
+    );
+    this._recentCallDirectionMap = nextDirectionMap;
+  }
+
+  getRecentCallDirection(sessionId: string | null | undefined) {
+    if (!sessionId) {
+      return undefined;
+    }
+
+    return this._recentCallDirectionMap[sessionId];
   }
 
   override onInitOnce() {
@@ -417,20 +470,22 @@ export class CallMonitor extends RcModule {
           );
           id = presenceCall?.id!;
         }
-        // normalize number for ensure the number is matcher mapping with same key
         const fromNumber = this._numberFormatter.normalizeNumber(
           from?.phoneNumber,
         );
         const toNumber = this._numberFormatter.normalizeNumber(to?.phoneNumber);
+
+        const { fromMatches, toMatches } =
+          this._contactMatcher?.findMatchesFromCall(curr) || {
+            fromMatches: [],
+            toMatches: [],
+          };
         const toName = to?.name;
         const fromName = from?.name;
         const partyId = party?.id;
 
         const contactMapping = this._contactMatcher?.dataMapping ?? {};
         const activityMapping = this._activityMatcher?.dataMapping ?? {};
-
-        const fromMatches = (fromNumber && contactMapping[fromNumber]) || [];
-        const toMatches = (toNumber && contactMapping[toNumber]) || [];
 
         const toNumberEntity = this.callMatched[sessionId];
 

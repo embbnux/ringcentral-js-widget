@@ -8,6 +8,28 @@ require("core-js/modules/web.dom-collections.for-each.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _CallControlActionButtons = require("./CallControlActionButtons");
+Object.keys(_CallControlActionButtons).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _CallControlActionButtons[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _CallControlActionButtons[key];
+    }
+  });
+});
+var _CallControlLayout = require("./CallControlLayout");
+Object.keys(_CallControlLayout).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _CallControlLayout[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _CallControlLayout[key];
+    }
+  });
+});
 var _CallControlPanel = require("./CallControlPanel");
 Object.keys(_CallControlPanel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

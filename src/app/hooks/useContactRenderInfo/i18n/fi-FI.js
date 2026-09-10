@@ -95,7 +95,7 @@ var _default = exports["default"] = {
   matches: '{numberOfMatches} osumaa',
   maybe: 'Ehkä: {contactName}',
   optedOut: 'Vastaanottaja on peruuttanut tilauksen.',
-  optOutAlertTooltip: 'Vastaanottajan on tilattava viestit uudelleen, jotta hän voi vastaanottaa tekstiviestejä tästä numerosta.'
+  optOutAlertTooltip: 'Vastaanottajan on annettava suostumuksensa uudelleen voidakseen vastaanottaa tekstiviestejä tästä numerosta.'
 }; // @key: @#@"to"@#@ @source: @#@"To"@#@
 // @key: @#@"from"@#@ @source: @#@"From"@#@
 // @key: @#@"ext"@#@ @source: @#@"Ext."@#@

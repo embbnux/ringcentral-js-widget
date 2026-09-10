@@ -258,7 +258,7 @@ var CallLogger = exports.CallLogger = (_dec = (0, _nextCore.injectable)({
     key: "_activityMatcherCheck",
     value: function _activityMatcherCheck(sessionId) {
       var _this$_activityMatche, _this$_activityMatche2;
-      return !((_this$_activityMatche = this._activityMatcher) === null || _this$_activityMatche === void 0 ? void 0 : _this$_activityMatche.dataMapping[sessionId]) || !((_this$_activityMatche2 = this._activityMatcher) === null || _this$_activityMatche2 === void 0 ? void 0 : _this$_activityMatche2.dataMapping[sessionId].length);
+      return !((_this$_activityMatche = this._activityMatcher) !== null && _this$_activityMatche !== void 0 && _this$_activityMatche.dataMapping[sessionId]) || !((_this$_activityMatche2 = this._activityMatcher) !== null && _this$_activityMatche2 !== void 0 && _this$_activityMatche2.dataMapping[sessionId].length);
     }
   }, {
     key: "_customMatcherCheck",

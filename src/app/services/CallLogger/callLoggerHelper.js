@@ -18,7 +18,7 @@ function callIdentityFunction(call) {
 }
 function hasRecording(call) {
   var _call$recording;
-  return !!((_call$recording = call.recording) === null || _call$recording === void 0 ? void 0 : _call$recording.id);
+  return !!((_call$recording = call.recording) !== null && _call$recording !== void 0 && _call$recording.id);
 }
 
 // W6t1Xt8UVDFNQA&recordingId=1455472006&from=+18085820904&to=+18707762775&date=2021-10-09T14:35:32.748Z

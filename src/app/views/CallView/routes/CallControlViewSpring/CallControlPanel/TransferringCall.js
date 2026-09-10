@@ -37,7 +37,7 @@ var TransferringCallItem = function TransferringCallItem(_ref) {
     className: "flex flex-nowrap gap-4",
     "data-sign": dataSign
   }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: (0, _clsx["default"])('flex flex-nowrap items-center flex-auto gap-2 rounded-full px-4 py-2 text-left typography-mainText hover:bg-neutral-b4/40', active ? 'bg-neutral-b4' : undefined),
+    className: (0, _clsx["default"])('flex h-8 flex-nowrap items-center flex-auto gap-2 rounded-full px-4 text-left typography-mainText hover:bg-neutral-b4/40', active ? 'bg-neutral-b4' : undefined),
     onClick: function onClick() {
       if (active) return;
       onAction('activeCall', telephonySessionId);
@@ -59,7 +59,7 @@ var TransferringCallItem = function TransferringCallItem(_ref) {
       title: t(call.isConferenceCall ? 'leaveCall' : 'endCall')
     },
     "data-sign": "endCall",
-    className: active ? undefined : 'invisible',
+    className: (0, _clsx["default"])('h-8 w-8 min-w-8', active ? undefined : 'invisible'),
     onClick: function onClick() {
       onAction('hangUpWarmTransfer', telephonySessionId);
     }
@@ -76,7 +76,8 @@ var TransferringCall = exports.TransferringCall = function TransferringCall(_ref
     t = _useLocale2.t;
   var activeTelephonySessionId = call.telephonySessionId;
   return /*#__PURE__*/_react["default"].createElement("div", {
-    "data-sign": "transferring-calls"
+    "data-sign": "transferring-calls",
+    className: "flex flex-col h-full overflow-hidden"
   }, /*#__PURE__*/_react["default"].createElement(_components.PageHeader, {
     className: "h-12",
     onBackClick: function onBackClick() {
@@ -87,7 +88,7 @@ var TransferringCall = exports.TransferringCall = function TransferringCall(_ref
       onExpand: onExpand
     }) : null
   }, t('transferTitle')), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "mx-4 space-y-1 mt-6"
+    className: "mx-4 space-y-1 mt-4 flex-none"
   }, transferringCalls.map(function (transferringCall, index) {
     var currTelephonySessionId = transferringCall.telephonySessionId;
     return /*#__PURE__*/_react["default"].createElement(TransferringCallItem, {
@@ -97,13 +98,15 @@ var TransferringCall = exports.TransferringCall = function TransferringCall(_ref
       active: currTelephonySessionId === activeTelephonySessionId,
       onAction: onAction
     });
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex flex-col items-center mt-6 mb-12"
+  })), /*#__PURE__*/_react["default"].createElement("main", {
+    className: (0, _clsx["default"])('flex flex-col flex-auto items-center overflow-auto w-full h-0 pb-4')
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex flex-col items-center my-4"
   }, children), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex justify-center items-center relative"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
     color: "success",
-    size: "xxxlarge",
+    size: "xlarge",
     iconSize: "large",
     TooltipProps: {
       title: t('completeTransfer')
@@ -114,6 +117,6 @@ var TransferringCall = exports.TransferringCall = function TransferringCall(_ref
     onClick: function onClick() {
       onAction('completeWarmTransfer');
     }
-  })));
+  }))));
 };
 //# sourceMappingURL=TransferringCall.js.map

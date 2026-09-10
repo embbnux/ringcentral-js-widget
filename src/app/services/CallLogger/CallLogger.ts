@@ -277,9 +277,9 @@ export class CallLogger extends LoggerBase {
 
     if (allowedCallTypes.includes('ALL')) return true;
 
-    const isInboundCall = (call as any).direction === callDirection.inbound;
-    const isOutboundCall = (call as any).direction === callDirection.outbound;
-    const result = (call as any).result as string | undefined;
+    const isInboundCall = call.direction === callDirection.inbound;
+    const isOutboundCall = call.direction === callDirection.outbound;
+    const result = call.result;
     const isAnsweredCall = result === 'Accepted' || result === 'Connected';
     const isMissedCallWithoutVoiceMail = result === 'Missed';
     const isMissedCallWithVoiceMail = result === 'Voicemail';

@@ -82,7 +82,7 @@ var Element = function Element(_ref2) {
   var displayName = info.displayName,
     metadata = info.metadata,
     type = info.type;
-  var resultDisplayName = displayMaybe && (metadata === null || metadata === void 0 ? void 0 : metadata.showMaybe) ? (0, _i18n.t)('maybe', {
+  var resultDisplayName = displayMaybe && metadata !== null && metadata !== void 0 && metadata.showMaybe ? (0, _i18n.t)('maybe', {
     contactName: displayName
   }) : displayName;
   var viewable = _viewable && onViewEntity && (metadata === null || metadata === void 0 ? void 0 : metadata.contact) && (viewableEntityTypes === null || viewableEntityTypes === void 0 ? void 0 : viewableEntityTypes.includes(metadata === null || metadata === void 0 ? void 0 : (_metadata$contact = metadata.contact) === null || _metadata$contact === void 0 ? void 0 : _metadata$contact.type));
@@ -90,7 +90,7 @@ var Element = function Element(_ref2) {
   var main = /*#__PURE__*/_react["default"].createElement(Component, _extends({
     className: (0, _clsx["default"])('truncate self-stretch', viewable && 'cursor-pointer hover:underline', isMissed && 'typography-subtitleBold'),
     title: resultDisplayName,
-    "data-sign": (metadata === null || metadata === void 0 ? void 0 : metadata.queueName) ? "queueName-".concat(type) : type
+    "data-sign": metadata !== null && metadata !== void 0 && metadata.queueName ? "queueName-".concat(type) : type
   }, viewable ? {
     // add a empty href to make the component able to clickable and focusable
     href: '',
@@ -102,7 +102,7 @@ var Element = function Element(_ref2) {
   } : {}), resultDisplayName);
 
   // when be server name, display the hint icon for user to know that is server name not contact
-  var showServerCallerId = (metadata === null || metadata === void 0 ? void 0 : metadata.serverName) && !(metadata === null || metadata === void 0 ? void 0 : metadata.queueName) && type === 'callerIdName';
+  var showServerCallerId = (metadata === null || metadata === void 0 ? void 0 : metadata.serverName) && !(metadata !== null && metadata !== void 0 && metadata.queueName) && type === 'callerIdName';
   var numberOfMatches = metadata === null || metadata === void 0 ? void 0 : metadata.numberOfMatches;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _springUi.twMerge)('inline-flex flex-col min-w-0 max-w-full', align === 'center' ? 'items-center' : 'items-start')
@@ -141,7 +141,7 @@ function renderQueueWithName(_ref5) {
       });
     case 'contact':
       // when be queue number contact, only show the queue name
-      if ((_renderInfo$matchedCo = renderInfo.matchedContact) === null || _renderInfo$matchedCo === void 0 ? void 0 : _renderInfo$matchedCo.isCallQueueNumber) {
+      if ((_renderInfo$matchedCo = renderInfo.matchedContact) !== null && _renderInfo$matchedCo !== void 0 && _renderInfo$matchedCo.isCallQueueNumber) {
         return /*#__PURE__*/_react["default"].createElement(Renderer, null);
       }
       return /*#__PURE__*/_react["default"].createElement(Renderer, {
@@ -163,7 +163,7 @@ function renderQueueWithNameText(_ref6) {
       return "".concat(callQueueName, " - ").concat(renderInfo.displayName);
     case 'contact':
       // when be queue number contact, only show the queue name
-      if ((_renderInfo$matchedCo2 = renderInfo.matchedContact) === null || _renderInfo$matchedCo2 === void 0 ? void 0 : _renderInfo$matchedCo2.isCallQueueNumber) {
+      if ((_renderInfo$matchedCo2 = renderInfo.matchedContact) !== null && _renderInfo$matchedCo2 !== void 0 && _renderInfo$matchedCo2.isCallQueueNumber) {
         return renderInfo.displayName;
       }
       return "".concat(callQueueName, " - ").concat(renderInfo.displayName);

@@ -46,7 +46,6 @@ var _services2 = require("@ringcentral-integration/micro-contacts/src/app/servic
 var _services3 = require("@ringcentral-integration/micro-core/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _extractControls2 = _interopRequireDefault(require("@ringcentral-integration/phone-number/lib/extractControls"));
-var _utils = require("@ringcentral-integration/utils");
 var _rxjs = require("rxjs");
 var _ActiveCallControl = require("../ActiveCallControl");
 var _CallingSettings = require("../CallingSettings");
@@ -55,7 +54,7 @@ var _Softphone = require("../Softphone");
 var _Webphone = require("../Webphone");
 var _callStatus = require("./callStatus");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -101,11 +100,11 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
     isValidNumber: isValidNumber,
     clickDialerToCall: clickDialerToCall
   }];
-}), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [typeof ConnectOptions === "undefined" ? Object : ConnectOptions]), _dec16 = (0, _services.track)(function (_, callSettingMode) {
+}), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [typeof ConnectOptions === "undefined" ? Object : ConnectOptions]), _dec16 = (0, _nextCore.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [typeof ConnectOptions === "undefined" ? Object : ConnectOptions]), _dec19 = (0, _services.track)(function (_, callSettingMode) {
   return [callSettingMode === _CallingSettings.callingModes.webphone ? _trackEvents.trackEvents.outboundWebRTCCallConnected : _trackEvents.trackEvents.outboundCallConnected, {
     callSettingMode: callSettingMode
   }];
-}), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [String]), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof MakeCallParams === "undefined" ? Object : MakeCallParams]), _dec24 = (0, _nextCore.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [Object]), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [Object]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [String]), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [String]), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [String]), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [Object]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function Call(_toast, _storage, _brand, _softphone, _ringout, _regionSettings, _callingSettings, _extensionFeatures, _numberValidate, _appFeatures, _portManager, _activeCallControl, _webphone, _availabilityMonitor, _callOptions) {
     var _this;
     _classCallCheck(this, Call);
@@ -225,15 +224,92 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
       }
     }
   }, {
+    key: "connectOnServer",
+    value: function () {
+      var _connectOnServer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(options) {
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
+            case 0:
+              if (this.isIdle) {
+                _context2.n = 1;
+                break;
+              }
+              return _context2.a(2, false);
+            case 1:
+              this.connect(options);
+              return _context2.a(2, true);
+          }
+        }, _callee2, this);
+      }));
+      function connectOnServer(_x) {
+        return _connectOnServer.apply(this, arguments);
+      }
+      return connectOnServer;
+    }()
+  }, {
     key: "connectSuccess",
     value: function connectSuccess(callSettingMode) {
       this.callStatus = _callStatus.callStatus.idle;
     }
   }, {
+    key: "connectSuccessOnServer",
+    value: function () {
+      var _connectSuccessOnServer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(callSettingMode) {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
+            case 0:
+              this.connectSuccess(callSettingMode);
+            case 1:
+              return _context3.a(2);
+          }
+        }, _callee3, this);
+      }));
+      function connectSuccessOnServer(_x2) {
+        return _connectSuccessOnServer.apply(this, arguments);
+      }
+      return connectSuccessOnServer;
+    }()
+  }, {
     key: "connectError",
     value: function connectError() {
       this.callStatus = _callStatus.callStatus.idle;
     }
+  }, {
+    key: "connectErrorOnServer",
+    value: function () {
+      var _connectErrorOnServer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
+            case 0:
+              this.connectError();
+            case 1:
+              return _context4.a(2);
+          }
+        }, _callee4, this);
+      }));
+      function connectErrorOnServer() {
+        return _connectErrorOnServer.apply(this, arguments);
+      }
+      return connectErrorOnServer;
+    }()
+  }, {
+    key: "setLastValidatedToNumberOnServer",
+    value: function () {
+      var _setLastValidatedToNumberOnServer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(phoneNumber) {
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.n) {
+            case 0:
+              this.setLastValidatedToNumber(phoneNumber);
+            case 1:
+              return _context5.a(2);
+          }
+        }, _callee5, this);
+      }));
+      function setLastValidatedToNumberOnServer(_x3) {
+        return _setLastValidatedToNumberOnServer.apply(this, arguments);
+      }
+      return setLastValidatedToNumberOnServer;
+    }()
   }, {
     key: "onReset",
     value: function onReset() {
@@ -256,30 +332,27 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "call",
     value: function () {
-      var _call = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(_ref5) {
-        var input, recipient, fromNumber, _ref5$isConference, isConference, clickDialerToCall, isValidNumber, session, _extractControls, phoneNumber, extendedControls, toNumber, _this$_appFeatures, validatedNumbers, _error$response, _error$response2, _ref6, feature, statusCode, errorType, _t2, _t3;
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.p = _context2.n) {
+      var _call = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(_ref5) {
+        var input, recipient, fromNumber, _ref5$isConference, isConference, clickDialerToCall, isValidNumber, session, _extractControls, phoneNumber, extendedControls, toNumber, isConnected, _this$_appFeatures, validatedNumbers, _error$response, _error$response2, _ref6, feature, statusCode, errorType, _t2, _t3;
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.p = _context6.n) {
             case 0:
               input = _ref5.phoneNumber, recipient = _ref5.recipient, fromNumber = _ref5.fromNumber, _ref5$isConference = _ref5.isConference, isConference = _ref5$isConference === void 0 ? false : _ref5$isConference, clickDialerToCall = _ref5.clickDialerToCall, isValidNumber = _ref5.isValidNumber;
               session = null;
-              if (!this.isIdle) {
-                _context2.n = 13;
-                break;
-              }
               _extractControls = (0, _extractControls2["default"])(input), phoneNumber = _extractControls.phoneNumber, extendedControls = _extractControls.extendedControls;
               toNumber = recipient && (recipient.phoneNumber || recipient.extension) || phoneNumber;
               if (!(0, _isBlank.isBlank)(toNumber)) {
-                _context2.n = 1;
+                _context6.n = 1;
                 break;
               }
               this._toast.warning({
                 message: (0, _i18n.t)('noToNumber')
               });
-              _context2.n = 13;
+              _context6.n = 18;
               break;
             case 1:
-              this.connect({
+              _context6.n = 2;
+              return this.connectOnServer({
                 isConference: isConference,
                 phoneNumber: phoneNumber,
                 recipient: recipient,
@@ -288,76 +361,95 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
                 isValidNumber: isValidNumber,
                 clickDialerToCall: clickDialerToCall
               });
-              _context2.p = 2;
+            case 2:
+              isConnected = _context6.v;
+              if (isConnected) {
+                _context6.n = 3;
+                break;
+              }
+              return _context6.a(2, null);
+            case 3:
+              _context6.p = 3;
               if (fromNumber === 'undefined') {
                 fromNumber = null;
               }
               if (!(this._callingSettings.callingMode === _CallingSettings.callingModes.ringout && this._callingSettings.myLocation === toNumber)) {
-                _context2.n = 3;
+                _context6.n = 5;
                 break;
               }
               this._toast.danger({
                 message: (0, _i18n.t)('fromAndToNumberIsSame'),
                 ttl: 0
               });
-              this.connectError();
-              return _context2.a(2, null);
-            case 3:
-              if (!((_this$_appFeatures = this._appFeatures) === null || _this$_appFeatures === void 0 ? void 0 : _this$_appFeatures.isEDPEnabled)) {
-                _context2.n = 5;
+              _context6.n = 4;
+              return this.connectErrorOnServer();
+            case 4:
+              return _context6.a(2, null);
+            case 5:
+              if (!((_this$_appFeatures = this._appFeatures) !== null && _this$_appFeatures !== void 0 && _this$_appFeatures.isEDPEnabled)) {
+                _context6.n = 7;
                 break;
               }
-              _context2.n = 4;
+              _context6.n = 6;
               return this._getValidatedNumbers({
                 toNumber: toNumber,
                 fromNumber: fromNumber,
                 isConference: isConference
               });
-            case 4:
-              validatedNumbers = _context2.v;
-              _context2.n = 6;
+            case 6:
+              validatedNumbers = _context6.v;
+              _context6.n = 8;
               break;
-            case 5:
+            case 7:
               validatedNumbers = this._getNumbers({
                 toNumber: toNumber,
                 fromNumber: fromNumber,
                 isConference: isConference
               });
-            case 6:
+            case 8:
               if (!validatedNumbers) {
-                _context2.n = 8;
+                _context6.n = 12;
                 break;
               }
-              validatedNumbers.toNumber && this.setLastValidatedToNumber(validatedNumbers.toNumber);
-              _context2.n = 7;
+              if (!validatedNumbers.toNumber) {
+                _context6.n = 9;
+                break;
+              }
+              _context6.n = 9;
+              return this.setLastValidatedToNumberOnServer(validatedNumbers.toNumber);
+            case 9:
+              _context6.n = 10;
               return this._makeCall(_objectSpread(_objectSpread({}, validatedNumbers), {}, {
                 extendedControls: extendedControls,
                 toNumber: validatedNumbers.toNumber,
                 fromNumber: validatedNumbers.fromNumber
               }));
-            case 7:
-              session = _context2.v;
-              this.connectSuccess(this._callingSettings.callingMode);
-              _context2.n = 9;
-              break;
-            case 8:
-              this.connectError();
-            case 9:
-              _context2.n = 13;
-              break;
             case 10:
-              _context2.p = 10;
-              _t2 = _context2.v;
-              _context2.n = 11;
-              return _t2 === null || _t2 === void 0 ? void 0 : (_error$response = _t2.response) === null || _error$response === void 0 ? void 0 : _error$response.clone().json();
+              session = _context6.v;
+              _context6.n = 11;
+              return this.connectSuccessOnServer(this._callingSettings.callingMode);
             case 11:
-              _t3 = _context2.v;
+              _context6.n = 13;
+              break;
+            case 12:
+              _context6.n = 13;
+              return this.connectErrorOnServer();
+            case 13:
+              _context6.n = 18;
+              break;
+            case 14:
+              _context6.p = 14;
+              _t2 = _context6.v;
+              _context6.n = 15;
+              return _t2 === null || _t2 === void 0 ? void 0 : (_error$response = _t2.response) === null || _error$response === void 0 ? void 0 : _error$response.clone().json();
+            case 15:
+              _t3 = _context6.v;
               if (_t3) {
-                _context2.n = 12;
+                _context6.n = 16;
                 break;
               }
               _t3 = {};
-            case 12:
+            case 16:
               _ref6 = _t3;
               feature = _ref6.feature;
               statusCode = _t2 === null || _t2 === void 0 ? void 0 : (_error$response2 = _t2.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status;
@@ -399,14 +491,16 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
                   });
                 }
               }
-              this.connectError();
+              _context6.n = 17;
+              return this.connectErrorOnServer();
+            case 17:
               throw _t2;
-            case 13:
-              return _context2.a(2, session);
+            case 18:
+              return _context6.a(2, session);
           }
-        }, _callee2, this, [[2, 10]]);
+        }, _callee6, this, [[3, 14]]);
       }));
-      function call(_x) {
+      function call(_x4) {
         return _call.apply(this, arguments);
       }
       return call;
@@ -470,20 +564,20 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_getValidatedNumbers",
     value: function () {
-      var _getValidatedNumbers2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(_ref8) {
+      var _getValidatedNumbers2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(_ref8) {
         var _parsedToNumber, _parsedFromNumber;
         var toNumber, fromNumber, isConference, isWebphone, theFromNumber, waitingValidateNumbers, parsedToNumber, parsedFromNumber, numbers, validResult, parsedNumbers, toNumberIndex, fromNumberIndex, parsedToNumberE164, parsedFromNumberE164, _t4;
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.n) {
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.n) {
             case 0:
               toNumber = _ref8.toNumber, fromNumber = _ref8.fromNumber, isConference = _ref8.isConference;
               isWebphone = this._callingSettings.isWebphoneMode;
               theFromNumber = fromNumber || (isWebphone ? this._callingSettings.fromNumber : this._callingSettings.myLocation);
               if (!(isWebphone && (theFromNumber === null || theFromNumber === ''))) {
-                _context3.n = 1;
+                _context7.n = 1;
                 break;
               }
-              return _context3.a(2, null);
+              return _context7.a(2, null);
             case 1:
               waitingValidateNumbers = [];
               if (!isConference) {
@@ -499,45 +593,45 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
                 });
               }
               if (!waitingValidateNumbers.length) {
-                _context3.n = 8;
+                _context7.n = 8;
                 break;
               }
               numbers = waitingValidateNumbers.map(function (x) {
                 return x.number;
               });
-              _context3.n = 2;
+              _context7.n = 2;
               return this._numberValidate.validate(numbers);
             case 2:
-              validResult = _context3.v;
+              validResult = _context7.v;
               if (validResult.result) {
-                _context3.n = 4;
+                _context7.n = 4;
                 break;
               }
               this._numberValidate.handleValidateToasts(validResult);
               if (!(validResult.errors.length > 0)) {
-                _context3.n = 3;
+                _context7.n = 3;
                 break;
               }
               throw validResult.errors[0];
             case 3:
-              return _context3.a(2, null);
+              return _context7.a(2, null);
             case 4:
-              _context3.n = 5;
+              _context7.n = 5;
               return this._numberValidate.parseNumbers(numbers);
             case 5:
-              _t4 = _context3.v;
+              _t4 = _context7.v;
               if (_t4) {
-                _context3.n = 6;
+                _context7.n = 6;
                 break;
               }
               _t4 = [];
             case 6:
               parsedNumbers = _t4;
               if (!(process.env.THEME_SYSTEM === 'spring-ui' && !parsedNumbers.length)) {
-                _context3.n = 7;
+                _context7.n = 7;
                 break;
               }
-              return _context3.a(2, null);
+              return _context7.a(2, null);
             case 7:
               toNumberIndex = waitingValidateNumbers.findIndex(function (x) {
                 return x.type === TO_NUMBER;
@@ -553,14 +647,14 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
               if (isWebphone && theFromNumber === ANONYMOUS) {
                 parsedFromNumberE164 = ANONYMOUS;
               }
-              return _context3.a(2, {
+              return _context7.a(2, {
                 toNumber: isConference ? parsedToNumberE164 || toNumber : parsedToNumberE164,
                 fromNumber: parsedFromNumberE164
               });
           }
-        }, _callee3, this);
+        }, _callee7, this);
       }));
-      function _getValidatedNumbers(_x2) {
+      function _getValidatedNumbers(_x5) {
         return _getValidatedNumbers2.apply(this, arguments);
       }
       return _getValidatedNumbers;
@@ -568,31 +662,31 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_makeCall",
     value: function () {
-      var _makeCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(_ref9) {
+      var _makeCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(_ref9) {
         var toNumber, fromNumber, _ref9$callingMode, callingMode, _ref9$extendedControl, extendedControls, homeCountryId, session, _t5;
-        return _regenerator().w(function (_context4) {
-          while (1) switch (_context4.n) {
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.n) {
             case 0:
               toNumber = _ref9.toNumber, fromNumber = _ref9.fromNumber, _ref9$callingMode = _ref9.callingMode, callingMode = _ref9$callingMode === void 0 ? this._callingSettings.callingMode : _ref9$callingMode, _ref9$extendedControl = _ref9.extendedControls, extendedControls = _ref9$extendedControl === void 0 ? [] : _ref9$extendedControl;
               this.logger.log('make call', {
-                toNumber: (0, _utils.maskPhoneNumber)(toNumber),
-                fromNumber: (0, _utils.maskPhoneNumber)(fromNumber),
+                toNumber: toNumber,
+                fromNumber: fromNumber,
                 callingMode: callingMode,
                 extendedControls: extendedControls
               });
               homeCountryId = this._regionSettings.homeCountryId;
               session = null;
               _t5 = callingMode;
-              _context4.n = _t5 === _CallingSettings.callingModes.softphone ? 1 : _t5 === _CallingSettings.callingModes.jupiter ? 1 : _t5 === _CallingSettings.callingModes.ringout ? 3 : _t5 === _CallingSettings.callingModes.webphone ? 5 : 7;
+              _context8.n = _t5 === _CallingSettings.callingModes.softphone ? 1 : _t5 === _CallingSettings.callingModes.jupiter ? 1 : _t5 === _CallingSettings.callingModes.ringout ? 3 : _t5 === _CallingSettings.callingModes.webphone ? 5 : 7;
               break;
             case 1:
-              _context4.n = 2;
+              _context8.n = 2;
               return this._softphone.makeCall(toNumber, callingMode);
             case 2:
-              session = _context4.v;
-              return _context4.a(3, 8);
+              session = _context8.v;
+              return _context8.a(3, 8);
             case 3:
-              _context4.n = 4;
+              _context8.n = 4;
               return this._ringout.makeCall({
                 fromNumber: fromNumber,
                 toNumber: toNumber && toNumber.split('*')[0],
@@ -600,10 +694,10 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
                 prompt: this._callingSettings.ringoutPrompt
               });
             case 4:
-              session = _context4.v;
-              return _context4.a(3, 8);
+              session = _context8.v;
+              return _context8.a(3, 8);
             case 5:
-              _context4.n = 6;
+              _context8.n = 6;
               return this._activeCallControl.makeCall({
                 fromNumber: fromNumber,
                 toNumber: toNumber,
@@ -611,16 +705,16 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
                 extendedControls: extendedControls
               });
             case 6:
-              session = _context4.v;
-              return _context4.a(3, 8);
+              session = _context8.v;
+              return _context8.a(3, 8);
             case 7:
-              return _context4.a(3, 8);
+              return _context8.a(3, 8);
             case 8:
-              return _context4.a(2, session);
+              return _context8.a(2, session);
           }
-        }, _callee4, this);
+        }, _callee8, this);
       }));
-      function _makeCall(_x3) {
+      function _makeCall(_x6) {
         return _makeCall2.apply(this, arguments);
       }
       return _makeCall;
@@ -656,5 +750,5 @@ var Call = exports.Call = (_dec = (0, _nextCore.injectable)({
       lastValidatedToNumber: null
     };
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "toNumberMatched", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "toNumberMatched"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "cleanToNumberEntities", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "cleanToNumberEntities"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastValidatedToNumber", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastValidatedToNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connect", [_dec13, _nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectSuccess", [_dec16, _nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "connectSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectError", [_nextCore.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "connectError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "call", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "call"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_getValidatedNumbers", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "_getValidatedNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_makeCall", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "_makeCall"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "toNumberMatched", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "toNumberMatched"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "cleanToNumberEntities", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "cleanToNumberEntities"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastValidatedToNumber", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastValidatedToNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connect", [_dec13, _nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "connect"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectOnServer", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "connectOnServer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectSuccess", [_dec19, _nextCore.action, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "connectSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectSuccessOnServer", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "connectSuccessOnServer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectError", [_nextCore.action, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "connectError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "connectErrorOnServer", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "connectErrorOnServer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastValidatedToNumberOnServer", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastValidatedToNumberOnServer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_getValidatedNumbers", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "_getValidatedNumbers"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Call.js.map

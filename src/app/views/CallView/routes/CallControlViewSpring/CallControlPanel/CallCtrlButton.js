@@ -53,7 +53,7 @@ var CallCtrlButton = exports.CallCtrlButton = function CallCtrlButton(_ref) {
     setAnchorEl = _useState2[1];
   var isOpen = Boolean(anchorEl);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex flex-col items-center justify-start gap-1 typography-descriptorMini"
+    className: "flex flex-col items-center justify-start gap-1 typography-descriptorMini w-full min-w-0"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, _extends({
     size: "xxlarge",
     color: "secondary",
@@ -63,8 +63,8 @@ var CallCtrlButton = exports.CallCtrlButton = function CallCtrlButton(_ref) {
       setAnchorEl(event.currentTarget);
     } : onClick,
     className: (0, _clsx["default"])('[&_svg_path:first-child]:fill-inherit', className)
-  })), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "text-center"
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "text-center break-words w-full px-1"
   }, label)), menuList && /*#__PURE__*/_react["default"].createElement(_springUi.Menu, {
     anchorEl: anchorEl,
     placement: menuPlacement,

@@ -13,7 +13,9 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.create.js");
+require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
+require("core-js/modules/es.object.get-own-property-descriptors.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
@@ -57,10 +59,13 @@ var _callingModes = require("./callingModes");
 var _callingOptions = require("./callingOptions");
 var _i18n = _interopRequireWildcard(require("./i18n"));
 var _mapOptionToMode = require("./mapOptionToMode");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 /* eslint-disable react-hooks/rules-of-hooks */
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -85,16 +90,14 @@ var BLOCKED_ID_VALUE = exports.BLOCKED_ID_VALUE = 'anonymous';
 var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable)({
   name: 'CallingSettings'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 10);
-}, _dec3 = function _dec3(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 11);
-}, _dec4 = function _dec4(target, key) {
+}, _dec3 = function _dec3(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 12);
-}, _dec5 = function _dec5(target, key) {
+}, _dec4 = function _dec4(target, key) {
   return (0, _nextCore.optional)('TabManager')(target, undefined, 13);
-}, _dec6 = function _dec6(target, key) {
+}, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)('CallingSettingsOptions')(target, undefined, 14);
-}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.ExtensionDevice === "undefined" ? Object : _services.ExtensionDevice, typeof _ForwardingNumber.ForwardingNumber === "undefined" ? Object : _ForwardingNumber.ForwardingNumber, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _CallerId.CallerId === "undefined" ? Object : _CallerId.CallerId, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _Softphone.Softphone === "undefined" ? Object : _Softphone.Softphone, Object, typeof CallingSettingsOptions === "undefined" ? Object : CallingSettingsOptions]), _dec9 = Reflect.metadata("design:type", Object), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [Object]), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [Object]), _dec12 = (0, _nextCore.delegate)('server'), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [Object]), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [Boolean]), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = (0, _nextCore.delegate)('server'), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", []), _dec31 = (0, _nextCore.delegate)('server'), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", []), _dec34 = (0, _nextCore.delegate)('server'), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", [typeof SetCallingSettingsData === "undefined" ? Object : SetCallingSettingsData, Boolean]), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", []), _dec41 = Reflect.metadata("design:type", Function), _dec42 = Reflect.metadata("design:paramtypes", []), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", []), _dec45 = Reflect.metadata("design:type", Function), _dec46 = Reflect.metadata("design:paramtypes", []), _dec47 = Reflect.metadata("design:type", Function), _dec48 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.ExtensionDevice === "undefined" ? Object : _services.ExtensionDevice, typeof _ForwardingNumber.ForwardingNumber === "undefined" ? Object : _ForwardingNumber.ForwardingNumber, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _CallerId.CallerId === "undefined" ? Object : _CallerId.CallerId, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _Softphone.Softphone === "undefined" ? Object : _Softphone.Softphone, Object, typeof CallingSettingsOptions === "undefined" ? Object : CallingSettingsOptions]), _dec8 = Reflect.metadata("design:type", Object), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Object]), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Object]), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Boolean]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _nextCore.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = (0, _nextCore.delegate)('server'), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [typeof SetCallingSettingsData === "undefined" ? Object : SetCallingSettingsData, Boolean]), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", []), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _dec42 = Reflect.metadata("design:type", Function), _dec43 = Reflect.metadata("design:paramtypes", []), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", []), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function CallingSettings(_router, _toast, _brand, _storage, _extensionInfo, _extensionDevice, _forwardingNumber, _appFeatures, _extensionFeatures, _extensionPhoneNumber, _callerId, _webphone, _softphone, _tabManager, _callingSettingsOptions) {
     var _this$_callingSetting, _this$_callingSetting2, _this$_callingSetting3, _this$_callingSetting4, _this$_callingSetting5, _this$_callingSetting6;
     var _this;
@@ -501,7 +504,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
         var registeredWithDevice = false;
         devices.forEach(function (device) {
           var phoneLines = device.phoneLines;
-          if (phoneLines === null || phoneLines === void 0 ? void 0 : phoneLines.length) {
+          if (phoneLines !== null && phoneLines !== void 0 && phoneLines.length) {
             registeredWithDevice = !!phoneLines.find(function (phoneLine) {
               var _phoneLine$phoneInfo;
               return ((_phoneLine$phoneInfo = phoneLine.phoneInfo) === null || _phoneLine$phoneInfo === void 0 ? void 0 : _phoneLine$phoneInfo.phoneNumber) === phoneNumber;
@@ -531,7 +534,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
     key: "_initFromNumber",
     value: function () {
       var _initFromNumber2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
-        var fromNumber, _this$_callerId, defaultCallerId, _this$_callerId2, _this$_callerId2$ring, defaultPhoneNumber, defaultEntry;
+        var fromNumber;
         return _regenerator().w(function (_context9) {
           while (1) switch (_context9.n) {
             case 0:
@@ -540,24 +543,8 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
                 _context9.n = 1;
                 break;
               }
-              defaultCallerId = this.fromNumbers[0];
-              if ((_this$_callerId = this._callerId) === null || _this$_callerId === void 0 ? void 0 : _this$_callerId.ringOut) {
-                if (this._callerId.ringOut.type === 'Blocked' && !this.isBlockedIdDisabled) {
-                  defaultCallerId = {
-                    phoneNumber: BLOCKED_ID_VALUE
-                  };
-                } else if (this._callerId.ringOut.type === 'PhoneNumber') {
-                  defaultPhoneNumber = (_this$_callerId2 = this._callerId) === null || _this$_callerId2 === void 0 ? void 0 : (_this$_callerId2$ring = _this$_callerId2.ringOut.phoneInfo) === null || _this$_callerId2$ring === void 0 ? void 0 : _this$_callerId2$ring.phoneNumber;
-                  defaultEntry = this.fromNumbers.find(function (item) {
-                    return item.phoneNumber === defaultPhoneNumber;
-                  });
-                  if (defaultEntry) {
-                    defaultCallerId = defaultEntry;
-                  }
-                }
-              }
               _context9.n = 1;
-              return this.updateFromNumber(defaultCallerId);
+              return this.updateFromNumber(this._getDefaultFromNumberByCallerId());
             case 1:
               return _context9.a(2);
           }
@@ -569,14 +556,121 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
       return _initFromNumber;
     }()
   }, {
+    key: "_getDefaultFromNumberByCallerId",
+    value: function _getDefaultFromNumberByCallerId() {
+      var _fromNumbers$,
+        _this4 = this;
+      // CallerId must be ready because selectable caller ID can be disabled;
+      // the API default still needs to drive the initial from number.
+      var includeBlocked = !this.isBlockedIdDisabled;
+      var fromNumbers = this.fromNumbers;
+      var fallback = (_fromNumbers$ = fromNumbers[0]) !== null && _fromNumbers$ !== void 0 ? _fromNumbers$ : {};
+      var callerIdByFeature = this._callerId.getDefaultCallerIdWithFeature({
+        includeBlocked: includeBlocked
+      });
+      var callerId = callerIdByFeature === null || callerIdByFeature === void 0 ? void 0 : callerIdByFeature.callerId;
+      var phoneInfo = callerId === null || callerId === void 0 ? void 0 : callerId.phoneInfo;
+      var baseLogContext = {
+        callerIdFeature: callerIdByFeature === null || callerIdByFeature === void 0 ? void 0 : callerIdByFeature.feature,
+        callerId: this._getCallerIdLogData(callerId),
+        includeBlocked: includeBlocked,
+        isBlockedIdDisabled: this.isBlockedIdDisabled,
+        fromNumbersCount: fromNumbers.length
+      };
+      if ((callerId === null || callerId === void 0 ? void 0 : callerId.type) === 'Blocked' && !this.isBlockedIdDisabled) {
+        this.logger.info('default caller ID resolved to blocked', _objectSpread(_objectSpread({}, baseLogContext), {}, {
+          selectedFromNumber: {
+            phoneNumber: BLOCKED_ID_VALUE
+          }
+        }));
+        return {
+          phoneNumber: BLOCKED_ID_VALUE
+        };
+      }
+      var matchedBy;
+      var defaultEntry = fromNumbers.find(function (item) {
+        if (phoneInfo !== null && phoneInfo !== void 0 && phoneInfo.uri && item.uri === phoneInfo.uri) {
+          matchedBy = 'uri';
+          return true;
+        }
+        if (phoneInfo !== null && phoneInfo !== void 0 && phoneInfo.id && "".concat(item.id) === phoneInfo.id) {
+          matchedBy = 'id';
+          return true;
+        }
+        if (phoneInfo !== null && phoneInfo !== void 0 && phoneInfo.phoneNumber && item.phoneNumber === phoneInfo.phoneNumber) {
+          matchedBy = 'phoneNumber';
+          return true;
+        }
+        return false;
+      });
+      if (!callerId) {
+        this.logger.warn('no configured default caller ID found; using first from number', _objectSpread(_objectSpread({}, baseLogContext), {}, {
+          callerIdByFeature: this._getCallerIdFeaturesLogData(),
+          fallbackFromNumber: this._getFromNumberLogData(fallback)
+        }));
+        return fallback;
+      }
+      if (!defaultEntry) {
+        this.logger.warn('default caller ID not available in from number list; using first from number', _objectSpread(_objectSpread({}, baseLogContext), {}, {
+          availableFromNumbers: fromNumbers.map(function (item) {
+            return _this4._getFromNumberLogData(item);
+          }),
+          fallbackFromNumber: this._getFromNumberLogData(fallback)
+        }));
+        return fallback;
+      }
+      this.logger.info('default caller ID matched from number', _objectSpread(_objectSpread({}, baseLogContext), {}, {
+        matchedBy: matchedBy,
+        selectedFromNumber: this._getFromNumberLogData(defaultEntry)
+      }));
+      return defaultEntry;
+    }
+  }, {
+    key: "_getCallerIdLogData",
+    value: function _getCallerIdLogData(callerId) {
+      var _callerId$phoneInfo, _callerId$phoneInfo2, _callerId$phoneInfo3;
+      return callerId ? {
+        type: callerId.type,
+        phoneInfo: {
+          id: (_callerId$phoneInfo = callerId.phoneInfo) === null || _callerId$phoneInfo === void 0 ? void 0 : _callerId$phoneInfo.id,
+          hasUri: !!((_callerId$phoneInfo2 = callerId.phoneInfo) !== null && _callerId$phoneInfo2 !== void 0 && _callerId$phoneInfo2.uri),
+          hasPhoneNumber: !!((_callerId$phoneInfo3 = callerId.phoneInfo) !== null && _callerId$phoneInfo3 !== void 0 && _callerId$phoneInfo3.phoneNumber)
+        }
+      } : null;
+    }
+  }, {
+    key: "_getCallerIdFeaturesLogData",
+    value: function _getCallerIdFeaturesLogData() {
+      var _this5 = this;
+      return this._callerId.byFeature.map(function (_ref2) {
+        var feature = _ref2.feature,
+          callerId = _ref2.callerId;
+        return {
+          feature: feature,
+          callerId: _this5._getCallerIdLogData(callerId)
+        };
+      });
+    }
+  }, {
+    key: "_getFromNumberLogData",
+    value: function _getFromNumberLogData(number) {
+      return number ? {
+        id: number.id,
+        usageType: number.usageType,
+        features: number.features,
+        hasUri: !!number.uri,
+        hasPhoneNumber: !!number.phoneNumber
+      } : null;
+    }
+  }, {
     key: "setData",
     value: function () {
-      var _setData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(_ref2, withPrompt) {
+      var _setData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(_ref3, withPrompt) {
         var callWith, myLocation, ringoutPrompt, _this$_brand$brandCon, _this$_brand$brandCon2;
         return _regenerator().w(function (_context0) {
           while (1) switch (_context0.n) {
             case 0:
-              callWith = _ref2.callWith, myLocation = _ref2.myLocation, ringoutPrompt = _ref2.ringoutPrompt;
+              callWith = _ref3.callWith, myLocation = _ref3.myLocation, ringoutPrompt = _ref3.ringoutPrompt;
               this.setDataAction({
                 callWith: callWith,
                 myLocation: myLocation,
@@ -712,12 +806,12 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
   }, {
     key: "availableNumbersWithLabel",
     get: function get() {
-      var _this4 = this;
+      var _this6 = this;
       var availableNumbers = this.availableNumbers;
       var result = [];
       if (availableNumbers.length) {
         availableNumbers.forEach(function (phoneNumber) {
-          var locationLabel = _this4._getLocationLabel(phoneNumber);
+          var locationLabel = _this6._getLocationLabel(phoneNumber);
           result.push({
             label: locationLabel,
             value: phoneNumber
@@ -771,7 +865,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
   initializer: function initializer() {
     return false;
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.userStorage, _nextCore.state, _dec9], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.userStorage, _nextCore.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -785,12 +879,12 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
       isCustomLocation: false
     };
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setDataAction", [_nextCore.action, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "setDataAction"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateFromNumber", [_nextCore.action, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateFromNumber", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "updateFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAcknowledgeJPMessage", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "setAcknowledgeJPMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetSuccess", [_nextCore.action, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "resetSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_warningEmergencyCallingNotAvailable", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "_warningEmergencyCallingNotAvailable"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "linkToast", [_nextCore.portal], {
+}), _applyDecoratedDescriptor(_class2.prototype, "setDataAction", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setDataAction"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateFromNumber", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateFromNumber", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "updateFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAcknowledgeJPMessage", [_nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "setAcknowledgeJPMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetSuccess", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "resetSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_warningEmergencyCallingNotAvailable", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_warningEmergencyCallingNotAvailable"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "linkToast", [_nextCore.portal], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
-    var _this5 = this;
+    var _this7 = this;
     return this._toast.create({
       view: function view() {
         var _useToastItemView = (0, _views.useToastItemView)(),
@@ -800,7 +894,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
           t = _useLocale.t;
         var link = /*#__PURE__*/_react["default"].createElement(_Link.RcLink, {
           onClick: function onClick() {
-            _this5._router.push('/settings/calling');
+            _this7._router.push('/settings/calling');
             action.close();
           }
         }, t('link'));
@@ -819,5 +913,5 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _nextCore.injectable
       }
     });
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_validateSettings", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "_validateSettings"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_verifyJPEmergency", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "_verifyJPEmergency"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setSoftPhoneToCallWith", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "_setSoftPhoneToCallWith"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initFromNumber", [_dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "_initFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setData", [_dec34, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "myPhoneNumbers", [_nextCore.computed, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "myPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "otherPhoneNumbers", [_nextCore.computed, _dec39, _dec40], Object.getOwnPropertyDescriptor(_class2.prototype, "otherPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callWithOptions", [_nextCore.computed, _dec41, _dec42], Object.getOwnPropertyDescriptor(_class2.prototype, "callWithOptions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fromNumbers", [_nextCore.computed, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "fromNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableNumbers", [_nextCore.computed, _dec45, _dec46], Object.getOwnPropertyDescriptor(_class2.prototype, "availableNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableNumbersWithLabel", [_nextCore.computed, _dec47, _dec48], Object.getOwnPropertyDescriptor(_class2.prototype, "availableNumbersWithLabel"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_validateSettings", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "_validateSettings"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_verifyJPEmergency", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "_verifyJPEmergency"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setSoftPhoneToCallWith", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "_setSoftPhoneToCallWith"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initFromNumber", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "_initFromNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setData", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "setData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "myPhoneNumbers", [_nextCore.computed, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "myPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "otherPhoneNumbers", [_nextCore.computed, _dec38, _dec39], Object.getOwnPropertyDescriptor(_class2.prototype, "otherPhoneNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callWithOptions", [_nextCore.computed, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "callWithOptions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fromNumbers", [_nextCore.computed, _dec42, _dec43], Object.getOwnPropertyDescriptor(_class2.prototype, "fromNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableNumbers", [_nextCore.computed, _dec44, _dec45], Object.getOwnPropertyDescriptor(_class2.prototype, "availableNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "availableNumbersWithLabel", [_nextCore.computed, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "availableNumbersWithLabel"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=CallingSettings.js.map

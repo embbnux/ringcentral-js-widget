@@ -7,7 +7,6 @@ require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.date.to-primitive.js");
@@ -22,8 +21,6 @@ require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -33,6 +30,7 @@ require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.index-of.js");
+require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.reduce.js");
@@ -45,9 +43,12 @@ require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.set.js");
 require("core-js/modules/es.string.includes.js");
+require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.string.starts-with.js");
 require("core-js/modules/web.dom-collections.for-each.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/web.timers.js");
 var _callDirections = require("@ringcentral-integration/commons/enums/callDirections");
 var _subscriptionFilters = require("@ringcentral-integration/commons/enums/subscriptionFilters");
@@ -71,7 +72,7 @@ var _webphoneHelper = require("../Webphone/webphoneHelper");
 var _callControlEvents = require("./callControlEvents");
 var _helpers = require("./helpers");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _dec137, _dec138, _dec139, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _dec148, _dec149, _dec150, _dec151, _dec152, _dec153, _dec154, _dec155, _dec156, _dec157, _dec158, _dec159, _dec160, _dec161, _dec162, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _dec170, _dec171, _dec172, _dec173, _dec174, _dec175, _dec176, _dec177, _dec178, _dec179, _dec180, _dec181, _dec182, _dec183, _dec184, _dec185, _dec186, _dec187, _dec188, _dec189, _dec190, _dec191, _dec192, _dec193, _dec194, _dec195, _dec196, _dec197, _dec198, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _dec205, _dec206, _dec207, _dec208, _dec209, _dec210, _dec211, _dec212, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _dec137, _dec138, _dec139, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _dec148, _dec149, _dec150, _dec151, _dec152, _dec153, _dec154, _dec155, _dec156, _dec157, _dec158, _dec159, _dec160, _dec161, _dec162, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _dec170, _dec171, _dec172, _dec173, _dec174, _dec175, _dec176, _dec177, _dec178, _dec179, _dec180, _dec181, _dec182, _dec183, _dec184, _dec185, _dec186, _dec187, _dec188, _dec189, _dec190, _dec191, _dec192, _dec193, _dec194, _dec195, _dec196, _dec197, _dec198, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _dec205, _dec206, _dec207, _dec208, _dec209, _dec210, _dec211, _dec212, _dec213, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -124,67 +125,67 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   return (0, _nextCore.optional)('ActiveCallControlOptions')(target, undefined, 21);
 }, _dec7 = function _dec7(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 22);
-}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _PreinsertCall.PreinsertCall === "undefined" ? Object : _PreinsertCall.PreinsertCall, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof Subscription === "undefined" ? Object : Subscription, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _CallingSettings.CallingSettings === "undefined" ? Object : _CallingSettings.CallingSettings, String, typeof _services.Analytics === "undefined" ? Object : _services.Analytics, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, typeof ActiveCallControlOptions === "undefined" ? Object : ActiveCallControlOptions, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin]), _dec0 = (0, _nextCore.dynamic)('RateLimiter'), _dec1 = Reflect.metadata("design:type", typeof RateLimiter === "undefined" ? Object : RateLimiter), _dec10 = Reflect.metadata("design:type", typeof IPickUpCallDataMap === "undefined" ? Object : IPickUpCallDataMap), _dec11 = Reflect.metadata("design:type", typeof ITransferCallSessionMapping === "undefined" ? Object : ITransferCallSessionMapping), _dec12 = Reflect.metadata("design:type", Object), _dec13 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [String, Object]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [String]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", []), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Array]), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", [String]), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", []), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('mainClient'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [String]), _dec42 = (0, _services.track)(function (that) {
+}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _PreinsertCall.PreinsertCall === "undefined" ? Object : _PreinsertCall.PreinsertCall, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof Subscription === "undefined" ? Object : Subscription, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _Webphone.Webphone === "undefined" ? Object : _Webphone.Webphone, typeof _CallingSettings.CallingSettings === "undefined" ? Object : _CallingSettings.CallingSettings, String, typeof _services.Analytics === "undefined" ? Object : _services.Analytics, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, typeof ActiveCallControlOptions === "undefined" ? Object : ActiveCallControlOptions, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin]), _dec0 = (0, _nextCore.dynamic)('RateLimiter'), _dec1 = Reflect.metadata("design:type", typeof RateLimiter === "undefined" ? Object : RateLimiter), _dec10 = Reflect.metadata("design:type", typeof IPickUpCallDataMap === "undefined" ? Object : IPickUpCallDataMap), _dec11 = Reflect.metadata("design:type", typeof ITransferCallSessionMapping === "undefined" ? Object : ITransferCallSessionMapping), _dec12 = Reflect.metadata("design:type", Object), _dec13 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [String, Object]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [String]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", []), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Array]), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", [String]), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", []), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('mainClient'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [String]), _dec42 = (0, _nextCore.delegate)('server'), _dec43 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.mute)];
-}), _dec43 = (0, _nextCore.delegate)('server'), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", [String]), _dec46 = (0, _services.track)(function (that) {
+}), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", [String]), _dec46 = (0, _nextCore.delegate)('server'), _dec47 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.unmute)];
-}), _dec47 = (0, _nextCore.delegate)('server'), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", [String]), _dec50 = (0, _services.track)(function (that) {
+}), _dec48 = Reflect.metadata("design:type", Function), _dec49 = Reflect.metadata("design:paramtypes", [String]), _dec50 = (0, _nextCore.delegate)('server'), _dec51 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.record)];
-}), _dec51 = (0, _nextCore.delegate)('server'), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [String]), _dec54 = (0, _nextCore.delegate)('mainClient'), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [String]), _dec57 = (0, _services.track)(function (that) {
+}), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [String]), _dec54 = (0, _nextCore.delegate)('mainClient'), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [String]), _dec57 = (0, _nextCore.delegate)('server'), _dec58 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.stopRecord)];
-}), _dec58 = (0, _nextCore.delegate)('server'), _dec59 = Reflect.metadata("design:type", Function), _dec60 = Reflect.metadata("design:paramtypes", [String]), _dec61 = (0, _nextCore.delegate)('mainClient'), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", [String]), _dec64 = (0, _services.track)(function (that) {
+}), _dec59 = Reflect.metadata("design:type", Function), _dec60 = Reflect.metadata("design:paramtypes", [String]), _dec61 = (0, _nextCore.delegate)('mainClient'), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", [String]), _dec64 = (0, _nextCore.delegate)('server'), _dec65 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.hangup)];
-}), _dec65 = (0, _nextCore.delegate)('server'), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", [String]), _dec68 = (0, _nextCore.delegate)('server'), _dec69 = Reflect.metadata("design:type", Function), _dec70 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec71 = (0, _nextCore.delegate)('server'), _dec72 = Reflect.metadata("design:type", Function), _dec73 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec74 = (0, _services.track)(function (that) {
+}), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", [String]), _dec68 = (0, _nextCore.delegate)('server'), _dec69 = Reflect.metadata("design:type", Function), _dec70 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec71 = (0, _nextCore.delegate)('server'), _dec72 = Reflect.metadata("design:type", Function), _dec73 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec74 = (0, _nextCore.delegate)('server'), _dec75 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.voicemail)];
-}), _dec75 = (0, _nextCore.delegate)('server'), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", [String]), _dec78 = (0, _nextCore.delegate)('mainClient'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", [String]), _dec81 = (0, _services.track)(function (that) {
+}), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", [String]), _dec78 = (0, _nextCore.delegate)('mainClient'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", [String]), _dec81 = (0, _nextCore.delegate)('server'), _dec82 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.confirmSwitch)];
-}), _dec82 = (0, _nextCore.delegate)('server'), _dec83 = Reflect.metadata("design:type", Function), _dec84 = Reflect.metadata("design:paramtypes", [String]), _dec85 = (0, _nextCore.delegate)('mainClient'), _dec86 = Reflect.metadata("design:type", Function), _dec87 = Reflect.metadata("design:paramtypes", [String]), _dec88 = (0, _services.track)(function (that) {
+}), _dec83 = Reflect.metadata("design:type", Function), _dec84 = Reflect.metadata("design:paramtypes", [String]), _dec85 = (0, _nextCore.delegate)('mainClient'), _dec86 = Reflect.metadata("design:type", Function), _dec87 = Reflect.metadata("design:paramtypes", [String]), _dec88 = (0, _nextCore.delegate)('server'), _dec89 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.hold)];
-}), _dec89 = (0, _nextCore.delegate)('server'), _dec90 = Reflect.metadata("design:type", Function), _dec91 = Reflect.metadata("design:paramtypes", [String]), _dec92 = (0, _nextCore.delegate)('mainClient'), _dec93 = Reflect.metadata("design:type", Function), _dec94 = Reflect.metadata("design:paramtypes", [String]), _dec95 = (0, _services.track)(function (that) {
+}), _dec90 = Reflect.metadata("design:type", Function), _dec91 = Reflect.metadata("design:paramtypes", [String]), _dec92 = (0, _nextCore.delegate)('mainClient'), _dec93 = Reflect.metadata("design:type", Function), _dec94 = Reflect.metadata("design:paramtypes", [String]), _dec95 = (0, _nextCore.delegate)('server'), _dec96 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.unhold)];
-}), _dec96 = (0, _nextCore.delegate)('server'), _dec97 = Reflect.metadata("design:type", Function), _dec98 = Reflect.metadata("design:paramtypes", [String]), _dec99 = (0, _nextCore.delegate)('mainClient'), _dec100 = Reflect.metadata("design:type", Function), _dec101 = Reflect.metadata("design:paramtypes", [typeof ReplyWithTextParams === "undefined" ? Object : ReplyWithTextParams, String]), _dec102 = (0, _services.track)(function (_, params) {
+}), _dec97 = Reflect.metadata("design:type", Function), _dec98 = Reflect.metadata("design:paramtypes", [String]), _dec99 = (0, _nextCore.delegate)('mainClient'), _dec100 = Reflect.metadata("design:type", Function), _dec101 = Reflect.metadata("design:paramtypes", [typeof ReplyWithTextParams === "undefined" ? Object : ReplyWithTextParams, String]), _dec102 = (0, _nextCore.delegate)('server'), _dec103 = (0, _services.track)(function (_, params) {
   return [_trackEvents.trackEvents.executionReplyWithMessage, {
     'message type': params.replyWithPattern ? 'Pattern' : 'Custom'
   }];
-}), _dec103 = (0, _nextCore.delegate)('server'), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", [typeof ReplyWithTextParams === "undefined" ? Object : ReplyWithTextParams, String]), _dec106 = (0, _nextCore.delegate)('server'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [String, String]), _dec109 = (0, _nextCore.delegate)('server'), _dec110 = Reflect.metadata("design:type", Function), _dec111 = Reflect.metadata("design:paramtypes", [String]), _dec112 = (0, _services.track)(_trackEvents.trackEvents.transfer), _dec113 = (0, _nextCore.delegate)('server'), _dec114 = Reflect.metadata("design:type", Function), _dec115 = Reflect.metadata("design:paramtypes", [String, String]), _dec116 = (0, _nextCore.delegate)('server'), _dec117 = Reflect.metadata("design:type", Function), _dec118 = Reflect.metadata("design:paramtypes", [String, String]), _dec119 = (0, _services.track)(function (that) {
+}), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", [typeof ReplyWithTextParams === "undefined" ? Object : ReplyWithTextParams, String]), _dec106 = (0, _nextCore.delegate)('server'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [String, String]), _dec109 = (0, _nextCore.delegate)('server'), _dec110 = (0, _services.track)(_trackEvents.trackEvents.transferCompleteTransfer, process.env.THEME_SYSTEM === 'spring-ui'), _dec111 = Reflect.metadata("design:type", Function), _dec112 = Reflect.metadata("design:paramtypes", [String]), _dec113 = (0, _nextCore.delegate)('server'), _dec114 = (0, _services.track)(_trackEvents.trackEvents.transfer), _dec115 = Reflect.metadata("design:type", Function), _dec116 = Reflect.metadata("design:paramtypes", [String, String]), _dec117 = (0, _nextCore.delegate)('server'), _dec118 = Reflect.metadata("design:type", Function), _dec119 = Reflect.metadata("design:paramtypes", [String, String]), _dec120 = (0, _nextCore.delegate)('server'), _dec121 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.confirmForward)];
-}), _dec120 = (0, _nextCore.delegate)('server'), _dec121 = Reflect.metadata("design:type", Function), _dec122 = Reflect.metadata("design:paramtypes", [String, String]), _dec123 = (0, _nextCore.delegate)('server'), _dec124 = Reflect.metadata("design:type", Function), _dec125 = Reflect.metadata("design:paramtypes", [String, String]), _dec126 = Reflect.metadata("design:type", Function), _dec127 = Reflect.metadata("design:paramtypes", [typeof IPickUpCallDataMap === "undefined" ? Object : IPickUpCallDataMap]), _dec128 = (0, _nextCore.delegate)('server'), _dec129 = Reflect.metadata("design:type", Function), _dec130 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec131 = (0, _services.track)(function (that) {
+}), _dec122 = Reflect.metadata("design:type", Function), _dec123 = Reflect.metadata("design:paramtypes", [String, String]), _dec124 = (0, _nextCore.delegate)('server'), _dec125 = Reflect.metadata("design:type", Function), _dec126 = Reflect.metadata("design:paramtypes", [String, String]), _dec127 = Reflect.metadata("design:type", Function), _dec128 = Reflect.metadata("design:paramtypes", [typeof IPickUpCallDataMap === "undefined" ? Object : IPickUpCallDataMap]), _dec129 = (0, _nextCore.delegate)('server'), _dec130 = Reflect.metadata("design:type", Function), _dec131 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec132 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.answer)];
-}), _dec132 = Reflect.metadata("design:type", Function), _dec133 = Reflect.metadata("design:paramtypes", [String]), _dec134 = (0, _services.track)(function (that) {
+}), _dec133 = Reflect.metadata("design:type", Function), _dec134 = Reflect.metadata("design:paramtypes", [String]), _dec135 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.holdAndAnswer)];
-}), _dec135 = Reflect.metadata("design:type", Function), _dec136 = Reflect.metadata("design:paramtypes", [String]), _dec137 = (0, _services.track)(function (that) {
+}), _dec136 = Reflect.metadata("design:type", Function), _dec137 = Reflect.metadata("design:paramtypes", [String]), _dec138 = (0, _nextCore.delegate)('server'), _dec139 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.ignore)];
-}), _dec138 = (0, _nextCore.delegate)('server'), _dec139 = Reflect.metadata("design:type", Function), _dec140 = Reflect.metadata("design:paramtypes", [String]), _dec141 = (0, _services.track)(function (that) {
+}), _dec140 = Reflect.metadata("design:type", Function), _dec141 = Reflect.metadata("design:paramtypes", [String]), _dec142 = (0, _nextCore.delegate)('server'), _dec143 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.endAndAnswer)];
-}), _dec142 = (0, _nextCore.delegate)('server'), _dec143 = Reflect.metadata("design:type", Function), _dec144 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec145 = (0, _services.track)(_trackEvents.trackEvents.transferAskFirst, process.env.THEME_SYSTEM === 'spring-ui'), _dec146 = (0, _nextCore.delegate)('server'), _dec147 = Reflect.metadata("design:type", Function), _dec148 = Reflect.metadata("design:paramtypes", [String, String]), _dec149 = Reflect.metadata("design:type", Function), _dec150 = Reflect.metadata("design:paramtypes", [String, String]), _dec151 = Reflect.metadata("design:type", Function), _dec152 = Reflect.metadata("design:paramtypes", [Array]), _dec153 = (0, _nextCore.delegate)('server'), _dec154 = Reflect.metadata("design:type", Function), _dec155 = Reflect.metadata("design:paramtypes", [typeof ModuleMakeCallParams === "undefined" ? Object : ModuleMakeCallParams]), _dec156 = (0, _nextCore.delegate)('mainClient'), _dec157 = Reflect.metadata("design:type", Function), _dec158 = Reflect.metadata("design:paramtypes", [String, String]), _dec159 = (0, _nextCore.delegate)('server'), _dec160 = Reflect.metadata("design:type", Function), _dec161 = Reflect.metadata("design:paramtypes", [String, String]), _dec162 = (0, _nextCore.delegate)('server'), _dec163 = Reflect.metadata("design:type", Function), _dec164 = Reflect.metadata("design:paramtypes", [String]), _dec165 = (0, _nextCore.delegate)('mainClient'), _dec166 = Reflect.metadata("design:type", Function), _dec167 = Reflect.metadata("design:paramtypes", [String]), _dec168 = (0, _services.track)(_trackEvents.trackEvents.clickConfirmRemoveParticipant), _dec169 = (0, _nextCore.delegate)('server'), _dec170 = Reflect.metadata("design:type", Function), _dec171 = Reflect.metadata("design:paramtypes", [String, String]), _dec172 = (0, _nextCore.delegate)('server'), _dec173 = Reflect.metadata("design:type", Function), _dec174 = Reflect.metadata("design:paramtypes", [String, String]), _dec175 = (0, _nextCore.computed)(function (_ref) {
+}), _dec144 = Reflect.metadata("design:type", Function), _dec145 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec146 = (0, _nextCore.delegate)('server'), _dec147 = (0, _services.track)(_trackEvents.trackEvents.transferAskFirst, process.env.THEME_SYSTEM === 'spring-ui'), _dec148 = Reflect.metadata("design:type", Function), _dec149 = Reflect.metadata("design:paramtypes", [String, String]), _dec150 = Reflect.metadata("design:type", Function), _dec151 = Reflect.metadata("design:paramtypes", [String, String]), _dec152 = Reflect.metadata("design:type", Function), _dec153 = Reflect.metadata("design:paramtypes", [Array]), _dec154 = (0, _nextCore.delegate)('server'), _dec155 = Reflect.metadata("design:type", Function), _dec156 = Reflect.metadata("design:paramtypes", [typeof ModuleMakeCallParams === "undefined" ? Object : ModuleMakeCallParams]), _dec157 = (0, _nextCore.delegate)('mainClient'), _dec158 = Reflect.metadata("design:type", Function), _dec159 = Reflect.metadata("design:paramtypes", [String, String]), _dec160 = (0, _nextCore.delegate)('server'), _dec161 = Reflect.metadata("design:type", Function), _dec162 = Reflect.metadata("design:paramtypes", [String, String]), _dec163 = (0, _nextCore.delegate)('server'), _dec164 = Reflect.metadata("design:type", Function), _dec165 = Reflect.metadata("design:paramtypes", [String]), _dec166 = (0, _nextCore.delegate)('mainClient'), _dec167 = Reflect.metadata("design:type", Function), _dec168 = Reflect.metadata("design:paramtypes", [String]), _dec169 = (0, _nextCore.delegate)('server'), _dec170 = (0, _services.track)(_trackEvents.trackEvents.clickConfirmRemoveParticipant), _dec171 = Reflect.metadata("design:type", Function), _dec172 = Reflect.metadata("design:paramtypes", [String, String]), _dec173 = (0, _nextCore.delegate)('server'), _dec174 = Reflect.metadata("design:type", Function), _dec175 = Reflect.metadata("design:paramtypes", [String, String]), _dec176 = (0, _nextCore.computed)(function (_ref) {
   var activeSessionId = _ref.activeSessionId,
     activeSessions = _ref.activeSessions;
   return [activeSessionId, activeSessions];
-}), _dec176 = Reflect.metadata("design:type", Function), _dec177 = Reflect.metadata("design:paramtypes", []), _dec178 = (0, _nextCore.computed)(function (_ref2) {
+}), _dec177 = Reflect.metadata("design:type", Function), _dec178 = Reflect.metadata("design:paramtypes", []), _dec179 = (0, _nextCore.computed)(function (_ref2) {
   var sessions = _ref2.sessions;
   return [sessions];
-}), _dec179 = Reflect.metadata("design:type", Function), _dec180 = Reflect.metadata("design:paramtypes", []), _dec181 = (0, _nextCore.computed)(function (that) {
+}), _dec180 = Reflect.metadata("design:type", Function), _dec181 = Reflect.metadata("design:paramtypes", []), _dec182 = (0, _nextCore.computed)(function (that) {
   return [that.sessions, that.timestamp];
-}), _dec182 = Reflect.metadata("design:type", Function), _dec183 = Reflect.metadata("design:paramtypes", []), _dec184 = (0, _nextCore.computed)(function (that) {
+}), _dec183 = Reflect.metadata("design:type", Function), _dec184 = Reflect.metadata("design:paramtypes", []), _dec185 = (0, _nextCore.computed)(function (that) {
   return [that._presence.calls];
-}), _dec185 = Reflect.metadata("design:type", Function), _dec186 = Reflect.metadata("design:paramtypes", []), _dec187 = (0, _nextCore.computed)(function (that) {
+}), _dec186 = Reflect.metadata("design:type", Function), _dec187 = Reflect.metadata("design:paramtypes", []), _dec188 = (0, _nextCore.computed)(function (that) {
   return [that._webphone.sessions];
-}), _dec188 = Reflect.metadata("design:type", Function), _dec189 = Reflect.metadata("design:paramtypes", []), _dec190 = Reflect.metadata("design:type", Function), _dec191 = Reflect.metadata("design:paramtypes", []), _dec192 = (0, _services.track)(_trackEvents.trackEvents.dialpadOpen), _dec193 = Reflect.metadata("design:type", Function), _dec194 = Reflect.metadata("design:paramtypes", []), _dec195 = (0, _services.track)(_trackEvents.trackEvents.dialpadClose), _dec196 = Reflect.metadata("design:type", Function), _dec197 = Reflect.metadata("design:paramtypes", []), _dec198 = (0, _services.track)(function (that) {
+}), _dec189 = Reflect.metadata("design:type", Function), _dec190 = Reflect.metadata("design:paramtypes", []), _dec191 = Reflect.metadata("design:type", Function), _dec192 = Reflect.metadata("design:paramtypes", []), _dec193 = (0, _services.track)(_trackEvents.trackEvents.dialpadOpen), _dec194 = Reflect.metadata("design:type", Function), _dec195 = Reflect.metadata("design:paramtypes", []), _dec196 = (0, _services.track)(_trackEvents.trackEvents.dialpadClose), _dec197 = Reflect.metadata("design:type", Function), _dec198 = Reflect.metadata("design:paramtypes", []), _dec199 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.clickTransfer)];
-}), _dec199 = Reflect.metadata("design:type", Function), _dec200 = Reflect.metadata("design:paramtypes", []), _dec201 = (0, _services.track)(function (that) {
+}), _dec200 = Reflect.metadata("design:type", Function), _dec201 = Reflect.metadata("design:paramtypes", []), _dec202 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents.forward)];
-}), _dec202 = Reflect.metadata("design:type", Function), _dec203 = Reflect.metadata("design:paramtypes", []), _dec204 = (0, _services.track)(function (that, entry) {
+}), _dec203 = Reflect.metadata("design:type", Function), _dec204 = Reflect.metadata("design:paramtypes", []), _dec205 = (0, _services.track)(function (that, entry) {
   return [_trackEvents.trackEvents.phoneConferenceCallMerge, {
     entry: entry
   }];
-}), _dec205 = Reflect.metadata("design:type", Function), _dec206 = Reflect.metadata("design:paramtypes", [String]), _dec207 = (0, _services.track)(function (that, path) {
+}), _dec206 = Reflect.metadata("design:type", Function), _dec207 = Reflect.metadata("design:paramtypes", [String]), _dec208 = (0, _services.track)(function (that, path) {
   var target = that._analytics.getTrackTarget();
   return [_trackEvents.trackEvents.openEntityDetailLink, {
     path: path || target.router
   }];
-}), _dec208 = Reflect.metadata("design:type", Function), _dec209 = Reflect.metadata("design:paramtypes", [String]), _dec210 = (0, _services.track)(function (that) {
+}), _dec209 = Reflect.metadata("design:type", Function), _dec210 = Reflect.metadata("design:paramtypes", [String]), _dec211 = (0, _services.track)(function (that) {
   return [that._getTrackEventName(_trackEvents.trackEvents["switch"])];
-}), _dec211 = Reflect.metadata("design:type", Function), _dec212 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec212 = Reflect.metadata("design:type", Function), _dec213 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function ActiveCallControl(_preInsertCall, _portManager, _auth, _toast, _brand, _client, _presence, _accountInfo, _subscription, _extensionInfo, _numberValidate, _regionSettings, _connectivityMonitor, _appFeatures, _modalView, _locale, _webphone, _callingSettings, _prefix, _analytics, _availabilityMonitor, _activeCallControlOptions, _router) {
     var _this$_activeCallCont, _this$_activeCallCont2, _this$_activeCallCont3, _this$_activeCallCont4, _this$_activeCallCont5, _this$_activeCallCont6, _this$_activeCallCont7, _this$_activeCallCont8;
     var _this;
@@ -225,6 +226,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
     _this._polling = (_this$_activeCallCont5 = (_this$_activeCallCont6 = _this._activeCallControlOptions) === null || _this$_activeCallCont6 === void 0 ? void 0 : _this$_activeCallCont6.polling) !== null && _this$_activeCallCont5 !== void 0 ? _this$_activeCallCont5 : false;
     _this._promise = null;
     _this._rcCallControl = null;
+    _this._mergingConferenceSessionIds = new Set();
     _this._permissionCheck = (_this$_activeCallCont7 = (_this$_activeCallCont8 = _this._activeCallControlOptions) === null || _this$_activeCallCont8 === void 0 ? void 0 : _this$_activeCallCont8.permissionCheck) !== null && _this$_activeCallCont7 !== void 0 ? _this$_activeCallCont7 : true;
     _initializerDefineProperty(_this, "pickUpCallDataMap", _descriptor2, _this);
     _initializerDefineProperty(_this, "transferCallMapping", _descriptor3, _this);
@@ -642,21 +644,21 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
     key: "_handleSubscription",
     value: function _handleSubscription(message) {
       var _message, _message2, _message3, _message4;
-      if (((_message = message) === null || _message === void 0 ? void 0 : _message.event) && startRingEndPoint.test(message.event)) {
+      if ((_message = message) !== null && _message !== void 0 && _message.event && startRingEndPoint.test(message.event)) {
         var _message$body;
         var telephonySessionId = (_message$body = message.body) === null || _message$body === void 0 ? void 0 : _message$body.telephonySessionId;
         if (telephonySessionId) {
           this.addRingMessage(telephonySessionId, message.body);
         }
       }
-      if (((_message2 = message) === null || _message2 === void 0 ? void 0 : _message2.event) && stopRingEndPoint.test(message.event)) {
+      if ((_message2 = message) !== null && _message2 !== void 0 && _message2.event && stopRingEndPoint.test(message.event)) {
         var _message$body2;
         var _telephonySessionId = (_message$body2 = message.body) === null || _message$body2 === void 0 ? void 0 : _message$body2.telephonySessionId;
         if (_telephonySessionId) {
           this.removeRingMessage(_telephonySessionId);
         }
       }
-      if (this.ready && this.hasPermission && ((_message3 = message) === null || _message3 === void 0 ? void 0 : _message3.event) && ((_message4 = message) === null || _message4 === void 0 ? void 0 : _message4.body) && telephonySessionsEndPoint.test(message.event)) {
+      if (this.ready && this.hasPermission && (_message3 = message) !== null && _message3 !== void 0 && _message3.event && (_message4 = message) !== null && _message4 !== void 0 && _message4.body && telephonySessionsEndPoint.test(message.event)) {
         var _this$_rcCallControl;
         message = (0, _helpers.checkRingOutCallDirection)(message);
         var cloneMsg = JSON.parse(JSON.stringify(message));
@@ -788,6 +790,8 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 process.env.THEME_SYSTEM === 'spring-ui' ? _this8._numberValidate.getPartyExtensionNumber : undefined);
               }).filter(function (session) {
                 return _this8.skipConferenceCall ? !session.isConferenceCall : true;
+              }).filter(function (session) {
+                return !_this8._mergingConferenceSessionIds.has(session.id);
               });
               this._updateActiveSessions(JSON.parse(JSON.stringify(callControlSessions)));
             case 1:
@@ -1008,7 +1012,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
             case 0:
               _context14.p = 0;
               session = this._getSessionById(telephonySessionId);
-              if (!(session === null || session === void 0 ? void 0 : (_session$party = session.party) === null || _session$party === void 0 ? void 0 : _session$party.muted)) {
+              if (!(session !== null && session !== void 0 && (_session$party = session.party) !== null && _session$party !== void 0 && _session$party.muted)) {
                 _context14.n = 1;
                 break;
               }
@@ -1146,23 +1150,42 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
         }), _nextCore.takeUntilAppDestroy).subscribe();
         return;
       }
-      this._preInsertCall.listenPreinsertServerHandler(this.sessionsMap$);
+      this._preInsertCall.listenPreinsertServerHandler(this.sessionsMap$, {
+        dropTelephonySession: function () {
+          var _dropTelephonySession = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(telephonySessionId) {
+            var _this9$_getSessionByI;
+            return _regenerator().w(function (_context16) {
+              while (1) switch (_context16.n) {
+                case 0:
+                  _context16.n = 1;
+                  return (_this9$_getSessionByI = _this9._getSessionById(telephonySessionId)) === null || _this9$_getSessionByI === void 0 ? void 0 : _this9$_getSessionByI.drop();
+                case 1:
+                  return _context16.a(2);
+              }
+            }, _callee16);
+          }));
+          function dropTelephonySession(_x10) {
+            return _dropTelephonySession.apply(this, arguments);
+          }
+          return dropTelephonySession;
+        }()
+      });
     }
   }, {
     key: "stopRecordWithWebphone",
     value: function () {
-      var _stopRecordWithWebphone = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(currentDeviceWebphoneId) {
-        return _regenerator().w(function (_context16) {
-          while (1) switch (_context16.n) {
+      var _stopRecordWithWebphone = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee17(currentDeviceWebphoneId) {
+        return _regenerator().w(function (_context17) {
+          while (1) switch (_context17.n) {
             case 0:
-              _context16.n = 1;
+              _context17.n = 1;
               return this._webphone.stopRecord(currentDeviceWebphoneId, this.stopRecordErrorHandle);
             case 1:
-              return _context16.a(2);
+              return _context17.a(2);
           }
-        }, _callee16, this);
+        }, _callee17, this);
       }));
-      function stopRecordWithWebphone(_x10) {
+      function stopRecordWithWebphone(_x11) {
         return _stopRecordWithWebphone.apply(this, arguments);
       }
       return stopRecordWithWebphone;
@@ -1170,44 +1193,44 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "stopRecord",
     value: function () {
-      var _stopRecord = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee17(telephonySessionId) {
+      var _stopRecord = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee18(telephonySessionId) {
         var _session$origin2, session, currentDeviceWebphoneId, recordingId, _t9;
-        return _regenerator().w(function (_context17) {
-          while (1) switch (_context17.p = _context17.n) {
+        return _regenerator().w(function (_context18) {
+          while (1) switch (_context18.p = _context18.n) {
             case 0:
-              _context17.p = 0;
+              _context18.p = 0;
               this.setCallControlBusyTimestamp();
               session = this._getSessionById(telephonySessionId);
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId); // if current device call, using webphone record directly
               if (!(currentDeviceWebphoneId && ((_session$origin2 = session.origin) === null || _session$origin2 === void 0 ? void 0 : _session$origin2.type) === 'Conference')) {
-                _context17.n = 2;
+                _context18.n = 2;
                 break;
               }
-              _context17.n = 1;
+              _context18.n = 1;
               return this.stopRecordWithWebphone(currentDeviceWebphoneId);
             case 1:
-              _context17.n = 3;
+              _context18.n = 3;
               break;
             case 2:
               recordingId = this.getRecordingId(session);
-              _context17.n = 3;
+              _context18.n = 3;
               return session.pauseRecord(recordingId);
             case 3:
-              _context17.n = 5;
+              _context18.n = 5;
               break;
             case 4:
-              _context17.p = 4;
-              _t9 = _context17.v;
-              _context17.n = 5;
+              _context18.p = 4;
+              _t9 = _context18.v;
+              _context18.n = 5;
               return this.stopRecordErrorHandle(_t9);
             case 5:
               this.clearCallControlBusyTimestamp();
             case 6:
-              return _context17.a(2);
+              return _context18.a(2);
           }
-        }, _callee17, this, [[0, 4]]);
+        }, _callee18, this, [[0, 4]]);
       }));
-      function stopRecord(_x11) {
+      function stopRecord(_x12) {
         return _stopRecord.apply(this, arguments);
       }
       return stopRecord;
@@ -1215,18 +1238,18 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_hangupWithWebphone",
     value: function () {
-      var _hangupWithWebphone2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee18(currentDeviceWebphoneId) {
-        return _regenerator().w(function (_context18) {
-          while (1) switch (_context18.n) {
+      var _hangupWithWebphone2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee19(currentDeviceWebphoneId) {
+        return _regenerator().w(function (_context19) {
+          while (1) switch (_context19.n) {
             case 0:
-              _context18.n = 1;
+              _context19.n = 1;
               return this._webphone.hangup(currentDeviceWebphoneId, this._hangUpErrorHandle);
             case 1:
-              return _context18.a(2);
+              return _context19.a(2);
           }
-        }, _callee18, this);
+        }, _callee19, this);
       }));
-      function _hangupWithWebphone(_x12) {
+      function _hangupWithWebphone(_x13) {
         return _hangupWithWebphone2.apply(this, arguments);
       }
       return _hangupWithWebphone;
@@ -1234,17 +1257,17 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "checkIfConferenceCall",
     value: function () {
-      var _checkIfConferenceCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee19(telephonySessionId) {
+      var _checkIfConferenceCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee20(telephonySessionId) {
         var session;
-        return _regenerator().w(function (_context19) {
-          while (1) switch (_context19.n) {
+        return _regenerator().w(function (_context20) {
+          while (1) switch (_context20.n) {
             case 0:
               session = this._getSessionById(telephonySessionId);
-              return _context19.a(2, (0, _helpers.checkIfConferenceCall)(session));
+              return _context20.a(2, (0, _helpers.checkIfConferenceCall)(session));
           }
-        }, _callee19, this);
+        }, _callee20, this);
       }));
-      function checkIfConferenceCall(_x13) {
+      function checkIfConferenceCall(_x14) {
         return _checkIfConferenceCall2.apply(this, arguments);
       }
       return checkIfConferenceCall;
@@ -1252,35 +1275,35 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "hangUp",
     value: function () {
-      var _hangUp = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee20(telephonySessionId, hangupOnlyHost) {
+      var _hangUp = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee21(telephonySessionId, hangupOnlyHost) {
         var isConferenceCall, enableLeaveConferenceAsHost;
-        return _regenerator().w(function (_context20) {
-          while (1) switch (_context20.n) {
+        return _regenerator().w(function (_context21) {
+          while (1) switch (_context21.n) {
             case 0:
               if (!(process.env.THEME_SYSTEM !== 'spring-ui')) {
-                _context20.n = 2;
+                _context21.n = 2;
                 break;
               }
-              _context20.n = 1;
+              _context21.n = 1;
               return this.checkIfConferenceCall(telephonySessionId);
             case 1:
-              isConferenceCall = _context20.v;
+              isConferenceCall = _context21.v;
               enableLeaveConferenceAsHost = this.enableLeaveConferenceAsHost; // isLeaveConferenceAsHostEnabled
               if (!(isConferenceCall && enableLeaveConferenceAsHost)) {
-                _context20.n = 2;
+                _context21.n = 2;
                 break;
               }
               this.openDrawer(telephonySessionId);
-              return _context20.a(2);
+              return _context21.a(2);
             case 2:
-              _context20.n = 3;
+              _context21.n = 3;
               return this.endCall(telephonySessionId, hangupOnlyHost);
             case 3:
-              return _context20.a(2);
+              return _context21.a(2);
           }
-        }, _callee20, this);
+        }, _callee21, this);
       }));
-      function hangUp(_x14, _x15) {
+      function hangUp(_x15, _x16) {
         return _hangUp.apply(this, arguments);
       }
       return hangUp;
@@ -1288,66 +1311,66 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "endCall",
     value: function () {
-      var _endCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee21(telephonySessionId, hangupOnlyHost) {
+      var _endCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee22(telephonySessionId, hangupOnlyHost) {
         var _this$_onCallEndFunc, currentDeviceWebphoneId, session, isConferenceCall, _t0;
-        return _regenerator().w(function (_context21) {
-          while (1) switch (_context21.p = _context21.n) {
+        return _regenerator().w(function (_context22) {
+          while (1) switch (_context22.p = _context22.n) {
             case 0:
-              _context21.p = 0;
+              _context22.p = 0;
               this.setCallControlBusyTimestamp();
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
               session = this._getSessionById(telephonySessionId);
-              _context21.n = 1;
+              _context22.n = 1;
               return this.checkIfConferenceCall(telephonySessionId);
             case 1:
-              isConferenceCall = _context21.v;
+              isConferenceCall = _context22.v;
               if (!(isConferenceCall && hangupOnlyHost)) {
-                _context21.n = 2;
+                _context22.n = 2;
                 break;
               }
               session.removeParty(session.party.id, {
                 keepConferenceAlive: true
               });
-              return _context21.a(2);
+              return _context22.a(2);
             case 2:
               if (!currentDeviceWebphoneId) {
-                _context21.n = 4;
+                _context22.n = 4;
                 break;
               }
               _nextCore.logger.log("[".concat(this.identifier, "] end call with webphone"));
-              _context21.n = 3;
+              _context22.n = 3;
               return this._hangupWithWebphone(currentDeviceWebphoneId);
             case 3:
-              _context21.n = 5;
+              _context22.n = 5;
               break;
             case 4:
-              _context21.n = 5;
+              _context22.n = 5;
               return session.drop();
             case 5:
               (_this$_onCallEndFunc = this._onCallEndFunc) === null || _this$_onCallEndFunc === void 0 ? void 0 : _this$_onCallEndFunc.call(this);
               // in spring-ui, when end call, the list will refresh, so no need to sleep here
               if (!(process.env.THEME_SYSTEM !== 'spring-ui')) {
-                _context21.n = 6;
+                _context22.n = 6;
                 break;
               }
-              _context21.n = 6;
+              _context22.n = 6;
               return (0, _utils.sleep)(800);
             case 6:
-              _context21.n = 8;
+              _context22.n = 8;
               break;
             case 7:
-              _context21.p = 7;
-              _t0 = _context21.v;
-              _context21.n = 8;
+              _context22.p = 7;
+              _t0 = _context22.v;
+              _context22.n = 8;
               return this._hangUpErrorHandle(_t0);
             case 8:
               this.clearCallControlBusyTimestamp();
             case 9:
-              return _context21.a(2);
+              return _context22.a(2);
           }
-        }, _callee21, this, [[0, 7]]);
+        }, _callee22, this, [[0, 7]]);
       }));
-      function endCall(_x16, _x17) {
+      function endCall(_x17, _x18) {
         return _endCall.apply(this, arguments);
       }
       return endCall;
@@ -1355,49 +1378,49 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "reject",
     value: function () {
-      var _reject = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee22(telephonySessionId) {
+      var _reject = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee23(telephonySessionId) {
         var session, _this$_availabilityMo6, _t1;
-        return _regenerator().w(function (_context22) {
-          while (1) switch (_context22.p = _context22.n) {
+        return _regenerator().w(function (_context23) {
+          while (1) switch (_context23.p = _context23.n) {
             case 0:
-              _context22.p = 0;
+              _context23.p = 0;
               this.setCallControlBusyTimestamp();
               session = this._getSessionById(telephonySessionId); // !If is a queue call, ignore is performed
               if (!session.party.queueCall) {
-                _context22.n = 2;
+                _context23.n = 2;
                 break;
               }
-              _context22.n = 1;
+              _context23.n = 1;
               return this.ignore(telephonySessionId);
             case 1:
-              return _context22.a(2, _context22.v);
+              return _context23.a(2, _context23.v);
             case 2:
               _nextCore.logger.log("[".concat(this.identifier, "] to voicemail with session"));
-              _context22.n = 3;
+              _context23.n = 3;
               return session.toVoicemail();
             case 3:
               this.clearCallControlBusyTimestamp();
-              _context22.n = 7;
+              _context23.n = 7;
               break;
             case 4:
-              _context22.p = 4;
-              _t1 = _context22.v;
-              _context22.n = 5;
+              _context23.p = 4;
+              _t1 = _context23.v;
+              _context23.n = 5;
               return (_this$_availabilityMo6 = this._availabilityMonitor) === null || _this$_availabilityMo6 === void 0 ? void 0 : _this$_availabilityMo6.checkIfHAError(_t1);
             case 5:
-              if (_context22.v) {
-                _context22.n = 6;
+              if (_context23.v) {
+                _context23.n = 6;
                 break;
               }
               this._showGeneralError();
             case 6:
               this.clearCallControlBusyTimestamp();
             case 7:
-              return _context22.a(2);
+              return _context23.a(2);
           }
-        }, _callee22, this, [[0, 4]]);
+        }, _callee23, this, [[0, 4]]);
       }));
-      function reject(_x18) {
+      function reject(_x19) {
         return _reject.apply(this, arguments);
       }
       return reject;
@@ -1405,39 +1428,39 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_switch",
     value: function () {
-      var _switch2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee23(telephonySessionId) {
+      var _switch2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee24(telephonySessionId) {
         var _this$getSession, activeCall, _this$_availabilityMo7, _t10;
-        return _regenerator().w(function (_context23) {
-          while (1) switch (_context23.p = _context23.n) {
+        return _regenerator().w(function (_context24) {
+          while (1) switch (_context24.p = _context24.n) {
             case 0:
-              _context23.p = 0;
-              _context23.n = 1;
+              _context24.p = 0;
+              _context24.n = 1;
               return this.transferUnmuteHandler(telephonySessionId);
             case 1:
               activeCall = this._presence.calls.find(function (call) {
                 return call.telephonySessionId === telephonySessionId;
               });
-              _context23.n = 2;
+              _context24.n = 2;
               return this._webphone.switchCall(activeCall, this._regionSettings.homeCountryId);
             case 2:
-              return _context23.a(2, (_this$getSession = this.getSession(telephonySessionId)) === null || _this$getSession === void 0 ? void 0 : _this$getSession.sessionId);
+              return _context24.a(2, (_this$getSession = this.getSession(telephonySessionId)) === null || _this$getSession === void 0 ? void 0 : _this$getSession.sessionId);
             case 3:
-              _context23.p = 3;
-              _t10 = _context23.v;
-              _context23.n = 4;
+              _context24.p = 3;
+              _t10 = _context24.v;
+              _context24.n = 4;
               return (_this$_availabilityMo7 = this._availabilityMonitor) === null || _this$_availabilityMo7 === void 0 ? void 0 : _this$_availabilityMo7.checkIfHAError(_t10);
             case 4:
-              if (_context23.v) {
-                _context23.n = 5;
+              if (_context24.v) {
+                _context24.n = 5;
                 break;
               }
               this._showGeneralError();
             case 5:
-              return _context23.a(2);
+              return _context24.a(2);
           }
-        }, _callee23, this, [[0, 3]]);
+        }, _callee24, this, [[0, 3]]);
       }));
-      function _switch(_x19) {
+      function _switch(_x20) {
         return _switch2.apply(this, arguments);
       }
       return _switch;
@@ -1445,25 +1468,25 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "switch",
     value: function () {
-      var _switch3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee24(telephonySessionId) {
+      var _switch3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee25(telephonySessionId) {
         var switchedSessionId, _this$_onCallSwitched;
-        return _regenerator().w(function (_context24) {
-          while (1) switch (_context24.n) {
+        return _regenerator().w(function (_context25) {
+          while (1) switch (_context25.n) {
             case 0:
               this.setCallControlBusyTimestamp();
-              _context24.n = 1;
+              _context25.n = 1;
               return this._switch(telephonySessionId);
             case 1:
-              switchedSessionId = _context24.v;
+              switchedSessionId = _context25.v;
               this.clearCallControlBusyTimestamp();
               if (switchedSessionId) {
                 (_this$_onCallSwitched = this._onCallSwitchedFunc) === null || _this$_onCallSwitched === void 0 ? void 0 : _this$_onCallSwitched.call(this, switchedSessionId);
               }
-              return _context24.a(2, switchedSessionId);
+              return _context25.a(2, switchedSessionId);
           }
-        }, _callee24, this);
+        }, _callee25, this);
       }));
-      function _switch(_x20) {
+      function _switch(_x21) {
         return _switch3.apply(this, arguments);
       }
       return _switch;
@@ -1471,18 +1494,18 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "holdWithWebphone",
     value: function () {
-      var _holdWithWebphone = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee25(currentDeviceWebphoneId) {
-        return _regenerator().w(function (_context25) {
-          while (1) switch (_context25.n) {
+      var _holdWithWebphone = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee26(currentDeviceWebphoneId) {
+        return _regenerator().w(function (_context26) {
+          while (1) switch (_context26.n) {
             case 0:
-              _context25.n = 1;
+              _context26.n = 1;
               return this._webphone.hold(currentDeviceWebphoneId, this.holdErrorHandle);
             case 1:
-              return _context25.a(2);
+              return _context26.a(2);
           }
-        }, _callee25, this);
+        }, _callee26, this);
       }));
-      function holdWithWebphone(_x21) {
+      function holdWithWebphone(_x22) {
         return _holdWithWebphone.apply(this, arguments);
       }
       return holdWithWebphone;
@@ -1490,42 +1513,42 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "hold",
     value: function () {
-      var _hold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee26(telephonySessionId) {
+      var _hold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee27(telephonySessionId) {
         var session, currentDeviceWebphoneId, _t11;
-        return _regenerator().w(function (_context26) {
-          while (1) switch (_context26.p = _context26.n) {
+        return _regenerator().w(function (_context27) {
+          while (1) switch (_context27.p = _context27.n) {
             case 0:
               this.setCallControlBusyTimestamp();
-              _context26.p = 1;
+              _context27.p = 1;
               session = this._getSessionById(telephonySessionId);
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId); // if current device call, using webphone directly
               if (!currentDeviceWebphoneId) {
-                _context26.n = 3;
+                _context27.n = 3;
                 break;
               }
-              _context26.n = 2;
+              _context27.n = 2;
               return this.holdWithWebphone(currentDeviceWebphoneId);
             case 2:
-              _context26.n = 4;
+              _context27.n = 4;
               break;
             case 3:
-              _context26.n = 4;
+              _context27.n = 4;
               return session.hold();
             case 4:
-              _context26.n = 6;
+              _context27.n = 6;
               break;
             case 5:
-              _context26.p = 5;
-              _t11 = _context26.v;
+              _context27.p = 5;
+              _t11 = _context27.v;
               this.holdErrorHandle(_t11);
             case 6:
               this.clearCallControlBusyTimestamp();
             case 7:
-              return _context26.a(2);
+              return _context27.a(2);
           }
-        }, _callee26, this, [[1, 5]]);
+        }, _callee27, this, [[1, 5]]);
       }));
-      function hold(_x22) {
+      function hold(_x23) {
         return _hold.apply(this, arguments);
       }
       return hold;
@@ -1533,27 +1556,27 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_unholdWithWebphone",
     value: function () {
-      var _unholdWithWebphone2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee27(currentDeviceWebphoneId) {
+      var _unholdWithWebphone2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee28(currentDeviceWebphoneId) {
         var _this$_webphone$origi;
         var session;
-        return _regenerator().w(function (_context27) {
-          while (1) switch (_context27.n) {
+        return _regenerator().w(function (_context28) {
+          while (1) switch (_context28.n) {
             case 0:
               session = (_this$_webphone$origi = this._webphone.originalSessions) === null || _this$_webphone$origi === void 0 ? void 0 : _this$_webphone$origi[currentDeviceWebphoneId];
-              if (!(session === null || session === void 0 ? void 0 : session.localHold)) {
-                _context27.n = 2;
+              if (!(session !== null && session !== void 0 && session.localHold)) {
+                _context28.n = 2;
                 break;
               }
-              _context27.n = 1;
+              _context28.n = 1;
               return this._webphone.unhold(currentDeviceWebphoneId, this.unholdErrorHandle);
             case 1:
-              return _context27.a(2, true);
+              return _context28.a(2, true);
             case 2:
-              return _context27.a(2, false);
+              return _context28.a(2, false);
           }
-        }, _callee27, this);
+        }, _callee28, this);
       }));
-      function _unholdWithWebphone(_x23) {
+      function _unholdWithWebphone(_x24) {
         return _unholdWithWebphone2.apply(this, arguments);
       }
       return _unholdWithWebphone;
@@ -1561,29 +1584,29 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "unhold",
     value: function () {
-      var _unhold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee28(telephonySessionId) {
+      var _unhold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee29(telephonySessionId) {
         var currentDeviceWebphoneId, result, session, _t12;
-        return _regenerator().w(function (_context28) {
-          while (1) switch (_context28.p = _context28.n) {
+        return _regenerator().w(function (_context29) {
+          while (1) switch (_context29.p = _context29.n) {
             case 0:
               this.setCallControlBusyTimestamp();
-              _context28.p = 1;
+              _context29.p = 1;
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
               if (!currentDeviceWebphoneId) {
-                _context28.n = 3;
+                _context29.n = 3;
                 break;
               }
-              _context28.n = 2;
+              _context29.n = 2;
               return this._unholdWithWebphone(currentDeviceWebphoneId);
             case 2:
-              result = _context28.v;
+              result = _context29.v;
             case 3:
               if (!(!currentDeviceWebphoneId || !result)) {
-                _context28.n = 4;
+                _context29.n = 4;
                 break;
               }
               session = this._getSessionById(telephonySessionId);
-              _context28.n = 4;
+              _context29.n = 4;
               return session.unhold();
             case 4:
               // spring-ui not handle those logic inside the active call control
@@ -1591,21 +1614,21 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (process.env.THEME_SYSTEM !== 'spring-ui') {
                 this.setActiveSessionId(telephonySessionId);
               }
-              _context28.n = 6;
+              _context29.n = 6;
               break;
             case 5:
-              _context28.p = 5;
-              _t12 = _context28.v;
-              _context28.n = 6;
+              _context29.p = 5;
+              _t12 = _context29.v;
+              _context29.n = 6;
               return this.unholdErrorHandle(_t12);
             case 6:
               this.clearCallControlBusyTimestamp();
             case 7:
-              return _context28.a(2);
+              return _context29.a(2);
           }
-        }, _callee28, this, [[1, 5]]);
+        }, _callee29, this, [[1, 5]]);
       }));
-      function unhold(_x24) {
+      function unhold(_x25) {
         return _unhold.apply(this, arguments);
       }
       return unhold;
@@ -1613,42 +1636,42 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_replyWithMessage",
     value: function () {
-      var _replyWithMessage2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee29(params, currentDeviceWebphoneId) {
+      var _replyWithMessage2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee30(params, currentDeviceWebphoneId) {
         var _this0 = this;
         var webphoneReplyOption, result;
-        return _regenerator().w(function (_context29) {
-          while (1) switch (_context29.n) {
+        return _regenerator().w(function (_context30) {
+          while (1) switch (_context30.n) {
             case 0:
               if (!(params.replyWithText === '')) {
-                _context29.n = 1;
+                _context30.n = 1;
                 break;
               }
               this._toast.danger({
                 message: (0, _i18n.t)('replyEmptyError'),
                 ttl: 3000
               });
-              return _context29.a(2);
+              return _context30.a(2);
             case 1:
               webphoneReplyOption = (0, _helpers.getWebphoneReplyMessageOption)(params);
-              _context29.n = 2;
+              _context30.n = 2;
               return this._webphone.replyWithMessage(currentDeviceWebphoneId, webphoneReplyOption, function (error) {
                 _nextCore.logger.error('replyWithMessage error', error);
                 // TODO: check the logic of error handling
                 _this0._showGeneralError();
               });
             case 2:
-              result = _context29.v;
+              result = _context30.v;
               if (result) {
                 this._toast.success({
                   message: (0, _i18n.t)('replyCompleted')
                 });
               }
             case 3:
-              return _context29.a(2);
+              return _context30.a(2);
           }
-        }, _callee29, this);
+        }, _callee30, this);
       }));
-      function _replyWithMessage(_x25, _x26) {
+      function _replyWithMessage(_x26, _x27) {
         return _replyWithMessage2.apply(this, arguments);
       }
       return _replyWithMessage;
@@ -1656,43 +1679,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "replyWithMessage",
     value: function () {
-      var _replyWithMessage3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee30(params, telephonySessionId) {
+      var _replyWithMessage3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee31(params, telephonySessionId) {
         var session, currentDeviceWebphoneId;
-        return _regenerator().w(function (_context30) {
-          while (1) switch (_context30.n) {
-            case 0:
-              this.setCallControlBusyTimestamp();
-              session = this._getSessionById(telephonySessionId);
-              if (session) {
-                _context30.n = 1;
-                break;
-              }
-              return _context30.a(2, false);
-            case 1:
-              currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
-              _context30.n = 2;
-              return this._replyWithMessage(params, currentDeviceWebphoneId);
-            case 2:
-              this.clearCallControlBusyTimestamp();
-            case 3:
-              return _context30.a(2);
-          }
-        }, _callee30, this);
-      }));
-      function replyWithMessage(_x27, _x28) {
-        return _replyWithMessage3.apply(this, arguments);
-      }
-      return replyWithMessage;
-    }()
-  }, {
-    key: "toVoicemail",
-    value: function () {
-      var _toVoicemail = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee31(voicemailId, telephonySessionId) {
-        var session, _t13;
         return _regenerator().w(function (_context31) {
-          while (1) switch (_context31.p = _context31.n) {
+          while (1) switch (_context31.n) {
             case 0:
-              _context31.p = 0;
               this.setCallControlBusyTimestamp();
               session = this._getSessionById(telephonySessionId);
               if (session) {
@@ -1701,58 +1692,41 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               }
               return _context31.a(2, false);
             case 1:
+              currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
               _context31.n = 2;
-              return session.transfer({
-                voicemail: voicemailId
-              });
+              return this._replyWithMessage(params, currentDeviceWebphoneId);
             case 2:
               this.clearCallControlBusyTimestamp();
-              this._toast.success({
-                message: (0, _i18n.t)('transferCompleted')
-              });
-              _context31.n = 4;
-              break;
             case 3:
-              _context31.p = 3;
-              _t13 = _context31.v;
-              console.error('toVoicemail error', _t13);
-              this._toast.warning({
-                message: (0, _i18n.t)('toVoiceMailError')
-              });
-              this.clearCallControlBusyTimestamp();
-            case 4:
               return _context31.a(2);
           }
-        }, _callee31, this, [[0, 3]]);
+        }, _callee31, this);
       }));
-      function toVoicemail(_x29, _x30) {
-        return _toVoicemail.apply(this, arguments);
+      function replyWithMessage(_x28, _x29) {
+        return _replyWithMessage3.apply(this, arguments);
       }
-      return toVoicemail;
+      return replyWithMessage;
     }()
   }, {
-    key: "completeWarmTransfer",
+    key: "toVoicemail",
     value: function () {
-      var _completeWarmTransfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee32(telephonySession) {
-        var _this$transferCallMap, isOriginal, relatedTelephonySessionId, session, transferSession, _t14;
+      var _toVoicemail = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee32(voicemailId, telephonySessionId) {
+        var session, _t13;
         return _regenerator().w(function (_context32) {
           while (1) switch (_context32.p = _context32.n) {
             case 0:
               _context32.p = 0;
               this.setCallControlBusyTimestamp();
-              _this$transferCallMap = this.transferCallMapping[telephonySession], isOriginal = _this$transferCallMap.isOriginal, relatedTelephonySessionId = _this$transferCallMap.relatedTelephonySessionId;
-              session = this._getSessionById(isOriginal ? telephonySession : relatedTelephonySessionId);
-              transferSession = this._getSessionById(isOriginal ? relatedTelephonySessionId : telephonySession);
-              if (transferSession) {
+              session = this._getSessionById(telephonySessionId);
+              if (session) {
                 _context32.n = 1;
                 break;
               }
               return _context32.a(2, false);
             case 1:
               _context32.n = 2;
-              return session.bridge({
-                telephonySessionId: transferSession.id,
-                partyId: transferSession.party.id
+              return session.transfer({
+                voicemail: voicemailId
               });
             case 2:
               this.clearCallControlBusyTimestamp();
@@ -1763,16 +1737,65 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               break;
             case 3:
               _context32.p = 3;
-              _t14 = _context32.v;
-              console.error('warmTransfer error', _t14);
-              this._showGeneralError();
+              _t13 = _context32.v;
+              console.error('toVoicemail error', _t13);
+              this._toast.warning({
+                message: (0, _i18n.t)('toVoiceMailError')
+              });
               this.clearCallControlBusyTimestamp();
             case 4:
               return _context32.a(2);
           }
         }, _callee32, this, [[0, 3]]);
       }));
-      function completeWarmTransfer(_x31) {
+      function toVoicemail(_x30, _x31) {
+        return _toVoicemail.apply(this, arguments);
+      }
+      return toVoicemail;
+    }()
+  }, {
+    key: "completeWarmTransfer",
+    value: function () {
+      var _completeWarmTransfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee33(telephonySession) {
+        var _this$transferCallMap, isOriginal, relatedTelephonySessionId, session, transferSession, _t14;
+        return _regenerator().w(function (_context33) {
+          while (1) switch (_context33.p = _context33.n) {
+            case 0:
+              _context33.p = 0;
+              this.setCallControlBusyTimestamp();
+              _this$transferCallMap = this.transferCallMapping[telephonySession], isOriginal = _this$transferCallMap.isOriginal, relatedTelephonySessionId = _this$transferCallMap.relatedTelephonySessionId;
+              session = this._getSessionById(isOriginal ? telephonySession : relatedTelephonySessionId);
+              transferSession = this._getSessionById(isOriginal ? relatedTelephonySessionId : telephonySession);
+              if (transferSession) {
+                _context33.n = 1;
+                break;
+              }
+              return _context33.a(2, false);
+            case 1:
+              _context33.n = 2;
+              return session.bridge({
+                telephonySessionId: transferSession.id,
+                partyId: transferSession.party.id
+              });
+            case 2:
+              this.clearCallControlBusyTimestamp();
+              this._toast.success({
+                message: (0, _i18n.t)('transferCompleted')
+              });
+              _context33.n = 4;
+              break;
+            case 3:
+              _context33.p = 3;
+              _t14 = _context33.v;
+              console.error('warmTransfer error', _t14);
+              this._showGeneralError();
+              this.clearCallControlBusyTimestamp();
+            case 4:
+              return _context33.a(2);
+          }
+        }, _callee33, this, [[0, 3]]);
+      }));
+      function completeWarmTransfer(_x32) {
         return _completeWarmTransfer.apply(this, arguments);
       }
       return completeWarmTransfer;
@@ -1780,19 +1803,19 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "transfer",
     value: function () {
-      var _transfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee33(transferNumber, telephonySessionId) {
+      var _transfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee34(transferNumber, telephonySessionId) {
         var phoneNumber, session, params, _this$_availabilityMo8, _t15;
-        return _regenerator().w(function (_context33) {
-          while (1) switch (_context33.p = _context33.n) {
+        return _regenerator().w(function (_context34) {
+          while (1) switch (_context34.p = _context34.n) {
             case 0:
-              _context33.p = 0;
+              _context34.p = 0;
               this.setCallControlBusyTimestamp();
-              _context33.n = 1;
+              _context34.n = 1;
               return this.getValidPhoneNumber(transferNumber);
             case 1:
-              phoneNumber = _context33.v;
+              phoneNumber = _context34.v;
               if (!phoneNumber) {
-                _context33.n = 3;
+                _context34.n = 3;
                 break;
               }
               session = this._getSessionById(telephonySessionId);
@@ -1802,7 +1825,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               } else {
                 params.extensionNumber = phoneNumber;
               }
-              _context33.n = 2;
+              _context34.n = 2;
               return session.transfer(params);
             case 2:
               this.clearCallControlBusyTimestamp();
@@ -1810,16 +1833,16 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 message: (0, _i18n.t)('transferCompleted')
               });
             case 3:
-              _context33.n = 7;
+              _context34.n = 7;
               break;
             case 4:
-              _context33.p = 4;
-              _t15 = _context33.v;
-              _context33.n = 5;
+              _context34.p = 4;
+              _t15 = _context34.v;
+              _context34.n = 5;
               return (_this$_availabilityMo8 = this._availabilityMonitor) === null || _this$_availabilityMo8 === void 0 ? void 0 : _this$_availabilityMo8.checkIfHAError(_t15);
             case 5:
-              if (_context33.v) {
-                _context33.n = 6;
+              if (_context34.v) {
+                _context34.n = 6;
                 break;
               }
               this._toast.warning({
@@ -1828,11 +1851,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
             case 6:
               this.clearCallControlBusyTimestamp();
             case 7:
-              return _context33.a(2);
+              return _context34.a(2);
           }
-        }, _callee33, this, [[0, 4]]);
+        }, _callee34, this, [[0, 4]]);
       }));
-      function transfer(_x32, _x33) {
+      function transfer(_x33, _x34) {
         return _transfer.apply(this, arguments);
       }
       return transfer;
@@ -1840,14 +1863,14 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "getValidPhoneNumber",
     value: function () {
-      var _getValidPhoneNumber = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee34(phoneNumber, withMainNumber) {
+      var _getValidPhoneNumber = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee35(phoneNumber, withMainNumber) {
         var _validPhoneNumber;
         var validPhoneNumber, validatedResult, _this$_appFeatures, isEDPEnabled, _validatedResult2, _parsedNumbers$0$avai, parsedNumbers, _numbers, _numbers$, result, _t16;
-        return _regenerator().w(function (_context34) {
-          while (1) switch (_context34.n) {
+        return _regenerator().w(function (_context35) {
+          while (1) switch (_context35.n) {
             case 0:
               if (this._permissionCheck) {
-                _context34.n = 1;
+                _context35.n = 1;
                 break;
               }
               validatedResult = (0, _validateNumbers.validateNumbers)({
@@ -1857,41 +1880,41 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 phoneNumbers: [phoneNumber]
               });
               validPhoneNumber = validatedResult[0];
-              _context34.n = 8;
+              _context35.n = 8;
               break;
             case 1:
               isEDPEnabled = (_this$_appFeatures = this._appFeatures) === null || _this$_appFeatures === void 0 ? void 0 : _this$_appFeatures.isEDPEnabled;
               if (!isEDPEnabled) {
-                _context34.n = 2;
+                _context35.n = 2;
                 break;
               }
               _t16 = this._numberValidate.validate([phoneNumber]);
-              _context34.n = 4;
+              _context35.n = 4;
               break;
             case 2:
-              _context34.n = 3;
+              _context35.n = 3;
               return this._numberValidate.validateNumbers([phoneNumber]);
             case 3:
-              _t16 = _context34.v;
+              _t16 = _context35.v;
             case 4:
               _validatedResult2 = _t16;
               if (_validatedResult2.result) {
-                _context34.n = 5;
+                _context35.n = 5;
                 break;
               }
               this._numberValidate.handleValidateToasts(_validatedResult2);
-              return _context34.a(2);
+              return _context35.a(2);
             case 5:
               if (!isEDPEnabled) {
-                _context34.n = 7;
+                _context35.n = 7;
                 break;
               }
-              _context34.n = 6;
+              _context35.n = 6;
               return this._numberValidate.parseNumbers([phoneNumber]);
             case 6:
-              parsedNumbers = _context34.v;
+              parsedNumbers = _context35.v;
               validPhoneNumber = (_parsedNumbers$0$avai = parsedNumbers === null || parsedNumbers === void 0 ? void 0 : parsedNumbers[0].availableExtension) !== null && _parsedNumbers$0$avai !== void 0 ? _parsedNumbers$0$avai : parsedNumbers === null || parsedNumbers === void 0 ? void 0 : parsedNumbers[0].parsedNumber;
-              _context34.n = 8;
+              _context35.n = 8;
               break;
             case 7:
               validPhoneNumber = (_numbers = _validatedResult2.numbers) === null || _numbers === void 0 ? void 0 : (_numbers$ = _numbers[0]) === null || _numbers$ === void 0 ? void 0 : _numbers$.e164;
@@ -1900,11 +1923,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (withMainNumber && ((_validPhoneNumber = validPhoneNumber) === null || _validPhoneNumber === void 0 ? void 0 : _validPhoneNumber.indexOf('+')) === -1) {
                 result = [this._accountInfo.mainCompanyNumber, validPhoneNumber].join('*');
               }
-              return _context34.a(2, result);
+              return _context35.a(2, result);
           }
-        }, _callee34, this);
+        }, _callee35, this);
       }));
-      function getValidPhoneNumber(_x34, _x35) {
+      function getValidPhoneNumber(_x35, _x36) {
         return _getValidPhoneNumber.apply(this, arguments);
       }
       return getValidPhoneNumber;
@@ -1912,34 +1935,34 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "flip",
     value: function () {
-      var _flip = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee35(flipValue, telephonySessionId) {
+      var _flip = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee36(flipValue, telephonySessionId) {
         var session, _t17;
-        return _regenerator().w(function (_context35) {
-          while (1) switch (_context35.p = _context35.n) {
+        return _regenerator().w(function (_context36) {
+          while (1) switch (_context36.p = _context36.n) {
             case 0:
-              _context35.p = 0;
+              _context36.p = 0;
               this.setCallControlBusyTimestamp();
               session = this._getSessionById(telephonySessionId);
-              _context35.n = 1;
+              _context36.n = 1;
               return session.flip({
                 callFlipId: flipValue
               });
             case 1:
               this.clearCallControlBusyTimestamp();
-              _context35.n = 3;
+              _context36.n = 3;
               break;
             case 2:
-              _context35.p = 2;
-              _t17 = _context35.v;
+              _context36.p = 2;
+              _t17 = _context36.v;
               console.error('flip error', _t17);
               this.clearCallControlBusyTimestamp();
               throw _t17;
             case 3:
-              return _context35.a(2);
+              return _context36.a(2);
           }
-        }, _callee35, this, [[0, 2]]);
+        }, _callee36, this, [[0, 2]]);
       }));
-      function flip(_x36, _x37) {
+      function flip(_x37, _x38) {
         return _flip.apply(this, arguments);
       }
       return flip;
@@ -1947,21 +1970,21 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "forward",
     value: function () {
-      var _forward = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee36(forwardNumber, telephonySessionId) {
+      var _forward = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee37(forwardNumber, telephonySessionId) {
         var session, validatedResult, validPhoneNumber, _this$_appFeatures2, isEDPEnabled, _validatedResult, parsedNumbers, _parsedNumbers$0$avai2, _numbers2, _numbers2$, currentDeviceWebphoneId, params, _t18, _t19;
-        return _regenerator().w(function (_context36) {
-          while (1) switch (_context36.p = _context36.n) {
+        return _regenerator().w(function (_context37) {
+          while (1) switch (_context37.p = _context37.n) {
             case 0:
               session = this._getSessionById(telephonySessionId);
               if (session) {
-                _context36.n = 1;
+                _context37.n = 1;
                 break;
               }
-              return _context36.a(2, false);
+              return _context37.a(2, false);
             case 1:
-              _context36.p = 1;
+              _context37.p = 1;
               if (this._permissionCheck) {
-                _context36.n = 2;
+                _context37.n = 2;
                 break;
               }
               validatedResult = (0, _validateNumbers.validateNumbers)({
@@ -1971,63 +1994,63 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 phoneNumbers: [forwardNumber]
               });
               validPhoneNumber = validatedResult[0];
-              _context36.n = 9;
+              _context37.n = 9;
               break;
             case 2:
               isEDPEnabled = (_this$_appFeatures2 = this._appFeatures) === null || _this$_appFeatures2 === void 0 ? void 0 : _this$_appFeatures2.isEDPEnabled;
               if (!isEDPEnabled) {
-                _context36.n = 3;
+                _context37.n = 3;
                 break;
               }
               _t18 = this._numberValidate.validate([forwardNumber]);
-              _context36.n = 5;
+              _context37.n = 5;
               break;
             case 3:
-              _context36.n = 4;
+              _context37.n = 4;
               return this._numberValidate.validateNumbers([forwardNumber]);
             case 4:
-              _t18 = _context36.v;
+              _t18 = _context37.v;
             case 5:
               _validatedResult = _t18;
               validatedResult = _validatedResult;
               if (_validatedResult.result) {
-                _context36.n = 6;
+                _context37.n = 6;
                 break;
               }
               this._numberValidate.handleValidateToasts(_validatedResult);
-              return _context36.a(2, false);
+              return _context37.a(2, false);
             case 6:
               if (!isEDPEnabled) {
-                _context36.n = 8;
+                _context37.n = 8;
                 break;
               }
-              _context36.n = 7;
+              _context37.n = 7;
               return this._numberValidate.parseNumbers([forwardNumber]);
             case 7:
-              parsedNumbers = _context36.v;
+              parsedNumbers = _context37.v;
               if (parsedNumbers) {
                 validPhoneNumber = (_parsedNumbers$0$avai2 = parsedNumbers[0].availableExtension) !== null && _parsedNumbers$0$avai2 !== void 0 ? _parsedNumbers$0$avai2 : parsedNumbers[0].parsedNumber;
               }
-              _context36.n = 9;
+              _context37.n = 9;
               break;
             case 8:
               validPhoneNumber = (_numbers2 = validatedResult.numbers) === null || _numbers2 === void 0 ? void 0 : (_numbers2$ = _numbers2[0]) === null || _numbers2$ === void 0 ? void 0 : _numbers2$.e164;
             case 9:
               if (validPhoneNumber) {
-                _context36.n = 10;
+                _context37.n = 10;
                 break;
               }
-              return _context36.a(2);
+              return _context37.a(2);
             case 10:
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId); // if current device call, using webphone directly
               if (!currentDeviceWebphoneId) {
-                _context36.n = 12;
+                _context37.n = 12;
                 break;
               }
-              _context36.n = 11;
+              _context37.n = 11;
               return this._webphone.forward(currentDeviceWebphoneId, validPhoneNumber);
             case 11:
-              _context36.n = 13;
+              _context37.n = 13;
               break;
             case 12:
               params = {};
@@ -2036,7 +2059,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               } else {
                 params.extensionNumber = forwardNumber;
               }
-              return _context36.a(2, session.forward(params));
+              return _context37.a(2, session.forward(params));
             case 13:
               this._toast.success({
                 message: (0, _i18n.t)('forwardSuccess')
@@ -2044,21 +2067,21 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (typeof this._onCallEndFunc === 'function') {
                 this._onCallEndFunc();
               }
-              return _context36.a(2, true);
+              return _context37.a(2, true);
             case 14:
-              _context36.p = 14;
-              _t19 = _context36.v;
+              _context37.p = 14;
+              _t19 = _context37.v;
               console.error('transfer fail', _t19);
               this._toast.warning({
                 message: (0, _i18n.t)('failWithoutStatusCode', {
                   brandName: this._brand.name
                 })
               });
-              return _context36.a(2, false);
+              return _context37.a(2, false);
           }
-        }, _callee36, this, [[1, 14]]);
+        }, _callee37, this, [[1, 14]]);
       }));
-      function forward(_x38, _x39) {
+      function forward(_x39, _x40) {
         return _forward.apply(this, arguments);
       }
       return forward;
@@ -2066,33 +2089,33 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "sendDTMF",
     value: function () {
-      var _sendDTMF = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee37(dtmfValue, telephonySessionId) {
+      var _sendDTMF = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee38(dtmfValue, telephonySessionId) {
         var currentDeviceWebphoneId, _t20;
-        return _regenerator().w(function (_context37) {
-          while (1) switch (_context37.p = _context37.n) {
+        return _regenerator().w(function (_context38) {
+          while (1) switch (_context38.p = _context38.n) {
             case 0:
-              _context37.p = 0;
+              _context38.p = 0;
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId); // if current device call, using webphone directly
               if (!currentDeviceWebphoneId) {
-                _context37.n = 1;
+                _context38.n = 1;
                 break;
               }
-              _context37.n = 1;
+              _context38.n = 1;
               return this._webphone.sendDTMF(dtmfValue, currentDeviceWebphoneId);
             case 1:
-              _context37.n = 3;
+              _context38.n = 3;
               break;
             case 2:
-              _context37.p = 2;
-              _t20 = _context37.v;
+              _context38.p = 2;
+              _t20 = _context38.v;
               console.log('send dtmf error', _t20);
               throw _t20;
             case 3:
-              return _context37.a(2);
+              return _context38.a(2);
           }
-        }, _callee37, this, [[0, 2]]);
+        }, _callee38, this, [[0, 2]]);
       }));
-      function sendDTMF(_x40, _x41) {
+      function sendDTMF(_x41, _x42) {
         return _sendDTMF.apply(this, arguments);
       }
       return sendDTMF;
@@ -2105,41 +2128,41 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_answer",
     value: function () {
-      var _answer2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee38(telephonySessionId) {
+      var _answer2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee39(telephonySessionId) {
         var needPickupCall,
           currentDeviceWebphoneId,
           data,
-          _args38 = arguments;
-        return _regenerator().w(function (_context38) {
-          while (1) switch (_context38.p = _context38.n) {
+          _args39 = arguments;
+        return _regenerator().w(function (_context39) {
+          while (1) switch (_context39.p = _context39.n) {
             case 0:
-              needPickupCall = _args38.length > 1 && _args38[1] !== undefined ? _args38[1] : false;
-              _context38.p = 1;
+              needPickupCall = _args39.length > 1 && _args39[1] !== undefined ? _args39[1] : false;
+              _context39.p = 1;
               this.setCallControlBusyTimestamp();
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId); // if current device call, using webphone directly
               if (!(currentDeviceWebphoneId && !needPickupCall)) {
-                _context38.n = 3;
+                _context39.n = 3;
                 break;
               }
-              _context38.n = 2;
+              _context39.n = 2;
               return this._webphone.answer(currentDeviceWebphoneId);
             case 2:
-              _context38.n = 4;
+              _context39.n = 4;
               break;
             case 3:
               data = this.pickUpCallDataMap[telephonySessionId];
-              _context38.n = 4;
+              _context39.n = 4;
               return this.pickUpCall(telephonySessionId, data);
             case 4:
-              _context38.p = 4;
+              _context39.p = 4;
               this.clearCallControlBusyTimestamp();
-              return _context38.f(4);
+              return _context39.f(4);
             case 5:
-              return _context38.a(2);
+              return _context39.a(2);
           }
-        }, _callee38, this, [[1,, 4, 5]]);
+        }, _callee39, this, [[1,, 4, 5]]);
       }));
-      function _answer(_x42) {
+      function _answer(_x43) {
         return _answer2.apply(this, arguments);
       }
       return _answer;
@@ -2147,14 +2170,14 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "pickUpCall",
     value: function () {
-      var _pickUpCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee39(telephonySessionId, data) {
+      var _pickUpCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee40(telephonySessionId, data) {
         var _this$ringMessages$te;
         var session;
-        return _regenerator().w(function (_context39) {
-          while (1) switch (_context39.n) {
+        return _regenerator().w(function (_context40) {
+          while (1) switch (_context40.n) {
             case 0:
               session = (_this$ringMessages$te = this.ringMessages[telephonySessionId]) !== null && _this$ringMessages$te !== void 0 ? _this$ringMessages$te : {};
-              _context39.n = 1;
+              _context40.n = 1;
               return this._webphone.pickupInboundCall(data !== null && data !== void 0 ? data : {
                 serverId: session.serverId,
                 sessionId: session.sessionId,
@@ -2165,11 +2188,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 fromNumber: session.from
               });
             case 1:
-              return _context39.a(2);
+              return _context40.a(2);
           }
-        }, _callee39, this);
+        }, _callee40, this);
       }));
-      function pickUpCall(_x43, _x44) {
+      function pickUpCall(_x44, _x45) {
         return _pickUpCall.apply(this, arguments);
       }
       return pickUpCall;
@@ -2177,47 +2200,8 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "answer",
     value: function () {
-      var _answer3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee40(telephonySessionId) {
+      var _answer3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee41(telephonySessionId) {
         var currentDeviceWebphoneId, needPickupCall, _t21;
-        return _regenerator().w(function (_context40) {
-          while (1) switch (_context40.p = _context40.n) {
-            case 0:
-              currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
-              needPickupCall = false;
-              if (!currentDeviceWebphoneId) {
-                _context40.n = 2;
-                break;
-              }
-              _context40.n = 1;
-              return this._webphone.switchWebphoneInstance();
-            case 1:
-              needPickupCall = _context40.v;
-            case 2:
-              _context40.p = 2;
-              _context40.n = 3;
-              return this._answer(telephonySessionId, needPickupCall);
-            case 3:
-              _context40.n = 5;
-              break;
-            case 4:
-              _context40.p = 4;
-              _t21 = _context40.v;
-              this.logger.log('answer failed.', _t21);
-            case 5:
-              return _context40.a(2);
-          }
-        }, _callee40, this, [[2, 4]]);
-      }));
-      function answer(_x45) {
-        return _answer3.apply(this, arguments);
-      }
-      return answer;
-    }()
-  }, {
-    key: "answerAndHold",
-    value: function () {
-      var _answerAndHold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee41(telephonySessionId) {
-        var currentDeviceWebphoneId, needPickupCall, _t22;
         return _regenerator().w(function (_context41) {
           while (1) switch (_context41.p = _context41.n) {
             case 0:
@@ -2240,14 +2224,53 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               break;
             case 4:
               _context41.p = 4;
-              _t22 = _context41.v;
-              console.log('answer hold failed.', _t22);
+              _t21 = _context41.v;
+              this.logger.log('answer failed.', _t21);
             case 5:
               return _context41.a(2);
           }
         }, _callee41, this, [[2, 4]]);
       }));
-      function answerAndHold(_x46) {
+      function answer(_x46) {
+        return _answer3.apply(this, arguments);
+      }
+      return answer;
+    }()
+  }, {
+    key: "answerAndHold",
+    value: function () {
+      var _answerAndHold = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee42(telephonySessionId) {
+        var currentDeviceWebphoneId, needPickupCall, _t22;
+        return _regenerator().w(function (_context42) {
+          while (1) switch (_context42.p = _context42.n) {
+            case 0:
+              currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
+              needPickupCall = false;
+              if (!currentDeviceWebphoneId) {
+                _context42.n = 2;
+                break;
+              }
+              _context42.n = 1;
+              return this._webphone.switchWebphoneInstance();
+            case 1:
+              needPickupCall = _context42.v;
+            case 2:
+              _context42.p = 2;
+              _context42.n = 3;
+              return this._answer(telephonySessionId, needPickupCall);
+            case 3:
+              _context42.n = 5;
+              break;
+            case 4:
+              _context42.p = 4;
+              _t22 = _context42.v;
+              console.log('answer hold failed.', _t22);
+            case 5:
+              return _context42.a(2);
+          }
+        }, _callee42, this, [[2, 4]]);
+      }));
+      function answerAndHold(_x47) {
         return _answerAndHold.apply(this, arguments);
       }
       return answerAndHold;
@@ -2255,53 +2278,53 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "ignore",
     value: function () {
-      var _ignore = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(telephonySessionId) {
+      var _ignore = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(telephonySessionId) {
         var _this1 = this;
         var currentDeviceWebphoneId, _this$onCallIgnoreFun, session, _t23;
-        return _regenerator().w(function (_context43) {
-          while (1) switch (_context43.p = _context43.n) {
+        return _regenerator().w(function (_context44) {
+          while (1) switch (_context44.p = _context44.n) {
             case 0:
               currentDeviceWebphoneId = this._getCurrentDeviceCallsBySessionId(telephonySessionId);
               if (currentDeviceWebphoneId) {
-                _context43.n = 1;
+                _context44.n = 1;
                 break;
               }
               _nextCore.logger.log('[ActiveCallControl] not in current device, not able to ignore.');
-              return _context43.a(2);
+              return _context44.a(2);
             case 1:
               this.setCallControlBusyTimestamp();
-              _context43.p = 2;
+              _context44.p = 2;
               session = this._getSessionById(telephonySessionId);
-              _context43.n = 3;
+              _context44.n = 3;
               return this._webphone.reject(currentDeviceWebphoneId);
             case 3:
               (_this$onCallIgnoreFun = this.onCallIgnoreFunc) === null || _this$onCallIgnoreFun === void 0 ? void 0 : _this$onCallIgnoreFun.call(this, session.party.id);
               // hack for update sessions, then incoming call log page can re-render
-              setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee42() {
-                return _regenerator().w(function (_context42) {
-                  while (1) switch (_context42.n) {
+              setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43() {
+                return _regenerator().w(function (_context43) {
+                  while (1) switch (_context43.n) {
                     case 0:
-                      _context42.n = 1;
+                      _context43.n = 1;
                       return _this1.updateActiveSessions();
                     case 1:
-                      return _context42.a(2, _context42.v);
+                      return _context43.a(2, _context43.v);
                   }
-                }, _callee42);
+                }, _callee43);
               })), 0);
-              _context43.n = 5;
+              _context44.n = 5;
               break;
             case 4:
-              _context43.p = 4;
-              _t23 = _context43.v;
+              _context44.p = 4;
+              _t23 = _context44.v;
               _nextCore.logger.log('[ActiveCallControl] ignore failed.', _t23);
             case 5:
               this.clearCallControlBusyTimestamp();
             case 6:
-              return _context43.a(2);
+              return _context44.a(2);
           }
-        }, _callee43, this, [[2, 4]]);
+        }, _callee44, this, [[2, 4]]);
       }));
-      function ignore(_x47) {
+      function ignore(_x48) {
         return _ignore.apply(this, arguments);
       }
       return ignore;
@@ -2309,26 +2332,26 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "answerAndEnd",
     value: function () {
-      var _answerAndEnd = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(telephonySessionId) {
+      var _answerAndEnd = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee45(telephonySessionId) {
         var _this10 = this;
         var needPickupCall,
           currentActiveCalls,
           _iterator2,
           _step2,
           s,
-          _args44 = arguments,
+          _args45 = arguments,
           _t24,
           _t25;
-        return _regenerator().w(function (_context44) {
-          while (1) switch (_context44.p = _context44.n) {
+        return _regenerator().w(function (_context45) {
+          while (1) switch (_context45.p = _context45.n) {
             case 0:
-              needPickupCall = _args44.length > 1 && _args44[1] !== undefined ? _args44[1] : false;
-              _context44.p = 1;
+              needPickupCall = _args45.length > 1 && _args45[1] !== undefined ? _args45[1] : false;
+              _context45.p = 1;
               if (!this.busy) {
-                _context44.n = 2;
+                _context45.n = 2;
                 break;
               }
-              return _context44.a(2);
+              return _context45.a(2);
             case 2:
               currentActiveCalls = this._rcCallControl.sessions.filter(function (s) {
                 var _s$party, _s$party$status, _s$party2, _s$party3, _s$party3$status;
@@ -2336,47 +2359,47 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 return s.id !== telephonySessionId && currentDeviceWebphoneId && (((_s$party = s.party) === null || _s$party === void 0 ? void 0 : (_s$party$status = _s$party.status) === null || _s$party$status === void 0 ? void 0 : _s$party$status.code) === _Session.PartyStatusCode.answered || ((_s$party2 = s.party) === null || _s$party2 === void 0 ? void 0 : _s$party2.direction) === _callDirections.callDirection.outbound && ((_s$party3 = s.party) === null || _s$party3 === void 0 ? void 0 : (_s$party3$status = _s$party3.status) === null || _s$party3$status === void 0 ? void 0 : _s$party3$status.code) === _Session.PartyStatusCode.proceeding);
               });
               _iterator2 = _createForOfIteratorHelper(currentActiveCalls);
-              _context44.p = 3;
+              _context45.p = 3;
               _iterator2.s();
             case 4:
               if ((_step2 = _iterator2.n()).done) {
-                _context44.n = 6;
+                _context45.n = 6;
                 break;
               }
               s = _step2.value;
-              _context44.n = 5;
+              _context45.n = 5;
               return this.hangUp(s.id);
             case 5:
-              _context44.n = 4;
+              _context45.n = 4;
               break;
             case 6:
-              _context44.n = 8;
+              _context45.n = 8;
               break;
             case 7:
-              _context44.p = 7;
-              _t24 = _context44.v;
+              _context45.p = 7;
+              _t24 = _context45.v;
               _iterator2.e(_t24);
             case 8:
-              _context44.p = 8;
+              _context45.p = 8;
               _iterator2.f();
-              return _context44.f(8);
+              return _context45.f(8);
             case 9:
-              _context44.n = 10;
+              _context45.n = 10;
               return this._answer(telephonySessionId, needPickupCall);
             case 10:
-              _context44.n = 12;
+              _context45.n = 12;
               break;
             case 11:
-              _context44.p = 11;
-              _t25 = _context44.v;
+              _context45.p = 11;
+              _t25 = _context45.v;
               console.log('answer and end fail.');
               console.error(_t25);
             case 12:
-              return _context44.a(2);
+              return _context45.a(2);
           }
-        }, _callee44, this, [[3, 7, 8, 9], [1, 11]]);
+        }, _callee45, this, [[3, 7, 8, 9], [1, 11]]);
       }));
-      function answerAndEnd(_x48) {
+      function answerAndEnd(_x49) {
         return _answerAndEnd.apply(this, arguments);
       }
       return answerAndEnd;
@@ -2385,43 +2408,43 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "startWarmTransfer",
     value: function () {
-      var _startWarmTransfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee45(transferNumber, telephonySessionId) {
+      var _startWarmTransfer = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46(transferNumber, telephonySessionId) {
         var toNumber, _t26;
-        return _regenerator().w(function (_context45) {
-          while (1) switch (_context45.p = _context45.n) {
+        return _regenerator().w(function (_context46) {
+          while (1) switch (_context46.p = _context46.n) {
             case 0:
-              _context45.p = 0;
+              _context46.p = 0;
               this.setCallControlBusyTimestamp();
-              _context45.n = 1;
+              _context46.n = 1;
               return this.getValidPhoneNumber(transferNumber);
             case 1:
-              toNumber = _context45.v;
+              toNumber = _context46.v;
               if (toNumber) {
-                _context45.n = 2;
+                _context46.n = 2;
                 break;
               }
               throw new Error('Invalid phone number');
             case 2:
-              return _context45.a(2, this.makeCall({
+              return _context46.a(2, this.makeCall({
                 toNumber: toNumber,
                 transferSessionId: telephonySessionId
               }));
             case 3:
-              _context45.p = 3;
-              _t26 = _context45.v;
+              _context46.p = 3;
+              _t26 = _context46.v;
               this._toast.danger({
                 message: (0, _i18n.t)('somethingWentWrong')
               });
             case 4:
-              _context45.p = 4;
+              _context46.p = 4;
               this.clearCallControlBusyTimestamp();
-              return _context45.f(4);
+              return _context46.f(4);
             case 5:
-              return _context45.a(2);
+              return _context46.a(2);
           }
-        }, _callee45, this, [[0, 3, 4, 5]]);
+        }, _callee46, this, [[0, 3, 4, 5]]);
       }));
-      function startWarmTransfer(_x49, _x50) {
+      function startWarmTransfer(_x50, _x51) {
         return _startWarmTransfer.apply(this, arguments);
       }
       return startWarmTransfer;
@@ -2459,29 +2482,29 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "getDefaultFromNumber",
     value: function () {
-      var _getDefaultFromNumber = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46() {
+      var _getDefaultFromNumber = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee47() {
         var isWebphone, theFromNumber, _ref11, _ref12, formatted, _t27;
-        return _regenerator().w(function (_context46) {
-          while (1) switch (_context46.n) {
+        return _regenerator().w(function (_context47) {
+          while (1) switch (_context47.n) {
             case 0:
               isWebphone = this._callingSettings.isWebphoneMode;
               if (!isWebphone) {
-                _context46.n = 1;
+                _context47.n = 1;
                 break;
               }
-              return _context46.a(2, this._callingSettings.fromNumber);
+              return _context47.a(2, this._callingSettings.fromNumber);
             case 1:
               theFromNumber = this._callingSettings.myLocation;
               if (!(theFromNumber && theFromNumber.length > 0)) {
-                _context46.n = 4;
+                _context47.n = 4;
                 break;
               }
-              _context46.n = 2;
+              _context47.n = 2;
               return this._numberValidate.parseNumbers([theFromNumber]);
             case 2:
-              _t27 = _context46.v;
+              _t27 = _context47.v;
               if (_t27) {
-                _context46.n = 3;
+                _context47.n = 3;
                 break;
               }
               _t27 = [];
@@ -2489,11 +2512,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               _ref11 = _t27;
               _ref12 = _slicedToArray(_ref11, 1);
               formatted = _ref12[0];
-              return _context46.a(2, formatted === null || formatted === void 0 ? void 0 : formatted.parsedNumber);
+              return _context47.a(2, formatted === null || formatted === void 0 ? void 0 : formatted.parsedNumber);
             case 4:
-              return _context46.a(2, undefined);
+              return _context47.a(2, undefined);
           }
-        }, _callee46, this);
+        }, _callee47, this);
       }));
       function getDefaultFromNumber() {
         return _getDefaultFromNumber.apply(this, arguments);
@@ -2503,26 +2526,26 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "makeCall",
     value: function () {
-      var _makeCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee47(params) {
+      var _makeCall = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee48(params) {
         var result, _t28, _t29, _t30, _t31, _t32, _t33, _t34;
-        return _regenerator().w(function (_context47) {
-          while (1) switch (_context47.p = _context47.n) {
+        return _regenerator().w(function (_context48) {
+          while (1) switch (_context48.p = _context48.n) {
             case 0:
-              _context47.p = 0;
+              _context48.p = 0;
               _t28 = this._webphone;
               _t30 = params.fromNumber;
               if (_t30) {
-                _context47.n = 2;
+                _context48.n = 2;
                 break;
               }
-              _context47.n = 1;
+              _context48.n = 1;
               return this.getDefaultFromNumber();
             case 1:
-              _t30 = _context47.v;
+              _t30 = _context48.v;
             case 2:
               _t29 = _t30;
               if (_t29) {
-                _context47.n = 3;
+                _context48.n = 3;
                 break;
               }
               _t29 = undefined;
@@ -2530,27 +2553,27 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               _t31 = _t29;
               _t32 = params.homeCountryId;
               _t33 = params.toNumber;
-              _context47.n = 4;
+              _context48.n = 4;
               return _t28.makeCall.call(_t28, {
                 fromNumber: _t31,
                 homeCountryId: _t32,
                 toNumber: _t33
               });
             case 4:
-              result = _context47.v;
+              result = _context48.v;
               if (result && result.id && params.transferSessionId) {
                 this._initWebphoneSessionEvents(result.id, params.transferSessionId);
               }
-              return _context47.a(2, result);
+              return _context48.a(2, result);
             case 5:
-              _context47.p = 5;
-              _t34 = _context47.v;
+              _context48.p = 5;
+              _t34 = _context48.v;
               console.log('make call fail.', _t34);
-              return _context47.a(2, null);
+              return _context48.a(2, null);
           }
-        }, _callee47, this, [[0, 5]]);
+        }, _callee48, this, [[0, 5]]);
       }));
-      function makeCall(_x51) {
+      function makeCall(_x52) {
         return _makeCall.apply(this, arguments);
       }
       return makeCall;
@@ -2558,43 +2581,43 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_initWebphoneSessionEvents",
     value: function () {
-      var _initWebphoneSessionEvents2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee49(webphoneSessionId, transferSessionId) {
+      var _initWebphoneSessionEvents2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee50(webphoneSessionId, transferSessionId) {
         var _this12 = this;
         var webphoneOriginalSession;
-        return _regenerator().w(function (_context49) {
-          while (1) switch (_context49.n) {
+        return _regenerator().w(function (_context50) {
+          while (1) switch (_context50.n) {
             case 0:
               webphoneOriginalSession = this._webphone.originalSessions[webphoneSessionId]; // TODO: should fix the memory leak issue, should remove the event listener when the session is destroyed or done
               webphoneOriginalSession.on('progress', /*#__PURE__*/function () {
-                var _ref13 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee48(request) {
+                var _ref13 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee49(request) {
                   var partyData;
-                  return _regenerator().w(function (_context48) {
-                    while (1) switch (_context48.n) {
+                  return _regenerator().w(function (_context49) {
+                    while (1) switch (_context49.n) {
                       case 0:
                         // Event "progress" is triggered 3 times for establishing webphone session
                         // The first two triggers are missing party data in the request headers
                         partyData = (0, _webphoneHelper.readPartyDataFromHeaders)(request.headers);
                         if (!partyData) {
-                          _context48.n = 1;
+                          _context49.n = 1;
                           break;
                         }
-                        _context48.n = 1;
+                        _context49.n = 1;
                         return _this12._onWebphoneSessionProgress(partyData.sessionId, transferSessionId);
                       case 1:
-                        return _context48.a(2);
+                        return _context49.a(2);
                     }
-                  }, _callee48);
+                  }, _callee49);
                 }));
-                return function (_x54) {
+                return function (_x55) {
                   return _ref13.apply(this, arguments);
                 };
               }());
             case 1:
-              return _context49.a(2);
+              return _context50.a(2);
           }
-        }, _callee49, this);
+        }, _callee50, this);
       }));
-      function _initWebphoneSessionEvents(_x52, _x53) {
+      function _initWebphoneSessionEvents(_x53, _x54) {
         return _initWebphoneSessionEvents2.apply(this, arguments);
       }
       return _initWebphoneSessionEvents;
@@ -2607,42 +2630,45 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "mergeCalls",
     value: (function () {
-      var _mergeCalls = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee50(telephonySessionId, telephonySessionIdToMergeWith) {
-        var session, mergeWithSession, sourceSession, mergeWithSessionData, conferenceSession, conferenceSessionId, _t35, _t36;
-        return _regenerator().w(function (_context50) {
-          while (1) switch (_context50.p = _context50.n) {
+      var _mergeCalls = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee51(telephonySessionId, telephonySessionIdToMergeWith) {
+        var session, mergeWithSession, sourceSession, mergeWithSessionData, mergingConferenceSessionId, conferenceSession, conferenceSessionId, _t35, _t36;
+        return _regenerator().w(function (_context51) {
+          while (1) switch (_context51.p = _context51.n) {
             case 0:
               session = this._getSessionById(telephonySessionId);
               mergeWithSession = this._getSessionById(telephonySessionIdToMergeWith);
               if (!(!session || !mergeWithSession)) {
-                _context50.n = 1;
+                _context51.n = 1;
                 break;
               }
               _nextCore.logger.log('mergeCalls: session not found', !session, !mergeWithSession);
-              return _context50.a(2);
+              return _context51.a(2);
             case 1:
               sourceSession = this.getSession(telephonySessionId);
               mergeWithSessionData = this.getSession(telephonySessionIdToMergeWith);
               if (!(sourceSession && sourceSession.conferenceParticipants.length >= MAXIMUM_CONF_PARTICIPANTS || mergeWithSessionData && mergeWithSessionData.conferenceParticipants.length >= MAXIMUM_CONF_PARTICIPANTS)) {
-                _context50.n = 2;
+                _context51.n = 2;
                 break;
               }
               this._toast.danger({
                 message: (0, _i18n.t)('tooManyParticipants')
               });
-              return _context50.a(2);
+              return _context51.a(2);
             case 2:
               if (!(session.origin.type !== _helpers.CONFERENCE_ORIGIN_TYPE && mergeWithSession.origin.type !== _helpers.CONFERENCE_ORIGIN_TYPE)) {
-                _context50.n = 10;
+                _context51.n = 11;
                 break;
               }
-              _context50.p = 3;
+              _context51.p = 3;
               this.setCallControlBusyTimestamp();
-              _context50.n = 4;
+              _context51.n = 4;
               return this._createConferenceSession();
             case 4:
-              conferenceSession = _context50.v;
-              _context50.n = 5;
+              conferenceSession = _context51.v;
+              if (process.env.THEME_SYSTEM === 'spring-ui') {
+                mergingConferenceSessionId = conferenceSession.id;
+              }
+              _context51.n = 5;
               return conferenceSession.bringInParty({
                 partyId: session.party.id,
                 sessionId: session.sessionId
@@ -2653,7 +2679,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (process.env.THEME_SYSTEM === 'spring-ui') {
                 this._preInsertCall.setPreinsert(session.id, 'bringInParty');
               }
-              _context50.n = 6;
+              _context51.n = 6;
               return conferenceSession.bringInParty({
                 partyId: mergeWithSession.party.id,
                 sessionId: mergeWithSession.sessionId
@@ -2666,48 +2692,56 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               this._toast.success({
                 message: (0, _i18n.t)('callsMerged')
               });
-              return _context50.a(2, conferenceSession.id);
+              return _context51.a(2, conferenceSession.id);
             case 7:
-              _context50.p = 7;
-              _t35 = _context50.v;
+              _context51.p = 7;
+              _t35 = _context51.v;
               console.log('error in mergeCalls', _t35);
               this._toast.danger({
                 message: (0, _i18n.t)('somethingWentWrong')
               });
             case 8:
-              _context50.p = 8;
-              this.clearCallControlBusyTimestamp();
-              return _context50.f(8);
+              _context51.p = 8;
+              if (!mergingConferenceSessionId) {
+                _context51.n = 9;
+                break;
+              }
+              this._mergingConferenceSessionIds["delete"](mergingConferenceSessionId);
+              _context51.n = 9;
+              return this._updateSessionsHandler();
             case 9:
-              return _context50.a(2);
+              this.clearCallControlBusyTimestamp();
+              return _context51.f(8);
             case 10:
-              _context50.p = 10;
-              this.setCallControlBusyTimestamp();
-              _context50.n = 11;
-              return this.addPartyToSession(session, mergeWithSession);
+              return _context51.a(2);
             case 11:
-              conferenceSessionId = _context50.v;
+              _context51.p = 11;
+              this.setCallControlBusyTimestamp();
+              _context51.n = 12;
+              return this.addPartyToSession(session, mergeWithSession);
+            case 12:
+              conferenceSessionId = _context51.v;
               this._toast.success({
                 message: (0, _i18n.t)('callsMerged')
               });
-              return _context50.a(2, conferenceSessionId);
-            case 12:
-              _context50.p = 12;
-              _t36 = _context50.v;
+              return _context51.a(2, conferenceSessionId);
+            case 13:
+              _context51.p = 13;
+              _t36 = _context51.v;
               console.log('error in mergeCalls one', _t36);
               this._toast.danger({
                 message: (0, _i18n.t)('somethingWentWrong')
               });
-            case 13:
-              _context50.p = 13;
-              this.clearCallControlBusyTimestamp();
-              return _context50.f(13);
             case 14:
-              return _context50.a(2);
+              _context51.p = 14;
+              this.clearCallControlBusyTimestamp();
+              return _context51.f(14);
+            case 15:
+              return _context51.a(2);
           }
-        }, _callee50, this, [[10, 12, 13, 14], [3, 7, 8, 9]]);
+        }, _callee51, this, [[11, 13, 14, 15], [3, 7, 8, 10]]);
       }));
-      function mergeCalls(_x55, _x56) {
+      function mergeCalls(_x56, _x57) {
         return _mergeCalls.apply(this, arguments);
       }
       return mergeCalls;
@@ -2715,15 +2749,15 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "addPartyToSession",
     value: function () {
-      var _addPartyToSession = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee51(session, mergeWithSession) {
-        return _regenerator().w(function (_context51) {
-          while (1) switch (_context51.n) {
+      var _addPartyToSession = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52(session, mergeWithSession) {
+        return _regenerator().w(function (_context52) {
+          while (1) switch (_context52.n) {
             case 0:
               if (!(session.origin.type === _helpers.CONFERENCE_ORIGIN_TYPE)) {
-                _context51.n = 2;
+                _context52.n = 2;
                 break;
               }
-              _context51.n = 1;
+              _context52.n = 1;
               return session.bringInParty({
                 partyId: mergeWithSession.party.id,
                 sessionId: mergeWithSession.id
@@ -2732,13 +2766,13 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (process.env.THEME_SYSTEM === 'spring-ui') {
                 this._preInsertCall.setPreinsert(mergeWithSession.id, 'bringInParty');
               }
-              return _context51.a(2, session.id);
+              return _context52.a(2, session.id);
             case 2:
               if (!(mergeWithSession.origin.type === _helpers.CONFERENCE_ORIGIN_TYPE)) {
-                _context51.n = 4;
+                _context52.n = 4;
                 break;
               }
-              _context51.n = 3;
+              _context52.n = 3;
               return mergeWithSession.bringInParty({
                 partyId: session.party.id,
                 sessionId: session.id
@@ -2747,13 +2781,13 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               if (process.env.THEME_SYSTEM === 'spring-ui') {
                 this._preInsertCall.setPreinsert(session.id, 'bringInParty');
               }
-              return _context51.a(2, mergeWithSession.id);
+              return _context52.a(2, mergeWithSession.id);
             case 4:
-              return _context51.a(2);
+              return _context52.a(2);
           }
-        }, _callee51, this);
+        }, _callee52, this);
       }));
-      function addPartyToSession(_x57, _x58) {
+      function addPartyToSession(_x58, _x59) {
         return _addPartyToSession.apply(this, arguments);
       }
       return addPartyToSession;
@@ -2761,22 +2795,37 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_createConferenceSession",
     value: function () {
-      var _createConferenceSession2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52() {
-        var conferenceSession, voiceCallToken;
-        return _regenerator().w(function (_context52) {
-          while (1) switch (_context52.n) {
+      var _createConferenceSession2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee53() {
+        var conferenceSession, voiceCallToken, _t37;
+        return _regenerator().w(function (_context53) {
+          while (1) switch (_context53.p = _context53.n) {
             case 0:
-              _context52.n = 1;
+              _context53.n = 1;
               return this._rcCallControl.createConference();
             case 1:
-              conferenceSession = _context52.v;
+              conferenceSession = _context53.v;
+              // hide the new conference session from the session list until the
+              // merge in mergeCalls completes, it only becomes a merged call after
+              // the parties are brought in
+              if (process.env.THEME_SYSTEM === 'spring-ui') {
+                this._mergingConferenceSessionIds.add(conferenceSession.id);
+              }
+              _context53.p = 2;
               voiceCallToken = conferenceSession.data.voiceCallToken;
-              _context52.n = 2;
+              _context53.n = 3;
               return this._initConferenceVoiceCall(voiceCallToken);
-            case 2:
-              return _context52.a(2, conferenceSession);
+            case 3:
+              _context53.n = 5;
+              break;
+            case 4:
+              _context53.p = 4;
+              _t37 = _context53.v;
+              this._mergingConferenceSessionIds["delete"](conferenceSession.id);
+              throw _t37;
+            case 5:
+              return _context53.a(2, conferenceSession);
           }
-        }, _callee52, this);
+        }, _callee53, this, [[2, 4]]);
       }));
       function _createConferenceSession() {
         return _createConferenceSession2.apply(this, arguments);
@@ -2786,30 +2835,30 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_initConferenceVoiceCall",
     value: function () {
-      var _initConferenceVoiceCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee53(voiceCallToken) {
+      var _initConferenceVoiceCall2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee54(voiceCallToken) {
         var webphoneSession;
-        return _regenerator().w(function (_context53) {
-          while (1) switch (_context53.n) {
+        return _regenerator().w(function (_context54) {
+          while (1) switch (_context54.n) {
             case 0:
-              _context53.n = 1;
+              _context54.n = 1;
               return this.makeCall({
                 toNumber: voiceCallToken,
                 homeCountryId: this._regionSettings.homeCountryId
               });
             case 1:
-              webphoneSession = _context53.v;
+              webphoneSession = _context54.v;
               if (!webphoneSession) {
-                _context53.n = 2;
+                _context54.n = 2;
                 break;
               }
-              _context53.n = 2;
+              _context54.n = 2;
               return this._waitForWebphoneSessionAccepted(webphoneSession.id);
             case 2:
-              return _context53.a(2, webphoneSession);
+              return _context54.a(2, webphoneSession);
           }
-        }, _callee53, this);
+        }, _callee54, this);
       }));
-      function _initConferenceVoiceCall(_x59) {
+      function _initConferenceVoiceCall(_x60) {
         return _initConferenceVoiceCall2.apply(this, arguments);
       }
       return _initConferenceVoiceCall;
@@ -2817,14 +2866,14 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_waitForWebphoneSessionAccepted",
     value: function () {
-      var _waitForWebphoneSessionAccepted2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee54(webphoneSessionId) {
+      var _waitForWebphoneSessionAccepted2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee55(webphoneSessionId) {
         var sipSession, reject$, resolve$, timeout$;
-        return _regenerator().w(function (_context54) {
-          while (1) switch (_context54.n) {
+        return _regenerator().w(function (_context55) {
+          while (1) switch (_context55.n) {
             case 0:
               sipSession = this._webphone.originalSessions[webphoneSessionId];
               if (sipSession) {
-                _context54.n = 1;
+                _context55.n = 1;
                 break;
               }
               throw new Error('conferencing session not found');
@@ -2839,14 +2888,14 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
               timeout$ = (0, _rxjs.timer)(DEFAULT_CONF_ACCEPT_TIMEOUT).pipe((0, _rxjs.tap)(function () {
                 throw new Error('conferencing timeout');
               }));
-              _context54.n = 2;
+              _context55.n = 2;
               return (0, _rxjs.firstValueFrom)((0, _rxjs.merge)(reject$, resolve$, timeout$));
             case 2:
-              return _context54.a(2, _context54.v);
+              return _context55.a(2, _context55.v);
           }
-        }, _callee54, this);
+        }, _callee55, this);
       }));
-      function _waitForWebphoneSessionAccepted(_x60) {
+      function _waitForWebphoneSessionAccepted(_x61) {
         return _waitForWebphoneSessionAccepted2.apply(this, arguments);
       }
       return _waitForWebphoneSessionAccepted;
@@ -2854,46 +2903,46 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "removeConferenceParticipant",
     value: function () {
-      var _removeConferenceParticipant = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee55(telephonySessionId, removedPartyId) {
-        var confSession, _t37;
-        return _regenerator().w(function (_context55) {
-          while (1) switch (_context55.p = _context55.n) {
+      var _removeConferenceParticipant = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee56(telephonySessionId, removedPartyId) {
+        var confSession, _t38;
+        return _regenerator().w(function (_context56) {
+          while (1) switch (_context56.p = _context56.n) {
             case 0:
-              _context55.p = 0;
+              _context56.p = 0;
               this.setCallControlBusyTimestamp();
               confSession = this._getSessionById(telephonySessionId);
-              _context55.n = 1;
+              _context56.n = 1;
               return confSession.removeParty(removedPartyId);
             case 1:
               if (!(process.env.THEME_SYSTEM === 'spring-ui')) {
-                _context55.n = 3;
+                _context56.n = 3;
                 break;
               }
-              _context55.n = 2;
+              _context56.n = 2;
               return this._preInsertCall.setPreinsert((0, _PreinsertCall.createConferenceParticipantRemovalId)(telephonySessionId, removedPartyId), 'partyRemoved');
             case 2:
-              _context55.n = 3;
+              _context56.n = 3;
               return this.updateActiveSessions();
             case 3:
-              _context55.n = 5;
+              _context56.n = 5;
               break;
             case 4:
-              _context55.p = 4;
-              _t37 = _context55.v;
-              console.log('removeConferenceParticipant error', _t37);
+              _context56.p = 4;
+              _t38 = _context56.v;
+              console.log('removeConferenceParticipant error', _t38);
               this._toast.danger({
                 message: (0, _i18n.t)('somethingWentWrong')
               });
             case 5:
-              _context55.p = 5;
+              _context56.p = 5;
               this.clearCallControlBusyTimestamp();
-              return _context55.f(5);
+              return _context56.f(5);
             case 6:
-              return _context55.a(2);
+              return _context56.a(2);
           }
-        }, _callee55, this, [[0, 4, 5, 6]]);
+        }, _callee56, this, [[0, 4, 5, 6]]);
       }));
-      function removeConferenceParticipant(_x61, _x62) {
+      function removeConferenceParticipant(_x62, _x63) {
         return _removeConferenceParticipant.apply(this, arguments);
       }
       return removeConferenceParticipant;
@@ -2901,9 +2950,9 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
   }, {
     key: "_onWebphoneSessionProgress",
     value: function () {
-      var _onWebphoneSessionProgress2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee56(telephonySessionId, transferSessionId) {
-        return _regenerator().w(function (_context56) {
-          while (1) switch (_context56.n) {
+      var _onWebphoneSessionProgress2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee57(telephonySessionId, transferSessionId) {
+        return _regenerator().w(function (_context57) {
+          while (1) switch (_context57.n) {
             case 0:
               // For SpringUI: Always set warm transfer mapping if transferSessionId is provided
               // Keep original logic for other projects
@@ -2922,11 +2971,11 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
                 }
               }
             case 1:
-              return _context56.a(2);
+              return _context57.a(2);
           }
-        }, _callee56, this);
+        }, _callee57, this);
       }));
-      function _onWebphoneSessionProgress(_x63, _x64) {
+      function _onWebphoneSessionProgress(_x64, _x65) {
         return _onWebphoneSessionProgress2.apply(this, arguments);
       }
       return _onWebphoneSessionProgress;
@@ -3209,5 +3258,5 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _nextCore.inject
       }
     });
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "resetState", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "resetState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fetchData", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "fetchData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetchData", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetchData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateActiveSessions", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "updateActiveSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateActiveSessions", [_nextCore.action, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateActiveSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeActiveSession", [_nextCore.action, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "removeActiveSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setActiveSessionId", [_nextCore.action, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "_setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setCallControlBusyTimestamp", [_nextCore.action, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "setCallControlBusyTimestamp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearCallControlBusyTimestamp", [_nextCore.action, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "clearCallControlBusyTimestamp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "muteWithWebphone", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "muteWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mute", [_dec42, _dec43, _dec44, _dec45], Object.getOwnPropertyDescriptor(_class2.prototype, "mute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unmute", [_dec46, _dec47, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "unmute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startRecord", [_dec50, _dec51, _dec52, _dec53], Object.getOwnPropertyDescriptor(_class2.prototype, "startRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecordWithWebphone", [_dec54, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecordWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecord", [_dec57, _dec58, _dec59, _dec60], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_hangupWithWebphone", [_dec61, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "_hangupWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "checkIfConferenceCall", [_dec64, _dec65, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "checkIfConferenceCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hangUp", [_dec68, _dec69, _dec70], Object.getOwnPropertyDescriptor(_class2.prototype, "hangUp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "endCall", [_dec71, _dec72, _dec73], Object.getOwnPropertyDescriptor(_class2.prototype, "endCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reject", [_dec74, _dec75, _dec76, _dec77], Object.getOwnPropertyDescriptor(_class2.prototype, "reject"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_switch", [_dec78, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "_switch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "switch", [_dec81, _dec82, _dec83, _dec84], Object.getOwnPropertyDescriptor(_class2.prototype, "switch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "holdWithWebphone", [_dec85, _dec86, _dec87], Object.getOwnPropertyDescriptor(_class2.prototype, "holdWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hold", [_dec88, _dec89, _dec90, _dec91], Object.getOwnPropertyDescriptor(_class2.prototype, "hold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_unholdWithWebphone", [_dec92, _dec93, _dec94], Object.getOwnPropertyDescriptor(_class2.prototype, "_unholdWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unhold", [_dec95, _dec96, _dec97, _dec98], Object.getOwnPropertyDescriptor(_class2.prototype, "unhold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_replyWithMessage", [_dec99, _dec100, _dec101], Object.getOwnPropertyDescriptor(_class2.prototype, "_replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replyWithMessage", [_dec102, _dec103, _dec104, _dec105], Object.getOwnPropertyDescriptor(_class2.prototype, "replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toVoicemail", [_dec106, _dec107, _dec108], Object.getOwnPropertyDescriptor(_class2.prototype, "toVoicemail"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "completeWarmTransfer", [_dec109, _dec110, _dec111], Object.getOwnPropertyDescriptor(_class2.prototype, "completeWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transfer", [_dec112, _dec113, _dec114, _dec115], Object.getOwnPropertyDescriptor(_class2.prototype, "transfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "flip", [_dec116, _dec117, _dec118], Object.getOwnPropertyDescriptor(_class2.prototype, "flip"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forward", [_dec119, _dec120, _dec121, _dec122], Object.getOwnPropertyDescriptor(_class2.prototype, "forward"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendDTMF", [_dec123, _dec124, _dec125], Object.getOwnPropertyDescriptor(_class2.prototype, "sendDTMF"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setPickUpCallData", [_nextCore.action, _dec126, _dec127], Object.getOwnPropertyDescriptor(_class2.prototype, "setPickUpCallData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_answer", [_dec128, _dec129, _dec130], Object.getOwnPropertyDescriptor(_class2.prototype, "_answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answer", [_dec131, _dec132, _dec133], Object.getOwnPropertyDescriptor(_class2.prototype, "answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answerAndHold", [_dec134, _dec135, _dec136], Object.getOwnPropertyDescriptor(_class2.prototype, "answerAndHold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ignore", [_dec137, _dec138, _dec139, _dec140], Object.getOwnPropertyDescriptor(_class2.prototype, "ignore"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answerAndEnd", [_dec141, _dec142, _dec143, _dec144], Object.getOwnPropertyDescriptor(_class2.prototype, "answerAndEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startWarmTransfer", [_dec145, _dec146, _dec147, _dec148], Object.getOwnPropertyDescriptor(_class2.prototype, "startWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setWarmTransferMapping", [_nextCore.action, _dec149, _dec150], Object.getOwnPropertyDescriptor(_class2.prototype, "setWarmTransferMapping"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "cleanCurrentWarmTransferData", [_nextCore.action, _dec151, _dec152], Object.getOwnPropertyDescriptor(_class2.prototype, "cleanCurrentWarmTransferData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "makeCall", [_dec153, _dec154, _dec155], Object.getOwnPropertyDescriptor(_class2.prototype, "makeCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initWebphoneSessionEvents", [_dec156, _dec157, _dec158], Object.getOwnPropertyDescriptor(_class2.prototype, "_initWebphoneSessionEvents"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mergeCalls", [_dec159, _dec160, _dec161], Object.getOwnPropertyDescriptor(_class2.prototype, "mergeCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initConferenceVoiceCall", [_dec162, _dec163, _dec164], Object.getOwnPropertyDescriptor(_class2.prototype, "_initConferenceVoiceCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_waitForWebphoneSessionAccepted", [_dec165, _dec166, _dec167], Object.getOwnPropertyDescriptor(_class2.prototype, "_waitForWebphoneSessionAccepted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeConferenceParticipant", [_dec168, _dec169, _dec170, _dec171], Object.getOwnPropertyDescriptor(_class2.prototype, "removeConferenceParticipant"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onWebphoneSessionProgress", [_dec172, _dec173, _dec174], Object.getOwnPropertyDescriptor(_class2.prototype, "_onWebphoneSessionProgress"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSession", [_dec175, _dec176, _dec177], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSessions", [_dec178, _dec179, _dec180], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSessions", [_dec181, _dec182, _dec183], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionIdToTelephonySessionIdMapping", [_dec184, _dec185, _dec186], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionIdToTelephonySessionIdMapping"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "currentDeviceCallsMap", [_dec187, _dec188, _dec189], Object.getOwnPropertyDescriptor(_class2.prototype, "currentDeviceCallsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionsMap", [_nextCore.computed, _dec190, _dec191], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialpadOpenTrack", [_dec192, _dec193, _dec194], Object.getOwnPropertyDescriptor(_class2.prototype, "dialpadOpenTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialpadCloseTrack", [_dec195, _dec196, _dec197], Object.getOwnPropertyDescriptor(_class2.prototype, "dialpadCloseTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickTransferTrack", [_dec198, _dec199, _dec200], Object.getOwnPropertyDescriptor(_class2.prototype, "clickTransferTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickForwardTrack", [_dec201, _dec202, _dec203], Object.getOwnPropertyDescriptor(_class2.prototype, "clickForwardTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickConferenceCallMerge", [_dec204, _dec205, _dec206], Object.getOwnPropertyDescriptor(_class2.prototype, "clickConferenceCallMerge"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "openEntityDetailLinkTrack", [_dec207, _dec208, _dec209], Object.getOwnPropertyDescriptor(_class2.prototype, "openEntityDetailLinkTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickSwitchTrack", [_dec210, _dec211, _dec212], Object.getOwnPropertyDescriptor(_class2.prototype, "clickSwitchTrack"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "resetState", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "resetState"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "fetchData", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "fetchData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_fetchData", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "_fetchData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateActiveSessions", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "updateActiveSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateActiveSessions", [_nextCore.action, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateActiveSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeActiveSession", [_nextCore.action, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "removeActiveSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setActiveSessionId", [_nextCore.action, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "_setActiveSessionId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setCallControlBusyTimestamp", [_nextCore.action, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "setCallControlBusyTimestamp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearCallControlBusyTimestamp", [_nextCore.action, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "clearCallControlBusyTimestamp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "muteWithWebphone", [_dec39, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "muteWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mute", [_dec42, _dec43, _dec44, _dec45], Object.getOwnPropertyDescriptor(_class2.prototype, "mute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unmute", [_dec46, _dec47, _dec48, _dec49], Object.getOwnPropertyDescriptor(_class2.prototype, "unmute"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startRecord", [_dec50, _dec51, _dec52, _dec53], Object.getOwnPropertyDescriptor(_class2.prototype, "startRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecordWithWebphone", [_dec54, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecordWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "stopRecord", [_dec57, _dec58, _dec59, _dec60], Object.getOwnPropertyDescriptor(_class2.prototype, "stopRecord"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_hangupWithWebphone", [_dec61, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "_hangupWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "checkIfConferenceCall", [_dec64, _dec65, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "checkIfConferenceCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hangUp", [_dec68, _dec69, _dec70], Object.getOwnPropertyDescriptor(_class2.prototype, "hangUp"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "endCall", [_dec71, _dec72, _dec73], Object.getOwnPropertyDescriptor(_class2.prototype, "endCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reject", [_dec74, _dec75, _dec76, _dec77], Object.getOwnPropertyDescriptor(_class2.prototype, "reject"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_switch", [_dec78, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "_switch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "switch", [_dec81, _dec82, _dec83, _dec84], Object.getOwnPropertyDescriptor(_class2.prototype, "switch"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "holdWithWebphone", [_dec85, _dec86, _dec87], Object.getOwnPropertyDescriptor(_class2.prototype, "holdWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hold", [_dec88, _dec89, _dec90, _dec91], Object.getOwnPropertyDescriptor(_class2.prototype, "hold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_unholdWithWebphone", [_dec92, _dec93, _dec94], Object.getOwnPropertyDescriptor(_class2.prototype, "_unholdWithWebphone"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "unhold", [_dec95, _dec96, _dec97, _dec98], Object.getOwnPropertyDescriptor(_class2.prototype, "unhold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_replyWithMessage", [_dec99, _dec100, _dec101], Object.getOwnPropertyDescriptor(_class2.prototype, "_replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replyWithMessage", [_dec102, _dec103, _dec104, _dec105], Object.getOwnPropertyDescriptor(_class2.prototype, "replyWithMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toVoicemail", [_dec106, _dec107, _dec108], Object.getOwnPropertyDescriptor(_class2.prototype, "toVoicemail"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "completeWarmTransfer", [_dec109, _dec110, _dec111, _dec112], Object.getOwnPropertyDescriptor(_class2.prototype, "completeWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transfer", [_dec113, _dec114, _dec115, _dec116], Object.getOwnPropertyDescriptor(_class2.prototype, "transfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "flip", [_dec117, _dec118, _dec119], Object.getOwnPropertyDescriptor(_class2.prototype, "flip"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forward", [_dec120, _dec121, _dec122, _dec123], Object.getOwnPropertyDescriptor(_class2.prototype, "forward"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendDTMF", [_dec124, _dec125, _dec126], Object.getOwnPropertyDescriptor(_class2.prototype, "sendDTMF"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setPickUpCallData", [_nextCore.action, _dec127, _dec128], Object.getOwnPropertyDescriptor(_class2.prototype, "setPickUpCallData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_answer", [_dec129, _dec130, _dec131], Object.getOwnPropertyDescriptor(_class2.prototype, "_answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answer", [_dec132, _dec133, _dec134], Object.getOwnPropertyDescriptor(_class2.prototype, "answer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answerAndHold", [_dec135, _dec136, _dec137], Object.getOwnPropertyDescriptor(_class2.prototype, "answerAndHold"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ignore", [_dec138, _dec139, _dec140, _dec141], Object.getOwnPropertyDescriptor(_class2.prototype, "ignore"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "answerAndEnd", [_dec142, _dec143, _dec144, _dec145], Object.getOwnPropertyDescriptor(_class2.prototype, "answerAndEnd"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startWarmTransfer", [_dec146, _dec147, _dec148, _dec149], Object.getOwnPropertyDescriptor(_class2.prototype, "startWarmTransfer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setWarmTransferMapping", [_nextCore.action, _dec150, _dec151], Object.getOwnPropertyDescriptor(_class2.prototype, "setWarmTransferMapping"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "cleanCurrentWarmTransferData", [_nextCore.action, _dec152, _dec153], Object.getOwnPropertyDescriptor(_class2.prototype, "cleanCurrentWarmTransferData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "makeCall", [_dec154, _dec155, _dec156], Object.getOwnPropertyDescriptor(_class2.prototype, "makeCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initWebphoneSessionEvents", [_dec157, _dec158, _dec159], Object.getOwnPropertyDescriptor(_class2.prototype, "_initWebphoneSessionEvents"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mergeCalls", [_dec160, _dec161, _dec162], Object.getOwnPropertyDescriptor(_class2.prototype, "mergeCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_initConferenceVoiceCall", [_dec163, _dec164, _dec165], Object.getOwnPropertyDescriptor(_class2.prototype, "_initConferenceVoiceCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_waitForWebphoneSessionAccepted", [_dec166, _dec167, _dec168], Object.getOwnPropertyDescriptor(_class2.prototype, "_waitForWebphoneSessionAccepted"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeConferenceParticipant", [_dec169, _dec170, _dec171, _dec172], Object.getOwnPropertyDescriptor(_class2.prototype, "removeConferenceParticipant"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_onWebphoneSessionProgress", [_dec173, _dec174, _dec175], Object.getOwnPropertyDescriptor(_class2.prototype, "_onWebphoneSessionProgress"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSession", [_dec176, _dec177, _dec178], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSession"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "ringSessions", [_dec179, _dec180, _dec181], Object.getOwnPropertyDescriptor(_class2.prototype, "ringSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeSessions", [_dec182, _dec183, _dec184], Object.getOwnPropertyDescriptor(_class2.prototype, "activeSessions"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionIdToTelephonySessionIdMapping", [_dec185, _dec186, _dec187], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionIdToTelephonySessionIdMapping"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "currentDeviceCallsMap", [_dec188, _dec189, _dec190], Object.getOwnPropertyDescriptor(_class2.prototype, "currentDeviceCallsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionsMap", [_nextCore.computed, _dec191, _dec192], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialpadOpenTrack", [_dec193, _dec194, _dec195], Object.getOwnPropertyDescriptor(_class2.prototype, "dialpadOpenTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialpadCloseTrack", [_dec196, _dec197, _dec198], Object.getOwnPropertyDescriptor(_class2.prototype, "dialpadCloseTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickTransferTrack", [_dec199, _dec200, _dec201], Object.getOwnPropertyDescriptor(_class2.prototype, "clickTransferTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickForwardTrack", [_dec202, _dec203, _dec204], Object.getOwnPropertyDescriptor(_class2.prototype, "clickForwardTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickConferenceCallMerge", [_dec205, _dec206, _dec207], Object.getOwnPropertyDescriptor(_class2.prototype, "clickConferenceCallMerge"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "openEntityDetailLinkTrack", [_dec208, _dec209, _dec210], Object.getOwnPropertyDescriptor(_class2.prototype, "openEntityDetailLinkTrack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clickSwitchTrack", [_dec211, _dec212, _dec213], Object.getOwnPropertyDescriptor(_class2.prototype, "clickSwitchTrack"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=ActiveCallControl.js.map

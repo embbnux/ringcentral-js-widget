@@ -74,6 +74,14 @@ export const MyCallerIdDropdown: FunctionComponent<MyCallerIdDropdownProps> = ({
         'data-sign': 'callFrom',
       }}
       MenuProps={{
+        // The anchor sits at the top of the dialer pages, so opening downwards
+        // is the product expectation. Since spring-ui 1.12 the positioning
+        // system honors the Dropdown's built-in `placement: 'top'` default
+        // (it was previously masked by an always-on maxHeight that defeated
+        // flip), so request the placement explicitly instead of relying on
+        // runtime flip behavior. `-end` aligns the menu's right edge with the
+        // trigger so the wider menu extends to the left on wide viewports.
+        placement: 'bottom-end',
         PopperProps: {
           padding: 16,
         },
@@ -107,16 +115,18 @@ export const MyCallerIdDropdown: FunctionComponent<MyCallerIdDropdownProps> = ({
       }}
       data={options}
     >
-      {(_, option: UserPhoneNumberInfo) => {
+      {(_, option) => {
+        const callerIdOption = option as UserPhoneNumberInfo;
+
         return (
           <Option
             classes={{
               container: '[&&]:h-12',
             }}
-            key={option.phoneNumber}
-            value={option.phoneNumber}
+            key={callerIdOption.phoneNumber}
+            value={callerIdOption.phoneNumber}
           >
-            <MenuItemText>{renderValue(option)}</MenuItemText>
+            <MenuItemText>{renderValue(callerIdOption)}</MenuItemText>
           </Option>
         );
       }}

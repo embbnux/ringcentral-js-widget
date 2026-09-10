@@ -250,4 +250,15 @@ Object.keys(_CallQueues).forEach(function (key) {
     }
   });
 });
+var _Grant = require("./Grant");
+Object.keys(_Grant).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _Grant[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Grant[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

@@ -40,7 +40,7 @@ var getTabs = exports.getTabs = function getTabs(_ref) {
   if (currentContact && currentContact.id) {
     var contactId = currentContact.id;
     var activityCardId = sessionId ? "".concat(contactId, "-").concat(sessionId) : contactId;
-    if (recentMessages === null || recentMessages === void 0 ? void 0 : recentMessages.messages[activityCardId]) {
+    if (recentMessages !== null && recentMessages !== void 0 && recentMessages.messages[activityCardId]) {
       messages = recentMessages.messages[activityCardId];
     }
     if (recentCalls.calls[activityCardId]) {

@@ -17,7 +17,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CallControlPanel = void 0;
-require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.object.to-string.js");
@@ -26,11 +25,10 @@ var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 var _hooks = require("../../../../../hooks");
 var _AiNoteTip = require("./AiNoteTip");
-var _CallCtrlButton = require("./CallCtrlButton");
+var _CallControlActionButtons = require("./CallControlActionButtons");
 var _TransferringCall = require("./TransferringCall");
 var _useCallControlLayout = require("./useCallControlLayout");
-var _excluded = ["actionType", "iconSize", "size"],
-  _excluded2 = ["actionType", "label"];
+var _excluded = ["actionType", "label"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
@@ -50,56 +48,44 @@ var CallControlPanel = exports.CallControlPanel = function CallControlPanel(prop
     return callActions.slice(0, -1);
   }, [callActions]);
   var actionButtons = (0, _react.useMemo)(function () {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex flex-wrap gap-4 justify-center px-10",
-      "data-sign": "actionButtons"
-    }, renderActions.map(function (_ref) {
-      var actionType = _ref.actionType,
-        iconSize = _ref.iconSize,
-        size = _ref.size,
-        rest = _objectWithoutProperties(_ref, _excluded);
-      return /*#__PURE__*/_react["default"].createElement(_CallCtrlButton.CallCtrlButton, _extends({
-        key: actionType,
-        menuPlacement: actionType === 'audio' ? 'right' : undefined,
-        menuList: actionType === 'flip' ? /*#__PURE__*/_react["default"].createElement(_springUi.MenuList, {
-          onChange: function onChange(value) {
-            return onAction('flip', value);
-          }
-        }, flipNumbers.map(function (item, index) {
-          return /*#__PURE__*/_react["default"].createElement(_springUi.Option, {
-            key: index,
-            value: item.flipNumber
-          }, /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, /*#__PURE__*/_react["default"].createElement("div", {
-            className: "text-neutral-b1"
-          }, item.label), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "text-neutral-b2"
-          }, /*#__PURE__*/_react["default"].createElement(_components.FormattedPhoneNumber, {
-            phoneNumber: item.phoneNumber
-          }))));
-        })) : actionType === 'audio' ? AudioCard : undefined,
-        "data-sign": actionType
-      }, rest, {
-        value: ""
-      }));
-    }), process.env.NODE_ENV === 'test' && /*#__PURE__*/_react["default"].createElement("span", {
-      "data-sign": "actionTypes"
-    }, renderActions.map(function (b) {
-      return b.actionType;
-    }).join(',')));
+    return /*#__PURE__*/_react["default"].createElement(_CallControlActionButtons.CallControlActionButtons, {
+      actionButtons: renderActions,
+      getButtonProps: function getButtonProps(actionType) {
+        return {
+          menuPlacement: actionType === 'audio' ? 'right' : undefined,
+          menuList: actionType === 'flip' ? /*#__PURE__*/_react["default"].createElement(_springUi.MenuList, {
+            onChange: function onChange(value) {
+              return onAction('flip', value);
+            }
+          }, flipNumbers.map(function (item, index) {
+            return /*#__PURE__*/_react["default"].createElement(_springUi.Option, {
+              key: index,
+              value: item.flipNumber
+            }, /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, /*#__PURE__*/_react["default"].createElement("div", {
+              className: "text-neutral-b1"
+            }, item.label), /*#__PURE__*/_react["default"].createElement("div", {
+              className: "text-neutral-b2"
+            }, /*#__PURE__*/_react["default"].createElement(_components.FormattedPhoneNumber, {
+              phoneNumber: item.phoneNumber
+            }))));
+          })) : actionType === 'audio' ? AudioCard : undefined
+        };
+      }
+    });
   }, [flipNumbers, onAction, renderActions, AudioCard]);
   var Component = transferringCalls ? _TransferringCall.TransferringCall : NormalCallControlPanel;
   return /*#__PURE__*/_react["default"].createElement(Component, props, actionButtons);
 };
-var NormalCallControlPanel = function NormalCallControlPanel(_ref2) {
-  var actions = _ref2.actions,
-    call = _ref2.call,
-    expanded = _ref2.expanded,
-    onAction = _ref2.onAction,
-    onExpand = _ref2.onExpand,
-    aiNoteTipType = _ref2.aiNoteTipType,
-    viewAiNote = _ref2.viewAiNote,
-    onCloseAiNoteTip = _ref2.onCloseAiNoteTip,
-    children = _ref2.children;
+var NormalCallControlPanel = function NormalCallControlPanel(_ref) {
+  var actions = _ref.actions,
+    call = _ref.call,
+    expanded = _ref.expanded,
+    onAction = _ref.onAction,
+    onExpand = _ref.onExpand,
+    aiNoteTipType = _ref.aiNoteTipType,
+    viewAiNote = _ref.viewAiNote,
+    onCloseAiNoteTip = _ref.onCloseAiNoteTip,
+    children = _ref.children;
   var isConferenceCall = Boolean(call.isConferenceCall);
   var callActions = (0, _hooks.useCallActionButtons)(actions, onAction, {
     isConferenceCall: isConferenceCall
@@ -117,7 +103,7 @@ var NormalCallControlPanel = function NormalCallControlPanel(_ref2) {
   }) : undefined;
   var lastActionType = hungUpActionProps.actionType,
     label = hungUpActionProps.label,
-    end = _objectWithoutProperties(hungUpActionProps, _excluded2);
+    end = _objectWithoutProperties(hungUpActionProps, _excluded);
   return (0, _useCallControlLayout.useCallControlLayout)(call, {
     main: children,
     footer: /*#__PURE__*/_react["default"].createElement(_springUi.CallButton, _extends({}, end, {

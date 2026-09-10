@@ -86,6 +86,14 @@ var MyCallerIdDropdown = exports.MyCallerIdDropdown = function MyCallerIdDropdow
       'data-sign': 'callFrom'
     },
     MenuProps: {
+      // The anchor sits at the top of the dialer pages, so opening downwards
+      // is the product expectation. Since spring-ui 1.12 the positioning
+      // system honors the Dropdown's built-in `placement: 'top'` default
+      // (it was previously masked by an always-on maxHeight that defeated
+      // flip), so request the placement explicitly instead of relying on
+      // runtime flip behavior. `-end` aligns the menu's right edge with the
+      // trigger so the wider menu extends to the left on wide viewports.
+      placement: 'bottom-end',
       PopperProps: {
         padding: 16
       }
@@ -114,13 +122,14 @@ var MyCallerIdDropdown = exports.MyCallerIdDropdown = function MyCallerIdDropdow
     },
     data: options
   }), function (_, option) {
+    var callerIdOption = option;
     return /*#__PURE__*/_react["default"].createElement(_springUi.Option, {
       classes: {
         container: '[&&]:h-12'
       },
-      key: option.phoneNumber,
-      value: option.phoneNumber
-    }, /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, renderValue(option)));
+      key: callerIdOption.phoneNumber,
+      value: callerIdOption.phoneNumber
+    }, /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, renderValue(callerIdOption)));
   });
 };
 //# sourceMappingURL=MyCallerIdDropdown.js.map

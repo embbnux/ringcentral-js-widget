@@ -20,7 +20,7 @@ var _default = exports["default"] = {
   onHold: 'In de wacht',
   day: 'dag',
   hr: 'uur',
-  min: 'min',
+  min: 'min.',
   sec: 's',
   yesterday: 'Gisteren',
   notes: 'AI-notities',

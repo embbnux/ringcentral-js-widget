@@ -46,7 +46,7 @@ var _CallLogTasks = require("../../services/CallLogTasks");
 var _CallLogFormPage = require("./CallLogFormPage");
 var _i18n = _interopRequireDefault(require("./CallLogFormPage/i18n"));
 var _i18n2 = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _class, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class, _class2, _descriptor;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -57,6 +57,7 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -70,13 +71,14 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
+function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
 var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable)({
   name: 'CallLogFormView'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 3);
 }, _dec3 = function _dec3(target, key) {
   return (0, _nextCore.optional)('CallLogFormViewOptions')(target, undefined, 4);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services2.CallAction === "undefined" ? Object : _services2.CallAction, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _CallLogTasks.CallLogTasks === "undefined" ? Object : _CallLogTasks.CallLogTasks, typeof CallLogFormViewOptions === "undefined" ? Object : CallLogFormViewOptions]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [Object]), _dec9 = (0, _nextCore.delegate)('server'), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services2.CallAction === "undefined" ? Object : _services2.CallAction, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _CallLogTasks.CallLogTasks === "undefined" ? Object : _CallLogTasks.CallLogTasks, typeof CallLogFormViewOptions === "undefined" ? Object : CallLogFormViewOptions]), _dec6 = (0, _nextCore.dynamic)('ExperienceFeedbackView'), _dec7 = Reflect.metadata("design:type", typeof ExperienceFeedbackView === "undefined" ? Object : ExperienceFeedbackView), _dec8 = (0, _nextCore.delegate)('server'), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Object, typeof UpdateCallLogOptions === "undefined" ? Object : UpdateCallLogOptions]), _dec1 = (0, _nextCore.delegate)('server'), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", []), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function CallLogFormView(_callAction, _syncTabView, _connectivityMonitor, _callLogTasks, _callLogFormViewOptions) {
     var _this;
     _classCallCheck(this, CallLogFormView);
@@ -87,6 +89,7 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
     _this._callLogTasks = _callLogTasks;
     _this._callLogFormViewOptions = _callLogFormViewOptions;
     _this.eventEmitter = new _events.EventEmitter();
+    _initializerDefineProperty(_this, "_experienceFeedbackView", _descriptor, _this);
     _this.Save = /*#__PURE__*/(0, _react.forwardRef)(function (_, ref) {
       var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
         t = _useLocale.t;
@@ -97,27 +100,43 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
           var activeSyncTab = _this._syncTabView.getActive(_views.SyncTabId.CALL_LOG);
           return {
             disabled: _this.networkDisabled || _this.saveButtonDisabled || isSaved || isSaving,
+            isSaved: isSaved,
             isSaving: isSaving,
             show: !activeSyncTab || activeSyncTab === _views.CallLogSyncTabId.LOG
           };
         }),
+        isSaved = _useConnector.isSaved,
         isSaving = _useConnector.isSaving,
         disabled = _useConnector.disabled,
         show = _useConnector.show;
+      var label = t(isSaved ? 'saved' : 'saveToCRM');
 
       // currently we only show save button in log tab, once we support log AI note, we need to update this logic
       return show ? /*#__PURE__*/_react["default"].createElement("div", {
         ref: ref,
-        className: "p-4 border-t border-neutral-b4/50 mt-auto flex-none"
+        className: "p-3 border-t border-neutral-b4/50 mt-auto flex-none"
       }, /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
         fullWidth: true,
         "data-sign": "save-button",
         disabled: disabled,
         loading: isSaving,
-        onClick: function onClick() {
-          return _this.onSaveCallLog();
-        }
-      }, t('save'))) : null;
+        onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+          var _this$_experienceFeed;
+          var result;
+          return _regenerator().w(function (_context) {
+            while (1) switch (_context.n) {
+              case 0:
+                _context.n = 1;
+                return _this.onSaveCallLog();
+              case 1:
+                result = _context.v;
+                if (result) (_this$_experienceFeed = _this._experienceFeedbackView) === null || _this$_experienceFeed === void 0 ? void 0 : _this$_experienceFeed.track();
+              case 2:
+                return _context.a(2);
+            }
+          }, _callee);
+        }))
+      }, label)) : null;
     });
     return _this;
   }
@@ -125,17 +144,17 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
   return _createClass(CallLogFormView, [{
     key: "onUpdateCallLog",
     value: function () {
-      var _onUpdateCallLog2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(newData) {
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
+      var _onUpdateCallLog2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(newData, options) {
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
             case 0:
-              this._onUpdateCallLog(newData);
+              this._onUpdateCallLog(newData, options);
             case 1:
-              return _context.a(2);
+              return _context2.a(2);
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
-      function onUpdateCallLog(_x) {
+      function onUpdateCallLog(_x, _x2) {
         return _onUpdateCallLog2.apply(this, arguments);
       }
       return onUpdateCallLog;
@@ -143,15 +162,13 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
   }, {
     key: "onSaveCallLog",
     value: function () {
-      var _onSaveCallLog2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.n) {
+      var _onSaveCallLog2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
             case 0:
-              this._onSaveCallLog();
-            case 1:
-              return _context2.a(2);
+              return _context3.a(2, this._onSaveCallLog());
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
       function onSaveCallLog() {
         return _onSaveCallLog2.apply(this, arguments);
@@ -160,18 +177,29 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
     }()
   }, {
     key: "_onSaveCallLog",
-    value: function _onSaveCallLog() {
-      // should be override
-    }
+    value: function () {
+      var _onSaveCallLog3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
+            case 0:
+              return _context4.a(2, false);
+          }
+        }, _callee4);
+      }));
+      function _onSaveCallLog() {
+        return _onSaveCallLog3.apply(this, arguments);
+      }
+      return _onSaveCallLog;
+    }()
   }, {
     key: "_onUpdateCallLog",
-    value: function _onUpdateCallLog(_newData) {
+    value: function _onUpdateCallLog(_newData, _options) {
       // should be override
     }
   }, {
     key: "getUIProps",
-    value: function getUIProps(_ref) {
-      var variant = _ref.variant;
+    value: function getUIProps(_ref2) {
+      var variant = _ref2.variant;
       return {
         task: this.task,
         referenceFields: this.referenceFields,
@@ -195,8 +223,8 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
     value: function getUIFunctions(_) {
       var _this2 = this;
       return {
-        onUpdateCallLog: function onUpdateCallLog(newData) {
-          return _this2.onUpdateCallLog(newData);
+        onUpdateCallLog: function onUpdateCallLog(newData, options) {
+          return _this2.onUpdateCallLog(newData, options);
         }
       };
     }
@@ -255,5 +283,10 @@ var CallLogFormView = exports.CallLogFormView = (_dec = (0, _nextCore.injectable
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions));
     }
   }]);
-}(_nextCore.RcViewModule), _applyDecoratedDescriptor(_class2.prototype, "onUpdateCallLog", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "onUpdateCallLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onSaveCallLog", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "onSaveCallLog"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_experienceFeedbackView", [_dec6, _dec7], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _applyDecoratedDescriptor(_class2.prototype, "onUpdateCallLog", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "onUpdateCallLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onSaveCallLog", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "onSaveCallLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "editSectionSchema", [_nextCore.computed, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "editSectionSchema"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "referenceFields", [_nextCore.computed, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "referenceFields"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "task", [_nextCore.computed, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "task"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=CallLogForm.view.js.map

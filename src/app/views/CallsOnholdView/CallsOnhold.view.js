@@ -162,7 +162,7 @@ var CallsOnholdView = exports.CallsOnholdView = (_dec = (0, _nextCore.injectable
         }(),
         onBackButtonClick: function onBackButtonClick() {
           var _this3$_webphone;
-          if ((_this3$_webphone = _this3._webphone) === null || _this3$_webphone === void 0 ? void 0 : _this3$_webphone.sessions.length) {
+          if ((_this3$_webphone = _this3._webphone) !== null && _this3$_webphone !== void 0 && _this3$_webphone.sessions.length) {
             _this3._router.goBack();
             return;
           }
