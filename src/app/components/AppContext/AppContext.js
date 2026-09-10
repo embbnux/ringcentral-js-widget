@@ -20,7 +20,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.useAppContentRef = exports.AppProvider = exports.AppContext = void 0;
+exports.useAppContentRef = exports.AppRefsContext = exports.AppProvider = exports.AppContext = void 0;
 require("core-js/modules/es.array.is-array.js");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
@@ -55,6 +55,23 @@ var AppContext = exports.AppContext = /*#__PURE__*/(0, _react.createContext)({
     current: null
   },
   announcementRef: {
+    current: null
+  },
+  mainContentRef: {
+    current: null
+  },
+  expandedContentRef: {
+    current: null
+  }
+});
+var AppRefsContext = exports.AppRefsContext = /*#__PURE__*/(0, _react.createContext)({
+  additionalFooterHeightRef: {
+    current: 0
+  },
+  announcementRef: {
+    current: null
+  },
+  announcementBottomAnchorRef: {
     current: null
   },
   mainContentRef: {
@@ -110,8 +127,17 @@ var AppProvider = exports.AppProvider = function AppProvider(_ref) {
     sleep(100).then(exec)["catch"](_rxjs.noop);
   });
   var cancelReset = (0, _springUi.useEventCallback)(cancel);
-  return /*#__PURE__*/_react["default"].createElement(AppContext.Provider, {
-    value: {
+  var refsContextValue = (0, _react.useMemo)(function () {
+    return {
+      additionalFooterHeightRef: additionalFooterHeightRef,
+      announcementRef: announcementRef,
+      announcementBottomAnchorRef: announcementBottomAnchorRef,
+      mainContentRef: mainContentRef,
+      expandedContentRef: expandedContentRef
+    };
+  }, []);
+  var appContextValue = (0, _react.useMemo)(function () {
+    return {
       nav: nav,
       setNav: setNav,
       title: title,
@@ -129,11 +155,16 @@ var AppProvider = exports.AppProvider = function AppProvider(_ref) {
       announcementRef: announcementRef,
       mainContentRef: mainContentRef,
       expandedContentRef: expandedContentRef
-    }
-  }, children);
+    };
+  }, [nav, title, navOverrideMode, footer, footerHeight, reset, cancelReset, refsContextValue]);
+  return /*#__PURE__*/_react["default"].createElement(AppRefsContext.Provider, {
+    value: refsContextValue
+  }, /*#__PURE__*/_react["default"].createElement(AppContext.Provider, {
+    value: appContextValue
+  }, children));
 };
 var useAppContentRef = exports.useAppContentRef = function useAppContentRef() {
-  var _useContext = (0, _react.useContext)(AppContext),
+  var _useContext = (0, _react.useContext)(AppRefsContext),
     mainContentRef = _useContext.mainContentRef,
     expandedContentRef = _useContext.expandedContentRef;
   return {

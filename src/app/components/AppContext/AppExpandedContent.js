@@ -26,7 +26,7 @@ function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r
  */
 var AppExpandedContent = exports.AppExpandedContent = function AppExpandedContent(_ref) {
   var children = _ref.children;
-  var _useContext = (0, _react.useContext)(_AppContext.AppContext),
+  var _useContext = (0, _react.useContext)(_AppContext.AppRefsContext),
     expandedContentRef = _useContext.expandedContentRef;
   return /*#__PURE__*/_react["default"].createElement(_PortalWithCheckAgain.PortalWithCheckAgain, {
     container: expandedContentRef

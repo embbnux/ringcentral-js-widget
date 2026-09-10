@@ -19,8 +19,6 @@ require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.weak-map.js");
@@ -31,6 +29,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Locale = void 0;
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.promise.js");
 require("core-js/modules/esnext.global-this.js");
 var _detectBrowserLocale = _interopRequireWildcard(require("@ringcentral-integration/commons/lib/detectBrowserLocale"));
 var _i18n = _interopRequireWildcard(require("@ringcentral-integration/i18n"));
@@ -38,7 +38,7 @@ var _i18nDayjs = require("@ringcentral-integration/i18n-dayjs");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _rxjs = require("rxjs");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _class, _class2, _descriptor, _descriptor2, _descriptor3;
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t2 in e) "default" !== _t2 && {}.hasOwnProperty.call(e, _t2) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t2)) && (i.get || i.set) ? o(f, _t2, i) : f[_t2] = e[_t2]); return f; })(e, t); }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t3 in e) "default" !== _t3 && {}.hasOwnProperty.call(e, _t3) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t3)) && (i.get || i.set) ? o(f, _t3, i) : f[_t3] = e[_t3]); return f; })(e, t); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -74,6 +74,7 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
     _this._localeOptions = _localeOptions;
     _initializerDefineProperty(_this, "locale", _descriptor, _this);
     _initializerDefineProperty(_this, "clientLocales", _descriptor2, _this);
+    _this._clientLocaleReady = Promise.resolve();
     _initializerDefineProperty(_this, "debugMode", _descriptor3, _this);
     _i18n["default"].setDefaultLocale(_this.defaultLocale);
     _i18n["default"].setGetTranslateLocale(function () {
@@ -109,10 +110,16 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
       return (_this$_localeOptions$2 = (_this$_localeOptions2 = this._localeOptions) === null || _this$_localeOptions2 === void 0 ? void 0 : _this$_localeOptions2.detectBrowser) !== null && _this$_localeOptions$2 !== void 0 ? _this$_localeOptions$2 : true;
     }
   }, {
+    key: "_syncServerLocaleToClients",
+    get: function get() {
+      var _this$_localeOptions$3, _this$_localeOptions3;
+      return (_this$_localeOptions$3 = (_this$_localeOptions3 = this._localeOptions) === null || _this$_localeOptions3 === void 0 ? void 0 : _this$_localeOptions3.syncServerLocaleToClients) !== null && _this$_localeOptions$3 !== void 0 ? _this$_localeOptions$3 : true;
+    }
+  }, {
     key: "supportedLocales",
     get: function get() {
-      var _ref2, _this$_localeOptions$3, _this$_localeOptions3, _this$_brandConfig2;
-      return (_ref2 = (_this$_localeOptions$3 = (_this$_localeOptions3 = this._localeOptions) === null || _this$_localeOptions3 === void 0 ? void 0 : _this$_localeOptions3.supportedLocales) !== null && _this$_localeOptions$3 !== void 0 ? _this$_localeOptions$3 : (_this$_brandConfig2 = this._brandConfig) === null || _this$_brandConfig2 === void 0 ? void 0 : _this$_brandConfig2.supportedLocales) !== null && _ref2 !== void 0 ? _ref2 : [this.defaultLocale];
+      var _ref2, _this$_localeOptions$4, _this$_localeOptions4, _this$_brandConfig2;
+      return (_ref2 = (_this$_localeOptions$4 = (_this$_localeOptions4 = this._localeOptions) === null || _this$_localeOptions4 === void 0 ? void 0 : _this$_localeOptions4.supportedLocales) !== null && _this$_localeOptions$4 !== void 0 ? _this$_localeOptions$4 : (_this$_brandConfig2 = this._brandConfig) === null || _this$_brandConfig2 === void 0 ? void 0 : _this$_brandConfig2.supportedLocales) !== null && _ref2 !== void 0 ? _ref2 : [this.defaultLocale];
     }
   }, {
     key: "acceptLocaleMap",
@@ -137,6 +144,11 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
       return this.clientLocales[this._portManager.clientId];
     }
   }, {
+    key: "clientLocaleReady",
+    get: function get() {
+      return this._clientLocaleReady;
+    }
+  }, {
     key: "setClientLocaleSuccess",
     value: function () {
       var _setClientLocaleSuccess2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(clientId, locale) {
@@ -156,6 +168,61 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
       }
       return setClientLocaleSuccess;
     }()
+    /**
+     * Loads a locale in the current shared client without replacing the server locale.
+     * Non-shared runtimes keep the existing global locale behavior.
+     */
+  }, {
+    key: "setClientLocale",
+    value: (function () {
+      var _setClientLocale = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(locale) {
+        var normalize,
+          clientId,
+          nextLocale,
+          _args2 = arguments,
+          _t;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.p = _context2.n) {
+            case 0:
+              normalize = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : true;
+              clientId = this._portManager.clientId;
+              if (!(!this._portManager.isClient || !clientId)) {
+                _context2.n = 2;
+                break;
+              }
+              _context2.n = 1;
+              return this.setLocale(locale, normalize);
+            case 1:
+              return _context2.a(2);
+            case 2:
+              _context2.p = 2;
+              nextLocale = normalize ? this.normalizeLocale(locale) : locale;
+              _context2.n = 3;
+              return this.clientLocaleReady;
+            case 3:
+              _context2.n = 4;
+              return this._innerSetAndLoadLocale(nextLocale);
+            case 4:
+              this._setClientLocaleSuccess(clientId, nextLocale);
+              _context2.n = 5;
+              return this.setClientLocaleSuccess(clientId, nextLocale);
+            case 5:
+              _context2.n = 7;
+              break;
+            case 6:
+              _context2.p = 6;
+              _t = _context2.v;
+              this.logger.error('load client locale fail', _t);
+            case 7:
+              return _context2.a(2);
+          }
+        }, _callee2, this, [[2, 6]]);
+      }));
+      function setClientLocale(_x3) {
+        return _setClientLocale.apply(this, arguments);
+      }
+      return setClientLocale;
+    }())
   }, {
     key: "_toggleDebugMode",
     value: function _toggleDebugMode() {
@@ -173,19 +240,19 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "onInit",
     value: function () {
-      var _onInit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var _onInit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
         var initLocale;
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.n) {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
             case 0:
               initLocale = this._detectBrowser ? this.browserLocale : this.defaultLocale;
               this.logger.log('initLocale', initLocale);
-              _context2.n = 1;
+              _context3.n = 1;
               return this.setLocale(initLocale, false);
             case 1:
-              return _context2.a(2);
+              return _context3.a(2);
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
       function onInit() {
         return _onInit.apply(this, arguments);
@@ -196,62 +263,74 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
     key: "_listenServerToClientLocaleLoad",
     value: function _listenServerToClientLocaleLoad() {
       var _this2 = this;
-      var initClientLocale$ = (0, _rxjs.defer)(function () {
-        var initLocale = _this2.initLocale;
-        _this2.logger.log('client initLocale', initLocale);
-        return _this2._innerSetAndLoadLocale(initLocale);
-      }).pipe((0, _rxjs.take)(1), (0, _rxjs.switchMap)(function (locale) {
-        // set local state async to make we can get the locale client state as soon as possible
-        _this2._setClientLocaleSuccess(_this2._portManager.clientId, locale);
-
-        // also sync to server
-        return _this2.setClientLocaleSuccess(_this2._portManager.clientId, locale);
-      }));
+      var initClientLocale = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+        var initLocale, locale;
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
+            case 0:
+              initLocale = _this2.initLocale;
+              _this2.logger.log('client initLocale', initLocale);
+              _context4.n = 1;
+              return _this2._innerSetAndLoadLocale(initLocale);
+            case 1:
+              locale = _context4.v;
+              // Set local state first so currentLocale is available before server sync.
+              _this2._setClientLocaleSuccess(_this2._portManager.clientId, locale);
+              _context4.n = 2;
+              return _this2.setClientLocaleSuccess(_this2._portManager.clientId, locale);
+            case 2:
+              return _context4.a(2, locale);
+          }
+        }, _callee4);
+      }))();
+      this._clientLocaleReady = initClientLocale.then(function () {
+        return undefined;
+      });
 
       // wait server ready, then set the locale state to load the locale
-      initClientLocale$.pipe((0, _rxjs.switchMap)(function () {
+      (0, _rxjs.from)(initClientLocale).pipe((0, _rxjs.switchMap)(function () {
         return _this2.ready$;
       }), (0, _rxjs.take)(1), (0, _rxjs.switchMap)(function () {
-        return (0, _nextCore.fromWatchValue)(_this2, function () {
+        return _this2._syncServerLocaleToClients ? (0, _nextCore.fromWatchValue)(_this2, function () {
           return _this2.locale;
-        });
+        }) : _rxjs.EMPTY;
       }), (0, _rxjs.filter)(Boolean), (0, _rxjs.concatMap)(/*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(locale) {
-          return _regenerator().w(function (_context3) {
-            while (1) switch (_context3.n) {
+        var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(locale) {
+          return _regenerator().w(function (_context5) {
+            while (1) switch (_context5.n) {
               case 0:
                 if (!(locale !== _this2.clientLocale)) {
-                  _context3.n = 2;
+                  _context5.n = 2;
                   break;
                 }
-                _context3.n = 1;
+                _context5.n = 1;
                 return _this2._innerSetAndLoadLocale(locale);
               case 1:
-                _context3.n = 2;
+                _context5.n = 2;
                 return _this2.setClientLocaleSuccess(_this2._portManager.clientId, locale);
               case 2:
-                return _context3.a(2);
+                return _context5.a(2);
             }
-          }, _callee3);
+          }, _callee5);
         }));
-        return function (_x3) {
-          return _ref3.apply(this, arguments);
+        return function (_x4) {
+          return _ref4.apply(this, arguments);
         };
       }()), (0, _rxjs.distinctUntilChanged)()).subscribe();
     }
   }, {
     key: "_listenBrowserLocaleChange",
     value: function () {
-      var _listenBrowserLocaleChange2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+      var _listenBrowserLocaleChange2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
         var _this3 = this;
-        return _regenerator().w(function (_context5) {
-          while (1) switch (_context5.n) {
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.n) {
             case 0:
               if (!_nextCore.isSharedWorker) {
-                _context5.n = 1;
+                _context7.n = 1;
                 break;
               }
-              return _context5.a(2);
+              return _context7.a(2);
             case 1:
               this.ready$.pipe((0, _rxjs.switchMap)(function () {
                 return (0, _nextCore.fromWatchValue)(_this3, function () {
@@ -262,10 +341,10 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
                 _this3.logger.info('listen browser locale change');
                 // https://developer.mozilla.org/en-US/docs/Web/API/Window/languagechange_event
                 return (0, _rxjs.fromEvent)(globalThis.window, 'languagechange');
-              }), (0, _rxjs.distinctUntilChanged)(), (0, _rxjs.switchMap)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+              }), (0, _rxjs.distinctUntilChanged)(), (0, _rxjs.switchMap)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
                 var browserLocale, currentLocale;
-                return _regenerator().w(function (_context4) {
-                  while (1) switch (_context4.n) {
+                return _regenerator().w(function (_context6) {
+                  while (1) switch (_context6.n) {
                     case 0:
                       browserLocale = _this3.browserLocale;
                       currentLocale = _this3.currentLocale;
@@ -275,20 +354,20 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
                         currentLocale: currentLocale
                       });
                       if (!(browserLocale !== currentLocale)) {
-                        _context4.n = 1;
+                        _context6.n = 1;
                         break;
                       }
-                      _context4.n = 1;
+                      _context6.n = 1;
                       return _this3.setLocale(browserLocale, false);
                     case 1:
-                      return _context4.a(2);
+                      return _context6.a(2);
                   }
-                }, _callee4);
+                }, _callee6);
               }))), _nextCore.takeUntilAppDestroy).subscribe();
             case 2:
-              return _context5.a(2);
+              return _context7.a(2);
           }
-        }, _callee5, this);
+        }, _callee7, this);
       }));
       function _listenBrowserLocaleChange() {
         return _listenBrowserLocaleChange2.apply(this, arguments);
@@ -298,19 +377,19 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_innerSetAndLoadLocale",
     value: function () {
-      var _innerSetAndLoadLocale2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(locale) {
-        return _regenerator().w(function (_context6) {
-          while (1) switch (_context6.n) {
+      var _innerSetAndLoadLocale2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(locale) {
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.n) {
             case 0:
-              _context6.n = 1;
+              _context8.n = 1;
               return _i18n["default"].setLocale(locale);
             case 1:
               (0, _i18nDayjs.setDayjsLocale)(locale || this.defaultLocale);
-              return _context6.a(2, locale);
+              return _context8.a(2, locale);
           }
-        }, _callee6, this);
+        }, _callee8, this);
       }));
-      function _innerSetAndLoadLocale(_x4) {
+      function _innerSetAndLoadLocale(_x5) {
         return _innerSetAndLoadLocale2.apply(this, arguments);
       }
       return _innerSetAndLoadLocale;
@@ -336,8 +415,8 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "currentLocale",
     get: function get() {
-      var _ref5;
-      return (_ref5 = this._portManager.isClient ? this.clientLocale : this.locale) !== null && _ref5 !== void 0 ? _ref5 : this.defaultLocale;
+      var _ref6;
+      return (_ref6 = this._portManager.isClient ? this.clientLocale : this.locale) !== null && _ref6 !== void 0 ? _ref6 : this.defaultLocale;
     }
   }, {
     key: "browserLocale",
@@ -348,15 +427,15 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "toggleDebugMode",
     value: function () {
-      var _toggleDebugMode2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-        return _regenerator().w(function (_context7) {
-          while (1) switch (_context7.n) {
+      var _toggleDebugMode2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
+        return _regenerator().w(function (_context9) {
+          while (1) switch (_context9.n) {
             case 0:
               this._toggleDebugMode();
             case 1:
-              return _context7.a(2);
+              return _context9.a(2);
           }
-        }, _callee7, this);
+        }, _callee9, this);
       }));
       function toggleDebugMode() {
         return _toggleDebugMode2.apply(this, arguments);
@@ -373,33 +452,33 @@ var Locale = exports.Locale = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setLocale",
     value: (function () {
-      var _setLocale = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(locale) {
+      var _setLocale = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(locale) {
         var normalize,
           _locale,
-          _args8 = arguments,
-          _t;
-        return _regenerator().w(function (_context8) {
-          while (1) switch (_context8.p = _context8.n) {
+          _args0 = arguments,
+          _t2;
+        return _regenerator().w(function (_context0) {
+          while (1) switch (_context0.p = _context0.n) {
             case 0:
-              normalize = _args8.length > 1 && _args8[1] !== undefined ? _args8[1] : true;
-              _context8.p = 1;
+              normalize = _args0.length > 1 && _args0[1] !== undefined ? _args0[1] : true;
+              _context0.p = 1;
               _locale = normalize ? this.normalizeLocale(locale) : locale;
-              _context8.n = 2;
+              _context0.n = 2;
               return this._innerSetAndLoadLocale(_locale);
             case 2:
               this._setLocaleSuccess(_locale);
-              _context8.n = 4;
+              _context0.n = 4;
               break;
             case 3:
-              _context8.p = 3;
-              _t = _context8.v;
-              this.logger.error('load locale fail', _t);
+              _context0.p = 3;
+              _t2 = _context0.v;
+              this.logger.error('load locale fail', _t2);
             case 4:
-              return _context8.a(2);
+              return _context0.a(2);
           }
-        }, _callee8, this, [[1, 3]]);
+        }, _callee0, this, [[1, 3]]);
       }));
-      function setLocale(_x5) {
+      function setLocale(_x6) {
         return _setLocale.apply(this, arguments);
       }
       return setLocale;

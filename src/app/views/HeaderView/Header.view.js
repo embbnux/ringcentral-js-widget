@@ -122,7 +122,7 @@ var HeaderView = exports.HeaderView = (_dec = (0, _nextCore.injectable)({
       return {
         standAlone: standAlone,
         logoUrl: logoUrl,
-        userStatus: (((_this$_auth = this._auth) === null || _this$_auth === void 0 ? void 0 : _this$_auth.loggedIn) &&
+        userStatus: ((_this$_auth = this._auth) !== null && _this$_auth !== void 0 && _this$_auth.loggedIn &&
         // TODO: spring-ui use presenceStatus as the user status, because presenceStatus will group the user status and telephony status, that be real user status(in meeting also will be busy)
         process.env.THEME_SYSTEM === 'spring-ui' ? (_this$_presence = this._presence) === null || _this$_presence === void 0 ? void 0 : _this$_presence.presenceStatus : (_this$_presence2 = this._presence) === null || _this$_presence2 === void 0 ? void 0 : _this$_presence2.userStatus) || undefined,
         dndStatus: ((_this$_auth2 = this._auth) === null || _this$_auth2 === void 0 ? void 0 : _this$_auth2.loggedIn) && ((_this$_presence3 = this._presence) === null || _this$_presence3 === void 0 ? void 0 : _this$_presence3.dndStatus) || undefined,
@@ -132,7 +132,7 @@ var HeaderView = exports.HeaderView = (_dec = (0, _nextCore.injectable)({
         currentPath: this._router.currentPath,
         currentLocale: this._locale.currentLocale,
         activeSessionId: ((_this$_webphone = this._webphone) === null || _this$_webphone === void 0 ? void 0 : _this$_webphone.activeSessionId) || '',
-        incomingCallPageMinimized: !((_this$_webphone2 = this._webphone) === null || _this$_webphone2 === void 0 ? void 0 : _this$_webphone2.ringSession) || this._webphone.ringSession.minimized,
+        incomingCallPageMinimized: !((_this$_webphone2 = this._webphone) !== null && _this$_webphone2 !== void 0 && _this$_webphone2.ringSession) || this._webphone.ringSession.minimized,
         presenceReady: (_this$_presence4 = this._presence) === null || _this$_presence4 === void 0 ? void 0 : _this$_presence4.ready,
         userContact: this.userContact,
         loginNumber: (_this$_userInfo = this._userInfo) === null || _this$_userInfo === void 0 ? void 0 : _this$_userInfo.formattedLoginNumber

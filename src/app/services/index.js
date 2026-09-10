@@ -107,6 +107,17 @@ Object.keys(_DateTimeFormat).forEach(function (key) {
     }
   });
 });
+var _StaticTimezoneService = require("./StaticTimezoneService");
+Object.keys(_StaticTimezoneService).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _StaticTimezoneService[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _StaticTimezoneService[key];
+    }
+  });
+});
 var _PerfTracker = require("./PerfTracker");
 Object.keys(_PerfTracker).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

@@ -42,7 +42,7 @@ var _services = require("../../services");
 var _HeaderNav = require("./HeaderNav");
 var _i18n = require("./i18n");
 var _tabs = require("./utils/tabs");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -67,7 +67,7 @@ var HeaderNavViewSpring = exports.HeaderNavViewSpring = (_dec = (0, _nextCore.in
   name: 'HeaderNavViewSpring'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('HeaderNavViewOptions')(target, undefined, 2);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof HeaderNavViewSpringOptions === "undefined" ? Object : HeaderNavViewSpringOptions]), _dec5 = (0, _nextCore.dynamic)('CallHistory'), _dec6 = Reflect.metadata("design:type", typeof CallHistory === "undefined" ? Object : CallHistory), _dec7 = (0, _nextCore.dynamic)('MessageStore'), _dec8 = Reflect.metadata("design:type", typeof MessageStore === "undefined" ? Object : MessageStore), _dec9 = (0, _nextCore.dynamic)('MessageThread'), _dec0 = Reflect.metadata("design:type", typeof MessageThread === "undefined" ? Object : MessageThread), _dec1 = (0, _nextCore.dynamic)('AppFeatures'), _dec10 = Reflect.metadata("design:type", typeof AppFeatures === "undefined" ? Object : AppFeatures), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof HeaderNavViewSpringOptions === "undefined" ? Object : HeaderNavViewSpringOptions]), _dec5 = (0, _nextCore.dynamic)('CallHistory'), _dec6 = Reflect.metadata("design:type", typeof CallHistory === "undefined" ? Object : CallHistory), _dec7 = (0, _nextCore.dynamic)('MessageStore'), _dec8 = Reflect.metadata("design:type", typeof MessageStore === "undefined" ? Object : MessageStore), _dec9 = (0, _nextCore.dynamic)('MessageThread'), _dec0 = Reflect.metadata("design:type", typeof MessageThread === "undefined" ? Object : MessageThread), _dec1 = (0, _nextCore.dynamic)('QueueConversations'), _dec10 = Reflect.metadata("design:type", typeof QueueConversations === "undefined" ? Object : QueueConversations), _dec11 = (0, _nextCore.dynamic)('AppFeatures'), _dec12 = Reflect.metadata("design:type", typeof AppFeatures === "undefined" ? Object : AppFeatures), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function HeaderNavViewSpring(_locale, _router, _headerNavViewOptions) {
     var _this;
     _classCallCheck(this, HeaderNavViewSpring);
@@ -78,15 +78,16 @@ var HeaderNavViewSpring = exports.HeaderNavViewSpring = (_dec = (0, _nextCore.in
     _initializerDefineProperty(_this, "_callHistory", _descriptor, _this);
     _initializerDefineProperty(_this, "_messageStore", _descriptor2, _this);
     _initializerDefineProperty(_this, "_messageThread", _descriptor3, _this);
-    _initializerDefineProperty(_this, "_appFeatures", _descriptor4, _this);
+    _initializerDefineProperty(_this, "_queueConversations", _descriptor4, _this);
+    _initializerDefineProperty(_this, "_appFeatures", _descriptor5, _this);
     return _this;
   }
   _inherits(HeaderNavViewSpring, _RcViewModule);
   return _createClass(HeaderNavViewSpring, [{
     key: "textUnReadCounts",
     get: function get() {
-      var _this$_messageStore$t, _this$_messageStore, _this$_messageThread$, _this$_messageThread;
-      return ((_this$_messageStore$t = (_this$_messageStore = this._messageStore) === null || _this$_messageStore === void 0 ? void 0 : _this$_messageStore.textUnreadCounts) !== null && _this$_messageStore$t !== void 0 ? _this$_messageStore$t : 0) + ((_this$_messageThread$ = (_this$_messageThread = this._messageThread) === null || _this$_messageThread === void 0 ? void 0 : _this$_messageThread.threadUnreadCount) !== null && _this$_messageThread$ !== void 0 ? _this$_messageThread$ : 0);
+      var _this$_messageStore$t, _this$_messageStore, _this$_messageThread$, _this$_messageThread, _this$_queueConversat, _this$_queueConversat2;
+      return ((_this$_messageStore$t = (_this$_messageStore = this._messageStore) === null || _this$_messageStore === void 0 ? void 0 : _this$_messageStore.textUnreadCounts) !== null && _this$_messageStore$t !== void 0 ? _this$_messageStore$t : 0) + ((_this$_messageThread$ = (_this$_messageThread = this._messageThread) === null || _this$_messageThread === void 0 ? void 0 : _this$_messageThread.threadUnreadCount) !== null && _this$_messageThread$ !== void 0 ? _this$_messageThread$ : 0) + ((_this$_queueConversat = (_this$_queueConversat2 = this._queueConversations) === null || _this$_queueConversat2 === void 0 ? void 0 : _this$_queueConversat2.unreadCount) !== null && _this$_queueConversat !== void 0 ? _this$_queueConversat : 0);
     }
   }, {
     key: "voicemailUnReadCounts",
@@ -213,7 +214,7 @@ var HeaderNavViewSpring = exports.HeaderNavViewSpring = (_dec = (0, _nextCore.in
       showDialPad && tabs.push(this.dialTab);
       showText && tabs.push(this.textTab);
       showFax && tabs.push(this.faxTab);
-      if ((_this$_headerNavViewO = this._headerNavViewOptions) === null || _this$_headerNavViewO === void 0 ? void 0 : _this$_headerNavViewO.enableVideoTab) {
+      if ((_this$_headerNavViewO = this._headerNavViewOptions) !== null && _this$_headerNavViewO !== void 0 && _this$_headerNavViewO.enableVideoTab) {
         showVideo && tabs.push(this.videoTab);
       }
       tabs.push(this.settingsTab);
@@ -273,10 +274,15 @@ var HeaderNavViewSpring = exports.HeaderNavViewSpring = (_dec = (0, _nextCore.in
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_appFeatures", [_dec1, _dec10], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_queueConversations", [_dec1, _dec10], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "_textActive", [_nextCore.computed, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_textActive"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_settingsActive", [_nextCore.computed, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_settingsActive"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialTab", [_nextCore.computed, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "dialTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "textTab", [_nextCore.computed, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "textTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "videoTab", [_nextCore.computed, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "videoTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "faxTab", [_nextCore.computed, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "faxTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "settingsTab", [_nextCore.computed, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "settingsTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "tabs", [_nextCore.computed, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "tabs"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_appFeatures", [_dec11, _dec12], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _applyDecoratedDescriptor(_class2.prototype, "_textActive", [_nextCore.computed, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_textActive"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_settingsActive", [_nextCore.computed, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "_settingsActive"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "dialTab", [_nextCore.computed, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "dialTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "textTab", [_nextCore.computed, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "textTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "videoTab", [_nextCore.computed, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "videoTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "faxTab", [_nextCore.computed, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "faxTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "settingsTab", [_nextCore.computed, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "settingsTab"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "tabs", [_nextCore.computed, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "tabs"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=HeaderNav.view.js.map

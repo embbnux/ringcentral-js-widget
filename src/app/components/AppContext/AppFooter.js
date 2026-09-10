@@ -38,8 +38,10 @@ var AppFooterNav = exports.AppFooterNav = function AppFooterNav(_ref) {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   var _useContext = (0, _react.useContext)(_AppContext.AppContext),
-    setFooter = _useContext.setFooter,
-    additionalFooterHeightRef = _useContext.additionalFooterHeightRef;
+    setFooter = _useContext.setFooter;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  var _useContext2 = (0, _react.useContext)(_AppContext.AppRefsContext),
+    additionalFooterHeightRef = _useContext2.additionalFooterHeightRef;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   (0, _react.useLayoutEffect)(function () {
@@ -57,8 +59,8 @@ var useAppFooter = exports.useAppFooter = function useAppFooter(_ref2) {
     _ref2$calculateHeight = _ref2.calculateHeight,
     calculateHeight = _ref2$calculateHeight === void 0 ? true : _ref2$calculateHeight,
     additionalFooterHeight = _ref2.additionalFooterHeight;
-  var _useContext2 = (0, _react.useContext)(_AppContext.AppContext),
-    footer = _useContext2.footer;
+  var _useContext3 = (0, _react.useContext)(_AppContext.AppContext),
+    footer = _useContext3.footer;
   var footerElement = (0, _react.useMemo)(function () {
     return /*#__PURE__*/_react["default"].createElement("footer", null, footer || defaultFooter);
   }, [defaultFooter, footer]);
@@ -69,8 +71,8 @@ var useAppFooter = exports.useAppFooter = function useAppFooter(_ref2) {
   };
 };
 var useFooterHeight = exports.useFooterHeight = function useFooterHeight() {
-  var _useContext3 = (0, _react.useContext)(_AppContext.AppContext),
-    footerHeight = _useContext3.footerHeight;
+  var _useContext4 = (0, _react.useContext)(_AppContext.AppContext),
+    footerHeight = _useContext4.footerHeight;
   return footerHeight;
 };
 //# sourceMappingURL=AppFooter.js.map

@@ -74,6 +74,17 @@ Object.keys(_PortalWithCheckAgain).forEach(function (key) {
     }
   });
 });
+var _AnchorOverlay = require("./AnchorOverlay");
+Object.keys(_AnchorOverlay).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _AnchorOverlay[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _AnchorOverlay[key];
+    }
+  });
+});
 var _ExpandedLayoutPopper = require("./ExpandedLayoutPopper");
 Object.keys(_ExpandedLayoutPopper).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

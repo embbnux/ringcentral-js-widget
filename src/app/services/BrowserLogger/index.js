@@ -30,4 +30,15 @@ Object.keys(_BrowserLogger2).forEach(function (key) {
     }
   });
 });
+var _sanitizeLogZip = require("./sanitizeLogZip");
+Object.keys(_sanitizeLogZip).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _sanitizeLogZip[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _sanitizeLogZip[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

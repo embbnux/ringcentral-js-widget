@@ -46,6 +46,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 var ModalItemPanel = exports.ModalItemPanel = /*#__PURE__*/(0, _react.memo)(function (props) {
+  var _ActionsProps$classNa;
   var type = props.type,
     childrenSize = props.childrenSize,
     footerProp = props.footer,
@@ -117,7 +118,7 @@ var ModalItemPanel = exports.ModalItemPanel = /*#__PURE__*/(0, _react.memo)(func
       disableBackdropClick: disableBackdropClick
     }, restProps), {}, {
       ActionsProps: _objectSpread({
-        className: isCompact ? "pr-0 ".concat(ActionsProps === null || ActionsProps === void 0 ? void 0 : ActionsProps.className) : ActionsProps === null || ActionsProps === void 0 ? void 0 : ActionsProps.className
+        className: isCompact ? "pr-0 ".concat((_ActionsProps$classNa = ActionsProps === null || ActionsProps === void 0 ? void 0 : ActionsProps.className) !== null && _ActionsProps$classNa !== void 0 ? _ActionsProps$classNa : '') : ActionsProps === null || ActionsProps === void 0 ? void 0 : ActionsProps.className
       }, ActionsProps),
       loadingMode: loadingMode,
       payload: payload,
@@ -176,7 +177,7 @@ var ModalItemPanel = exports.ModalItemPanel = /*#__PURE__*/(0, _react.memo)(func
     disableRestoreFocus: disableRestoreFocus,
     backdropProps: restApplyProps['BackdropProps'],
     classes: {
-      body: (0, _clsx["default"])('overflow-hidden', fullScreen && 'h-full w-full transform-none top-0 left-0 max-h-full max-w-full py-0 rounded-none', isCompact && 'left-3 right-3 w-[276px] max-w-none p-3', classes === null || classes === void 0 ? void 0 : classes.root),
+      body: (0, _clsx["default"])('overflow-hidden', fullScreen && 'h-full w-full transform-none top-0 left-0 max-h-full max-w-full py-0 rounded-none', isCompact && 'w-[276px] max-w-none p-3', classes === null || classes === void 0 ? void 0 : classes.root),
       root: className
     }
   }, render));

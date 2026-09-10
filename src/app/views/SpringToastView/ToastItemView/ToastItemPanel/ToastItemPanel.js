@@ -19,11 +19,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ToastItemPanel = void 0;
 exports.getLevelType = getLevelType;
+var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _react = _interopRequireWildcard(require("react"));
-var _excluded = ["id", "level", "loading", "action", "children", "dismiss", "backdrop", "onClose", "allowDuplicates", "messageAlign", "fullWidth", "className"]; // import { Xmd } from '@ringcentral/spring-icon';
-/* eslint-disable @typescript-eslint/no-unused-vars */
+var _excluded = ["id", "level", "loading", "action", "children", "dismiss", "backdrop", "onClose", "allowDuplicates", "messageAlign", "fullWidth", "className"],
+  _excluded2 = ["startSlot"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -47,6 +48,7 @@ function getLevelType(level) {
   return type;
 }
 var ToastItemPanel = exports.ToastItemPanel = function ToastItemPanel(_ref) {
+  var _DEFAULT_ICON_MAP$typ;
   var id = _ref.id,
     level = _ref.level,
     loading = _ref.loading,
@@ -62,6 +64,28 @@ var ToastItemPanel = exports.ToastItemPanel = function ToastItemPanel(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
   var type = getLevelType(level);
   var snackbarContentRef = (0, _react.useRef)(null);
+
+  // Extract startSlot from rest if provided
+  var _ref2 = rest,
+    startSlot = _ref2.startSlot,
+    restProps = _objectWithoutProperties(_ref2, _excluded2);
+  var DEFAULT_ICON_MAP = {
+    info: _springIcon.InfoMd,
+    error: _springIcon.AlertMd,
+    success: _springIcon.SuccessMd,
+    warning: _springIcon.AlertMd,
+    neutral: _springIcon.InfoMd
+  };
+
+  // Determine the icon to use based on severity - Same as SpringUI logic
+  var defaultIcon = (_DEFAULT_ICON_MAP$typ = DEFAULT_ICON_MAP[type]) !== null && _DEFAULT_ICON_MAP$typ !== void 0 ? _DEFAULT_ICON_MAP$typ : _springIcon.InfoMd;
+
+  // Logic:
+  // - If startSlot is explicitly null, don't pass startSlot prop (no icon)
+  // - If startSlot is undefined, use default icon from map [Backward compatibility]
+  // - If startSlot has a value, use that value
+  var shouldShowIcon = startSlot !== null;
+  var iconToUse = startSlot !== undefined ? startSlot : defaultIcon;
   var handleClose = action === undefined ? function () {
     dismiss(id, 'removeButtonClick');
   } : undefined;
@@ -82,36 +106,12 @@ var ToastItemPanel = exports.ToastItemPanel = function ToastItemPanel(_ref) {
     "data-sign": "Toast",
     "data-sign-type": type,
     severity: type
-    // TODO: currently always show icon
-    // icon={typeof children === 'string'}
-    ,
-    icon: true
-    // TODO: still not support loading
-    // loading={loading}
-    // TODO: that action is render in wrong place, need wait spring update
-    // action={
-    //   action === undefined ? (
-    //     <IconButton
-    //       className="sui-snackbar-content-close"
-    //       symbol={Xmd}
-    //       variant="icon"
-    //       shape="squircle"
-    //       color="secondary"
-    //       size="small"
-    //       background={false}
-    //       data-sign="dismiss"
-    //       onClick={() => {
-    //         dismiss(id, 'removeButtonClick');
-    //       }}
-    //     />
-    //   ) : (
-    //     action
-    //   )
-    // }
-    ,
+  }, shouldShowIcon ? {
+    startSlot: iconToUse
+  } : {}, {
     action: action,
     onClose: handleClose
-  }, rest, {
+  }, restProps, {
     className: (0, _clsx["default"])('min-w-auto flex-none', className)
   }), children);
 };

@@ -28,12 +28,18 @@ var ToastPositionAdjustor = exports.ToastPositionAdjustor = function ToastPositi
   var children = _ref.children,
     additionalFooterHeight = _ref.additionalFooterHeight;
   var _useContext = (0, _react.useContext)(_AppContext.AppContext),
-    setFooterHeight = _useContext.setFooterHeight,
-    additionalFooterHeightRef = _useContext.additionalFooterHeightRef;
+    setFooterHeight = _useContext.setFooterHeight;
+  var _useContext2 = (0, _react.useContext)(_AppContext.AppRefsContext),
+    additionalFooterHeightRef = _useContext2.additionalFooterHeightRef;
   var footerRef = (0, _react.useRef)(null);
   var updateHeight = function updateHeight() {
-    var _footerRef$current;
-    setFooterHeight((((_footerRef$current = footerRef.current) === null || _footerRef$current === void 0 ? void 0 : _footerRef$current.clientHeight) || 0) + additionalFooterHeightRef.current + (additionalFooterHeight || 0));
+    var footer = footerRef.current;
+    if (!footer) {
+      // when footer element is not mounted, use the existing footer height from the context, skip set
+      return;
+    }
+    var height = footer.clientHeight + additionalFooterHeightRef.current + (additionalFooterHeight || 0);
+    setFooterHeight(height);
   };
   (0, _springUi.useResizeObserver)(footerRef, updateHeight);
   return /*#__PURE__*/_react["default"].cloneElement(children, {

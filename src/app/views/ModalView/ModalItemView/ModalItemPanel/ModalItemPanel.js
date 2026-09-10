@@ -208,6 +208,10 @@ var ModalItemPanel = exports.ModalItemPanel = /*#__PURE__*/(0, _react.memo)(func
     disableEscapeKeyDown: isLoading,
     onClose: handleClose,
     open: open
-  }, restApplyProps), render));
+  }, restApplyProps, {
+    PaperProps: _objectSpread({
+      role: 'dialog'
+    }, restApplyProps.PaperProps)
+  }), render));
 });
 //# sourceMappingURL=ModalItemPanel.js.map

@@ -159,7 +159,7 @@ var Brand = exports.Brand = (_dec = (0, _nextCore.injectable)({
     get: function get() {
       var _this$_brandConfigOpt;
       var brandConfig = this._brandConfig;
-      if (!(brandConfig === null || brandConfig === void 0 ? void 0 : brandConfig.assets)) return brandConfig;
+      if (!(brandConfig !== null && brandConfig !== void 0 && brandConfig.assets)) return brandConfig;
 
       /**
        * use current window location.origin as origin

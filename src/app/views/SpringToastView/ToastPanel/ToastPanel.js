@@ -32,22 +32,16 @@ require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _reactHooks = require("@ringcentral-integration/react-hooks");
-var _ClickAwayListener = require("@ringcentral/juno/es6/components/ClickAwayListener/ClickAwayListener.js");
 var _Fade = require("@ringcentral/juno/es6/components/Transitions/Fade/Fade.js");
-var _Portal = require("@ringcentral/juno/es6/components/Portal/Portal.js");
 var _Slide = require("@ringcentral/juno/es6/components/Transitions/Slide/Slide.js");
-var _useChange = require("@ringcentral/juno/es6/foundation/hooks/useChange/useChange.js");
-var _useEventCallback = require("@ringcentral/juno/es6/foundation/hooks/useEventCallback/useEventCallback.js");
-var _useEventListener2 = require("@ringcentral/juno/es6/foundation/hooks/useEventListener/useEventListener.js");
-var _useRefState3 = require("@ringcentral/juno/es6/foundation/hooks/useRefState/useRefState.js");
-var _useResultRef = require("@ringcentral/juno/es6/foundation/hooks/useResultRef/useResultRef.js");
+var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _react = _interopRequireWildcard(require("react"));
 var _components = require("../../../components");
 var _hooks = require("../../../hooks");
 var _ToastPanel = require("../../ToastView/ToastPanel");
 var _ToastItemPanel = require("../ToastItemView/ToastItemPanel/ToastItemPanel");
-var _excluded = ["id", "payload", "timestamp", "message", "level", "ttl", "loading", "action", "backdrop", "brand", "in", "getRenderer", "dismiss", "onExited", "component"],
+var _excluded = ["id", "payload", "timestamp", "message", "level", "ttl", "loading", "action", "backdrop", "brand", "in", "position", "getRenderer", "dismiss", "onExited", "component"],
   _excluded2 = ["className", "messages", "size", "messageAlign", "position", "fullWidth", "backdrop", "disableBackdropClick", "disableEscapeKeyDown", "dismiss", "component"],
   _excluded3 = ["disableBackdropClick", "disableEscapeKeyDown"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
@@ -73,6 +67,7 @@ var MemoToastItem = /*#__PURE__*/(0, _react.memo)(function (props) {
     backdrop = props.backdrop,
     brand = props.brand,
     inProp = props["in"],
+    position = props.position,
     _props$getRenderer = props.getRenderer,
     getRenderer = _props$getRenderer === void 0 ? _ToastPanel.DEFAULT_TOAST_GET_RENDERER : _props$getRenderer,
     dismiss = props.dismiss,
@@ -100,7 +95,7 @@ var MemoToastItem = /*#__PURE__*/(0, _react.memo)(function (props) {
     onExited: function onExited() {
       return _onExited(id);
     },
-    direction: "up"
+    direction: position === 'top' ? 'down' : 'up'
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex bg-neutral-base rounded-sui-sm"
     // below view transition api may cause the toast item be opacity background, so we need to set the background color to that to avoid that
@@ -132,15 +127,17 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
     dismiss = _ref.dismiss,
     component = _ref.component,
     rest = _objectWithoutProperties(_ref, _excluded2);
-  var _useRefState = (0, _useRefState3.useRefState)(messages),
+  var _useRefState = (0, _springUi.useRefState)(messages),
     _useRefState2 = _slicedToArray(_useRefState, 2),
     currentMessagesRef = _useRefState2[0],
     setCurrentMessages = _useRefState2[1];
   var listening = (0, _react.useRef)(false);
-  var deleteMapRef = (0, _useResultRef.useResultRef)(function () {
+  var deleteMapRef = (0, _springUi.useResultRef)(function () {
     return new Map();
   });
-  (0, _useChange.useChange)(function (prev, next) {
+  var _useTheme = (0, _springUi.useTheme)(),
+    scope = _useTheme.scope;
+  (0, _springUi.useChange)(function (prev, next) {
     if (prev) {
       var prevLength = prev.length;
       var nextLength = next.length;
@@ -166,7 +163,7 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
   });
   var currentMessages = currentMessagesRef.current;
   var deleteMap = deleteMapRef.current;
-  var handleClickAway = (0, _useEventCallback.useEventCallback)(function () {
+  var handleClickAway = (0, _springUi.useEventCallback)(function () {
     var _currentMessages$slic = currentMessages.slice(-1),
       _currentMessages$slic2 = _slicedToArray(_currentMessages$slic, 1),
       lastOne = _currentMessages$slic2[0];
@@ -178,7 +175,7 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
   });
 
   // TODO: work with mui modal manager, otherwise modal and Toast esc will got error behaviors when open at same time
-  var _useEventListener = (0, _useEventListener2.useEventListener)(document, 'keydown', function (e) {
+  var _useEventListener = (0, _springUi.useEventListener)(document, 'keydown', function (e) {
       if (e.key !== 'Escape') return;
 
       // using current message
@@ -197,7 +194,7 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
     }),
     listen = _useEventListener.listen,
     remove = _useEventListener.remove;
-  var handleExited = (0, _useEventCallback.useEventCallback)(function (id) {
+  var handleExited = (0, _springUi.useEventCallback)(function (id) {
     deleteMap["delete"](id);
     setCurrentMessages(messages);
   });
@@ -222,14 +219,17 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
   var showBackdrop = backdrop || currentMessages.some(function (msg) {
     return !deleteMap.get(msg.id) && msg.backdrop;
   });
-  return /*#__PURE__*/_react["default"].createElement(_Portal.RcPortal, null, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement(_springUi.Portal, null, /*#__PURE__*/_react["default"].createElement("div", {
+    // add scope to ensure the scope work as expect
+    "data-sui-theme-scope": scope
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "toast-container",
     className: (0, _clsx["default"])('fixed top-0 left-0 w-full h-full z-snackbar pointer-events-none pt-3 flex flex-col', className, position === 'top' ? 'justify-start' : 'justify-end')
   }, /*#__PURE__*/_react["default"].createElement(_Fade.RcFade, {
     "in": showBackdrop
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "absolute left-0 top-0 w-full h-full bg-neutral-100 bg-opacity-40 z-[-1] pointer-events-auto"
-  })), /*#__PURE__*/_react["default"].createElement(_ClickAwayListener.ClickAwayListener, {
+  })), /*#__PURE__*/_react["default"].createElement(_springUi.ClickAwayListener, {
     onClickAway: handleClickAway
   }, /*#__PURE__*/_react["default"].createElement("section", {
     className: (0, _clsx["default"])('inline-flex flex-col justify-end gap-3 px-5 mb-4 items-center [view-transition-name:toast]', fullWidth && 'w-full')
@@ -239,6 +239,7 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
       message = _objectWithoutProperties(_ref2, _excluded3);
     return /*#__PURE__*/_react["default"].createElement(MemoToastItem, _extends({
       key: message.id,
+      position: position,
       fullWidth: fullWidth,
       size: size,
       component: component,
@@ -251,6 +252,6 @@ var ToastPanel = exports.ToastPanel = function ToastPanel(_ref) {
     style: {
       height: renderHeight
     }
-  }) : null));
+  }) : null)));
 };
 //# sourceMappingURL=ToastPanel.js.map

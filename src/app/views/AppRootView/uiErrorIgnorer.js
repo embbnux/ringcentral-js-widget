@@ -10,7 +10,6 @@ require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.some.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.includes.js");
-var _loggerV = require("@ringcentral-integration/core/lib/logger/loggerV2");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _rxjs = require("rxjs");
 // https://sentry.io/answers/react-resizeobserver-loop-completed-with-undelivered-notifications/
@@ -19,7 +18,7 @@ var uiErrorIgnorer = exports.uiErrorIgnorer = function uiErrorIgnorer() {
   (0, _rxjs.fromEvent)(window, 'error', {
     capture: true
   }).pipe((0, _rxjs.filter)(function (event) {
-    return _loggerV.consoleIgnoreRule.some(function (msg) {
+    return _nextCore.consoleIgnoreRule.some(function (msg) {
       return (
         // to ensure the error message is a string
         typeof event.message === 'string' && event.message.includes(msg)

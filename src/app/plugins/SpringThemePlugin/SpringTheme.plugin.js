@@ -18,7 +18,6 @@ require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.weak-map.js");
@@ -28,7 +27,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.SpringThemePlugin = void 0;
+require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.to-string.js");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _springTheme = require("@ringcentral/spring-theme");
 var _framerMotion = require("framer-motion");
@@ -50,7 +51,7 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 var sprintDefaultThemeMap = {
-  dark: _springTheme.suiDark,
+  dark: _springTheme.suiJunoDark,
   contrast: _springTheme.suiHighContrast
 };
 var SpringThemePlugin = exports.SpringThemePlugin = (_dec = (0, _nextCore.injectable)({
@@ -73,13 +74,27 @@ var SpringThemePlugin = exports.SpringThemePlugin = (_dec = (0, _nextCore.inject
         theme = _useConnector.theme,
         themeType = _useConnector.themeType,
         prefersReducedMotion = _useConnector.prefersReducedMotion;
+      var _useConnector2 = (0, _nextCore.useConnector)(function () {
+          var _this$_springThemePlu, _this$_springThemePlu2, _this$_springThemePlu3;
+          return {
+            mode: (_this$_springThemePlu = _this._springThemePluginOptions) === null || _this$_springThemePlu === void 0 ? void 0 : _this$_springThemePlu.mode,
+            scope: (_this$_springThemePlu2 = _this._springThemePluginOptions) === null || _this$_springThemePlu2 === void 0 ? void 0 : _this$_springThemePlu2.scope,
+            className: (_this$_springThemePlu3 = _this._springThemePluginOptions) === null || _this$_springThemePlu3 === void 0 ? void 0 : _this$_springThemePlu3.className
+          };
+        }),
+        mode = _useConnector2.mode,
+        scope = _useConnector2.scope,
+        className = _useConnector2.className;
       (0, _react.useEffect)(function () {
         _nextCore.logger.log("[".concat((0, _nextCore.getRef)(_this).identifier, "] theme info"), {
           themeType: themeType
         });
       }, [themeType]);
       return /*#__PURE__*/_react["default"].createElement(_springTheme.ThemeProvider, {
-        theme: theme
+        theme: theme,
+        mode: mode,
+        scope: scope,
+        className: className
       }, /*#__PURE__*/_react["default"].createElement(_framerMotion.MotionConfig, {
         reducedMotion: prefersReducedMotion
       }, children));
@@ -100,27 +115,38 @@ var SpringThemePlugin = exports.SpringThemePlugin = (_dec = (0, _nextCore.inject
   }, {
     key: "getTheme",
     value: function getTheme(type) {
-      var _this$_springThemePlu, _curr$;
+      var _this$_springThemePlu4,
+        _this2 = this,
+        _curr$;
       // spring only support dark rcDark and rcHighContact in rc brand
       // so for those theme type use default theme map instead directly
       if (type === 'dark' || type === 'contrast') {
         return sprintDefaultThemeMap[type];
       }
-      var processTheme = (_this$_springThemePlu = this._springThemePluginOptions) === null || _this$_springThemePlu === void 0 ? void 0 : _this$_springThemePlu.processTheme;
+      var processTheme = (_this$_springThemePlu4 = this._springThemePluginOptions) === null || _this$_springThemePlu4 === void 0 ? void 0 : _this$_springThemePlu4.processTheme;
       if (processTheme) {
         return processTheme(type) || _springTheme.suiJunoLight;
       }
       var brand = this._brand;
       var IDBTheme = brand.brandConfig.theme;
       if (// when is force idb theme, never use brand assets data from brand.suiThemeMap
-      IDBTheme === null || IDBTheme === void 0 ? void 0 : IDBTheme.force) {
+      IDBTheme !== null && IDBTheme !== void 0 && IDBTheme.force) {
         var _IDBTheme$suiThemeMap;
-        if ((_IDBTheme$suiThemeMap = IDBTheme.suiThemeMap) === null || _IDBTheme$suiThemeMap === void 0 ? void 0 : _IDBTheme$suiThemeMap[type]) {
+        if ((_IDBTheme$suiThemeMap = IDBTheme.suiThemeMap) !== null && _IDBTheme$suiThemeMap !== void 0 && _IDBTheme$suiThemeMap[type]) {
           return IDBTheme.suiThemeMap[type];
         }
         return _springTheme.suiJunoLight;
       }
       var curr = brand.suiThemeMap[type];
+      if (this._theme.themeId) {
+        var _curr$find;
+        var targetTheme = (_curr$find = curr.find(function (item) {
+          return item.id === _this2._theme.themeId;
+        })) === null || _curr$find === void 0 ? void 0 : _curr$find.theme;
+        if (targetTheme) {
+          return targetTheme;
+        }
+      }
       return (curr === null || curr === void 0 ? void 0 : (_curr$ = curr[0]) === null || _curr$ === void 0 ? void 0 : _curr$.theme) || _springTheme.suiJunoLight;
     }
   }]);

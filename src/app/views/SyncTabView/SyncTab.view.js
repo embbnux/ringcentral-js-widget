@@ -55,7 +55,7 @@ var _hooks = require("../../hooks");
 var _i18n = _interopRequireDefault(require("./i18n"));
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _class, _class2, _descriptor;
 var _excluded = ["children", "BadgeProps"],
-  _excluded2 = ["id", "tabs", "defaultValue", "className", "children", "variant", "tabsContainerClassName", "tabClassName", "tabRootClassName"];
+  _excluded2 = ["id", "tabs", "defaultValue", "onActiveChange", "className", "children", "variant", "tabClassName", "tabLabelClassName"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -206,10 +206,12 @@ var SyncTabView = exports.SyncTabView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setActive",
     value: function setActive(tabId, activeTab) {
+      var _ref3 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        currentPath = _ref3.currentPath;
       this.setTabInfo(tabId, {
         active: activeTab
       });
-      this._router.push(this._router.currentPath, _objectSpread(_objectSpread({}, this.locationState), {}, _defineProperty({}, tabId, activeTab)));
+      this._router.push(currentPath !== null && currentPath !== void 0 ? currentPath : this._router.currentPath, _objectSpread(_objectSpread({}, this.locationState), {}, _defineProperty({}, tabId, activeTab)));
     }
 
     /**
@@ -250,28 +252,28 @@ var SyncTabView = exports.SyncTabView = (_dec = (0, _nextCore.injectable)({
     }())
   }, {
     key: "component",
-    value: function component(_ref3) {
+    value: function component(_ref4) {
       var _this3 = this,
         _tabMap$currentTab;
-      var id = _ref3.id,
-        tabs = _ref3.tabs,
-        defaultValueProp = _ref3.defaultValue,
-        className = _ref3.className,
-        children = _ref3.children,
-        variantProp = _ref3.variant,
-        tabsContainerClassName = _ref3.tabsContainerClassName,
-        tabClassName = _ref3.tabClassName,
-        tabRootClassName = _ref3.tabRootClassName,
-        rest = _objectWithoutProperties(_ref3, _excluded2);
+      var id = _ref4.id,
+        tabs = _ref4.tabs,
+        defaultValueProp = _ref4.defaultValue,
+        onActiveChange = _ref4.onActiveChange,
+        className = _ref4.className,
+        children = _ref4.children,
+        variantProp = _ref4.variant,
+        tabClassName = _ref4.tabClassName,
+        tabLabelClassName = _ref4.tabLabelClassName,
+        rest = _objectWithoutProperties(_ref4, _excluded2);
       var tabInfo = (0, _nextCore.useConnector)(function () {
         return _this3.tabInfo[id];
       });
       var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
         t = _useLocale.t;
       var tabMap = (0, _react.useMemo)(function () {
-        return tabs.reduce(function (acc, _ref4) {
-          var tabKey = _ref4.id,
-            component = _ref4.component;
+        return tabs.reduce(function (acc, _ref5) {
+          var tabKey = _ref5.id,
+            component = _ref5.component;
           acc[tabKey] = component;
           return acc;
         }, {});
@@ -294,12 +296,12 @@ var SyncTabView = exports.SyncTabView = (_dec = (0, _nextCore.injectable)({
       var moreProps = (0, _react.useMemo)(function () {
         return variant === 'moreMenu' ? {
           onGroupInfoUpdate: function onGroupInfoUpdate(_, hiddenItemValues) {
-            var count = tabs.filter(function (_ref5) {
-              var tabKey = _ref5.id;
+            var count = tabs.filter(function (_ref6) {
+              var tabKey = _ref6.id;
               return hiddenItemValues.includes(tabKey);
-            }).reduce(function (acc, _ref6) {
+            }).reduce(function (acc, _ref7) {
               var _BadgeProps$count;
-              var BadgeProps = _ref6.BadgeProps;
+              var BadgeProps = _ref7.BadgeProps;
               return acc + ((_BadgeProps$count = BadgeProps === null || BadgeProps === void 0 ? void 0 : BadgeProps.count) !== null && _BadgeProps$count !== void 0 ? _BadgeProps$count : 0);
             }, 0);
             setMoreMenuBadgeCount(count);
@@ -316,23 +318,23 @@ var SyncTabView = exports.SyncTabView = (_dec = (0, _nextCore.injectable)({
           }
         } : {};
       }, [moreMenuBadgeCount, t, tabs, variant]);
-      var tabRootClasses = (0, _clsx["default"])('h-7 p-0 pl-2 pr-2 flex items-center', tabRootClassName);
       var tabWidthClasses = (0, _clsx["default"])('flex-1', tabClassName);
       return /*#__PURE__*/_react["default"].createElement(_springUi.TabContext, {
         defaultValue: defaultValue,
         value: currentTab,
         onChange: function onChange(_, value) {
+          onActiveChange === null || onActiveChange === void 0 ? void 0 : onActiveChange(value);
           _this3.setActive(id, value);
         }
       },
       // only when tabs.length > 1, need show the tab selection
       tabs.length > 1 && /*#__PURE__*/_react["default"].createElement(_springUi.Tabs, _extends({
         variant: variant,
-        className: (0, _clsx["default"])(className, 'h-7', tabsContainerClassName)
-      }, moreProps, rest), tabs.map(function (_ref7) {
-        var tabKey = _ref7.id,
-          label = _ref7.label,
-          BadgeProps = _ref7.BadgeProps;
+        className: className
+      }, moreProps, rest), tabs.map(function (_ref8) {
+        var tabKey = _ref8.id,
+          label = _ref8.label,
+          BadgeProps = _ref8.BadgeProps;
         return /*#__PURE__*/_react["default"].createElement(_springUi.Tab, {
           id: tabKey,
           key: tabKey,
@@ -342,7 +344,7 @@ var SyncTabView = exports.SyncTabView = (_dec = (0, _nextCore.injectable)({
           BadgeProps: BadgeProps,
           className: tabWidthClasses,
           classes: {
-            root: tabRootClasses
+            label: tabLabelClassName
           }
         });
       })), (_tabMap$currentTab = tabMap[currentTab]) !== null && _tabMap$currentTab !== void 0 ? _tabMap$currentTab : children);
@@ -370,6 +372,7 @@ var CallLogSyncTabId = exports.CallLogSyncTabId = /*#__PURE__*/function (CallLog
 var ConversationsSyncTabId = exports.ConversationsSyncTabId = /*#__PURE__*/function (ConversationsSyncTabId) {
   ConversationsSyncTabId["PERSONAL"] = "personal";
   ConversationsSyncTabId["SHARED"] = "shared";
+  ConversationsSyncTabId["QUEUE"] = "queue";
   return ConversationsSyncTabId;
 }({});
 //# sourceMappingURL=SyncTab.view.js.map

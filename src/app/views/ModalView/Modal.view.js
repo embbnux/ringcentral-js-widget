@@ -585,7 +585,7 @@ var ModalView = exports.ModalView = (_dec = (0, _nextCore.injectable)({
       var nonHeader = nonHeaderText || (isComponent ? undefined : ViewModule === null || ViewModule === void 0 ? void 0 : ViewModule.header) === null;
       var Header = header !== null && header !== void 0 ? header : DefaultHeader;
       var nonFooter = footer === null || (isComponent ? undefined : ViewModule === null || ViewModule === void 0 ? void 0 : ViewModule.footer) === null;
-      var footerNode = !nonFooter && !isComponent && (ViewModule === null || ViewModule === void 0 ? void 0 : ViewModule.footer) ? /*#__PURE__*/_react["default"].createElement(ViewModule.footer, null) : null;
+      var footerNode = !nonFooter && !isComponent && ViewModule !== null && ViewModule !== void 0 && ViewModule.footer ? /*#__PURE__*/_react["default"].createElement(ViewModule.footer, null) : null;
       return /*#__PURE__*/_react["default"].createElement(_ModalItemView.ModalItemPanel, _extends({}, props, modalProps, {
         payload: payload,
         headerText: headerText,

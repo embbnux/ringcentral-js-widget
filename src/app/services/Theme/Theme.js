@@ -16,7 +16,6 @@ require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.object.define-properties.js");
@@ -37,10 +36,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Theme = exports.THEME_TYPE_STORAGE_KEY = void 0;
 require("core-js/modules/es.array.every.js");
+require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.sort.js");
+require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.entries.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.to-string.js");
@@ -50,7 +51,7 @@ var _createTheme = _interopRequireDefault(require("@ringcentral/juno/es6/foundat
 var _rxjs = require("rxjs");
 var _Brand = require("../Brand");
 var _defaultCssVariable = require("./defaultCssVariable");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -89,13 +90,13 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   name: 'Theme'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('ThemeOptions')(target, undefined, 3);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _Brand.Brand === "undefined" ? Object : _Brand.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof ThemeOptions === "undefined" ? Object : ThemeOptions]), _dec5 = Reflect.metadata("design:type", String), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [String]), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String]), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String]), _dec11 = Reflect.metadata("design:type", Boolean), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Boolean]), _dec14 = Reflect.metadata("design:type", Object), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [Object]), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [Object]), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [String]), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = (0, _nextCore.computed)(function (that) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _Brand.Brand === "undefined" ? Object : _Brand.Brand, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof ThemeOptions === "undefined" ? Object : ThemeOptions]), _dec5 = Reflect.metadata("design:type", String), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [String]), _dec8 = (0, _nextCore.delegate)('server'), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String]), _dec1 = (0, _nextCore.delegate)('server'), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [String, String]), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String]), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [String]), _dec17 = Reflect.metadata("design:type", Boolean), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [Boolean]), _dec20 = Reflect.metadata("design:type", Object), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [Object]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [Object]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [String]), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", []), _dec35 = (0, _nextCore.computed)(function (that) {
   var _that$_brand$brandCon, _that$_brand$defaultC;
   return [that.themeType, that.themeId, (_that$_brand$brandCon = that._brand.brandConfig.theme) === null || _that$_brand$brandCon === void 0 ? void 0 : _that$_brand$brandCon.themeMap, (_that$_brand$defaultC = that._brand.defaultConfig.theme) === null || _that$_brand$defaultC === void 0 ? void 0 : _that$_brand$defaultC.themeMap];
-}), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec32 = (0, _nextCore.computed)(function (that) {
+}), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = (0, _nextCore.computed)(function (that) {
   var _that$_brand$brandCon2;
   return [(_that$_brand$brandCon2 = that._brand.brandConfig.theme) === null || _that$_brand$brandCon2 === void 0 ? void 0 : _that$_brand$brandCon2.variable];
-}), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function Theme(_portManager, _brand, _storage, _themeOptions) {
     var _this$_themeOptions$e, _this$_themeOptions;
     var _this;
@@ -146,7 +147,7 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
       }
     } else {
       var _this$_themeOptions2;
-      if ((_this$_themeOptions2 = _this._themeOptions) === null || _this$_themeOptions2 === void 0 ? void 0 : _this$_themeOptions2.initThemeDetect) {
+      if ((_this$_themeOptions2 = _this._themeOptions) !== null && _this$_themeOptions2 !== void 0 && _this$_themeOptions2.initThemeDetect) {
         _this.sendModuleInitEvent();
         _this.listenThemeChange();
       }
@@ -155,10 +156,65 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   }
   _inherits(Theme, _RcModule);
   return _createClass(Theme, [{
-    key: "setThemeId",
-    value: function setThemeId(val) {
+    key: "_setThemeId",
+    value: function _setThemeId(val) {
       this.themeId = val;
     }
+  }, {
+    key: "setThemeId",
+    value: function () {
+      var _setThemeId2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(val) {
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              this._setThemeId(val);
+            case 1:
+              return _context.a(2);
+          }
+        }, _callee, this);
+      }));
+      function setThemeId(_x) {
+        return _setThemeId2.apply(this, arguments);
+      }
+      return setThemeId;
+    }()
+  }, {
+    key: "setThemeIdByName",
+    value: function () {
+      var _setThemeIdByName = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(category, themeName) {
+        var dataList, theme;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
+            case 0:
+              if (themeName) {
+                _context2.n = 1;
+                break;
+              }
+              this.setThemeId(null);
+              return _context2.a(2);
+            case 1:
+              dataList = this._brand.suiThemeMap[category];
+              theme = dataList === null || dataList === void 0 ? void 0 : dataList.find(function (theme) {
+                return theme.name === themeName;
+              });
+              if (theme) {
+                _context2.n = 2;
+                break;
+              }
+              this.setThemeId(null);
+              return _context2.a(2);
+            case 2:
+              this.setThemeId(theme.id);
+            case 3:
+              return _context2.a(2);
+          }
+        }, _callee2, this);
+      }));
+      function setThemeIdByName(_x2, _x3) {
+        return _setThemeIdByName.apply(this, arguments);
+      }
+      return setThemeIdByName;
+    }()
   }, {
     key: "_setThemeType",
     value: function _setThemeType(type) {
@@ -167,17 +223,17 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setThemeType",
     value: function () {
-      var _setThemeType2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(type) {
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
+      var _setThemeType2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(type) {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
             case 0:
               this._setThemeType(type);
             case 1:
-              return _context.a(2);
+              return _context3.a(2);
           }
-        }, _callee, this);
+        }, _callee3, this);
       }));
-      function setThemeType(_x) {
+      function setThemeType(_x4) {
         return _setThemeType2.apply(this, arguments);
       }
       return setThemeType;
@@ -195,17 +251,17 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "updatePrefersReducedMotion",
     value: function () {
-      var _updatePrefersReducedMotion = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(val) {
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.n) {
+      var _updatePrefersReducedMotion = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(val) {
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
             case 0:
               this.setPrefersReducedMotion(val);
             case 1:
-              return _context2.a(2);
+              return _context4.a(2);
           }
-        }, _callee2, this);
+        }, _callee4, this);
       }));
-      function updatePrefersReducedMotion(_x2) {
+      function updatePrefersReducedMotion(_x5) {
         return _updatePrefersReducedMotion.apply(this, arguments);
       }
       return updatePrefersReducedMotion;
@@ -224,25 +280,25 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "updateThemeType",
     value: function () {
-      var _updateThemeType = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(type) {
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.n) {
+      var _updateThemeType = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(type) {
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.n) {
             case 0:
               if (!(type === 'followSystem')) {
-                _context3.n = 1;
+                _context5.n = 1;
                 break;
               }
               this.setFollowSystem(true);
-              return _context3.a(2);
+              return _context5.a(2);
             case 1:
               this.setFollowSystem(false);
               this.setThemeType(type);
             case 2:
-              return _context3.a(2);
+              return _context5.a(2);
           }
-        }, _callee3, this);
+        }, _callee5, this);
       }));
-      function updateThemeType(_x3) {
+      function updateThemeType(_x6) {
         return _updateThemeType.apply(this, arguments);
       }
       return updateThemeType;
@@ -337,7 +393,7 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
           return isDark;
         })) : _rxjs.EMPTY;
       }), (0, _rxjs.tap)(function (isDark) {
-        _nextCore.logger.log("[".concat(_this3.identifier, "] system theme is"), isDark ? 'dark' : 'light');
+        _this3.logger.log("system theme is", isDark ? 'dark' : 'light');
         var themeType = isDark ? 'dark' : 'light';
         _this3.setThemeType(themeType);
       }));
@@ -384,7 +440,7 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
       // those old logic only exec in non spring-ui project, new project should base on BSS to get the brand theme
       if (process.env.THEME_SYSTEM !== 'spring-ui') {
         var _this$_themeOptions4, _this$_themeOptions5;
-        if (!((_this$_themeOptions4 = this._themeOptions) === null || _this$_themeOptions4 === void 0 ? void 0 : _this$_themeOptions4.ignoreInitDefaultTheme)) {
+        if (!((_this$_themeOptions4 = this._themeOptions) !== null && _this$_themeOptions4 !== void 0 && _this$_themeOptions4.ignoreInitDefaultTheme)) {
           var isThemeReady = this.themeType !== '';
           if (!isThemeReady) {
             var _this$_brand$brandCon;
@@ -394,12 +450,12 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
             }
           }
         }
-        if (!((_this$_themeOptions5 = this._themeOptions) === null || _this$_themeOptions5 === void 0 ? void 0 : _this$_themeOptions5.ignoreThemeTypeInMapCheck)) {
+        if (!((_this$_themeOptions5 = this._themeOptions) !== null && _this$_themeOptions5 !== void 0 && _this$_themeOptions5.ignoreThemeTypeInMapCheck)) {
           (0, _nextCore.watch)(this, function () {
             return _this6._brand.brandConfig.theme;
           }, function (newValue) {
             // when current theme type not in new theme map, switch to default theme
-            if ((newValue === null || newValue === void 0 ? void 0 : newValue.themeMap) && !Object.hasOwnProperty.call(newValue.themeMap, _this6.themeType)) {
+            if (newValue !== null && newValue !== void 0 && newValue.themeMap && !Object.hasOwnProperty.call(newValue.themeMap, _this6.themeType)) {
               var newDefaultThemeType = newValue === null || newValue === void 0 ? void 0 : newValue.defaultTheme;
               if (newDefaultThemeType && newDefaultThemeType !== _this6.themeType) {
                 _this6.setThemeType(newDefaultThemeType);
@@ -437,14 +493,14 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
   initializer: function initializer() {
     return null;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setThemeId", [_nextCore.action, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "setThemeId"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "themeType", [_nextCore.globalStorage, _nextCore.state], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setThemeId", [_nextCore.action, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "_setThemeId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThemeId", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setThemeId"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThemeIdByName", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "setThemeIdByName"), _class2.prototype), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "themeType", [_nextCore.globalStorage, _nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return '';
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setThemeType", [_nextCore.action, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "_setThemeType"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThemeType", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "setThemeType"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "followSystem", [_nextCore.globalStorage, _nextCore.state, _dec11], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setThemeType", [_nextCore.action, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "_setThemeType"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThemeType", [_dec14, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "setThemeType"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "followSystem", [_nextCore.globalStorage, _nextCore.state, _dec17], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -452,7 +508,7 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
     var _this$_themeOptions$f, _this$_themeOptions7;
     return (_this$_themeOptions$f = (_this$_themeOptions7 = this._themeOptions) === null || _this$_themeOptions7 === void 0 ? void 0 : _this$_themeOptions7.followSystem) !== null && _this$_themeOptions$f !== void 0 ? _this$_themeOptions$f : true;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setFollowSystem", [_nextCore.action, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "setFollowSystem"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "prefersReducedMotion", [_nextCore.globalStorage, _nextCore.state, _dec14], {
+}), _applyDecoratedDescriptor(_class2.prototype, "setFollowSystem", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "setFollowSystem"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "prefersReducedMotion", [_nextCore.globalStorage, _nextCore.state, _dec20], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -463,5 +519,5 @@ var Theme = exports.Theme = (_dec = (0, _nextCore.injectable)({
     // currently we always disable reduced motion in production as default value
     'never';
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setPrefersReducedMotion", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "setPrefersReducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updatePrefersReducedMotion", [_dec17, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "updatePrefersReducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reducedMotion", [_nextCore.computed, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "reducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThemeType", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThemeType"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "supportedThemeTypes", [_nextCore.computed, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "supportedThemeTypes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "supportListenSystemTheme", [_nextCore.computed, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "supportListenSystemTheme"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "theme", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "theme"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "variable", [_dec32, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "variable"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "setPrefersReducedMotion", [_nextCore.action, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "setPrefersReducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updatePrefersReducedMotion", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "updatePrefersReducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reducedMotion", [_nextCore.computed, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "reducedMotion"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThemeType", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThemeType"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "supportedThemeTypes", [_nextCore.computed, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "supportedThemeTypes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "supportListenSystemTheme", [_nextCore.computed, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "supportListenSystemTheme"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "theme", [_dec35, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "theme"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "variable", [_dec38, _dec39, _dec40], Object.getOwnPropertyDescriptor(_class2.prototype, "variable"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Theme.js.map

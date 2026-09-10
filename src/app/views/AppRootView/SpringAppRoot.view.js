@@ -1,12 +1,7 @@
 "use strict";
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-require("core-js/modules/es.symbol.js");
-require("core-js/modules/es.symbol.description.js");
-require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.for-each.js");
-require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -19,16 +14,20 @@ require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.SpringAppRootView = void 0;
+require("core-js/modules/es.symbol.js");
+require("core-js/modules/es.symbol.description.js");
+require("core-js/modules/es.symbol.iterator.js");
+require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _utils = require("@ringcentral-integration/utils");
 var _springUi = require("@ringcentral/spring-ui");
@@ -56,7 +55,16 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
-var verticalContentStyles = 'flex flex-col overflow-auto relative w-full';
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+// ! we use overflow hidden to the full screen to ensure the scrollbar is show on inner of some content, instead of the full page
+var verticalContentStyles = 'flex flex-col overflow-hidden relative w-full';
+var useDefaultMainContentOverride = function useDefaultMainContentOverride() {
+  return false;
+};
+function isMainContentHiddenOverride(mainContentOverride) {
+  return !!mainContentOverride && _typeof(mainContentOverride) === 'object' && ! /*#__PURE__*/_react["default"].isValidElement(mainContentOverride) && 'hiddenMode' in mainContentOverride && mainContentOverride.hiddenMode === true;
+}
+
 /**
  * spring app root view, include modal view and toast view
  */
@@ -126,17 +134,26 @@ var SpringAppRootView = exports.SpringAppRootView = (_dec = (0, _nextCore.inject
   }, {
     key: "component",
     value: function component(_ref2) {
+      var _this$_appRootViewOpt7, _this$_appRootViewOpt8;
       var children = _ref2.children,
         ModalViewProps = _ref2.ModalViewProps,
         ToastViewProps = _ref2.ToastViewProps,
         header = _ref2.header,
         _ref2$overflowHidden = _ref2.overflowHidden,
         overflowHidden = _ref2$overflowHidden === void 0 ? true : _ref2$overflowHidden;
-      return /*#__PURE__*/_react["default"].createElement(_components.AppProvider, null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "flex flex-col h-full"
+      var useMainContentOverride = (_this$_appRootViewOpt7 = (_this$_appRootViewOpt8 = this._appRootViewOptions) === null || _this$_appRootViewOpt8 === void 0 ? void 0 : _this$_appRootViewOpt8.useMainContentOverride) !== null && _this$_appRootViewOpt7 !== void 0 ? _this$_appRootViewOpt7 : useDefaultMainContentOverride;
+      var mainContentOverride = useMainContentOverride();
+      var beHiddenMode = isMainContentHiddenOverride(mainContentOverride);
+      var mainContent = typeof mainContentOverride === 'undefined' || mainContentOverride === false ||
+      // be hidden mode, should still show the main content but hidden
+      beHiddenMode ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+        className: (0, _clsx["default"])('flex flex-col h-full', beHiddenMode && 'hidden')
       }, header, /*#__PURE__*/_react["default"].createElement(this.Main, {
         overflowHidden: overflowHidden
-      }, children)), /*#__PURE__*/_react["default"].createElement(this._modalView.component, ModalViewProps), /*#__PURE__*/_react["default"].createElement(this._toastView.component, ToastViewProps));
+      }, children)),
+      // only show when non hidden mode
+      !beHiddenMode && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(this._modalView.component, ModalViewProps), /*#__PURE__*/_react["default"].createElement(this._toastView.component, ToastViewProps)), beHiddenMode ? mainContentOverride.children : null) : mainContentOverride;
+      return /*#__PURE__*/_react["default"].createElement(_components.AppProvider, null, mainContent);
     }
   }]);
 }(_nextCore.RcViewModule), _applyDecoratedDescriptor(_class2.prototype, "Main", [_nextCore.autobind, _dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "Main"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);

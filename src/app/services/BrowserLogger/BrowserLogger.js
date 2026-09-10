@@ -7,7 +7,8 @@ require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
-require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.array.from.js");
+require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -23,26 +24,37 @@ require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.BrowserLogger = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.find.js");
+require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.date.to-iso-string.js");
 require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/esnext.global-this.js");
-var _loggerV = require("@ringcentral-integration/core/lib/logger/loggerV2");
+require("core-js/modules/web.dom-collections.iterator.js");
+require("core-js/modules/web.timers.js");
+require("core-js/modules/web.url.js");
+require("core-js/modules/web.url.to-json.js");
+require("core-js/modules/web.url-search-params.js");
 var _nextCore = require("@ringcentral-integration/next-core");
+var _utils = require("@ringcentral-integration/utils");
 var _rxjs = require("rxjs");
 var _UAParsedInfo = require("../UAParsedInfo");
+var _sanitizeLogZip = require("./sanitizeLogZip");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -65,7 +77,7 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
-(0, _loggerV.checkLoggerEnabled)(_loggerV.DEFAULT_LOGGER_ENABLED);
+(0, _nextCore.checkLoggerEnabled)(_nextCore.DEFAULT_LOGGER_ENABLED);
 var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
   name: 'BrowserLogger'
 }), _dec2 = function _dec2(target, key) {
@@ -84,19 +96,22 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
     _initializerDefineProperty(_this, "_trackPropsService", _descriptor, _this);
     _initializerDefineProperty(_this, "_enabled", _descriptor2, _this);
     _initializerDefineProperty(_this, "downloading", _descriptor3, _this);
-    _this.logger = (_this$_browserLoggerO = (_this$_browserLoggerO2 = _this._browserLoggerOptions) === null || _this$_browserLoggerO2 === void 0 ? void 0 : _this$_browserLoggerO2.logger) !== null && _this$_browserLoggerO !== void 0 ? _this$_browserLoggerO : _loggerV.loggerV2;
+    _this.logger = (_this$_browserLoggerO = (_this$_browserLoggerO2 = _this._browserLoggerOptions) === null || _this$_browserLoggerO2 === void 0 ? void 0 : _this$_browserLoggerO2.logger) !== null && _this$_browserLoggerO !== void 0 ? _this$_browserLoggerO : _nextCore.logger;
     _this._storage.enable(_this);
-    if (_this._portManager.shared && _this._portManager.isWorkerMode && ((_this$_browserLoggerO3 = _this._browserLoggerOptions) === null || _this$_browserLoggerO3 === void 0 ? void 0 : _this$_browserLoggerO3.worker)) {
+    if (_this._portManager.shared && _this._portManager.isWorkerMode && (_this$_browserLoggerO3 = _this._browserLoggerOptions) !== null && _this$_browserLoggerO3 !== void 0 && _this$_browserLoggerO3.worker) {
       _this._portManager.onMainTab(function () {
-        _this.transport = (0, _nextCore.createTransport)('SharedWorkerClient', {
+        var transport = (0, _nextCore.createTransport)('SharedWorkerClient', {
           worker: _this._browserLoggerOptions.worker,
           prefix: 'logger'
         });
-        _this.transport.onConnect(function () {
+        _this.transport = transport;
+        transport.onConnect(function () {
+          // Align worker HMAC key with this tab's persistent installation key.
+          (0, _nextCore.pushPiiDeviceKeyToWorker)(transport);
           _this.logger.log('[BrowserLogger] SharedWorkerClient - connected');
         });
         _this.logger.log('storageTransport:', !!_this.storageTransport);
-        _this.transport.listen('syncLog', function (data) {
+        transport.listen('syncLog', function (data) {
           var _this$storageTranspor;
           (_this$storageTranspor = _this.storageTransport) === null || _this$storageTranspor === void 0 ? void 0 : _this$storageTranspor.write(data);
         });
@@ -286,7 +301,7 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
         return _regenerator().w(function (_context5) {
           while (1) switch (_context5.n) {
             case 0:
-              (0, _loggerV.toggleLogger)(enabled);
+              (0, _nextCore.toggleLogger)(enabled);
             case 1:
               return _context5.a(2);
           }
@@ -325,63 +340,290 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
       return setDownloading;
     }())
   }, {
-    key: "saveLog",
-    value: (
-    /**
-     * save log to local
-     */
-    function () {
-      var _saveLog = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-        var name;
+    key: "_addAdditionalLogs",
+    value: function () {
+      var _addAdditionalLogs2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(zip, scope) {
+        var _this$_browserLoggerO4;
+        var additionalLogProvider, _t9;
         return _regenerator().w(function (_context7) {
           while (1) switch (_context7.p = _context7.n) {
             case 0:
-              if (!this.downloading) {
+              additionalLogProvider = (_this$_browserLoggerO4 = this._browserLoggerOptions) === null || _this$_browserLoggerO4 === void 0 ? void 0 : _this$_browserLoggerO4.additionalLogProvider;
+              if (additionalLogProvider) {
                 _context7.n = 1;
                 break;
               }
               return _context7.a(2);
             case 1:
+              _context7.p = 1;
               _context7.n = 2;
-              return this.setDownloading(true);
+              return additionalLogProvider.addAdditionalLogs(zip, scope);
             case 2:
-              _context7.p = 2;
-              if (!this.storageTransport) {
-                _context7.n = 4;
+              _context7.n = 4;
+              break;
+            case 3:
+              _context7.p = 3;
+              _t9 = _context7.v;
+              this.logger.warn('Failed to add additional logs:', _t9);
+            case 4:
+              return _context7.a(2);
+          }
+        }, _callee7, this, [[1, 3]]);
+      }));
+      function _addAdditionalLogs(_x3, _x4) {
+        return _addAdditionalLogs2.apply(this, arguments);
+      }
+      return _addAdditionalLogs;
+    }()
+  }, {
+    key: "_addAdditionalLogsWithoutSanitize",
+    value: function () {
+      var _addAdditionalLogsWithoutSanitize2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(zip, scope) {
+        var _this$_browserLoggerO5;
+        var additionalLogProvider, _t0;
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.p = _context8.n) {
+            case 0:
+              additionalLogProvider = (_this$_browserLoggerO5 = this._browserLoggerOptions) === null || _this$_browserLoggerO5 === void 0 ? void 0 : _this$_browserLoggerO5.additionalLogProvider;
+              if (additionalLogProvider) {
+                _context8.n = 1;
                 break;
               }
+              return _context8.a(2);
+            case 1:
+              _context8.p = 1;
+              _context8.n = 2;
+              return additionalLogProvider.addAdditionalLogsWithoutSanitize(zip, scope);
+            case 2:
+              _context8.n = 4;
+              break;
+            case 3:
+              _context8.p = 3;
+              _t0 = _context8.v;
+              this.logger.warn('Failed to add additional logs:', _t0);
+            case 4:
+              return _context8.a(2);
+          }
+        }, _callee8, this, [[1, 3]]);
+      }));
+      function _addAdditionalLogsWithoutSanitize(_x5, _x6) {
+        return _addAdditionalLogsWithoutSanitize2.apply(this, arguments);
+      }
+      return _addAdditionalLogsWithoutSanitize;
+    }()
+  }, {
+    key: "_addExtraFiles",
+    value: function _addExtraFiles(zip, logName) {
+      var extraFiles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+      if (extraFiles.length === 0) return;
+      var attachmentsFolder = zip.folder("".concat(logName, "/attachments"));
+      if (!attachmentsFolder) {
+        this.logger.error('Attachments folder not found');
+        return;
+      }
+      var _iterator = _createForOfIteratorHelper(extraFiles),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _step$value = _step.value,
+            name = _step$value.name,
+            base64Url = _step$value.base64Url;
+          var base64Data = base64Url.split(',')[1];
+          attachmentsFolder.file(name, base64Data, {
+            base64: true
+          });
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    /**
+     * Build a sanitized log archive, including additional provider files and
+     * extra attachments. Used by both local download and CPR submission.
+     */
+  }, {
+    key: "buildSanitizedLogArchive",
+    value: (function () {
+      var _buildSanitizedLogArchive = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(storageTransport) {
+        var options,
+          name,
+          data,
+          trustedBrowserLogEntries,
+          content,
+          _args9 = arguments,
+          _t1;
+        return _regenerator().w(function (_context9) {
+          while (1) switch (_context9.p = _context9.n) {
+            case 0:
+              options = _args9.length > 1 && _args9[1] !== undefined ? _args9[1] : {};
+              _context9.p = 1;
               name = this._portManager.portDetector.sharedAppOptions.name;
-              _context7.n = 3;
-              return this.storageTransport.downloadLogs({
+              _context9.n = 2;
+              return storageTransport.saveDB();
+            case 2:
+              _context9.n = 3;
+              return storageTransport.queryLogs({
                 name: name
               });
             case 3:
-              _context7.n = 5;
+              data = _context9.v;
+              if (data) {
+                _context9.n = 4;
+                break;
+              }
+              return _context9.a(2);
+            case 4:
+              trustedBrowserLogEntries = (0, _sanitizeLogZip.captureTrustedBrowserLogEntries)(data.zip, data.name);
+              this._addExtraFiles(data.zip, data.name, options.extraFiles);
+              _context9.n = 5;
+              return this._addAdditionalLogs(data.zip, options.scope);
+            case 5:
+              _context9.n = 6;
+              return (0, _sanitizeLogZip.sanitizeLogZip)(data.zip, {
+                trustedBrowserLogEntries: trustedBrowserLogEntries
+              });
+            case 6:
+              _context9.n = 7;
+              return this._addAdditionalLogsWithoutSanitize(data.zip, options.scope);
+            case 7:
+              _context9.n = 8;
+              return storageTransport.zipLogs(data.zip);
+            case 8:
+              content = _context9.v;
+              return _context9.a(2, {
+                content: content,
+                name: data.name
+              });
+            case 9:
+              _context9.p = 9;
+              _t1 = _context9.v;
+              this.logger.error('Error retrieving logs:', _t1);
+              return _context9.a(2);
+          }
+        }, _callee9, this, [[1, 9]]);
+      }));
+      function buildSanitizedLogArchive(_x7) {
+        return _buildSanitizedLogArchive.apply(this, arguments);
+      }
+      return buildSanitizedLogArchive;
+    }()
+    /**
+     * Collect sanitized logs without downloading. Used by CPR and other callers
+     * that need the archive blob.
+     */
+    )
+  }, {
+    key: "collectSanitizedLogs",
+    value: (function () {
+      var _collectSanitizedLogs = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(options) {
+        return _regenerator().w(function (_context0) {
+          while (1) switch (_context0.n) {
+            case 0:
+              if (this.storageTransport) {
+                _context0.n = 1;
+                break;
+              }
+              this.logger.error('StorageTransport not found');
+              return _context0.a(2);
+            case 1:
+              return _context0.a(2, this.buildSanitizedLogArchive(this.storageTransport, options));
+          }
+        }, _callee0, this);
+      }));
+      function collectSanitizedLogs(_x8) {
+        return _collectSanitizedLogs.apply(this, arguments);
+      }
+      return collectSanitizedLogs;
+    }()
+    /**
+     * save log to local
+     */
+    )
+  }, {
+    key: "downloadSanitizedLogs",
+    value: (function () {
+      var _downloadSanitizedLogs = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1(storageTransport, options) {
+        var archive, blobUrl;
+        return _regenerator().w(function (_context1) {
+          while (1) switch (_context1.n) {
+            case 0:
+              _context1.n = 1;
+              return this.buildSanitizedLogArchive(storageTransport, options);
+            case 1:
+              archive = _context1.v;
+              if (archive) {
+                blobUrl = URL.createObjectURL(archive.content);
+                (0, _utils.downloadFile)(blobUrl, "".concat(archive.name, ".zip"));
+
+                // Revoke blob URL after 100ms to prevent memory leaks once download starts
+                setTimeout(function () {
+                  URL.revokeObjectURL(blobUrl);
+                }, 100);
+              }
+            case 2:
+              return _context1.a(2);
+          }
+        }, _callee1, this);
+      }));
+      function downloadSanitizedLogs(_x9, _x0) {
+        return _downloadSanitizedLogs.apply(this, arguments);
+      }
+      return downloadSanitizedLogs;
+    }())
+  }, {
+    key: "saveLog",
+    value: function () {
+      var _saveLog = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
+        return _regenerator().w(function (_context10) {
+          while (1) switch (_context10.p = _context10.n) {
+            case 0:
+              if (!this.downloading) {
+                _context10.n = 1;
+                break;
+              }
+              return _context10.a(2);
+            case 1:
+              _context10.n = 2;
+              return this.setDownloading(true);
+            case 2:
+              _context10.p = 2;
+              if (!this.storageTransport) {
+                _context10.n = 4;
+                break;
+              }
+              _context10.n = 3;
+              return this.downloadSanitizedLogs(this.storageTransport);
+            case 3:
+              _context10.n = 5;
               break;
             case 4:
               throw new Error('StorageTransport not found');
             case 5:
-              _context7.p = 5;
-              _context7.n = 6;
+              _context10.p = 5;
+              _context10.n = 6;
               return this.setDownloading(false);
             case 6:
-              return _context7.f(5);
+              return _context10.f(5);
             case 7:
-              return _context7.a(2);
+              return _context10.a(2);
           }
-        }, _callee7, this, [[2,, 5, 7]]);
+        }, _callee10, this, [[2,, 5, 7]]);
       }));
       function saveLog() {
         return _saveLog.apply(this, arguments);
       }
       return saveLog;
-    }())
+    }()
   }, {
     key: "storageTransport",
     get: function get() {
       var _this$logger$transpor;
-      return (_this$logger$transpor = this.logger.transports) === null || _this$logger$transpor === void 0 ? void 0 : _this$logger$transpor.find(function (transport) {
-        return transport.type === 'storage';
+      var transports = (_this$logger$transpor = this.logger.transports) !== null && _this$logger$transpor !== void 0 ? _this$logger$transpor : [];
+      return transports.find(function (transport) {
+        return transport.type === 'storage' && typeof transport.queryLogs === 'function';
       });
     }
   }, {
@@ -407,6 +649,16 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
       }
       this._log.apply(this, ['info'].concat(args));
     }
+
+    /** Logs parameters with a registered, path-scoped sanitization policy. */
+  }, {
+    key: "logWithSanitizationPolicy",
+    value: function logWithSanitizationPolicy(policyId) {
+      for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        args[_key3 - 1] = arguments[_key3];
+      }
+      this._log('info', (0, _nextCore.logParamsWithSanitizationPolicy)(policyId, args));
+    }
   }]);
 }(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_trackPropsService", [_dec5, _dec6], {
   configurable: true,
@@ -418,8 +670,8 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _nextCore.injectable)({
   enumerable: true,
   writable: true,
   initializer: function initializer() {
-    var _this$_browserLoggerO4, _this$_browserLoggerO5;
-    return (_this$_browserLoggerO4 = (_this$_browserLoggerO5 = this._browserLoggerOptions) === null || _this$_browserLoggerO5 === void 0 ? void 0 : _this$_browserLoggerO5.enabled) !== null && _this$_browserLoggerO4 !== void 0 ? _this$_browserLoggerO4 : _loggerV.DEFAULT_LOGGER_ENABLED;
+    var _this$_browserLoggerO6, _this$_browserLoggerO7;
+    return (_this$_browserLoggerO6 = (_this$_browserLoggerO7 = this._browserLoggerOptions) === null || _this$_browserLoggerO7 === void 0 ? void 0 : _this$_browserLoggerO7.enabled) !== null && _this$_browserLoggerO6 !== void 0 ? _this$_browserLoggerO6 : _nextCore.DEFAULT_LOGGER_ENABLED;
   }
 }), _applyDecoratedDescriptor(_class2.prototype, "_enable", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "_enable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "enable", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "enable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_disable", [_nextCore.action, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "_disable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "disable", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "disable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "toggleLogger", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "toggleLogger"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "downloading", [_nextCore.state], {
   configurable: true,

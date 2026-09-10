@@ -121,6 +121,10 @@ var Toast = exports.Toast = (_dec = (0, _nextCore.injectable)({
         var ttl = curr.ttl,
           timestamp = curr.timestamp,
           id = curr.id;
+        // ttl <= 0 means never auto dismiss, do not treat as expired
+        if (!ttl || ttl <= 0) {
+          return acc;
+        }
         var expiredTimestamp = timestamp + ttl;
         var expired = now >= expiredTimestamp;
         if (expired) {

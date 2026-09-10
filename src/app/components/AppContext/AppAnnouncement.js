@@ -35,7 +35,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var AppAnnouncementRender = exports.AppAnnouncementRender = function AppAnnouncementRender(_ref) {
   var children = _ref.children;
-  var _useContext = (0, _react.useContext)(_AppContext.AppContext),
+  var _useContext = (0, _react.useContext)(_AppContext.AppRefsContext),
     announcementRef = _useContext.announcementRef,
     announcementBottomAnchorRef = _useContext.announcementBottomAnchorRef;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -51,7 +51,7 @@ var AppAnnouncementRender = exports.AppAnnouncementRender = function AppAnnounce
  */
 var AppAnnouncement = exports.AppAnnouncement = function AppAnnouncement(_ref2) {
   var children = _ref2.children;
-  var _useContext2 = (0, _react.useContext)(_AppContext.AppContext),
+  var _useContext2 = (0, _react.useContext)(_AppContext.AppRefsContext),
     announcementRef = _useContext2.announcementRef;
   return /*#__PURE__*/_react["default"].createElement(_PortalWithCheckAgain.PortalWithCheckAgain, {
     container: announcementRef
@@ -59,7 +59,7 @@ var AppAnnouncement = exports.AppAnnouncement = function AppAnnouncement(_ref2) 
 };
 var useAnnouncementHeight = exports.useAnnouncementHeight = function useAnnouncementHeight() {
   var _announcementRef$curr;
-  var _useContext3 = (0, _react.useContext)(_AppContext.AppContext),
+  var _useContext3 = (0, _react.useContext)(_AppContext.AppRefsContext),
     announcementRef = _useContext3.announcementRef;
   var _useState = (0, _react.useState)(((_announcementRef$curr = announcementRef.current) === null || _announcementRef$curr === void 0 ? void 0 : _announcementRef$curr.clientHeight) || 0),
     _useState2 = _slicedToArray(_useState, 2),
