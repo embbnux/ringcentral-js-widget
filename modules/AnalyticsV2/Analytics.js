@@ -99,7 +99,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
 }), _dec2 = (0, _core.computed)(function (that) {
   var _that$_deps$accountIn, _that$_deps$extension, _that$_deps$extension2;
   return [that._deps.brand.brandConfig, (_that$_deps$accountIn = that._deps.accountInfo) === null || _that$_deps$accountIn === void 0 ? void 0 : _that$_deps$accountIn.id, (_that$_deps$extension = that._deps.extensionInfo) === null || _that$_deps$extension === void 0 ? void 0 : _that$_deps$extension.country, (_that$_deps$extension2 = that._deps.extensionFeatures) === null || _that$_deps$extension2 === void 0 ? void 0 : _that$_deps$extension2.features];
-}), _dec(_class = (_class2 = /*#__PURE__*/function (_ref) {
+}), _dec(_class = (_class2 = /*#__PURE__*/function (_RcModuleV) {
   function Analytics(deps) {
     var _this$_deps$analytics, _this$_deps$analytics2, _this$_deps$analytics3, _this$_deps$analytics4, _this$_deps$analytics5, _this$_deps$analytics6, _this$_deps$analytics7, _this$_deps$analytics8, _this$_deps$analytics9;
     var _this;
@@ -145,7 +145,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
     return _this;
   }
-  _inherits(Analytics, _ref);
+  _inherits(Analytics, _RcModuleV);
   return _createClass(Analytics, [{
     key: "onInitOnce",
     value: function onInitOnce() {
@@ -227,9 +227,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "_identify",
-    value: function _identify(_ref2) {
-      var userId = _ref2.userId,
-        props = _objectWithoutProperties(_ref2, _excluded);
+    value: function _identify(_ref) {
+      var userId = _ref.userId,
+        props = _objectWithoutProperties(_ref, _excluded);
       if (this.enableMixpanel) {
         this._mixpanelInitialize({
           userId: userId
@@ -253,9 +253,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "_mixpanelInitialize",
-    value: function _mixpanelInitialize(_ref3) {
+    value: function _mixpanelInitialize(_ref2) {
       var _mixpanel$get_distinc, _this$_identifyMixpan;
-      var userId = _ref3.userId;
+      var userId = _ref2.userId;
       if (!userId || ((_mixpanel$get_distinc = _mixpanelBrowser["default"].get_distinct_id) === null || _mixpanel$get_distinc === void 0 ? void 0 : _mixpanel$get_distinc.call(_mixpanelBrowser["default"])) === userId) {
         return;
       }
@@ -265,9 +265,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "pendoIdentify",
-    value: function pendoIdentify(_ref4) {
-      var userId = _ref4.userId,
-        props = _objectWithoutProperties(_ref4, _excluded2);
+    value: function pendoIdentify(_ref3) {
+      var userId = _ref3.userId,
+        props = _objectWithoutProperties(_ref3, _excluded2);
       this._pendoInitialize(_objectSpread(_objectSpread({
         userId: userId
       }, props), {}, {
@@ -276,14 +276,14 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "_pendoInitialize",
-    value: function _pendoInitialize(_ref5) {
+    value: function _pendoInitialize(_ref4) {
       var _this4 = this,
         _this$_deps$accountIn,
         _this$_deps$accountIn2,
         _this$_deps$accountIn3,
         _this$_deps$accountIn4;
-      var userId = _ref5.userId,
-        props = _objectWithoutProperties(_ref5, _excluded3);
+      var userId = _ref4.userId,
+        props = _objectWithoutProperties(_ref4, _excluded3);
       if (!this._deps.accountInfo || !this._deps.accountInfo.id || !userId) {
         return;
       }
@@ -346,7 +346,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
               }
               // NOTE: Data tracking has been migrated from Segment to Mixpanel.
               // Add id to identify in Mixpanel, so the usage data can be filtered same as before.
-              if ((_this$_deps$auth = this._deps.auth) === null || _this$_deps$auth === void 0 ? void 0 : _this$_deps$auth.ownerId) {
+              if ((_this$_deps$auth = this._deps.auth) !== null && _this$_deps$auth !== void 0 && _this$_deps$auth.ownerId) {
                 trackProps.id = this._deps.auth.ownerId;
               }
               if (!(process.env.NODE_ENV === 'test')) {
@@ -384,7 +384,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
                   trackProps: trackProps
                 });
               }
-              if (this._enablePendo && ((_this$_pendo = this._pendo) === null || _this$_pendo === void 0 ? void 0 : (_this$_pendo$isReady = _this$_pendo.isReady) === null || _this$_pendo$isReady === void 0 ? void 0 : _this$_pendo$isReady.call(_this$_pendo))) {
+              if (this._enablePendo && (_this$_pendo = this._pendo) !== null && _this$_pendo !== void 0 && (_this$_pendo$isReady = _this$_pendo.isReady) !== null && _this$_pendo$isReady !== void 0 && _this$_pendo$isReady.call(_this$_pendo)) {
                 this._pendo.track("".concat(trackProps.appName, "-").concat(event), trackProps);
               }
             case 7:
@@ -410,9 +410,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "trackNavigation",
-    value: function trackNavigation(_ref6) {
-      var router = _ref6.router,
-        eventPostfix = _ref6.eventPostfix;
+    value: function trackNavigation(_ref5) {
+      var router = _ref5.router,
+        eventPostfix = _ref5.eventPostfix;
       var trackProps = {
         router: router,
         appName: this._deps.brand.defaultConfig.appName,
@@ -423,9 +423,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "trackLinger",
-    value: function trackLinger(_ref7) {
-      var router = _ref7.router,
-        eventPostfix = _ref7.eventPostfix;
+    value: function trackLinger(_ref6) {
+      var router = _ref6.router,
+        eventPostfix = _ref6.eventPostfix;
       var trackProps = {
         router: router,
         appName: this._deps.brand.defaultConfig.appName,
@@ -457,10 +457,10 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     }
   }, {
     key: "addEventsExtendedProps",
-    value: function addEventsExtendedProps(_ref8) {
+    value: function addEventsExtendedProps(_ref7) {
       var _this5 = this;
-      var events = _ref8.events,
-        extendedProps = _ref8.extendedProps;
+      var events = _ref7.events,
+        extendedProps = _ref7.extendedProps;
       if (!events || !extendedProps) {
         console.error('[events or extendedProps] is required');
         return;
@@ -522,9 +522,9 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
         name: 'MessageService',
         value: hasGlipPermission
       }];
-      properties.forEach(function (_ref9) {
-        var name = _ref9.name,
-          value = _ref9.value;
+      properties.forEach(function (_ref8) {
+        var name = _ref8.name,
+          value = _ref8.value;
         if (value !== undefined) {
           userInfo[name] = value ? 'ON' : 'OFF';
         }

@@ -570,7 +570,7 @@ var CallHistory = exports.CallHistory = (_dec = (0, _di.Module)({
     get: function get() {
       var _this$_deps$activityM4,
         _this6 = this;
-      if ((_this$_deps$activityM4 = this._deps.activityMatcher) === null || _this$_deps$activityM4 === void 0 ? void 0 : _this$_deps$activityM4.dataMapping) {
+      if ((_this$_deps$activityM4 = this._deps.activityMatcher) !== null && _this$_deps$activityM4 !== void 0 && _this$_deps$activityM4.dataMapping) {
         var newCalls = this.filterCalls.map(function (call) {
           var _this6$_deps$activity;
           return _objectSpread(_objectSpread({}, call), {}, {

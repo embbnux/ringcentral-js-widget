@@ -313,7 +313,7 @@ var AvailabilityMonitor = exports.AvailabilityMonitor = (_dec = (0, _di.Module)(
         return (_this3$_deps$environm = _this3._deps.environment) === null || _this3$_deps$environm === void 0 ? void 0 : _this3$_deps$environm.changeCounter;
       }, function () {
         var _this3$_deps$environm2;
-        if (_this3.ready && ((_this3$_deps$environm2 = _this3._deps.environment) === null || _this3$_deps$environm2 === void 0 ? void 0 : _this3$_deps$environm2.ready)) {
+        if (_this3.ready && (_this3$_deps$environm2 = _this3._deps.environment) !== null && _this3$_deps$environm2 !== void 0 && _this3$_deps$environm2.ready) {
           _this3._bindHandlers();
         }
       });

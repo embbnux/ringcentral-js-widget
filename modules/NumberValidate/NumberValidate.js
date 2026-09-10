@@ -119,7 +119,7 @@ var NumberValidate = exports.NumberValidate = (_dec = (0, _di.Module)({
   }, {
     key: "_isSpecial",
     value: function _isSpecial(phoneNumber) {
-      return !!(phoneNumber === null || phoneNumber === void 0 ? void 0 : phoneNumber.special);
+      return !!(phoneNumber !== null && phoneNumber !== void 0 && phoneNumber.special);
     }
 
     /**
@@ -261,7 +261,7 @@ var NumberValidate = exports.NumberValidate = (_dec = (0, _di.Module)({
                 var extensionObj = {
                   isAnExtension: isAnExtensionNumber
                 };
-                if (!((_this2$_deps$companyC = _this2._deps.companyContacts) === null || _this2$_deps$companyC === void 0 ? void 0 : _this2$_deps$companyC.enableCompanyPublicApi) && isAnExtensionNumber) {
+                if (!((_this2$_deps$companyC = _this2._deps.companyContacts) !== null && _this2$_deps$companyC !== void 0 && _this2$_deps$companyC.enableCompanyPublicApi) && isAnExtensionNumber) {
                   var availableExtension = _this2.getAvailableExtension(number, maxExtensionNumberLength);
                   if (!availableExtension) {
                     errors.push({

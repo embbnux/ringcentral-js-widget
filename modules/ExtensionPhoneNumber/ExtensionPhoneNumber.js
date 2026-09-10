@@ -142,7 +142,7 @@ var ExtensionPhoneNumber = exports.ExtensionPhoneNumber = (_dec = (0, _di.Module
     key: "_handleSubscription",
     value: function _handleSubscription(message) {
       var _this$_deps$tabManage, _this$_deps$tabManage2, _message$body, _message$body$hints;
-      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && (message === null || message === void 0 ? void 0 : (_message$body = message.body) === null || _message$body === void 0 ? void 0 : (_message$body$hints = _message$body.hints) === null || _message$body$hints === void 0 ? void 0 : _message$body$hints.includes(_subscriptionHints.subscriptionHints.companyNumbers))) {
+      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && message !== null && message !== void 0 && (_message$body = message.body) !== null && _message$body !== void 0 && (_message$body$hints = _message$body.hints) !== null && _message$body$hints !== void 0 && _message$body$hints.includes(_subscriptionHints.subscriptionHints.companyNumbers)) {
         this.fetchData();
       }
     }
@@ -196,7 +196,7 @@ var ExtensionPhoneNumber = exports.ExtensionPhoneNumber = (_dec = (0, _di.Module
     get: function get() {
       return (0, _ramda.filter)(function (phoneNumber) {
         var _phoneNumber$features;
-        return !!((_phoneNumber$features = phoneNumber.features) === null || _phoneNumber$features === void 0 ? void 0 : _phoneNumber$features.includes('CallerId'));
+        return !!((_phoneNumber$features = phoneNumber.features) !== null && _phoneNumber$features !== void 0 && _phoneNumber$features.includes('CallerId'));
       }, this.numbers);
     }
   }, {
@@ -211,7 +211,7 @@ var ExtensionPhoneNumber = exports.ExtensionPhoneNumber = (_dec = (0, _di.Module
     get: function get() {
       return (0, _ramda.filter)(function (phoneNumber) {
         var _phoneNumber$features2;
-        return !!((_phoneNumber$features2 = phoneNumber.features) === null || _phoneNumber$features2 === void 0 ? void 0 : _phoneNumber$features2.includes('SmsSender'));
+        return !!((_phoneNumber$features2 = phoneNumber.features) !== null && _phoneNumber$features2 !== void 0 && _phoneNumber$features2.includes('SmsSender'));
       }, this.numbers);
     }
   }]);

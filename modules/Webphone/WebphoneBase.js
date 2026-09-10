@@ -436,7 +436,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = (0, _di.Module)({
         return _this3.shouldTriggerOnTabActive;
       }, function () {
         var _this3$_deps$tabManag, _this3$_deps$tabManag2;
-        if (_this3.ready && ((_this3$_deps$tabManag = _this3._deps.tabManager) === null || _this3$_deps$tabManag === void 0 ? void 0 : _this3$_deps$tabManag.ready) && ((_this3$_deps$tabManag2 = _this3._deps.tabManager) === null || _this3$_deps$tabManag2 === void 0 ? void 0 : _this3$_deps$tabManag2.active)) {
+        if (_this3.ready && (_this3$_deps$tabManag = _this3._deps.tabManager) !== null && _this3$_deps$tabManag !== void 0 && _this3$_deps$tabManag.ready && (_this3$_deps$tabManag2 = _this3._deps.tabManager) !== null && _this3$_deps$tabManag2 !== void 0 && _this3$_deps$tabManag2.active) {
           _this3._onTabActive();
         }
       });
@@ -1214,7 +1214,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = (0, _di.Module)({
         if (!document.hidden) {
           var _this$_deps$tabManage4;
           // set to active
-          if ((_this$_deps$tabManage4 = this._deps.tabManager) === null || _this$_deps$tabManage4 === void 0 ? void 0 : _this$_deps$tabManage4.active) {
+          if ((_this$_deps$tabManage4 = this._deps.tabManager) !== null && _this$_deps$tabManage4 !== void 0 && _this$_deps$tabManage4.active) {
             this._setCurrentInstanceAsActiveWebphone();
           }
           return;
@@ -1432,7 +1432,7 @@ var WebphoneBase = exports.WebphoneBase = (_dec = (0, _di.Module)({
     key: "stopAudio",
     value: function stopAudio() {
       var _this$_webphone, _this$_webphone$userA;
-      if ((_this$_webphone = this._webphone) === null || _this$_webphone === void 0 ? void 0 : (_this$_webphone$userA = _this$_webphone.userAgent) === null || _this$_webphone$userA === void 0 ? void 0 : _this$_webphone$userA.audioHelper) {
+      if ((_this$_webphone = this._webphone) !== null && _this$_webphone !== void 0 && (_this$_webphone$userA = _this$_webphone.userAgent) !== null && _this$_webphone$userA !== void 0 && _this$_webphone$userA.audioHelper) {
         this._webphone.userAgent.audioHelper.playOutgoing(false);
         this._webphone.userAgent.audioHelper.playIncoming(false);
       }

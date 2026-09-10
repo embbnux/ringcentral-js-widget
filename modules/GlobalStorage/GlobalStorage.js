@@ -104,7 +104,7 @@ var GlobalStorage = exports.GlobalStorage = (_dec = (0, _di.Module)({
               return this._storage.getData();
             case 1:
               this.storedData = _context.v;
-              if ((_this$_deps$globalSto = this._deps.globalStorageOptions) === null || _this$_deps$globalSto === void 0 ? void 0 : _this$_deps$globalSto.disableClearUnused) {
+              if ((_this$_deps$globalSto = this._deps.globalStorageOptions) !== null && _this$_deps$globalSto !== void 0 && _this$_deps$globalSto.disableClearUnused) {
                 _context.n = 4;
                 break;
               }

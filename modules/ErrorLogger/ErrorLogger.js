@@ -107,7 +107,7 @@ var ErrorLogger = exports.ErrorLogger = (_dec = (0, _di.Module)({
         appRelease = options.appRelease,
         environment = options.environment,
         sentryConfig = options.sentryConfig;
-      if (sentryConfig === null || sentryConfig === void 0 ? void 0 : sentryConfig.endpoint) {
+      if (sentryConfig !== null && sentryConfig !== void 0 && sentryConfig.endpoint) {
         // init client
         this._init({
           dsn: sentryConfig.endpoint,

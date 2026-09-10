@@ -541,7 +541,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _di.Module)({
         var registeredWithDevice = false;
         devices.forEach(function (device) {
           var phoneLines = device.phoneLines;
-          if (phoneLines === null || phoneLines === void 0 ? void 0 : phoneLines.length) {
+          if (phoneLines !== null && phoneLines !== void 0 && phoneLines.length) {
             registeredWithDevice = !!phoneLines.find(function (phoneLine) {
               var _phoneLine$phoneInfo;
               return ((_phoneLine$phoneInfo = phoneLine.phoneInfo) === null || _phoneLine$phoneInfo === void 0 ? void 0 : _phoneLine$phoneInfo.phoneNumber) === phoneNumber;
@@ -581,7 +581,7 @@ var CallingSettings = exports.CallingSettings = (_dec = (0, _di.Module)({
                 break;
               }
               defaultCallerId = this.fromNumbers[0];
-              if ((_this$_deps$callerId = this._deps.callerId) === null || _this$_deps$callerId === void 0 ? void 0 : _this$_deps$callerId.ringOut) {
+              if ((_this$_deps$callerId = this._deps.callerId) !== null && _this$_deps$callerId !== void 0 && _this$_deps$callerId.ringOut) {
                 if (this._deps.callerId.ringOut.type === 'Blocked' && !this.isBlockedIdDisabled) {
                   defaultCallerId = {
                     phoneNumber: BLOCKED_ID_VALUE

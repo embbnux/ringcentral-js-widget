@@ -239,7 +239,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _di.Module)({
     _this._onSessionDisconnected = function () {
       var _this$_deps$tabManage;
       _this.updateActiveSessions();
-      if (!_this._deps.tabManager || ((_this$_deps$tabManage = _this._deps.tabManager) === null || _this$_deps$tabManage === void 0 ? void 0 : _this$_deps$tabManage.active)) {
+      if (!_this._deps.tabManager || (_this$_deps$tabManage = _this._deps.tabManager) !== null && _this$_deps$tabManage !== void 0 && _this$_deps$tabManage.active) {
         _this.cleanCurrentWarmTransferData();
       }
     };
@@ -359,7 +359,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context5) {
           while (1) switch (_context5.p = _context5.n) {
             case 0:
-              if ((_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) {
+              if ((_this$_deps$tabManage2 = this._deps.tabManager) !== null && _this$_deps$tabManage2 !== void 0 && _this$_deps$tabManage2.active) {
                 _context5.n = 1;
                 break;
               }
@@ -589,7 +589,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _di.Module)({
           return (_this5$_deps$webphone = _this5._deps.webphone) === null || _this5$_deps$webphone === void 0 ? void 0 : _this5$_deps$webphone.connected;
         }, function (newValue) {
           var _this5$_deps$webphone2;
-          if (newValue && ((_this5$_deps$webphone2 = _this5._deps.webphone) === null || _this5$_deps$webphone2 === void 0 ? void 0 : _this5$_deps$webphone2._webphone)) {
+          if (newValue && (_this5$_deps$webphone2 = _this5._deps.webphone) !== null && _this5$_deps$webphone2 !== void 0 && _this5$_deps$webphone2._webphone) {
             var _this5$_rcCall;
             (_this5$_rcCall = _this5._rcCall) === null || _this5$_rcCall === void 0 ? void 0 : _this5$_rcCall.setWebphone(_this5._deps.webphone._webphone);
           }
@@ -749,7 +749,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _di.Module)({
       this._timeoutId = setTimeout(function () {
         var _this7$_deps$tabManag;
         _this7._timeoutId = null;
-        if (!_this7._deps.tabManager || ((_this7$_deps$tabManag = _this7._deps.tabManager) === null || _this7$_deps$tabManag === void 0 ? void 0 : _this7$_deps$tabManag.active)) {
+        if (!_this7._deps.tabManager || (_this7$_deps$tabManag = _this7._deps.tabManager) !== null && _this7$_deps$tabManag !== void 0 && _this7$_deps$tabManag.active) {
           if (!_this7.timestamp || Date.now() - _this7.timestamp > _this7.ttl) {
             _this7.fetchData();
           } else {
@@ -1107,7 +1107,7 @@ var ActiveCallControl = exports.ActiveCallControl = (_dec = (0, _di.Module)({
             case 0:
               _context11.p = 0;
               session = this._getSessionById(telephonySessionId);
-              if (!(session === null || session === void 0 ? void 0 : (_session$telephonySes = session.telephonySession) === null || _session$telephonySes === void 0 ? void 0 : (_session$telephonySes2 = _session$telephonySes.party) === null || _session$telephonySes2 === void 0 ? void 0 : _session$telephonySes2.muted)) {
+              if (!(session !== null && session !== void 0 && (_session$telephonySes = session.telephonySession) !== null && _session$telephonySes !== void 0 && (_session$telephonySes2 = _session$telephonySes.party) !== null && _session$telephonySes2 !== void 0 && _session$telephonySes2.muted)) {
                 _context11.n = 1;
                 break;
               }

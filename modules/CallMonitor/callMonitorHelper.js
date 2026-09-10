@@ -69,7 +69,7 @@ function matchWebphoneSessionWithActiveCall(sessions, callItem) {
       // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
       return session.id.indexOf(callItem.id) === 0;
     }
-    if (!((_sipData = callItem.sipData) === null || _sipData === void 0 ? void 0 : _sipData.remoteUri)) {
+    if (!((_sipData = callItem.sipData) !== null && _sipData !== void 0 && _sipData.remoteUri)) {
       return false;
     }
     if (session.direction === _callDirections["default"].inbound &&

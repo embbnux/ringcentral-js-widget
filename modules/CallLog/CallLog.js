@@ -349,7 +349,7 @@ var CallLog = exports.CallLog = (_dec = (0, _di.Module)({
           return _regenerator().w(function (_context3) {
             while (1) switch (_context3.n) {
               case 0:
-                if (!(_this4.ready && _this4._deps.appFeatures.hasReadExtensionCallLog && (message === null || message === void 0 ? void 0 : message.event) && presenceRegExp.test(message.event) && ((_message$body = message.body) === null || _message$body === void 0 ? void 0 : _message$body.activeCalls) && (0, _callLogHelpers.hasEndedCalls)(message.body.activeCalls))) {
+                if (!(_this4.ready && _this4._deps.appFeatures.hasReadExtensionCallLog && message !== null && message !== void 0 && message.event && presenceRegExp.test(message.event) && (_message$body = message.body) !== null && _message$body !== void 0 && _message$body.activeCalls && (0, _callLogHelpers.hasEndedCalls)(message.body.activeCalls))) {
                   _context3.n = 2;
                   break;
                 }

@@ -81,6 +81,9 @@ var acceptCallQueueToggles = [_dndStatus.dndStatus.takeAllCalls, _dndStatus.dndS
 var Presence = exports.Presence = (_dec = (0, _di.Module)({
   name: 'Presence',
   deps: ['Auth', 'Client', 'ConnectivityMonitor', 'DataFetcherV2', 'ExtensionFeatures', 'Subscription', 'Storage', {
+    dep: 'AvailabilityMonitor',
+    optional: true
+  }, {
     dep: 'TabManager',
     optional: true
   }, {
@@ -244,7 +247,7 @@ var Presence = exports.Presence = (_dec = (0, _di.Module)({
     value: function _handleSubscription(message) {
       var _this$_deps$tabManage, _this$_deps$tabManage2;
       var regExp = this._detailed ? detailedPresenceRegExp : presenceRegExp;
-      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && (message === null || message === void 0 ? void 0 : message.event) && regExp.test(message.event) && message.body) {
+      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && message !== null && message !== void 0 && message.event && regExp.test(message.event) && message.body) {
         var _message$body$activeC, _message$body$activeC2, _message$body$totalAc;
         if (message.body.sequence && message.body.sequence < this._sequence) {
           return;
@@ -350,12 +353,12 @@ var Presence = exports.Presence = (_dec = (0, _di.Module)({
     key: "_update",
     value: function () {
       var _update2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(params) {
-        var _this$_deps$extension4, _this$_deps$extension5, ownerId, response, data, _ref4, newDndStatus, _t;
+        var _this$_deps$extension4, _this$_deps$extension5, ownerId, response, data, _ref4, newDndStatus, _t, _t2;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.p = _context2.n) {
             case 0:
               _context2.p = 0;
-              if ((_this$_deps$extension4 = this._deps.extensionFeatures.features) === null || _this$_deps$extension4 === void 0 ? void 0 : (_this$_deps$extension5 = _this$_deps$extension4.EditPresenceStatus) === null || _this$_deps$extension5 === void 0 ? void 0 : _this$_deps$extension5.available) {
+              if ((_this$_deps$extension4 = this._deps.extensionFeatures.features) !== null && _this$_deps$extension4 !== void 0 && (_this$_deps$extension5 = _this$_deps$extension4.EditPresenceStatus) !== null && _this$_deps$extension5 !== void 0 && _this$_deps$extension5.available) {
                 _context2.n = 1;
                 break;
               }
@@ -381,13 +384,29 @@ var Presence = exports.Presence = (_dec = (0, _di.Module)({
                   meetingStatus: data.meetingStatus
                 });
               }
-              _context2.n = 5;
+              _context2.n = 8;
               break;
             case 4:
               _context2.p = 4;
               _t = _context2.v;
-              console.error('put presence failed', _t);
+              _t2 = this._deps.availabilityMonitor;
+              if (!_t2) {
+                _context2.n = 6;
+                break;
+              }
+              _context2.n = 5;
+              return this._deps.availabilityMonitor.checkIfHAError(_t);
             case 5:
+              _t2 = _context2.v;
+            case 6:
+              if (!_t2) {
+                _context2.n = 7;
+                break;
+              }
+              return _context2.a(2);
+            case 7:
+              console.error('put presence failed', _t);
+            case 8:
               return _context2.a(2);
           }
         }, _callee2, this, [[0, 4]]);
@@ -545,12 +564,12 @@ var Presence = exports.Presence = (_dec = (0, _di.Module)({
     key: "setPresence",
     value: function () {
       var _setPresence = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(presenceData) {
-        var _t2;
+        var _t3;
         return _regenerator().w(function (_context8) {
           while (1) switch (_context8.n) {
             case 0:
-              _t2 = presenceData;
-              _context8.n = _t2 === _presenceStatus.presenceStatus.available ? 1 : _t2 === _presenceStatus.presenceStatus.busy ? 3 : _t2 === _dndStatus.dndStatus.doNotAcceptAnyCalls ? 5 : _t2 === _presenceStatus.presenceStatus.offline ? 7 : 9;
+              _t3 = presenceData;
+              _context8.n = _t3 === _presenceStatus.presenceStatus.available ? 1 : _t3 === _presenceStatus.presenceStatus.busy ? 3 : _t3 === _dndStatus.dndStatus.doNotAcceptAnyCalls ? 5 : _t3 === _presenceStatus.presenceStatus.offline ? 7 : 9;
               break;
             case 1:
               _context8.n = 2;

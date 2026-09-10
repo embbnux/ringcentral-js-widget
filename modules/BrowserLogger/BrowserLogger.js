@@ -31,7 +31,7 @@ require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.to-string.js");
 var _core = require("@ringcentral-integration/core");
-var _loggerV = require("@ringcentral-integration/core/lib/logger/loggerV2");
+var _logger = require("@ringcentral-integration/core/lib/logger/logger");
 var _mfeLogger = require("@ringcentral/mfe-logger");
 var _di = require("../../lib/di");
 var _proxify = require("../../lib/proxy/proxify");
@@ -162,7 +162,7 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context3) {
           while (1) switch (_context3.n) {
             case 0:
-              (0, _loggerV.toggleLogger)(enabled);
+              (0, _logger.toggleLogger)(enabled);
             case 1:
               return _context3.a(2);
           }
@@ -204,7 +204,7 @@ var BrowserLogger = exports.BrowserLogger = (_dec = (0, _di.Module)({
     key: "logger",
     get: function get() {
       var _this$_deps$browserLo, _this$_deps$browserLo2;
-      return (_this$_deps$browserLo = (_this$_deps$browserLo2 = this._deps.browserLoggerOptions) === null || _this$_deps$browserLo2 === void 0 ? void 0 : _this$_deps$browserLo2.logger) !== null && _this$_deps$browserLo !== void 0 ? _this$_deps$browserLo : _loggerV.loggerV2;
+      return (_this$_deps$browserLo = (_this$_deps$browserLo2 = this._deps.browserLoggerOptions) === null || _this$_deps$browserLo2 === void 0 ? void 0 : _this$_deps$browserLo2.logger) !== null && _this$_deps$browserLo !== void 0 ? _this$_deps$browserLo : _logger.logger;
     }
   }, {
     key: "saveLog",

@@ -41,7 +41,7 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 var DataTransportManager = exports.DataTransportManager = (_dec = (0, _di.Module)({
   name: 'DataTransportManager'
-}), _dec(_class = /*#__PURE__*/function (_ref) {
+}), _dec(_class = /*#__PURE__*/function (_RcModuleV) {
   function DataTransportManager(deps) {
     var _this;
     _classCallCheck(this, DataTransportManager);
@@ -51,7 +51,7 @@ var DataTransportManager = exports.DataTransportManager = (_dec = (0, _di.Module
     _this._transportMap = new Map();
     return _this;
   }
-  _inherits(DataTransportManager, _ref);
+  _inherits(DataTransportManager, _RcModuleV);
   return _createClass(DataTransportManager, [{
     key: "addTransport",
     value: function addTransport(params) {

@@ -251,7 +251,7 @@ function getWebphoneReplyMessageOption(params) {
   }
   var replyType = WEBPHONE_REPLY_TYPE.callBack;
   var callbackDirection;
-  if ((_params$replyWithPatt3 = params.replyWithPattern) === null || _params$replyWithPatt3 === void 0 ? void 0 : _params$replyWithPatt3.pattern.includes('CallMe')) {
+  if ((_params$replyWithPatt3 = params.replyWithPattern) !== null && _params$replyWithPatt3 !== void 0 && _params$replyWithPatt3.pattern.includes('CallMe')) {
     callbackDirection = "1";
   } else {
     callbackDirection = "0";

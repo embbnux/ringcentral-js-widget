@@ -150,7 +150,7 @@ var Storage = exports.Storage = (_dec = (0, _di.Module)({
               return this._storage.getData();
             case 1:
               this.storedData = _context.v;
-              if ((_this$_deps$storageOp3 = this._deps.storageOptions) === null || _this$_deps$storageOp3 === void 0 ? void 0 : _this$_deps$storageOp3.disableClearUnused) {
+              if ((_this$_deps$storageOp3 = this._deps.storageOptions) !== null && _this$_deps$storageOp3 !== void 0 && _this$_deps$storageOp3.disableClearUnused) {
                 _context.n = 4;
                 break;
               }

@@ -133,7 +133,7 @@ var VideoConfiguration = exports.VideoConfiguration = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.n) {
             case 0:
-              if (this.ready && (message === null || message === void 0 ? void 0 : (_message$body = message.body) === null || _message$body === void 0 ? void 0 : (_message$body$hints = _message$body.hints) === null || _message$body$hints === void 0 ? void 0 : _message$body$hints.includes(_subscriptionHints.subscriptionHints.videoConfiguration)) && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true))) {
+              if (this.ready && message !== null && message !== void 0 && (_message$body = message.body) !== null && _message$body !== void 0 && (_message$body$hints = _message$body.hints) !== null && _message$body$hints !== void 0 && _message$body$hints.includes(_subscriptionHints.subscriptionHints.videoConfiguration) && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true))) {
                 // https://jira_domain/browse/ENV-67087
                 // the video configuration api may return the old value
                 // when we try to query immediately right after got the push notification

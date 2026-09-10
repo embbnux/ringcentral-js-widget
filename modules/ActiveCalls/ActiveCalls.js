@@ -143,7 +143,7 @@ var ActiveCalls = exports.ActiveCalls = (_dec = (0, _di.Module)({
     key: "_handleSubscription",
     value: function _handleSubscription(message) {
       var _this$_deps$tabManage, _this$_deps$tabManage2;
-      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && (message === null || message === void 0 ? void 0 : message.event) && presenceRegExp.test(message.event)) {
+      if (this.ready && (this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && message !== null && message !== void 0 && message.event && presenceRegExp.test(message.event)) {
         this._debouncedFetchData();
       }
     }

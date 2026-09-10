@@ -166,7 +166,7 @@ var RegionSettings = exports.RegionSettings = (_dec = (0, _di.Module)({
                 return plan.isoCode === countryCode;
               }, this.availableCountries)) {
                 countryCode = null;
-                if (((_this$_deps$brand$bra = this._deps.brand.brandConfig) === null || _this$_deps$brand$bra === void 0 ? void 0 : _this$_deps$brand$bra.allowRegionSettings) && !((_this$_deps$regionSet = this._deps.regionSettingsOptions) === null || _this$_deps$regionSet === void 0 ? void 0 : _this$_deps$regionSet.suppressSettingsChangedWarning)) {
+                if ((_this$_deps$brand$bra = this._deps.brand.brandConfig) !== null && _this$_deps$brand$bra !== void 0 && _this$_deps$brand$bra.allowRegionSettings && !((_this$_deps$regionSet = this._deps.regionSettingsOptions) !== null && _this$_deps$regionSet !== void 0 && _this$_deps$regionSet.suppressSettingsChangedWarning)) {
                   this._alertSettingsChanged();
                 }
               }

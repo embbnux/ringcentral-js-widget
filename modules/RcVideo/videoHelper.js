@@ -381,7 +381,7 @@ function formatPremiumNumbers(dialInNumber) {
   }
   return (0, _ramda.map)(function (obj) {
     var _obj$country, _obj$country2;
-    var locationField = (obj === null || obj === void 0 ? void 0 : (_obj$country = obj.country) === null || _obj$country === void 0 ? void 0 : _obj$country.name) && obj.location ? "".concat(obj.country.name, " (").concat(obj.location, ")") : (obj === null || obj === void 0 ? void 0 : (_obj$country2 = obj.country) === null || _obj$country2 === void 0 ? void 0 : _obj$country2.name) || '';
+    var locationField = obj !== null && obj !== void 0 && (_obj$country = obj.country) !== null && _obj$country !== void 0 && _obj$country.name && obj.location ? "".concat(obj.country.name, " (").concat(obj.location, ")") : (obj === null || obj === void 0 ? void 0 : (_obj$country2 = obj.country) === null || _obj$country2 === void 0 ? void 0 : _obj$country2.name) || '';
     return "".concat(obj.phoneNumber, " ").concat(locationField);
   }, dialInNumber);
 }

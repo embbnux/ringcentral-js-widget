@@ -268,7 +268,7 @@ var MessageStore = exports.MessageStore = (_dec = (0, _di.Module)({
               case 1:
                 messageStoreEvent = /\/message-store$/;
                 instantMessageEvent = /\/message-store\/instant\?type=SMS$/;
-                if (!(messageStoreEvent.test(newValue.event) && ((_newValue$body = newValue.body) === null || _newValue$body === void 0 ? void 0 : _newValue$body.changes))) {
+                if (!(messageStoreEvent.test(newValue.event) && (_newValue$body = newValue.body) !== null && _newValue$body !== void 0 && _newValue$body.changes)) {
                   _context2.n = 6;
                   break;
                 }
@@ -589,7 +589,7 @@ var MessageStore = exports.MessageStore = (_dec = (0, _di.Module)({
               return (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.clone().json();
             case 5:
               responseResult = _context5.v;
-              if (!(responseResult === null || responseResult === void 0 ? void 0 : (_responseResult$error = responseResult.errors) === null || _responseResult$error === void 0 ? void 0 : _responseResult$error.some(function () {
+              if (!(responseResult !== null && responseResult !== void 0 && (_responseResult$error = responseResult.errors) !== null && _responseResult$error !== void 0 && _responseResult$error.some(function () {
                 var _ref9 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
                   _ref9$errorCode = _ref9.errorCode,
                   errorCode = _ref9$errorCode === void 0 ? '' : _ref9$errorCode;

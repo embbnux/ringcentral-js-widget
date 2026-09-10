@@ -557,7 +557,7 @@ var WebSocketSubscription = exports.WebSocketSubscription = (_dec = (0, _di.Modu
     key: "unregister",
     value: function unregister(module) {
       var subscriber = this._subscriberMap.get(module);
-      if (subscriber === null || subscriber === void 0 ? void 0 : subscriber.unwatch) {
+      if (subscriber !== null && subscriber !== void 0 && subscriber.unwatch) {
         subscriber.unwatch();
         subscriber.unwatch = undefined;
         this._subscriberMap["delete"](module);
@@ -616,7 +616,7 @@ var WebSocketSubscription = exports.WebSocketSubscription = (_dec = (0, _di.Modu
     key: "_dispatchModuleMessage",
     value: function _dispatchModuleMessage(module, message) {
       var subscriber = this._subscriberMap.get(module);
-      if (!(subscriber === null || subscriber === void 0 ? void 0 : subscriber.metadata.handler)) return;
+      if (!(subscriber !== null && subscriber !== void 0 && subscriber.metadata.handler)) return;
       try {
         subscriber.metadata.handler.apply(module, [message]);
       } catch (ex) {

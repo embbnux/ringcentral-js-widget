@@ -93,7 +93,7 @@ var AddressBook = exports.AddressBook = (_dec = (0, _di.Module)({
   return [data];
 }), _dec4 = (0, _core.computed)(function (that) {
   return [that.contacts];
-}), _dec(_class = (_class2 = /*#__PURE__*/function (_ref3) {
+}), _dec(_class = (_class2 = /*#__PURE__*/function (_DataFetcherV2Consume) {
   function AddressBook(deps) {
     var _deps$addressBookOpti, _deps$addressBookOpti2, _this$_deps$addressBo;
     var _this;
@@ -104,9 +104,9 @@ var AddressBook = exports.AddressBook = (_dec = (0, _di.Module)({
       storageKey: 'AddressBook'
     }]);
     _initializerDefineProperty(_this, "addressBookData", _descriptor, _this);
-    var _ref4 = (_this$_deps$addressBo = _this._deps.addressBookOptions) !== null && _this$_deps$addressBo !== void 0 ? _this$_deps$addressBo : {},
-      _ref4$polling = _ref4.polling,
-      polling = _ref4$polling === void 0 ? true : _ref4$polling;
+    var _ref3 = (_this$_deps$addressBo = _this._deps.addressBookOptions) !== null && _this$_deps$addressBo !== void 0 ? _this$_deps$addressBo : {},
+      _ref3$polling = _ref3.polling,
+      polling = _ref3$polling === void 0 ? true : _ref3$polling;
     _this._source = new _DataFetcherV.DataSource(_objectSpread(_objectSpread({}, _this._deps.addressBookOptions), {}, {
       key: 'addressBook',
       polling: polling,
@@ -142,7 +142,7 @@ var AddressBook = exports.AddressBook = (_dec = (0, _di.Module)({
     _this._deps.dataFetcherV2.register(_this._source);
     return _this;
   }
-  _inherits(AddressBook, _ref3);
+  _inherits(AddressBook, _DataFetcherV2Consume);
   return _createClass(AddressBook, [{
     key: "setAddressBookData",
     value: function setAddressBookData(data) {
@@ -153,7 +153,7 @@ var AddressBook = exports.AddressBook = (_dec = (0, _di.Module)({
     value: function onInit() {
       // for compatibility with old version cache
       var data = this._deps.dataFetcherV2.getData(this._source);
-      if (data === null || data === void 0 ? void 0 : data.syncToken) {
+      if (data !== null && data !== void 0 && data.syncToken) {
         this._deps.dataFetcherV2.updateData(this._source, {}, Date.now());
         this.setAddressBookData(data);
       }
@@ -313,10 +313,10 @@ var AddressBook = exports.AddressBook = (_dec = (0, _di.Module)({
               return (_error$response2 = error.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.clone().json();
             case 4:
               responseResult = _context4.v;
-              if (!(responseResult === null || responseResult === void 0 ? void 0 : (_responseResult$error = responseResult.errors) === null || _responseResult$error === void 0 ? void 0 : _responseResult$error.some(function () {
-                var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                  _ref5$errorCode = _ref5.errorCode,
-                  errorCode = _ref5$errorCode === void 0 ? '' : _ref5$errorCode;
+              if (!(responseResult !== null && responseResult !== void 0 && (_responseResult$error = responseResult.errors) !== null && _responseResult$error !== void 0 && _responseResult$error.some(function () {
+                var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                  _ref4$errorCode = _ref4.errorCode,
+                  errorCode = _ref4$errorCode === void 0 ? '' : _ref4$errorCode;
                 return INVALID_TOKEN_ERROR_CODES.includes(errorCode);
               }))) {
                 _context4.n = 6;

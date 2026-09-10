@@ -428,7 +428,7 @@ var Subscription = exports.Subscription = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context6) {
           while (1) switch (_context6.n) {
             case 0:
-              if ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : (_navigator$locks = _navigator.locks) === null || _navigator$locks === void 0 ? void 0 : _navigator$locks.request) {
+              if ((_navigator = navigator) !== null && _navigator !== void 0 && (_navigator$locks = _navigator.locks) !== null && _navigator$locks !== void 0 && _navigator$locks.request) {
                 _context6.n = 2;
                 break;
               }

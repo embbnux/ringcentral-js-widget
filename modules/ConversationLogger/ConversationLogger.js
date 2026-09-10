@@ -340,7 +340,7 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _di.Module)({
     key: "accordWithProcessLogRequirement",
     value: function accordWithProcessLogRequirement(conversationLogItem) {
       var _this$_accordWithLogR;
-      return !!((_this$_accordWithLogR = this._accordWithLogRequirement) === null || _this$_accordWithLogR === void 0 ? void 0 : _this$_accordWithLogR.call(this, conversationLogItem));
+      return !!((_this$_accordWithLogR = this._accordWithLogRequirement) !== null && _this$_accordWithLogR !== void 0 && _this$_accordWithLogR.call(this, conversationLogItem));
     }
 
     /**

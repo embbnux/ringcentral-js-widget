@@ -235,7 +235,7 @@ var RingtoneConfiguration = exports.RingtoneConfiguration = (_dec = (0, _di.Modu
       var ringtone = this.fullRingtoneList.find(function (ringtone) {
         return ringtone.id === _this2.selectedRingtoneId;
       });
-      if (!(ringtone === null || ringtone === void 0 ? void 0 : ringtone.url)) {
+      if (!(ringtone !== null && ringtone !== void 0 && ringtone.url)) {
         if ((ringtone === null || ringtone === void 0 ? void 0 : ringtone.type) === 'default' && (ringtone === null || ringtone === void 0 ? void 0 : ringtone.id) === _const.RINGS_TYPE.Off) {
           return {
             fileName: _const.RINGS_TYPE.Off,

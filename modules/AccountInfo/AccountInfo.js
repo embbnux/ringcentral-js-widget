@@ -24,7 +24,6 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -139,7 +138,7 @@ var AccountInfo = exports.AccountInfo = (_dec = (0, _di.Module)({
     key: "_checkPermission",
     value: function _checkPermission() {
       var _this$_deps$extension, _this$_deps$extension2;
-      return !!((_this$_deps$extension = this._deps.extensionFeatures.features) === null || _this$_deps$extension === void 0 ? void 0 : (_this$_deps$extension2 = _this$_deps$extension.ReadCompanyInfo) === null || _this$_deps$extension2 === void 0 ? void 0 : _this$_deps$extension2.available);
+      return !!((_this$_deps$extension = this._deps.extensionFeatures.features) !== null && _this$_deps$extension !== void 0 && (_this$_deps$extension2 = _this$_deps$extension.ReadCompanyInfo) !== null && _this$_deps$extension2 !== void 0 && _this$_deps$extension2.available);
     }
   }, {
     key: "onStateChange",

@@ -102,7 +102,7 @@ var ExtensionFeatures = exports.ExtensionFeatures = (_dec = (0, _di.Module)({
     _this._stopWatchingSubscription = null;
     _this._handleSubscription = function (message) {
       var _this$_deps$tabManage, _this$_deps$tabManage2, _message$body;
-      if (_this.ready && (_this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = _this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && (message === null || message === void 0 ? void 0 : (_message$body = message.body) === null || _message$body === void 0 ? void 0 : _message$body.hints) && (message.body.hints.includes(_subscriptionHints.subscriptionHints.limits) || message.body.hints.includes(_subscriptionHints.subscriptionHints.features) || message.body.hints.includes(_subscriptionHints.subscriptionHints.permissions))) {
+      if (_this.ready && (_this._source.disableCache || ((_this$_deps$tabManage = (_this$_deps$tabManage2 = _this._deps.tabManager) === null || _this$_deps$tabManage2 === void 0 ? void 0 : _this$_deps$tabManage2.active) !== null && _this$_deps$tabManage !== void 0 ? _this$_deps$tabManage : true)) && message !== null && message !== void 0 && (_message$body = message.body) !== null && _message$body !== void 0 && _message$body.hints && (message.body.hints.includes(_subscriptionHints.subscriptionHints.limits) || message.body.hints.includes(_subscriptionHints.subscriptionHints.features) || message.body.hints.includes(_subscriptionHints.subscriptionHints.permissions))) {
         _this.fetchData();
       }
     };
@@ -167,7 +167,7 @@ var ExtensionFeatures = exports.ExtensionFeatures = (_dec = (0, _di.Module)({
       var _this2 = this;
       (0, _core.watch)(this, function () {
         var _this2$features, _this2$features$ReadE;
-        return [_this2.ready, !!_this2.data, !!((_this2$features = _this2.features) === null || _this2$features === void 0 ? void 0 : (_this2$features$ReadE = _this2$features.ReadExtensionInfo) === null || _this2$features$ReadE === void 0 ? void 0 : _this2$features$ReadE.available), _this2._deps.auth.loginStatus === _Auth.loginStatus.loggedIn];
+        return [_this2.ready, !!_this2.data, !!((_this2$features = _this2.features) !== null && _this2$features !== void 0 && (_this2$features$ReadE = _this2$features.ReadExtensionInfo) !== null && _this2$features$ReadE !== void 0 && _this2$features$ReadE.available), _this2._deps.auth.loginStatus === _Auth.loginStatus.loggedIn];
       }, /*#__PURE__*/function () {
         var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(_ref2) {
           var _ref4, ready, hasData, readExtensionInfo, loggedIn;

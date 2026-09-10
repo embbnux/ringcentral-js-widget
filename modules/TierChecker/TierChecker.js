@@ -80,7 +80,7 @@ var TierChecker = exports.TierChecker = (_dec = (0, _di.Module)({
     key: "isCRMEnabled",
     get: function get() {
       var _this$_deps$extension, _this$_deps$extension2;
-      return !!((_this$_deps$extension = this._deps.extensionFeatures.features) === null || _this$_deps$extension === void 0 ? void 0 : (_this$_deps$extension2 = _this$_deps$extension[this.crmFeature]) === null || _this$_deps$extension2 === void 0 ? void 0 : _this$_deps$extension2.available);
+      return !!((_this$_deps$extension = this._deps.extensionFeatures.features) !== null && _this$_deps$extension !== void 0 && (_this$_deps$extension2 = _this$_deps$extension[this.crmFeature]) !== null && _this$_deps$extension2 !== void 0 && _this$_deps$extension2.available);
     }
   }, {
     key: "enforceCRMFeature",

@@ -24,7 +24,7 @@ function renameTurkey(content) {
   return content.replace(/Turkey/g, 'Türkiye');
 }
 function renameTurkeyCountry(country) {
-  if (country === null || country === void 0 ? void 0 : country.name) {
+  if (country !== null && country !== void 0 && country.name) {
     country.name = renameTurkey(country.name);
   }
   return country;

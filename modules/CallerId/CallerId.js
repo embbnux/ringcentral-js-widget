@@ -123,6 +123,8 @@ var CallerId = exports.CallerId = (_dec = (0, _di.Module)({
     key: "ringOut",
     get: function get() {
       var _find;
+      // TODO: Review whether this RcModuleV2 implementation should align with
+      // next-core CallerId default fallback after legacy app ownership is clear.
       return (_find = (0, _ramda.find)(function (item) {
         return item.feature === 'RingOut';
       }, this.byFeature)) === null || _find === void 0 ? void 0 : _find.callerId;

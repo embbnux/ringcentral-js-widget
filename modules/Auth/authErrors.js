@@ -323,7 +323,7 @@ var matchKnownRequestErrors = exports.matchKnownRequestErrors = /*#__PURE__*/fun
             if (errorConfig) {
               var _errorConfig = _slicedToArray(errorConfig, 4),
                 _endpoints = _errorConfig[3];
-              if (!(_endpoints === null || _endpoints === void 0 ? void 0 : _endpoints.length) || _endpoints.some(function (endpoint) {
+              if (!(_endpoints !== null && _endpoints !== void 0 && _endpoints.length) || _endpoints.some(function (endpoint) {
                 return endpoint.test(url);
               })) {
                 matches.push(errorConfig);

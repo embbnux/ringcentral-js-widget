@@ -150,7 +150,7 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
   return [that._deps.brand.brandConfig.meetingUriReg.rcm];
 }), _dec12 = (0, _core.computed)(function (that) {
   return [that._deps.brand.brandConfig.meetingUriReg.rcv, that.rcvBaseWebUri];
-}), _dec(_class = (_class2 = /*#__PURE__*/function (_ref2) {
+}), _dec(_class = (_class2 = /*#__PURE__*/function (_RcModuleV) {
   function Meeting(deps) {
     var _this;
     _classCallCheck(this, Meeting);
@@ -181,7 +181,7 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     _this.rcvBaseWebUri = null;
     return _this;
   }
-  _inherits(Meeting, _ref2);
+  _inherits(Meeting, _RcModuleV);
   return _createClass(Meeting, [{
     key: "extensionName",
     get: function get() {
@@ -894,8 +894,8 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     value: function () {
       var _scheduleDirectly = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(meeting) {
         var _this4 = this;
-        var _ref3,
-          _ref3$isAlertSuccess,
+        var _ref2,
+          _ref2$isAlertSuccess,
           isAlertSuccess,
           _meeting$host,
           formattedMeeting,
@@ -910,7 +910,7 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context13) {
           while (1) switch (_context13.p = _context13.n) {
             case 0:
-              _ref3 = _args13.length > 1 && _args13[1] !== undefined ? _args13[1] : {}, _ref3$isAlertSuccess = _ref3.isAlertSuccess, isAlertSuccess = _ref3$isAlertSuccess === void 0 ? true : _ref3$isAlertSuccess;
+              _ref2 = _args13.length > 1 && _args13[1] !== undefined ? _args13[1] : {}, _ref2$isAlertSuccess = _ref2.isAlertSuccess, isAlertSuccess = _ref2$isAlertSuccess === void 0 ? true : _ref2$isAlertSuccess;
               _context13.p = 1;
               // @ts-expect-error TS(2322): Type 'RcMMeetingModel | null' is not assignable to... Remove this comment to see the full error message
               meeting = meeting || this.meeting;
@@ -1003,15 +1003,15 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     key: "schedule",
     value: function () {
       var _schedule2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee14(meeting) {
-        var _ref4,
-          _ref4$isAlertSuccess,
+        var _ref3,
+          _ref3$isAlertSuccess,
           isAlertSuccess,
           result,
           _args14 = arguments;
         return _regenerator().w(function (_context14) {
           while (1) switch (_context14.n) {
             case 0:
-              _ref4 = _args14.length > 1 && _args14[1] !== undefined ? _args14[1] : {}, _ref4$isAlertSuccess = _ref4.isAlertSuccess, isAlertSuccess = _ref4$isAlertSuccess === void 0 ? true : _ref4$isAlertSuccess;
+              _ref3 = _args14.length > 1 && _args14[1] !== undefined ? _args14[1] : {}, _ref3$isAlertSuccess = _ref3.isAlertSuccess, isAlertSuccess = _ref3$isAlertSuccess === void 0 ? true : _ref3$isAlertSuccess;
               if (!this.isScheduling) {
                 _context14.n = 1;
                 break;
@@ -1041,8 +1041,8 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     value: function () {
       var _updateMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15(meetingId, meeting) {
         var _this5 = this;
-        var _ref5,
-          _ref5$isAlertSuccess,
+        var _ref4,
+          _ref4$isAlertSuccess,
           isAlertSuccess,
           _meeting$host2,
           formattedMeeting,
@@ -1057,7 +1057,7 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context15) {
           while (1) switch (_context15.p = _context15.n) {
             case 0:
-              _ref5 = _args15.length > 2 && _args15[2] !== undefined ? _args15[2] : {}, _ref5$isAlertSuccess = _ref5.isAlertSuccess, isAlertSuccess = _ref5$isAlertSuccess === void 0 ? false : _ref5$isAlertSuccess;
+              _ref4 = _args15.length > 2 && _args15[2] !== undefined ? _args15[2] : {}, _ref4$isAlertSuccess = _ref4.isAlertSuccess, isAlertSuccess = _ref4$isAlertSuccess === void 0 ? false : _ref4$isAlertSuccess;
               if (!this._isUpdating(meetingId)) {
                 _context15.n = 1;
                 break;
@@ -1528,8 +1528,8 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     value: function () {
       var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee34(meetingId) {
         var _this6 = this;
-        var _ref6,
-          _ref6$isAlertError,
+        var _ref5,
+          _ref5$isAlertError,
           isAlertError,
           settings,
           _yield$e$response$clo,
@@ -1541,7 +1541,7 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
         return _regenerator().w(function (_context34) {
           while (1) switch (_context34.p = _context34.n) {
             case 0:
-              _ref6 = _args34.length > 1 && _args34[1] !== undefined ? _args34[1] : {}, _ref6$isAlertError = _ref6.isAlertError, isAlertError = _ref6$isAlertError === void 0 ? true : _ref6$isAlertError;
+              _ref5 = _args34.length > 1 && _args34[1] !== undefined ? _args34[1] : {}, _ref5$isAlertError = _ref5.isAlertError, isAlertError = _ref5$isAlertError === void 0 ? true : _ref5$isAlertError;
               _context34.p = 1;
               _context34.n = 2;
               return this._deps.client.account().extension().meeting(meetingId).get();
@@ -1999,9 +1999,9 @@ var Meeting = exports.Meeting = (_dec = (0, _di.Module)({
     }
   }, {
     key: "enforcePassword",
-    value: function enforcePassword(meeting, _ref7, usePmi) {
-      var userSettings = _ref7.userSettings,
-        personalMeetingSettings = _ref7.personalMeetingSettings;
+    value: function enforcePassword(meeting, _ref6, usePmi) {
+      var userSettings = _ref6.userSettings,
+        personalMeetingSettings = _ref6.personalMeetingSettings;
       if (!this.enableServiceWebSettings) {
         return meeting;
       }

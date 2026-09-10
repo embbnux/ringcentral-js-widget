@@ -1237,7 +1237,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _di.Module)({
                 this.saveAsDefaultSetting(meeting);
               }
               meetingDetail = this.pruneMeetingObject(meeting); // when meeting is rcv pmi, use pmi default name
-              if (meeting === null || meeting === void 0 ? void 0 : meeting.usePersonalMeetingId) {
+              if (meeting !== null && meeting !== void 0 && meeting.usePersonalMeetingId) {
                 meetingDetail.name = (0, _utils.format)(_i18n2["default"].getString('rcvPmiMeetingTitle', this.currentLocale), {
                   extensionName: this.extensionName
                 });

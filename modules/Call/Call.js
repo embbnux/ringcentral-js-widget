@@ -349,7 +349,7 @@ var Call = exports.Call = (_dec = (0, _di.Module)({
                 // @ts-expect-error TS(2322): Type 'null' is not assignable to type 'string'.
                 fromNumber = null;
               }
-              if (!((_this$_deps$appFeatur = this._deps.appFeatures) === null || _this$_deps$appFeatur === void 0 ? void 0 : _this$_deps$appFeatur.isEDPEnabled)) {
+              if (!((_this$_deps$appFeatur = this._deps.appFeatures) !== null && _this$_deps$appFeatur !== void 0 && _this$_deps$appFeatur.isEDPEnabled)) {
                 _context4.n = 4;
                 break;
               }

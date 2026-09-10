@@ -236,7 +236,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
         return _this2.uniqueNumbers;
       }, function (uniqueNumbers, lastProcessedNumbers) {
         var _this2$_deps$tabManag;
-        if (!_this2.ready || !((_this2$_deps$tabManag = _this2._deps.tabManager) === null || _this2$_deps$tabManag === void 0 ? void 0 : _this2$_deps$tabManag.active)) return;
+        if (!_this2.ready || !((_this2$_deps$tabManag = _this2._deps.tabManager) !== null && _this2$_deps$tabManag !== void 0 && _this2$_deps$tabManag.active)) return;
         var newNumbers = (0, _ramda.difference)(uniqueNumbers, lastProcessedNumbers || []);
         if (_this2._deps.contactMatcher && _this2._deps.contactMatcher.ready && _this2._enableContactMatchWhenNewCall) {
           _this2._deps.contactMatcher.match({
@@ -249,7 +249,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
         return _this2.sessionIds;
       }, function (sessionIds, lastProcessedIds) {
         var _this2$_deps$tabManag2;
-        if (!_this2.ready || !((_this2$_deps$tabManag2 = _this2._deps.tabManager) === null || _this2$_deps$tabManag2 === void 0 ? void 0 : _this2$_deps$tabManag2.active)) return;
+        if (!_this2.ready || !((_this2$_deps$tabManag2 = _this2._deps.tabManager) !== null && _this2$_deps$tabManag2 !== void 0 && _this2$_deps$tabManag2.active)) return;
         var newSessions = (0, _ramda.difference)(sessionIds, lastProcessedIds || []);
         if (_this2._deps.activityMatcher && _this2._deps.activityMatcher.ready) {
           _this2._deps.activityMatcher.match({
@@ -281,7 +281,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
       var _this$_deps$call$toNu,
         _this3 = this;
       // no ringing calls
-      if (this._deps.call && oldCalls.length && !this.calls.length && ((_this$_deps$call$toNu = this._deps.call.toNumberEntities) === null || _this$_deps$call$toNu === void 0 ? void 0 : _this$_deps$call$toNu.length)) {
+      if (this._deps.call && oldCalls.length && !this.calls.length && (_this$_deps$call$toNu = this._deps.call.toNumberEntities) !== null && _this$_deps$call$toNu !== void 0 && _this$_deps$call$toNu.length) {
         this._deps.call.cleanToNumberEntities();
       }
       var entities = this._deps.call ? (0, _ramda.sort)(_callLogHelpers.sortByStartTime, this._deps.call.toNumberEntities) : [];
@@ -433,7 +433,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
         _this$_deps$webphone2;
       // match cached calls
       var cachedCalls = [];
-      if (this._normalizedCalls && ((_this$_deps$webphone = this._deps.webphone) === null || _this$_deps$webphone === void 0 ? void 0 : (_this$_deps$webphone$ = _this$_deps$webphone.cachedSessions) === null || _this$_deps$webphone$ === void 0 ? void 0 : _this$_deps$webphone$.length)) {
+      if (this._normalizedCalls && (_this$_deps$webphone = this._deps.webphone) !== null && _this$_deps$webphone !== void 0 && (_this$_deps$webphone$ = _this$_deps$webphone.cachedSessions) !== null && _this$_deps$webphone$ !== void 0 && _this$_deps$webphone$.length) {
         cachedCalls = (0, _ramda.filter)(function (x) {
           var _this5$_deps$webphone;
           return !!(x.webphoneSession && (0, _ramda.find)(function (i) {
@@ -500,13 +500,13 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
         _this$_deps$webphone3,
         _this$_deps$webphone4,
         _this6 = this;
-      if (!((_this$_deps$activeCal = this._deps.activeCallControl) === null || _this$_deps$activeCal === void 0 ? void 0 : _this$_deps$activeCal.sessions)) {
+      if (!((_this$_deps$activeCal = this._deps.activeCallControl) !== null && _this$_deps$activeCal !== void 0 && _this$_deps$activeCal.sessions)) {
         return [];
       }
 
       // Match cached calls at the very beginning
       var cachedCalls = [];
-      if (this._normalizedCalls && ((_this$_deps$webphone3 = this._deps.webphone) === null || _this$_deps$webphone3 === void 0 ? void 0 : (_this$_deps$webphone4 = _this$_deps$webphone3.cachedSessions) === null || _this$_deps$webphone4 === void 0 ? void 0 : _this$_deps$webphone4.length)) {
+      if (this._normalizedCalls && (_this$_deps$webphone3 = this._deps.webphone) !== null && _this$_deps$webphone3 !== void 0 && (_this$_deps$webphone4 = _this$_deps$webphone3.cachedSessions) !== null && _this$_deps$webphone4 !== void 0 && _this$_deps$webphone4.length) {
         cachedCalls = this._normalizedCalls.filter(function (x) {
           var _this6$_deps$webphone;
           return (_this6$_deps$webphone = _this6._deps.webphone) === null || _this6$_deps$webphone === void 0 ? void 0 : _this6$_deps$webphone.cachedSessions.some(function (i) {
@@ -611,7 +611,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _di.Module)({
       return (0, _ramda.filter)(function (callItem) {
         var _this7$_deps$conferen;
         // filtering out the conference during merging
-        if ((_this7$_deps$conferen = _this7._deps.conferenceCall) === null || _this7$_deps$conferen === void 0 ? void 0 : _this7$_deps$conferen.isMerging) {
+        if ((_this7$_deps$conferen = _this7._deps.conferenceCall) !== null && _this7$_deps$conferen !== void 0 && _this7$_deps$conferen.isMerging) {
           return !(0, _webphoneHelper.isConferenceSession)(callItem.webphoneSession);
         }
         return true;

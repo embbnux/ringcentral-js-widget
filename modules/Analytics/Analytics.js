@@ -490,7 +490,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
         var _this$_auth;
         // NOTE: Data tracking has been migrated from Segment to Mixpanel.
         // Add id to identify in Mixpanel, so the usage data can be filtered same as before.
-        if ((_this$_auth = this._auth) === null || _this$_auth === void 0 ? void 0 : _this$_auth.ownerId) {
+        if ((_this$_auth = this._auth) !== null && _this$_auth !== void 0 && _this$_auth.ownerId) {
           trackProps.id = this._auth.ownerId;
         }
         _mixpanelBrowser["default"].track(event, trackProps);
@@ -510,7 +510,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
           trackProps: trackProps
         });
       }
-      if (this._enablePendo && ((_this$_pendo = this._pendo) === null || _this$_pendo === void 0 ? void 0 : (_this$_pendo$isReady = _this$_pendo.isReady) === null || _this$_pendo$isReady === void 0 ? void 0 : _this$_pendo$isReady.call(_this$_pendo))) {
+      if (this._enablePendo && (_this$_pendo = this._pendo) !== null && _this$_pendo !== void 0 && (_this$_pendo$isReady = _this$_pendo.isReady) !== null && _this$_pendo$isReady !== void 0 && _this$_pendo$isReady.call(_this$_pendo)) {
         this._pendo.track("".concat(trackProps.appName, "-").concat(event), trackProps);
       }
     }
@@ -1194,7 +1194,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_muteOnSimpleCallControl",
     value: function _muteOnSimpleCallControl(action) {
       var _this$_activeCallCont, _this$_routerInteract4;
-      if (((_this$_activeCallCont = this._activeCallControl) === null || _this$_activeCallCont === void 0 ? void 0 : _this$_activeCallCont.actionTypes.mute) === action.type && ((_this$_routerInteract4 = this._routerInteraction) === null || _this$_routerInteract4 === void 0 ? void 0 : _this$_routerInteract4.currentPath.includes('/simplifycallctrl'))) {
+      if (((_this$_activeCallCont = this._activeCallControl) === null || _this$_activeCallCont === void 0 ? void 0 : _this$_activeCallCont.actionTypes.mute) === action.type && (_this$_routerInteract4 = this._routerInteraction) !== null && _this$_routerInteract4 !== void 0 && _this$_routerInteract4.currentPath.includes('/simplifycallctrl')) {
         this.track('Call Control: Mute/Small call control');
       }
     }
@@ -1202,7 +1202,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_unmuteOnSimpleCallControl",
     value: function _unmuteOnSimpleCallControl(action) {
       var _this$_activeCallCont2, _this$_routerInteract5;
-      if (((_this$_activeCallCont2 = this._activeCallControl) === null || _this$_activeCallCont2 === void 0 ? void 0 : _this$_activeCallCont2.actionTypes.unmute) === action.type && ((_this$_routerInteract5 = this._routerInteraction) === null || _this$_routerInteract5 === void 0 ? void 0 : _this$_routerInteract5.currentPath.includes('/simplifycallctrl'))) {
+      if (((_this$_activeCallCont2 = this._activeCallControl) === null || _this$_activeCallCont2 === void 0 ? void 0 : _this$_activeCallCont2.actionTypes.unmute) === action.type && (_this$_routerInteract5 = this._routerInteraction) !== null && _this$_routerInteract5 !== void 0 && _this$_routerInteract5.currentPath.includes('/simplifycallctrl')) {
         this.track('Call Control: Unmute/Small call control');
       }
     }
@@ -1210,7 +1210,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_holdOnSimpleCallControl",
     value: function _holdOnSimpleCallControl(action) {
       var _this$_activeCallCont3, _this$_routerInteract6;
-      if (((_this$_activeCallCont3 = this._activeCallControl) === null || _this$_activeCallCont3 === void 0 ? void 0 : _this$_activeCallCont3.actionTypes.hold) === action.type && ((_this$_routerInteract6 = this._routerInteraction) === null || _this$_routerInteract6 === void 0 ? void 0 : _this$_routerInteract6.currentPath.includes('/simplifycallctrl'))) {
+      if (((_this$_activeCallCont3 = this._activeCallControl) === null || _this$_activeCallCont3 === void 0 ? void 0 : _this$_activeCallCont3.actionTypes.hold) === action.type && (_this$_routerInteract6 = this._routerInteraction) !== null && _this$_routerInteract6 !== void 0 && _this$_routerInteract6.currentPath.includes('/simplifycallctrl')) {
         this.track('Call Control: Hold/Small call control');
       }
     }
@@ -1218,7 +1218,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_unholdOnSimpleCallControl",
     value: function _unholdOnSimpleCallControl(action) {
       var _this$_activeCallCont4, _this$_routerInteract7;
-      if (((_this$_activeCallCont4 = this._activeCallControl) === null || _this$_activeCallCont4 === void 0 ? void 0 : _this$_activeCallCont4.actionTypes.unhold) === action.type && ((_this$_routerInteract7 = this._routerInteraction) === null || _this$_routerInteract7 === void 0 ? void 0 : _this$_routerInteract7.currentPath.includes('/simplifycallctrl'))) {
+      if (((_this$_activeCallCont4 = this._activeCallControl) === null || _this$_activeCallCont4 === void 0 ? void 0 : _this$_activeCallCont4.actionTypes.unhold) === action.type && (_this$_routerInteract7 = this._routerInteraction) !== null && _this$_routerInteract7 !== void 0 && _this$_routerInteract7.currentPath.includes('/simplifycallctrl')) {
         this.track('Call Control: Unhold/Small call control');
       }
     }
@@ -1234,7 +1234,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_muteOnCallLogPage",
     value: function _muteOnCallLogPage(action) {
       var _this$_callLogSection3, _this$_activeCallCont6;
-      if (((_this$_callLogSection3 = this._callLogSection) === null || _this$_callLogSection3 === void 0 ? void 0 : _this$_callLogSection3.show) && ((_this$_activeCallCont6 = this._activeCallControl) === null || _this$_activeCallCont6 === void 0 ? void 0 : _this$_activeCallCont6.actionTypes.mute) === action.type) {
+      if ((_this$_callLogSection3 = this._callLogSection) !== null && _this$_callLogSection3 !== void 0 && _this$_callLogSection3.show && ((_this$_activeCallCont6 = this._activeCallControl) === null || _this$_activeCallCont6 === void 0 ? void 0 : _this$_activeCallCont6.actionTypes.mute) === action.type) {
         this.track('Call Control: Mute/Call log page');
       }
     }
@@ -1242,7 +1242,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_unmuteOnCallLogPage",
     value: function _unmuteOnCallLogPage(action) {
       var _this$_callLogSection4, _this$_activeCallCont7;
-      if (((_this$_callLogSection4 = this._callLogSection) === null || _this$_callLogSection4 === void 0 ? void 0 : _this$_callLogSection4.show) && ((_this$_activeCallCont7 = this._activeCallControl) === null || _this$_activeCallCont7 === void 0 ? void 0 : _this$_activeCallCont7.actionTypes.unmute) === action.type) {
+      if ((_this$_callLogSection4 = this._callLogSection) !== null && _this$_callLogSection4 !== void 0 && _this$_callLogSection4.show && ((_this$_activeCallCont7 = this._activeCallControl) === null || _this$_activeCallCont7 === void 0 ? void 0 : _this$_activeCallCont7.actionTypes.unmute) === action.type) {
         this.track('Call Control: Unmute/Call log page');
       }
     }
@@ -1250,7 +1250,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_holdOnCallLogPage",
     value: function _holdOnCallLogPage(action) {
       var _this$_callLogSection5, _this$_activeCallCont8;
-      if (((_this$_callLogSection5 = this._callLogSection) === null || _this$_callLogSection5 === void 0 ? void 0 : _this$_callLogSection5.show) && ((_this$_activeCallCont8 = this._activeCallControl) === null || _this$_activeCallCont8 === void 0 ? void 0 : _this$_activeCallCont8.actionTypes.hold) === action.type) {
+      if ((_this$_callLogSection5 = this._callLogSection) !== null && _this$_callLogSection5 !== void 0 && _this$_callLogSection5.show && ((_this$_activeCallCont8 = this._activeCallControl) === null || _this$_activeCallCont8 === void 0 ? void 0 : _this$_activeCallCont8.actionTypes.hold) === action.type) {
         this.track('Call Control: Hold/Call log page');
       }
     }
@@ -1258,7 +1258,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_unholdOnCallLogPage",
     value: function _unholdOnCallLogPage(action) {
       var _this$_callLogSection6, _this$_activeCallCont9;
-      if (((_this$_callLogSection6 = this._callLogSection) === null || _this$_callLogSection6 === void 0 ? void 0 : _this$_callLogSection6.show) && ((_this$_activeCallCont9 = this._activeCallControl) === null || _this$_activeCallCont9 === void 0 ? void 0 : _this$_activeCallCont9.actionTypes.unhold) === action.type) {
+      if ((_this$_callLogSection6 = this._callLogSection) !== null && _this$_callLogSection6 !== void 0 && _this$_callLogSection6.show && ((_this$_activeCallCont9 = this._activeCallControl) === null || _this$_activeCallCont9 === void 0 ? void 0 : _this$_activeCallCont9.actionTypes.unhold) === action.type) {
         this.track('Call Control: Unhold/Call log page');
       }
     }
@@ -1266,7 +1266,7 @@ var Analytics = exports.Analytics = (_dec = (0, _di.Module)({
     key: "_hangupOnCallLogPage",
     value: function _hangupOnCallLogPage(action) {
       var _this$_callLogSection7, _this$_activeCallCont0;
-      if (((_this$_callLogSection7 = this._callLogSection) === null || _this$_callLogSection7 === void 0 ? void 0 : _this$_callLogSection7.show) && ((_this$_activeCallCont0 = this._activeCallControl) === null || _this$_activeCallCont0 === void 0 ? void 0 : _this$_activeCallCont0.actionTypes.hangUp) === action.type) {
+      if ((_this$_callLogSection7 = this._callLogSection) !== null && _this$_callLogSection7 !== void 0 && _this$_callLogSection7.show && ((_this$_activeCallCont0 = this._activeCallControl) === null || _this$_activeCallCont0 === void 0 ? void 0 : _this$_activeCallCont0.actionTypes.hangUp) === action.type) {
         this.track('Call Control: Hang up/Call log page');
       }
     }

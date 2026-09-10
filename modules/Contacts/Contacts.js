@@ -432,7 +432,7 @@ var Contacts = exports.Contacts = (_dec = (0, _di.Module)({
       for (var _i3 = 0, _Array$from3 = Array.from(this._contactSources.keys()); _i3 < _Array$from3.length; _i3++) {
         var sourceName = _Array$from3[_i3];
         var source = this._contactSources.get(sourceName);
-        if (!(source === null || source === void 0 ? void 0 : source.ready)) {
+        if (!(source !== null && source !== void 0 && source.ready)) {
           ready = false;
           break;
         }
@@ -446,7 +446,7 @@ var Contacts = exports.Contacts = (_dec = (0, _di.Module)({
       for (var _i4 = 0, _Array$from4 = Array.from(this._contactSources.keys()); _i4 < _Array$from4.length; _i4++) {
         var sourceName = _Array$from4[_i4];
         var source = this._contactSources.get(sourceName);
-        if (source === null || source === void 0 ? void 0 : source.sourceReady) {
+        if (source !== null && source !== void 0 && source.sourceReady) {
           names.push(sourceName);
         }
       }
@@ -459,7 +459,7 @@ var Contacts = exports.Contacts = (_dec = (0, _di.Module)({
       for (var _i5 = 0, _Array$from5 = Array.from(this._contactSources.keys()); _i5 < _Array$from5.length; _i5++) {
         var sourceName = _Array$from5[_i5];
         var source = this._contactSources.get(sourceName);
-        if ((source === null || source === void 0 ? void 0 : source.sourceReady) && source.contacts) {
+        if (source !== null && source !== void 0 && source.sourceReady && source.contacts) {
           contacts = contacts.concat(source.contacts);
         }
       }

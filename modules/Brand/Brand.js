@@ -161,7 +161,7 @@ var Brand = exports.Brand = (_dec = (0, _di.Module)({
     get: function get() {
       var _this$_deps$brandConf2;
       var brandConfig = this._deps.brandConfig;
-      if (!(brandConfig === null || brandConfig === void 0 ? void 0 : brandConfig.assets)) return brandConfig;
+      if (!(brandConfig !== null && brandConfig !== void 0 && brandConfig.assets)) return brandConfig;
 
       /**
        * use current window location.origin as origin

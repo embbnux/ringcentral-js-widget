@@ -184,7 +184,7 @@ var ConnectivityMonitor = exports.ConnectivityMonitor = (_dec = (0, _di.Module)(
     key: "_shouldRebindHandlers",
     value: function _shouldRebindHandlers() {
       var _this$_deps$environme;
-      return !!(this.ready && ((_this$_deps$environme = this._deps.environment) === null || _this$_deps$environme === void 0 ? void 0 : _this$_deps$environme.ready) && this._deps.environment.changeCounter !== this._lastEnvironmentCounter);
+      return !!(this.ready && (_this$_deps$environme = this._deps.environment) !== null && _this$_deps$environme !== void 0 && _this$_deps$environme.ready && this._deps.environment.changeCounter !== this._lastEnvironmentCounter);
     }
   }, {
     key: "onInit",

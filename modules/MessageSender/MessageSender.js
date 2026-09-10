@@ -290,7 +290,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _di.Module)({
                 _context.n = 11;
                 break;
               }
-              if (!(!((_this$_deps$companyCo = this._deps.companyContacts) === null || _this$_deps$companyCo === void 0 ? void 0 : _this$_deps$companyCo.enableCompanyPublicApi) && !this._deps.numberValidate.isCompanyExtension(number.e164, number.subAddress))) {
+              if (!(!((_this$_deps$companyCo = this._deps.companyContacts) !== null && _this$_deps$companyCo !== void 0 && _this$_deps$companyCo.enableCompanyPublicApi) && !this._deps.numberValidate.isCompanyExtension(number.e164, number.subAddress))) {
                 _context.n = 10;
                 break;
               }

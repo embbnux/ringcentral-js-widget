@@ -127,7 +127,7 @@ var Alert = exports.Alert = (_dec = (0, _di.Module)({
     value: function onInit() {
       var _this$_deps$alertOpti,
         _this2 = this;
-      if ((_this$_deps$alertOpti = this._deps.alertOptions) === null || _this$_deps$alertOpti === void 0 ? void 0 : _this$_deps$alertOpti.enableTabSync) {
+      if ((_this$_deps$alertOpti = this._deps.alertOptions) !== null && _this$_deps$alertOpti !== void 0 && _this$_deps$alertOpti.enableTabSync) {
         this.messages.forEach(function (_ref3) {
           var ttl = _ref3.ttl;
           setTimeout(_this2._autoDismiss, ttl + 10);
