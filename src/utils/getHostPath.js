@@ -10,7 +10,6 @@ require("core-js/modules/es.array.last-index-of.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/es.string.search.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/web.url.js");
 require("core-js/modules/web.url.to-json.js");

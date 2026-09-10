@@ -41,6 +41,17 @@ Object.keys(_cleanNumber).forEach(function (key) {
     }
   });
 });
+var _closeAllTransientOverlays = require("./closeAllTransientOverlays");
+Object.keys(_closeAllTransientOverlays).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _closeAllTransientOverlays[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _closeAllTransientOverlays[key];
+    }
+  });
+});
 var _createRepeatTrackingManager = require("./createRepeatTrackingManager");
 Object.keys(_createRepeatTrackingManager).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -346,17 +357,6 @@ Object.keys(_getHostPath).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _getHostPath[key];
-    }
-  });
-});
-var _maskSensitiveData = require("./maskSensitiveData");
-Object.keys(_maskSensitiveData).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _maskSensitiveData[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _maskSensitiveData[key];
     }
   });
 });
