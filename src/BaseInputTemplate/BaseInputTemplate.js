@@ -32,10 +32,11 @@ require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.includes.js");
+var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _springUi = require("@ringcentral/spring-ui");
 var _utils = require("@rjsf/utils");
 var _react = _interopRequireDefault(require("react"));
-var _excluded = ["id", "name", "placeholder", "required", "readonly", "disabled", "type", "label", "hideLabel", "hideError", "value", "onChange", "onChangeOverride", "onBlur", "onFocus", "autofocus", "options", "schema", "uiSchema", "rawErrors", "formContext", "registry", "InputLabelProps"],
+var _excluded = ["id", "name", "placeholder", "required", "readonly", "disabled", "type", "label", "hideLabel", "hideError", "value", "onChange", "onBlur", "onFocus", "autofocus", "options", "schema", "uiSchema", "rawErrors", "formContext", "registry", "InputLabelProps"],
   _excluded2 = ["step", "min", "max"];
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -67,7 +68,6 @@ function BaseInputTemplate(props) {
     hideError = props.hideError,
     value = props.value,
     onChange = props.onChange,
-    onChangeOverride = props.onChangeOverride,
     onBlur = props.onBlur,
     onFocus = props.onFocus,
     autofocus = props.autofocus,
@@ -95,21 +95,32 @@ function BaseInputTemplate(props) {
       list: (0, _utils.examplesId)(id)
     } : undefined)
   }, rest);
-  var _onChange = function _onChange(_ref) {
-    var value = _ref.target.value;
-    return onChange(value);
-  };
-  var _onBlur = function _onBlur(_ref2) {
-    var value = _ref2.target.value;
-    return onBlur(id, value);
-  };
-  var _onFocus = function _onFocus(_ref3) {
-    var value = _ref3.target.value;
-    return onFocus(id, value);
-  };
   var DisplayInputLabelProps = TYPES_THAT_SHRINK_LABEL.includes(type) ? _objectSpread(_objectSpread({}, InputLabelProps), {}, {
     shrink: true
   }) : InputLabelProps;
+  var _useDebouncedFieldSta = (0, _reactHooks.useDebouncedFieldState)({
+      value: value || value === 0 ? value : '',
+      onChange: onChange,
+      shouldDebounceOnChange: true
+    }),
+    inputValue = _useDebouncedFieldSta.inputValue,
+    setInputValue = _useDebouncedFieldSta.setInputValue,
+    focusInput = _useDebouncedFieldSta.focusInput,
+    blurInput = _useDebouncedFieldSta.blurInput;
+  var _onChange = function _onChange(_ref) {
+    var value = _ref.target.value;
+    return setInputValue(value);
+  };
+  var _onBlur = function _onBlur(_ref2) {
+    var value = _ref2.target.value;
+    blurInput();
+    onBlur(id, value);
+  };
+  var _onFocus = function _onFocus(_ref3) {
+    var value = _ref3.target.value;
+    focusInput();
+    onFocus(id, value);
+  };
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_springUi.TextField, _extends({
     "data-sign": name,
     id: id,
@@ -122,9 +133,9 @@ function BaseInputTemplate(props) {
     required: required,
     disabled: disabled || readonly
   }, otherProps, {
-    value: value || value === 0 ? value : '',
+    value: inputValue,
     error: rawErrors.length > 0,
-    onChange: onChangeOverride || _onChange,
+    onChange: _onChange,
     onBlur: _onBlur,
     onFocus: _onFocus
   }, textFieldProps, {

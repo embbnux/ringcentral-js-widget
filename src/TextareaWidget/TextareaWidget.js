@@ -28,9 +28,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = TextareaWidget;
 require("core-js/modules/es.function.name.js");
+var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
-var _excluded = ["id", "name", "placeholder", "required", "readonly", "disabled", "type", "label", "hideLabel", "hideError", "value", "onChange", "onChangeOverride", "onBlur", "onFocus", "autofocus", "options", "schema", "uiSchema", "rawErrors", "formContext", "registry", "InputLabelProps"];
+var _excluded = ["id", "name", "placeholder", "required", "readonly", "disabled", "type", "label", "hideLabel", "hideError", "value", "onChange", "onBlur", "onFocus", "autofocus", "options", "schema", "uiSchema", "rawErrors", "formContext", "registry", "InputLabelProps"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -53,7 +54,6 @@ function TextareaWidget(props) {
     hideError = props.hideError,
     value = props.value,
     onChange = props.onChange,
-    onChangeOverride = props.onChangeOverride,
     onBlur = props.onBlur,
     onFocus = props.onFocus,
     autofocus = props.autofocus,
@@ -66,17 +66,28 @@ function TextareaWidget(props) {
     registry = props.registry,
     InputLabelProps = props.InputLabelProps,
     textFieldProps = _objectWithoutProperties(props, _excluded);
+  var _useDebouncedFieldSta = (0, _reactHooks.useDebouncedFieldState)({
+      value: value !== null && value !== void 0 ? value : '',
+      onChange: onChange,
+      shouldDebounceOnChange: true
+    }),
+    inputValue = _useDebouncedFieldSta.inputValue,
+    setInputValue = _useDebouncedFieldSta.setInputValue,
+    focusInput = _useDebouncedFieldSta.focusInput,
+    blurInput = _useDebouncedFieldSta.blurInput;
   var _onChange = function _onChange(_ref) {
     var value = _ref.target.value;
-    return onChange(value);
+    return setInputValue(value);
   };
-  var _onBlur = function _onBlur(_ref2) {
-    var value = _ref2.target.value;
-    return onBlur(id, value);
+  var _onBlur = function _onBlur(event) {
+    var _event$target$value, _event$target;
+    blurInput();
+    onBlur(id, (_event$target$value = event === null || event === void 0 ? void 0 : (_event$target = event.target) === null || _event$target === void 0 ? void 0 : _event$target.value) !== null && _event$target$value !== void 0 ? _event$target$value : inputValue);
   };
-  var _onFocus = function _onFocus(_ref3) {
-    var value = _ref3.target.value;
-    return onFocus(id, value);
+  var _onFocus = function _onFocus(event) {
+    var _event$target$value2, _event$target2;
+    focusInput();
+    onFocus(id, (_event$target$value2 = event === null || event === void 0 ? void 0 : (_event$target2 = event.target) === null || _event$target2 === void 0 ? void 0 : _event$target2.value) !== null && _event$target$value2 !== void 0 ? _event$target$value2 : inputValue);
   };
   var inputProps = (0, _react.useMemo)(function () {
     return _objectSpread({
@@ -85,10 +96,10 @@ function TextareaWidget(props) {
   }, [name, props.inputProps]);
   return /*#__PURE__*/_react["default"].createElement(_springUi.Textarea, _extends({}, props, {
     inputProps: inputProps,
-    onChange: onChangeOverride || _onChange,
+    onChange: _onChange,
     onBlur: _onBlur,
     onFocus: _onFocus,
-    value: value !== null && value !== void 0 ? value : '',
+    value: inputValue,
     minRows: 4,
     maxRows: 12,
     rows: options.rows,

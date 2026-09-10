@@ -14,9 +14,10 @@
   "author": "RingCentral Integration Team",
   "main": "index.js",
   "dependencies": {
-    "@ringcentral/spring-ui": "1.7.0",
-    "@ringcentral/spring-icon": "1.7.0",
-    "dayjs": "^1.11.7",
+    "@ringcentral-integration/react-hooks": "*",
+    "@ringcentral/spring-ui": "1.12.0",
+    "@ringcentral/spring-icon": "1.12.0",
+    "dayjs": "^1.11.13",
     "@rjsf/core": "^5.18.3",
     "@rjsf/utils": "^5.18.3"
   }
