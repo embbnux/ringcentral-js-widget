@@ -44,7 +44,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var getMfeDeps = exports.getMfeDeps = function getMfeDeps() {
   var _meta$data$modules, _modules$name$depende, _modules$name;
   var meta = (0, _mfeReact.getMeta)();
-  if (!(meta === null || meta === void 0 ? void 0 : meta.data.main)) return {};
+  if (!(meta !== null && meta !== void 0 && meta.data.main)) return {};
   var name = meta.data.main;
   var modules = (_meta$data$modules = meta.data.modules) !== null && _meta$data$modules !== void 0 ? _meta$data$modules : {};
   return (_modules$name$depende = (_modules$name = modules[name]) === null || _modules$name === void 0 ? void 0 : _modules$name.dependencies) !== null && _modules$name$depende !== void 0 ? _modules$name$depende : {};

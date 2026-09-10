@@ -88,6 +88,9 @@ var exposeMicroApp = exports.exposeMicroApp = function exposeMicroApp(_ref) {
       var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : options.renderRoot();
       var props = arguments.length > 1 ? arguments[1] : undefined;
       var mfeId = arguments.length > 2 ? arguments[2] : undefined;
+      if (!element) {
+        return function () {};
+      }
       if (props) {
         global.app.bootstrap(function () {
           return /*#__PURE__*/_react["default"].createElement(BootstrapView, _extends({}, props, {
