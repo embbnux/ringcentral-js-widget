@@ -1,6 +1,6 @@
 {
   "name": "@ringcentral-integration/react-hooks",
-  "version": "0.0.1",
+  "version": "0.16.1",
   "license": "MIT",
   "private": false,
   "description": "RingCentral integration react hooks library",
@@ -14,8 +14,8 @@
   },
   "author": "RingCentral Integrations",
   "peerDependencies": {
-    "@ringcentral/juno": "^2.42.0",
-    "react": "^17.0.2"
+    "@ringcentral/juno": "^3.0.0-alpha.19",
+    "react": "^17.0.2 || ^18.0.0"
   },
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
@@ -27,7 +27,8 @@
   },
   "nx": {
     "tags": [
-      "scope:ci-group-1"
+      "scope:ci-group-1",
+      "scope:ci-test"
     ]
   }
 }

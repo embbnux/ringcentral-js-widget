@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const juno_1 = require("@ringcentral/juno");
 const react_1 = require("react");
 const useHammer = (target, callback) => {
-    const hammerRef = (0, react_1.useRef)();
+    const hammerRef = (0, react_1.useRef)(null);
     (0, react_1.useEffect)(() => {
         const targetRefElm = (0, juno_1.getRefElement)(target);
         (() => tslib_1.__awaiter(void 0, void 0, void 0, function* () {

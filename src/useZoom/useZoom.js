@@ -6,7 +6,7 @@ const react_1 = require("react");
 const useHammer_1 = require("../useHammer");
 const bind_hammer_zoom_1 = require("./bind-hammer-zoom");
 const useHammerZoom = (target, { container, min, max, onScale, onDragChange, }) => {
-    const zoomActionRef = (0, react_1.useRef)();
+    const zoomActionRef = (0, react_1.useRef)(null);
     (0, useHammer_1.useHammer)(target, (manager) => {
         const targetRefElm = (0, juno_1.getRefElement)(target);
         const containerRefElm = (0, juno_1.getRefElement)(container);

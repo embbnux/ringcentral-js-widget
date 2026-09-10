@@ -1,10 +1,8 @@
 import { RefOrElementOrCallback } from '@ringcentral/juno';
 import React from 'react';
-export declare const DragAnchor: import("styled-components").StyledComponentClass<React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement> & {
+export declare const DragAnchor: import("styled-components").StyledComponent<"div", import("@ringcentral/juno").RcTheme, {
     direction?: "left" | "right";
-}, import("@ringcentral/juno").RcTheme, React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement> & {
-    direction?: "left" | "right";
-}>;
+}, never>;
 export type DragResizeState = {
     show: boolean;
     width: number;
@@ -28,5 +26,5 @@ export type UseResizeAndToggleOptions = {
 export declare const useResizeAndToggle: (target: RefOrElementOrCallback | EventTarget, { getCacheStateAndAction, direction }: UseResizeAndToggleOptions) => {
     show: boolean;
     setShow: (show: boolean) => void;
-    dragNode: JSX.Element;
+    dragNode: React.JSX.Element;
 };
