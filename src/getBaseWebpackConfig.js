@@ -81,6 +81,12 @@ var DEFAULT_CHUNK_FILENAME = '[id]-[contenthash].js';
  * default vendor chunk name
  */
 var VENDOR_KEY = 'vendor';
+var reactantPackageAlias = {
+  './node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
+  '../node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
+  './node_modules/redux-persist/es/integration/react.js$': require.resolve('redux-persist/es/integration/react')
+};
+var reactantPreservedModuleReplacementPlugins = [new _webpack.NormalModuleReplacementPlugin(/(?:^|\/)node_modules\/tslib\/tslib\.es6\.js$/, require.resolve('tslib/tslib.es6.js')), new _webpack.NormalModuleReplacementPlugin(/(?:^|\/)node_modules\/redux-persist\/es\/integration\/react\.js$/, require.resolve('redux-persist/es/integration/react'))];
 var getFinalFilePathMap = exports.getFinalFilePathMap = function getFinalFilePathMap(projectConfig) {
   var filenameMap = projectConfig.projectConfig.pages.reduce(function (acc, _ref) {
     var main = _ref.main,
@@ -159,6 +165,11 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
   var outputUsePropsMode = isProd || outputAlwaysUseProdFileName;
   var developmentConfig = (0, _webpackMerge.merge)(baseConfig, {
     entry: _objectSpread({}, projectConfig.mainEntries),
+    resolve: {
+      // Reactant 0.150.0 preserved-module ESM currently references a few
+      // package-internal relative paths that webpack cannot resolve from consumers.
+      alias: reactantPackageAlias
+    },
     output: {
       path: _path["default"].join(projectConfig.buildPath, projectConfig.appConfig.brandConfig.code),
       filename: DEFAULT_FILENAME,
@@ -169,7 +180,7 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
     // TODO: use @babel/plugin-transform-react-jsx
     new _webpack.ProvidePlugin({
       React: 'react'
-    })].concat(_toConsumableArray(((_projectConfig$assets = projectConfig.assetsEntries) === null || _projectConfig$assets === void 0 ? void 0 : _projectConfig$assets.length) ? [new _copyWebpackPlugin["default"]({
+    })].concat(reactantPreservedModuleReplacementPlugins, _toConsumableArray((_projectConfig$assets = projectConfig.assetsEntries) !== null && _projectConfig$assets !== void 0 && _projectConfig$assets.length ? [new _copyWebpackPlugin["default"]({
       patterns: projectConfig.assetsEntries
     })] : []), [new _webpack.DefinePlugin({
       // TODO: processDefaultDarkAndHighContactTheme
@@ -203,12 +214,13 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
             var nameSpace = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '__rc_shared_worker__';
             var chunkName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'worker';
             var queryString = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+            var options = arguments.length > 3 ? arguments[3] : undefined;
             var workerUrl = "".concat(getChunkUrl(chunkName)).concat(queryString);
             var mfeConfig =
             // TODO: fix type
             //@ts-ignore
             projectConfig.appConfig.mfeConfig;
-            return (0, _getLoadWorkerTemplate.getLoadWorkerTemplate)(nameSpace, workerUrl, chunkName, mfeConfig ? JSON.stringify(mfeConfig) : '');
+            return (0, _getLoadWorkerTemplate.getLoadWorkerTemplate)(nameSpace, workerUrl, chunkName, mfeConfig ? JSON.stringify(mfeConfig) : '', options);
           };
           var formattedBrandConfig = (0, _processI18n.processI18n)(projectConfig.appConfig.brandConfig, defaultLocale);
           var appName = formattedBrandConfig.appName;
@@ -266,6 +278,24 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
     if (args.env === 'mfe' && projectConfig.projectConfig.disabledAutoSplitChunks === false) {
       throw new Error('MFE with module federation should not use splitChunks');
     }
+    var isString = typeof chunkFilenames === 'string';
+    var vendorFilename = (isString ? chunkFilenames : chunkFilenames === null || chunkFilenames === void 0 ? void 0 : chunkFilenames[VENDOR_KEY]) || DEFAULT_CHUNK_FILENAME;
+    var cacheGroups = {
+      vendor: {
+        // import file path containing node_modules
+        test: /[\\/]node_modules[\\/]/,
+        filename: "modules-".concat(vendorFilename),
+        // Ensure hash is included
+        reuseExistingChunk: true
+      },
+      commons: {
+        // import file path containing ringcentral-js-widgets
+        test: /[\\/]ringcentral-js-widgets[\\/]/,
+        filename: "commons-".concat(vendorFilename),
+        // Ensure hash is included
+        reuseExistingChunk: true
+      }
+    };
     if (enabledAutoSplitChunks) {
       // find all pure entry files
       var pureEntryFiles = projectConfig.projectConfig.pages.filter(function (x) {
@@ -278,8 +308,6 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
         // only non pure entry files should be split
         return notBePureEntryFile;
       };
-      var isString = typeof chunkFilenames === 'string';
-      var vendorFilename = (isString ? chunkFilenames : chunkFilenames === null || chunkFilenames === void 0 ? void 0 : chunkFilenames[VENDOR_KEY]) || DEFAULT_CHUNK_FILENAME;
 
       // always optimize vendor and commons chunk to separate file into small size
       // otherwise, the main chunk will be too large to host on CDN
@@ -299,40 +327,34 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
            */
           enforceSizeThreshold: 9000000,
           // for safely
-          cacheGroups: {
-            vendor: {
-              // import file path containing node_modules
-              test: /[\\/]node_modules[\\/]/,
-              filename: "modules-".concat(vendorFilename),
-              // Ensure hash is included
-              reuseExistingChunk: true
-            },
-            commons: {
-              // import file path containing ringcentral-js-widgets
-              test: /[\\/]ringcentral-js-widgets[\\/]/,
-              filename: "commons-".concat(vendorFilename),
-              // Ensure hash is included
-              reuseExistingChunk: true
-            }
-          }
+          cacheGroups: cacheGroups
         }
       };
     }
     return (0, _webpackMerge.merge)(developmentConfig, {
       output: {
         filename: function filename(pathData) {
-          var _pathData$chunk;
+          var _pathData$chunk, _pathData$chunk2;
           var chunkName = pathData === null || pathData === void 0 ? void 0 : (_pathData$chunk = pathData.chunk) === null || _pathData$chunk === void 0 ? void 0 : _pathData$chunk.name;
           if (chunkName && filenameMap[chunkName]) {
             return filenameMap[chunkName];
           }
+
+          // when have reason means those file from the splitChunks, which we need also use chunk file name instead of use the DEFAULT_FILENAME
+          var chunkReason = pathData === null || pathData === void 0 ? void 0 : (_pathData$chunk2 = pathData.chunk) === null || _pathData$chunk2 === void 0 ? void 0 : _pathData$chunk2.chunkReason;
+          if (chunkReason) {
+            // chunkReason: 'split chunk (cache group: vendor)',
+            var cacheGroupName = chunkReason.split(' (cache group: ')[1].split(')')[0];
+            // cacheGroups
+            return cacheGroups[cacheGroupName].filename || DEFAULT_CHUNK_FILENAME;
+          }
           return DEFAULT_FILENAME;
         },
         chunkFilename: function chunkFilename(pathData, assetInfo) {
-          var _pathData$chunk2;
+          var _pathData$chunk3;
           var isString = typeof chunkFilenames === 'string';
           if (isString) return chunkFilenames;
-          var chunkName = (_pathData$chunk2 = pathData.chunk) === null || _pathData$chunk2 === void 0 ? void 0 : _pathData$chunk2.name;
+          var chunkName = (_pathData$chunk3 = pathData.chunk) === null || _pathData$chunk3 === void 0 ? void 0 : _pathData$chunk3.name;
           if (!chunkName) return DEFAULT_CHUNK_FILENAME;
           if (assetInfo) {
             chunkInfoMap.set(chunkName, assetInfo);

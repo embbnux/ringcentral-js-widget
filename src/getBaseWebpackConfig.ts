@@ -8,13 +8,22 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import template from 'lodash/template';
 import path from 'path';
 import * as nodeUrl from 'url';
-import { AssetInfo, type Chunk, DefinePlugin, ProvidePlugin } from 'webpack';
+import {
+  AssetInfo,
+  type Chunk,
+  DefinePlugin,
+  NormalModuleReplacementPlugin,
+  ProvidePlugin,
+} from 'webpack';
 import { merge } from 'webpack-merge';
 
 import { getFilenameMap as getFileUrlMap } from './getFilenameMap';
 import { getPrimaryColor } from './getPrimaryColor';
 import type { ProjectConfig } from './getProjectConfig';
-import { getLoadWorkerTemplate } from './scriptsLoadFail/getLoadWorkerTemplate';
+import {
+  getLoadWorkerTemplate,
+  type LoadWorkerTemplateOptions,
+} from './scriptsLoadFail/getLoadWorkerTemplate';
 import { getScriptsLoadFailTemplate } from './scriptsLoadFail/getScriptsLoadFailTemplate';
 import { getThemeInjectTemplate } from './themeInject/getThemeInjectTemplate';
 
@@ -27,6 +36,23 @@ const DEFAULT_CHUNK_FILENAME = '[id]-[contenthash].js';
  * default vendor chunk name
  */
 const VENDOR_KEY = 'vendor';
+const reactantPackageAlias = {
+  './node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
+  '../node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
+  './node_modules/redux-persist/es/integration/react.js$': require.resolve(
+    'redux-persist/es/integration/react',
+  ),
+};
+const reactantPreservedModuleReplacementPlugins = [
+  new NormalModuleReplacementPlugin(
+    /(?:^|\/)node_modules\/tslib\/tslib\.es6\.js$/,
+    require.resolve('tslib/tslib.es6.js'),
+  ),
+  new NormalModuleReplacementPlugin(
+    /(?:^|\/)node_modules\/redux-persist\/es\/integration\/react\.js$/,
+    require.resolve('redux-persist/es/integration/react'),
+  ),
+];
 
 export interface WebpackConfigOptions<T extends BaseAppConfig> {
   projectConfig: ProjectConfig<T>;
@@ -178,6 +204,11 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
 
   const developmentConfig = merge(baseConfig, {
     entry: { ...projectConfig.mainEntries },
+    resolve: {
+      // Reactant 0.150.0 preserved-module ESM currently references a few
+      // package-internal relative paths that webpack cannot resolve from consumers.
+      alias: reactantPackageAlias,
+    },
     output: {
       path: path.join(
         projectConfig.buildPath,
@@ -192,6 +223,7 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
       new ProvidePlugin({
         React: 'react',
       }),
+      ...reactantPreservedModuleReplacementPlugins,
       ...(projectConfig.assetsEntries?.length
         ? [
             new CopyWebpackPlugin({
@@ -237,6 +269,7 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
                 nameSpace = '__rc_shared_worker__',
                 chunkName = 'worker',
                 queryString = '',
+                options?: LoadWorkerTemplateOptions,
               ): string => {
                 const workerUrl = `${getChunkUrl(chunkName)}${queryString}`;
                 const mfeConfig =
@@ -248,6 +281,7 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
                   workerUrl,
                   chunkName,
                   mfeConfig ? JSON.stringify(mfeConfig) : '',
+                  options,
                 );
               };
 
@@ -322,6 +356,30 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
     ) {
       throw new Error('MFE with module federation should not use splitChunks');
     }
+
+    const isString = typeof chunkFilenames === 'string';
+    const vendorFilename =
+      (isString ? chunkFilenames : chunkFilenames?.[VENDOR_KEY]) ||
+      DEFAULT_CHUNK_FILENAME;
+
+    const cacheGroups: Record<
+      string,
+      { test: RegExp; filename: string; reuseExistingChunk: boolean }
+    > = {
+      vendor: {
+        // import file path containing node_modules
+        test: /[\\/]node_modules[\\/]/,
+        filename: `modules-${vendorFilename}`, // Ensure hash is included
+        reuseExistingChunk: true,
+      },
+      commons: {
+        // import file path containing ringcentral-js-widgets
+        test: /[\\/]ringcentral-js-widgets[\\/]/,
+        filename: `commons-${vendorFilename}`, // Ensure hash is included
+        reuseExistingChunk: true,
+      },
+    };
+
     if (enabledAutoSplitChunks) {
       // find all pure entry files
       const pureEntryFiles = projectConfig.projectConfig.pages
@@ -335,11 +393,6 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
         // only non pure entry files should be split
         return notBePureEntryFile;
       };
-
-      const isString = typeof chunkFilenames === 'string';
-      const vendorFilename =
-        (isString ? chunkFilenames : chunkFilenames?.[VENDOR_KEY]) ||
-        DEFAULT_CHUNK_FILENAME;
 
       // always optimize vendor and commons chunk to separate file into small size
       // otherwise, the main chunk will be too large to host on CDN
@@ -356,20 +409,7 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
            * CloudFront compresses objects that are between 1,000 bytes and 10,000,000 bytes in size.
            */
           enforceSizeThreshold: 9_000_000, // for safely
-          cacheGroups: {
-            vendor: {
-              // import file path containing node_modules
-              test: /[\\/]node_modules[\\/]/,
-              filename: `modules-${vendorFilename}`, // Ensure hash is included
-              reuseExistingChunk: true,
-            },
-            commons: {
-              // import file path containing ringcentral-js-widgets
-              test: /[\\/]ringcentral-js-widgets[\\/]/,
-              filename: `commons-${vendorFilename}`, // Ensure hash is included
-              reuseExistingChunk: true,
-            },
-          },
+          cacheGroups: cacheGroups,
         },
       };
     }
@@ -381,6 +421,19 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
 
           if (chunkName && filenameMap[chunkName]) {
             return filenameMap[chunkName];
+          }
+
+          // when have reason means those file from the splitChunks, which we need also use chunk file name instead of use the DEFAULT_FILENAME
+          const chunkReason = (pathData?.chunk as Chunk)?.chunkReason;
+          if (chunkReason) {
+            // chunkReason: 'split chunk (cache group: vendor)',
+            const cacheGroupName = chunkReason
+              .split(' (cache group: ')[1]
+              .split(')')[0];
+            // cacheGroups
+            return (
+              cacheGroups[cacheGroupName].filename || DEFAULT_CHUNK_FILENAME
+            );
           }
 
           return DEFAULT_FILENAME;
