@@ -47,7 +47,7 @@ var _nextCore = require("@ringcentral-integration/next-core");
 var _nextMicro = require("@ringcentral-integration/next-micro");
 var _sdk = require("@ringcentral/sdk");
 var _Client = require("../Client");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9;
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -96,18 +96,21 @@ var Environment = exports.Environment = (_dec = (0, _nextCore.injectable)({
     _this._environmentOptions = _environmentOptions;
     _initializerDefineProperty(_this, "mfeDepsInfo", _descriptor, _this);
     _initializerDefineProperty(_this, "server", _descriptor2, _this);
-    _initializerDefineProperty(_this, "recordingHostState", _descriptor3, _this);
-    _initializerDefineProperty(_this, "enabled", _descriptor4, _this);
-    _initializerDefineProperty(_this, "enabledDataTrackingTimestamp", _descriptor5, _this);
-    _initializerDefineProperty(_this, "changeCounter", _descriptor6, _this);
+    _initializerDefineProperty(_this, "aiApiUrl", _descriptor3, _this);
+    _initializerDefineProperty(_this, "smartNotesIframe", _descriptor4, _this);
+    _initializerDefineProperty(_this, "smartNotesEnv", _descriptor5, _this);
+    _initializerDefineProperty(_this, "recordingHostState", _descriptor6, _this);
+    _initializerDefineProperty(_this, "enabled", _descriptor7, _this);
+    _initializerDefineProperty(_this, "enabledDataTrackingTimestamp", _descriptor8, _this);
+    _initializerDefineProperty(_this, "changeCounter", _descriptor9, _this);
     _this._storage.enable(_this, {
-      whitelist: ['server', 'recordingHostState', 'enabled', 'mfeDepsInfo']
+      whitelist: ['server', 'aiApiUrl', 'smartNotesIframe', 'smartNotesEnv', 'recordingHostState', 'enabled', 'mfeDepsInfo']
     });
     _this.recordingHostState = _this._defaultRecordingHost;
     if (globalThis.localStorage && _this.mfeName) {
       (0, _nextMicro.onUpdateEntry)(function (name, newValue) {
         var _newValue$meta;
-        if ((_newValue$meta = newValue.meta) === null || _newValue$meta === void 0 ? void 0 : _newValue$meta.local) return;
+        if ((_newValue$meta = newValue.meta) !== null && _newValue$meta !== void 0 && _newValue$meta.local) return;
         _this.updateStorageMfeInfo();
       });
       if (_this._portManager.shared) {
@@ -226,11 +229,20 @@ var Environment = exports.Environment = (_dec = (0, _nextCore.injectable)({
     key: "_setEnvData",
     value: function _setEnvData(_ref4) {
       var server = _ref4.server,
+        _ref4$aiApiUrl = _ref4.aiApiUrl,
+        aiApiUrl = _ref4$aiApiUrl === void 0 ? '' : _ref4$aiApiUrl,
+        _ref4$smartNotesIfram = _ref4.smartNotesIframe,
+        smartNotesIframe = _ref4$smartNotesIfram === void 0 ? '' : _ref4$smartNotesIfram,
+        _ref4$smartNotesEnv = _ref4.smartNotesEnv,
+        smartNotesEnv = _ref4$smartNotesEnv === void 0 ? '' : _ref4$smartNotesEnv,
         recordingHost = _ref4.recordingHost,
         enabled = _ref4.enabled,
         allowDataTracking = _ref4.allowDataTracking,
         mfeDepsInfo = _ref4.mfeDepsInfo;
       this.server = server;
+      this.aiApiUrl = aiApiUrl;
+      this.smartNotesIframe = smartNotesIframe;
+      this.smartNotesEnv = smartNotesEnv;
       this.recordingHostState = recordingHost;
       this.enabled = enabled;
       this.mfeDepsInfo = JSON.parse(mfeDepsInfo || '[]');
@@ -297,15 +309,18 @@ var Environment = exports.Environment = (_dec = (0, _nextCore.injectable)({
     key: "setData",
     value: function () {
       var _setData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(_ref5) {
-        var server, recordingHost, enabled, _ref5$allowDataTracki, allowDataTracking, _ref5$environmentChan, environmentChanged, mfeDepsInfo, isEnvChanged;
+        var server, _ref5$aiApiUrl, aiApiUrl, _ref5$smartNotesIfram, smartNotesIframe, _ref5$smartNotesEnv, smartNotesEnv, recordingHost, enabled, _ref5$allowDataTracki, allowDataTracking, _ref5$environmentChan, environmentChanged, mfeDepsInfo, isEnvChanged;
         return _regenerator().w(function (_context4) {
           while (1) switch (_context4.n) {
             case 0:
-              server = _ref5.server, recordingHost = _ref5.recordingHost, enabled = _ref5.enabled, _ref5$allowDataTracki = _ref5.allowDataTracking, allowDataTracking = _ref5$allowDataTracki === void 0 ? false : _ref5$allowDataTracki, _ref5$environmentChan = _ref5.environmentChanged, environmentChanged = _ref5$environmentChan === void 0 ? false : _ref5$environmentChan, mfeDepsInfo = _ref5.mfeDepsInfo;
-              // `recordingHost` change no need to set to SDK
+              server = _ref5.server, _ref5$aiApiUrl = _ref5.aiApiUrl, aiApiUrl = _ref5$aiApiUrl === void 0 ? '' : _ref5$aiApiUrl, _ref5$smartNotesIfram = _ref5.smartNotesIframe, smartNotesIframe = _ref5$smartNotesIfram === void 0 ? '' : _ref5$smartNotesIfram, _ref5$smartNotesEnv = _ref5.smartNotesEnv, smartNotesEnv = _ref5$smartNotesEnv === void 0 ? '' : _ref5$smartNotesEnv, recordingHost = _ref5.recordingHost, enabled = _ref5.enabled, _ref5$allowDataTracki = _ref5.allowDataTracking, allowDataTracking = _ref5$allowDataTracki === void 0 ? false : _ref5$allowDataTracki, _ref5$environmentChan = _ref5.environmentChanged, environmentChanged = _ref5$environmentChan === void 0 ? false : _ref5$environmentChan, mfeDepsInfo = _ref5.mfeDepsInfo;
+              // `recordingHost`, `aiApiUrl`, `smartNotesIframe`, and `smartNotesEnv` changes do not need SDK re-init
               isEnvChanged = environmentChanged || this.enabled !== enabled || enabled && this.server !== server;
               this._setEnvData({
                 server: server,
+                aiApiUrl: aiApiUrl,
+                smartNotesIframe: smartNotesIframe,
+                smartNotesEnv: smartNotesEnv,
                 recordingHost: recordingHost,
                 enabled: enabled,
                 allowDataTracking: allowDataTracking,
@@ -401,28 +416,49 @@ var Environment = exports.Environment = (_dec = (0, _nextCore.injectable)({
   initializer: function initializer() {
     return _sdk.SDK.server.sandbox;
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "recordingHostState", [_nextCore.globalStorage, _nextCore.state, _dec11], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "aiApiUrl", [_nextCore.globalStorage, _nextCore.state], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "smartNotesIframe", [_nextCore.globalStorage, _nextCore.state], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "smartNotesEnv", [_nextCore.globalStorage, _nextCore.state], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "recordingHostState", [_nextCore.globalStorage, _nextCore.state, _dec11], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "enabled", [_nextCore.globalStorage, _nextCore.state], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "enabled", [_nextCore.globalStorage, _nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "enabledDataTrackingTimestamp", [_nextCore.globalStorage, _nextCore.state, _dec12], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "enabledDataTrackingTimestamp", [_nextCore.globalStorage, _nextCore.state, _dec12], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "changeCounter", [_nextCore.state], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "changeCounter", [_nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,

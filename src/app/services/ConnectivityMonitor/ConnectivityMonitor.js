@@ -239,7 +239,7 @@ var ConnectivityMonitor = exports.ConnectivityMonitor = (_dec = (0, _nextCore.in
     key: "_shouldRebindHandlers",
     value: function _shouldRebindHandlers() {
       var _this$_environment;
-      return !!(this.ready && ((_this$_environment = this._environment) === null || _this$_environment === void 0 ? void 0 : _this$_environment.ready) && this._environment.changeCounter !== this._lastEnvironmentCounter);
+      return !!(this.ready && (_this$_environment = this._environment) !== null && _this$_environment !== void 0 && _this$_environment.ready && this._environment.changeCounter !== this._lastEnvironmentCounter);
     }
   }, {
     key: "onInit",

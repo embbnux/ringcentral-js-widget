@@ -45,13 +45,14 @@ var _nextCore = require("@ringcentral-integration/next-core");
 var _ramda = require("ramda");
 var _rxjs = require("rxjs");
 var _Auth = require("../Auth");
+var _AvailabilityMonitor = require("../AvailabilityMonitor");
 var _Client = require("../Client");
 var _ConnectivityMonitor = require("../ConnectivityMonitor");
 var _DataFetcher = require("../DataFetcher");
 var _ExtensionFeatures = require("../ExtensionFeatures");
 var _dndStatus = require("./dndStatus");
 var _removeIntermediateCall = require("./removeIntermediateCall");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _class, _class2, _descriptor;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -87,20 +88,22 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.inject)('Subscription')(target, undefined, 5);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)('TabManager')(target, undefined, 7);
+  return (0, _nextCore.optional)()(target, undefined, 7);
 }, _dec4 = function _dec4(target, key) {
-  return (0, _nextCore.optional)('PresenceOptions')(target, undefined, 8);
-}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _Auth.Auth === "undefined" ? Object : _Auth.Auth, typeof _Client.Client === "undefined" ? Object : _Client.Client, typeof _ConnectivityMonitor.ConnectivityMonitor === "undefined" ? Object : _ConnectivityMonitor.ConnectivityMonitor, typeof _DataFetcher.DataFetcher === "undefined" ? Object : _DataFetcher.DataFetcher, typeof _ExtensionFeatures.ExtensionFeatures === "undefined" ? Object : _ExtensionFeatures.ExtensionFeatures, typeof Subscription === "undefined" ? Object : Subscription, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, Object, typeof PresenceOptions === "undefined" ? Object : PresenceOptions]), _dec7 = Reflect.metadata("design:type", Object), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [Object]), _dec0 = (0, _nextCore.computed)(function (_ref) {
+  return (0, _nextCore.optional)('TabManager')(target, undefined, 8);
+}, _dec5 = function _dec5(target, key) {
+  return (0, _nextCore.optional)('PresenceOptions')(target, undefined, 9);
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _Auth.Auth === "undefined" ? Object : _Auth.Auth, typeof _Client.Client === "undefined" ? Object : _Client.Client, typeof _ConnectivityMonitor.ConnectivityMonitor === "undefined" ? Object : _ConnectivityMonitor.ConnectivityMonitor, typeof _DataFetcher.DataFetcher === "undefined" ? Object : _DataFetcher.DataFetcher, typeof _ExtensionFeatures.ExtensionFeatures === "undefined" ? Object : _ExtensionFeatures.ExtensionFeatures, typeof Subscription === "undefined" ? Object : Subscription, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _AvailabilityMonitor.AvailabilityMonitor === "undefined" ? Object : _AvailabilityMonitor.AvailabilityMonitor, Object, typeof PresenceOptions === "undefined" ? Object : PresenceOptions]), _dec8 = Reflect.metadata("design:type", Object), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Object]), _dec1 = (0, _nextCore.computed)(function (_ref) {
   var data = _ref.data;
   return [data];
-}), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = (0, _nextCore.computed)(function (_ref2) {
+}), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _nextCore.computed)(function (_ref2) {
   var activeCalls = _ref2.activeCalls;
   return [activeCalls];
-}), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", []), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [typeof UpdatePresenceParams === "undefined" ? Object : UpdatePresenceParams]), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [typeof PresenceInfoModel === "undefined" ? Object : PresenceInfoModel, void 0]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec32 = (0, _nextCore.computed)(function (_ref3) {
+}), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = (0, _nextCore.delegate)('server'), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [typeof UpdatePresenceParams === "undefined" ? Object : UpdatePresenceParams]), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [typeof PresenceInfoModel === "undefined" ? Object : PresenceInfoModel, void 0]), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _nextCore.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = (0, _nextCore.computed)(function (_ref3) {
   var calls = _ref3.calls;
   return [calls];
-}), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
-  function Presence(_auth, _client, _connectivityMonitor, _dataFetcher, _extensionFeatures, _subscription, _storage, _tabManager, _presenceOptions) {
+}), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
+  function Presence(_auth, _client, _connectivityMonitor, _dataFetcher, _extensionFeatures, _subscription, _storage, _availabilityMonitor, _tabManager, _presenceOptions) {
     var _this$_presenceOption, _this$_presenceOption2;
     var _this;
     _classCallCheck(this, Presence);
@@ -112,6 +115,7 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
     _this._extensionFeatures = _extensionFeatures;
     _this._subscription = _subscription;
     _this._storage = _storage;
+    _this._availabilityMonitor = _availabilityMonitor;
     _this._tabManager = _tabManager;
     _this._presenceOptions = _presenceOptions;
     _this.updateInterval$ = (0, _rxjs.interval)(((_this$_presenceOption = _this._presenceOptions) === null || _this$_presenceOption === void 0 ? void 0 : _this$_presenceOption.updateInterval) || DEFAULT_PRESENCE_UPDATE_INTERVAL).pipe((0, _rxjs.share)());
@@ -241,7 +245,7 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
     value: function _handleSubscription(message) {
       var _this$_tabManager$act, _this$_tabManager;
       var regExp = detailedPresenceRegExp;
-      if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && (message === null || message === void 0 ? void 0 : message.event) && regExp.test(message.event) && message.body) {
+      if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && message !== null && message !== void 0 && message.event && regExp.test(message.event) && message.body) {
         var _message$body$activeC, _message$body$activeC2, _message$body$totalAc;
         if (message.body.sequence && message.body.sequence < this._sequence) {
           return;
@@ -344,12 +348,12 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
     key: "_update",
     value: function () {
       var _update2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(params) {
-        var _this$_extensionFeatu4, _this$_extensionFeatu5, ownerId, response, data, _ref4, newDndStatus, _t;
+        var _this$_extensionFeatu4, _this$_extensionFeatu5, ownerId, response, data, _ref4, newDndStatus, _t, _t2;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.p = _context2.n) {
             case 0:
               _context2.p = 0;
-              if ((_this$_extensionFeatu4 = this._extensionFeatures.features) === null || _this$_extensionFeatu4 === void 0 ? void 0 : (_this$_extensionFeatu5 = _this$_extensionFeatu4.EditPresenceStatus) === null || _this$_extensionFeatu5 === void 0 ? void 0 : _this$_extensionFeatu5.available) {
+              if ((_this$_extensionFeatu4 = this._extensionFeatures.features) !== null && _this$_extensionFeatu4 !== void 0 && (_this$_extensionFeatu5 = _this$_extensionFeatu4.EditPresenceStatus) !== null && _this$_extensionFeatu5 !== void 0 && _this$_extensionFeatu5.available) {
                 _context2.n = 1;
                 break;
               }
@@ -375,13 +379,29 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
                   meetingStatus: data.meetingStatus
                 });
               }
-              _context2.n = 5;
+              _context2.n = 8;
               break;
             case 4:
               _context2.p = 4;
               _t = _context2.v;
-              console.error('put presence failed', _t);
+              _t2 = this._availabilityMonitor;
+              if (!_t2) {
+                _context2.n = 6;
+                break;
+              }
+              _context2.n = 5;
+              return this._availabilityMonitor.checkIfHAError(_t);
             case 5:
+              _t2 = _context2.v;
+            case 6:
+              if (!_t2) {
+                _context2.n = 7;
+                break;
+              }
+              return _context2.a(2);
+            case 7:
+              console.error('put presence failed', _t);
+            case 8:
               return _context2.a(2);
           }
         }, _callee2, this, [[0, 4]]);
@@ -539,12 +559,12 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
     key: "setPresence",
     value: function () {
       var _setPresence = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(presenceData) {
-        var _t2;
+        var _t3;
         return _regenerator().w(function (_context8) {
           while (1) switch (_context8.n) {
             case 0:
-              _t2 = presenceData;
-              _context8.n = _t2 === _presenceStatus.presenceStatus.available ? 1 : _t2 === _presenceStatus.presenceStatus.busy ? 3 : _t2 === _dndStatus.dndStatus.doNotAcceptAnyCalls ? 5 : _t2 === _presenceStatus.presenceStatus.offline ? 7 : 9;
+              _t3 = presenceData;
+              _context8.n = _t3 === _presenceStatus.presenceStatus.available ? 1 : _t3 === _presenceStatus.presenceStatus.busy ? 3 : _t3 === _dndStatus.dndStatus.doNotAcceptAnyCalls ? 5 : _t3 === _presenceStatus.presenceStatus.offline ? 7 : 9;
               break;
             case 1:
               _context8.n = 2;
@@ -667,12 +687,12 @@ var Presence = exports.Presence = (_dec = (0, _nextCore.injectable)({
       return fetchData;
     }()
   }]);
-}(_DataFetcher.DataFetcherConsumer), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "lastDndStatus", [_nextCore.userStorage, _nextCore.state, _dec7], {
+}(_DataFetcher.DataFetcherConsumer), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "lastDndStatus", [_nextCore.userStorage, _nextCore.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return null;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setLastDndStatus", [_nextCore.action, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastDndStatus"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeCalls", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "activeCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "calls", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "calls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_update", [_dec14, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "_update"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateData", [_dec17, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAvailable", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "setAvailable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setBusy", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "setBusy"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setDoNotDisturb", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "setDoNotDisturb"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInvisible", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "setInvisible"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionIdList", [_dec32, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionIdList"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setLastDndStatus", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastDndStatus"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "activeCalls", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "activeCalls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "calls", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "calls"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_update", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_update"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_updateData", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAvailable", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "setAvailable"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setBusy", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "setBusy"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setDoNotDisturb", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "setDoNotDisturb"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInvisible", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "setInvisible"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sessionIdList", [_dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "sessionIdList"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Presence.js.map

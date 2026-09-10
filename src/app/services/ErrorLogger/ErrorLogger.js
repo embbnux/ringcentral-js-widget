@@ -38,6 +38,7 @@ var Sentry = _interopRequireWildcard(require("@sentry/browser"));
 var _tracing = require("@sentry/tracing");
 var _AccountInfo = require("../AccountInfo");
 var _Auth = require("../Auth");
+var _sanitizeSentryEvent = require("./sanitizeSentryEvent");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -61,6 +62,9 @@ var ignoreErrors = ['200 OK', 'Failed to fetch', 'Request Timeout', 'Service is 
 // chrome error
 '[executeScript] Cannot access contents of the page. Extension manifest must request permission to access the respective host.', '[executeScript] The extensions gallery cannot be scripted.', '[executeScript] Cannot access contents of url', '[executeScript] This page cannot be scripted due to an ExtensionsSettings policy.', '[executeScript] Cannot access a chrome'];
 var DEFAULT_INTERCEPTED_BRANDS = ['3000.Brightspeed'];
+var isPromiseLike = function isPromiseLike(value) {
+  return !!value && typeof value.then === 'function';
+};
 var ErrorLogger = exports.ErrorLogger = (_dec = (0, _nextCore.injectable)({
   name: 'ErrorLogger'
 }), _dec2 = function _dec2(target, key) {
@@ -101,7 +105,7 @@ var ErrorLogger = exports.ErrorLogger = (_dec = (0, _nextCore.injectable)({
         appRelease = options.appRelease,
         environment = options.environment,
         sentryConfig = options.sentryConfig;
-      if (sentryConfig === null || sentryConfig === void 0 ? void 0 : sentryConfig.endpoint) {
+      if (sentryConfig !== null && sentryConfig !== void 0 && sentryConfig.endpoint) {
         var _this$_brandConfig, _this$_brandConfig2;
         // init client
         this._init({
@@ -127,25 +131,35 @@ var ErrorLogger = exports.ErrorLogger = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_init",
     value: function _init(options) {
-      var _this$_errorLoggerOpt,
+      var _this2 = this,
+        _this$_errorLoggerOpt,
         _ref,
-        _this$_mfeSentry,
-        _this2 = this;
+        _this$_mfeSentry;
       this._sentryInitialized = true;
+      var beforeSend = function beforeSend(event, hint) {
+        var _options$beforeSend;
+        if (_this2.intercepted) {
+          return null;
+        }
+        var beforeSendResult = (_options$beforeSend = options.beforeSend) === null || _options$beforeSend === void 0 ? void 0 : _options$beforeSend.call(options, event, hint);
+        if (beforeSendResult === null) {
+          return null;
+        }
+        if (isPromiseLike(beforeSendResult)) {
+          return beforeSendResult.then(function (result) {
+            return result ? (0, _sanitizeSentryEvent.sanitizeSentryEvent)(result) : null;
+          });
+        }
+        return (0, _sanitizeSentryEvent.sanitizeSentryEvent)(beforeSendResult !== null && beforeSendResult !== void 0 ? beforeSendResult : event);
+      };
       var initOptions = _objectSpread(_objectSpread({}, options), {}, {
-        ignoreErrors: ignoreErrors
+        ignoreErrors: ignoreErrors,
+        beforeSend: beforeSend
       });
-      if ((_this$_errorLoggerOpt = this._errorLoggerOptions) === null || _this$_errorLoggerOpt === void 0 ? void 0 : _this$_errorLoggerOpt.initMfeSentry) {
+      if ((_this$_errorLoggerOpt = this._errorLoggerOptions) !== null && _this$_errorLoggerOpt !== void 0 && _this$_errorLoggerOpt.initMfeSentry) {
         this._mfeSentry = this._errorLoggerOptions.initMfeSentry(initOptions);
       }
-      var hub = (_ref = (_this$_mfeSentry = this._mfeSentry) === null || _this$_mfeSentry === void 0 ? void 0 : _this$_mfeSentry.hub) !== null && _ref !== void 0 ? _ref : Sentry.init(_objectSpread(_objectSpread({}, initOptions), {}, {
-        beforeSend: function beforeSend(event) {
-          if (_this2.intercepted) {
-            return null;
-          }
-          return event;
-        }
-      }));
+      var hub = (_ref = (_this$_mfeSentry = this._mfeSentry) === null || _this$_mfeSentry === void 0 ? void 0 : _this$_mfeSentry.hub) !== null && _ref !== void 0 ? _ref : Sentry.init(initOptions);
       this._hub = hub !== null && hub !== void 0 ? hub : Sentry.getCurrentHub();
     }
   }, {

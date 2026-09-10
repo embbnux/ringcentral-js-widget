@@ -171,7 +171,7 @@ var RegionSettings = exports.RegionSettings = (_dec = (0, _nextCore.injectable)(
                 return plan.isoCode === countryCode;
               }, this.availableCountries)) {
                 countryCode = null;
-                if (((_this$_brand$brandCon = this._brand.brandConfig) === null || _this$_brand$brandCon === void 0 ? void 0 : _this$_brand$brandCon.allowRegionSettings) && !((_this$_regionSettings = this._regionSettingsOptions) === null || _this$_regionSettings === void 0 ? void 0 : _this$_regionSettings.suppressSettingsChangedWarning)) {
+                if ((_this$_brand$brandCon = this._brand.brandConfig) !== null && _this$_brand$brandCon !== void 0 && _this$_brand$brandCon.allowRegionSettings && !((_this$_regionSettings = this._regionSettingsOptions) !== null && _this$_regionSettings !== void 0 && _this$_regionSettings.suppressSettingsChangedWarning)) {
                   this._alertSettingsChanged();
                 }
               }

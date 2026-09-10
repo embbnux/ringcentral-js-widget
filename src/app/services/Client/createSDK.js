@@ -24,9 +24,7 @@ var _sdk = require("@ringcentral/sdk");
 var createSDK = exports.createSDK = function createSDK(sdkConfig, brandConfig) {
   var config = (0, _core.removeSDKNonISO8859Chars)(sdkConfig);
   if (brandConfig) {
-    config.brandId =
-    // when code be rc, always not set brandId, because rc is a partner brand login
-    brandConfig.code === 'rc' ? undefined : brandConfig.id;
+    config.brandId = brandConfig.code === 'rc' ? undefined : brandConfig.id;
   }
   return new _sdk.SDK(config);
 };

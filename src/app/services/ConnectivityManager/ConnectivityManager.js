@@ -211,13 +211,13 @@ var ConnectivityManager = exports.ConnectivityManager = (_dec = (0, _nextCore.in
     key: "isWebphoneInitializing",
     get: function get() {
       var _this$_callingSetting;
-      return !!((_this$_callingSetting = this._callingSettings) === null || _this$_callingSetting === void 0 ? void 0 : _this$_callingSetting.isWebphoneMode) && this._webphone && (!this._webphone.ready || this._webphone.disconnected || this._webphone.connecting || this._webphone.connectFailed);
+      return !!((_this$_callingSetting = this._callingSettings) !== null && _this$_callingSetting !== void 0 && _this$_callingSetting.isWebphoneMode) && this._webphone && (!this._webphone.ready || this._webphone.disconnected || this._webphone.connecting || this._webphone.connectFailed);
     }
   }, {
     key: "webphoneConnecting",
     get: function get() {
       var _this$_webphone;
-      return !!((_this$_webphone = this._webphone) === null || _this$_webphone === void 0 ? void 0 : _this$_webphone.ready) && (this._webphone.connecting || this._webphone.reconnecting);
+      return !!((_this$_webphone = this._webphone) !== null && _this$_webphone !== void 0 && _this$_webphone.ready) && (this._webphone.connecting || this._webphone.reconnecting);
     }
   }, {
     key: "webphoneUnavailable",

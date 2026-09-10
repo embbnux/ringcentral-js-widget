@@ -8,15 +8,15 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   loginButton: 'サインイン',
-  newUser: '新規ユーザ',
-  tryForFree: '無料版を試す',
+  newUser: '{brandName} のご利用は初めてですか？',
+  tryForFree: '今すぐ登録',
   version: 'バージョン',
-  title: '{brandName}にようこそ',
-  description: '{appName}は直接統合を提供しているため、シームレスな通話が実現します。'
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: '{appName}は直接統合を提供しているため、シームレスな通話が実現します。',
+  tagline: 'AIコミュニケーションプラットフォーム'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=ja-JP.js.map

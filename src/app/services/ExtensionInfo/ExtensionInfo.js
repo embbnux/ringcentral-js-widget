@@ -169,7 +169,7 @@ var ExtensionInfo = exports.ExtensionInfo = (_dec = (0, _nextCore.injectable)({
     key: "_handleSubscription",
     value: function _handleSubscription(message) {
       var _this$_tabManager$act, _this$_tabManager, _message$body, _message$body$hints, _message$body2, _message$body2$hints, _message$body3, _message$body3$hints, _message$body4, _message$body4$hints, _message$body5, _message$body5$hints;
-      if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && (message === null || message === void 0 ? void 0 : message.event) && extensionRegExp.test(message.event) && !(((_message$body = message.body) === null || _message$body === void 0 ? void 0 : (_message$body$hints = _message$body.hints) === null || _message$body$hints === void 0 ? void 0 : _message$body$hints.includes(_subscriptionHints.subscriptionHints.companyNumbers)) || ((_message$body2 = message.body) === null || _message$body2 === void 0 ? void 0 : (_message$body2$hints = _message$body2.hints) === null || _message$body2$hints === void 0 ? void 0 : _message$body2$hints.includes(_subscriptionHints.subscriptionHints.limits)) || ((_message$body3 = message.body) === null || _message$body3 === void 0 ? void 0 : (_message$body3$hints = _message$body3.hints) === null || _message$body3$hints === void 0 ? void 0 : _message$body3$hints.includes(_subscriptionHints.subscriptionHints.features)) || ((_message$body4 = message.body) === null || _message$body4 === void 0 ? void 0 : (_message$body4$hints = _message$body4.hints) === null || _message$body4$hints === void 0 ? void 0 : _message$body4$hints.includes(_subscriptionHints.subscriptionHints.permissions)) || ((_message$body5 = message.body) === null || _message$body5 === void 0 ? void 0 : (_message$body5$hints = _message$body5.hints) === null || _message$body5$hints === void 0 ? void 0 : _message$body5$hints.includes(_subscriptionHints.subscriptionHints.videoConfiguration)))) {
+      if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && message !== null && message !== void 0 && message.event && extensionRegExp.test(message.event) && !((_message$body = message.body) !== null && _message$body !== void 0 && (_message$body$hints = _message$body.hints) !== null && _message$body$hints !== void 0 && _message$body$hints.includes(_subscriptionHints.subscriptionHints.companyNumbers) || (_message$body2 = message.body) !== null && _message$body2 !== void 0 && (_message$body2$hints = _message$body2.hints) !== null && _message$body2$hints !== void 0 && _message$body2$hints.includes(_subscriptionHints.subscriptionHints.limits) || (_message$body3 = message.body) !== null && _message$body3 !== void 0 && (_message$body3$hints = _message$body3.hints) !== null && _message$body3$hints !== void 0 && _message$body3$hints.includes(_subscriptionHints.subscriptionHints.features) || (_message$body4 = message.body) !== null && _message$body4 !== void 0 && (_message$body4$hints = _message$body4.hints) !== null && _message$body4$hints !== void 0 && _message$body4$hints.includes(_subscriptionHints.subscriptionHints.permissions) || (_message$body5 = message.body) !== null && _message$body5 !== void 0 && (_message$body5$hints = _message$body5.hints) !== null && _message$body5$hints !== void 0 && _message$body5$hints.includes(_subscriptionHints.subscriptionHints.videoConfiguration))) {
         this.fetchData();
       }
     }
@@ -196,7 +196,7 @@ var ExtensionInfo = exports.ExtensionInfo = (_dec = (0, _nextCore.injectable)({
     key: "info",
     get: function get() {
       var _this$data, _this$data$regionalSe, _this$data2;
-      if ((_this$data = this.data) === null || _this$data === void 0 ? void 0 : (_this$data$regionalSe = _this$data.regionalSettings) === null || _this$data$regionalSe === void 0 ? void 0 : _this$data$regionalSe.homeCountry) {
+      if ((_this$data = this.data) !== null && _this$data !== void 0 && (_this$data$regionalSe = _this$data.regionalSettings) !== null && _this$data$regionalSe !== void 0 && _this$data$regionalSe.homeCountry) {
         (0, _renameTurkey.renameTurkeyCountry)(this.data.regionalSettings.homeCountry);
       }
       return (_this$data2 = this.data) !== null && _this$data2 !== void 0 ? _this$data2 : {};
@@ -246,7 +246,7 @@ var ExtensionInfo = exports.ExtensionInfo = (_dec = (0, _nextCore.injectable)({
       if (!this.isMultipleSiteEnabled) {
         return null;
       }
-      if (((_this$_extensionFeatu = this._extensionFeatures.features) === null || _this$_extensionFeatu === void 0 ? void 0 : (_this$_extensionFeatu2 = _this$_extensionFeatu.SiteCodes) === null || _this$_extensionFeatu2 === void 0 ? void 0 : _this$_extensionFeatu2.available) && !this.info.site) {
+      if ((_this$_extensionFeatu = this._extensionFeatures.features) !== null && _this$_extensionFeatu !== void 0 && (_this$_extensionFeatu2 = _this$_extensionFeatu.SiteCodes) !== null && _this$_extensionFeatu2 !== void 0 && _this$_extensionFeatu2.available && !this.info.site) {
         _nextCore.logger.warn('site code enabled, but cannot retrieve site info');
       }
       return this.info.site || null;
@@ -261,6 +261,12 @@ var ExtensionInfo = exports.ExtensionInfo = (_dec = (0, _nextCore.injectable)({
     get: function get() {
       var _this$info$regionalSe2, _this$info$regionalSe3;
       return (_this$info$regionalSe2 = this.info.regionalSettings) === null || _this$info$regionalSe2 === void 0 ? void 0 : (_this$info$regionalSe3 = _this$info$regionalSe2.homeCountry) === null || _this$info$regionalSe3 === void 0 ? void 0 : _this$info$regionalSe3.isoCode;
+    }
+  }, {
+    key: "isAdminUser",
+    get: function get() {
+      var _this$info$permission, _this$info$permission2;
+      return !!((_this$info$permission = this.info.permissions) !== null && _this$info$permission !== void 0 && (_this$info$permission2 = _this$info$permission.admin) !== null && _this$info$permission2 !== void 0 && _this$info$permission2.enabled);
     }
 
     /**

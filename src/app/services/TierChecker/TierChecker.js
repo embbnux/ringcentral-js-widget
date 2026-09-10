@@ -83,7 +83,7 @@ var TierChecker = exports.TierChecker = (_dec = (0, _nextCore.injectable)({
     key: "isCRMEnabled",
     get: function get() {
       var _this$_extensionFeatu, _this$_extensionFeatu2;
-      return !!((_this$_extensionFeatu = this._extensionFeatures.features) === null || _this$_extensionFeatu === void 0 ? void 0 : (_this$_extensionFeatu2 = _this$_extensionFeatu[this.crmFeature]) === null || _this$_extensionFeatu2 === void 0 ? void 0 : _this$_extensionFeatu2.available);
+      return !!((_this$_extensionFeatu = this._extensionFeatures.features) !== null && _this$_extensionFeatu !== void 0 && (_this$_extensionFeatu2 = _this$_extensionFeatu[this.crmFeature]) !== null && _this$_extensionFeatu2 !== void 0 && _this$_extensionFeatu2.available);
     }
   }, {
     key: "onInitOnce",

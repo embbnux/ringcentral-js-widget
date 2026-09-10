@@ -61,7 +61,7 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
 var DEFAULT_UI_OPTIONS = [];
-var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Function), _dec2 = Reflect.metadata("design:paramtypes", [Boolean]), _dec3 = (0, _nextCore.delegate)('server'), _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [String]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _class = /*#__PURE__*/function (_RcModule) {
+var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Function), _dec2 = Reflect.metadata("design:paramtypes", [Boolean]), _dec3 = (0, _nextCore.delegate)('server'), _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [String, String]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _class = /*#__PURE__*/function (_RcModule) {
   function OAuthBase(_auth, _toast, _locale, _brand, _tabManager, _oAuthOptions) {
     var _this;
     _classCallCheck(this, OAuthBase);
@@ -87,14 +87,14 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
   }, {
     key: "handleCallbackLogin",
     value: function () {
-      var _handleCallbackLogin = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(callbackUri) {
+      var _handleCallbackLogin = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(callbackUri, redirectUriOverride) {
         var _this2 = this;
         var result;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.n) {
             case 0:
               _context.n = 1;
-              return this._handleCallbackUri(callbackUri);
+              return this._handleCallbackUri(callbackUri, redirectUriOverride);
             case 1:
               result = _context.v;
               if (!result) {
@@ -120,7 +120,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
           }
         }, _callee, this);
       }));
-      function handleCallbackLogin(_x) {
+      function handleCallbackLogin(_x, _x2) {
         return _handleCallbackLogin.apply(this, arguments);
       }
       return handleCallbackLogin;
@@ -128,7 +128,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
   }, {
     key: "_handleCallbackUri",
     value: function () {
-      var _handleCallbackUri2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(callbackUri) {
+      var _handleCallbackUri2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(callbackUri, redirectUriOverride) {
         var query, _this$_oAuthOptions, message, showCustomToast, status, _t, _t2;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.p = _context2.n) {
@@ -136,7 +136,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
               _context2.p = 0;
               query = (0, _parseCallbackUri["default"])(callbackUri);
               _context2.n = 1;
-              return this._loginWithCallbackQuery(query);
+              return this._loginWithCallbackQuery(query, redirectUriOverride);
             case 1:
               return _context2.a(2, true);
             case 2:
@@ -172,7 +172,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
           }
         }, _callee2, this, [[0, 2]]);
       }));
-      function _handleCallbackUri(_x2) {
+      function _handleCallbackUri(_x3, _x4) {
         return _handleCallbackUri2.apply(this, arguments);
       }
       return _handleCallbackUri;
@@ -180,7 +180,8 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
   }, {
     key: "_loginWithCallbackQuery",
     value: function () {
-      var _loginWithCallbackQuery2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(query) {
+      var _loginWithCallbackQuery2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(query, redirectUriOverride) {
+        var redirectUri;
         return _regenerator().w(function (_context3) {
           while (1) switch (_context3.n) {
             case 0:
@@ -190,13 +191,14 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
               }
               return _context3.a(2);
             case 1:
+              redirectUri = redirectUriOverride !== null && redirectUriOverride !== void 0 ? redirectUriOverride : this.redirectUri;
               _context3.n = 2;
               return this._auth.login({
                 code: query.code,
                 accessToken: query.access_token,
                 expiresIn: query.expires_in,
                 endpointId: query.endpoint_id,
-                redirectUri: this.redirectUri,
+                redirectUri: redirectUri,
                 tokenType: query.token_type,
                 scope: query.scope,
                 tokenUri: query.token_uri,
@@ -207,7 +209,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
           }
         }, _callee3, this);
       }));
-      function _loginWithCallbackQuery(_x3) {
+      function _loginWithCallbackQuery(_x5, _x6) {
         return _loginWithCallbackQuery2.apply(this, arguments);
       }
       return _loginWithCallbackQuery;
@@ -237,7 +239,7 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
           }
         }, _callee4, this);
       }));
-      function _refreshWithCallbackQuery(_x4) {
+      function _refreshWithCallbackQuery(_x7) {
         return _refreshWithCallbackQuery2.apply(this, arguments);
       }
       return _refreshWithCallbackQuery;
@@ -257,8 +259,8 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
   }, {
     key: "getOAuthUri",
     value: function () {
-      var _getOAuthUri = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-        var authState, redirectUri, loginUrl;
+      var _getOAuthUri = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(redirectUriOverride) {
+        var authState, redirectUri, loginUrl, _t3;
         return _regenerator().w(function (_context5) {
           while (1) switch (_context5.n) {
             case 0:
@@ -266,11 +268,21 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
               return this.getAuthState();
             case 1:
               authState = _context5.v;
-              _context5.n = 2;
-              return this.getRedirectUri();
+              if (!(redirectUriOverride !== null && redirectUriOverride !== void 0)) {
+                _context5.n = 2;
+                break;
+              }
+              _t3 = redirectUriOverride;
+              _context5.n = 4;
+              break;
             case 2:
-              redirectUri = _context5.v;
               _context5.n = 3;
+              return this.getRedirectUri();
+            case 3:
+              _t3 = _context5.v;
+            case 4:
+              redirectUri = _t3;
+              _context5.n = 5;
               return this._auth.getLoginUrl({
                 redirectUri: redirectUri,
                 brandId: this._brand.defaultConfig.id,
@@ -281,13 +293,13 @@ var OAuthBase = exports.OAuthBase = (_dec = Reflect.metadata("design:type", Func
                 implicit: this._auth.isImplicit,
                 force: true
               });
-            case 3:
+            case 5:
               loginUrl = _context5.v;
               return _context5.a(2, loginUrl);
           }
         }, _callee5, this);
       }));
-      function getOAuthUri() {
+      function getOAuthUri(_x8) {
         return _getOAuthUri.apply(this, arguments);
       }
       return getOAuthUri;

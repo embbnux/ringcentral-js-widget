@@ -29,11 +29,13 @@ import {
   StoragePlugin,
   watch,
 } from '@ringcentral-integration/next-core';
+import type { ApiError } from '@ringcentral/sdk';
 import { filter, map } from 'ramda';
 import type { Unsubscribe } from 'redux';
 import { interval, share } from 'rxjs';
 
 import { Auth } from '../Auth';
+import { AvailabilityMonitor } from '../AvailabilityMonitor';
 import { Client } from '../Client';
 import { ConnectivityMonitor } from '../ConnectivityMonitor';
 import { DataFetcher, DataFetcherConsumer, DataSource } from '../DataFetcher';
@@ -84,6 +86,7 @@ export class Presence extends DataFetcherConsumer<PresenceInfoModel> {
     protected _extensionFeatures: ExtensionFeatures,
     @inject('Subscription') protected _subscription: Subscription,
     protected _storage: StoragePlugin,
+    @optional() protected _availabilityMonitor?: AvailabilityMonitor,
     @optional('TabManager') protected _tabManager?: any,
     @optional('PresenceOptions') protected _presenceOptions?: PresenceOptions,
   ) {
@@ -349,6 +352,16 @@ export class Presence extends DataFetcherConsumer<PresenceInfoModel> {
         });
       }
     } catch (error) {
+      // HA errors already switch the app into limited mode through the
+      // AvailabilityMonitor's global client requestError handler; here we
+      // only suppress the error log, same as Call/MessageSender/Meeting.
+      if (
+        this._availabilityMonitor &&
+        (await this._availabilityMonitor.checkIfHAError(error as ApiError))
+      ) {
+        return;
+      }
+
       console.error('put presence failed', error);
     }
   }

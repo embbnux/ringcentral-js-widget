@@ -302,7 +302,7 @@ var RingCentralExtensions = exports.RingCentralExtensions = (_dec = (0, _nextCor
         return _regenerator().w(function (_context6) {
           while (1) switch (_context6.n) {
             case 0:
-              if ((_this$_webSocketExten2 = this._webSocketExtension.options.autoRecover) === null || _this$_webSocketExten2 === void 0 ? void 0 : _this$_webSocketExten2.enabled) {
+              if ((_this$_webSocketExten2 = this._webSocketExtension.options.autoRecover) !== null && _this$_webSocketExten2 !== void 0 && _this$_webSocketExten2.enabled) {
                 this._webSocketExtension.eventEmitter.addListener(_ws.Events.autoRecoverSuccess, function () {
                   _this3._exposeConnectionEvents();
                 });

@@ -65,6 +65,7 @@ var _authErrors = require("./authErrors");
 var _getProfileImage = require("./getProfileImage");
 var _i18n = require("./i18n");
 var _loginStatus = require("./loginStatus");
+var _sanitizeResponseBodyForLog = require("./sanitizeResponseBodyForLog");
 var _excluded = ["redirectUri", "force", "implicit"];
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
@@ -108,7 +109,7 @@ var TriggerSyncTokenEvent = exports.TriggerSyncTokenEvent = 'triggerSyncTokenEve
 var REQUEST_LOG_KEY = Symbol('requestLog');
 function extractHeaders(source) {
   var result = {};
-  if (source === null || source === void 0 ? void 0 : source.headers) {
+  if (source !== null && source !== void 0 && source.headers) {
     source.headers.forEach(function (value, key) {
       if (key === 'authorization') {
         // mask bearer token for security and privacy, also less noise in logs
@@ -128,7 +129,7 @@ function _extractBody() {
   // ringcentral-js sdk sometimes put the original request body into originalBody
   source) {
     var _source$originalBody2;
-    var _source$originalBody, blobContent, data, _t16;
+    var _source$originalBody, blobContent, data, _t18;
     return _regenerator().w(function (_context24) {
       while (1) switch (_context24.p = _context24.n) {
         case 0:
@@ -144,7 +145,7 @@ function _extractBody() {
           }
           return _context24.a(2, (_source$originalBody = source.originalBody) !== null && _source$originalBody !== void 0 ? _source$originalBody : null);
         case 2:
-          if (!((_source$originalBody2 = source.originalBody) === null || _source$originalBody2 === void 0 ? void 0 : _source$originalBody2.values)) {
+          if (!((_source$originalBody2 = source.originalBody) !== null && _source$originalBody2 !== void 0 && _source$originalBody2.values)) {
             _context24.n = 3;
             break;
           }
@@ -165,7 +166,7 @@ function _extractBody() {
           return _context24.a(2, data);
         case 5:
           _context24.p = 5;
-          _t16 = _context24.v;
+          _t18 = _context24.v;
           return _context24.a(2, 'unable to read body');
       }
     }, _callee23, null, [[3, 5]]);
@@ -289,7 +290,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
         return _regenerator().w(function (_context) {
           while (1) switch (_context.n) {
             case 0:
-              if ((_this$_browserLogger = _this._browserLogger) === null || _this$_browserLogger === void 0 ? void 0 : _this$_browserLogger.enabled) {
+              if ((_this$_browserLogger = _this._browserLogger) !== null && _this$_browserLogger !== void 0 && _this$_browserLogger.enabled) {
                 _context.n = 1;
                 break;
               }
@@ -322,11 +323,11 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
     _this._logRequest = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(request, response, requestError) {
         var _this$_browserLogger2, _request$REQUEST_LOG_;
-        var log, _t5, _t6, _t7, _t8, _t9;
+        var log, _t5, _t6, _t7, _t8, _t9, _t0, _t1;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.n) {
             case 0:
-              if ((_this$_browserLogger2 = _this._browserLogger) === null || _this$_browserLogger2 === void 0 ? void 0 : _this$_browserLogger2.enabled) {
+              if ((_this$_browserLogger2 = _this._browserLogger) !== null && _this$_browserLogger2 !== void 0 && _this$_browserLogger2.enabled) {
                 _context2.n = 1;
                 break;
               }
@@ -358,10 +359,12 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               log.endTime = Date.now();
               log.duration = log.startTime ? log.endTime - log.startTime : undefined;
               log.responseHeaders = extractHeaders(response);
+              _t0 = _sanitizeResponseBodyForLog.sanitizeResponseBodyForLog;
+              _t1 = request === null || request === void 0 ? void 0 : request.url;
               _context2.n = 5;
               return extractBody(response);
             case 5:
-              log.responseBody = _context2.v;
+              log.responseBody = _t0(_t1, _context2.v);
               if (requestError) {
                 log.requestError = requestError;
               }
@@ -377,7 +380,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
         return _ref2.apply(this, arguments);
       };
     }();
-    if (!((_this$_authOptions = _this._authOptions) === null || _this$_authOptions === void 0 ? void 0 : _this$_authOptions.disabledAutoStorageUserId)) {
+    if (!((_this$_authOptions = _this._authOptions) !== null && _this$_authOptions !== void 0 && _this$_authOptions.disabledAutoStorageUserId)) {
       _this._storage.getUserId = function () {
         return _this.ownerId;
       };
@@ -403,6 +406,16 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
   }
   _inherits(Auth, _RcModule);
   return _createClass(Auth, [{
+    key: "_showSessionExpiredToast",
+    value: function _showSessionExpiredToast() {
+      var _this$_authOptions2;
+      if (((_this$_authOptions2 = this._authOptions) === null || _this$_authOptions2 === void 0 ? void 0 : _this$_authOptions2.enableSessionExpiredToast) === false) return;
+      this._toast.danger({
+        message: (0, _i18n.t)('sessionExpired'),
+        ttl: 0
+      });
+    }
+  }, {
     key: "_setToken",
     value: function _setToken(token) {
       var triggerSyncToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
@@ -614,10 +627,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
                     (0, _Analytics.trackEvent)('Int_signOut', {
                       signOutSource: 'Token expired'
                     });
-                    _this2._toast.danger({
-                      message: (0, _i18n.t)('sessionExpired'),
-                      ttl: 0
-                    });
+                    _this2._showSessionExpiredToast();
                   }
                 });
               case 3:
@@ -805,7 +815,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
             case 0:
               _context1.n = 1;
               return this.refreshTokenHelper.loggedIn(function (result) {
-                if (!(result === null || result === void 0 ? void 0 : result.refreshTokenValid)) {
+                if (!(result !== null && result !== void 0 && result.refreshTokenValid)) {
                   var _this3$_onEnsureLogge;
                   // track refresh token invalid logout actions
                   (_this3$_onEnsureLogge = _this3._onEnsureLoggedInFail) === null || _this3$_onEnsureLogge === void 0 ? void 0 : _this3$_onEnsureLogge.call(_this3, result);
@@ -833,7 +843,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
     key: "fetchToken",
     value: function () {
       var _fetchToken = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
-        var platform, token, _t0;
+        var platform, token, _t10;
         return _regenerator().w(function (_context10) {
           while (1) switch (_context10.n) {
             case 0:
@@ -845,13 +855,13 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               _context10.n = 1;
               return platform.auth().data();
             case 1:
-              _t0 = _context10.v;
+              _t10 = _context10.v;
               _context10.n = 3;
               break;
             case 2:
-              _t0 = null;
+              _t10 = null;
             case 3:
-              token = _t0;
+              token = _t10;
               this.setInitLogin({
                 loggedIn: this._loggedIn,
                 token: token
@@ -1025,7 +1035,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               });
               logout = /*#__PURE__*/function () {
                 var _ref22 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15() {
-                  var _this4$_rateLimiter, rateLimiterId, handlers, _iterator2, _step2, _loop, _ret, _t1, _t10;
+                  var _this4$_rateLimiter, rateLimiterId, handlers, _iterator2, _step2, _loop, _ret, _t11, _t12;
                   return _regenerator().w(function (_context16) {
                     while (1) switch (_context16.p = _context16.n) {
                       case 0:
@@ -1104,8 +1114,8 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
                         break;
                       case 10:
                         _context16.p = 10;
-                        _t1 = _context16.v;
-                        _iterator2.e(_t1);
+                        _t11 = _context16.v;
+                        _iterator2.e(_t11);
                       case 11:
                         _context16.p = 11;
                         _iterator2.f();
@@ -1115,8 +1125,8 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
                         break;
                       case 13:
                         _context16.p = 13;
-                        _t10 = _context16.v;
-                        _this4.logger.error('Auth|Logout error.', _t10);
+                        _t12 = _context16.v;
+                        _this4.logger.error('Auth|Logout error.', _t12);
                       case 14:
                         _this4.setLogout();
                         if (!_this4.isImplicit) {
@@ -1240,7 +1250,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
     key: "refreshImplicitToken",
     value: function () {
       var _refreshImplicitToken = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee17(_ref24) {
-        var tokenType, accessToken, expiresIn, endpointId, extensionData, ownerId, platform, newAuthData, _t11;
+        var tokenType, accessToken, expiresIn, endpointId, extensionData, ownerId, platform, newAuthData, _t13;
         return _regenerator().w(function (_context18) {
           while (1) switch (_context18.p = _context18.n) {
             case 0:
@@ -1273,8 +1283,8 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               break;
             case 5:
               _context18.p = 5;
-              _t11 = _context18.v;
-              this.logger.error('refreshImplicitToken error:', _t11);
+              _t13 = _context18.v;
+              this.logger.error('refreshImplicitToken error:', _t13);
             case 6:
               return _context18.a(2);
           }
@@ -1313,7 +1323,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
     key: "ensureValidAccessToken",
     value: (function () {
       var _ensureValidAccessToken = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee19() {
-        var isValidToken, _t12, _t13;
+        var isValidToken, _t14, _t15;
         return _regenerator().w(function (_context20) {
           while (1) switch (_context20.p = _context20.n) {
             case 0:
@@ -1344,9 +1354,9 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               break;
             case 5:
               _context20.p = 5;
-              _t12 = _context20.v;
+              _t14 = _context20.v;
               // If refresh fails, trigger logout
-              this.logger.error('[Auth] Token refresh failed, triggering logout', _t12);
+              this.logger.error('[Auth] Token refresh failed, triggering logout', _t14);
               _context20.n = 6;
               return this.logout({
                 reason: 'Token expired'
@@ -1359,9 +1369,9 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               break;
             case 8:
               _context20.p = 8;
-              _t13 = _context20.v;
-              this.logger.error('[Auth] Error in token validation:', _t13);
-              throw _t13;
+              _t15 = _context20.v;
+              this.logger.error('[Auth] Error in token validation:', _t15);
+              throw _t15;
             case 9:
               return _context20.a(2);
           }
@@ -1395,14 +1405,14 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "usePKCE",
     get: function get() {
-      var _this$_authOptions$us, _this$_authOptions2;
-      return (_this$_authOptions$us = (_this$_authOptions2 = this._authOptions) === null || _this$_authOptions2 === void 0 ? void 0 : _this$_authOptions2.usePKCE) !== null && _this$_authOptions$us !== void 0 ? _this$_authOptions$us : false;
+      var _this$_authOptions$us, _this$_authOptions3;
+      return (_this$_authOptions$us = (_this$_authOptions3 = this._authOptions) === null || _this$_authOptions3 === void 0 ? void 0 : _this$_authOptions3.usePKCE) !== null && _this$_authOptions$us !== void 0 ? _this$_authOptions$us : false;
     }
   }, {
     key: "authErrors",
     get: function get() {
-      var _this$_authOptions3;
-      var additionalAuthErrors = (_this$_authOptions3 = this._authOptions) === null || _this$_authOptions3 === void 0 ? void 0 : _this$_authOptions3.additionalAuthErrors;
+      var _this$_authOptions4;
+      var additionalAuthErrors = (_this$_authOptions4 = this._authOptions) === null || _this$_authOptions4 === void 0 ? void 0 : _this$_authOptions4.additionalAuthErrors;
       return additionalAuthErrors ? _objectSpread(_objectSpread({}, _authErrors.AUTH_ERRORS), additionalAuthErrors) : _authErrors.AUTH_ERRORS;
     }
   }, {
@@ -1414,7 +1424,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
           _yield$resp$json,
           code,
           _args21 = arguments,
-          _t14;
+          _t16;
         return _regenerator().w(function (_context21) {
           while (1) switch (_context21.p = _context21.n) {
             case 0:
@@ -1435,9 +1445,9 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               return _context21.a(2, code);
             case 4:
               _context21.p = 4;
-              _t14 = _context21.v;
-              this.logger.error('generateAuthCode fail', _t14);
-              throw _t14;
+              _t16 = _context21.v;
+              this.logger.error('generateAuthCode fail', _t16);
+              throw _t16;
             case 5:
               return _context21.a(2);
           }
@@ -1452,7 +1462,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
     key: "_getDiscoveryData",
     value: function () {
       var _getDiscoveryData2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee21() {
-        var tokenUri, discoveryUri, _platform$discovery, platform, discoveryData, _platform$discovery2, _platform$discovery4, _platform$discovery3, initialDiscoveryData, _t15;
+        var tokenUri, discoveryUri, _platform$discovery, platform, discoveryData, _platform$discovery2, _platform$discovery4, _platform$discovery3, initialDiscoveryData, _t17;
         return _regenerator().w(function (_context22) {
           while (1) switch (_context22.p = _context22.n) {
             case 0:
@@ -1471,7 +1481,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               _context22.n = 5;
               break;
             case 2:
-              if (!((_platform$discovery2 = platform.discovery()) === null || _platform$discovery2 === void 0 ? void 0 : _platform$discovery2._discoveryInitPromise)) {
+              if (!((_platform$discovery2 = platform.discovery()) !== null && _platform$discovery2 !== void 0 && _platform$discovery2._discoveryInitPromise)) {
                 _context22.n = 3;
                 break;
               }
@@ -1491,8 +1501,8 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
               break;
             case 6:
               _context22.p = 6;
-              _t15 = _context22.v;
-              this.logger.error('get discovery endpoint error', _t15);
+              _t17 = _context22.v;
+              this.logger.error('get discovery endpoint error', _t17);
             case 7:
               return _context22.a(2, {
                 tokenUri: tokenUri,

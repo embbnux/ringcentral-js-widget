@@ -237,7 +237,7 @@ var PendoGuide = exports.PendoGuide = (_dec = (0, _nextCore.injectable)({
     value: function syncGuidesExistence() {
       var _this$_pendoGuideOpti,
         _this3 = this;
-      if ((_this$_pendoGuideOpti = this._pendoGuideOptions) === null || _this$_pendoGuideOpti === void 0 ? void 0 : _this$_pendoGuideOpti.checkGuideNames) {
+      if ((_this$_pendoGuideOpti = this._pendoGuideOptions) !== null && _this$_pendoGuideOpti !== void 0 && _this$_pendoGuideOpti.checkGuideNames) {
         var guidesExistence = this._pendoGuideOptions.checkGuideNames.reduce(function (acc, guideName) {
           acc[guideName] = _this3.getPendoGuideExistence(guideName);
           return acc;

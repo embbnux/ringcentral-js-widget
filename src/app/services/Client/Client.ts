@@ -74,7 +74,7 @@ export class Client extends RingCentralClient {
             ..._sdkConfig,
             localStorage: _sdkConfig.localStorage ?? createStorage(prefix),
           },
-          _brandConfig,
+          _clientOptions?.omitDiscoveryBrandId ? undefined : _brandConfig,
         ),
     );
     if (
@@ -204,7 +204,9 @@ export class Client extends RingCentralClient {
         ...sdkConfig,
         localStorage: sdkConfig.localStorage ?? createStorage(this.prefix),
       },
-      this._brandConfig,
+      this._clientOptions?.omitDiscoveryBrandId
+        ? undefined
+        : this._brandConfig,
     );
   }
 

@@ -41,17 +41,6 @@ Object.keys(_Analytics).forEach(function (key) {
     }
   });
 });
-var _PendoAnalytics = require("./PendoAnalytics");
-Object.keys(_PendoAnalytics).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _PendoAnalytics[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _PendoAnalytics[key];
-    }
-  });
-});
 var _TrackPropsService = require("./TrackPropsService");
 Object.keys(_TrackPropsService).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -346,6 +335,17 @@ Object.keys(_KeepBeat).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _KeepBeat[key];
+    }
+  });
+});
+var _UserpilotService = require("./UserpilotService");
+Object.keys(_UserpilotService).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _UserpilotService[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _UserpilotService[key];
     }
   });
 });

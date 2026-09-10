@@ -44,28 +44,46 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
     enabled = props.enabled,
     allowDataTracking = props.allowDataTracking,
     server = props.server,
+    _props$aiApiUrl = props.aiApiUrl,
+    aiApiUrl = _props$aiApiUrl === void 0 ? '' : _props$aiApiUrl,
+    _props$smartNotesIfra = props.smartNotesIframe,
+    smartNotesIframe = _props$smartNotesIfra === void 0 ? '' : _props$smartNotesIfra,
+    _props$smartNotesEnv = props.smartNotesEnv,
+    smartNotesEnv = _props$smartNotesEnv === void 0 ? '' : _props$smartNotesEnv,
     _props$mfeDepsInfo = props.mfeDepsInfo,
     mfeDepsInfo = _props$mfeDepsInfo === void 0 ? '' : _props$mfeDepsInfo;
   var _useRefState = (0, _springUi.useRefState)(server),
     _useRefState2 = _slicedToArray(_useRefState, 2),
     serverValueRef = _useRefState2[0],
     setServerValue = _useRefState2[1];
-  var _useRefState3 = (0, _springUi.useRefState)(mfeDepsInfo),
+  var _useRefState3 = (0, _springUi.useRefState)(aiApiUrl),
     _useRefState4 = _slicedToArray(_useRefState3, 2),
-    mfeDepsInfoRef = _useRefState4[0],
-    setMfeDepsInfo = _useRefState4[1];
-  var _useRefState5 = (0, _springUi.useRefState)(recordingHost),
+    aiApiUrlValueRef = _useRefState4[0],
+    setAiApiUrlValue = _useRefState4[1];
+  var _useRefState5 = (0, _springUi.useRefState)(smartNotesIframe),
     _useRefState6 = _slicedToArray(_useRefState5, 2),
-    recordingHostValueRef = _useRefState6[0],
-    setRecordingHostValue = _useRefState6[1];
-  var _useRefState7 = (0, _springUi.useRefState)(allowDataTracking),
+    smartNotesIframeValueRef = _useRefState6[0],
+    setSmartNotesIframeValue = _useRefState6[1];
+  var _useRefState7 = (0, _springUi.useRefState)(smartNotesEnv),
     _useRefState8 = _slicedToArray(_useRefState7, 2),
-    enabledDataTrackingRef = _useRefState8[0],
-    setEnabledDataTracking = _useRefState8[1];
-  var _useRefState9 = (0, _springUi.useRefState)(enabled),
+    smartNotesEnvValueRef = _useRefState8[0],
+    setSmartNotesEnvValue = _useRefState8[1];
+  var _useRefState9 = (0, _springUi.useRefState)(mfeDepsInfo),
     _useRefState0 = _slicedToArray(_useRefState9, 2),
-    enabledValueRef = _useRefState0[0],
-    setEnabledValue = _useRefState0[1];
+    mfeDepsInfoRef = _useRefState0[0],
+    setMfeDepsInfo = _useRefState0[1];
+  var _useRefState1 = (0, _springUi.useRefState)(recordingHost),
+    _useRefState10 = _slicedToArray(_useRefState1, 2),
+    recordingHostValueRef = _useRefState10[0],
+    setRecordingHostValue = _useRefState10[1];
+  var _useRefState11 = (0, _springUi.useRefState)(allowDataTracking),
+    _useRefState12 = _slicedToArray(_useRefState11, 2),
+    enabledDataTrackingRef = _useRefState12[0],
+    setEnabledDataTracking = _useRefState12[1];
+  var _useRefState13 = (0, _springUi.useRefState)(enabled),
+    _useRefState14 = _slicedToArray(_useRefState13, 2),
+    enabledValueRef = _useRefState14[0],
+    setEnabledValue = _useRefState14[1];
   var _useState = (0, _react.useState)(defaultHidden),
     _useState2 = _slicedToArray(_useState, 2),
     hidden = _useState2[0],
@@ -74,6 +92,9 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
     // when open panel, reset value again
     if (!hidden) {
       setServerValue(server, false);
+      setAiApiUrlValue(aiApiUrl, false);
+      setSmartNotesIframeValue(smartNotesIframe, false);
+      setSmartNotesEnvValue(smartNotesEnv, false);
       setMfeDepsInfo(mfeDepsInfo, false);
       setRecordingHostValue(recordingHost, false);
       setEnabledValue(enabled, false);
@@ -84,6 +105,15 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
   });
   var onServerChange = function onServerChange(e) {
     setServerValue(e.currentTarget.value);
+  };
+  var onAiApiUrlChange = function onAiApiUrlChange(e) {
+    setAiApiUrlValue(e.currentTarget.value);
+  };
+  var onSmartNotesIframeChange = function onSmartNotesIframeChange(e) {
+    setSmartNotesIframeValue(e.currentTarget.value);
+  };
+  var onSmartNotesEnvChange = function onSmartNotesEnvChange(e) {
+    setSmartNotesEnvValue(e.currentTarget.value);
   };
   var onMfeDepsInfoChange = function onMfeDepsInfoChange(e) {
     setMfeDepsInfo(e.currentTarget.value);
@@ -103,6 +133,9 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
   var onOk = function onOk() {
     onSetData({
       server: serverValueRef.current,
+      aiApiUrl: aiApiUrlValueRef.current,
+      smartNotesIframe: smartNotesIframeValueRef.current,
+      smartNotesEnv: smartNotesEnvValueRef.current,
       mfeDepsInfo: mfeDepsInfoRef.current,
       recordingHost: recordingHostValueRef.current,
       enabled: enabledValueRef.current,
@@ -112,6 +145,9 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
   };
   var onCancel = function onCancel() {
     setServerValue(server);
+    setAiApiUrlValue(aiApiUrl);
+    setSmartNotesIframeValue(smartNotesIframe);
+    setSmartNotesEnvValue(smartNotesEnv);
     setMfeDepsInfo(mfeDepsInfo);
     setRecordingHostValue(recordingHost);
     setEnabledValue(enabled);
@@ -125,6 +161,9 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   var serverValue = serverValueRef.current;
+  var aiApiUrlValue = aiApiUrlValueRef.current;
+  var smartNotesIframeValue = smartNotesIframeValueRef.current;
+  var smartNotesEnvValue = smartNotesEnvValueRef.current;
   var mfeDepsInfoValue = mfeDepsInfoRef.current;
   var enabledValue = enabledValueRef.current;
   var enabledDataTrackingValue = enabledDataTrackingRef.current;
@@ -132,7 +171,7 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
   if (hidden) {
     return null;
   }
-  var hasChanges = !(serverValue === server && mfeDepsInfoValue === mfeDepsInfo && enabledValue === enabled && recordingHostValue === recordingHost && enabledDataTrackingValue === allowDataTracking);
+  var hasChanges = !(serverValue === server && aiApiUrlValue === aiApiUrl && smartNotesIframeValue === smartNotesIframe && smartNotesEnvValue === smartNotesEnv && mfeDepsInfoValue === mfeDepsInfo && enabledValue === enabled && recordingHostValue === recordingHost && enabledDataTrackingValue === allowDataTracking);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex flex-col h-full fixed top-0 left-0 z-modal",
     "data-sign": "environmentPanel"
@@ -173,6 +212,36 @@ var EnvironmentPanel = exports.EnvironmentPanel = function EnvironmentPanel(prop
     },
     value: recordingHostValue,
     onChange: onRecordingHostChange,
+    fullWidth: true,
+    variant: "outlined"
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex flex-col"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.FormLabel, null, "AI API URL"), /*#__PURE__*/_react["default"].createElement(_springUi.TextField, {
+    inputProps: {
+      'data-sign': 'envAiApiUrl'
+    },
+    value: aiApiUrlValue,
+    onChange: onAiApiUrlChange,
+    fullWidth: true,
+    variant: "outlined"
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex flex-col"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.FormLabel, null, "Smart Notes Iframe URL"), /*#__PURE__*/_react["default"].createElement(_springUi.TextField, {
+    inputProps: {
+      'data-sign': 'envSmartNotesIframe'
+    },
+    value: smartNotesIframeValue,
+    onChange: onSmartNotesIframeChange,
+    fullWidth: true,
+    variant: "outlined"
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex flex-col"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.FormLabel, null, "Smart Notes Env"), /*#__PURE__*/_react["default"].createElement(_springUi.TextField, {
+    inputProps: {
+      'data-sign': 'envSmartNotesEnv'
+    },
+    value: smartNotesEnvValue,
+    onChange: onSmartNotesEnvChange,
     fullWidth: true,
     variant: "outlined"
   })), /*#__PURE__*/_react["default"].createElement("div", {

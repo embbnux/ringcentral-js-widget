@@ -8,15 +8,15 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   loginButton: 'Accedi',
-  newUser: 'Nuovo utente?',
-  tryForFree: 'Prova gratuitamente',
+  newUser: 'È la prima volta che utilizzi {brandName}?',
+  tryForFree: 'Registrati ora',
   version: 'Versione',
-  title: 'Ti diamo il benvenuto in {brandName}',
-  description: "{appName} fornisce un'integrazione nativa per un'esperienza di chiamata senza interruzioni."
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: "{appName} fornisce un'integrazione nativa per un'esperienza di chiamata senza interruzioni.",
+  tagline: 'La piattaforma di comunicazioni basata sull’IA'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=it-IT.js.map

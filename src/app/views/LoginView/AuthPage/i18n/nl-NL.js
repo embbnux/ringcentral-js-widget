@@ -7,16 +7,16 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  loginButton: 'Aanmelden',
-  newUser: 'Nieuwe gebruiker?',
-  tryForFree: 'Gratis proberen',
+  loginButton: 'Inloggen',
+  newUser: 'Nieuw bij {brandName}?',
+  tryForFree: 'Nu registreren',
   version: 'Versie',
-  title: 'Welkom bij {brandName}',
-  description: '{appName} biedt een systeemeigen integratie voor een naadloze belervaring.'
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: '{appName} biedt een systeemeigen integratie voor een naadloze belervaring.',
+  tagline: 'Het AI-communicatieplatform'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=nl-NL.js.map

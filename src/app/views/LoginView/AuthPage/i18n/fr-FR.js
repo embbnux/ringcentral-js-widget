@@ -7,16 +7,16 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  loginButton: 'Connexion',
-  newUser: 'Nouvel utilisateur ?',
-  tryForFree: 'Essayer gratuitement',
+  loginButton: 'Se connecter',
+  newUser: 'Nouveau sur {brandName} ?',
+  tryForFree: 'Inscrivez-vous dès maintenant',
   version: 'Version',
-  title: 'Bienvenue dans {brandName}',
-  description: '{appName} fournit une intégration native pour une expérience d’appel fluide.'
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: '{appName} fournit une intégration native pour une expérience d’appel fluide.',
+  tagline: 'La plateforme de communications basée sur l’IA'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=fr-FR.js.map

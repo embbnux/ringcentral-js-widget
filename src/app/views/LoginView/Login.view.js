@@ -1,8 +1,6 @@
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-require("core-js/modules/es.symbol.js");
-require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
@@ -34,17 +32,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.LoginView = void 0;
+require("core-js/modules/es.symbol.js");
+require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 var _services = require("@ringcentral-integration/micro-core/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
-var _AuthPage = require("@ringcentral-integration/next-widgets/deprecated/Auth/AuthPage");
 var _react = _interopRequireWildcard(require("react"));
 var _rxjs = require("rxjs");
 var _services2 = require("../../services");
-var _AuthPage2 = require("./AuthPage");
+var _AuthPage = require("./AuthPage");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _class2, _descriptor, _descriptor2;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -72,16 +71,15 @@ function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.ke
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
 /**
  * View module for handling login functionality and UI
- * Supports both Spring UI and Juno themes
  *
  * @class
  */
 var LoginView = exports.LoginView = (_dec = (0, _nextCore.injectable)({
   name: 'LoginView'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)('LoginViewOptions')(target, undefined, 8);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Brand === "undefined" ? Object : _services.Brand, typeof _services2.Auth === "undefined" ? Object : _services2.Auth, typeof _services2.ConnectivityMonitor === "undefined" ? Object : _services2.ConnectivityMonitor, typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _services2.OAuth === "undefined" ? Object : _services2.OAuth, typeof _services2.RateLimiter === "undefined" ? Object : _services2.RateLimiter, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof LoginViewOptions === "undefined" ? Object : LoginViewOptions]), _dec5 = (0, _nextCore.dynamic)('AppFeatures'), _dec6 = Reflect.metadata("design:type", typeof _services2.AppFeatures === "undefined" ? Object : _services2.AppFeatures), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [Boolean]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function LoginView(_brand, _auth, _connectivityMonitor, _locale, _oAuth, _rateLimiter, _portManager, _router, _loginViewOptions) {
+  return (0, _nextCore.optional)('LoginViewOptions')(target, undefined, 9);
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Brand === "undefined" ? Object : _services.Brand, typeof _services2.Auth === "undefined" ? Object : _services2.Auth, typeof _services2.ConnectivityMonitor === "undefined" ? Object : _services2.ConnectivityMonitor, typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _services2.OAuth === "undefined" ? Object : _services2.OAuth, typeof _services2.RateLimiter === "undefined" ? Object : _services2.RateLimiter, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Theme === "undefined" ? Object : _services.Theme, typeof LoginViewOptions === "undefined" ? Object : LoginViewOptions]), _dec5 = (0, _nextCore.dynamic)('AppFeatures'), _dec6 = Reflect.metadata("design:type", typeof _services2.AppFeatures === "undefined" ? Object : _services2.AppFeatures), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [Boolean]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function LoginView(_brand, _auth, _connectivityMonitor, _locale, _oAuth, _rateLimiter, _portManager, _router, _theme, _loginViewOptions) {
     var _this$_loginViewOptio;
     var _this;
     _classCallCheck(this, LoginView);
@@ -94,10 +92,11 @@ var LoginView = exports.LoginView = (_dec = (0, _nextCore.injectable)({
     _this._rateLimiter = _rateLimiter;
     _this._portManager = _portManager;
     _this._router = _router;
+    _this._theme = _theme;
     _this._loginViewOptions = _loginViewOptions;
     _initializerDefineProperty(_this, "_appFeatures", _descriptor, _this);
     _initializerDefineProperty(_this, "showMicroCore", _descriptor2, _this);
-    if (!((_this$_loginViewOptio = _this._loginViewOptions) === null || _this$_loginViewOptio === void 0 ? void 0 : _this$_loginViewOptio.disabledRouteGuard)) {
+    if (!((_this$_loginViewOptio = _this._loginViewOptions) !== null && _this$_loginViewOptio !== void 0 && _this$_loginViewOptio.disabledRouteGuard)) {
       if (_this._portManager.shared) {
         _this._portManager.onServer(function () {
           _this.initialize();
@@ -193,27 +192,31 @@ var LoginView = exports.LoginView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getUIProps",
     value: function getUIProps() {
-      if (process.env.THEME_SYSTEM === 'spring-ui') {
-        var _this$_loginViewOptio4, _this$_loginViewOptio5, _this$_loginViewOptio6, _this$_brand$assets;
-        return {
-          description: (_this$_loginViewOptio4 = this._loginViewOptions) === null || _this$_loginViewOptio4 === void 0 ? void 0 : (_this$_loginViewOptio5 = _this$_loginViewOptio4.getDescription) === null || _this$_loginViewOptio5 === void 0 ? void 0 : _this$_loginViewOptio5.call(_this$_loginViewOptio4),
-          welcomePicture: (_this$_loginViewOptio6 = this._loginViewOptions) === null || _this$_loginViewOptio6 === void 0 ? void 0 : _this$_loginViewOptio6.welcomePicture,
-          currentLocale: this._locale.currentLocale,
-          brandName: this._brand.name,
-          appName: this._brand.appName,
-          disabled: !this._oAuth.oAuthReady || this._rateLimiter.restricted || !this._connectivityMonitor.connectivity,
-          showSpinner: !this._auth.ready || this._auth.loginStatus === _services2.loginStatus.loggingIn || this._auth.loginStatus === _services2.loginStatus.loggingOut || this._auth.loginStatus === _services2.loginStatus.beforeLogout || this._auth.loginStatus === _services2.loginStatus.loggedIn,
-          logoUrl: (_this$_brand$assets = this._brand.assets) === null || _this$_brand$assets === void 0 ? void 0 : _this$_brand$assets['logo'],
-          showSignUp: !!this._brand.brandConfig.signupUrl
-        };
-      }
+      var _this$_loginViewOptio4, _this$_loginViewOptio5, _this$_loginViewOptio6, _this$_loginViewOptio7, _this$_loginViewOptio8, _this$_loginViewOptio9, _this$_loginViewOptio0, _this$_loginViewOptio1, _this$_brand$assets;
+      var authPageTexts = (_this$_loginViewOptio4 = this._loginViewOptions) === null || _this$_loginViewOptio4 === void 0 ? void 0 : (_this$_loginViewOptio5 = _this$_loginViewOptio4.getAuthPageTexts) === null || _this$_loginViewOptio5 === void 0 ? void 0 : _this$_loginViewOptio5.call(_this$_loginViewOptio4);
+      var signInButtonLabel = authPageTexts === null || authPageTexts === void 0 ? void 0 : authPageTexts.signInButtonLabel;
+      var description = authPageTexts === null || authPageTexts === void 0 ? void 0 : authPageTexts.description;
+      var title = authPageTexts === null || authPageTexts === void 0 ? void 0 : authPageTexts.title;
+      var variant = (_this$_loginViewOptio6 = (_this$_loginViewOptio7 = this._loginViewOptions) === null || _this$_loginViewOptio7 === void 0 ? void 0 : _this$_loginViewOptio7.variant) !== null && _this$_loginViewOptio6 !== void 0 ? _this$_loginViewOptio6 : 'hero';
+      var isRcBrand = this._brand.code === 'rc';
+      var showSignUp = (_this$_loginViewOptio8 = (_this$_loginViewOptio9 = this._loginViewOptions) === null || _this$_loginViewOptio9 === void 0 ? void 0 : _this$_loginViewOptio9.showSignUp) !== null && _this$_loginViewOptio8 !== void 0 ? _this$_loginViewOptio8 :
+      // only when be rc brand and signup url exist, the sign up button will be shown by default
+      isRcBrand && !!this._brand.brandConfig.signupUrl;
       return {
+        variant: variant,
+        description: description,
+        title: title,
+        signInButtonLabel: signInButtonLabel,
+        newUserLabel: authPageTexts === null || authPageTexts === void 0 ? void 0 : authPageTexts.newUserLabel,
+        tryForFreeLabel: authPageTexts === null || authPageTexts === void 0 ? void 0 : authPageTexts.tryForFreeLabel,
         currentLocale: this._locale.currentLocale,
         brandName: this._brand.name,
         appName: this._brand.appName,
         disabled: !this._oAuth.oAuthReady || this._rateLimiter.restricted || !this._connectivityMonitor.connectivity,
         showSpinner: !this._auth.ready || this._auth.loginStatus === _services2.loginStatus.loggingIn || this._auth.loginStatus === _services2.loginStatus.loggingOut || this._auth.loginStatus === _services2.loginStatus.beforeLogout || this._auth.loginStatus === _services2.loginStatus.loggedIn,
-        showSignUp: !!this._brand.brandConfig.signupUrl
+        logoUrl: (_this$_loginViewOptio0 = (_this$_loginViewOptio1 = this._loginViewOptions) === null || _this$_loginViewOptio1 === void 0 ? void 0 : _this$_loginViewOptio1.logoUrl) !== null && _this$_loginViewOptio0 !== void 0 ? _this$_loginViewOptio0 : (_this$_brand$assets = this._brand.assets) === null || _this$_brand$assets === void 0 ? void 0 : _this$_brand$assets['logo'],
+        showSignUp: showSignUp,
+        themeType: this._theme.themeType
       };
     }
   }, {
@@ -235,15 +238,13 @@ var LoginView = exports.LoginView = (_dec = (0, _nextCore.injectable)({
     /**
      * Renders the login component with the appropriate theming
      * Handles state synchronization and spinner display
-     *
-     * @param {LoginViewProps} props - Props for the login view
-     * @returns {React.ReactNode} Rendered component
      */
   }, {
     key: "component",
     value: function component(props) {
       var _this4 = this,
-        _this$_loginViewOptio8;
+        _this$_loginViewOptio10,
+        _this$_loginViewOptio11;
       var syncCompleted = (0, _nextCore.useMainTabSyncState)();
       var _useRef = (0, _react.useRef)(this.getUIFunctions()),
         uiFunctions = _useRef.current;
@@ -254,16 +255,10 @@ var LoginView = exports.LoginView = (_dec = (0, _nextCore.injectable)({
         });
       });
       var showSpinner = !syncCompleted || _props.showSpinner;
-      if (process.env.THEME_SYSTEM === 'spring-ui') {
-        var _this$_loginViewOptio7;
-        var _Component = ((_this$_loginViewOptio7 = this._loginViewOptions) === null || _this$_loginViewOptio7 === void 0 ? void 0 : _this$_loginViewOptio7.component) || _AuthPage2.AuthPage;
-        return /*#__PURE__*/_react["default"].createElement(_Component, _extends({}, _props, uiFunctions, {
-          showSpinner: showSpinner
-        }));
-      }
-      var Component = ((_this$_loginViewOptio8 = this._loginViewOptions) === null || _this$_loginViewOptio8 === void 0 ? void 0 : _this$_loginViewOptio8.component) || _AuthPage.AuthPage;
+      var Component = ((_this$_loginViewOptio10 = this._loginViewOptions) === null || _this$_loginViewOptio10 === void 0 ? void 0 : _this$_loginViewOptio10.component) || _AuthPage.AuthPage;
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions, {
-        showSpinner: showSpinner
+        showSpinner: showSpinner,
+        footer: (_this$_loginViewOptio11 = this._loginViewOptions) === null || _this$_loginViewOptio11 === void 0 ? void 0 : _this$_loginViewOptio11.footer
       }));
     }
   }]);

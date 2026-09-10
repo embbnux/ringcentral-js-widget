@@ -24,7 +24,6 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -42,7 +41,7 @@ var _DataFetcher = require("../DataFetcher");
 var _ExtensionFeatures = require("../ExtensionFeatures");
 var _TierChecker = require("../TierChecker");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _class, _class2;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -64,6 +63,7 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 var subBrands = exports.subBrands = ['3000.Zayo', '3000.NWNC', '2000.Optus', '3000.Brightspeed'];
+var tcrSupportedCountryIds = ['1', '39']; // US and CA
 var AccountInfo = exports.AccountInfo = (_dec = (0, _nextCore.injectable)({
   name: 'AccountInfo'
 }), _dec2 = function _dec2(target, key) {
@@ -82,7 +82,7 @@ var AccountInfo = exports.AccountInfo = (_dec = (0, _nextCore.injectable)({
 }), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = (0, _nextCore.computed)(function (_ref4) {
   var serviceInfo = _ref4.serviceInfo;
   return [serviceInfo];
-}), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
+}), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
   function AccountInfo(_auth, _client, _toast, _extensionFeatures, _dataFetcher, _tierChecker, _accountInfoOptions) {
     var _this;
     _classCallCheck(this, AccountInfo);
@@ -135,7 +135,7 @@ var AccountInfo = exports.AccountInfo = (_dec = (0, _nextCore.injectable)({
     key: "_checkPermission",
     value: function _checkPermission() {
       var _this$_extensionFeatu, _this$_extensionFeatu2;
-      return !!((_this$_extensionFeatu = this._extensionFeatures.features) === null || _this$_extensionFeatu === void 0 ? void 0 : (_this$_extensionFeatu2 = _this$_extensionFeatu.ReadCompanyInfo) === null || _this$_extensionFeatu2 === void 0 ? void 0 : _this$_extensionFeatu2.available);
+      return !!((_this$_extensionFeatu = this._extensionFeatures.features) !== null && _this$_extensionFeatu !== void 0 && (_this$_extensionFeatu2 = _this$_extensionFeatu.ReadCompanyInfo) !== null && _this$_extensionFeatu2 !== void 0 && _this$_extensionFeatu2.available);
     }
   }, {
     key: "onStateChange",
@@ -229,14 +229,32 @@ var AccountInfo = exports.AccountInfo = (_dec = (0, _nextCore.injectable)({
       return (_this$serviceInfo$uBr = this.serviceInfo.uBrand) === null || _this$serviceInfo$uBr === void 0 ? void 0 : _this$serviceInfo$uBr.id;
     }
   }, {
+    key: "brandId",
+    get: function get() {
+      var _this$serviceInfo$bra2;
+      return (_this$serviceInfo$bra2 = this.serviceInfo.brand) === null || _this$serviceInfo$bra2 === void 0 ? void 0 : _this$serviceInfo$bra2.id;
+    }
+  }, {
+    key: "isTCRSupported",
+    get: function get() {
+      var _this$serviceInfo$con;
+      if (!((_this$serviceInfo$con = this.serviceInfo.contractedCountry) !== null && _this$serviceInfo$con !== void 0 && _this$serviceInfo$con.id)) {
+        return false;
+      }
+      // only US & CA
+      return tcrSupportedCountryIds.includes(this.serviceInfo.contractedCountry.id);
+    }
+
+    /**
+     * the brand id of the user, it is the uBrandId if it is a sub brand, otherwise it is the brandId
+     */
+  }, {
     key: "userBrandId",
     get: function get() {
-      var _serviceInfo$brand;
-      var serviceInfo = this.serviceInfo;
       var uBrandId = this.uBrandId;
-      var brandId = uBrandId && subBrands.includes(uBrandId) ? uBrandId : (_serviceInfo$brand = serviceInfo.brand) === null || _serviceInfo$brand === void 0 ? void 0 : _serviceInfo$brand.id;
+      var brandId = uBrandId && subBrands.includes(uBrandId) ? uBrandId : this.brandId;
       return brandId;
     }
   }]);
-}(_DataFetcher.DataFetcherConsumer), _applyDecoratedDescriptor(_class2.prototype, "info", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "info"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "serviceInfo", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "serviceInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "servicePlan", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "servicePlan"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "billingPlan", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "billingPlan"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "userBrandId", [_nextCore.computed, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "userBrandId"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}(_DataFetcher.DataFetcherConsumer), _applyDecoratedDescriptor(_class2.prototype, "info", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "info"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "serviceInfo", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "serviceInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "servicePlan", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "servicePlan"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "billingPlan", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "billingPlan"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "isTCRSupported", [_nextCore.computed, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "isTCRSupported"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "userBrandId", [_nextCore.computed, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "userBrandId"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=AccountInfo.js.map

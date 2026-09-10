@@ -106,7 +106,7 @@ var PendoAnalytics = exports.PendoAnalytics = (_dec = (0, _nextCore.injectable)(
           while (1) switch (_context.n) {
             case 0:
               pendo = _ref.pendo;
-              init = !((_pendo$isReady = pendo.isReady) === null || _pendo$isReady === void 0 ? void 0 : _pendo$isReady.call(pendo));
+              init = !((_pendo$isReady = pendo.isReady) !== null && _pendo$isReady !== void 0 && _pendo$isReady.call(pendo));
               fn = init ? pendo.initialize : pendo.updateOptions;
               if (!(typeof fn === 'function')) {
                 _context.n = 2;
@@ -203,7 +203,7 @@ var PendoAnalytics = exports.PendoAnalytics = (_dec = (0, _nextCore.injectable)(
       var eventName = "".concat(appName, "-").concat(event);
       this.logger.log('pendo track', eventName, trackProps);
       // in current version pendo only use after login, if we need to use it before login, we need to change the logic
-      if ((pendo === null || pendo === void 0 ? void 0 : (_pendo$isReady2 = pendo.isReady) === null || _pendo$isReady2 === void 0 ? void 0 : _pendo$isReady2.call(pendo)) && ((_this$_auth2 = this._auth) === null || _this$_auth2 === void 0 ? void 0 : _this$_auth2.ownerId)) {
+      if (pendo !== null && pendo !== void 0 && (_pendo$isReady2 = pendo.isReady) !== null && _pendo$isReady2 !== void 0 && _pendo$isReady2.call(pendo) && (_this$_auth2 = this._auth) !== null && _this$_auth2 !== void 0 && _this$_auth2.ownerId) {
         pendo.track(eventName, trackProps);
       }
     }
@@ -218,7 +218,7 @@ var PendoAnalytics = exports.PendoAnalytics = (_dec = (0, _nextCore.injectable)(
             case 0:
               ownerId = (_this$_auth3 = this._auth) === null || _this$_auth3 === void 0 ? void 0 : _this$_auth3.ownerId;
               pendo = this.pendo;
-              if (!(ownerId && (pendo === null || pendo === void 0 ? void 0 : (_pendo$isReady3 = pendo.isReady) === null || _pendo$isReady3 === void 0 ? void 0 : _pendo$isReady3.call(pendo)))) {
+              if (!(ownerId && pendo !== null && pendo !== void 0 && (_pendo$isReady3 = pendo.isReady) !== null && _pendo$isReady3 !== void 0 && _pendo$isReady3.call(pendo))) {
                 _context2.n = 5;
                 break;
               }
@@ -263,7 +263,7 @@ var PendoAnalytics = exports.PendoAnalytics = (_dec = (0, _nextCore.injectable)(
           while (1) switch (_context3.n) {
             case 0:
               pendo = this.pendo;
-              if (!(pendo === null || pendo === void 0 ? void 0 : (_pendo$isReady4 = pendo.isReady) === null || _pendo$isReady4 === void 0 ? void 0 : _pendo$isReady4.call(pendo))) {
+              if (!(pendo !== null && pendo !== void 0 && (_pendo$isReady4 = pendo.isReady) !== null && _pendo$isReady4 !== void 0 && _pendo$isReady4.call(pendo))) {
                 _context3.n = 1;
                 break;
               }

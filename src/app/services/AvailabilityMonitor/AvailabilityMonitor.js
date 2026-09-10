@@ -314,7 +314,7 @@ var AvailabilityMonitor = exports.AvailabilityMonitor = (_dec = (0, _nextCore.in
         return (_this3$_environment = _this3._environment) === null || _this3$_environment === void 0 ? void 0 : _this3$_environment.changeCounter;
       }, function () {
         var _this3$_environment2;
-        if (_this3.ready && ((_this3$_environment2 = _this3._environment) === null || _this3$_environment2 === void 0 ? void 0 : _this3$_environment2.ready)) {
+        if (_this3.ready && (_this3$_environment2 = _this3._environment) !== null && _this3$_environment2 !== void 0 && _this3$_environment2.ready) {
           _this3._bindHandlers();
         }
       });

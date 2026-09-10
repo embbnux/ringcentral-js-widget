@@ -8,15 +8,15 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   loginButton: 'Se connecter',
-  newUser: 'Nouvel utilisateur?',
-  tryForFree: 'Essayer gratuitement',
+  newUser: 'Nouveau sur {brandName}?',
+  tryForFree: 'Inscrivez-vous dès maintenant',
   version: 'Version',
-  title: 'Bienvenue à {brandName}',
-  description: '{appName} fournit une intégration native pour une expérience d’appel en toute simplicité.'
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: '{appName} fournit une intégration native pour une expérience d’appel en toute simplicité.',
+  tagline: 'La plateforme de communications IA'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=fr-CA.js.map

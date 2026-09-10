@@ -207,7 +207,7 @@ var TrackPropsService = exports.TrackPropsService = (_dec = (0, _nextCore.inject
      */
     function get() {
       var _this$additionalTrack, _this$additionalTrack2;
-      if (!((_this$additionalTrack = this.additionalTrackProps) === null || _this$additionalTrack === void 0 ? void 0 : _this$additionalTrack.autoHeartBeatProps)) {
+      if (!((_this$additionalTrack = this.additionalTrackProps) !== null && _this$additionalTrack !== void 0 && _this$additionalTrack.autoHeartBeatProps)) {
         return {
           extensionPermission: this.extensionPermission
         };
@@ -268,7 +268,7 @@ var TrackPropsService = exports.TrackPropsService = (_dec = (0, _nextCore.inject
           while (1) switch (_context.n) {
             case 0:
               infoProps = {}; // when the user is logged in, we need to wait the extension info ready before the tracking event send
-              if (!((_this$_auth = this._auth) === null || _this$_auth === void 0 ? void 0 : _this$_auth.ownerId)) {
+              if (!((_this$_auth = this._auth) !== null && _this$_auth !== void 0 && _this$_auth.ownerId)) {
                 _context.n = 2;
                 break;
               }

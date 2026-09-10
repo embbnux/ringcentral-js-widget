@@ -19,6 +19,17 @@ Object.keys(_Client).forEach(function (key) {
     }
   });
 });
+var _Client2 = require("./Client.interface");
+Object.keys(_Client2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _Client2[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Client2[key];
+    }
+  });
+});
 var _createSDK = require("./createSDK");
 Object.keys(_createSDK).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

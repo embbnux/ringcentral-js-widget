@@ -8,15 +8,15 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   loginButton: 'Kirjaudu sisään',
-  newUser: 'Oletko uusi käyttäjä?',
-  tryForFree: 'Kokeile maksutta',
+  newUser: 'Oletko uusi käyttäjä palvelussa {brandName}?',
+  tryForFree: 'Rekisteröidy nyt',
   version: 'Versio',
-  title: 'Tervetuloa palveluun {brandName}',
-  description: '{appName} tarjoaa alkuperäisen integraation saumattoman puhelukokemuksen varmistamiseksi.'
-}; // @key: @#@"loginButton"@#@ @source: @#@"Sign In"@#@
-// @key: @#@"newUser"@#@ @source: @#@"New user?"@#@
-// @key: @#@"tryForFree"@#@ @source: @#@"Try for free"@#@
+  description: '{appName} tarjoaa alkuperäisen integraation saumattoman puhelukokemuksen varmistamiseksi.',
+  tagline: 'Tekoälypohjainen viestintäalusta'
+}; // @key: @#@"loginButton"@#@ @source: @#@"Sign in"@#@
+// @key: @#@"newUser"@#@ @source: @#@"New to {brandName}?"@#@
+// @key: @#@"tryForFree"@#@ @source: @#@"Sign up now"@#@
 // @key: @#@"version"@#@ @source: @#@"Version"@#@
-// @key: @#@"title"@#@ @source: @#@"Welcome to {brandName}"@#@
 // @key: @#@"description"@#@ @source: @#@"{appName} provides a native integration for a seamless calling experience."@#@
+// @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=fi-FI.js.map

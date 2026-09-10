@@ -108,7 +108,7 @@ var Client = exports.Client = (_dec = (0, _nextCore.injectable)({
     _classCallCheck(this, Client);
     _this = _callSuper(this, Client, [(_clientOptions$sdk = _clientOptions === null || _clientOptions === void 0 ? void 0 : _clientOptions.sdk) !== null && _clientOptions$sdk !== void 0 ? _clientOptions$sdk : (0, _createSDK.createSDK)(_objectSpread(_objectSpread({}, _sdkConfig), {}, {
       localStorage: (_sdkConfig$localStora = _sdkConfig.localStorage) !== null && _sdkConfig$localStora !== void 0 ? _sdkConfig$localStora : createStorage(prefix)
-    }), _brandConfig)]);
+    }), _clientOptions !== null && _clientOptions !== void 0 && _clientOptions.omitDiscoveryBrandId ? undefined : _brandConfig)]);
     _this._portManager = _portManager;
     _this._initiator = _initiator;
     _this._sdkConfig = _sdkConfig;
@@ -282,13 +282,13 @@ var Client = exports.Client = (_dec = (0, _nextCore.injectable)({
     key: "setService",
     value: (function () {
       var _setService = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(sdkConfig) {
-        var _sdkConfig$localStora2;
+        var _sdkConfig$localStora2, _this$_clientOptions2;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.n) {
             case 0:
               this.service = (0, _createSDK.createSDK)(_objectSpread(_objectSpread({}, sdkConfig), {}, {
                 localStorage: (_sdkConfig$localStora2 = sdkConfig.localStorage) !== null && _sdkConfig$localStora2 !== void 0 ? _sdkConfig$localStora2 : createStorage(this.prefix)
-              }), this._brandConfig);
+              }), (_this$_clientOptions2 = this._clientOptions) !== null && _this$_clientOptions2 !== void 0 && _this$_clientOptions2.omitDiscoveryBrandId ? undefined : this._brandConfig);
             case 1:
               return _context2.a(2);
           }

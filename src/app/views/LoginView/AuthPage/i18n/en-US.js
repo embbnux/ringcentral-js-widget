@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _default = exports["default"] = {
-  loginButton: 'Sign In',
-  newUser: 'New user?',
-  tryForFree: 'Try for free',
+  loginButton: 'Sign in',
+  newUser: 'New to {brandName}?',
+  tryForFree: 'Sign up now',
   version: 'Version',
-  title: 'Welcome to {brandName}',
-  description: '{appName} provides a native integration for a seamless calling experience.'
-};
+  description: '{appName} provides a native integration for a seamless calling experience.',
+  tagline: 'The AI communications platform'
+}; // @key: @#@"tagline"@#@ @source: @#@"The AI communications platform"@#@
 //# sourceMappingURL=en-US.js.map

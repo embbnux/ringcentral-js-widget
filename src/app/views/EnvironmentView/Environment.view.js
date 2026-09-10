@@ -84,6 +84,9 @@ var EnvironmentView = exports.EnvironmentView = (_dec = (0, _nextCore.injectable
       var props = (0, _nextCore.useConnector)(function () {
         return {
           server: _this2._environment.server || '',
+          aiApiUrl: _this2._environment.aiApiUrl || '',
+          smartNotesIframe: _this2._environment.smartNotesIframe || '',
+          smartNotesEnv: _this2._environment.smartNotesEnv || '',
           recordingHost: _this2._environment.recordingHost || '',
           enabled: _this2._environment.enabled,
           allowDataTracking: _this2._environment.allowDataTracking,
