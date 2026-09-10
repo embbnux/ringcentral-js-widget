@@ -1,0 +1,45 @@
+{
+  "name": "@ringcentral-integration/core",
+  "version": "0.16.1",
+  "description": "The foundation package for RingCentral Integration products.",
+  "homepage": "https://github.com/ringcentral/ringcentral-js-widgets/tree/master/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/ringcentral/ringcentral-js-widgets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ringcentral/ringcentral-js-widgets.git"
+  },
+  "license": "MIT",
+  "author": "RingCentral Integration Team",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@ringcentral-integration/utils": "*",
+    "@ringcentral/mfe-logger": "^0.5.0",
+    "reactant-share": "^0.150.0",
+    "rxjs": "^7.8.0",
+    "immer": "^9.0.12",
+    "ramda": "^0.28.0",
+    "redux": "^4.2.0"
+  },
+  "common": true,
+  "ci": {
+    "@ringcentral-integration/core": {
+      "includes": "**",
+      "excludes": [
+        "*.md",
+        "**/*.md"
+      ]
+    }
+  },
+  "nx": {
+    "tags": [
+      "scope:ci-group-1",
+      "scope:ci-test"
+    ]
+  }
+}
