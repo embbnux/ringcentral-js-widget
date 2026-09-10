@@ -80,7 +80,7 @@ var AddressBook = exports.AddressBook = (_dec = (0, _nextCore.injectable)({
   return [data];
 }), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _nextCore.computed)(function (that) {
   return [that.contacts];
-}), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_ref3) {
+}), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_DataFetcherConsumer) {
   function AddressBook(_client, _extensionFeatures, _dataFetcher, _addressBookOptions) {
     var _this$_addressBookOpt;
     var _this;
@@ -90,9 +90,9 @@ var AddressBook = exports.AddressBook = (_dec = (0, _nextCore.injectable)({
     _this._extensionFeatures = _extensionFeatures;
     _this._dataFetcher = _dataFetcher;
     _this._addressBookOptions = _addressBookOptions;
-    var _ref4 = (_this$_addressBookOpt = _this._addressBookOptions) !== null && _this$_addressBookOpt !== void 0 ? _this$_addressBookOpt : {},
-      _ref4$polling = _ref4.polling,
-      polling = _ref4$polling === void 0 ? true : _ref4$polling;
+    var _ref3 = (_this$_addressBookOpt = _this._addressBookOptions) !== null && _this$_addressBookOpt !== void 0 ? _this$_addressBookOpt : {},
+      _ref3$polling = _ref3.polling,
+      polling = _ref3$polling === void 0 ? true : _ref3$polling;
     _this._source = new _services.DataSource(_objectSpread(_objectSpread({}, _this._addressBookOptions), {}, {
       key: 'addressBook',
       polling: polling,
@@ -111,7 +111,7 @@ var AddressBook = exports.AddressBook = (_dec = (0, _nextCore.injectable)({
     _this._dataFetcher.register(_this._source);
     return _this;
   }
-  _inherits(AddressBook, _ref3);
+  _inherits(AddressBook, _DataFetcherConsumer);
   return _createClass(AddressBook, [{
     key: "_fetchInterval",
     get: function get() {

@@ -256,7 +256,7 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
         value: value
       });
     })), /*#__PURE__*/_react["default"].createElement(_springUi.SuggestionList, {
-      className: "flex-auto m-0",
+      className: "flex-auto m-0 p-0",
       highlightedIndex: highlightedIndex,
       components: components,
       options: optionItems,
@@ -285,9 +285,10 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
           contact = _ref3.contact,
           name = _ref3.name,
           doNotCall = _ref3.doNotCall;
-        var secondaryContent = (contactSearchViewOptions === null || contactSearchViewOptions === void 0 ? void 0 : contactSearchViewOptions.renderListItemSecondary) ? contactSearchViewOptions.renderListItemSecondary(itemProps) : function () {
+        var secondaryContent = contactSearchViewOptions !== null && contactSearchViewOptions !== void 0 && contactSearchViewOptions.renderListItemSecondary ? contactSearchViewOptions.renderListItemSecondary(itemProps) : function () {
           var formattedPhoneNumber = phoneNumberRender(phoneNumber);
           return /*#__PURE__*/_react["default"].createElement("span", {
+            "data-sign": "phoneNumber",
             title: formattedPhoneNumber
           }, formattedPhoneNumber);
         }();
@@ -297,7 +298,7 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
         // Check if doNotCall is truthy (could be string "true" or boolean true)
         var isDoNotCall = doNotCall === true || doNotCall === 'true';
         return /*#__PURE__*/_react["default"].createElement(_springUi.ListItem, {
-          size: isPrimary || freeSolo ? 'large' : 'small',
+          size: "auto",
           selected: state.highlighted,
           divider: false,
           'aria-posinset': ariaPosinset,
@@ -309,11 +310,12 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
           onMouseOver: onMouseOver,
           onMouseUp: onMouseUp,
           role: role,
+          className: "p-0",
           "data-sign": "".concat(freeSolo ? 'freeSolo' : 'contact', "Item")
         }, /*#__PURE__*/_react["default"].createElement("div", {
           className: "flex flex-col w-full h-full"
         }, isPrimary && !isFirstItem && /*#__PURE__*/_react["default"].createElement(_springUi.Divider, {
-          className: "w-full"
+          className: "w-full absolute top-0"
         }), freeSolo ? /*#__PURE__*/_react["default"].createElement("div", {
           className: "flex flex-auto items-center"
         }, /*#__PURE__*/_react["default"].createElement(_springUi.Avatar, {
@@ -339,7 +341,7 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
           phoneNumber: phoneNumber,
           contactName: name
         }), /*#__PURE__*/_react["default"].createElement(_springUi.ListItemText, {
-          className: (0, _clsx["default"])(!isPrimary && 'pl-11'),
+          className: !isPrimary ? 'pl-12' : undefined,
           primary: isPrimary ? function () {
             var text = /*#__PURE__*/_react["default"].createElement(_components2.TextWithHighlight, {
               "data-sign": "contactSearchItem",
@@ -358,12 +360,12 @@ var useContactSearchView = exports.useContactSearchView = function useContactSea
               "data-sign": "doNotCall"
             })));
           }() : undefined,
-          secondary: secondaryContent
-        }), /*#__PURE__*/_react["default"].createElement("span", {
-          "data-sign": "phoneType",
-          className: "text-neutral-b2 typography-descriptor text-nowrap sui-text-root flex-none",
-          title: phoneTypeI18nString
-        }, phoneTypeI18nString))));
+          secondary: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, secondaryContent, ' - ', /*#__PURE__*/_react["default"].createElement("span", {
+            "data-sign": "phoneType",
+            className: "text-neutral-b2 typography-descriptor text-nowrap sui-text-root flex-none",
+            title: phoneTypeI18nString
+          }, phoneTypeI18nString))
+        }))));
       }
     }))) : null
   };

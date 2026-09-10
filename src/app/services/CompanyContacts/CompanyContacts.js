@@ -237,7 +237,7 @@ var CompanyContacts = exports.CompanyContacts = (_dec = (0, _nextCore.injectable
         return _regenerator().w(function (_context3) {
           while (1) switch (_context3.n) {
             case 0:
-              if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && (message === null || message === void 0 ? void 0 : message.event) && contactsRegExp.test(message.event) && ((_message$body = message.body) === null || _message$body === void 0 ? void 0 : _message$body.contacts)) {
+              if (this.ready && (this._source.disableCache || ((_this$_tabManager$act = (_this$_tabManager = this._tabManager) === null || _this$_tabManager === void 0 ? void 0 : _this$_tabManager.active) !== null && _this$_tabManager$act !== void 0 ? _this$_tabManager$act : true)) && message !== null && message !== void 0 && message.event && contactsRegExp.test(message.event) && (_message$body = message.body) !== null && _message$body !== void 0 && _message$body.contacts) {
                 data = (_this$data = this.data) !== null && _this$data !== void 0 ? _this$data : []; // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 (0, _ramda.forEach)(function (_ref5) {
                   var eventType = _ref5.eventType,
@@ -289,7 +289,7 @@ var CompanyContacts = exports.CompanyContacts = (_dec = (0, _nextCore.injectable
     key: "enableCompanyPublicApi",
     get: function get() {
       var _this$_companyContact4;
-      return !!((_this$_companyContact4 = this._companyContactsOptions) === null || _this$_companyContact4 === void 0 ? void 0 : _this$_companyContact4.enableCompanyPublicApi);
+      return !!((_this$_companyContact4 = this._companyContactsOptions) !== null && _this$_companyContact4 !== void 0 && _this$_companyContact4.enableCompanyPublicApi);
     }
   }, {
     key: "extensionTypes",

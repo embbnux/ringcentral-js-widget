@@ -150,7 +150,7 @@ var NumberValidate = exports.NumberValidate = (_dec = (0, _nextCore.injectable)(
   }, {
     key: "_isSpecial",
     value: function _isSpecial(phoneNumber) {
-      return !!(phoneNumber === null || phoneNumber === void 0 ? void 0 : phoneNumber.special);
+      return !!(phoneNumber !== null && phoneNumber !== void 0 && phoneNumber.special);
     }
   }, {
     key: "isAnExtensionNumber",
@@ -293,7 +293,7 @@ var NumberValidate = exports.NumberValidate = (_dec = (0, _nextCore.injectable)(
                 var extensionObj = {
                   isAnExtension: isAnExtensionNumber
                 };
-                if (!((_this3$_companyContac = _this3._companyContacts) === null || _this3$_companyContac === void 0 ? void 0 : _this3$_companyContac.enableCompanyPublicApi) && isAnExtensionNumber) {
+                if (!((_this3$_companyContac = _this3._companyContacts) !== null && _this3$_companyContac !== void 0 && _this3$_companyContac.enableCompanyPublicApi) && isAnExtensionNumber) {
                   var _number = phoneNumber.originalString;
                   var availableExtension = _this3.getAvailableExtension(_number);
                   if (!availableExtension) {

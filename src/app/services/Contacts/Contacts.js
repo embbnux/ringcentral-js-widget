@@ -118,7 +118,7 @@ var Contacts = exports.Contacts = (_dec = (0, _nextCore.injectable)({
       for (var _i = 0, _Array$from = Array.from(this._contactSources.keys()); _i < _Array$from.length; _i++) {
         var sourceName = _Array$from[_i];
         var source = this._contactSources.get(sourceName);
-        if (!(source === null || source === void 0 ? void 0 : source.ready)) {
+        if (!(source !== null && source !== void 0 && source.ready)) {
           ready = false;
           break;
         }
@@ -132,7 +132,7 @@ var Contacts = exports.Contacts = (_dec = (0, _nextCore.injectable)({
       for (var _i2 = 0, _Array$from2 = Array.from(this._contactSources.keys()); _i2 < _Array$from2.length; _i2++) {
         var sourceName = _Array$from2[_i2];
         var source = this._contactSources.get(sourceName);
-        if (source === null || source === void 0 ? void 0 : source.sourceReady) {
+        if (source !== null && source !== void 0 && source.sourceReady) {
           names.push(sourceName);
         }
       }

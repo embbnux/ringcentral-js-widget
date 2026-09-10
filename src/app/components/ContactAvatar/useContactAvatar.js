@@ -19,7 +19,7 @@ var useContactAvatar = exports.useContactAvatar = function useContactAvatar(sour
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'xsmall';
   var authService = (0, _nextCore.useContainer)('Auth');
   var contactsService = (0, _nextCore.useContainer)('Contacts');
-  var contact = (source === null || source === void 0 ? void 0 : source.id) ? contactsService.allContactsMap.get(source.id) : undefined;
+  var contact = source !== null && source !== void 0 && source.id ? contactsService.allContactsMap.get(source.id) : undefined;
   var targetContact = contact || source;
   var result = (0, _react.useMemo)(function () {
     return targetContact ? contactsService.getProfileImageSync(targetContact, size) : undefined;

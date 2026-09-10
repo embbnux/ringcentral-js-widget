@@ -80,13 +80,15 @@ var ContactSearchPanel = exports.ContactSearchPanel = function ContactSearchPane
     ThirdPartyAvatar = _ref.ThirdPartyAvatar,
     _ref$keyToTags = _ref.keyToTags,
     keyToTags = _ref$keyToTags === void 0 ? ['↵', ',', ';'] : _ref$keyToTags,
+    _ref$strictErrorMode = _ref.strictErrorMode,
+    strictErrorMode = _ref$strictErrorMode === void 0 ? false : _ref$strictErrorMode,
     changeTabTrack = _ref.changeTabTrack,
     onSelect = _ref.onSelect,
     onInputValueChange = _ref.onInputValueChange,
     onRemove = _ref.onRemove,
     setFilterString = _ref.setFilterString,
     onExpanded = _ref.onExpanded,
-    helperText = _ref.helperText;
+    helperTextProp = _ref.helperText;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var _useAsyncState = (0, _reactHooks.useAsyncState)(inputValue, function (value) {
@@ -116,6 +118,9 @@ var ContactSearchPanel = exports.ContactSearchPanel = function ContactSearchPane
         label: name || phoneNumber,
         onDelete: function onDelete() {
           onRemove(phoneNumber);
+        },
+        DeleteIconProps: {
+          'data-sign': 'remove-chip-button'
         },
         truncate: true
       }));
@@ -228,6 +233,20 @@ var ContactSearchPanel = exports.ContactSearchPanel = function ContactSearchPane
       return toNumber.error;
     });
   }, [toNumbers]);
+  var helperText = (0, _react.useMemo)(function () {
+    if (helperTextProp) {
+      return helperTextProp;
+    }
+    if (error) {
+      if (strictErrorMode) {
+        var invalidCount = toNumbers.filter(function (toNumber) {
+          return toNumber.errorReason === 'invalidPhoneNumber';
+        }).length;
+        return invalidCount > 0 ? t('invalidPhoneNumber') : undefined;
+      }
+      return t('invalidPhoneNumber');
+    }
+  }, [toNumbers, error, t, helperTextProp, strictErrorMode]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])('flex flex-col gap-2', openProp && 'flex-auto')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Autocomplete, {
@@ -254,7 +273,7 @@ var ContactSearchPanel = exports.ContactSearchPanel = function ContactSearchPane
     }),
     label: t('to'),
     value: toNumbers,
-    helperText: error ? helperText || t('invalidPhoneNumber') : helperText,
+    helperText: helperText,
     renderTags: renderTags,
     onClick: function onClick(e) {
       if (value.length) {

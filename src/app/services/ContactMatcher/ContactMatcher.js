@@ -31,7 +31,8 @@ exports.ContactMatcher = void 0;
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.match.js");
-var _services = require("@ringcentral-integration/micro-core/src/app/services");
+var _services = require("@ringcentral-integration/micro-auth/src/app/services");
+var _services2 = require("@ringcentral-integration/micro-core/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _class, _class2;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
@@ -54,14 +55,15 @@ function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.ke
 var ContactMatcher = exports.ContactMatcher = (_dec = (0, _nextCore.injectable)({
   name: 'ContactMatcher'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)('ContactMatcherOptions')(target, undefined, 0);
+  return (0, _nextCore.optional)('ContactMatcherOptions')(target, undefined, 1);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 1);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof ContactMatcherOptions === "undefined" ? Object : ContactMatcherOptions, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof HasMatchNumberOptions === "undefined" ? Object : HasMatchNumberOptions]), _dec9 = (0, _nextCore.delegate)('server'), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [typeof ForceMatchBatchNumbersOptions === "undefined" ? Object : ForceMatchBatchNumbersOptions]), _dec10 = (0, _nextCore.delegate)('server'), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [typeof ForceMatchNumberOptions === "undefined" ? Object : ForceMatchNumberOptions]), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [void 0]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_DataMatcher) {
-  function ContactMatcher(_contactMatcherOptions, _storage) {
+  return (0, _nextCore.optional)()(target, undefined, 2);
+}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof ContactMatcherOptions === "undefined" ? Object : ContactMatcherOptions, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin]), _dec6 = (0, _nextCore.delegate)('server'), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof HasMatchNumberOptions === "undefined" ? Object : HasMatchNumberOptions]), _dec9 = (0, _nextCore.delegate)('server'), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [typeof ForceMatchBatchNumbersOptions === "undefined" ? Object : ForceMatchBatchNumbersOptions]), _dec10 = (0, _nextCore.delegate)('server'), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [typeof ForceMatchNumberOptions === "undefined" ? Object : ForceMatchNumberOptions]), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [void 0]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_DataMatcher) {
+  function ContactMatcher(_numberFormatter, _contactMatcherOptions, _storage) {
     var _this;
     _classCallCheck(this, ContactMatcher);
     _this = _callSuper(this, ContactMatcher, [_storage]);
+    _this._numberFormatter = _numberFormatter;
     _this._contactMatcherOptions = _contactMatcherOptions;
     _this._storage = _storage;
     /**
@@ -213,6 +215,28 @@ var ContactMatcher = exports.ContactMatcher = (_dec = (0, _nextCore.injectable)(
       }
       return triggerMatch;
     }()
+  }, {
+    key: "findMatchesFromNumber",
+    value: function findMatchesFromNumber(phoneNumber, extensionNumber) {
+      var _this$dataMapping;
+      var contactMapping = (_this$dataMapping = this.dataMapping) !== null && _this$dataMapping !== void 0 ? _this$dataMapping : {};
+      var toNumber = phoneNumber &&
+      // normalize number for ensure the number is matcher mapping with same key
+      this._numberFormatter.normalizeNumber(phoneNumber) || extensionNumber;
+      var matches = toNumber && contactMapping[toNumber] || [];
+      return matches;
+    }
+  }, {
+    key: "findMatchesFromCall",
+    value: function findMatchesFromCall(call) {
+      var _call$from, _call$from2, _call$to, _call$to2;
+      var fromMatches = this.findMatchesFromNumber((_call$from = call.from) === null || _call$from === void 0 ? void 0 : _call$from.phoneNumber, (_call$from2 = call.from) === null || _call$from2 === void 0 ? void 0 : _call$from2.extensionNumber);
+      var toMatches = this.findMatchesFromNumber((_call$to = call.to) === null || _call$to === void 0 ? void 0 : _call$to.phoneNumber, (_call$to2 = call.to) === null || _call$to2 === void 0 ? void 0 : _call$to2.extensionNumber);
+      return {
+        fromMatches: fromMatches,
+        toMatches: toMatches
+      };
+    }
   }]);
-}(_services.DataMatcher), _applyDecoratedDescriptor(_class2.prototype, "hasMatchNumber", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "hasMatchNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forceMatchBatchNumbers", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "forceMatchBatchNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forceMatchNumber", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "forceMatchNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "triggerMatch", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "triggerMatch"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}(_services2.DataMatcher), _applyDecoratedDescriptor(_class2.prototype, "hasMatchNumber", [_dec6, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "hasMatchNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forceMatchBatchNumbers", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "forceMatchBatchNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "forceMatchNumber", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "forceMatchNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "triggerMatch", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "triggerMatch"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=ContactMatcher.js.map

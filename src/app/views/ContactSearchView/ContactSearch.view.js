@@ -241,7 +241,7 @@ var ContactSearchView = exports.ContactSearchView = (_dec = (0, _nextCore.inject
     key: "getThirdPartyContacts",
     value: function getThirdPartyContacts(inputValue) {
       var _this$_contactSearch2, _this$_contactSearch3, _this$_contactSearch4;
-      var searching = !((_this$_contactSearch2 = this._contactSearch) === null || _this$_contactSearch2 === void 0 ? void 0 : _this$_contactSearch2.isIdle);
+      var searching = !((_this$_contactSearch2 = this._contactSearch) !== null && _this$_contactSearch2 !== void 0 && _this$_contactSearch2.isIdle);
       var thirdPartySearchSourceKey = this._integrationConfig.key;
       if (!thirdPartySearchSourceKey || !inputValue || searching) return EMPTY_ARRAY;
       var thirdPartySearchIdentifier = "".concat(thirdPartySearchSourceKey, "-").concat(inputValue);
@@ -363,10 +363,10 @@ var ContactSearchView = exports.ContactSearchView = (_dec = (0, _nextCore.inject
         excludeCompanyExtension = _ref.excludeCompanyExtension,
         inputValue = _ref.inputValue,
         helperText = _ref.helperText;
-      var isThirdPartySearching = !((_this$_contactSearch0 = this._contactSearch) === null || _this$_contactSearch0 === void 0 ? void 0 : _this$_contactSearch0.isIdle);
+      var isThirdPartySearching = !((_this$_contactSearch0 = this._contactSearch) !== null && _this$_contactSearch0 !== void 0 && _this$_contactSearch0.isIdle);
 
       // TODO: remove after all project migrate to spring-ui version app
-      var deprecatedThirdPartyContacts = isThirdPartySearching ? EMPTY_ARRAY : ((_this$_contactSearchV2 = this._contactSearchViewOptions) === null || _this$_contactSearchV2 === void 0 ? void 0 : _this$_contactSearchV2.useSortedResult) ? this.sortedSearchContactList : this.searchContactList;
+      var deprecatedThirdPartyContacts = isThirdPartySearching ? EMPTY_ARRAY : (_this$_contactSearchV2 = this._contactSearchViewOptions) !== null && _this$_contactSearchV2 !== void 0 && _this$_contactSearchV2.useSortedResult ? this.sortedSearchContactList : this.searchContactList;
       return {
         currentLocale: this._locale.currentLocale,
         companyContacts: excludeCompanyExtension ? this.excludeExtCompanyContacts : this.companyContacts,
@@ -472,7 +472,7 @@ var ContactSearchView = exports.ContactSearchView = (_dec = (0, _nextCore.inject
       });
       if (process.env.THEME_SYSTEM === 'spring-ui') {
         var _this$_contactSearchV9;
-        var _Component = ((_this$_contactSearchV9 = this._contactSearchViewOptions) === null || _this$_contactSearchV9 === void 0 ? void 0 : _this$_contactSearchV9.component) || props.componentType === 'DialTextField' ? _ContactSearchPanel2.DialerContactSearchPanel : _ContactSearchPanel2.ContactSearchPanel;
+        var _Component = (_this$_contactSearchV9 = this._contactSearchViewOptions) !== null && _this$_contactSearchV9 !== void 0 && _this$_contactSearchV9.component || props.componentType === 'DialTextField' ? _ContactSearchPanel2.DialerContactSearchPanel : _ContactSearchPanel2.ContactSearchPanel;
         // @ts-ignore
         return /*#__PURE__*/_react["default"].createElement(_Component, _extends({}, _props, uiFunctions));
       }

@@ -156,7 +156,7 @@ var ContactDetailsView = exports.ContactDetailsView = (_dec = (0, _nextCore.inje
             case 2:
               contact = _context2.v;
               // hide hidden phone numbers when cdc is enabled
-              if (this._appFeatures.isCDCEnabled && (contact === null || contact === void 0 ? void 0 : (_contact$phoneNumbers = contact.phoneNumbers) === null || _contact$phoneNumbers === void 0 ? void 0 : _contact$phoneNumbers.length)) {
+              if (this._appFeatures.isCDCEnabled && contact !== null && contact !== void 0 && (_contact$phoneNumbers = contact.phoneNumbers) !== null && _contact$phoneNumbers !== void 0 && _contact$phoneNumbers.length) {
                 contact.phoneNumbers = contact.phoneNumbers.filter(function (phone) {
                   return !phone.hidden;
                 });
@@ -235,7 +235,7 @@ var ContactDetailsView = exports.ContactDetailsView = (_dec = (0, _nextCore.inje
               recipient = _objectSpread(_objectSpread({}, contact), {}, {
                 phoneNumber: phoneNumber
               });
-              if ((_this$_call = this._call) === null || _this$_call === void 0 ? void 0 : _this$_call.isIdle) {
+              if ((_this$_call = this._call) !== null && _this$_call !== void 0 && _this$_call.isIdle) {
                 this._router.push((_this$_contactDetails = (_this$_contactDetails2 = this._contactDetailsViewOptions) === null || _this$_contactDetails2 === void 0 ? void 0 : _this$_contactDetails2.dialerRoute) !== null && _this$_contactDetails !== void 0 ? _this$_contactDetails : DEFAULT_DIALER_ROUTE, _defineProperty({}, _views.SyncTabId.DIALPAD, 'keypad'));
                 (_this$_dialerView = this._dialerView) === null || _this$_dialerView === void 0 ? void 0 : _this$_dialerView.call({
                   recipient: recipient
@@ -300,8 +300,8 @@ var ContactDetailsView = exports.ContactDetailsView = (_dec = (0, _nextCore.inje
         currentLocale: this._locale.currentLocale,
         contact: this.currentContact,
         isMultipleSiteEnabled: (_this$_extensionInfo$ = this._extensionInfo.isMultipleSiteEnabled) !== null && _this$_extensionInfo$ !== void 0 ? _this$_extensionInfo$ : false,
-        isCallButtonDisabled: !!(((_this$_connectivityMa = this._connectivityManager) === null || _this$_connectivityMa === void 0 ? void 0 : _this$_connectivityMa.isOfflineMode) || ((_this$_connectivityMa2 = this._connectivityManager) === null || _this$_connectivityMa2 === void 0 ? void 0 : _this$_connectivityMa2.isWebphoneUnavailableMode) || ((_this$_connectivityMa3 = this._connectivityManager) === null || _this$_connectivityMa3 === void 0 ? void 0 : _this$_connectivityMa3.isWebphoneInitializing) || ((_this$_rateLimiter = this._rateLimiter) === null || _this$_rateLimiter === void 0 ? void 0 : _this$_rateLimiter.restricted)),
-        disableLinks: !!(((_this$_connectivityMa4 = this._connectivityManager) === null || _this$_connectivityMa4 === void 0 ? void 0 : _this$_connectivityMa4.isOfflineMode) || ((_this$_connectivityMa5 = this._connectivityManager) === null || _this$_connectivityMa5 === void 0 ? void 0 : _this$_connectivityMa5.isVoipOnlyMode) || ((_this$_rateLimiter2 = this._rateLimiter) === null || _this$_rateLimiter2 === void 0 ? void 0 : _this$_rateLimiter2.restricted)),
+        isCallButtonDisabled: !!((_this$_connectivityMa = this._connectivityManager) !== null && _this$_connectivityMa !== void 0 && _this$_connectivityMa.isOfflineMode || (_this$_connectivityMa2 = this._connectivityManager) !== null && _this$_connectivityMa2 !== void 0 && _this$_connectivityMa2.isWebphoneUnavailableMode || (_this$_connectivityMa3 = this._connectivityManager) !== null && _this$_connectivityMa3 !== void 0 && _this$_connectivityMa3.isWebphoneInitializing || (_this$_rateLimiter = this._rateLimiter) !== null && _this$_rateLimiter !== void 0 && _this$_rateLimiter.restricted),
+        disableLinks: !!((_this$_connectivityMa4 = this._connectivityManager) !== null && _this$_connectivityMa4 !== void 0 && _this$_connectivityMa4.isOfflineMode || (_this$_connectivityMa5 = this._connectivityManager) !== null && _this$_connectivityMa5 !== void 0 && _this$_connectivityMa5.isVoipOnlyMode || (_this$_rateLimiter2 = this._rateLimiter) !== null && _this$_rateLimiter2 !== void 0 && _this$_rateLimiter2.restricted),
         showSpinner: !(this.currentContactReadyState === _contactReadyStates.contactReadyStates.loaded && this._locale.ready && this._contactSearch.ready && this._appFeatures.ready)
       };
     }
