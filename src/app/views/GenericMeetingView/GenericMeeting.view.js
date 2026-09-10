@@ -171,7 +171,7 @@ var GenericMeetingView = exports.GenericMeetingView = (_dec = (0, _nextCore.inje
       var showRecurringMeeting = _ref2.showRecurringMeeting;
       return {
         delegators: this.delegators,
-        showRecurringMeeting: !((_this$meeting = this.meeting) === null || _this$meeting === void 0 ? void 0 : _this$meeting.usePersonalMeetingId) && showRecurringMeeting
+        showRecurringMeeting: !((_this$meeting = this.meeting) !== null && _this$meeting !== void 0 && _this$meeting.usePersonalMeetingId) && showRecurringMeeting
       };
     }
   }, {
@@ -199,7 +199,7 @@ var GenericMeetingView = exports.GenericMeetingView = (_dec = (0, _nextCore.inje
         showRemoveMeetingWarning = _props$showRemoveMeet === void 0 ? false : _props$showRemoveMeet;
       var isRCM = this._genericMeeting.isRCM;
       var isRCV = this._genericMeeting.isRCV;
-      var isAllOptionDisabled = !!(disabled || !((_this$meeting2 = this.meeting) === null || _this$meeting2 === void 0 ? void 0 : _this$meeting2.isMeetingPasswordValid) || this._genericMeeting.ready && this._genericMeeting.isScheduling || !((_this$_connectivityMo = this._connectivityMonitor) === null || _this$_connectivityMo === void 0 ? void 0 : _this$_connectivityMo.connectivity) || ((_this$_rateLimiter = this._rateLimiter) === null || _this$_rateLimiter === void 0 ? void 0 : _this$_rateLimiter.restricted));
+      var isAllOptionDisabled = !!(disabled || !((_this$meeting2 = this.meeting) !== null && _this$meeting2 !== void 0 && _this$meeting2.isMeetingPasswordValid) || this._genericMeeting.ready && this._genericMeeting.isScheduling || !((_this$_connectivityMo = this._connectivityMonitor) !== null && _this$_connectivityMo !== void 0 && _this$_connectivityMo.connectivity) || (_this$_rateLimiter = this._rateLimiter) !== null && _this$_rateLimiter !== void 0 && _this$_rateLimiter.restricted);
       var config = isRCM ? this.getRcmConfig(props) : this.getRcvConfig(props);
       return _objectSpread({
         isRCV: isRCV,
@@ -297,7 +297,7 @@ var GenericMeetingView = exports.GenericMeetingView = (_dec = (0, _nextCore.inje
               e2ee: e2eeValue
             });
             // when user turn on e2ee option in pmi meeting, should switch to non-pmi meeting
-          } else if ((_this2$_genericMeetin = _this2._genericMeeting.meeting) === null || _this2$_genericMeetin === void 0 ? void 0 : _this2$_genericMeetin.usePersonalMeetingId) {
+          } else if ((_this2$_genericMeetin = _this2._genericMeeting.meeting) !== null && _this2$_genericMeetin !== void 0 && _this2$_genericMeetin.usePersonalMeetingId) {
             _this2._genericMeeting.switchUsePersonalMeetingId(false);
             _this2._genericMeeting.turnOnE2ee();
           } else {

@@ -34,7 +34,7 @@ function getHostId(_ref2) {
   var enableScheduleOnBehalf = _ref2.enableScheduleOnBehalf,
     meeting = _ref2.meeting,
     extensionInfo = _ref2.extensionInfo;
-  if (enableScheduleOnBehalf && (meeting === null || meeting === void 0 ? void 0 : (_meeting$host = meeting.host) === null || _meeting$host === void 0 ? void 0 : _meeting$host.id)) {
+  if (enableScheduleOnBehalf && meeting !== null && meeting !== void 0 && (_meeting$host = meeting.host) !== null && _meeting$host !== void 0 && _meeting$host.id) {
     return "".concat(meeting.host.id);
   }
   return "".concat(extensionInfo.info.id) || '';

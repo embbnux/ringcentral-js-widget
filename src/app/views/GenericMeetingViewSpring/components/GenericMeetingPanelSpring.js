@@ -55,7 +55,7 @@ var MeetingConfigPanelSkeleton = function MeetingConfigPanelSkeleton() {
       root: 'overflow-visible'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex flex-col gap-4 w-full"
+    className: "flex flex-col gap-2 w-full"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex flex-col gap-1 w-full"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Skeleton, {
@@ -278,6 +278,8 @@ var GenericMeetingPanelSpring = exports.GenericMeetingPanelSpring = function Gen
     "data-sign": "videoConfigsPanel"
   }, isLoading ? /*#__PURE__*/_react["default"].createElement(_springUi.SkeletonContainer, {
     "data-sign": "videoConfigsPanelSkeleton"
-  }, /*#__PURE__*/_react["default"].createElement(MeetingConfigPanelSkeleton, null), /*#__PURE__*/_react["default"].createElement(GeneralMeetingSettingsSkeleton, null), /*#__PURE__*/_react["default"].createElement(PersonalMeetingSettingsSwitchSkeleton, null)) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_MeetingConfigPanel.MeetingConfigPanel, _extends({}, meetingConfigPanelProps, meetingConfigPanelFunctions)), /*#__PURE__*/_react["default"].createElement(_GeneralMeetingSettings.GeneralMeetingSettings, _extends({}, generalMeetingSettingsProps, generalMeetingSettingsFunctions)), /*#__PURE__*/_react["default"].createElement(_PersonalMeetingSettingsSwitch.PersonalMeetingSettingsSwitch, _extends({}, personalMeetingSettingsSwitchProps, personalMeetingSettingsSwitchFunctions)))));
+  }, /*#__PURE__*/_react["default"].createElement(MeetingConfigPanelSkeleton, null), /*#__PURE__*/_react["default"].createElement(GeneralMeetingSettingsSkeleton, null), /*#__PURE__*/_react["default"].createElement(PersonalMeetingSettingsSwitchSkeleton, null)) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_MeetingConfigPanel.MeetingConfigPanel, _extends({}, meetingConfigPanelProps, meetingConfigPanelFunctions)), /*#__PURE__*/_react["default"].createElement(_GeneralMeetingSettings.GeneralMeetingSettings, _extends({}, generalMeetingSettingsProps, generalMeetingSettingsFunctions, {
+    isCompact: true
+  })), /*#__PURE__*/_react["default"].createElement(_PersonalMeetingSettingsSwitch.PersonalMeetingSettingsSwitch, _extends({}, personalMeetingSettingsSwitchProps, personalMeetingSettingsSwitchFunctions)))));
 };
 //# sourceMappingURL=GenericMeetingPanelSpring.js.map

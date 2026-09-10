@@ -134,8 +134,8 @@ function calculateUseWaitingRoomUpdates(use) {
  * Returns the updates that should be applied to settings
  */
 function calculateWaitingRoomParticipantsUpdates(value) {
-  var settingLock = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var preferences = arguments.length > 2 ? arguments[2] : undefined;
+  var _settingLock = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _preferences = arguments.length > 2 ? arguments[2] : undefined;
   // Map string values back to numeric waiting room modes
   var waitingRoomMode;
   switch (value) {
@@ -155,23 +155,13 @@ function calculateWaitingRoomParticipantsUpdates(value) {
     waitingRoomMode: waitingRoomMode
   };
 
-  /* Handle allowJoinBeforeHost logic */
-  var shouldUpdateAllowJoinBeforeHost = false;
-  var newAllowJoinBeforeHost;
+  // Keep settingLock/preferences in the signature for existing call sites.
+  // Do not restore locked join_before_host when leaving ALL: widgets
+  // patchWaitingRoomRelated only forces join-after-me while mode is ALL,
+  // then leaves that checked state sticky (RCI-1977).
 
-  // If allowJoinBeforeHost is locked, use preferences value at first
-  if (settingLock.allowJoinBeforeHost) {
-    newAllowJoinBeforeHost = preferences.join_before_host;
-    shouldUpdateAllowJoinBeforeHost = true;
-  }
   if (waitingRoomMode === _constants2.WAITING_ROOM_MODE.ALL) {
-    newAllowJoinBeforeHost = false;
-    shouldUpdateAllowJoinBeforeHost = true;
-  }
-
-  // Update regardless of lock status (linkage changed)
-  if (shouldUpdateAllowJoinBeforeHost) {
-    updates.allowJoinBeforeHost = newAllowJoinBeforeHost;
+    updates.allowJoinBeforeHost = false;
   }
   return updates;
 }
@@ -180,8 +170,8 @@ function calculateWaitingRoomParticipantsUpdates(value) {
  * Determines the "Who can join" display value based on meeting settings
  */
 function getWhoCanJoinValue(meeting) {
-  if (meeting === null || meeting === void 0 ? void 0 : meeting.isOnlyCoworkersJoin) return _constants2.WHO_CAN_JOIN_OPTIONS.ONLY_MY_COWORKERS;
-  if (meeting === null || meeting === void 0 ? void 0 : meeting.isOnlyAuthUserJoin) return _constants2.WHO_CAN_JOIN_OPTIONS.ONLY_RINGCENTRAL_ACCOUNTS;
+  if (meeting !== null && meeting !== void 0 && meeting.isOnlyCoworkersJoin) return _constants2.WHO_CAN_JOIN_OPTIONS.ONLY_MY_COWORKERS;
+  if (meeting !== null && meeting !== void 0 && meeting.isOnlyAuthUserJoin) return _constants2.WHO_CAN_JOIN_OPTIONS.ONLY_RINGCENTRAL_ACCOUNTS;
   return _constants2.WHO_CAN_JOIN_OPTIONS.ANYONE_WITH_LINK;
 }
 var getWhoCanJoinDisplayText = exports.getWhoCanJoinDisplayText = function getWhoCanJoinDisplayText(value, brandConfig) {

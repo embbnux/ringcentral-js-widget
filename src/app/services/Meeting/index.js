@@ -19,6 +19,17 @@ Object.keys(_meetingErrors).forEach(function (key) {
     }
   });
 });
+var _meetingOperationResult = require("./meetingOperationResult");
+Object.keys(_meetingOperationResult).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _meetingOperationResult[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _meetingOperationResult[key];
+    }
+  });
+});
 var _meetingStatus = require("./meetingStatus");
 Object.keys(_meetingStatus).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

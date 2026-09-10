@@ -39,7 +39,12 @@ var PasswordEditDialog = exports.PasswordEditDialog = function PasswordEditDialo
   var open = _ref.open,
     currentPassword = _ref.currentPassword,
     onClose = _ref.onClose,
-    onUpdate = _ref.onUpdate;
+    onUpdate = _ref.onUpdate,
+    _ref$isCompact = _ref.isCompact,
+    isCompact = _ref$isCompact === void 0 ? false : _ref$isCompact,
+    passwordFormatErrorMessage = _ref.passwordFormatErrorMessage,
+    passwordRequiredMessage = _ref.passwordRequiredMessage,
+    passwordValidationHint = _ref.passwordValidationHint;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var _useState = (0, _react.useState)(currentPassword),
@@ -58,10 +63,10 @@ var PasswordEditDialog = exports.PasswordEditDialog = function PasswordEditDialo
   }, [open, currentPassword]);
   var validatePassword = function validatePassword(value) {
     if (value.length === 0) {
-      return t('passwordRequired');
+      return passwordRequiredMessage !== null && passwordRequiredMessage !== void 0 ? passwordRequiredMessage : t('passwordRequired');
     }
     if (!_constants.RCV_PASSWORD_REGEX.test(value)) {
-      return t('passwordFormatError');
+      return passwordFormatErrorMessage !== null && passwordFormatErrorMessage !== void 0 ? passwordFormatErrorMessage : t('passwordFormatError');
     }
     return '';
   };
@@ -94,6 +99,9 @@ var PasswordEditDialog = exports.PasswordEditDialog = function PasswordEditDialo
         paddingBottom: '12px'
       }
     },
+    classes: isCompact ? {
+      body: 'w-[276px] max-w-none'
+    } : {},
     size: "large"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.DialogTitle, {
     className: "px-3"
@@ -113,7 +121,7 @@ var PasswordEditDialog = exports.PasswordEditDialog = function PasswordEditDialo
       return handlePasswordChange(e.target.value);
     },
     error: !!error,
-    helperText: error || t('passwordValidationHint'),
+    helperText: error || passwordValidationHint || t('passwordValidationHint'),
     className: "w-full",
     placeholder: t('passwordPlaceholder')
   })))), /*#__PURE__*/_react["default"].createElement(_springUi.DialogActions, {

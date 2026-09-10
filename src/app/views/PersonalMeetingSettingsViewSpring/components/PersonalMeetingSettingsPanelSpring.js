@@ -160,6 +160,8 @@ var PersonalMeetingSettingsPanelSpring = exports.PersonalMeetingSettingsPanelSpr
     className: "flex flex-col flex-auto overflow-y-auto overflow-x-hidden px-3 py-3 gap-2"
   }, isLoading ? /*#__PURE__*/_react["default"].createElement(_springUi.SkeletonContainer, null, /*#__PURE__*/_react["default"].createElement(PersonalMeetingSettingsSkeleton, null)) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "typography-descriptor text-neutral-b2"
-  }, t('personalMeetingSettingsDescription')), /*#__PURE__*/_react["default"].createElement(_GeneralMeetingSettings.GeneralMeetingSettings, _extends({}, generalMeetingSettingsProps, generalMeetingSettingsFunctions)))));
+  }, t('personalMeetingSettingsDescription')), /*#__PURE__*/_react["default"].createElement(_GeneralMeetingSettings.GeneralMeetingSettings, _extends({}, generalMeetingSettingsProps, generalMeetingSettingsFunctions, {
+    isCompact: true
+  })))));
 };
 //# sourceMappingURL=PersonalMeetingSettingsPanelSpring.js.map

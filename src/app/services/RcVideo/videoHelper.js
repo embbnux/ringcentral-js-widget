@@ -67,8 +67,9 @@ require("core-js/modules/web.dom-collections.for-each.js");
 var _utils = require("@ringcentral-integration/utils");
 var _ramda = require("ramda");
 var _constants = require("./constants");
-var _i18n = require("./i18n");
+var _i18n = _interopRequireDefault(require("./i18n"));
 var _excluded = ["name", "isMeetingSecret", "meetingPassword"];
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
@@ -412,7 +413,7 @@ function formatPremiumNumbers(dialInNumber) {
   }
   return (0, _ramda.map)(function (obj) {
     var _obj$country, _obj$country2;
-    var locationField = (obj === null || obj === void 0 ? void 0 : (_obj$country = obj.country) === null || _obj$country === void 0 ? void 0 : _obj$country.name) && obj.location ? "".concat(obj.country.name, " (").concat(obj.location, ")") : (obj === null || obj === void 0 ? void 0 : (_obj$country2 = obj.country) === null || _obj$country2 === void 0 ? void 0 : _obj$country2.name) || '';
+    var locationField = obj !== null && obj !== void 0 && (_obj$country = obj.country) !== null && _obj$country !== void 0 && _obj$country.name && obj.location ? "".concat(obj.country.name, " (").concat(obj.location, ")") : (obj === null || obj === void 0 ? void 0 : (_obj$country2 = obj.country) === null || _obj$country2 === void 0 ? void 0 : _obj$country2.name) || '';
     return "".concat(obj.phoneNumber, " ").concat(locationField);
   }, dialInNumber);
 }
@@ -496,7 +497,7 @@ var sortDialInNumbers = exports.sortDialInNumbers = function sortDialInNumbers(n
       number: item.phoneNumber,
       unformattedNumber: item.phoneNumber,
       country: item.country.name,
-      location: "".concat((0, _i18n.t)('tollFree'))
+      location: _i18n["default"].getString('tollFree', currentLocale)
     };
   });
   return [].concat(_toConsumableArray(defaultPhoneNumbers), _toConsumableArray(premiumNumbers), _toConsumableArray(tollFreeNumbers));

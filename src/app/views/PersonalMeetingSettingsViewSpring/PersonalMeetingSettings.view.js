@@ -96,7 +96,7 @@ var PersonalMeetingSettingsViewSpring = exports.PersonalMeetingSettingsViewSprin
         whoCanJoin: (0, _shared.getWhoCanJoinValue)(mergedMeeting),
         useWaitingRoom: (mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.waitingRoomMode) !== 0,
         waitingRoomParticipants: (0, _shared.getWaitingRoomValue)(mergedMeeting),
-        startMeetingAfterJoin: !(mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.allowJoinBeforeHost),
+        startMeetingAfterJoin: !(mergedMeeting !== null && mergedMeeting !== void 0 && mergedMeeting.allowJoinBeforeHost),
         personalMeetingLink: personalMeetingLink,
         // UI State
         isLoading: this.showSpinner,

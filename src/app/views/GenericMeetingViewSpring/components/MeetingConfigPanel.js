@@ -218,7 +218,7 @@ var MeetingConfigPanel = exports.MeetingConfigPanel = function MeetingConfigPane
     loading: scheduleButtonLoading,
     "data-sign": "videoScheduleButton"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "typography-subtitleMini text-neutral-high-contrast-b0"
+    className: "typography-subtitleMini text-neutral-high-contrast-b0 truncate"
   }, t('scheduleVideoMeeting'))));
 };
 //# sourceMappingURL=MeetingConfigPanel.js.map

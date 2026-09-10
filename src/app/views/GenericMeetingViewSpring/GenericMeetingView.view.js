@@ -95,7 +95,7 @@ var GenericMeetingViewSpring = exports.GenericMeetingViewSpring = (_dec = (0, _n
       var mergedMeeting = _objectSpread(_objectSpread({}, defaultSettings), meeting);
 
       // Get current meeting data or defaults
-      var currentDate = (mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.startTime) ? new Date(mergedMeeting.startTime) : new Date((0, _meetingHelper.getInitializedStartTime)());
+      var currentDate = mergedMeeting !== null && mergedMeeting !== void 0 && mergedMeeting.startTime ? new Date(mergedMeeting.startTime) : new Date((0, _meetingHelper.getInitializedStartTime)());
 
       // RCV meetings have duration directly
       var durationInMinutes = (mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.duration) || _constants.MEETING_CONFIG.DEFAULT_DURATION_MINUTES;
@@ -135,7 +135,7 @@ var GenericMeetingViewSpring = exports.GenericMeetingViewSpring = (_dec = (0, _n
         whoCanJoin: (0, _shared.getWhoCanJoinValue)(mergedMeeting),
         useWaitingRoom: (mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.waitingRoomMode) !== 0,
         waitingRoomParticipants: (0, _shared.getWaitingRoomValue)(mergedMeeting),
-        startMeetingAfterJoin: !(mergedMeeting === null || mergedMeeting === void 0 ? void 0 : mergedMeeting.allowJoinBeforeHost),
+        startMeetingAfterJoin: !(mergedMeeting !== null && mergedMeeting !== void 0 && mergedMeeting.allowJoinBeforeHost),
         // Personal Meeting Settings
         isPersonalMeetingEnabled: isPersonalMeetingEnabled,
         personalMeetingLink: personalMeetingLink,

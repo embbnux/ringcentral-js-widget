@@ -62,7 +62,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
   name: 'GenericMeeting'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('GenericMeetingOptions')(target, undefined, 5);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _VideoConfiguration.VideoConfiguration === "undefined" ? Object : _VideoConfiguration.VideoConfiguration, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _Meeting.Meeting === "undefined" ? Object : _Meeting.Meeting, typeof _RcVideo.RcVideo === "undefined" ? Object : _RcVideo.RcVideo, typeof GenericMeetingOptions === "undefined" ? Object : GenericMeetingOptions]), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", []), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Boolean]), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [Object]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel, void 0]), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel, Object]), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel]), _dec32 = (0, _nextCore.delegate)('server'), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", [String]), _dec35 = (0, _nextCore.delegate)('server'), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = (0, _nextCore.delegate)('server'), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", [String, typeof ScheduleModel === "undefined" ? Object : ScheduleModel, Object, typeof Window === "undefined" ? Object : Window]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _VideoConfiguration.VideoConfiguration === "undefined" ? Object : _VideoConfiguration.VideoConfiguration, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _Meeting.Meeting === "undefined" ? Object : _Meeting.Meeting, typeof _RcVideo.RcVideo === "undefined" ? Object : _RcVideo.RcVideo, typeof GenericMeetingOptions === "undefined" ? Object : GenericMeetingOptions]), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", []), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Boolean]), _dec14 = (0, _nextCore.delegate)('server'), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec17 = (0, _nextCore.delegate)('server'), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String, typeof TOptions === "undefined" ? Object : TOptions]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [Object]), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel, void 0]), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [typeof ScheduleModel === "undefined" ? Object : ScheduleModel]), _dec32 = (0, _nextCore.delegate)('server'), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", [String, typeof TOptions === "undefined" ? Object : TOptions]), _dec35 = (0, _nextCore.delegate)('server'), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = (0, _nextCore.delegate)('server'), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", [String, typeof ScheduleModel === "undefined" ? Object : ScheduleModel, typeof TOptions === "undefined" ? Object : TOptions, typeof Window === "undefined" ? Object : Window]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function GenericMeeting(_videoConfiguration, _extensionInfo, _brand, _meeting, _rcVideo, _genericMeetingOptions) {
     var _this;
     _classCallCheck(this, GenericMeeting);
@@ -154,7 +154,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
   }, {
     key: "deleteMeeting",
     value: function () {
-      var _deleteMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(meetingId) {
+      var _deleteMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(meetingId, config) {
         return _regenerator().w(function (_context4) {
           while (1) switch (_context4.n) {
             case 0:
@@ -164,14 +164,11 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
               }
               return _context4.a(2);
             case 1:
-              _context4.n = 2;
-              return this._meetingModule.deleteMeeting(meetingId);
-            case 2:
-              return _context4.a(2);
+              return _context4.a(2, this._meetingModule.deleteMeeting(meetingId, config));
           }
         }, _callee4, this);
       }));
-      function deleteMeeting(_x2) {
+      function deleteMeeting(_x2, _x3) {
         return _deleteMeeting.apply(this, arguments);
       }
       return deleteMeeting;
@@ -219,7 +216,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
           }
         }, _callee5, this);
       }));
-      function updateScheduleFor(_x3) {
+      function updateScheduleFor(_x4) {
         return _updateScheduleFor.apply(this, arguments);
       }
       return updateScheduleFor;
@@ -245,7 +242,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
           }
         }, _callee6, this);
       }));
-      function updateMeetingSettings(_x4) {
+      function updateMeetingSettings(_x5) {
         return _updateMeetingSettings.apply(this, arguments);
       }
       return updateMeetingSettings;
@@ -300,7 +297,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
           }
         }, _callee7, this);
       }));
-      function schedule(_x5, _x6) {
+      function schedule(_x6, _x7) {
         return _schedule.apply(this, arguments);
       }
       return schedule;
@@ -328,7 +325,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
           }
         }, _callee8, this);
       }));
-      function startMeeting(_x7) {
+      function startMeeting(_x8) {
         return _startMeeting.apply(this, arguments);
       }
       return startMeeting;
@@ -336,15 +333,29 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
   }, {
     key: "getMeeting",
     value: function () {
-      var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(meetingId) {
+      var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(meetingId, config) {
         return _regenerator().w(function (_context9) {
           while (1) switch (_context9.n) {
             case 0:
-              return _context9.a(2, this._meetingModule.getMeeting(meetingId));
+              if (!this.isRCM) {
+                _context9.n = 1;
+                break;
+              }
+              return _context9.a(2, this._meeting.getMeeting(meetingId, config));
+            case 1:
+              if (!this.isRCV) {
+                _context9.n = 2;
+                break;
+              }
+              return _context9.a(2, this._rcVideo.getMeeting(meetingId, undefined, undefined, config));
+            case 2:
+              throw new Error('Unknown meeting provider, please check the module runtime');
+            case 3:
+              return _context9.a(2);
           }
         }, _callee9, this);
       }));
-      function getMeeting(_x8) {
+      function getMeeting(_x9, _x0) {
         return _getMeeting.apply(this, arguments);
       }
       return getMeeting;
@@ -406,6 +417,12 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
               console.error('Unknown meeting provider, please check module runtime');
               return _context1.a(2);
             case 5:
+              if (!(0, _Meeting.isMeetingOperationError)(result)) {
+                _context1.n = 6;
+                break;
+              }
+              return _context1.a(2, result);
+            case 6:
               if (result) {
                 result.scheduleOriginalInfo = meeting;
               } else if (opener && opener.close) {
@@ -415,7 +432,7 @@ var GenericMeeting = exports.GenericMeeting = (_dec = (0, _nextCore.injectable)(
           }
         }, _callee1, this);
       }));
-      function updateMeeting(_x9, _x0, _x1, _x10) {
+      function updateMeeting(_x1, _x10, _x11, _x12) {
         return _updateMeeting.apply(this, arguments);
       }
       return updateMeeting;

@@ -22,6 +22,7 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.regexp.to-string.js");
+require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -51,15 +52,20 @@ var _i18n = require("@ringcentral-integration/i18n");
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _services2 = require("@ringcentral-integration/micro-core/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
+var _utils = require("@ringcentral-integration/utils");
 var _ramda = require("ramda");
 var _Meeting = require("../Meeting");
 var _VideoConfiguration = require("../VideoConfiguration");
 var _constants = require("./constants");
-var _i18n2 = require("./i18n");
+var _i18n2 = _interopRequireWildcard(require("./i18n"));
 var _videoHelper = require("./videoHelper");
 var _videoStatus = require("./videoStatus");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor0;
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t11 in e) "default" !== _t11 && {}.hasOwnProperty.call(e, _t11) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t11)) && (i.get || i.set) ? o(f, _t11, i) : f[_t11] = e[_t11]); return f; })(e, t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -108,7 +114,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
       'Meeting Type': 'RCV'
     }];
   }
-}), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof ObjectMapValue === "undefined" ? Object : ObjectMapValue]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof RcVPreferencesGET === "undefined" ? Object : RcVPreferencesGET]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Boolean]), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [typeof RcVSettingLocksGET === "undefined" ? Object : RcVSettingLocksGET]), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [typeof RcvDelegator === "undefined" ? Object : RcvDelegator]), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", [Array]), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [Boolean]), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('server'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [typeof Partial === "undefined" ? Object : Partial]), _dec42 = (0, _nextCore.delegate)('server'), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", []), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", []), _dec48 = (0, _nextCore.delegate)('server'), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", [Boolean]), _dec51 = (0, _nextCore.delegate)('server'), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [typeof RcvDelegator === "undefined" ? Object : RcvDelegator]), _dec54 = (0, _nextCore.delegate)('server'), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [Object]), _dec57 = (0, _nextCore.delegate)('server'), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", [typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, void 0]), _dec60 = (0, _nextCore.delegate)('server'), _dec61 = Reflect.metadata("design:type", Function), _dec62 = Reflect.metadata("design:paramtypes", [typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, void 0]), _dec63 = (0, _nextCore.delegate)('server'), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", [typeof RcvInvitationRequest === "undefined" ? Object : RcvInvitationRequest]), _dec66 = (0, _nextCore.delegate)('server'), _dec67 = Reflect.metadata("design:type", Function), _dec68 = Reflect.metadata("design:paramtypes", [typeof RcvInvitationRequest === "undefined" ? Object : RcvInvitationRequest]), _dec69 = (0, _nextCore.delegate)('server'), _dec70 = Reflect.metadata("design:type", Function), _dec71 = Reflect.metadata("design:paramtypes", [typeof RcVideoAPI === "undefined" ? Object : RcVideoAPI, Boolean]), _dec72 = (0, _nextCore.delegate)('server'), _dec73 = Reflect.metadata("design:type", Function), _dec74 = Reflect.metadata("design:paramtypes", [String, typeof RcVideoAPI === "undefined" ? Object : RcVideoAPI, Boolean]), _dec75 = (0, _nextCore.delegate)('server'), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", []), _dec78 = (0, _nextCore.delegate)('server'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", [Number, Number]), _dec81 = (0, _nextCore.delegate)('server'), _dec82 = Reflect.metadata("design:type", Function), _dec83 = Reflect.metadata("design:paramtypes", [String]), _dec84 = (0, _nextCore.delegate)('server'), _dec85 = Reflect.metadata("design:type", Function), _dec86 = Reflect.metadata("design:paramtypes", [String, Number, Number]), _dec87 = (0, _nextCore.delegate)('server'), _dec88 = Reflect.metadata("design:type", Function), _dec89 = Reflect.metadata("design:paramtypes", [String, typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, void 0]), _dec90 = (0, _nextCore.delegate)('server'), _dec91 = Reflect.metadata("design:type", Function), _dec92 = Reflect.metadata("design:paramtypes", []), _dec93 = (0, _nextCore.delegate)('server'), _dec94 = Reflect.metadata("design:type", Function), _dec95 = Reflect.metadata("design:paramtypes", [typeof Partial === "undefined" ? Object : Partial, void 0]), _dec96 = (0, _nextCore.computed)(function (that) {
+}), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof ObjectMapValue === "undefined" ? Object : ObjectMapValue]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [typeof RcVPreferencesGET === "undefined" ? Object : RcVPreferencesGET]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Boolean]), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [typeof RcVSettingLocksGET === "undefined" ? Object : RcVSettingLocksGET]), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [typeof RcvDelegator === "undefined" ? Object : RcvDelegator]), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", [Array]), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [Boolean]), _dec36 = (0, _nextCore.delegate)('server'), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = (0, _nextCore.delegate)('server'), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [typeof Partial === "undefined" ? Object : Partial]), _dec42 = (0, _nextCore.delegate)('server'), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", []), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", []), _dec48 = (0, _nextCore.delegate)('server'), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", [Boolean]), _dec51 = (0, _nextCore.delegate)('server'), _dec52 = Reflect.metadata("design:type", Function), _dec53 = Reflect.metadata("design:paramtypes", [typeof RcvDelegator === "undefined" ? Object : RcvDelegator]), _dec54 = (0, _nextCore.delegate)('server'), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [Object]), _dec57 = (0, _nextCore.delegate)('server'), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", [typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec60 = (0, _nextCore.delegate)('server'), _dec61 = Reflect.metadata("design:type", Function), _dec62 = Reflect.metadata("design:paramtypes", [typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec63 = (0, _nextCore.delegate)('server'), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", [typeof RcvInvitationRequest === "undefined" ? Object : RcvInvitationRequest]), _dec66 = (0, _nextCore.delegate)('server'), _dec67 = Reflect.metadata("design:type", Function), _dec68 = Reflect.metadata("design:paramtypes", [typeof RcvInvitationRequest === "undefined" ? Object : RcvInvitationRequest]), _dec69 = (0, _nextCore.delegate)('server'), _dec70 = Reflect.metadata("design:type", Function), _dec71 = Reflect.metadata("design:paramtypes", [typeof RcVideoAPI === "undefined" ? Object : RcVideoAPI, Boolean]), _dec72 = (0, _nextCore.delegate)('server'), _dec73 = Reflect.metadata("design:type", Function), _dec74 = Reflect.metadata("design:paramtypes", [String, typeof RcVideoAPI === "undefined" ? Object : RcVideoAPI, Boolean]), _dec75 = (0, _nextCore.delegate)('server'), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", []), _dec78 = (0, _nextCore.delegate)('server'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", [Number, Number]), _dec81 = (0, _nextCore.delegate)('server'), _dec82 = Reflect.metadata("design:type", Function), _dec83 = Reflect.metadata("design:paramtypes", [String]), _dec84 = (0, _nextCore.delegate)('server'), _dec85 = Reflect.metadata("design:type", Function), _dec86 = Reflect.metadata("design:paramtypes", [String, Number, Number, typeof TOptions === "undefined" ? Object : TOptions]), _dec87 = (0, _nextCore.delegate)('server'), _dec88 = Reflect.metadata("design:type", Function), _dec89 = Reflect.metadata("design:paramtypes", [String, typeof RcVMeetingModel === "undefined" ? Object : RcVMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec90 = (0, _nextCore.delegate)('server'), _dec91 = Reflect.metadata("design:type", Function), _dec92 = Reflect.metadata("design:paramtypes", []), _dec93 = (0, _nextCore.delegate)('server'), _dec94 = Reflect.metadata("design:type", Function), _dec95 = Reflect.metadata("design:paramtypes", [typeof Partial === "undefined" ? Object : Partial, void 0]), _dec96 = (0, _nextCore.computed)(function (that) {
   return [that.currentUser];
 }), _dec97 = Reflect.metadata("design:type", Function), _dec98 = Reflect.metadata("design:paramtypes", []), _dec99 = (0, _nextCore.computed)(function (that) {
   return [that._locale.currentLocale];
@@ -708,38 +714,31 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "createMeetingDirectly",
     value: function () {
-      var _createMeetingDirectly = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee12(meeting) {
-        var _ref8,
-          _ref8$isAlertSuccess,
-          isAlertSuccess,
-          meetingDetail,
-          _yield$Promise$all,
-          _yield$Promise$all2,
-          newMeeting,
-          dialInNumber,
-          extensionInfo,
-          invitationInfo,
-          meetingResponse,
-          _args12 = arguments,
-          _t4;
+      var _createMeetingDirectly = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee12(meeting, options) {
+        var _ref8, _ref8$errorHandling, errorHandling, _ref8$isAlertSuccess, isAlertSuccess, operationLocale, meetingDetail, _yield$Promise$all, _yield$Promise$all2, newMeeting, dialInNumber, extensionInfo, invitationInfo, meetingResponse, operationError, _t4;
         return _regenerator().w(function (_context12) {
           while (1) switch (_context12.p = _context12.n) {
             case 0:
-              _ref8 = _args12.length > 1 && _args12[1] !== undefined ? _args12[1] : {}, _ref8$isAlertSuccess = _ref8.isAlertSuccess, isAlertSuccess = _ref8$isAlertSuccess === void 0 ? true : _ref8$isAlertSuccess;
+              _ref8 = options !== null && options !== void 0 ? options : {}, _ref8$errorHandling = _ref8.errorHandling, errorHandling = _ref8$errorHandling === void 0 ? _Meeting.meetingOperationErrorHandling.toast : _ref8$errorHandling, _ref8$isAlertSuccess = _ref8.isAlertSuccess, isAlertSuccess = _ref8$isAlertSuccess === void 0 ? true : _ref8$isAlertSuccess;
+              operationLocale = (0, _Meeting.getMeetingOperationLocale)(options, this.currentLocale);
               _context12.p = 1;
               this._updateVideoStatus(_videoStatus.videoStatus.creating);
               if (this._showSaveAsDefault && meeting.saveAsDefault) {
                 this.saveAsDefaultSetting(meeting);
               }
               meetingDetail = this.pruneMeetingObject(meeting); // when meeting is rcv pmi, use pmi default name
-              if (meeting === null || meeting === void 0 ? void 0 : meeting.usePersonalMeetingId) {
-                meetingDetail.name = (0, _i18n2.t)('rcvPmiMeetingTitle', {
-                  extensionName: this.extensionName
-                });
+              if (!(meeting !== null && meeting !== void 0 && meeting.usePersonalMeetingId)) {
+                _context12.n = 3;
+                break;
               }
               _context12.n = 2;
-              return Promise.all([this._postBridges(meetingDetail, meeting.usePersonalMeetingId), this._getDialinNumbers(), this.getExtensionInfo(this.currentUser.extensionId)]);
+              return this._getPmiMeetingTitle(operationLocale);
             case 2:
+              meetingDetail.name = _context12.v;
+            case 3:
+              _context12.n = 4;
+              return Promise.all([this._postBridges(meetingDetail, meeting.usePersonalMeetingId), this._getDialinNumbers(), this.getExtensionInfo(this.currentUser.extensionId)]);
+            case 4:
               _yield$Promise$all = _context12.v;
               _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 3);
               newMeeting = _yield$Promise$all2[0];
@@ -750,7 +749,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
               }));
 
               // After Create
-              _context12.n = 3;
+              _context12.n = 5;
               return this.getMeetingInvitation({
                 hostName: extensionInfo.name,
                 shortId: newMeeting.shortId,
@@ -763,27 +762,27 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
                 meetingPasswordMasked: newMeeting.meetingPasswordMasked,
                 joinUri: newMeeting.joinUri || '',
                 dialInNumbers: dialInNumber,
-                currentLocale: this.currentLocale,
+                currentLocale: operationLocale,
                 brandName: this._brand.name,
                 brandId: this._brand.id,
                 isSIPAvailable: this._appFeatures.hasRoomConnectorBeta
               });
-            case 3:
+            case 5:
               invitationInfo = _context12.v;
               if (!meeting.saveAsDefault) {
-                _context12.n = 4;
+                _context12.n = 6;
                 break;
               }
-              _context12.n = 4;
+              _context12.n = 6;
               return this.savePreferencesChanges(meeting);
-            case 4:
+            case 6:
               if (!this._enableReloadAfterSchedule) {
-                _context12.n = 5;
+                _context12.n = 7;
                 break;
               }
-              _context12.n = 5;
+              _context12.n = 7;
               return this._initMeeting(Number(this.currentUser.extensionId));
-            case 5:
+            case 7:
               if (isAlertSuccess) {
                 this._toast.success({
                   message: (0, _i18n2.t)('scheduledSuccess')
@@ -798,17 +797,27 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
                 meeting: _objectSpread(_objectSpread({}, meeting), newMeeting)
               };
               return _context12.a(2, _objectSpread(_objectSpread({}, meetingResponse), meeting));
-            case 6:
-              _context12.p = 6;
+            case 8:
+              _context12.p = 8;
               _t4 = _context12.v;
               this.logger.error('failed to create rcv:', _t4);
               this._updateVideoStatus(_videoStatus.videoStatus.idle);
-              this._errorHandle(_t4);
+              _context12.n = 9;
+              return this._createOperationError(_t4, errorHandling === _Meeting.meetingOperationErrorHandling.result);
+            case 9:
+              operationError = _context12.v;
+              if (!(errorHandling === _Meeting.meetingOperationErrorHandling.result)) {
+                _context12.n = 10;
+                break;
+              }
+              return _context12.a(2, operationError);
+            case 10:
+              this._showOperationError(operationError);
               return _context12.a(2, null);
           }
-        }, _callee12, this, [[1, 6]]);
+        }, _callee12, this, [[1, 8]]);
       }));
-      function createMeetingDirectly(_x4) {
+      function createMeetingDirectly(_x4, _x5) {
         return _createMeetingDirectly.apply(this, arguments);
       }
       return createMeetingDirectly;
@@ -816,25 +825,18 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "createMeeting",
     value: function () {
-      var _createMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(meeting) {
-        var _ref9,
-          _ref9$isAlertSuccess,
-          isAlertSuccess,
-          result,
-          _args13 = arguments;
+      var _createMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(meeting, options) {
+        var result;
         return _regenerator().w(function (_context13) {
           while (1) switch (_context13.n) {
             case 0:
-              _ref9 = _args13.length > 1 && _args13[1] !== undefined ? _args13[1] : {}, _ref9$isAlertSuccess = _ref9.isAlertSuccess, isAlertSuccess = _ref9$isAlertSuccess === void 0 ? true : _ref9$isAlertSuccess;
               if (!this.isScheduling) {
                 _context13.n = 1;
                 break;
               }
               return _context13.a(2, this._createMeetingPromise);
             case 1:
-              this._createMeetingPromise = this.createMeetingDirectly(meeting, {
-                isAlertSuccess: isAlertSuccess
-              });
+              this._createMeetingPromise = this.createMeetingDirectly(meeting, options);
               _context13.n = 2;
               return this._createMeetingPromise;
             case 2:
@@ -844,7 +846,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee13, this);
       }));
-      function createMeeting(_x5) {
+      function createMeeting(_x6, _x7) {
         return _createMeeting.apply(this, arguments);
       }
       return createMeeting;
@@ -868,7 +870,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee14, this);
       }));
-      function startMeeting(_x6) {
+      function startMeeting(_x8) {
         return _startMeeting.apply(this, arguments);
       }
       return startMeeting;
@@ -891,18 +893,21 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
               return response.json();
             case 3:
               invitationParams = _context15.v;
+              _context15.n = 4;
+              return _i18n2["default"]._load(invitationRequest.currentLocale);
+            case 4:
               return _context15.a(2, (0, _videoHelper.formatRcvInvitationRequestDataV2)(_objectSpread(_objectSpread({}, invitationRequest), {}, {
                 phoneNumbers: invitationParams.phoneNumbers
               })));
-            case 4:
-              _context15.p = 4;
+            case 5:
+              _context15.p = 5;
               _t5 = _context15.v;
               this.logger.warn('failed to get invitation params', _t5);
               return _context15.a(2, (0, _videoHelper.formatRcvInvitationRequestData)(invitationRequest));
           }
-        }, _callee15, this, [[1, 4]]);
+        }, _callee15, this, [[1, 5]]);
       }));
-      function getRcvInvitationRequestData(_x7) {
+      function getRcvInvitationRequestData(_x9) {
         return _getRcvInvitationRequestData.apply(this, arguments);
       }
       return getRcvInvitationRequestData;
@@ -959,7 +964,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee16, this, [[1, 7]]);
       }));
-      function getMeetingInvitation(_x8) {
+      function getMeetingInvitation(_x0) {
         return _getMeetingInvitation.apply(this, arguments);
       }
       return getMeetingInvitation;
@@ -1000,7 +1005,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee17, this);
       }));
-      function _postBridges(_x9, _x0) {
+      function _postBridges(_x1, _x10) {
         return _postBridges2.apply(this, arguments);
       }
       return _postBridges;
@@ -1049,7 +1054,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee18, this);
       }));
-      function patchBridges(_x1, _x10, _x11) {
+      function patchBridges(_x11, _x12, _x13) {
         return _patchBridges.apply(this, arguments);
       }
       return patchBridges;
@@ -1137,10 +1142,10 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
               list = _context20.v;
               preferences = {};
               settingLocks = {};
-              list.forEach(function (_ref0) {
-                var id = _ref0.id,
-                  value = _ref0.value,
-                  readOnly = _ref0.readOnly;
+              list.forEach(function (_ref9) {
+                var id = _ref9.id,
+                  value = _ref9.value,
+                  readOnly = _ref9.readOnly;
                 (0, _videoHelper.assignObject)(preferences, value, id);
                 (0, _videoHelper.assignObject)(settingLocks, readOnly, id);
               });
@@ -1173,7 +1178,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee21, this);
       }));
-      function getExtensionInfo(_x12) {
+      function getExtensionInfo(_x14) {
         return _getExtensionInfo.apply(this, arguments);
       }
       return getExtensionInfo;
@@ -1200,7 +1205,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee22, this);
       }));
-      function _saveSinglePreference(_x13, _x14) {
+      function _saveSinglePreference(_x15, _x16) {
         return _saveSinglePreference2.apply(this, arguments);
       }
       return _saveSinglePreference;
@@ -1244,7 +1249,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee23, this, [[1, 3]]);
       }));
-      function savePreferencesChanges(_x15) {
+      function savePreferencesChanges(_x17) {
         return _savePreferencesChanges.apply(this, arguments);
       }
       return savePreferencesChanges;
@@ -1258,10 +1263,10 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           while (1) switch (_context24.n) {
             case 0:
               _context24.n = 1;
-              return Promise.all(dirtyPreferences.map(function (_ref1) {
-                var _ref10 = _slicedToArray(_ref1, 2),
-                  preferenceId = _ref10[0],
-                  newValue = _ref10[1];
+              return Promise.all(dirtyPreferences.map(function (_ref0) {
+                var _ref1 = _slicedToArray(_ref0, 2),
+                  preferenceId = _ref1[0],
+                  newValue = _ref1[1];
                 return _this3._saveSinglePreference(preferenceId, newValue);
               }));
             case 1:
@@ -1269,7 +1274,7 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee24);
       }));
-      function _savePreferencesToServer(_x16) {
+      function _savePreferencesToServer(_x18) {
         return _savePreferencesToServer2.apply(this, arguments);
       }
       return _savePreferencesToServer;
@@ -1280,49 +1285,66 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
       var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee25(shortId) {
         var accountId,
           extensionId,
-          result,
-          meeting,
+          options,
           _result3,
           _meeting2,
-          _args25 = arguments;
+          result,
+          meeting,
+          _args25 = arguments,
+          _t9;
         return _regenerator().w(function (_context25) {
-          while (1) switch (_context25.n) {
+          while (1) switch (_context25.p = _context25.n) {
             case 0:
               accountId = _args25.length > 1 && _args25[1] !== undefined ? _args25[1] : this.accountId;
               extensionId = _args25.length > 2 && _args25[2] !== undefined ? _args25[2] : this.extensionId;
+              options = _args25.length > 3 ? _args25[3] : undefined;
+              _context25.p = 1;
               if (!this._enableV2Api) {
-                _context25.n = 3;
+                _context25.n = 4;
                 break;
               }
-              _context25.n = 1;
-              return this._client.service.platform().get("/rcvideo/v2/bridges/pin/web/".concat(shortId));
-            case 1:
-              result = _context25.v;
               _context25.n = 2;
-              return result.json();
+              return this._client.service.platform().get("/rcvideo/v2/bridges/pin/web/".concat(shortId));
             case 2:
-              meeting = _context25.v;
-              return _context25.a(2, (0, _videoHelper.transformV2ResponseToV1)(meeting));
+              _result3 = _context25.v;
+              _context25.n = 3;
+              return _result3.json();
             case 3:
-              _context25.n = 4;
+              _meeting2 = _context25.v;
+              return _context25.a(2, (0, _videoHelper.transformV2ResponseToV1)(_meeting2));
+            case 4:
+              _context25.n = 5;
               return this._client.service.platform().get('/rcvideo/v1/bridges', {
                 shortId: shortId,
                 accountId: accountId,
                 extensionId: extensionId
               });
-            case 4:
-              _result3 = _context25.v;
-              _context25.n = 5;
-              return _result3.json();
             case 5:
-              _meeting2 = _context25.v;
-              return _context25.a(2, _meeting2);
+              result = _context25.v;
+              _context25.n = 6;
+              return result.json();
             case 6:
+              meeting = _context25.v;
+              return _context25.a(2, meeting);
+            case 7:
+              _context25.p = 7;
+              _t9 = _context25.v;
+              if (!((options === null || options === void 0 ? void 0 : options.errorHandling) === _Meeting.meetingOperationErrorHandling.result)) {
+                _context25.n = 9;
+                break;
+              }
+              _context25.n = 8;
+              return this._createOperationError(_t9, true);
+            case 8:
+              return _context25.a(2, _context25.v);
+            case 9:
+              throw _t9;
+            case 10:
               return _context25.a(2);
           }
-        }, _callee25, this);
+        }, _callee25, this, [[1, 7]]);
       }));
-      function getMeeting(_x17) {
+      function getMeeting(_x19) {
         return _getMeeting.apply(this, arguments);
       }
       return getMeeting;
@@ -1330,40 +1352,38 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "updateMeeting",
     value: function () {
-      var _updateMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee26(meetingId, meeting) {
+      var _updateMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee26(meetingId, meeting, options) {
         var _this4 = this;
-        var _ref11,
-          _ref11$isAlertSuccess,
-          isAlertSuccess,
-          meetingDetail,
-          _yield$Promise$all3,
-          _yield$Promise$all4,
-          newMeeting,
-          dialInNumber,
-          extensionInfo,
-          invitationInfo,
-          meetingResponse,
-          _args26 = arguments,
-          _t9;
+        var _ref10, _ref10$errorHandling, errorHandling, _ref10$isAlertSuccess, isAlertSuccess, operationLocale, meetingDetail, _yield$Promise$all3, _yield$Promise$all4, newMeeting, dialInNumber, extensionInfo, invitationInfo, meetingResponse, operationError, _t0;
         return _regenerator().w(function (_context26) {
           while (1) switch (_context26.p = _context26.n) {
             case 0:
-              _ref11 = _args26.length > 2 && _args26[2] !== undefined ? _args26[2] : {}, _ref11$isAlertSuccess = _ref11.isAlertSuccess, isAlertSuccess = _ref11$isAlertSuccess === void 0 ? false : _ref11$isAlertSuccess;
+              _ref10 = options !== null && options !== void 0 ? options : {}, _ref10$errorHandling = _ref10.errorHandling, errorHandling = _ref10$errorHandling === void 0 ? _Meeting.meetingOperationErrorHandling.toast : _ref10$errorHandling, _ref10$isAlertSuccess = _ref10.isAlertSuccess, isAlertSuccess = _ref10$isAlertSuccess === void 0 ? false : _ref10$isAlertSuccess;
+              operationLocale = (0, _Meeting.getMeetingOperationLocale)(options, this.currentLocale);
               _context26.p = 1;
               this._updateVideoStatus(_videoStatus.videoStatus.updating);
               if (this._showSaveAsDefault && meeting.saveAsDefault) {
                 this.saveAsDefaultSetting(meeting);
               }
               meetingDetail = this.pruneMeetingObject(meeting);
+              if (!meeting.usePersonalMeetingId) {
+                _context26.n = 3;
+                break;
+              }
               _context26.n = 2;
-              return Promise.all([this.patchBridges(meeting.id, meetingDetail, meeting.usePersonalMeetingId), this._getDialinNumbers(), this.getExtensionInfo(this.currentUser.extensionId)]);
+              return this._getPmiMeetingTitle(operationLocale);
             case 2:
+              meetingDetail.name = _context26.v;
+            case 3:
+              _context26.n = 4;
+              return Promise.all([this.patchBridges(meeting.id, meetingDetail, meeting.usePersonalMeetingId), this._getDialinNumbers(), this.getExtensionInfo(this.currentUser.extensionId)]);
+            case 4:
               _yield$Promise$all3 = _context26.v;
               _yield$Promise$all4 = _slicedToArray(_yield$Promise$all3, 3);
               newMeeting = _yield$Promise$all4[0];
               dialInNumber = _yield$Promise$all4[1];
               extensionInfo = _yield$Promise$all4[2];
-              _context26.n = 3;
+              _context26.n = 5;
               return this.getMeetingInvitation({
                 hostName: extensionInfo.name,
                 shortId: newMeeting.shortId,
@@ -1376,20 +1396,20 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
                 meetingPasswordMasked: newMeeting.meetingPasswordMasked,
                 joinUri: newMeeting.joinUri || '',
                 dialInNumbers: dialInNumber,
-                currentLocale: this.currentLocale,
+                currentLocale: operationLocale,
                 brandName: this._brand.name,
                 brandId: this._brand.id,
                 isSIPAvailable: this._appFeatures.hasRoomConnectorBeta
               });
-            case 3:
+            case 5:
               invitationInfo = _context26.v;
               if (!meeting.saveAsDefault) {
-                _context26.n = 4;
+                _context26.n = 6;
                 break;
               }
-              _context26.n = 4;
+              _context26.n = 6;
               return this.savePreferencesChanges(meeting, true);
-            case 4:
+            case 6:
               if (isAlertSuccess) {
                 setTimeout(function () {
                   _this4._toast.success({
@@ -1409,17 +1429,27 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
                 meeting: _objectSpread(_objectSpread({}, meeting), newMeeting)
               };
               return _context26.a(2, meetingResponse);
-            case 5:
-              _context26.p = 5;
-              _t9 = _context26.v;
-              this.logger.error('updateMeeting errors:', _t9);
+            case 7:
+              _context26.p = 7;
+              _t0 = _context26.v;
+              this.logger.error('updateMeeting errors:', _t0);
               this._updateVideoStatus(_videoStatus.videoStatus.idle);
-              this._errorHandle(_t9);
+              _context26.n = 8;
+              return this._createOperationError(_t0, errorHandling === _Meeting.meetingOperationErrorHandling.result);
+            case 8:
+              operationError = _context26.v;
+              if (!(errorHandling === _Meeting.meetingOperationErrorHandling.result)) {
+                _context26.n = 9;
+                break;
+              }
+              return _context26.a(2, operationError);
+            case 9:
+              this._showOperationError(operationError);
               return _context26.a(2, null);
           }
-        }, _callee26, this, [[1, 5]]);
+        }, _callee26, this, [[1, 7]]);
       }));
-      function updateMeeting(_x18, _x19) {
+      function updateMeeting(_x20, _x21, _x22) {
         return _updateMeeting.apply(this, arguments);
       }
       return updateMeeting;
@@ -1434,11 +1464,32 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
       }
     }
   }, {
-    key: "turnOnE2ee",
+    key: "_getPmiMeetingTitle",
     value: function () {
-      var _turnOnE2ee = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee27() {
+      var _getPmiMeetingTitle2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee27(locale) {
         return _regenerator().w(function (_context27) {
           while (1) switch (_context27.n) {
+            case 0:
+              _context27.n = 1;
+              return _i18n2["default"]._load(locale);
+            case 1:
+              return _context27.a(2, (0, _utils.format)(_i18n2["default"].getString('rcvPmiMeetingTitle', locale), {
+                extensionName: this.extensionName
+              }));
+          }
+        }, _callee27, this);
+      }));
+      function _getPmiMeetingTitle(_x23) {
+        return _getPmiMeetingTitle2.apply(this, arguments);
+      }
+      return _getPmiMeetingTitle;
+    }()
+  }, {
+    key: "turnOnE2ee",
+    value: function () {
+      var _turnOnE2ee = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee28() {
+        return _regenerator().w(function (_context28) {
+          while (1) switch (_context28.n) {
             case 0:
               this.updateMeetingSettings(_objectSpread(_objectSpread({
                 e2ee: true
@@ -1447,9 +1498,9 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
                 allowJoinBeforeHost: this.meeting.settingLock.allowJoinBeforeHost ? this.meeting.allowJoinBeforeHost : _videoHelper.RCV_E2EE_DEFAULT_SECURITY_OPTIONS.allowJoinBeforeHost
               }));
             case 1:
-              return _context27.a(2);
+              return _context28.a(2);
           }
-        }, _callee27, this);
+        }, _callee28, this);
       }));
       function turnOnE2ee() {
         return _turnOnE2ee.apply(this, arguments);
@@ -1459,15 +1510,15 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "updateMeetingSettings",
     value: function () {
-      var _updateMeetingSettings2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee28(meeting) {
+      var _updateMeetingSettings2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee29(meeting) {
         var _processedMeeting$mee, _this$meeting2, _processedMeeting$isM, _this$meeting3;
         var patch,
           processedMeeting,
-          _args28 = arguments;
-        return _regenerator().w(function (_context28) {
-          while (1) switch (_context28.n) {
+          _args29 = arguments;
+        return _regenerator().w(function (_context29) {
+          while (1) switch (_context29.n) {
             case 0:
-              patch = _args28.length > 1 && _args28[1] !== undefined ? _args28[1] : true;
+              patch = _args29.length > 1 && _args29[1] !== undefined ? _args29[1] : true;
               processedMeeting = meeting;
               if (this.enableWaitingRoom) {
                 processedMeeting = _objectSpread(_objectSpread({}, processedMeeting), (0, _videoHelper.patchWaitingRoomRelated)(_objectSpread(_objectSpread({}, this.meeting), processedMeeting), this.transformedPreferences, true));
@@ -1477,11 +1528,11 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
               }), patch);
               this._comparePreferences();
             case 1:
-              return _context28.a(2);
+              return _context29.a(2);
           }
-        }, _callee28, this);
+        }, _callee29, this);
       }));
-      function updateMeetingSettings(_x20) {
+      function updateMeetingSettings(_x24) {
         return _updateMeetingSettings2.apply(this, arguments);
       }
       return updateMeetingSettings;
@@ -1499,87 +1550,154 @@ var RcVideo = exports.RcVideo = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "_errorHandle",
     value: function () {
-      var _errorHandle2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee29(errors) {
-        var _iterator, _step, error, _yield$errors$respons, errorCode, permissionName, _t0;
-        return _regenerator().w(function (_context29) {
-          while (1) switch (_context29.n) {
+      var _errorHandle2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee30(errors) {
+        var operationError;
+        return _regenerator().w(function (_context30) {
+          while (1) switch (_context30.n) {
             case 0:
-              if (!(errors instanceof _Meeting.MeetingErrors)) {
-                _context29.n = 1;
-                break;
-              }
-              _iterator = _createForOfIteratorHelper(errors.all);
-              try {
-                for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                  error = _step.value;
-                  this._toast.warning(error);
-                }
-              } catch (err) {
-                _iterator.e(err);
-              } finally {
-                _iterator.f();
-              }
-              _context29.n = 8;
-              break;
+              _context30.n = 1;
+              return this._createOperationError(errors);
             case 1:
-              if (!(errors && errors.response)) {
-                _context29.n = 7;
-                break;
-              }
-              _context29.n = 2;
-              return errors.response.clone().json();
+              operationError = _context30.v;
+              this._showOperationError(operationError);
             case 2:
-              _yield$errors$respons = _context29.v;
-              errorCode = _yield$errors$respons.errorCode;
-              permissionName = _yield$errors$respons.permissionName;
-              if (!(errorCode === 'InsufficientPermissions' && permissionName)) {
-                _context29.n = 3;
-                break;
-              }
-              this._toast.danger({
-                message: (0, _i18n2.t)('insufficientPermissions', {
-                  permissionName: permissionName,
-                  application: this._brand.appName
-                })
-              });
-              _context29.n = 6;
-              break;
-            case 3:
-              _t0 = !this._availabilityMonitor;
-              if (_t0) {
-                _context29.n = 5;
-                break;
-              }
-              _context29.n = 4;
-              return this._availabilityMonitor.checkIfHAError(errors);
-            case 4:
-              _t0 = !_context29.v;
-            case 5:
-              if (!_t0) {
-                _context29.n = 6;
-                break;
-              }
-              this._toast.danger({
-                message: (0, _i18n2.t)('internalError')
-              });
-            case 6:
-              _context29.n = 8;
-              break;
-            case 7:
-              this.logger.log('errors:', errors);
-              this._toast.danger({
-                message: (0, _i18n2.t)('internalError')
-              });
-            case 8:
-              return _context29.a(2);
+              return _context30.a(2);
           }
-        }, _callee29, this);
+        }, _callee30, this);
       }));
-      function _errorHandle(_x21) {
+      function _errorHandle(_x25) {
         return _errorHandle2.apply(this, arguments);
       }
       return _errorHandle;
     }()
+  }, {
+    key: "_createOperationError",
+    value: function () {
+      var _createOperationError2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee31(errors) {
+        var includeConnectivityNotification,
+          _yield$this$_getError,
+          errorCode,
+          permissionName,
+          _args31 = arguments,
+          _t1;
+        return _regenerator().w(function (_context31) {
+          while (1) switch (_context31.n) {
+            case 0:
+              includeConnectivityNotification = _args31.length > 1 && _args31[1] !== undefined ? _args31[1] : false;
+              if (!(errors instanceof _Meeting.MeetingErrors)) {
+                _context31.n = 1;
+                break;
+              }
+              return _context31.a(2, (0, _Meeting.createMeetingOperationError)(_Meeting.meetingOperationErrorReason.validation, errors.all.map(function (message) {
+                return _objectSpread({
+                  level: 'warning'
+                }, message);
+              })));
+            case 1:
+              if (!(errors !== null && errors !== void 0 && errors.response)) {
+                _context31.n = 7;
+                break;
+              }
+              _context31.n = 2;
+              return this._getErrorResponse(errors);
+            case 2:
+              _yield$this$_getError = _context31.v;
+              errorCode = _yield$this$_getError.errorCode;
+              permissionName = _yield$this$_getError.permissionName;
+              if (!(errorCode === 'InsufficientPermissions' && permissionName)) {
+                _context31.n = 3;
+                break;
+              }
+              return _context31.a(2, (0, _Meeting.createMeetingOperationError)(_Meeting.meetingOperationErrorReason.insufficientPermissions, [{
+                level: 'danger',
+                messageKey: _Meeting.meetingOperationMessageKey.insufficientPermissions,
+                messageParams: {
+                  application: this._brand.appName,
+                  permissionName: permissionName
+                },
+                messageSource: _Meeting.meetingOperationMessageSource.rcVideo
+              }]));
+            case 3:
+              _t1 = this._availabilityMonitor;
+              if (!_t1) {
+                _context31.n = 5;
+                break;
+              }
+              _context31.n = 4;
+              return this._availabilityMonitor.checkIfHAError(errors);
+            case 4:
+              _t1 = _context31.v;
+            case 5:
+              if (!_t1) {
+                _context31.n = 6;
+                break;
+              }
+              return _context31.a(2, (0, _Meeting.createMeetingOperationError)(_Meeting.meetingOperationErrorReason.availability, []));
+            case 6:
+              return _context31.a(2, (0, _Meeting.createMeetingOperationError)(_Meeting.meetingOperationErrorReason.internal, [{
+                level: 'danger',
+                messageKey: _Meeting.meetingOperationMessageKey.internalError,
+                messageSource: _Meeting.meetingOperationMessageSource.rcVideo
+              }]));
+            case 7:
+              this.logger.log('errors:', errors);
+              return _context31.a(2, (0, _Meeting.createMeetingOperationError)(_Meeting.meetingOperationErrorReason.internal, [{
+                level: 'danger',
+                messageKey: _Meeting.meetingOperationMessageKey.internalError,
+                messageSource: _Meeting.meetingOperationMessageSource.rcVideo
+              }].concat(_toConsumableArray(includeConnectivityNotification ? [{
+                level: 'danger',
+                messageKey: _Meeting.meetingOperationMessageKey.offline,
+                messageSource: _Meeting.meetingOperationMessageSource.connectivity
+              }] : []))));
+          }
+        }, _callee31, this);
+      }));
+      function _createOperationError(_x26) {
+        return _createOperationError2.apply(this, arguments);
+      }
+      return _createOperationError;
+    }()
+  }, {
+    key: "_getErrorResponse",
+    value: function () {
+      var _getErrorResponse2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee32(errors) {
+        var _errors$response, _t10;
+        return _regenerator().w(function (_context32) {
+          while (1) switch (_context32.p = _context32.n) {
+            case 0:
+              _context32.p = 0;
+              _context32.n = 1;
+              return (_errors$response = errors.response) === null || _errors$response === void 0 ? void 0 : _errors$response.clone().json();
+            case 1:
+              return _context32.a(2, _context32.v);
+            case 2:
+              _context32.p = 2;
+              _t10 = _context32.v;
+              this.logger.log('failed to read RCV error response:', _t10);
+              return _context32.a(2, {});
+          }
+        }, _callee32, this, [[0, 2]]);
+      }));
+      function _getErrorResponse(_x27) {
+        return _getErrorResponse2.apply(this, arguments);
+      }
+      return _getErrorResponse;
+    }()
+  }, {
+    key: "_showOperationError",
+    value: function _showOperationError(error) {
+      var _this5 = this;
+      error.notifications.forEach(function (notification) {
+        var message = (0, _Meeting.resolveMeetingOperationNotification)(notification, function (messageKey, messageParams) {
+          return messageParams ? (0, _i18n2.t)(messageKey, messageParams) : (0, _i18n2.t)(messageKey);
+        });
+        var level = notification.level;
+        _this5._toast[level]({
+          message: message
+        });
+      });
+    }
   }, {
     key: "personalMeeting",
     get: function get() {

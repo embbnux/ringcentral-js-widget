@@ -3,10 +3,17 @@
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
+require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
+require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.get-own-property-descriptors.js");
+require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -15,7 +22,11 @@ exports.MeetingErrors = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.number.constructor.js");
+var _meetingOperationResult = require("./meetingOperationResult");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -36,6 +47,17 @@ var MeetingErrors = exports.MeetingErrors = /*#__PURE__*/function () {
       if (type) this._errors.push({
         message: type
       });
+    }
+  }, {
+    key: "pushLocalized",
+    value: function pushLocalized(messageKey, messageParams) {
+      this._errors.push(_objectSpread(_objectSpread({
+        messageKey: messageKey
+      }, messageParams ? {
+        messageParams: messageParams
+      } : {}), {}, {
+        messageSource: _meetingOperationResult.meetingOperationMessageSource.meeting
+      }));
     }
   }, {
     key: "all",

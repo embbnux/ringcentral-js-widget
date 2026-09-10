@@ -7,7 +7,6 @@ require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.find.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.reduce.js");
@@ -26,14 +25,15 @@ require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/web.dom-collections.for-each.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Meeting = void 0;
 require("core-js/modules/es.array.concat.js");
+require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
@@ -42,6 +42,7 @@ require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.string.replace.js");
+require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/web.timers.js");
 var _trackEvents = require("@ringcentral-integration/commons/enums/trackEvents");
@@ -59,10 +60,10 @@ var _constants = require("./constants");
 var _helper = require("./helper");
 var _i18n2 = require("./i18n");
 var _meetingErrors = require("./meetingErrors");
+var _meetingOperationResult = require("./meetingOperationResult");
 var _excluded = ["startParticipantsVideo", "startParticipantVideo"];
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _dec137, _dec138, _dec139, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _dec148, _dec149, _dec150, _dec151, _dec152, _dec153, _dec154, _dec155, _dec156, _dec157, _dec158, _dec159, _dec160, _dec161, _dec162, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _dec170, _dec171, _dec172, _dec173, _dec174, _dec175, _dec176, _dec177, _dec178, _dec179, _dec180, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor0, _descriptor1;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -144,7 +145,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
       'Meeting Type': 'RCM'
     }];
   }
-}), _dec65 = Reflect.metadata("design:type", Function), _dec66 = Reflect.metadata("design:paramtypes", [Boolean]), _dec67 = (0, _nextCore.delegate)('server'), _dec68 = Reflect.metadata("design:type", Function), _dec69 = Reflect.metadata("design:paramtypes", []), _dec70 = (0, _nextCore.delegate)('server'), _dec71 = Reflect.metadata("design:type", Function), _dec72 = Reflect.metadata("design:paramtypes", []), _dec73 = (0, _nextCore.delegate)('server'), _dec74 = Reflect.metadata("design:type", Function), _dec75 = Reflect.metadata("design:paramtypes", [String]), _dec76 = (0, _nextCore.delegate)('server'), _dec77 = Reflect.metadata("design:type", Function), _dec78 = Reflect.metadata("design:paramtypes", [typeof Preferences === "undefined" ? Object : Preferences]), _dec79 = (0, _nextCore.delegate)('server'), _dec80 = Reflect.metadata("design:type", Function), _dec81 = Reflect.metadata("design:paramtypes", [Boolean]), _dec82 = (0, _nextCore.delegate)('server'), _dec83 = Reflect.metadata("design:type", Function), _dec84 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec85 = (0, _nextCore.delegate)('server'), _dec86 = Reflect.metadata("design:type", Function), _dec87 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec88 = (0, _nextCore.delegate)('server'), _dec89 = Reflect.metadata("design:type", Function), _dec90 = Reflect.metadata("design:paramtypes", [String]), _dec91 = (0, _nextCore.delegate)('server'), _dec92 = Reflect.metadata("design:type", Function), _dec93 = Reflect.metadata("design:paramtypes", [Boolean]), _dec94 = (0, _nextCore.delegate)('server'), _dec95 = Reflect.metadata("design:type", Function), _dec96 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec97 = (0, _nextCore.delegate)('server'), _dec98 = Reflect.metadata("design:type", Function), _dec99 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, void 0]), _dec100 = (0, _nextCore.delegate)('server'), _dec101 = Reflect.metadata("design:type", Function), _dec102 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, void 0]), _dec103 = (0, _nextCore.delegate)('server'), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", [String, typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, void 0]), _dec106 = (0, _nextCore.delegate)('server'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [String]), _dec109 = (0, _nextCore.delegate)('server'), _dec110 = Reflect.metadata("design:type", Function), _dec111 = Reflect.metadata("design:paramtypes", [Object]), _dec112 = (0, _nextCore.delegate)('server'), _dec113 = Reflect.metadata("design:type", Function), _dec114 = Reflect.metadata("design:paramtypes", [void 0]), _dec115 = (0, _nextCore.delegate)('server'), _dec116 = Reflect.metadata("design:type", Function), _dec117 = Reflect.metadata("design:paramtypes", [Array]), _dec118 = (0, _nextCore.delegate)('server'), _dec119 = Reflect.metadata("design:type", Function), _dec120 = Reflect.metadata("design:paramtypes", [typeof UserSettings === "undefined" ? Object : UserSettings]), _dec121 = (0, _nextCore.delegate)('server'), _dec122 = Reflect.metadata("design:type", Function), _dec123 = Reflect.metadata("design:paramtypes", [typeof LockedSettings === "undefined" ? Object : LockedSettings]), _dec124 = (0, _nextCore.delegate)('server'), _dec125 = Reflect.metadata("design:type", Function), _dec126 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec127 = (0, _nextCore.delegate)('server'), _dec128 = Reflect.metadata("design:type", Function), _dec129 = Reflect.metadata("design:paramtypes", []), _dec130 = (0, _nextCore.delegate)('server'), _dec131 = Reflect.metadata("design:type", Function), _dec132 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec133 = (0, _nextCore.delegate)('server'), _dec134 = Reflect.metadata("design:type", Function), _dec135 = Reflect.metadata("design:paramtypes", [String]), _dec136 = (0, _nextCore.delegate)('server'), _dec137 = Reflect.metadata("design:type", Function), _dec138 = Reflect.metadata("design:paramtypes", [String]), _dec139 = (0, _nextCore.delegate)('server'), _dec140 = Reflect.metadata("design:type", Function), _dec141 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec142 = (0, _nextCore.delegate)('server'), _dec143 = Reflect.metadata("design:type", Function), _dec144 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec145 = (0, _nextCore.delegate)('server'), _dec146 = Reflect.metadata("design:type", Function), _dec147 = Reflect.metadata("design:paramtypes", [Boolean]), _dec148 = (0, _nextCore.delegate)('server'), _dec149 = Reflect.metadata("design:type", Function), _dec150 = Reflect.metadata("design:paramtypes", [String]), _dec151 = (0, _nextCore.delegate)('server'), _dec152 = Reflect.metadata("design:type", Function), _dec153 = Reflect.metadata("design:paramtypes", [String]), _dec154 = (0, _nextCore.delegate)('server'), _dec155 = Reflect.metadata("design:type", Function), _dec156 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec157 = (0, _nextCore.delegate)('server'), _dec158 = Reflect.metadata("design:type", Function), _dec159 = Reflect.metadata("design:paramtypes", [String, typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec160 = (0, _nextCore.delegate)('server'), _dec161 = Reflect.metadata("design:type", Function), _dec162 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec163 = (0, _nextCore.delegate)('server'), _dec164 = Reflect.metadata("design:type", Function), _dec165 = Reflect.metadata("design:paramtypes", []), _dec166 = (0, _nextCore.delegate)('server'), _dec167 = Reflect.metadata("design:type", Function), _dec168 = Reflect.metadata("design:paramtypes", [void 0]), _dec169 = (0, _nextCore.delegate)('server'), _dec170 = Reflect.metadata("design:type", Function), _dec171 = Reflect.metadata("design:paramtypes", []), _dec172 = (0, _nextCore.delegate)('server'), _dec173 = Reflect.metadata("design:type", Function), _dec174 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec175 = (0, _nextCore.computed)(function (that) {
+}), _dec65 = Reflect.metadata("design:type", Function), _dec66 = Reflect.metadata("design:paramtypes", [Boolean]), _dec67 = (0, _nextCore.delegate)('server'), _dec68 = Reflect.metadata("design:type", Function), _dec69 = Reflect.metadata("design:paramtypes", []), _dec70 = (0, _nextCore.delegate)('server'), _dec71 = Reflect.metadata("design:type", Function), _dec72 = Reflect.metadata("design:paramtypes", []), _dec73 = (0, _nextCore.delegate)('server'), _dec74 = Reflect.metadata("design:type", Function), _dec75 = Reflect.metadata("design:paramtypes", [String]), _dec76 = (0, _nextCore.delegate)('server'), _dec77 = Reflect.metadata("design:type", Function), _dec78 = Reflect.metadata("design:paramtypes", [typeof Preferences === "undefined" ? Object : Preferences]), _dec79 = (0, _nextCore.delegate)('server'), _dec80 = Reflect.metadata("design:type", Function), _dec81 = Reflect.metadata("design:paramtypes", [Boolean]), _dec82 = (0, _nextCore.delegate)('server'), _dec83 = Reflect.metadata("design:type", Function), _dec84 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec85 = (0, _nextCore.delegate)('server'), _dec86 = Reflect.metadata("design:type", Function), _dec87 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec88 = (0, _nextCore.delegate)('server'), _dec89 = Reflect.metadata("design:type", Function), _dec90 = Reflect.metadata("design:paramtypes", [String]), _dec91 = (0, _nextCore.delegate)('server'), _dec92 = Reflect.metadata("design:type", Function), _dec93 = Reflect.metadata("design:paramtypes", [Boolean]), _dec94 = (0, _nextCore.delegate)('server'), _dec95 = Reflect.metadata("design:type", Function), _dec96 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec97 = (0, _nextCore.delegate)('server'), _dec98 = Reflect.metadata("design:type", Function), _dec99 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec100 = (0, _nextCore.delegate)('server'), _dec101 = Reflect.metadata("design:type", Function), _dec102 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec103 = (0, _nextCore.delegate)('server'), _dec104 = Reflect.metadata("design:type", Function), _dec105 = Reflect.metadata("design:paramtypes", [String, typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel, typeof TOptions === "undefined" ? Object : TOptions]), _dec106 = (0, _nextCore.delegate)('server'), _dec107 = Reflect.metadata("design:type", Function), _dec108 = Reflect.metadata("design:paramtypes", [String, typeof TOptions === "undefined" ? Object : TOptions]), _dec109 = (0, _nextCore.delegate)('server'), _dec110 = Reflect.metadata("design:type", Function), _dec111 = Reflect.metadata("design:paramtypes", [Object]), _dec112 = (0, _nextCore.delegate)('server'), _dec113 = Reflect.metadata("design:type", Function), _dec114 = Reflect.metadata("design:paramtypes", [void 0]), _dec115 = (0, _nextCore.delegate)('server'), _dec116 = Reflect.metadata("design:type", Function), _dec117 = Reflect.metadata("design:paramtypes", [Array]), _dec118 = (0, _nextCore.delegate)('server'), _dec119 = Reflect.metadata("design:type", Function), _dec120 = Reflect.metadata("design:paramtypes", [typeof UserSettings === "undefined" ? Object : UserSettings]), _dec121 = (0, _nextCore.delegate)('server'), _dec122 = Reflect.metadata("design:type", Function), _dec123 = Reflect.metadata("design:paramtypes", [typeof LockedSettings === "undefined" ? Object : LockedSettings]), _dec124 = (0, _nextCore.delegate)('server'), _dec125 = Reflect.metadata("design:type", Function), _dec126 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec127 = (0, _nextCore.delegate)('server'), _dec128 = Reflect.metadata("design:type", Function), _dec129 = Reflect.metadata("design:paramtypes", []), _dec130 = (0, _nextCore.delegate)('server'), _dec131 = Reflect.metadata("design:type", Function), _dec132 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec133 = (0, _nextCore.delegate)('server'), _dec134 = Reflect.metadata("design:type", Function), _dec135 = Reflect.metadata("design:paramtypes", [String]), _dec136 = (0, _nextCore.delegate)('server'), _dec137 = Reflect.metadata("design:type", Function), _dec138 = Reflect.metadata("design:paramtypes", [String]), _dec139 = (0, _nextCore.delegate)('server'), _dec140 = Reflect.metadata("design:type", Function), _dec141 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec142 = (0, _nextCore.delegate)('server'), _dec143 = Reflect.metadata("design:type", Function), _dec144 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec145 = (0, _nextCore.delegate)('server'), _dec146 = Reflect.metadata("design:type", Function), _dec147 = Reflect.metadata("design:paramtypes", [Boolean]), _dec148 = (0, _nextCore.delegate)('server'), _dec149 = Reflect.metadata("design:type", Function), _dec150 = Reflect.metadata("design:paramtypes", [String]), _dec151 = (0, _nextCore.delegate)('server'), _dec152 = Reflect.metadata("design:type", Function), _dec153 = Reflect.metadata("design:paramtypes", [String]), _dec154 = (0, _nextCore.delegate)('server'), _dec155 = Reflect.metadata("design:type", Function), _dec156 = Reflect.metadata("design:paramtypes", [typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec157 = (0, _nextCore.delegate)('server'), _dec158 = Reflect.metadata("design:type", Function), _dec159 = Reflect.metadata("design:paramtypes", [String, typeof RcMMeetingModel === "undefined" ? Object : RcMMeetingModel]), _dec160 = (0, _nextCore.delegate)('server'), _dec161 = Reflect.metadata("design:type", Function), _dec162 = Reflect.metadata("design:paramtypes", [String, typeof TOptions === "undefined" ? Object : TOptions]), _dec163 = (0, _nextCore.delegate)('server'), _dec164 = Reflect.metadata("design:type", Function), _dec165 = Reflect.metadata("design:paramtypes", []), _dec166 = (0, _nextCore.delegate)('server'), _dec167 = Reflect.metadata("design:type", Function), _dec168 = Reflect.metadata("design:paramtypes", [void 0]), _dec169 = (0, _nextCore.delegate)('server'), _dec170 = Reflect.metadata("design:type", Function), _dec171 = Reflect.metadata("design:paramtypes", []), _dec172 = (0, _nextCore.delegate)('server'), _dec173 = Reflect.metadata("design:type", Function), _dec174 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec175 = (0, _nextCore.computed)(function (that) {
   return [that._brand.brandConfig.meetingUriReg.rcm];
 }), _dec176 = Reflect.metadata("design:type", Function), _dec177 = Reflect.metadata("design:paramtypes", []), _dec178 = (0, _nextCore.computed)(function (that) {
   return [that._brand.brandConfig.meetingUriReg.rcv, that.rcvBaseWebUri];
@@ -877,22 +878,18 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "scheduleDirectly",
     value: function () {
-      var _scheduleDirectly2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(meeting) {
+      var _scheduleDirectly2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(meeting, options) {
         var _this4 = this;
-        var _ref2,
-          _ref2$isAlertSuccess,
-          isAlertSuccess,
-          result,
-          _args13 = arguments,
-          _t4;
+        var _ref2, _ref2$errorHandling, errorHandling, _ref2$isAlertSuccess, isAlertSuccess, operationLocale, result, operationError, _t4;
         return _regenerator().w(function (_context13) {
           while (1) switch (_context13.p = _context13.n) {
             case 0:
-              _ref2 = _args13.length > 1 && _args13[1] !== undefined ? _args13[1] : {}, _ref2$isAlertSuccess = _ref2.isAlertSuccess, isAlertSuccess = _ref2$isAlertSuccess === void 0 ? true : _ref2$isAlertSuccess;
+              _ref2 = options !== null && options !== void 0 ? options : {}, _ref2$errorHandling = _ref2.errorHandling, errorHandling = _ref2$errorHandling === void 0 ? _meetingOperationResult.meetingOperationErrorHandling.toast : _ref2$errorHandling, _ref2$isAlertSuccess = _ref2.isAlertSuccess, isAlertSuccess = _ref2$isAlertSuccess === void 0 ? true : _ref2$isAlertSuccess;
+              operationLocale = (0, _meetingOperationResult.getMeetingOperationLocale)(options, this.currentLocale);
               _context13.p = 1;
               meeting = meeting || this.meeting;
               _context13.n = 2;
-              return this._scheduleDirectly(meeting);
+              return this._scheduleDirectly(meeting, operationLocale);
             case 2:
               result = _context13.v;
               // Notify user the meeting has been scheduled
@@ -908,19 +905,27 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
               _context13.p = 3;
               _t4 = _context13.v;
               _context13.n = 4;
-              return this._errorHandle(_t4);
+              return this._createOperationError(_t4);
             case 4:
-              return _context13.a(2, null);
+              operationError = _context13.v;
+              if (!(errorHandling === _meetingOperationResult.meetingOperationErrorHandling.result)) {
+                _context13.n = 5;
+                break;
+              }
+              return _context13.a(2, operationError);
             case 5:
-              _context13.p = 5;
-              this.updateIsScheduling(false);
-              return _context13.f(5);
+              this._showOperationError(operationError);
+              return _context13.a(2, null);
             case 6:
+              _context13.p = 6;
+              this.updateIsScheduling(false);
+              return _context13.f(6);
+            case 7:
               return _context13.a(2);
           }
-        }, _callee13, this, [[1, 3, 5, 6]]);
+        }, _callee13, this, [[1, 3, 6, 7]]);
       }));
-      function scheduleDirectly(_x0) {
+      function scheduleDirectly(_x0, _x1) {
         return _scheduleDirectly2.apply(this, arguments);
       }
       return scheduleDirectly;
@@ -930,10 +935,19 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
     value: function () {
       var _scheduleDirectly3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee14(meeting) {
         var _meeting$host;
-        var formattedMeeting, _yield$Promise$all3, _yield$Promise$all4, resp, serviceInfo, invitationInfo, result;
+        var invitationLocale,
+          formattedMeeting,
+          _yield$Promise$all3,
+          _yield$Promise$all4,
+          resp,
+          serviceInfo,
+          invitationInfo,
+          result,
+          _args14 = arguments;
         return _regenerator().w(function (_context14) {
           while (1) switch (_context14.n) {
             case 0:
+              invitationLocale = _args14.length > 1 && _args14[1] !== undefined ? _args14[1] : this.currentLocale;
               this.updateIsScheduling(true);
               // Validate meeting
               this._validate(meeting);
@@ -949,7 +963,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
               resp = _yield$Promise$all4[0];
               serviceInfo = _yield$Promise$all4[1];
               _context14.n = 2;
-              return this.getMeetingInvitation(resp.id, this.currentLocale);
+              return this.getMeetingInvitation(resp.id, invitationLocale);
             case 2:
               invitationInfo = _context14.v;
               this.updateLastMeetingSetting(_objectSpread(_objectSpread({}, formattedMeeting), {}, {
@@ -987,7 +1001,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee14, this);
       }));
-      function _scheduleDirectly(_x1) {
+      function _scheduleDirectly(_x10) {
         return _scheduleDirectly3.apply(this, arguments);
       }
       return _scheduleDirectly;
@@ -995,25 +1009,18 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "schedule",
     value: function () {
-      var _schedule2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15(meeting) {
-        var _ref3,
-          _ref3$isAlertSuccess,
-          isAlertSuccess,
-          result,
-          _args15 = arguments;
+      var _schedule2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15(meeting, options) {
+        var result;
         return _regenerator().w(function (_context15) {
           while (1) switch (_context15.n) {
             case 0:
-              _ref3 = _args15.length > 1 && _args15[1] !== undefined ? _args15[1] : {}, _ref3$isAlertSuccess = _ref3.isAlertSuccess, isAlertSuccess = _ref3$isAlertSuccess === void 0 ? true : _ref3$isAlertSuccess;
               if (!this.isScheduling) {
                 _context15.n = 1;
                 break;
               }
               return _context15.a(2, this._createMeetingPromise);
             case 1:
-              this._createMeetingPromise = this.scheduleDirectly(meeting, {
-                isAlertSuccess: isAlertSuccess
-              });
+              this._createMeetingPromise = this.scheduleDirectly(meeting, options);
               _context15.n = 2;
               return this._createMeetingPromise;
             case 2:
@@ -1023,7 +1030,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee15, this);
       }));
-      function schedule(_x10) {
+      function schedule(_x11, _x12) {
         return _schedule2.apply(this, arguments);
       }
       return schedule;
@@ -1031,18 +1038,14 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "updateMeeting",
     value: function () {
-      var _updateMeeting2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(meetingId, meeting) {
+      var _updateMeeting2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16(meetingId, meeting, options) {
         var _this5 = this;
-        var _ref4,
-          _ref4$isAlertSuccess,
-          isAlertSuccess,
-          result,
-          _args16 = arguments,
-          _t5;
+        var _ref3, _ref3$errorHandling, errorHandling, _ref3$isAlertSuccess, isAlertSuccess, operationLocale, result, operationError, _t5;
         return _regenerator().w(function (_context16) {
           while (1) switch (_context16.p = _context16.n) {
             case 0:
-              _ref4 = _args16.length > 2 && _args16[2] !== undefined ? _args16[2] : {}, _ref4$isAlertSuccess = _ref4.isAlertSuccess, isAlertSuccess = _ref4$isAlertSuccess === void 0 ? false : _ref4$isAlertSuccess;
+              _ref3 = options !== null && options !== void 0 ? options : {}, _ref3$errorHandling = _ref3.errorHandling, errorHandling = _ref3$errorHandling === void 0 ? _meetingOperationResult.meetingOperationErrorHandling.toast : _ref3$errorHandling, _ref3$isAlertSuccess = _ref3.isAlertSuccess, isAlertSuccess = _ref3$isAlertSuccess === void 0 ? false : _ref3$isAlertSuccess;
+              operationLocale = (0, _meetingOperationResult.getMeetingOperationLocale)(options, this.currentLocale);
               _context16.p = 1;
               if (!this._isUpdating(meetingId)) {
                 _context16.n = 2;
@@ -1052,7 +1055,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
             case 2:
               meeting = meeting || this.meeting;
               _context16.n = 3;
-              return this._updateMeeting(meetingId, meeting);
+              return this._updateMeeting(meetingId, meeting, operationLocale);
             case 3:
               result = _context16.v;
               // Notify user the meeting has been updated
@@ -1068,20 +1071,28 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
               _context16.p = 4;
               _t5 = _context16.v;
               _context16.n = 5;
-              return this._errorHandle(_t5);
+              return this._createOperationError(_t5);
             case 5:
-              return _context16.a(2, null);
+              operationError = _context16.v;
+              if (!(errorHandling === _meetingOperationResult.meetingOperationErrorHandling.result)) {
+                _context16.n = 6;
+                break;
+              }
+              return _context16.a(2, operationError);
             case 6:
-              _context16.p = 6;
+              this._showOperationError(operationError);
+              return _context16.a(2, null);
+            case 7:
+              _context16.p = 7;
               delete this.updateMeeting._promise;
               this.removeUpdatingStatus(meetingId);
-              return _context16.f(6);
-            case 7:
+              return _context16.f(7);
+            case 8:
               return _context16.a(2);
           }
-        }, _callee16, this, [[1, 4, 6, 7]]);
+        }, _callee16, this, [[1, 4, 7, 8]]);
       }));
-      function updateMeeting(_x11, _x12) {
+      function updateMeeting(_x13, _x14, _x15) {
         return _updateMeeting2.apply(this, arguments);
       }
       return updateMeeting;
@@ -1091,10 +1102,19 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
     value: function () {
       var _updateMeeting3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee17(meetingId, meeting) {
         var _meeting$host2;
-        var formattedMeeting, _yield$_promise, _yield$_promise2, resp, serviceInfo, invitationInfo, result;
+        var invitationLocale,
+          formattedMeeting,
+          _yield$_promise,
+          _yield$_promise2,
+          resp,
+          serviceInfo,
+          invitationInfo,
+          result,
+          _args17 = arguments;
         return _regenerator().w(function (_context17) {
           while (1) switch (_context17.n) {
             case 0:
+              invitationLocale = _args17.length > 2 && _args17[2] !== undefined ? _args17[2] : this.currentLocale;
               this.addUpdatingStatus(meetingId);
               // Validate meeting
               this._validate(meeting);
@@ -1111,7 +1131,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
               resp = _yield$_promise2[0];
               serviceInfo = _yield$_promise2[1];
               _context17.n = 2;
-              return this.getMeetingInvitation(meetingId, this.currentLocale);
+              return this.getMeetingInvitation(meetingId, invitationLocale);
             case 2:
               invitationInfo = _context17.v;
               _context17.n = 3;
@@ -1138,7 +1158,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee17, this);
       }));
-      function _updateMeeting(_x13, _x14) {
+      function _updateMeeting(_x16, _x17) {
         return _updateMeeting3.apply(this, arguments);
       }
       return _updateMeeting;
@@ -1146,27 +1166,36 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "deleteMeeting",
     value: function () {
-      var _deleteMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee18(meetingId) {
-        var _t6;
+      var _deleteMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee18(meetingId, options) {
+        var _ref4, _ref4$errorHandling, errorHandling, operationError, _t6;
         return _regenerator().w(function (_context18) {
           while (1) switch (_context18.p = _context18.n) {
             case 0:
-              _context18.p = 0;
-              _context18.n = 1;
+              _ref4 = options !== null && options !== void 0 ? options : {}, _ref4$errorHandling = _ref4.errorHandling, errorHandling = _ref4$errorHandling === void 0 ? _meetingOperationResult.meetingOperationErrorHandling.toast : _ref4$errorHandling;
+              _context18.p = 1;
+              _context18.n = 2;
               return this._client.account().extension().meeting(meetingId)["delete"]();
-            case 1:
-              return _context18.a(2, true);
             case 2:
-              _context18.p = 2;
-              _t6 = _context18.v;
-              _context18.n = 3;
-              return this._errorHandle(_t6);
+              return _context18.a(2, true);
             case 3:
+              _context18.p = 3;
+              _t6 = _context18.v;
+              _context18.n = 4;
+              return this._createOperationError(_t6);
+            case 4:
+              operationError = _context18.v;
+              if (!(errorHandling === _meetingOperationResult.meetingOperationErrorHandling.result)) {
+                _context18.n = 5;
+                break;
+              }
+              return _context18.a(2, operationError);
+            case 5:
+              this._showOperationError(operationError);
               return _context18.a(2, false);
           }
-        }, _callee18, this, [[0, 2]]);
+        }, _callee18, this, [[1, 3]]);
       }));
-      function deleteMeeting(_x15) {
+      function deleteMeeting(_x18, _x19) {
         return _deleteMeeting.apply(this, arguments);
       }
       return deleteMeeting;
@@ -1247,7 +1276,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee21, this);
       }));
-      function updateDelegators(_x16) {
+      function updateDelegators(_x20) {
         return _updateDelegators2.apply(this, arguments);
       }
       return updateDelegators;
@@ -1265,7 +1294,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee22, this);
       }));
-      function updateUserSettings(_x17) {
+      function updateUserSettings(_x21) {
         return _updateUserSettings2.apply(this, arguments);
       }
       return updateUserSettings;
@@ -1283,7 +1312,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee23, this);
       }));
-      function updateLockedSettings(_x18) {
+      function updateLockedSettings(_x22) {
         return _updateLockedSettings2.apply(this, arguments);
       }
       return updateLockedSettings;
@@ -1301,7 +1330,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee24, this);
       }));
-      function updatePersonalMeeting(_x19) {
+      function updatePersonalMeeting(_x23) {
         return _updatePersonalMeeting2.apply(this, arguments);
       }
       return updatePersonalMeeting;
@@ -1337,7 +1366,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee26, this);
       }));
-      function updateMeetingState(_x20) {
+      function updateMeetingState(_x24) {
         return _updateMeetingState2.apply(this, arguments);
       }
       return updateMeetingState;
@@ -1357,7 +1386,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee27, this);
       }));
-      function addUpdatingStatus(_x21) {
+      function addUpdatingStatus(_x25) {
         return _addUpdatingStatus.apply(this, arguments);
       }
       return addUpdatingStatus;
@@ -1379,7 +1408,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee28, this);
       }));
-      function removeUpdatingStatus(_x22) {
+      function removeUpdatingStatus(_x26) {
         return _removeUpdatingStatus.apply(this, arguments);
       }
       return removeUpdatingStatus;
@@ -1399,7 +1428,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee29, this);
       }));
-      function updateLastMeetingSetting(_x23) {
+      function updateLastMeetingSetting(_x27) {
         return _updateLastMeetingSetting2.apply(this, arguments);
       }
       return updateLastMeetingSetting;
@@ -1419,7 +1448,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee30, this);
       }));
-      function updateSavedDefaultMeetingSetting(_x24) {
+      function updateSavedDefaultMeetingSetting(_x28) {
         return _updateSavedDefaultMeetingSetting2.apply(this, arguments);
       }
       return updateSavedDefaultMeetingSetting;
@@ -1437,7 +1466,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee31, this);
       }));
-      function updateIsScheduling(_x25) {
+      function updateIsScheduling(_x29) {
         return _updateIsScheduling2.apply(this, arguments);
       }
       return updateIsScheduling;
@@ -1471,7 +1500,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee32, this);
       }));
-      function fetchPersonalMeeting(_x26) {
+      function fetchPersonalMeeting(_x30) {
         return _fetchPersonalMeeting.apply(this, arguments);
       }
       return fetchPersonalMeeting;
@@ -1487,7 +1516,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee33, this);
       }));
-      function getMeetingServiceInfo(_x27) {
+      function getMeetingServiceInfo(_x31) {
         return _getMeetingServiceInfo.apply(this, arguments);
       }
       return getMeetingServiceInfo;
@@ -1503,7 +1532,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee34, this);
       }));
-      function postMeeting(_x28) {
+      function postMeeting(_x32) {
         return _postMeeting.apply(this, arguments);
       }
       return postMeeting;
@@ -1519,7 +1548,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee35, this);
       }));
-      function putMeeting(_x29, _x30) {
+      function putMeeting(_x33, _x34) {
         return _putMeeting.apply(this, arguments);
       }
       return putMeeting;
@@ -1527,22 +1556,13 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getMeeting",
     value: function () {
-      var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee36(meetingId) {
+      var _getMeeting = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee36(meetingId, options) {
         var _this6 = this;
-        var _ref5,
-          _ref5$isAlertError,
-          isAlertError,
-          settings,
-          _yield$clone$json,
-          errorCode,
-          message,
-          isMeetingDeleted,
-          _args36 = arguments,
-          _t7;
+        var _ref5, _ref5$errorHandling, errorHandling, _ref5$isAlertError, isAlertError, settings, responseBody, errorCode, _responseBody$message, message, isMeetingDeleted, _t7;
         return _regenerator().w(function (_context36) {
           while (1) switch (_context36.p = _context36.n) {
             case 0:
-              _ref5 = _args36.length > 1 && _args36[1] !== undefined ? _args36[1] : {}, _ref5$isAlertError = _ref5.isAlertError, isAlertError = _ref5$isAlertError === void 0 ? true : _ref5$isAlertError;
+              _ref5 = options !== null && options !== void 0 ? options : {}, _ref5$errorHandling = _ref5.errorHandling, errorHandling = _ref5$errorHandling === void 0 ? _meetingOperationResult.meetingOperationErrorHandling.toast : _ref5$errorHandling, _ref5$isAlertError = _ref5.isAlertError, isAlertError = _ref5$isAlertError === void 0 ? true : _ref5$isAlertError;
               _context36.p = 1;
               _context36.n = 2;
               return this._client.account().extension().meeting(meetingId).get();
@@ -1556,13 +1576,21 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
               _context36.p = 3;
               _t7 = _context36.v;
               _context36.n = 4;
-              return _t7.response.clone().json();
+              return this._getErrorResponse(_t7);
             case 4:
-              _yield$clone$json = _context36.v;
-              errorCode = _yield$clone$json.errorCode;
-              message = _yield$clone$json.message;
+              responseBody = _context36.v;
+              errorCode = responseBody.errorCode, _responseBody$message = responseBody.message, message = _responseBody$message === void 0 ? '' : _responseBody$message;
               console.log("failed to get meeting info: ".concat(meetingId, ", ").concat(errorCode, ", ").concat(message));
               isMeetingDeleted = errorCode === 'CMN-102' && message.indexOf('[meetingId] is not found') > -1;
+              if (!(errorHandling === _meetingOperationResult.meetingOperationErrorHandling.result)) {
+                _context36.n = 6;
+                break;
+              }
+              _context36.n = 5;
+              return this._createOperationError(_t7, responseBody);
+            case 5:
+              return _context36.a(2, _context36.v);
+            case 6:
               if (isAlertError && isMeetingDeleted) {
                 setTimeout(function () {
                   _this6._toast.danger({
@@ -1571,12 +1599,12 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
                 }, 50);
               }
               throw _t7;
-            case 5:
+            case 7:
               return _context36.a(2);
           }
         }, _callee36, this, [[1, 3]]);
       }));
-      function getMeeting(_x31) {
+      function getMeeting(_x35, _x36) {
         return _getMeeting.apply(this, arguments);
       }
       return getMeeting;
@@ -1727,7 +1755,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee40, this, [[1, 4]]);
       }));
-      function getMeetingInvitation(_x32) {
+      function getMeetingInvitation(_x37) {
         return _getMeetingInvitation.apply(this, arguments);
       }
       return getMeetingInvitation;
@@ -1754,7 +1782,9 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
     key: "_validate",
     value: function _validate(meeting) {
       if (!meeting) {
-        throw new _meetingErrors.MeetingErrors((0, _i18n2.t)('invalidMeetingInfo'));
+        var _errors = new _meetingErrors.MeetingErrors();
+        _errors.pushLocalized(_meetingOperationResult.meetingOperationMessageKey.invalidMeetingInfo);
+        throw _errors;
       }
       var topic = meeting.topic,
         password = meeting.password,
@@ -1762,14 +1792,14 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
         _requireMeetingPassword = meeting._requireMeetingPassword;
       var errors = new _meetingErrors.MeetingErrors();
       if (topic.length <= 0) {
-        errors.push((0, _i18n2.t)('emptyTopic'));
+        errors.pushLocalized(_meetingOperationResult.meetingOperationMessageKey.emptyTopic);
       }
       if (_requireMeetingPassword && (!password || password.length <= 0)) {
-        errors.push((0, _i18n2.t)('noPassword'));
+        errors.pushLocalized(_meetingOperationResult.meetingOperationMessageKey.noPassword);
       }
       if (schedule) {
         if (schedule.durationInMinutes < 0) {
-          errors.push((0, _i18n2.t)('durationIncorrect'));
+          errors.pushLocalized(_meetingOperationResult.meetingOperationMessageKey.durationIncorrect);
         }
       }
       if (errors.length > 0) {
@@ -1857,7 +1887,7 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
           }
         }, _callee41, this);
       }));
-      function _createDialingNumberTpl(_x33, _x34, _x35) {
+      function _createDialingNumberTpl(_x38, _x39, _x40) {
         return _createDialingNumberTpl2.apply(this, arguments);
       }
       return _createDialingNumberTpl;
@@ -1866,97 +1896,165 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
     key: "_errorHandle",
     value: function () {
       var _errorHandle2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee42(errors) {
-        var _iterator, _step, error, _yield$errors$respons, message, errorCode, permissionName, _t1;
+        var operationError;
         return _regenerator().w(function (_context42) {
           while (1) switch (_context42.n) {
             case 0:
-              if (!(errors instanceof _meetingErrors.MeetingErrors)) {
-                _context42.n = 1;
-                break;
-              }
-              _iterator = _createForOfIteratorHelper(errors.all);
-              try {
-                for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                  error = _step.value;
-                  this._toast.warning(error);
-                }
-              } catch (err) {
-                _iterator.e(err);
-              } finally {
-                _iterator.f();
-              }
-              _context42.n = 9;
-              break;
+              _context42.n = 1;
+              return this._createOperationError(errors);
             case 1:
-              if (!(errors && errors.response)) {
-                _context42.n = 8;
-                break;
-              }
-              _context42.n = 2;
-              return errors.response.clone().json();
+              operationError = _context42.v;
+              this._showOperationError(operationError);
             case 2:
-              _yield$errors$respons = _context42.v;
-              message = _yield$errors$respons.message;
-              errorCode = _yield$errors$respons.errorCode;
-              permissionName = _yield$errors$respons.permissionName;
-              if (!(errorCode === 'InsufficientPermissions' && permissionName)) {
-                _context42.n = 3;
-                break;
-              }
-              this._toast.danger({
-                message: (0, _i18n2.t)('insufficientPermissions', {
-                  application: this._brand.appName,
-                  permissionName: permissionName
-                })
-              });
-              _context42.n = 7;
-              break;
-            case 3:
-              if (!(errorCode === 'CMN-102' && message.indexOf('[meetingId] is not found') > -1)) {
-                _context42.n = 4;
-                break;
-              }
-              this._toast.danger({
-                message: (0, _i18n2.t)('meetingIsDeleted')
-              });
-              _context42.n = 7;
-              break;
-            case 4:
-              _t1 = !this._availabilityMonitor;
-              if (_t1) {
-                _context42.n = 6;
-                break;
-              }
-              _context42.n = 5;
-              return this._availabilityMonitor.checkIfHAError(errors);
-            case 5:
-              _t1 = !_context42.v;
-            case 6:
-              if (!_t1) {
-                _context42.n = 7;
-                break;
-              }
-              this._toast.danger({
-                message: (0, _i18n2.t)('internalError')
-              });
-            case 7:
-              _context42.n = 9;
-              break;
-            case 8:
-              console.log('errors:', errors);
-              this._toast.danger({
-                message: (0, _i18n2.t)('internalError')
-              });
-            case 9:
               return _context42.a(2);
           }
         }, _callee42, this);
       }));
-      function _errorHandle(_x36) {
+      function _errorHandle(_x41) {
         return _errorHandle2.apply(this, arguments);
       }
       return _errorHandle;
     }()
+  }, {
+    key: "_createOperationError",
+    value: function () {
+      var _createOperationError2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(errors, responseBody) {
+        var _ref6, errorCode, _ref6$message, message, permissionName, _t1, _t10;
+        return _regenerator().w(function (_context43) {
+          while (1) switch (_context43.n) {
+            case 0:
+              if (!(errors instanceof _meetingErrors.MeetingErrors)) {
+                _context43.n = 1;
+                break;
+              }
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.validation, errors.all.map(function (message) {
+                return _objectSpread({
+                  level: 'warning'
+                }, message);
+              })));
+            case 1:
+              if (!(errors !== null && errors !== void 0 && errors.response)) {
+                _context43.n = 10;
+                break;
+              }
+              if (!(responseBody !== null && responseBody !== void 0)) {
+                _context43.n = 2;
+                break;
+              }
+              _t1 = responseBody;
+              _context43.n = 4;
+              break;
+            case 2:
+              _context43.n = 3;
+              return this._getErrorResponse(errors);
+            case 3:
+              _t1 = _context43.v;
+            case 4:
+              _ref6 = _t1;
+              errorCode = _ref6.errorCode;
+              _ref6$message = _ref6.message;
+              message = _ref6$message === void 0 ? '' : _ref6$message;
+              permissionName = _ref6.permissionName;
+              if (!(errorCode === 'InsufficientPermissions' && permissionName)) {
+                _context43.n = 5;
+                break;
+              }
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.insufficientPermissions, [{
+                level: 'danger',
+                messageKey: _meetingOperationResult.meetingOperationMessageKey.insufficientPermissions,
+                messageParams: {
+                  application: this._brand.appName,
+                  permissionName: permissionName
+                },
+                messageSource: _meetingOperationResult.meetingOperationMessageSource.meeting
+              }]));
+            case 5:
+              if (!(errorCode === 'CMN-102' && message.indexOf('[meetingId] is not found') > -1)) {
+                _context43.n = 6;
+                break;
+              }
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.deleted, [{
+                level: 'danger',
+                messageKey: _meetingOperationResult.meetingOperationMessageKey.meetingIsDeleted,
+                messageSource: _meetingOperationResult.meetingOperationMessageSource.meeting
+              }]));
+            case 6:
+              _t10 = this._availabilityMonitor;
+              if (!_t10) {
+                _context43.n = 8;
+                break;
+              }
+              _context43.n = 7;
+              return this._availabilityMonitor.checkIfHAError(errors);
+            case 7:
+              _t10 = _context43.v;
+            case 8:
+              if (!_t10) {
+                _context43.n = 9;
+                break;
+              }
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.availability, []));
+            case 9:
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.internal, [{
+                level: 'danger',
+                messageKey: _meetingOperationResult.meetingOperationMessageKey.internalError,
+                messageSource: _meetingOperationResult.meetingOperationMessageSource.meeting
+              }]));
+            case 10:
+              console.log('errors:', errors);
+              return _context43.a(2, (0, _meetingOperationResult.createMeetingOperationError)(_meetingOperationResult.meetingOperationErrorReason.internal, [{
+                level: 'danger',
+                messageKey: _meetingOperationResult.meetingOperationMessageKey.internalError,
+                messageSource: _meetingOperationResult.meetingOperationMessageSource.meeting
+              }]));
+          }
+        }, _callee43, this);
+      }));
+      function _createOperationError(_x42, _x43) {
+        return _createOperationError2.apply(this, arguments);
+      }
+      return _createOperationError;
+    }()
+  }, {
+    key: "_getErrorResponse",
+    value: function () {
+      var _getErrorResponse2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(error) {
+        var _error$response, _t11;
+        return _regenerator().w(function (_context44) {
+          while (1) switch (_context44.p = _context44.n) {
+            case 0:
+              _context44.p = 0;
+              _context44.n = 1;
+              return (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.clone().json();
+            case 1:
+              return _context44.a(2, _context44.v);
+            case 2:
+              _context44.p = 2;
+              _t11 = _context44.v;
+              console.log('failed to read meeting error response:', _t11);
+              return _context44.a(2, {});
+          }
+        }, _callee44, null, [[0, 2]]);
+      }));
+      function _getErrorResponse(_x44) {
+        return _getErrorResponse2.apply(this, arguments);
+      }
+      return _getErrorResponse;
+    }()
+  }, {
+    key: "_showOperationError",
+    value: function _showOperationError(error) {
+      var _this7 = this;
+      error.notifications.forEach(function (notification) {
+        var message = (0, _meetingOperationResult.resolveMeetingOperationNotification)(notification, function (messageKey, messageParams) {
+          return messageParams ? (0, _i18n2.t)(messageKey, messageParams) : (0, _i18n2.t)(messageKey);
+        });
+        var level = notification.level;
+        _this7._toast[level]({
+          message: message
+        });
+      });
+    }
   }, {
     key: "enforcePmiPassword",
     value: function enforcePmiPassword(processedMeeting, requirePwdForPMI, requirePwdIsLockedForPMI) {
@@ -1987,9 +2085,9 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
     }
   }, {
     key: "enforcePassword",
-    value: function enforcePassword(meeting, _ref6, usePmi) {
-      var userSettings = _ref6.userSettings,
-        personalMeetingSettings = _ref6.personalMeetingSettings;
+    value: function enforcePassword(meeting, _ref7, usePmi) {
+      var userSettings = _ref7.userSettings,
+        personalMeetingSettings = _ref7.personalMeetingSettings;
       if (!this.enableServiceWebSettings) {
         return meeting;
       }
@@ -2043,25 +2141,25 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "fetchDiscoveryConfig",
     value: function () {
-      var _fetchDiscoveryConfig = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43() {
+      var _fetchDiscoveryConfig = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee45() {
         var _this$_client$service;
         var data;
-        return _regenerator().w(function (_context43) {
-          while (1) switch (_context43.n) {
+        return _regenerator().w(function (_context45) {
+          while (1) switch (_context45.n) {
             case 0:
-              _context43.n = 1;
+              _context45.n = 1;
               return (_this$_client$service = this._client.service.platform().discovery()) === null || _this$_client$service === void 0 ? void 0 : _this$_client$service.externalData();
             case 1:
-              data = _context43.v;
+              data = _context45.v;
               if (data) {
                 this.rcvBaseWebUri = data.rcv.baseWebUri;
               } else {
                 // handle discovery api  error in sdk
               }
             case 2:
-              return _context43.a(2);
+              return _context45.a(2);
           }
-        }, _callee43, this);
+        }, _callee45, this);
       }));
       function fetchDiscoveryConfig() {
         return _fetchDiscoveryConfig.apply(this, arguments);
@@ -2076,23 +2174,23 @@ var Meeting = exports.Meeting = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getMeetingUriRegExp",
     value: function () {
-      var _getMeetingUriRegExp = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44() {
-        return _regenerator().w(function (_context44) {
-          while (1) switch (_context44.n) {
+      var _getMeetingUriRegExp = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46() {
+        return _regenerator().w(function (_context46) {
+          while (1) switch (_context46.n) {
             case 0:
               if (!(this.enableDiscoveryApi && !this.rcvBaseWebUri)) {
-                _context44.n = 1;
+                _context46.n = 1;
                 break;
               }
-              _context44.n = 1;
+              _context46.n = 1;
               return this.fetchDiscoveryConfig();
             case 1:
-              return _context44.a(2, {
+              return _context46.a(2, {
                 rcvUriRegExp: this.rcvUriRegExp,
                 rcmUriRegExp: this.rcmUriRegExp
               });
           }
-        }, _callee44, this);
+        }, _callee46, this);
       }));
       function getMeetingUriRegExp() {
         return _getMeetingUriRegExp.apply(this, arguments);
