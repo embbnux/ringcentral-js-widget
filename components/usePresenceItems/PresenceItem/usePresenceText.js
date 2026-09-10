@@ -14,11 +14,12 @@ function usePresenceText(_ref) {
     presenceStatus = _ref.presenceStatus;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
-  return (0, _react.useMemo)(function () {
+  var title = (0, _react.useMemo)(function () {
     if (dndStatus === 'DoNotAcceptAnyCalls') {
       return t(dndStatus);
     }
-    return t(presenceStatus);
+    return t(presenceStatus || 'Available');
   }, [dndStatus, t, presenceStatus]);
+  return title;
 }
 //# sourceMappingURL=usePresenceText.js.map

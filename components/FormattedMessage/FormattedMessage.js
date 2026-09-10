@@ -33,7 +33,8 @@ var FormattedMessage = exports.FormattedMessage = function FormattedMessage(prop
     _props$values = props.values,
     values = _props$values === void 0 ? {} : _props$values,
     _props$tagName = props.tagName,
-    Component = _props$tagName === void 0 ? 'span' : _props$tagName;
+    Component = _props$tagName === void 0 ? 'span' : _props$tagName,
+    children = props.children;
   var nodes = (0, _react.useMemo)(function () {
     var uid = Math.floor(Math.random() * 0x10000000000).toString(16);
     var hashedParams = {};
@@ -56,6 +57,6 @@ var FormattedMessage = exports.FormattedMessage = function FormattedMessage(prop
     });
     return nodes;
   }, [message, values]);
-  return /*#__PURE__*/_react["default"].createElement(Component, null, nodes);
+  return /*#__PURE__*/_react["default"].createElement(Component, null, nodes, children);
 };
 //# sourceMappingURL=FormattedMessage.js.map

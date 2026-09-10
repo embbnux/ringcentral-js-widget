@@ -93,6 +93,18 @@ var useHistoryActionButtons = exports.useHistoryActionButtons = function useHist
           symbol: _springIcon.Smsmd
         };
       },
+      manageConsent: function manageConsent() {
+        return {
+          label: t('manageConsent'),
+          symbol: _springIcon.ConsentMd
+        };
+      },
+      viewConsent: function viewConsent() {
+        return {
+          label: t('viewConsent'),
+          symbol: _springIcon.ConsentMd
+        };
+      },
       viewFax: function viewFax() {
         return {
           label: t('viewFax'),

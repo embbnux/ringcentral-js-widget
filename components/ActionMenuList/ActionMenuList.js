@@ -240,11 +240,12 @@ var ActionMenuList = exports.ActionMenuList = function ActionMenuList(_ref2) {
           itemContent: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, showIconAtMenuList && /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
             size: "small",
             symbol: symbol
-          }), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, label)),
-          className: "h-8 px-1",
-          classes: {
-            container: 'py-0 h-8 min-h-0'
-          }
+          }), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, {
+            classes: {
+              primaryText: 'truncate min-w-0'
+            }
+          }, label)),
+          className: "px-1 py-0"
         }, submenuActions.map(function (action) {
           return /*#__PURE__*/_react["default"].createElement(_springUi.MenuItem, _extends({
             key: action.actionType,
@@ -271,7 +272,11 @@ var ActionMenuList = exports.ActionMenuList = function ActionMenuList(_ref2) {
       }, propsMap === null || propsMap === void 0 ? void 0 : propsMap['all'], propsMap === null || propsMap === void 0 ? void 0 : propsMap[actionType]), showIconAtMenuList && /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
         size: "small",
         symbol: symbol
-      }), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, null, label));
+      }), /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, {
+        classes: {
+          primaryText: 'truncate min-w-0'
+        }
+      }, label));
     });
   }, [menuActions, propsMap, showIconAtMenuList]);
   var menu = (0, _react.useMemo)(function () {

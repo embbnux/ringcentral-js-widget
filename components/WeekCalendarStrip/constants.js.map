@@ -1,0 +1,1 @@
+{"version":3,"file":"constants.js","names":["WEEK_DAYS","exports","MAX_DAYS"],"sources":["components/WeekCalendarStrip/constants.ts"],"sourcesContent":["export const WEEK_DAYS = 7;\nexport const MAX_DAYS = 90;\n"],"mappings":";;;;;;;AAAO,IAAMA,SAAS,GAAAC,OAAA,CAAAD,SAAA,GAAG,CAAC;AACnB,IAAME,QAAQ,GAAAD,OAAA,CAAAC,QAAA,GAAG,EAAE","ignoreList":[]}

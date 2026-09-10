@@ -18,9 +18,9 @@
     "@ringcentral-integration/next-core": "*",
     "@ringcentral-integration/i18n": "*",
     "@ringcentral-integration/next-integration": "*",
-    "linkify-html": "^4.3.2",
     "runes": "^0.4.3",
     "use-file-upload": "^1.0.11",
+    "emoji-mart": "^5.2.2",
     "@emoji-mart/react": "^1.0.1"
   }
 }

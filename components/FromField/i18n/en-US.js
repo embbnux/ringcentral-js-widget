@@ -15,6 +15,7 @@ var _default = exports["default"] = {
   ForwardedCompanyNumber: 'Forwarded',
   ForwardedNumber: 'Forwarded',
   from: 'Text from',
-  "delete": 'Delete'
+  "delete": 'Delete',
+  numberRegistrationTooltip: 'Your number must be registered by an admin to send texts.'
 };
 //# sourceMappingURL=en-US.js.map

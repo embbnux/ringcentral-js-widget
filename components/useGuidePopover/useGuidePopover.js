@@ -53,10 +53,12 @@ var rightTopHintClasses = 'absolute right-1.5 top-1.5 size-2 rounded-full bg-pri
 var GuidePopover = exports.GuidePopover = function GuidePopover(_ref) {
   var children = _ref.children,
     anchorRef = _ref.anchorRef,
-    popoverOpen = _ref.popoverOpen;
+    popoverOpen = _ref.popoverOpen,
+    onBackdropClick = _ref.onBackdropClick;
   if (!popoverOpen) return null;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_springUi.Portal, null, /*#__PURE__*/_react["default"].createElement(_springUi.Backdrop, {
-    className: "z-0"
+    className: "z-0",
+    onClick: onBackdropClick
   })), /*#__PURE__*/_react["default"].createElement(_springUi.Popper, {
     anchorEl: function anchorEl() {
       return anchorRef.current;
@@ -105,8 +107,10 @@ var GuideAnchor = exports.GuideAnchor = /*#__PURE__*/(0, _react.forwardRef)(func
   }, rest, {
     className: (0, _clsx["default"])(className, (0, _clsx["default"])(showHint && 'relative', popoverOpen && activeClassName))
   }), children, showHint && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+    "data-sign": "guideHint",
     className: hintClassName
   }), animateHint && /*#__PURE__*/_react["default"].createElement("div", {
+    "data-sign": "guideHintAnimation",
     className: (0, _clsx["default"])(hintClassName, 'animate-ping')
   })));
 });

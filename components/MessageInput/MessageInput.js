@@ -90,7 +90,7 @@ var MessageInput = exports.MessageInput = function MessageInput(_ref) {
     _onChange(e.detail);
   });
   return /*#__PURE__*/_react["default"].createElement("div", _extends({
-    "data-sign": "message-editor",
+    "data-sign": "messageInput-container",
     className: className
   }, rest), /*#__PURE__*/_react["default"].createElement("div", {
     className: "h-10 flex items-center justify-between px-3"
@@ -144,7 +144,7 @@ var MessageInput = exports.MessageInput = function MessageInput(_ref) {
     size: "medium",
     placeholder: t('smsEditHint'),
     classes: {
-      formFieldContent: 'flex-col items-start'
+      formFieldContent: 'flex-col items-start max-h-36'
     },
     variant: "outlined",
     value: inputText,

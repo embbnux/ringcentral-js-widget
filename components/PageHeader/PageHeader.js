@@ -60,6 +60,12 @@ var PageHeaderBackButton = exports.PageHeaderBackButton = function PageHeaderBac
     size: "medium"
   }, rest));
 };
+var resizeObserverOptions = {
+  mode: 'throttle',
+  options: {
+    trailing: true
+  }
+};
 var PageHeader = exports.PageHeader = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) {
   var className = _ref2.className,
     startAdornment = _ref2.startAdornment,
@@ -70,36 +76,47 @@ var PageHeader = exports.PageHeader = /*#__PURE__*/(0, _react.forwardRef)(functi
     rest = _objectWithoutProperties(_ref2, _excluded2);
   var startRef = (0, _react.useRef)(null);
   var endRef = (0, _react.useRef)(null);
-  (0, _springUi.useResizeObserver)(endRef, function () {
-    if (startRef.current && endRef.current) {
-      var startWidth = startRef.current.offsetWidth;
-      var endWidth = endRef.current.offsetWidth;
-      if (startWidth === endWidth) {
-        return;
-      }
-      var maxWidth = Math.max(startWidth, endWidth);
-      if (endWidth > startWidth) {
-        startRef.current.style.width = "".concat(maxWidth, "px");
-      } else {
-        endRef.current.style.width = "".concat(maxWidth, "px");
-      }
+  var startContentRef = (0, _react.useRef)(null);
+  var endContentRef = (0, _react.useRef)(null);
+  var syncAdornmentWidth = (0, _react.useCallback)(function () {
+    var start = startRef.current;
+    var end = endRef.current;
+    var startContent = startContentRef.current;
+    var endContent = endContentRef.current;
+    if (!start || !end || !startContent || !endContent) {
+      return;
     }
-  }, {
-    mode: 'throttle'
-  });
+    var maxWidth = Math.max(startContent.offsetWidth, endContent.offsetWidth);
+    start.style.minWidth = "".concat(maxWidth, "px");
+    end.style.minWidth = "".concat(maxWidth, "px");
+  }, []);
+
+  // observe the unsized content wrappers so the sizing applied on the outer
+  // boxes never suppresses further resize notifications
+  (0, _springUi.useResizeObserver)(startContentRef, syncAdornmentWidth, resizeObserverOptions);
+  (0, _springUi.useResizeObserver)(endContentRef, syncAdornmentWidth, resizeObserverOptions);
+  var isTypeOfChildrenString = typeof children === 'string';
   return /*#__PURE__*/_react["default"].createElement("div", _extends({
     ref: ref,
-    className: (0, _springUi.twMerge)('w-full h-[50px] py-0.5 flex items-center gap-3 justify-between flex-none px-2', className)
+    className: (0, _springUi.twMerge)('w-full min-h-9 py-2 flex items-center justify-between flex-none px-3', className)
   }, rest), /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _springUi.twMerge)('flex justify-start items-center h-full flex-none', classes === null || classes === void 0 ? void 0 : classes.startAdornment),
+    className: (0, _springUi.twMerge)('justify-start h-full flex-none', classes === null || classes === void 0 ? void 0 : classes.startAdornment),
     ref: startRef
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    ref: startContentRef,
+    className: "flex items-center h-full"
   }, onBackClick && /*#__PURE__*/_react["default"].createElement(PageHeaderBackButton, {
     onClick: onBackClick
-  }), startAdornment), children && /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex justify-center flex-auto overflow-hidden typography-subtitle"
-  }, children), /*#__PURE__*/_react["default"].createElement("div", {
+  }), startAdornment)), children && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex justify-center flex-auto overflow-hidden typography-subtitle min-w-0"
+  }, isTypeOfChildrenString ? /*#__PURE__*/_react["default"].createElement("span", {
+    className: "truncate"
+  }, children) : children), /*#__PURE__*/_react["default"].createElement("div", {
     ref: endRef,
-    className: "flex justify-end items-center h-full flex-none"
-  }, endAdornment));
+    className: "justify-end h-full flex-none"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    ref: endContentRef,
+    className: "flex items-center h-full"
+  }, endAdornment)));
 });
 //# sourceMappingURL=PageHeader.js.map

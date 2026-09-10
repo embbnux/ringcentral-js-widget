@@ -60,7 +60,8 @@ var SelectLine = exports.SelectLine = function SelectLine(_ref) {
         var selected = options.find(function (option) {
           return option.value === value;
         });
-        return selected ? selected.label : value;
+        if (selected) return selected.label;
+        return typeof value === 'string' || typeof value === 'number' ? value : '';
       },
       size: "medium"
       // TODO: spring-ui should support none underline style

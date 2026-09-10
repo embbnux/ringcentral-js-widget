@@ -8,7 +8,7 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   from: 'De',
-  to: 'Até',
+  to: 'Para',
   enterNameOrNumber: 'Introduzir número ou nome...',
   typeMessage: 'Escrever mensagem...',
   send: 'Enviar',

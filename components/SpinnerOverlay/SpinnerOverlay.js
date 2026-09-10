@@ -22,8 +22,9 @@ var backgroundColor = (0, _palette.setOpacity)((0, _newPalette.palette2)('neutra
 var StyledLoading = _styledComponents["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  top: 0px;\n  left: 0px;\n  background: ", ";\n  z-index: ", ";\n"])), backgroundColor, function (props) {
   return (0, _zIndex.zIndex)('tooltip')(props) + 1;
 });
-var LoadingOverlay = exports.LoadingOverlay = function LoadingOverlay(_ref) {
-  var backgroundType = _ref.backgroundType,
+var LoadingOverlay = exports.LoadingOverlay = function LoadingOverlay() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    backgroundType = _ref.backgroundType,
     size = _ref.size,
     disableShrink = _ref.disableShrink;
   return /*#__PURE__*/_react["default"].createElement(StyledLoading, {

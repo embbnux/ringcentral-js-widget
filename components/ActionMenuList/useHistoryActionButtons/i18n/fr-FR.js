@@ -12,6 +12,8 @@ var _default = exports["default"] = {
   addRecord: 'Créer un enregistrement',
   call: 'Téléphone',
   text: 'SMS',
+  manageConsent: 'Gérer le consentement',
+  viewConsent: 'Afficher le consentement',
   more: 'Plus',
   mark: 'Marquer comme non lu',
   unmark: 'Marquer comme lu',
@@ -32,6 +34,8 @@ var _default = exports["default"] = {
 // @key: @#@"addRecord"@#@ @source: @#@"Create new record"@#@
 // @key: @#@"call"@#@ @source: @#@"Phone"@#@
 // @key: @#@"text"@#@ @source: @#@"Text"@#@
+// @key: @#@"manageConsent"@#@ @source: @#@"Manage Consent"@#@
+// @key: @#@"viewConsent"@#@ @source: @#@"View Consent"@#@
 // @key: @#@"more"@#@ @source: @#@"More"@#@
 // @key: @#@"mark"@#@ @source: @#@"Mark as unread"@#@
 // @key: @#@"unmark"@#@ @source: @#@"Mark as read"@#@

@@ -294,4 +294,26 @@ Object.keys(_SanitizeHtml).forEach(function (key) {
     }
   });
 });
+var _TimeSlotsGrid = require("./TimeSlotsGrid");
+Object.keys(_TimeSlotsGrid).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _TimeSlotsGrid[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _TimeSlotsGrid[key];
+    }
+  });
+});
+var _WeekCalendarStrip = require("./WeekCalendarStrip");
+Object.keys(_WeekCalendarStrip).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _WeekCalendarStrip[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _WeekCalendarStrip[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map
