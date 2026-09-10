@@ -89,7 +89,7 @@ var ProxyFetcher = exports.ProxyFetcher = (_dec = (0, _nextCore.injectable)({
         props.disableSetNull = _this2._coworker.isMain;
         var permissionCheckFunction = props.permissionCheckFunction;
         props.permissionCheckFunction = function () {
-          return !!(_this2._coworker.isCoworker && (permissionCheckFunction === null || permissionCheckFunction === void 0 ? void 0 : permissionCheckFunction()));
+          return !!(_this2._coworker.isCoworker && permissionCheckFunction !== null && permissionCheckFunction !== void 0 && permissionCheckFunction());
         };
         var syncEventName = "".concat(module.key, "-SyncData");
         if (_this2._coworker.isMain) {

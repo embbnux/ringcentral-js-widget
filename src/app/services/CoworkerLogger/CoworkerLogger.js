@@ -97,11 +97,15 @@ var CoworkerLogger = exports.CoworkerLogger = (_dec = (0, _nextCore.injectable)(
       var _this3 = this;
       if (this._portManager.shared && this._portManager.isWorkerMode) {
         this._portManager.onMainTab(function () {
-          _this3.transport = (0, _nextCore.createTransport)('SharedWorkerClient', {
+          var transport = (0, _nextCore.createTransport)('SharedWorkerClient', {
             worker: _this3._coworkerOptions.worker,
             prefix: 'logger'
           });
-          _this3.transport.listen('syncLog', function (data) {
+          _this3.transport = transport;
+          transport.onConnect(function () {
+            (0, _nextCore.pushPiiDeviceKeyToWorker)(transport);
+          });
+          transport.listen('syncLog', function (data) {
             _this3._browserLogger.storageTransport.write(data);
           });
         });
