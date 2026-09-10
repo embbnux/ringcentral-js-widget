@@ -14,9 +14,9 @@
   "author": "RingCentral Integration Team",
   "main": "index.js",
   "dependencies": {
-    "@ringcentral/juno": "^2.42.0",
-    "@ringcentral/juno-icon": "^1.80.0",
-    "dayjs": "^1.11.7",
+    "@ringcentral/juno": "^3.0.0-alpha.19",
+    "@ringcentral/juno-icon": "^3.0.0-alpha.19",
+    "dayjs": "^1.11.13",
     "@rjsf/core": "^5.18.3",
     "@rjsf/utils": "^5.18.3"
   }
