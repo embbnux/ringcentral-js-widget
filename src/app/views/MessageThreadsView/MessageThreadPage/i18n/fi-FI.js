@@ -17,6 +17,7 @@ var _default = exports["default"] = {
   open: 'Avoin',
   resolved: 'Ratkaistu',
   assignment: 'Määräys',
+  selectAll: 'Valitse kaikki',
   done: 'Valmis',
   cancel: 'Peruuta',
   clear: 'Tyhjennä',
@@ -34,6 +35,7 @@ var _default = exports["default"] = {
 // @key: @#@"open"@#@ @source: @#@"Open"@#@
 // @key: @#@"resolved"@#@ @source: @#@"Resolved"@#@
 // @key: @#@"assignment"@#@ @source: @#@"Assignment"@#@
+// @key: @#@"selectAll"@#@ @source: @#@"Select all"@#@
 // @key: @#@"done"@#@ @source: @#@"Done"@#@
 // @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
 // @key: @#@"clear"@#@ @source: @#@"Clear"@#@

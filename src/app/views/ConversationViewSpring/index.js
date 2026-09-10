@@ -41,6 +41,17 @@ Object.keys(_PersonalConversation).forEach(function (key) {
     }
   });
 });
+var _QueueConversation = require("./QueueConversation.view");
+Object.keys(_QueueConversation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _QueueConversation[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _QueueConversation[key];
+    }
+  });
+});
 var _SharedConversation = require("./SharedConversation.view");
 Object.keys(_SharedConversation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

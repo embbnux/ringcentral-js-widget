@@ -358,7 +358,7 @@ var FaxSender = exports.FaxSender = (_dec = (0, _nextCore.injectable)({
         return _regenerator().w(function (_context6) {
           while (1) switch (_context6.n) {
             case 0:
-              if (files === null || files === void 0 ? void 0 : files.length) {
+              if (files !== null && files !== void 0 && files.length) {
                 _context6.n = 1;
                 break;
               }

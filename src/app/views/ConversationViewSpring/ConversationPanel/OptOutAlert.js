@@ -21,7 +21,8 @@ var OptOutAlert = exports.OptOutAlert = function OptOutAlert() {
     title: t('optOutAlertTooltip')
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
     symbol: _springIcon.InfoMd,
-    size: "small"
+    size: "small",
+    "data-sign": "optOutAlertIcon"
   })));
 };
 //# sourceMappingURL=OptOutAlert.js.map

@@ -98,11 +98,65 @@ var ImageAttachmentRender = exports.ImageAttachmentRender = function ImageAttach
     direction = props.direction,
     handleImageLoad = props.handleImageLoad,
     rest = _objectWithoutProperties(props, _excluded2);
-  var uri = attachment.uri;
-  var fileNameWithoutExt = attachment.fileName ? (0, _utils.removeExtension)(attachment.fileName) : attachment.id;
-  var fileExt = attachment.fileName ? (0, _utils.getFileExtension)(attachment.fileName) : _constant.CONTENT_TYPE_TO_EXTENSION[attachment.contentType];
-  var fileName = "".concat(fileNameWithoutExt, ".").concat(fileExt);
-  var isTiff = fileExt.indexOf('tif') > -1;
+  var _useMemo = (0, _react.useMemo)(function () {
+      var nextUri = attachment.uri;
+      var nextFileNameWithoutExt = attachment.fileName ? (0, _utils.removeExtension)(attachment.fileName) : attachment.id;
+      var nextFileExt = attachment.fileName ? (0, _utils.getFileExtension)(attachment.fileName) : _constant.CONTENT_TYPE_TO_EXTENSION[attachment.contentType];
+      return {
+        uri: nextUri,
+        fileNameWithoutExt: nextFileNameWithoutExt,
+        fileExt: nextFileExt,
+        fileName: "".concat(nextFileNameWithoutExt, ".").concat(nextFileExt),
+        isTiff: nextFileExt.indexOf('tif') > -1
+      };
+    }, [attachment.contentType, attachment.fileName, attachment.id, attachment.uri]),
+    uri = _useMemo.uri,
+    fileNameWithoutExt = _useMemo.fileNameWithoutExt,
+    fileExt = _useMemo.fileExt,
+    fileName = _useMemo.fileName,
+    isTiff = _useMemo.isTiff;
+  var _useState3 = (0, _react.useState)(attachment.width && attachment.height ? {
+      width: attachment.width,
+      height: attachment.height
+    } : null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    resolvedSize = _useState4[0],
+    setResolvedSize = _useState4[1];
+  (0, _react.useEffect)(function () {
+    if (isTiff) {
+      return;
+    }
+    if (attachment.width && attachment.height) {
+      setResolvedSize({
+        width: attachment.width,
+        height: attachment.height
+      });
+      return;
+    }
+    if (!uri) {
+      return;
+    }
+    var active = true;
+    var img = new Image();
+    img.onload = function () {
+      if (!active) {
+        return;
+      }
+      var width = img.naturalWidth;
+      var height = img.naturalHeight;
+      if (width > 0 && height > 0) {
+        setResolvedSize({
+          width: width,
+          height: height
+        });
+      }
+    };
+    img.src = uri;
+    return function () {
+      active = false;
+      img.onload = null;
+    };
+  }, [attachment.height, attachment.width, isTiff, uri]);
   return /*#__PURE__*/_react["default"].createElement("div", _extends({
     key: attachment.id
   }, rest, {
@@ -112,9 +166,9 @@ var ImageAttachmentRender = exports.ImageAttachmentRender = function ImageAttach
   }, /*#__PURE__*/_react["default"].createElement(TiffViewer, {
     tiffUrl: uri,
     onLoad: handleImageLoad
-  })) : /*#__PURE__*/_react["default"].createElement(PreviewMedia, {
-    height: attachment.height || 100,
-    width: attachment.width || 100,
+  })) : resolvedSize ? /*#__PURE__*/_react["default"].createElement(PreviewMedia, {
+    height: resolvedSize.height,
+    width: resolvedSize.width,
     loading: "lazy",
     tabIndex: 0,
     src: uri,
@@ -122,6 +176,8 @@ var ImageAttachmentRender = exports.ImageAttachmentRender = function ImageAttach
     title: fileName,
     draggable: "false",
     onLoad: handleImageLoad
+  }) : /*#__PURE__*/_react["default"].createElement("div", {
+    className: "w-24 h-24"
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])('bg-neutral-b4 h-8 p-2 flex items-center absolute left-0 bottom-0 translate-y-full transition-neutral-01-fast w-full', _styles["default"].hoverAction),
     "data-sign": "image-toolbar"

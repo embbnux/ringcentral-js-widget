@@ -22,8 +22,15 @@ var _default = exports["default"] = {
   NumberPool: 'Grupo de números',
   BusinessMobileNumber: 'Móvil de empresa',
   IntegrationNumber: 'Integración',
-  all: 'TODOS',
+  all: 'Todos',
   unread: 'No leídos',
+  draft: 'Borradores',
+  failed: 'Error',
+  done: 'Listo',
+  cancel: 'Cancelar',
+  byCallQueue: 'Por cola de llamadas',
+  allCallQueues: 'Todas las colas de llamadas',
+  searchCallQueues: 'Buscar colas de llamadas',
   noMessages: 'Sin mensajes',
   noText: 'Aún no hay mensajes de texto',
   noUnreadText: 'Aún no hay mensajes de texto sin leer',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: 'Buscar faxes',
   searchText: 'Buscar mensajes',
   composeText: 'Enviar nuevo mensaje',
+  sendNewTextDisabled: 'Envío de nuevo mensaje deshabilitado',
   composeFax: 'Redactar fax'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=es-ES.js.map

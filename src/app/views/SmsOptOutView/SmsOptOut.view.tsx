@@ -134,7 +134,11 @@ export class SmsOptOutView extends RcViewModule {
             data-sign="optOutButton"
           />
         </GuideAnchor>
-        <GuidePopover anchorRef={anchorRef} popoverOpen={popoverOpen}>
+        <GuidePopover
+          anchorRef={anchorRef}
+          popoverOpen={popoverOpen}
+          onBackdropClick={close}
+        >
           <div className="mb-3">
             <div className="typography-subtitleBold text-neutral-b0 mb-2">
               {t('optOutPopoverTitle')}

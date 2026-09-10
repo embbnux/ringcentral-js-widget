@@ -245,7 +245,7 @@ var ConversationsView = exports.ConversationsView = (_dec = (0, _nextCore.inject
         }()) : undefined,
         onClickToDial: this._dialerView && this._appFeatures.isCallingEnabled ? function (recipient) {
           var _this2$_call;
-          if ((_this2$_call = _this2._call) === null || _this2$_call === void 0 ? void 0 : _this2$_call.isIdle) {
+          if ((_this2$_call = _this2._call) !== null && _this2$_call !== void 0 && _this2$_call.isIdle) {
             _this2._router.push(dialerRoute);
             // for track router
             _this2._messageStore.onClickToCall({

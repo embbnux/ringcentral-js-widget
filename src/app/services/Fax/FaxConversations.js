@@ -154,12 +154,12 @@ var FaxConversations = exports.FaxConversations = (_dec = (0, _nextCore.injectab
           // match by entity's name
           return true;
         }
-        if ((_fax$correspondents = fax.correspondents) === null || _fax$correspondents === void 0 ? void 0 : _fax$correspondents.find(function (contact) {
+        if ((_fax$correspondents = fax.correspondents) !== null && _fax$correspondents !== void 0 && _fax$correspondents.find(function (contact) {
           return (contact.phoneNumber || contact.extensionNumber || '').indexOf(effectSearchStr) > -1;
         })) {
           return true;
         }
-        if ((_fax$correspondents2 = fax.correspondents) === null || _fax$correspondents2 === void 0 ? void 0 : _fax$correspondents2.find(function (contact) {
+        if ((_fax$correspondents2 = fax.correspondents) !== null && _fax$correspondents2 !== void 0 && _fax$correspondents2.find(function (contact) {
           return (contact.name || '').toLowerCase().indexOf(effectSearchStr) > -1;
         })) {
           return true;

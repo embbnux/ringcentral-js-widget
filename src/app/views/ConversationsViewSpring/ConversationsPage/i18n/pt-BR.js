@@ -22,8 +22,15 @@ var _default = exports["default"] = {
   NumberPool: 'Pool de números',
   BusinessMobileNumber: 'Dispositivo móvel comercial',
   IntegrationNumber: 'Integração',
-  all: 'TUDO',
+  all: 'Tudo',
   unread: 'Não lido',
+  draft: 'Rascunho',
+  failed: 'Com falha',
+  done: 'Concluído',
+  cancel: 'Cancelar',
+  byCallQueue: 'Por fila de chamadas',
+  allCallQueues: 'Todas as filas de chamadas',
+  searchCallQueues: 'Pesquisar filas de chamadas',
   noMessages: 'Nenhuma mensagem',
   noText: 'Ainda não há mensagens de texto',
   noUnreadText: 'Ainda não há mensagens de texto não lidas',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: 'Pesquisar faxes',
   searchText: 'Pesquisar textos',
   composeText: 'Enviar novo texto',
+  sendNewTextDisabled: 'Envio de novo texto desativado',
   composeFax: 'Compor fax'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=pt-BR.js.map

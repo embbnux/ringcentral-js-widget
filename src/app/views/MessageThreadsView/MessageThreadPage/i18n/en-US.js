@@ -17,8 +17,6 @@ var _default = exports["default"] = {
   resolved: 'Resolved',
   assignment: 'Assignment',
   selectAll: 'Select all',
-  done: 'Done',
-  cancel: 'Cancel',
   clear: 'Clear',
   confirm: 'Confirm',
   more: 'more',

@@ -39,6 +39,7 @@ var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _react = _interopRequireWildcard(require("react"));
+var _ConversationPanel = require("../../ConversationViewSpring/ConversationPanel");
 var _i18n = require("./i18n");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -64,6 +65,8 @@ var ComposeTextPanel = exports.ComposeTextPanel = function ComposeTextPanel(_ref
     allowedCreateGroupText = _ref.allowedCreateGroupText,
     _ref$showSpinner = _ref.showSpinner,
     showSpinner = _ref$showSpinner === void 0 ? false : _ref$showSpinner,
+    _ref$sending = _ref.sending,
+    sending = _ref$sending === void 0 ? false : _ref$sending,
     senderNumber = _ref.senderNumber,
     maxRecipients = _ref.maxRecipients,
     addAttachments = _ref.addAttachments,
@@ -85,7 +88,12 @@ var ComposeTextPanel = exports.ComposeTextPanel = function ComposeTextPanel(_ref
     ToContactSearch = _ref.ContactSearch,
     _ref$disabledGroupMes = _ref.disabledGroupMessage,
     disabledGroupMessage = _ref$disabledGroupMes === void 0 ? false : _ref$disabledGroupMes,
-    endAdornment = _ref.endAdornment;
+    endAdornment = _ref.endAdornment,
+    _ref$requiredOptInCou = _ref.requiredOptInCount,
+    requiredOptInCount = _ref$requiredOptInCou === void 0 ? 0 : _ref$requiredOptInCou,
+    _ref$canAddSmsConsent = _ref.canAddSmsConsent,
+    canAddSmsConsent = _ref$canAddSmsConsent === void 0 ? false : _ref$canAddSmsConsent,
+    onAddSmsConsentClick = _ref.onAddSmsConsentClick;
   var _useAsyncState = (0, _reactHooks.useAsyncState)(originalMessageText, updateMessageText),
     _useAsyncState2 = _slicedToArray(_useAsyncState, 2),
     messageText = _useAsyncState2[0],
@@ -143,7 +151,7 @@ var ComposeTextPanel = exports.ComposeTextPanel = function ComposeTextPanel(_ref
   }, title))), /*#__PURE__*/_react["default"].createElement(_components2.SpringSpinnerOverlay, {
     loading: showSpinner
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])('h-full flex flex-col px-4 py-2 gap-2', className)
+    className: (0, _clsx["default"])('h-full flex flex-col px-4 py-2 gap-2 relative', className)
   }, /*#__PURE__*/_react["default"].createElement(_components2.FromField, {
     fromNumber: senderNumber,
     fromNumbers: senderNumbers,
@@ -154,6 +162,7 @@ var ComposeTextPanel = exports.ComposeTextPanel = function ComposeTextPanel(_ref
     hidden: !(senderNumbers.length > 0),
     showAnonymous: false
   }), /*#__PURE__*/_react["default"].createElement(ToContactSearch, {
+    strictErrorMode: true,
     filterCallQueueExtension: true,
     defaultTab: "thirdParty",
     open: contactSearchExpanded,
@@ -194,7 +203,19 @@ var ComposeTextPanel = exports.ComposeTextPanel = function ComposeTextPanel(_ref
     onChange: function onChange(e) {
       onCreateGroupTextOptionChanged(e.target.checked);
     }
-  })))), /*#__PURE__*/_react["default"].createElement(_components.AppFooterNav, null, /*#__PURE__*/_react["default"].createElement("div", {
+  })), sending && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "absolute bottom-2 left-2"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.CircularProgressIndicator, {
+    size: "xsmall"
+  })))), /*#__PURE__*/_react["default"].createElement(_components.AppFooterNav, null, requiredOptInCount > 0 ? /*#__PURE__*/_react["default"].createElement(_springUi.Alert, {
+    className: "m-4",
+    severity: requiredOptInCount > 1 ? 'error' : 'info',
+    startSlot: null
+  }, /*#__PURE__*/_react["default"].createElement(_ConversationPanel.SmsConsentRequiredAlert, {
+    multiple: requiredOptInCount > 1,
+    canAddConsent: canAddSmsConsent,
+    onAddConsentClick: onAddSmsConsentClick
+  })) : /*#__PURE__*/_react["default"].createElement("div", {
     className: "border-t border-neutral-b0-t20"
   }, /*#__PURE__*/_react["default"].createElement(_components2.MessageInput, {
     inputRef: inputRef,

@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  textTooLong: 'Tekst is te lang, mag niet langer zijn dan 1000 tekens',
+  textTooLong: 'U kunt maximaal 1000 tekens invoeren.',
   attachmentCountLimitation: 'Er kunnen niet meer dan 10 bijlagen per bericht zijn',
   attachmentSizeLimitation: 'De totale bijlage kan niet groter zijn dan 1,5 MB per bericht.'
 }; // @key: @#@"textTooLong"@#@ @source: @#@"You can enter up to 1,000 characters."@#@

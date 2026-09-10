@@ -118,6 +118,17 @@ Object.keys(_Sms).forEach(function (key) {
     }
   });
 });
+var _SmsConsent = require("./SmsConsent");
+Object.keys(_SmsConsent).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _SmsConsent[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SmsConsent[key];
+    }
+  });
+});
 var _SmsOptOut = require("./SmsOptOut");
 Object.keys(_SmsOptOut).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -137,6 +148,28 @@ Object.keys(_SmsTemplate).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _SmsTemplate[key];
+    }
+  });
+});
+var _MessageThreadLogger = require("./MessageThreadLogger");
+Object.keys(_MessageThreadLogger).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _MessageThreadLogger[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _MessageThreadLogger[key];
+    }
+  });
+});
+var _QueueConversations = require("./QueueConversations");
+Object.keys(_QueueConversations).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _QueueConversations[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _QueueConversations[key];
     }
   });
 });

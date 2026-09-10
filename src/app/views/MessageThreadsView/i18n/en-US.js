@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _default = exports["default"] = {
-  personal: 'Personal',
-  shared: 'Shared',
   resolveThread: 'Resolve',
   assignThread: 'Assign',
   unassignThread: 'Unassign',
@@ -22,7 +20,6 @@ var _default = exports["default"] = {
   assignToMeText: 'Assign to me',
   resolved: 'Conversation resolved.',
   autoResolved: 'Conversation auto-resolved.',
-  assignedToYouTooltip: 'Conversation assigned to You',
   assignedToOtherTooltip: 'Conversation assigned to {name}',
   conversationUnassigned: 'Conversation unassigned.',
   failedToAssignThread: 'Failed to assign conversation',

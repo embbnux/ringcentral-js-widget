@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["_SmsConsentManagement","require"],"sources":["src/app/views/SmsConsentManagementView/index.ts"],"sourcesContent":["export { SmsConsentManagementView } from './SmsConsentManagement.view';\n"],"mappings":";;;;;;;;;;;;AAAA,IAAAA,qBAAA,GAAAC,OAAA","ignoreList":[]}

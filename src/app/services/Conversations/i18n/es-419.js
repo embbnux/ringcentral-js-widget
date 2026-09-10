@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  textTooLong: 'El mensaje es demasiado largo. El máximo es 1000.',
+  textTooLong: 'Puede ingresar hasta 1000 caracteres.',
   attachmentCountLimitation: 'No puede haber más de 10 archivos adjuntos por mensaje.',
   attachmentSizeLimitation: 'El tamaño total del archivo adjunto no puede ser mayor de 1,5 MB por mensaje.'
 }; // @key: @#@"textTooLong"@#@ @source: @#@"You can enter up to 1,000 characters."@#@

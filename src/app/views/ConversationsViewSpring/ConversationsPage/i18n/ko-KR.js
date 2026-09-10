@@ -24,6 +24,13 @@ var _default = exports["default"] = {
   IntegrationNumber: '통합',
   all: '모두',
   unread: '읽지 않음',
+  draft: '초안',
+  failed: '실패',
+  done: '완료',
+  cancel: '취소',
+  byCallQueue: '통화 큐별',
+  allCallQueues: '모든 통화 큐',
+  searchCallQueues: '통화 큐 검색',
   noMessages: '메시지 없음',
   noText: '아직 텍스트 메시지가 없음',
   noUnreadText: '아직 읽지 않은 텍스트 메시지가 없음',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: '팩스 검색',
   searchText: '텍스트 검색',
   composeText: '새 텍스트 보내기',
+  sendNewTextDisabled: '새 텍스트 전송이 비활성화되었습니다',
   composeFax: '팩스 작성'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=ko-KR.js.map

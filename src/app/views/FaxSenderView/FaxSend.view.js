@@ -220,7 +220,7 @@ var FaxSendView = exports.FaxSendView = (_dec = (0, _nextCore.injectable)({
                   senderNumber = _this3._faxSender.senderNumbersList.find(function (info) {
                     return info.phoneNumber === phoneNumber;
                   });
-                  if (!(senderNumber === null || senderNumber === void 0 ? void 0 : senderNumber.id)) {
+                  if (!(senderNumber !== null && senderNumber !== void 0 && senderNumber.id)) {
                     _context3.n = 2;
                     break;
                   }

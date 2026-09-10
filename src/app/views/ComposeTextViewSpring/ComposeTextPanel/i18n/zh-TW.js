@@ -12,11 +12,15 @@ var _default = exports["default"] = {
   groupTextHint: '傳送群組簡訊（最多 10 人）開始簡訊對話。或者取消勾選該方塊以單獨向每個人傳送簡訊，這樣對方便不會得知其他的收件者。',
   optOutSingleRecipient: '此收件者已退訂。',
   optOutMultipleRecipients: '部分收件者已退訂。',
-  optOutRemove: '移除'
+  optOutRemove: '移除',
+  incomingTextsOnly: '僅接收簡訊',
+  notSetUpForTexting: '未設定簡訊功能'
 }; // @key: @#@"createNewText"@#@ @source: @#@"Create new text"@#@
 // @key: @#@"createGroupText"@#@ @source: @#@"Create Group Text"@#@
 // @key: @#@"groupTextHint"@#@ @source: @#@"Send group text messages (up to 10 people) to start a text conversation. Or uncheck the box to send a text message to everyone individually, they will be unaware of the other recipients."@#@
 // @key: @#@"optOutSingleRecipient"@#@ @source: @#@"This recipient has opted out."@#@
 // @key: @#@"optOutMultipleRecipients"@#@ @source: @#@"Some recipients have opted out."@#@
 // @key: @#@"optOutRemove"@#@ @source: @#@"Remove"@#@
+// @key: @#@"incomingTextsOnly"@#@ @source: @#@"Incoming texts only"@#@
+// @key: @#@"notSetUpForTexting"@#@ @source: @#@"Not set up for texting"@#@
 //# sourceMappingURL=zh-TW.js.map

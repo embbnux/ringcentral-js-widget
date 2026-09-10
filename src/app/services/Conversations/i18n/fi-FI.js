@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  textTooLong: 'Teksti on liian pitkä, rajoitus 1 000 merkkiä',
+  textTooLong: 'Voit syöttää enintään 1 000 merkkiä.',
   attachmentCountLimitation: 'Yhdessä viestissä voi olla enintään 10 liitettä',
   attachmentSizeLimitation: 'Liitteiden kokonaiskoko ei saa olla suurempi kuin 1,5 Mt viestiä kohden.'
 }; // @key: @#@"textTooLong"@#@ @source: @#@"You can enter up to 1,000 characters."@#@

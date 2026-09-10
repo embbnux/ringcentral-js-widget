@@ -30,6 +30,39 @@ Object.keys(_ConversationsView).forEach(function (key) {
     }
   });
 });
+var _ConversationsTabs = require("./ConversationsTabs.view");
+Object.keys(_ConversationsTabs).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ConversationsTabs[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ConversationsTabs[key];
+    }
+  });
+});
+var _QueueConversations = require("./QueueConversations.view");
+Object.keys(_QueueConversations).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _QueueConversations[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _QueueConversations[key];
+    }
+  });
+});
+var _TCRNumberModalView = require("./TCRNumberModalView");
+Object.keys(_TCRNumberModalView).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _TCRNumberModalView[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _TCRNumberModalView[key];
+    }
+  });
+});
 var _useConversationActionButtons = require("./useConversationActionButtons");
 Object.keys(_useConversationActionButtons).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

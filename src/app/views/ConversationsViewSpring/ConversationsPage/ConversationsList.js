@@ -89,7 +89,8 @@ var ConversationsList = exports.ConversationsList = function ConversationsList(p
     showLogPopover = props.showLogPopover,
     typeFilter = props.typeFilter,
     readStatusFilter = props.readStatusFilter,
-    createNewEntityTooltip = props.createNewEntityTooltip;
+    createNewEntityTooltip = props.createNewEntityTooltip,
+    onEndReached = props.onEndReached;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var _useVirtuosoScrollPos = (0, _reactHooks.useVirtuosoScrollPosition)(function (snapshot) {
@@ -116,7 +117,8 @@ var ConversationsList = exports.ConversationsList = function ConversationsList(p
     scrollerRef: scrollerRef
     // null is not a valid type for restoreStateFrom, if lastPosition is null, it should use undefined
     ,
-    restoreStateFrom: lastPosition || undefined
+    restoreStateFrom: lastPosition || undefined,
+    endReached: onEndReached
   }, function (index, conversation) {
     return /*#__PURE__*/_react["default"].createElement(_ConversationsListItem.ConversationsListItem, {
       key: conversation.conversationId,

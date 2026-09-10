@@ -1,13 +1,10 @@
-import { ExtensionInfo } from '@ringcentral-integration/micro-auth/src/app/services';
+import { Auth } from '@ringcentral-integration/micro-auth/src/app/services';
 import { ContactAvatar } from '@ringcentral-integration/micro-contacts/src/app/components';
 import contactsI18n from '@ringcentral-integration/micro-contacts/src/app/views/ContactSearchView/ContactSearchPanel/i18n';
 import { useLocale } from '@ringcentral-integration/micro-core/src/app/hooks';
 import { Toast } from '@ringcentral-integration/micro-core/src/app/services';
 import {
-  ConversationsSyncTabId,
   ModalView,
-  SyncTabId,
-  SyncTabView,
   useModalItemView,
 } from '@ringcentral-integration/micro-core/src/app/views';
 import { CallQueues } from '@ringcentral-integration/micro-phone/src/app/services';
@@ -57,11 +54,7 @@ import {
   tap,
 } from 'rxjs';
 
-import {
-  type FilteredConversation,
-  MessageStore,
-  MessageThread,
-} from '../../services';
+import { type FilteredConversation, MessageThread } from '../../services';
 import { ConversationAlert } from '../ConversationViewSpring/ConversationAlert';
 import conversationsI18n from '../ConversationsViewSpring/ConversationsPage/i18n';
 
@@ -156,7 +149,7 @@ export class MessageThreadsView extends RcViewModule {
     const searchInput = this.sharedSearchForm.searchInput.toLowerCase().trim();
     const selectedAssignees = this.sharedSearchForm.selectedAssignees;
     const selectedCallQueues = this.sharedSearchForm.selectedCallQueues;
-    const currentExtensionId = this._extensionInfo.id?.toString();
+    const currentExtensionId = this._auth.ownerId;
 
     let filtered = threads;
 
@@ -348,10 +341,9 @@ export class MessageThreadsView extends RcViewModule {
         await this._messageThread.assignThread(threadId, extensionId);
 
         // Show appropriate success message based on who the thread was assigned to
-        const isAssignedToCurrentUser =
-          extensionId === String(this._extensionInfo.id);
+        const isAssignedToCurrentUser = extensionId === this._auth.ownerId;
         if (isAssignedToCurrentUser) {
-          this._toast.success({ message: t('assignedToYouTooltip') });
+          this._messageThread.showAssignedToYouToast();
         } else {
           // Find the recipient's name for the "assigned to other" message
           const recipient = recipients.find((r) => r.id === extensionId);
@@ -369,7 +361,7 @@ export class MessageThreadsView extends RcViewModule {
 
     const title = t('assignConversationTo');
     return (
-      <div className="flex flex-col h-full relative -my-4">
+      <div className="flex flex-col h-full relative -m-3">
         {/* Header */}
         <div className="px-6 py-3 border-b border-neutral-b4/50">
           <h3
@@ -384,6 +376,9 @@ export class MessageThreadsView extends RcViewModule {
         <div className="px-4 pt-3 pb-2">
           <TextField
             fullWidth
+            inputProps={{
+              'data-sign': 'assignRecipientSearch',
+            }}
             size="medium"
             placeholder={messageThreadsT('search')}
             value={searchText}
@@ -464,7 +459,7 @@ export class MessageThreadsView extends RcViewModule {
           </div>
         )}
 
-        <div className="absolute top-0 right-2">
+        <div className="absolute top-2 right-2">
           <IconButton
             variant="icon"
             size="small"
@@ -481,13 +476,11 @@ export class MessageThreadsView extends RcViewModule {
   constructor(
     private _conversationAlert: ConversationAlert,
     private _callQueues: CallQueues,
-    private _syncTabView: SyncTabView,
     private _modalView: ModalView,
     private _messageThread: MessageThread,
     private _router: RouterPlugin,
     private _toast: Toast,
-    private _extensionInfo: ExtensionInfo,
-    private _messageStore: MessageStore,
+    private _auth: Auth,
     private _portManager: PortManager,
   ) {
     super();
@@ -524,7 +517,7 @@ export class MessageThreadsView extends RcViewModule {
         return fromWatchValue(this, () => group?.unreadCount ?? 0).pipe(
           filter((unreadCount) => unreadCount > 0),
           tap(() => {
-            this._messageThread.markThreadAsViewed(threadId);
+            this._messageThread.setUnreadCount(threadId);
           }),
         );
       }),
@@ -590,11 +583,22 @@ export class MessageThreadsView extends RcViewModule {
     const thread = threads[conversationId];
     const threadInfo = thread?.threadInfo;
     const isResolved = threadInfo?.status === 'Resolved';
+    const currentPath = this._router.currentPath;
 
     const postAssignToMe = async () => {
-      // redirect to the conversation page if not in the conversation page
-      if (!this._router.currentPath.includes('/conversations')) {
+      // redirect to the conversation page when user still wait on same page after assign to me action
+      if (currentPath === this._router.currentPath) {
+        this.logger.log(
+          'assignToMe: redirect to conversation page',
+          conversationId,
+        );
         await this._router.push(`/conversations/${conversationId}`);
+      } else {
+        this.logger.log('assignToMe: current path changed, no redirect', {
+          conversationId,
+          prevPath: currentPath,
+          currentPath: this._router.currentPath,
+        });
       }
     };
 
@@ -605,7 +609,7 @@ export class MessageThreadsView extends RcViewModule {
     }
 
     try {
-      const extensionId = this._extensionInfo.id?.toString();
+      const extensionId = this._auth.ownerId;
       if (!extensionId) {
         logger.warn('assignToMe: extensionId not available');
         return;
@@ -613,7 +617,7 @@ export class MessageThreadsView extends RcViewModule {
 
       await this._messageThread.assignThread(conversationId, extensionId);
       await postAssignToMe();
-      this._toast.success({ message: t('assignedToYouTooltip') });
+      this._messageThread.showAssignedToYouToast();
     } catch (error) {
       this.logger.error('assignToMe error', error);
       this._toast.danger({ message: t('failedToAssignThread') });
@@ -680,7 +684,7 @@ export class MessageThreadsView extends RcViewModule {
           conversationId &&
           this._messageThread.hasPermission &&
           Boolean(this._messageThread.getThread(conversationId)),
-        extensionId: this._extensionInfo.id,
+        extensionId: this._auth.ownerId,
       }),
     );
 
@@ -804,67 +808,10 @@ export class MessageThreadsView extends RcViewModule {
     return true;
   }
 
-  component({ children, ...rest }: PropsWithChildren<MessageThreadsViewProps>) {
-    const { hasPermission, ...threadProps } = useConnector(() => {
-      return {
-        textUnreadCounts: this._messageStore.textUnreadCounts,
-        threadUnreadCount: this._messageThread.threadUnreadCount,
-        hasPermission: this._messageThread.hasPermission,
-        ...this.getUIProps(),
-      };
-    });
+  component(props: PropsWithChildren<MessageThreadsViewProps>) {
+    const _props = useConnector(() => this.getUIProps());
     const { current: uiFunctions } = useResultRef(() => this.getUIFunctions());
 
-    const { textUnreadCounts, threadUnreadCount, ..._props } = threadProps;
-
-    const tabs = useMemo(() => {
-      if (!hasPermission) {
-        return null;
-      }
-
-      return [
-        {
-          id: ConversationsSyncTabId.PERSONAL,
-          label: t('personal'),
-          BadgeProps: { count: textUnreadCounts },
-          component: children,
-        },
-        {
-          id: ConversationsSyncTabId.SHARED,
-          label: t('shared'),
-          BadgeProps: { count: threadUnreadCount },
-          component: (
-            <MessageThreadPage {..._props} {...rest} {...uiFunctions} />
-          ),
-        },
-      ];
-    }, [
-      _props,
-      children,
-      hasPermission,
-      rest,
-      threadUnreadCount,
-      uiFunctions,
-      textUnreadCounts,
-    ]);
-
-    return (
-      <>
-        {tabs ? (
-          <this._syncTabView.component
-            id={SyncTabId.CONVERSATIONS}
-            tabs={tabs}
-            defaultValue={ConversationsSyncTabId.PERSONAL}
-            data-sign="conversationsTabs"
-            className={
-              '[&_.sui-tab]:max-w-none [&_.sui-tab]:flex-none [&_.sui-tab]:w-1/2'
-            }
-            variant="standard"
-          />
-        ) : (
-          children
-        )}
-      </>
-    );
+    return <MessageThreadPage {..._props} {...props} {...uiFunctions} />;
   }
 }

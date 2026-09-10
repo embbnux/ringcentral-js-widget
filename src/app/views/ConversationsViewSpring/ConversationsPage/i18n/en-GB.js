@@ -24,6 +24,13 @@ var _default = exports["default"] = {
   IntegrationNumber: 'Integration',
   all: 'All',
   unread: 'Unread',
+  draft: 'Draft',
+  failed: 'Failed',
+  done: 'Done',
+  cancel: 'Cancel',
+  byCallQueue: 'By call queue',
+  allCallQueues: 'All call queues',
+  searchCallQueues: 'Search call queues',
   noMessages: 'No messages',
   noText: 'No text messages yet',
   noUnreadText: 'No unread text messages yet',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: 'Search faxes',
   searchText: 'Search texts',
   composeText: 'Send new text',
+  sendNewTextDisabled: 'Send new text disabled',
   composeFax: 'Compose fax'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=en-GB.js.map

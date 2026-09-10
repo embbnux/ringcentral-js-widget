@@ -49,8 +49,8 @@ var _SmsOptOutView = require("../SmsOptOutView");
 var _SmsTemplateView = require("../SmsTemplateView");
 var _ConversationAlert = require("./ConversationAlert");
 var _ConversationPanel = require("./ConversationPanel");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _class, _class2, _descriptor;
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _class, _class2, _descriptor;
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t2 in e) "default" !== _t2 && {}.hasOwnProperty.call(e, _t2) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t2)) && (i.get || i.set) ? o(f, _t2, i) : f[_t2] = e[_t2]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -90,8 +90,10 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
   return (0, _nextCore.optional)('SmsConversationsOptions')(target, undefined, 16);
 }, _dec6 = function _dec6(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 17);
-}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _SmsTemplateView.SmsTemplateView === "undefined" ? Object : _SmsTemplateView.SmsTemplateView, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services4.MessageStore === "undefined" ? Object : _services4.MessageStore, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services4.Conversations === "undefined" ? Object : _services4.Conversations, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services3.IntegrationConfig === "undefined" ? Object : _services3.IntegrationConfig, typeof _services4.SmsConversations === "undefined" ? Object : _services4.SmsConversations, typeof _ConversationsViewSpring.ConversationsViewSpring === "undefined" ? Object : _ConversationsViewSpring.ConversationsViewSpring, typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services4.ConversationLogger === "undefined" ? Object : _services4.ConversationLogger, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions, typeof SmsConversationsOptions === "undefined" ? Object : SmsConversationsOptions, typeof _SmsOptOutView.SmsOptOutView === "undefined" ? Object : _SmsOptOutView.SmsOptOutView]), _dec9 = (0, _nextCore.dynamic)('Theme'), _dec0 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function PersonalConversationViewSpring(_smsTemplateView, _portManager, _messageStore, _appFeatures, _regionSettings, _conversations, _rateLimiter, _connectivityMonitor, _router, _integrationConfig, _smsConversations, _conversationsViewSpring, _conversationAlert, _conversationLogger, _contactMatcher, _conversationViewOptions, _smsConversationsOptions, _smsOptOutView) {
+}, _dec7 = function _dec7(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 18);
+}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _SmsTemplateView.SmsTemplateView === "undefined" ? Object : _SmsTemplateView.SmsTemplateView, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services4.MessageStore === "undefined" ? Object : _services4.MessageStore, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services4.Conversations === "undefined" ? Object : _services4.Conversations, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services3.IntegrationConfig === "undefined" ? Object : _services3.IntegrationConfig, typeof _services4.SmsConversations === "undefined" ? Object : _services4.SmsConversations, typeof _ConversationsViewSpring.ConversationsViewSpring === "undefined" ? Object : _ConversationsViewSpring.ConversationsViewSpring, typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services4.ConversationLogger === "undefined" ? Object : _services4.ConversationLogger, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions, typeof SmsConversationsOptions === "undefined" ? Object : SmsConversationsOptions, typeof _SmsOptOutView.SmsOptOutView === "undefined" ? Object : _SmsOptOutView.SmsOptOutView, typeof _services4.SmsConsent === "undefined" ? Object : _services4.SmsConsent]), _dec0 = (0, _nextCore.dynamic)('Theme'), _dec1 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function PersonalConversationViewSpring(_smsTemplateView, _portManager, _messageStore, _appFeatures, _regionSettings, _conversations, _rateLimiter, _connectivityMonitor, _router, _integrationConfig, _smsConversations, _conversationsViewSpring, _conversationAlert, _conversationLogger, _contactMatcher, _conversationViewOptions, _smsConversationsOptions, _smsOptOutView, _smsConsent) {
     var _this;
     _classCallCheck(this, PersonalConversationViewSpring);
     _this = _callSuper(this, PersonalConversationViewSpring);
@@ -113,6 +115,7 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
     _this._conversationViewOptions = _conversationViewOptions;
     _this._smsConversationsOptions = _smsConversationsOptions;
     _this._smsOptOutView = _smsOptOutView;
+    _this._smsConsent = _smsConsent;
     _initializerDefineProperty(_this, "_theme", _descriptor, _this);
     return _this;
   }
@@ -131,13 +134,20 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
   }, {
     key: "getUIProps",
     value: function getUIProps(_) {
-      var _this$_conversationVi;
+      var _this2 = this,
+        _this$_conversationVi,
+        _this$_conversationVi2;
       var disableLinks = this._rateLimiter.restricted || !this._connectivityMonitor.connectivity;
       var conversationId = this._conversations.currentConversationId;
       var showSpinner = !((!this._contactMatcher || this._contactMatcher.ready) && this._regionSettings.ready && this._conversations.ready && this._rateLimiter.ready && this._connectivityMonitor.ready && (!this._conversationLogger || this._conversationLogger.ready));
       var hasInputContent = this._conversations.messageText && this._conversations.messageText.length > 0 || this._conversations.attachments && this._conversations.attachments.length > 0;
+      var sending = this._conversations.conversationStatus[conversationId] === _services4.conversationsStatus.pushing;
       var conversation = this._conversations.formattedConversationsMap.get(conversationId);
-      var _this$_conversationAl = this._conversationAlert.getAlertInfo(conversation),
+      var _this$_conversationAl = this._conversationAlert.getAlertInfo(conversation, {
+          onReplyInSharedTab: function onReplyInSharedTab() {
+            return _this2._conversationsViewSpring.replyInSharedTab(conversation);
+          }
+        }),
         showAlert = _this$_conversationAl.showAlert,
         alertProps = _this$_conversationAl.alertProps;
       return {
@@ -146,9 +156,11 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
         acceptFileTypes: this._conversations.acceptFileTypes,
         createNewEntityTooltip: this._integrationConfig.createNewEntityTooltip,
         showLogPopover: (_this$_conversationVi = this._conversationViewOptions) === null || _this$_conversationVi === void 0 ? void 0 : _this$_conversationVi.showLogPopover,
+        renderLogIndicator: (_this$_conversationVi2 = this._conversationViewOptions) === null || _this$_conversationVi2 === void 0 ? void 0 : _this$_conversationVi2.renderLogIndicator,
         conversation: conversation,
         messageText: this._conversations.messageText,
-        sendButtonDisabled: this._conversations.pushing || disableLinks || !hasInputContent || showSpinner,
+        sendButtonDisabled: sending || disableLinks || !hasInputContent || showSpinner,
+        sending: sending,
         displayLogStatus: this._smsConversations.checkIsSupportLog(conversation),
         supportAttachment: this._appFeatures.hasSendMMSPermission,
         showAlert: showAlert,
@@ -158,39 +170,61 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
   }, {
     key: "getUIFunctions",
     value: function getUIFunctions(_) {
-      var _this2 = this;
+      var _this3 = this;
       return {
         useConversationItemInfo: function useConversationItemInfo(conversation) {
-          return _this2._conversationsViewSpring.useConversationItemInfo(conversation, {
+          return _this3._conversationsViewSpring.useConversationItemInfo(conversation, {
             pageType: 'text'
           });
         },
         useActionsHandler: this._conversationsViewSpring.useActionsHandler,
         replyToReceivers: function () {
           var _replyToReceivers = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(text, attachments) {
-            var currentConversationId, sendPromise;
+            var _this3$_smsConversati, _this3$_smsConversati2;
+            var currentConversationId, conversation, toNumbers, onDncVerify, canSend, _this3$_smsConversati3, _this3$_smsConversati4, _this3$_smsConversati5, _this3$_smsConversati6, _t;
             return _regenerator().w(function (_context) {
-              while (1) switch (_context.n) {
+              while (1) switch (_context.p = _context.n) {
                 case 0:
-                  currentConversationId = _this2._conversations.currentConversationId;
+                  currentConversationId = _this3._conversations.currentConversationId;
                   if (currentConversationId) {
                     _context.n = 1;
                     break;
                   }
                   return _context.a(2);
                 case 1:
-                  sendPromise = _this2._conversations.replyToReceivers(text, attachments);
-                  sendPromise.then(function () {
-                    var _this2$_smsConversati, _this2$_smsConversati2, _this2$_smsConversati3, _this2$_smsConversati4;
-                    (_this2$_smsConversati = _this2._smsConversationsOptions) === null || _this2$_smsConversati === void 0 ? void 0 : (_this2$_smsConversati2 = _this2$_smsConversati.checkDncStatusOfConversation) === null || _this2$_smsConversati2 === void 0 ? void 0 : _this2$_smsConversati2.call(_this2$_smsConversati, currentConversationId);
-                    (_this2$_smsConversati3 = _this2._smsConversationsOptions) === null || _this2$_smsConversati3 === void 0 ? void 0 : (_this2$_smsConversati4 = _this2$_smsConversati3.autoLogTaskIfEnabled) === null || _this2$_smsConversati4 === void 0 ? void 0 : _this2$_smsConversati4.call(_this2$_smsConversati3, currentConversationId);
-                  })["catch"](function (error) {
-                    _this2.logger.error('[SMS] auto-log failed', error);
-                  });
+                  conversation = _this3._conversations.formattedConversationsMap.get(currentConversationId);
+                  toNumbers = (0, _services4.buildToNumbersFromConversation)(conversation, (_this3$_smsConversati = _this3._smsConversationsOptions) === null || _this3$_smsConversati === void 0 ? void 0 : _this3$_smsConversati.dncEntityTypes);
+                  onDncVerify = (_this3$_smsConversati2 = _this3._smsConversationsOptions) === null || _this3$_smsConversati2 === void 0 ? void 0 : _this3$_smsConversati2.onDncVerifyBeforeReply;
+                  if (!(onDncVerify && toNumbers.length > 0)) {
+                    _context.n = 3;
+                    break;
+                  }
+                  _context.n = 2;
+                  return onDncVerify(toNumbers, currentConversationId);
                 case 2:
+                  canSend = _context.v;
+                  if (canSend) {
+                    _context.n = 3;
+                    break;
+                  }
+                  return _context.a(2);
+                case 3:
+                  _context.p = 3;
+                  _context.n = 4;
+                  return _this3._conversations.replyToReceivers(text, attachments);
+                case 4:
+                  (_this3$_smsConversati3 = _this3._smsConversationsOptions) === null || _this3$_smsConversati3 === void 0 ? void 0 : (_this3$_smsConversati4 = _this3$_smsConversati3.checkDncStatusOfConversation) === null || _this3$_smsConversati4 === void 0 ? void 0 : _this3$_smsConversati4.call(_this3$_smsConversati3, currentConversationId);
+                  (_this3$_smsConversati5 = _this3._smsConversationsOptions) === null || _this3$_smsConversati5 === void 0 ? void 0 : (_this3$_smsConversati6 = _this3$_smsConversati5.autoLogTaskIfEnabled) === null || _this3$_smsConversati6 === void 0 ? void 0 : _this3$_smsConversati6.call(_this3$_smsConversati5, currentConversationId);
+                  _context.n = 6;
+                  break;
+                case 5:
+                  _context.p = 5;
+                  _t = _context.v;
+                  _this3.logger.error('[SMS] auto-log failed', _t);
+                case 6:
                   return _context.a(2);
               }
-            }, _callee);
+            }, _callee, null, [[3, 5]]);
           }));
           function replyToReceivers(_x, _x2) {
             return _replyToReceivers.apply(this, arguments);
@@ -203,7 +237,7 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
               while (1) switch (_context2.n) {
                 case 0:
                   _context2.n = 1;
-                  return _this2._conversations.updateMessageText(text);
+                  return _this3._conversations.updateMessageText(text);
                 case 1:
                   return _context2.a(2, !!_context2.v);
               }
@@ -215,10 +249,10 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
           return updateMessageText;
         }(),
         addAttachments: function addAttachments(attachments) {
-          return _this2._conversations.addAttachments(attachments);
+          return _this3._conversations.addAttachments(attachments);
         },
         removeAttachment: function removeAttachment(attachment) {
-          return _this2._conversations.removeAttachment(attachment);
+          return _this3._conversations.removeAttachment(attachment);
         },
         onLinkClick: function onLinkClick(href) {
           var linkType = 'website';
@@ -231,14 +265,14 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
         },
         goBack: function () {
           var _goBack = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-            var _this2$_theme;
+            var _this3$_theme;
             return _regenerator().w(function (_context3) {
               while (1) switch (_context3.n) {
                 case 0:
                   _context3.n = 1;
                   return (0, _views.slideOutViewTransition)(function () {
-                    return _this2._router.push('/messages');
-                  }, (_this2$_theme = _this2._theme) === null || _this2$_theme === void 0 ? void 0 : _this2$_theme.reducedMotion);
+                    return _this3._router.push('/messages');
+                  }, (_this3$_theme = _this3._theme) === null || _this3$_theme === void 0 ? void 0 : _this3$_theme.reducedMotion);
                 case 1:
                   return _context3.a(2);
               }
@@ -254,25 +288,25 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
   }, {
     key: "component",
     value: function component(props) {
-      var _this3 = this,
-        _this$_conversationVi2;
+      var _this4 = this,
+        _this$_conversationVi3;
       this._router.useParams(function (params) {
         // use sync method to avoid the data not conversationId when into the conversation view
-        _this3._conversations._loadConversation(params.conversationId);
+        _this4._conversations._loadConversation(params.conversationId);
 
         // also sync state to server in worker mode to avoid state sync back with empty data
-        if (_this3._portManager.shared && _this3._portManager.isMainTab) {
-          _this3._conversations.loadConversation(params.conversationId);
+        if (_this4._portManager.shared && _this4._portManager.isMainTab) {
+          _this4._conversations.loadConversation(params.conversationId);
         }
       });
       (0, _react.useEffect)(function () {
         return function () {
-          if (_this3._portManager.shared) {
-            if (_this3._portManager.isMainTab) {
-              _this3._conversations.unloadConversation();
+          if (_this4._portManager.shared) {
+            if (_this4._portManager.isMainTab) {
+              _this4._conversations.unloadConversation();
             }
           } else {
-            _this3._conversations.unloadConversation();
+            _this4._conversations.unloadConversation();
           }
         };
       }, []);
@@ -280,29 +314,42 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
       var _useRef = (0, _react.useRef)(this.getUIFunctions(props)),
         uiFunctions = _useRef.current;
       var _props = (0, _nextCore.useConnector)(function () {
-        var uiProps = _this3.getUIProps(props);
+        var uiProps = _this4.getUIProps(props);
         return _objectSpread(_objectSpread({}, props), uiProps);
       });
       var conversation = _props.conversation,
         messages = _props.messages;
       var conversationId = conversation === null || conversation === void 0 ? void 0 : conversation.conversationId;
+      (0, _react.useEffect)(function () {
+        if (!_this4._portManager.shared || _this4._portManager.isMainTab) {
+          var _this4$_smsConsent;
+          (_this4$_smsConsent = _this4._smsConsent) === null || _this4$_smsConsent === void 0 ? void 0 : _this4$_smsConsent.loadConversationConsentData(conversation);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [conversationId]);
 
       // when enter this page, mark all messages as read
       (0, _react.useEffect)(function () {
         if (!conversationId || messages.length === 0) return;
-        if (_this3._portManager.shared) {
-          if (_this3._portManager.isMainTab) {
-            _this3._messageStore.readMessages(conversationId);
+        if (_this4._portManager.shared) {
+          if (_this4._portManager.isMainTab) {
+            _this4._messageStore.readMessages(conversationId);
           }
         } else {
-          _this3._messageStore.readMessages(conversationId);
+          _this4._messageStore.readMessages(conversationId);
         }
       }, [conversationId, messages]);
       if (!conversation) {
-        return null;
+        this.logger.error('Conversation not found', {
+          conversationId: conversationId
+        });
+        return /*#__PURE__*/_react["default"].createElement(_ConversationPanel.ConversationNoAccessPanel, {
+          goBack: uiFunctions.goBack
+        });
       }
-      var Component = ((_this$_conversationVi2 = this._conversationViewOptions) === null || _this$_conversationVi2 === void 0 ? void 0 : _this$_conversationVi2.component) || _ConversationPanel.ConversationPanel;
+      var Component = ((_this$_conversationVi3 = this._conversationViewOptions) === null || _this$_conversationVi3 === void 0 ? void 0 : _this$_conversationVi3.component) || _ConversationPanel.ConversationPanel;
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions, {
+        conversation: conversation,
         inputRef: inputRef,
         toolbar: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(this._smsTemplateView.component, {
           targetInputRef: inputRef
@@ -315,10 +362,10 @@ var PersonalConversationViewSpring = exports.PersonalConversationViewSpring = (_
       }));
     }
   }]);
-}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_theme", [_dec9, _dec0], {
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_theme", [_dec0, _dec1], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "messages", [_nextCore.computed, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "messages"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "messages", [_nextCore.computed, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "messages"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=PersonalConversation.view.js.map

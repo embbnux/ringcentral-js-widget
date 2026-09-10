@@ -14,6 +14,9 @@ var _default = exports["default"] = {
   threadUnassignedHint: '会話の割り当てが解除されました。',
   threadDeletedHint: 'この会話は削除されました。',
   threadExpiredHint: '会話が自動的に解決されました。',
+  assignedToYouTooltip: 'あなたに割り当てられた会話',
+  attachmentCountLimitation: '最大10ファイルまで添付できます。',
+  attachmentSizeLimitation: '添付ファイルの合計サイズは1.5MBを超えることはできません。',
   someone: '誰か'
 }; // @key: @#@"threadCreatedHint"@#@ @source: @#@"Conversation has been created."@#@
 // @key: @#@"threadResolvedHint"@#@ @source: @#@"Conversation resolved by {name}."@#@
@@ -22,5 +25,8 @@ var _default = exports["default"] = {
 // @key: @#@"threadUnassignedHint"@#@ @source: @#@"Conversation has been unassigned."@#@
 // @key: @#@"threadDeletedHint"@#@ @source: @#@"This conversation has been deleted."@#@
 // @key: @#@"threadExpiredHint"@#@ @source: @#@"Conversation resolved automatically."@#@
+// @key: @#@"assignedToYouTooltip"@#@ @source: @#@"Conversation assigned to you"@#@
+// @key: @#@"attachmentCountLimitation"@#@ @source: @#@"You can attach up to 10 files."@#@
+// @key: @#@"attachmentSizeLimitation"@#@ @source: @#@"Attachments cannot exceed 1.5 MB in total."@#@
 // @key: @#@"someone"@#@ @source: @#@"someone"@#@
 //# sourceMappingURL=ja-JP.js.map

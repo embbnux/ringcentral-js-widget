@@ -5,7 +5,6 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
-require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -27,7 +26,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MessageSender = exports.MULTIPART_MESSAGE_MAX_LENGTH = exports.MESSAGE_MAX_LENGTH = exports.ATTACHMENT_SIZE_LIMITATION = void 0;
 require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.for-each.js");
+require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
@@ -37,6 +38,7 @@ require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.map.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.string.starts-with.js");
 require("core-js/modules/web.dom-collections.for-each.js");
@@ -50,12 +52,11 @@ var _services3 = require("@ringcentral-integration/micro-core/src/app/services")
 var _nextCore = require("@ringcentral-integration/next-core");
 var _utils = require("@ringcentral-integration/utils");
 var _events = require("events");
-var _ramda = require("ramda");
 var _uuid = require("uuid");
 var _i18n = require("./i18n");
 var _messageSenderEvents = require("./messageSenderEvents");
 var _messageSenderStatus = require("./messageSenderStatus");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _class, _class2, _descriptor, _descriptor2;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
@@ -83,6 +84,8 @@ var MESSAGE_MAX_LENGTH = exports.MESSAGE_MAX_LENGTH = 1000;
 var MULTIPART_MESSAGE_MAX_LENGTH = exports.MULTIPART_MESSAGE_MAX_LENGTH = MESSAGE_MAX_LENGTH * 5;
 var SENDING_THRESHOLD = 30;
 var ATTACHMENT_SIZE_LIMITATION = exports.ATTACHMENT_SIZE_LIMITATION = 1.5 * 1024 * 1024;
+var SMS_SENDER_FEATURE = 'SmsSender';
+var SMS_RECEIVER_FEATURE = 'SmsReceiver';
 var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
   name: 'MessageSender'
 }), _dec2 = function _dec2(target, key) {
@@ -91,12 +94,12 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 10);
 }, _dec4 = function _dec4(target, key) {
   return (0, _nextCore.optional)('MessageSenderOptions')(target, undefined, 11);
-}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services3.ToastManager === "undefined" ? Object : _services3.ToastManager, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _services2.CompanyContacts === "undefined" ? Object : _services2.CompanyContacts, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, typeof MessageSenderOptions === "undefined" ? Object : MessageSenderOptions]), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [String]), _dec9 = (0, _services.track)(function (_, isGroupMessage, isPager) {
+}, _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [typeof _services3.Brand === "undefined" ? Object : _services3.Brand, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services3.ToastManager === "undefined" ? Object : _services3.ToastManager, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.ExtensionPhoneNumber === "undefined" ? Object : _services.ExtensionPhoneNumber, typeof _services2.NumberValidate === "undefined" ? Object : _services2.NumberValidate, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _services2.CompanyContacts === "undefined" ? Object : _services2.CompanyContacts, typeof _services.AvailabilityMonitor === "undefined" ? Object : _services.AvailabilityMonitor, typeof MessageSenderOptions === "undefined" ? Object : MessageSenderOptions]), _dec7 = (0, _nextCore.dynamic)('MessageThread'), _dec8 = Reflect.metadata("design:type", typeof MessageThread === "undefined" ? Object : MessageThread), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String]), _dec1 = (0, _services.track)(function (_, isGroupMessage, isPager) {
   return [_trackEvents.trackEvents.smsAttempt, {
     isGroupMessage: isGroupMessage,
     isPager: isPager
   }];
-}), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", [Boolean, Boolean]), _dec10 = (0, _services.track)(_trackEvents.trackEvents.smsSentSuccessfully), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = (0, _services.track)(_trackEvents.trackEvents.smsSentFailed), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = (0, _nextCore.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", [Array]), _dec19 = (0, _nextCore.delegate)('server'), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [typeof SendPayload === "undefined" ? Object : SendPayload]), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [typeof SendSMSPayload === "undefined" ? Object : SendSMSPayload]), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [typeof SendMMSPayload === "undefined" ? Object : SendMMSPayload]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Object]), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [Boolean, Boolean]), _dec12 = (0, _services.track)(_trackEvents.trackEvents.smsSentSuccessfully), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = (0, _services.track)(_trackEvents.trackEvents.smsSentFailed), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [Array]), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [typeof SendPayload === "undefined" ? Object : SendPayload]), _dec24 = (0, _nextCore.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [typeof SendSMSPayload === "undefined" ? Object : SendSMSPayload]), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [typeof SendMMSPayload === "undefined" ? Object : SendMMSPayload]), _dec30 = (0, _nextCore.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [Object]), _dec33 = Reflect.metadata("design:type", Function), _dec34 = Reflect.metadata("design:paramtypes", []), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", []), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = Reflect.metadata("design:type", Function), _dec40 = Reflect.metadata("design:paramtypes", []), _dec41 = Reflect.metadata("design:type", Function), _dec42 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function MessageSender(_brand, _toast, _toastManager, _client, _extensionInfo, _extensionPhoneNumber, _numberValidate, _appFeatures, _numberFormatter, _companyContacts, _availabilityMonitor, _messageSenderOptions) {
     var _this;
     _classCallCheck(this, MessageSender);
@@ -113,9 +116,10 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
     _this._companyContacts = _companyContacts;
     _this._availabilityMonitor = _availabilityMonitor;
     _this._messageSenderOptions = _messageSenderOptions;
+    _initializerDefineProperty(_this, "_messageThread", _descriptor, _this);
     _this._eventEmitter = new _events.EventEmitter();
     _this.uniqueManager = _this._toastManager.createUniqueManager();
-    _initializerDefineProperty(_this, "sendStatus", _descriptor, _this);
+    _initializerDefineProperty(_this, "sendStatus", _descriptor2, _this);
     return _this;
   }
   _inherits(MessageSender, _RcModule);
@@ -126,7 +130,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
     }
   }, {
     key: "_smsAttempt",
-    value: function _smsAttempt(isBulkMessage, isPage) {
+    value: function _smsAttempt(_isBulkMessage, _isPage) {
       this.setSendStatus(_messageSenderStatus.messageSenderStatus.sending);
     }
   }, {
@@ -188,39 +192,11 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
       return false;
     }
   }, {
-    key: "_validateSenderNumber",
-    value: function _validateSenderNumber(senderNumber) {
-      var _this4 = this;
-      var validateResult = true;
-      if ((0, _isBlank.isBlank)(senderNumber)) {
-        validateResult = false;
-      }
-      this.setSendStatus(_messageSenderStatus.messageSenderStatus.validating);
-      if (validateResult) {
-        var isMySenderNumber = (0, _ramda.find)(function (number) {
-          return number.phoneNumber === senderNumber;
-        }, this.senderNumbersList);
-        if (!isMySenderNumber) {
-          validateResult = false;
-        }
-      }
-      if (!validateResult) {
-        this.setSendStatus(_messageSenderStatus.messageSenderStatus.idle);
-        this.uniqueManager.unique(function () {
-          return _this4._toast.warning({
-            message: (0, _i18n.t)('senderNumberInvalid'),
-            ttl: 0
-          });
-        });
-      }
-      return validateResult;
-    }
-  }, {
     key: "_validateToNumbers",
     value: function () {
       var _validateToNumbers2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(toNumbers) {
         var _this$_appFeatures,
-          _this5 = this;
+          _this4 = this;
         var result, recipientNumbers, isEDPEnabled, numberValidateResult, parsedNumbers, _iterator, _step, number, _this$_companyContact, _t, _t2;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.p = _context.n) {
@@ -298,12 +274,12 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                 _context.n = 11;
                 break;
               }
-              if (!(!((_this$_companyContact = this._companyContacts) === null || _this$_companyContact === void 0 ? void 0 : _this$_companyContact.enableCompanyPublicApi) && !this._numberValidate.isCompanyExtension(number.e164, number.subAddress))) {
+              if (!(!((_this$_companyContact = this._companyContacts) !== null && _this$_companyContact !== void 0 && _this$_companyContact.enableCompanyPublicApi) && !this._numberValidate.isCompanyExtension(number.e164, number.subAddress))) {
                 _context.n = 10;
                 break;
               }
               this.uniqueManager.unique(function () {
-                return _this5._toast.warning({
+                return _this4._toast.warning({
                   message: (0, _i18n.t)('notAnExtension'),
                   ttl: 0
                 });
@@ -350,8 +326,8 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
     key: "send",
     value: function () {
       var _send = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(_ref) {
-        var _this6 = this;
-        var fromNumber, toNumbers, text, replyOnMessageId, _ref$multipart, multipart, _ref$attachments, attachments, _ref$grouped, grouped, eventId, validateToNumberResult, extensionNumbers, recipientPhoneNumbers, hasAttachments, isBulkMessage, isPager, responses, chunks, total, shouldSleep, _iterator2, _step2, chunk, pagerResponse, _iterator3, _step3, _chunk, toNumberSections, _iterator4, _step4, _toNumbers, smsResponse, smsBody, _t3, _t4, _t5, _t6;
+        var _this5 = this;
+        var fromNumber, toNumbers, text, replyOnMessageId, _ref$multipart, multipart, _ref$attachments, attachments, _ref$grouped, grouped, eventId, validateToNumberResult, extensionNumbers, recipientPhoneNumbers, hasAttachments, shouldSendMessageThread, _validateSenderNumber, isBulkMessage, isPager, responses, chunks, total, shouldSleep, _iterator2, _step2, chunk, pagerResponse, _iterator3, _step3, _chunk, toNumberSections, _iterator4, _step4, _toNumbers, smsResponse, smsBody, _t3, _t4, _t5, _t6;
         return _regenerator().w(function (_context2) {
           while (1) switch (_context2.p = _context2.n) {
             case 0:
@@ -380,12 +356,13 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               extensionNumbers = validateToNumberResult.extNumbers;
               recipientPhoneNumbers = validateToNumberResult.noExtNumbers;
               hasAttachments = attachments.length > 0;
+              shouldSendMessageThread = this._shouldSendMessageThread(fromNumber);
               if (!(extensionNumbers.length > 0 && hasAttachments)) {
                 _context2.n = 5;
                 break;
               }
               this.uniqueManager.unique(function () {
-                return _this6._toast.warning({
+                return _this5._toast.warning({
                   message: (0, _i18n.t)('noAttachmentToExtension'),
                   ttl: 3000
                 });
@@ -393,7 +370,36 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               this.setSendStatus(_messageSenderStatus.messageSenderStatus.idle);
               return _context2.a(2, null);
             case 5:
-              if (!(recipientPhoneNumbers.length > 0 && !this._validateSenderNumber(fromNumber))) {
+              _validateSenderNumber = function _validateSenderNumber(senderNumber) {
+                var validateResult = true;
+                if ((0, _isBlank.isBlank)(senderNumber)) {
+                  validateResult = false;
+                }
+                _this5.setSendStatus(_messageSenderStatus.messageSenderStatus.validating);
+                if (validateResult) {
+                  var isMySenderNumber = _this5.senderNumbersList.find(function (number) {
+                    return number.phoneNumber === senderNumber;
+                  });
+                  if (!isMySenderNumber) {
+                    validateResult = false;
+                  }
+                }
+                if (!validateResult) {
+                  _this5.setSendStatus(_messageSenderStatus.messageSenderStatus.idle);
+
+                  // non spring-ui only, non spring-ui not able to go into here, due to the sending button be disabled with the hasSmsPermission
+                  if (process.env.THEME_SYSTEM !== 'spring-ui') {
+                    _this5.uniqueManager.unique(function () {
+                      return _this5._toast.warning({
+                        message: (0, _i18n.t)('senderNumberInvalid'),
+                        ttl: 0
+                      });
+                    });
+                  }
+                }
+                return validateResult;
+              }; // not validate sender number if recipient is only extension number
+              if (!(recipientPhoneNumbers.length > 0 && !_validateSenderNumber(fromNumber))) {
                 _context2.n = 6;
                 break;
               }
@@ -416,6 +422,11 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               chunks = multipart ? (0, _chunkMessage["default"])(text, MESSAGE_MAX_LENGTH) : [text];
               total = (recipientPhoneNumbers.length + 1) * chunks.length;
               shouldSleep = total > SENDING_THRESHOLD;
+              /**
+               * TODO: when support grouped in CRM or some projects should consider enable that and fix the logic.
+               *
+               * for pager we not support non group currently, this ignore the grouped option and send to all extension numbers at once
+               */
               if (!(extensionNumbers.length > 0)) {
                 _context2.n = 15;
                 break;
@@ -461,7 +472,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               return _context2.f(14);
             case 15:
               if (!(recipientPhoneNumbers.length > 0)) {
-                _context2.n = 33;
+                _context2.n = 35;
                 break;
               }
               _iterator3 = _createForOfIteratorHelper(chunks);
@@ -469,7 +480,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               _iterator3.s();
             case 17:
               if ((_step3 = _iterator3.n()).done) {
-                _context2.n = 30;
+                _context2.n = 32;
                 break;
               }
               _chunk = _step3.value;
@@ -482,7 +493,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               _iterator4.s();
             case 19:
               if ((_step4 = _iterator4.n()).done) {
-                _context2.n = 26;
+                _context2.n = 28;
                 break;
               }
               _toNumbers = _step4.value;
@@ -500,22 +511,38 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
               _context2.n = 20;
               return (0, _utils.sleep)(2000);
             case 20:
-              if (!hasAttachments) {
+              if (!(this._messageThread && shouldSendMessageThread)) {
                 _context2.n = 22;
                 break;
               }
               _context2.n = 21;
-              return this._sendMMS(smsBody);
+              return this._messageThread.sendNewThreadMessage({
+                fromNumber: fromNumber,
+                toNumbers: _toNumbers,
+                text: _chunk,
+                attachments: attachments
+              });
             case 21:
               smsResponse = _context2.v;
-              _context2.n = 24;
+              _context2.n = 26;
               break;
             case 22:
+              if (!hasAttachments) {
+                _context2.n = 24;
+                break;
+              }
               _context2.n = 23;
-              return this._sendSMS(smsBody);
+              return this._sendMMS(smsBody);
             case 23:
               smsResponse = _context2.v;
+              _context2.n = 26;
+              break;
             case 24:
+              _context2.n = 25;
+              return this._sendSMS(smsBody);
+            case 25:
+              smsResponse = _context2.v;
+            case 26:
               (0, _services.trackEvent)('Int_Text_textSent', {
                 textSentType: replyOnMessageId ? 'Reply' : 'Create',
                 textType: hasAttachments ? 'MMS' : 'SMS',
@@ -523,39 +550,39 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                 isPager: false
               });
               responses.push(smsResponse);
-            case 25:
+            case 27:
               _context2.n = 19;
               break;
-            case 26:
-              _context2.n = 28;
+            case 28:
+              _context2.n = 30;
               break;
-            case 27:
-              _context2.p = 27;
+            case 29:
+              _context2.p = 29;
               _t4 = _context2.v;
               _iterator4.e(_t4);
-            case 28:
-              _context2.p = 28;
+            case 30:
+              _context2.p = 30;
               _iterator4.f();
-              return _context2.f(28);
-            case 29:
+              return _context2.f(30);
+            case 31:
               _context2.n = 17;
               break;
-            case 30:
-              _context2.n = 32;
+            case 32:
+              _context2.n = 34;
               break;
-            case 31:
-              _context2.p = 31;
+            case 33:
+              _context2.p = 33;
               _t5 = _context2.v;
               _iterator3.e(_t5);
-            case 32:
-              _context2.p = 32;
-              _iterator3.f();
-              return _context2.f(32);
-            case 33:
-              this._smsSentOver();
-              return _context2.a(2, responses);
             case 34:
               _context2.p = 34;
+              _iterator3.f();
+              return _context2.f(34);
+            case 35:
+              this._smsSentOver();
+              return _context2.a(2, responses);
+            case 36:
+              _context2.p = 36;
               _t6 = _context2.v;
               this._eventEmitter.emit(_messageSenderEvents.messageSenderEvents.sendError, {
                 eventId: eventId,
@@ -566,20 +593,25 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                 multipart: multipart
               });
               this._smsSentError();
-              _context2.n = 35;
+              _context2.n = 37;
               return this._onSendError(_t6);
-            case 35:
+            case 37:
               throw _t6;
-            case 36:
+            case 38:
               return _context2.a(2);
           }
-        }, _callee2, this, [[18, 27, 28, 29], [16, 31, 32, 33], [7, 13, 14, 15], [2, 34]]);
+        }, _callee2, this, [[18, 29, 30, 31], [16, 33, 34, 35], [7, 13, 14, 15], [2, 36]]);
       }));
       function send(_x2) {
         return _send.apply(this, arguments);
       }
       return send;
     }()
+  }, {
+    key: "_shouldSendMessageThread",
+    value: function _shouldSendMessageThread(fromNumber) {
+      return !!(this._messageThread && this._messageThread.hasPermission && this._messageThread.isSharedSmsSenderNumber(fromNumber));
+    }
   }, {
     key: "_sendSMS",
     value: function () {
@@ -642,7 +674,9 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                 },
                 files: {
                   attachment: attachment
-                }
+                },
+                // mms api need ASCII file name, so check all files name not have ASCII characters before sending
+                checkAllFilesNameNotHaveASCII: true
               });
             case 1:
               responseData = _context4.v;
@@ -703,7 +737,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
     key: "_onSendError",
     value: function () {
       var _onSendError2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(error) {
-        var _this7 = this;
+        var _this6 = this;
         var errResp, errorJson, getToast, toast;
         return _regenerator().w(function (_context7) {
           while (1) switch (_context7.n) {
@@ -733,37 +767,37 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                             // 101 : "Parameter [to.extensionNumber] value is invalid"
                             // 101 : "Parameter [to.phoneNumber] value is invalid"
                             // 102 : "Resource for parameter [to] is not found"
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('recipientNumberInvalids'),
                               ttl: 0
                             });
                           }
                           if (err.errorCode === 'MSG-246') {
                             // MSG-246 : "Sending SMS from/to extension numbers is not available"
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('notSmsToExtension'),
                               ttl: 0
                             });
                           }
                           if (err.errorCode === 'MSG-247') {
                             // MSG-247 : "Sending SMS to short numbers is not available"
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('shortNumbersNotAvailable'),
                               ttl: 0
                             });
                           }
                           if (err.errorCode === 'MSG-240') {
                             // MSG-240 : "International SMS is not supported"
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('internationalSMSNotSupported'),
                               ttl: 0
                             });
                           }
                           if (err.errorCode === 'CMN-408') {
                             // MSG-240 : "In order to call this API endpoint, user needs to have [InternalSMS] permission for requested resource."
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('noInternalSMSPermission', {
-                                brand: _this7._brand.name
+                                brand: _this6._brand.name
                               }),
                               ttl: 0
                             });
@@ -771,7 +805,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                           if (err.errorCode === 'MSG-383') {
                             // International MMS feature is not available
                             // use common error temporarily
-                            return _this7._toast.warning({
+                            return _this6._toast.warning({
                               message: (0, _i18n.t)('sendError'),
                               ttl: 0
                             });
@@ -780,13 +814,13 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                         });
                         return _context6.a(2);
                       case 1:
-                        _t7 = _this7._availabilityMonitor;
+                        _t7 = _this6._availabilityMonitor;
                         if (!_t7) {
                           _context6.n = 3;
                           break;
                         }
                         _context6.n = 2;
-                        return _this7._availabilityMonitor.checkIfHAError(error);
+                        return _this6._availabilityMonitor.checkIfHAError(error);
                       case 2:
                         _t7 = _context6.v;
                       case 3:
@@ -796,7 +830,7 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
                         }
                         return _context6.a(2);
                       case 4:
-                        return _context6.a(2, _this7._toast.warning({
+                        return _context6.a(2, _this6._toast.warning({
                           message: (0, _i18n.t)('sendError'),
                           ttl: 0
                         }));
@@ -837,16 +871,73 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
       return this.sendStatus === _messageSenderStatus.messageSenderStatus.idle;
     }
   }, {
+    key: "_hasPhoneNumberFeature",
+    value: function _hasPhoneNumberFeature(number, feature) {
+      var _number$features;
+      return !!((_number$features = number.features) !== null && _number$features !== void 0 && _number$features.includes(feature));
+    }
+  }, {
+    key: "numbers",
+    get: function get() {
+      return this._extensionPhoneNumber.numbers;
+    }
+
+    // numbers can receive & send sms
+  }, {
     key: "senderNumbersList",
     get: function get() {
       return this._extensionPhoneNumber.smsSenderNumbers;
     }
+
+    // numbers can only receive sms
+  }, {
+    key: "receiveOnlyNumbers",
+    get: function get() {
+      var _this7 = this;
+      return this.numbers.filter(function (number) {
+        return _this7._hasPhoneNumberFeature(number, SMS_RECEIVER_FEATURE) && !_this7._hasPhoneNumberFeature(number, SMS_SENDER_FEATURE);
+      });
+    }
+
+    // numbers can neither send nor receive sms
+  }, {
+    key: "registerableNumbers",
+    get: function get() {
+      var _this8 = this;
+      return this.numbers.filter(function (number) {
+        return !_this8._hasPhoneNumberFeature(number, SMS_SENDER_FEATURE) && !_this8._hasPhoneNumberFeature(number, SMS_RECEIVER_FEATURE);
+      });
+    }
+
+    // sms permission limited reasons
+  }, {
+    key: "smsPermissionReason",
+    get: function get() {
+      // account level sms permission off
+      if (!this._appFeatures.hasComposeTextPermission) {
+        return 'noComposePermission';
+      }
+      if (this.senderNumbersList.length === 0 && (this.receiveOnlyNumbers.length > 0 || this.registerableNumbers.length > 0)) {
+        if (this.receiveOnlyNumbers.length > 0) {
+          return 'receiveOnlyNumber';
+        }
+        return 'noNumberAvailable';
+      }
+      return null;
+    }
+  }, {
+    key: "hasSmsPermission",
+    get: function get() {
+      return this._appFeatures.hasComposeTextPermission && (process.env.THEME_SYSTEM === 'spring-ui' ? this.senderNumbersList.length > 0 :
+      // in non spring-ui always have sms permission, event not have any sender number, that use alert to prevent user not able to send invalid from numbers
+      true);
+    }
   }, {
     key: "senderNumberMap",
     get: function get() {
-      var _this8 = this;
+      var _this9 = this;
       return this.senderNumbersList.reduce(function (acc, number) {
-        var key = _this8._numberFormatter.formatNumber(number.phoneNumber);
+        var key = _this9._numberFormatter.formatNumber(number.phoneNumber);
         acc.set(key, number);
         return acc;
       }, new Map());
@@ -857,12 +948,17 @@ var MessageSender = exports.MessageSender = (_dec = (0, _nextCore.injectable)({
       return _messageSenderEvents.messageSenderEvents;
     }
   }]);
-}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "sendStatus", [_nextCore.state], {
+}(_nextCore.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_messageThread", [_dec7, _dec8], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "sendStatus", [_nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return _messageSenderStatus.messageSenderStatus.idle;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setSendStatus", [_nextCore.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "setSendStatus"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsAttempt", [_dec9, _dec0, _dec1], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsAttempt"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsSentOver", [_dec10, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsSentOver"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsSentError", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsSentError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_validateToNumbers", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "_validateToNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "send", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "send"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendSMS", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendSMS"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendMMS", [_dec25, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendMMS"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendPager", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendPager"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "senderNumberMap", [_nextCore.computed, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "senderNumberMap"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "setSendStatus", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setSendStatus"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsAttempt", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsAttempt"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsSentOver", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsSentOver"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_smsSentError", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_smsSentError"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_validateToNumbers", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_validateToNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "send", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "send"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendSMS", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendSMS"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendMMS", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendMMS"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_sendPager", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "_sendPager"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "receiveOnlyNumbers", [_nextCore.computed, _dec33, _dec34], Object.getOwnPropertyDescriptor(_class2.prototype, "receiveOnlyNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "registerableNumbers", [_nextCore.computed, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "registerableNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "smsPermissionReason", [_nextCore.computed, _dec37, _dec38], Object.getOwnPropertyDescriptor(_class2.prototype, "smsPermissionReason"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "hasSmsPermission", [_nextCore.computed, _dec39, _dec40], Object.getOwnPropertyDescriptor(_class2.prototype, "hasSmsPermission"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "senderNumberMap", [_nextCore.computed, _dec41, _dec42], Object.getOwnPropertyDescriptor(_class2.prototype, "senderNumberMap"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=MessageSender.js.map

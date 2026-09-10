@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  loading: 'Cargando...'
+  loading: 'Cargando...',
+  deliveryError: 'Lo sentimos, ha habido un problema al entregar su mensaje. Inténtelo de nuevo más tarde.'
 }; // @key: @#@"loading"@#@ @source: @#@"Loading ..."@#@
+// @key: @#@"deliveryError"@#@ @source: @#@"Sorry, we're having trouble delivering your message. Please try again."@#@
 //# sourceMappingURL=es-ES.js.map

@@ -23,6 +23,13 @@ var _default = exports["default"] = {
   IntegrationNumber: 'Integration',
   all: 'All',
   unread: 'Unread',
+  draft: 'Draft',
+  failed: 'Failed',
+  done: 'Done',
+  cancel: 'Cancel',
+  byCallQueue: 'By call queue',
+  allCallQueues: 'All call queues',
+  searchCallQueues: 'Search call queues',
   noMessages: 'No Messages',
   noText: 'No text messages yet',
   noUnreadText: 'No unread text messages yet',
@@ -34,6 +41,7 @@ var _default = exports["default"] = {
   searchFax: 'Search faxes',
   searchText: 'Search texts',
   composeText: 'Send new text',
+  sendNewTextDisabled: 'Send new text disabled',
   composeFax: 'Compose fax'
 };
 //# sourceMappingURL=en-US.js.map

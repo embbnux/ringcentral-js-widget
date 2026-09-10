@@ -5,6 +5,8 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.from.js");
+require("core-js/modules/es.array.index-of.js");
+require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.bind.js");
@@ -25,7 +27,6 @@ require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.includes.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.object.to-string.js");
@@ -33,6 +34,7 @@ require("core-js/modules/es.string.includes.js");
 var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _react = _interopRequireWildcard(require("react"));
+var _excluded = ["data", "value", "onSelect", "visibleCount", "className", "MenuProps", "MoreButtonProps"];
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -46,6 +48,8 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 var filterButtonStyle = 'sui-filter-button sui-filter-button-root max-w-[120px]';
 /**
  * Single filter component with more menu button
@@ -60,7 +64,8 @@ var SingleFilter = exports.SingleFilter = function SingleFilter(_ref) {
     visibleCount = _ref$visibleCount === void 0 ? 2 : _ref$visibleCount,
     className = _ref.className,
     MenuProps = _ref.MenuProps,
-    MoreButtonProps = _ref.MoreButtonProps;
+    MoreButtonProps = _ref.MoreButtonProps,
+    rest = _objectWithoutProperties(_ref, _excluded);
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     menuOpen = _useState2[0],
@@ -114,9 +119,9 @@ var SingleFilter = exports.SingleFilter = function SingleFilter(_ref) {
     onSelect(itemValue);
     handleMenuClose();
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", _extends({
     className: (0, _clsx["default"])('sui-single-filter sui-single-filter-root', className)
-  }, visibleItems.map(function (item) {
+  }, rest), visibleItems.map(function (item) {
     return /*#__PURE__*/_react["default"].createElement("button", {
       key: item.value,
       className: (0, _clsx["default"])(filterButtonStyle, value === item.value && 'sui-selected'),

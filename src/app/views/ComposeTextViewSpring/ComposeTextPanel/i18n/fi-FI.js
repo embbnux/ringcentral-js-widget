@@ -12,11 +12,15 @@ var _default = exports["default"] = {
   groupTextHint: 'Aloita tekstikeskustelu lähettämällä ryhmätekstiviestejä (enintään 10 henkilöä). Tai lähetä tekstiviesti kaikille erikseen poistamalla tämän ruudun valinta. Vastaanottajat eivät saa tietoa muista vastaanottajista.',
   optOutSingleRecipient: 'Tämä vastaanottaja on peruuttanut tilauksen.',
   optOutMultipleRecipients: 'Jotkin vastaanottajat ovat peruuttaneet tilauksen.',
-  optOutRemove: 'Poista'
+  optOutRemove: 'Poista',
+  incomingTextsOnly: 'Vain saapuvat tekstiviestit',
+  notSetUpForTexting: 'Ei määritetty tekstiviestien lähettämiseen'
 }; // @key: @#@"createNewText"@#@ @source: @#@"Create new text"@#@
 // @key: @#@"createGroupText"@#@ @source: @#@"Create Group Text"@#@
 // @key: @#@"groupTextHint"@#@ @source: @#@"Send group text messages (up to 10 people) to start a text conversation. Or uncheck the box to send a text message to everyone individually, they will be unaware of the other recipients."@#@
 // @key: @#@"optOutSingleRecipient"@#@ @source: @#@"This recipient has opted out."@#@
 // @key: @#@"optOutMultipleRecipients"@#@ @source: @#@"Some recipients have opted out."@#@
 // @key: @#@"optOutRemove"@#@ @source: @#@"Remove"@#@
+// @key: @#@"incomingTextsOnly"@#@ @source: @#@"Incoming texts only"@#@
+// @key: @#@"notSetUpForTexting"@#@ @source: @#@"Not set up for texting"@#@
 //# sourceMappingURL=fi-FI.js.map

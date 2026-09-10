@@ -49,7 +49,7 @@ var _SmsTemplateView = require("../SmsTemplateView");
 var _ConversationAlert = require("./ConversationAlert");
 var _ConversationPanel = require("./ConversationPanel");
 var _excluded = ["conversation"];
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _class;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
@@ -76,23 +76,31 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextCore.injectable)({
   name: 'SharedConversationView'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 12);
+  return (0, _nextCore.optional)()(target, undefined, 14);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 13);
-}, _dec4 = function _dec4(target, key) {
-  return (0, _nextCore.optional)('ConversationViewOptions')(target, undefined, 14);
-}, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 15);
-}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _SmsTemplateView.SmsTemplateView === "undefined" ? Object : _SmsTemplateView.SmsTemplateView, typeof _services3.Theme === "undefined" ? Object : _services3.Theme, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _ConversationsViewSpring.ConversationsViewSpring === "undefined" ? Object : _ConversationsViewSpring.ConversationsViewSpring, typeof _services5.MessageThread === "undefined" ? Object : _services5.MessageThread, typeof _plugins.BlockPlugin === "undefined" ? Object : _plugins.BlockPlugin, typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services5.ConversationLogger === "undefined" ? Object : _services5.ConversationLogger, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions, typeof _SmsOptOutView.SmsOptOutView === "undefined" ? Object : _SmsOptOutView.SmsOptOutView]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = /*#__PURE__*/function (_RcViewModule) {
-  function SharedConversationView(_smsTemplateView, _theme, _extensionInfo, _regionSettings, _rateLimiter, _connectivityMonitor, _router, _integrationConfig, _conversationsViewSpring, _messageThread, _block, _conversationAlert, _conversationLogger, _contactMatcher, _conversationViewOptions, _smsOptOutView) {
+}, _dec4 = function _dec4(target, key) {
+  return (0, _nextCore.optional)('ConversationViewOptions')(target, undefined, 16);
+}, _dec5 = function _dec5(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 17);
+}, _dec6 = function _dec6(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 18);
+}, _dec7 = function _dec7(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 19);
+}, _dec8 = function _dec8(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 20);
+}, _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [typeof _SmsTemplateView.SmsTemplateView === "undefined" ? Object : _SmsTemplateView.SmsTemplateView, typeof _services3.Theme === "undefined" ? Object : _services3.Theme, typeof _services5.Conversations === "undefined" ? Object : _services5.Conversations, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _ConversationsViewSpring.ConversationsViewSpring === "undefined" ? Object : _ConversationsViewSpring.ConversationsViewSpring, typeof _services5.MessageThread === "undefined" ? Object : _services5.MessageThread, typeof _plugins.BlockPlugin === "undefined" ? Object : _plugins.BlockPlugin, typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services5.ConversationLogger === "undefined" ? Object : _services5.ConversationLogger, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions, typeof _SmsOptOutView.SmsOptOutView === "undefined" ? Object : _SmsOptOutView.SmsOptOutView, typeof _services5.MessageThreadLogger === "undefined" ? Object : _services5.MessageThreadLogger, typeof _services5.SmsConsent === "undefined" ? Object : _services5.SmsConsent, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec0(_class = /*#__PURE__*/function (_RcViewModule) {
+  function SharedConversationView(_smsTemplateView, _theme, _conversations, _auth, _regionSettings, _rateLimiter, _appFeatures, _connectivityMonitor, _router, _integrationConfig, _conversationsViewSpring, _messageThread, _block, _conversationAlert, _conversationLogger, _contactMatcher, _conversationViewOptions, _smsOptOutView, _messageThreadLogger, _smsConsent, _portManager) {
     var _this;
     _classCallCheck(this, SharedConversationView);
     _this = _callSuper(this, SharedConversationView);
     _this._smsTemplateView = _smsTemplateView;
     _this._theme = _theme;
-    _this._extensionInfo = _extensionInfo;
+    _this._conversations = _conversations;
+    _this._auth = _auth;
     _this._regionSettings = _regionSettings;
     _this._rateLimiter = _rateLimiter;
+    _this._appFeatures = _appFeatures;
     _this._connectivityMonitor = _connectivityMonitor;
     _this._router = _router;
     _this._integrationConfig = _integrationConfig;
@@ -104,13 +112,16 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
     _this._contactMatcher = _contactMatcher;
     _this._conversationViewOptions = _conversationViewOptions;
     _this._smsOptOutView = _smsOptOutView;
+    _this._messageThreadLogger = _messageThreadLogger;
+    _this._smsConsent = _smsConsent;
+    _this._portManager = _portManager;
     return _this;
   }
   _inherits(SharedConversationView, _RcViewModule);
   return _createClass(SharedConversationView, [{
     key: "getUIProps",
     value: function getUIProps(_ref) {
-      var _this$_conversationVi, _this$_extensionInfo;
+      var _threadMetadata$loadi, _this$_conversationVi, _this$_messageThreadL, _this$_messageThreadL2;
       var conversationId = _ref.conversationId;
       var disableLinks = this._rateLimiter.restricted || !this._connectivityMonitor.connectivity;
       var showSpinner = !((!this._contactMatcher || this._contactMatcher.ready) && this._regionSettings.ready && this._rateLimiter.ready && this._connectivityMonitor.ready && (!this._conversationLogger || this._conversationLogger.ready));
@@ -126,22 +137,30 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
       var threadConversationId = conversation.conversationId;
       var thread = this._messageThread.getThread(threadConversationId);
       var threadMetadata = this._messageThread.getThreadMetadata(threadConversationId);
+      var sending = (_threadMetadata$loadi = threadMetadata === null || threadMetadata === void 0 ? void 0 : threadMetadata.loading) !== null && _threadMetadata$loadi !== void 0 ? _threadMetadata$loadi : false;
       var threadInputValue = this._messageThread.getInputValue(threadConversationId);
+      var attachments = this._messageThread.getAttachments(threadConversationId);
       var _this$_conversationAl = this._conversationAlert.getAlertInfo(conversation),
         showAlert = _this$_conversationAl.showAlert,
         alertProps = _this$_conversationAl.alertProps;
       return {
         createNewEntityTooltip: this._integrationConfig.createNewEntityTooltip,
         showLogPopover: (_this$_conversationVi = this._conversationViewOptions) === null || _this$_conversationVi === void 0 ? void 0 : _this$_conversationVi.showLogPopover,
+        // don't show log indicator for shared conversation for now
+        renderLogIndicator: undefined,
         conversation: conversation,
         messageText: threadInputValue,
-        sendButtonDisabled: Boolean(disableLinks || !threadInputValue.length || showSpinner || (threadMetadata === null || threadMetadata === void 0 ? void 0 : threadMetadata.loading)),
+        attachments: attachments,
+        acceptFileTypes: this._conversations.acceptFileTypes,
+        sendButtonDisabled: Boolean(disableLinks || !(threadInputValue.length || attachments.length > 0) || showSpinner || sending),
         threadInfo: thread === null || thread === void 0 ? void 0 : thread.threadInfo,
         threadMetadata: threadMetadata,
-        extensionId: (_this$_extensionInfo = this._extensionInfo) === null || _this$_extensionInfo === void 0 ? void 0 : _this$_extensionInfo.id,
-        supportAttachment: false,
+        sending: sending,
+        extensionId: this._auth.ownerId,
+        supportAttachment: this._appFeatures.hasSendMMSPermission,
         showAlert: showAlert,
-        alertProps: alertProps
+        alertProps: alertProps,
+        showSharedSmsLogReminder: (_this$_messageThreadL = (_this$_messageThreadL2 = this._messageThreadLogger) === null || _this$_messageThreadL2 === void 0 ? void 0 : _this$_messageThreadL2.shouldShowSharedSmsLogReminder) !== null && _this$_messageThreadL !== void 0 ? _this$_messageThreadL : false
       };
     }
   }, {
@@ -157,7 +176,7 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
         },
         useActionsHandler: this._conversationsViewSpring.useActionsHandler,
         replyToReceivers: function () {
-          var _replyToReceivers = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(text) {
+          var _replyToReceivers = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(text, attachments) {
             var threads, thread, threadInfo, isResolved;
             return _regenerator().w(function (_context2) {
               while (1) switch (_context2.n) {
@@ -185,7 +204,7 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
                           _context.n = 1;
                           return _this2._messageThread.sendThreadMessage(conversationId, text,
                           // For resolved threads, don't send threadId (backend will create new thread)
-                          true);
+                          true, attachments);
                         case 1:
                           response = _context.v;
                           if (!response) {
@@ -203,13 +222,13 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
                   return _context2.a(2);
                 case 3:
                   _context2.n = 4;
-                  return _this2._messageThread.sendThreadMessage(conversationId, text);
+                  return _this2._messageThread.sendThreadMessage(conversationId, text, false, attachments);
                 case 4:
                   return _context2.a(2);
               }
             }, _callee2);
           }));
-          function replyToReceivers(_x) {
+          function replyToReceivers(_x, _x2) {
             return _replyToReceivers.apply(this, arguments);
           }
           return replyToReceivers;
@@ -230,11 +249,17 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
               }
             }, _callee3);
           }));
-          function updateMessageText(_x2) {
+          function updateMessageText(_x3) {
             return _updateMessageText.apply(this, arguments);
           }
           return updateMessageText;
         }(),
+        addAttachments: function addAttachments(attachments) {
+          return _this2._messageThread.addAttachments(conversationId, attachments);
+        },
+        removeAttachment: function removeAttachment(attachment) {
+          return _this2._messageThread.removeAttachment(conversationId, attachment);
+        },
         onLinkClick: function onLinkClick(href) {
           var linkType = 'website';
           if (href.startsWith('mailto:')) {
@@ -263,7 +288,11 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
             return _goBack.apply(this, arguments);
           }
           return goBack;
-        }()
+        }(),
+        onDismissSharedSmsLogReminder: function onDismissSharedSmsLogReminder() {
+          var _this2$_messageThread;
+          (_this2$_messageThread = _this2._messageThreadLogger) === null || _this2$_messageThread === void 0 ? void 0 : _this2$_messageThread.dismissSharedSmsLogReminder();
+        }
       };
     }
   }, {
@@ -284,11 +313,21 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
       });
       var conversation = _props.conversation,
         rest = _objectWithoutProperties(_props, _excluded);
+      (0, _react.useEffect)(function () {
+        var _this3$_portManager, _this3$_portManager2;
+        if (!((_this3$_portManager = _this3._portManager) !== null && _this3$_portManager !== void 0 && _this3$_portManager.shared) || (_this3$_portManager2 = _this3._portManager) !== null && _this3$_portManager2 !== void 0 && _this3$_portManager2.isMainTab) {
+          var _this3$_smsConsent;
+          (_this3$_smsConsent = _this3._smsConsent) === null || _this3$_smsConsent === void 0 ? void 0 : _this3$_smsConsent.loadConversationConsentData(conversation);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [conversation === null || conversation === void 0 ? void 0 : conversation.conversationId]);
       if (!conversation) {
         this.logger.error('Conversation not found', {
           conversationId: props.conversationId
         });
-        return null;
+        return /*#__PURE__*/_react["default"].createElement(_ConversationPanel.ConversationNoAccessPanel, {
+          goBack: uiFunctions.goBack
+        });
       }
       var Component = ((_this$_conversationVi2 = this._conversationViewOptions) === null || _this$_conversationVi2 === void 0 ? void 0 : _this$_conversationVi2.component) || _ConversationPanel.ConversationPanel;
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, rest, uiFunctions, {
@@ -307,5 +346,5 @@ var SharedConversationView = exports.SharedConversationView = (_dec = (0, _nextC
       }));
     }
   }]);
-}(_nextCore.RcViewModule)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}(_nextCore.RcViewModule)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=SharedConversation.view.js.map

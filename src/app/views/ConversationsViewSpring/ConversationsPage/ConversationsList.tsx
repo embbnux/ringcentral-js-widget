@@ -100,6 +100,7 @@ export const ConversationsList: React.FC<
     typeFilter,
     readStatusFilter,
     createNewEntityTooltip,
+    onEndReached,
     // ...rest
   } = props;
   const { t } = useLocale(i18n);
@@ -138,6 +139,7 @@ export const ConversationsList: React.FC<
       scrollerRef={scrollerRef}
       // null is not a valid type for restoreStateFrom, if lastPosition is null, it should use undefined
       restoreStateFrom={lastPosition || undefined}
+      endReached={onEndReached}
     >
       {(index, conversation) => (
         <ConversationsListItem

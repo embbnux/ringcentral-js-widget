@@ -146,7 +146,7 @@ var ConversationView = exports.ConversationView = (_dec = (0, _nextCore.injectab
     // let getMatcherContactNameList: ConversationPanelProps['getMatcherContactNameList'];
     _this.getMatcherContactList = function (phoneNumber) {
       var _this$_contactMatcher;
-      if ((_this$_contactMatcher = _this._contactMatcher) === null || _this$_contactMatcher === void 0 ? void 0 : _this$_contactMatcher.ready) {
+      if ((_this$_contactMatcher = _this._contactMatcher) !== null && _this$_contactMatcher !== void 0 && _this$_contactMatcher.ready) {
         var matcherNames = _this._contactMatcher.dataMapping[phoneNumber];
         if ((matcherNames === null || matcherNames === void 0 ? void 0 : matcherNames.length) > 0) {
           return matcherNames.map(function (matcher) {
@@ -159,7 +159,7 @@ var ConversationView = exports.ConversationView = (_dec = (0, _nextCore.injectab
     };
     _this.getMatcherContactNameList = function (phoneNumber) {
       var _this$_contactMatcher2;
-      if ((_this$_contactMatcher2 = _this._contactMatcher) === null || _this$_contactMatcher2 === void 0 ? void 0 : _this$_contactMatcher2.ready) {
+      if ((_this$_contactMatcher2 = _this._contactMatcher) !== null && _this$_contactMatcher2 !== void 0 && _this$_contactMatcher2.ready) {
         var matcherNames = _this._contactMatcher.dataMapping[phoneNumber];
         if ((matcherNames === null || matcherNames === void 0 ? void 0 : matcherNames.length) > 0) {
           return matcherNames.map(function (matcher) {
@@ -184,7 +184,7 @@ var ConversationView = exports.ConversationView = (_dec = (0, _nextCore.injectab
   }, {
     key: "getUIProps",
     value: function getUIProps(_ref3) {
-      var _this$_conversationLo2, _this$_conversationLo3, _this$_conversationLo4, _this$_conversationLo5, _this$_extensionInfo, _this$_extensionInfo2, _this$_extensionInfo3;
+      var _this$_conversationLo2, _this$_conversationLo3, _this$_extensionInfo, _this$_extensionInfo2, _this$_extensionInfo3;
       var _ref3$enableContactFa = _ref3.enableContactFallback,
         enableContactFallback = _ref3$enableContactFa === void 0 ? false : _ref3$enableContactFa,
         _ref3$showGroupNumber = _ref3.showGroupNumberName,
@@ -196,15 +196,14 @@ var ConversationView = exports.ConversationView = (_dec = (0, _nextCore.injectab
         _ref3$showContactDisp = _ref3.showContactDisplayPlaceholder,
         showContactDisplayPlaceholder = _ref3$showContactDisp === void 0 ? process.env.THEME_SYSTEM === 'spring-ui' : _ref3$showContactDisp,
         _ref3$inputExpandable = _ref3.inputExpandable,
-        inputExpandable = _ref3$inputExpandable === void 0 ? process.env.THEME_SYSTEM === 'spring-ui' : _ref3$inputExpandable,
+        inputExpandable = _ref3$inputExpandable === void 0 ? true : _ref3$inputExpandable,
         _ref3$perPage = _ref3.perPage,
         perPage = _ref3$perPage === void 0 ? 20 : _ref3$perPage;
       var disableLinks = this._rateLimiter.restricted || !this._connectivityMonitor.connectivity;
       var showSpinner = !(this._dateTimeFormat.ready && (!this._contactMatcher || this._contactMatcher.ready) && this._regionSettings.ready && this._conversations.ready && this._rateLimiter.ready && this._connectivityMonitor.ready && (!this._conversationLogger || this._conversationLogger.ready));
       var currentConversation = this._conversations.currentConversation;
-      var hasInputContent = this._conversations.messageText && this._conversations.messageText.length > 0 || this._conversations.attachments && this._conversations.attachments.length > 0;
       var conversationId = this.conversationId;
-      var isLogged = !!(conversationId && ((_this$_conversationLo2 = this._conversationLogger) === null || _this$_conversationLo2 === void 0 ? void 0 : (_this$_conversationLo3 = _this$_conversationLo2.getIsInLoggedStatus) === null || _this$_conversationLo3 === void 0 ? void 0 : _this$_conversationLo3.call(_this$_conversationLo2, conversationId)));
+      var hasInputContent = this._conversations.messageText && this._conversations.messageText.length > 0 || this._conversations.attachments && this._conversations.attachments.length > 0;
       return {
         brand: this._brand.name,
         enableContactFallback: enableContactFallback,
@@ -225,7 +224,7 @@ var ConversationView = exports.ConversationView = (_dec = (0, _nextCore.injectab
         // TODO: remove the currentConversation, should just messages, not need bring with other data, that already be inside `formattedConversations`
         conversation: currentConversation,
         disableLinks: disableLinks,
-        autoLog: !!((_this$_conversationLo4 = this._conversationLogger) === null || _this$_conversationLo4 === void 0 ? void 0 : _this$_conversationLo4.autoLog) || !!((_this$_conversationLo5 = this._conversationLogger) === null || _this$_conversationLo5 === void 0 ? void 0 : _this$_conversationLo5.serverAutoLog),
+        autoLog: !!((_this$_conversationLo2 = this._conversationLogger) !== null && _this$_conversationLo2 !== void 0 && _this$_conversationLo2.autoLog) || !!((_this$_conversationLo3 = this._conversationLogger) !== null && _this$_conversationLo3 !== void 0 && _this$_conversationLo3.serverAutoLog),
         perPage: perPage,
         loadingNextPage: this._conversations.loadingOldMessages,
         inputExpandable: !!inputExpandable,

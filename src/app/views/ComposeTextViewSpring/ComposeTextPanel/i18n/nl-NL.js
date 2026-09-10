@@ -12,11 +12,15 @@ var _default = exports["default"] = {
   groupTextHint: 'Verzend groepstekstberichten (maximaal 10 personen) om een gesprek te starten. Of schakel het selectievakje uit om tekstberichten afzonderlijk te versturen. De ontvangers weten dan niet dat er andere ontvangers zijn.',
   optOutSingleRecipient: 'Deze ontvanger heeft zich afgemeld.',
   optOutMultipleRecipients: 'Sommige ontvangers hebben zich afgemeld.',
-  optOutRemove: 'Verwijderen'
+  optOutRemove: 'Verwijderen',
+  incomingTextsOnly: 'Alleen inkomende tekstberichten',
+  notSetUpForTexting: "Niet ingesteld voor sms'en"
 }; // @key: @#@"createNewText"@#@ @source: @#@"Create new text"@#@
 // @key: @#@"createGroupText"@#@ @source: @#@"Create Group Text"@#@
 // @key: @#@"groupTextHint"@#@ @source: @#@"Send group text messages (up to 10 people) to start a text conversation. Or uncheck the box to send a text message to everyone individually, they will be unaware of the other recipients."@#@
 // @key: @#@"optOutSingleRecipient"@#@ @source: @#@"This recipient has opted out."@#@
 // @key: @#@"optOutMultipleRecipients"@#@ @source: @#@"Some recipients have opted out."@#@
 // @key: @#@"optOutRemove"@#@ @source: @#@"Remove"@#@
+// @key: @#@"incomingTextsOnly"@#@ @source: @#@"Incoming texts only"@#@
+// @key: @#@"notSetUpForTexting"@#@ @source: @#@"Not set up for texting"@#@
 //# sourceMappingURL=nl-NL.js.map

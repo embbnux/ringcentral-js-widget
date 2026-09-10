@@ -1,6 +1,10 @@
 import { subscriptionFilters } from '@ringcentral-integration/commons/enums/subscriptionFilters';
 import type { Message } from '@ringcentral-integration/commons/interfaces/MessageStore.model';
-import type { WebSocketSubscription as Subscription } from '@ringcentral-integration/micro-auth/src/app/services';
+import { buildAttachmentUri } from '@ringcentral-integration/commons/lib/messageHelper';
+import type {
+  NumberFormatter,
+  WebSocketSubscription as Subscription,
+} from '@ringcentral-integration/micro-auth/src/app/services';
 import {
   AppFeatures,
   Auth,
@@ -8,14 +12,18 @@ import {
   ExtensionInfo,
 } from '@ringcentral-integration/micro-auth/src/app/services';
 import { ContactMatcher } from '@ringcentral-integration/micro-contacts/src/app/services';
+import { Toast } from '@ringcentral-integration/micro-core/src/app/services';
 import {
   CallQueueInfo,
   CallQueues,
+  Grant,
+  type ExtensionGrantRecord,
 } from '@ringcentral-integration/micro-phone/src/app/services';
 import {
   action,
   computed,
   delegate,
+  dynamic,
   fromWatchValue,
   injectable,
   optional,
@@ -27,6 +35,7 @@ import {
   StoragePlugin,
   takeUntilAppDestroy,
 } from '@ringcentral-integration/next-core';
+import { base64ToFile } from '@ringcentral-integration/utils';
 import isEqual from 'lodash/isEqual';
 import { findLast } from 'ramda';
 import {
@@ -52,6 +61,9 @@ import {
   takeUntil,
   tap,
   timeout,
+  catchError,
+  retry,
+  timer,
 } from 'rxjs';
 
 import { ConversationLogger } from '../ConversationLogger';
@@ -60,7 +72,8 @@ import {
   type CorrespondentMatch,
   type FilteredConversation,
 } from '../Conversations';
-import { MessageSender } from '../MessageSender';
+import { ATTACHMENT_SIZE_LIMITATION, MessageSender } from '../MessageSender';
+import type { Attachment } from '../MessageSender/MessageSender.interface';
 import { SmsOptOut } from '../SmsOptOut';
 
 import type {
@@ -73,6 +86,7 @@ import type {
   MessageThreadMessageResponse,
   MessageThreadOptions,
   MessageThreadRecord,
+  SendNewThreadMessagePayload,
   MessageThreadSyncData,
   SyncSuccessOptions,
   ThreadInfo,
@@ -124,11 +138,23 @@ export class MessageThread extends RcModule {
   }
 
   @computed
-  get hasPermission() {
+  get hasCompanySiteSupport() {
+    // when have site support, also show the message thread
     return (
-      this._appFeatures.hasReadMessagesPermission &&
-      this.smsRecipientCallQueues.length > 0 &&
-      this._enable
+      this._appFeatures.hasMessageThreadSiteSupported &&
+      this._messageSender.senderNumbersList.some(
+        (x) => x.phoneNumber && this.isSharedSmsSenderNumber(x.phoneNumber),
+      )
+    );
+  }
+
+  @computed
+  get hasPermission() {
+    return Boolean(
+      this._enable &&
+        this._appFeatures.hasReadMessagesPermission &&
+        this._appFeatures.hasMessageThreadsPermission &&
+        (this.smsRecipientCallQueues.length > 0 || this.hasCompanySiteSupport),
     );
   }
 
@@ -144,10 +170,15 @@ export class MessageThread extends RcModule {
       .filter(Boolean) as string[];
   }
 
-  // TODO: still not support log conversation for message thread, so we need to return empty array for now
   @computed
   get conversationLogIds() {
-    return [];
+    const threadConversations = this.threadConversationsInfo.conversations;
+    const threadLogIds = threadConversations?.length
+      ? threadConversations
+          .map((c) => c.conversationLogId)
+          .filter((id): id is string => !!id)
+      : [];
+    return threadLogIds;
   }
 
   hasPermission$ = fromWatchValue(this, () => this.hasPermission);
@@ -191,25 +222,76 @@ export class MessageThread extends RcModule {
 
   @computed
   get smsRecipientCallQueues() {
-    return this._callQueues.grants.reduce((acc, grant) => {
-      const queueInfo = this._callQueues.getQueueMetadata(
-        grant.extension.id,
-      )?.queueInfo;
+    if (!this._appFeatures.hasMessageThreadCallQueueSupported) {
+      return [];
+    }
 
-      if (queueInfo && grant.callQueueSmsRecipient) {
+    return this._grant.grants.reduce((acc, grant) => {
+      const queueInfo = this._callQueues.getQueue(grant.extension.id);
+
+      if (
+        queueInfo &&
+        this._isDepartmentGrant(grant) &&
+        this._isSmsRecipientGrant(grant)
+      ) {
         acc.push(queueInfo);
       }
       return acc;
     }, [] as CallQueueInfo[]);
   }
 
+  isSharedSmsSenderNumber(fromNumber: string) {
+    const formattedPhoneNumber =
+      this._numberFormatter?.formatNumber(fromNumber);
+
+    const senderNumber =
+      formattedPhoneNumber &&
+      this._messageSender.senderNumberMap.get(formattedPhoneNumber);
+
+    if (!senderNumber) {
+      return false;
+    }
+
+    const isMainCompanyGrant =
+      !!senderNumber.usageType &&
+      (senderNumber.usageType === 'MainCompanyNumber' ||
+        senderNumber.usageType === 'CompanyNumber') &&
+      // must have CompanyExtension mens able to send shared sms
+      this._grant.hasCompanyExtensionGrant;
+
+    const id = senderNumber.extension?.id;
+
+    return Boolean(
+      // when be main company grant should have MessageThreadSiteSupported permission
+      (isMainCompanyGrant && this._appFeatures.hasMessageThreadSiteSupported) ||
+        // when be normal shared SMS recipient grant, should have hasMessageThreadCallQueueSupported
+        (id &&
+          this._grant.isSharedSmsRecipientGrant(id.toString()) &&
+          this._appFeatures.hasMessageThreadCallQueueSupported),
+    );
+  }
+
+  private _isSmsRecipientGrant(grant: ExtensionGrantRecord) {
+    return !!(grant.smsRecipient || grant.callQueueSmsRecipient);
+  }
+
+  private _isDepartmentGrant(grant: ExtensionGrantRecord) {
+    const extensionType = grant.extension.type;
+    return !!(extensionType === 'Department');
+  }
+
+  @dynamic('NumberFormatter')
+  private _numberFormatter?: NumberFormatter;
+
   constructor(
+    private _toast: Toast,
     private _auth: Auth,
     private _client: Client,
     private _appFeatures: AppFeatures,
     private _storage: StoragePlugin,
     private _router: RouterPlugin,
     private _callQueues: CallQueues,
+    private _grant: Grant,
     private _messageSender: MessageSender,
     private _portManager: PortManager,
     @optional('Subscription') protected _subscription?: Subscription,
@@ -237,9 +319,11 @@ export class MessageThread extends RcModule {
 
     if (this._portManager.shared) {
       this._portManager.onServer(() => {
+        this.initListener();
         this.listenMessageUpdate$();
       });
     } else {
+      this.initListener();
       this.listenMessageUpdate$();
     }
   }
@@ -258,6 +342,9 @@ export class MessageThread extends RcModule {
 
   @state
   inputValueMap: Record<string, string> = {};
+
+  @state
+  attachmentMap: Record<string, Attachment[]> = {};
 
   private listenMessageUpdate$() {
     const data$ = fromWatchValue(this, () => this.data.threads);
@@ -297,6 +384,30 @@ export class MessageThread extends RcModule {
     this.inputValueMap[threadId] = value;
   }
 
+  @action
+  private _setAttachment(threadId: string, attachment: Attachment) {
+    const existedAttachments = this.attachmentMap[threadId];
+    if (existedAttachments) {
+      const attachments = existedAttachments.filter(
+        (file) => file.name !== attachment.name,
+      );
+      attachments.push(attachment);
+      this.attachmentMap[threadId] = attachments;
+    } else {
+      this.attachmentMap[threadId] = [attachment];
+    }
+  }
+
+  @action
+  private _removeAttachment(threadId: string, attachment: Attachment) {
+    const existedAttachments = this.attachmentMap[threadId];
+    if (existedAttachments) {
+      this.attachmentMap[threadId] = existedAttachments.filter(
+        (file) => file.name !== attachment.name,
+      );
+    }
+  }
+
   private getConversationHashId(threadId: string) {
     const thread = this.getThread(threadId);
     const guestPhone = thread?.threadInfo?.guestParty?.phoneNumber;
@@ -320,10 +431,57 @@ export class MessageThread extends RcModule {
     return this.inputValueMap[hashId] || '';
   }
 
+  getAttachments(threadId: string) {
+    const hashId = this.getConversationHashId(threadId);
+
+    // use hash as the attachments cache to ensure the attachments can use same cache between threads
+    return this.attachmentMap[hashId] || [];
+  }
+
+  @delegate('server')
+  async addAttachments(threadId: string, attachments: Attachment[]) {
+    const hashId = this.getConversationHashId(threadId);
+    const existedAttachments = this.attachmentMap[hashId] || [];
+    const totalAttachments = [...existedAttachments, ...attachments];
+
+    if (totalAttachments.length > 10) {
+      this._toast.danger({
+        message: t('attachmentCountLimitation'),
+        ttl: 5000,
+      });
+      return;
+    }
+
+    const size = totalAttachments.reduce((prev, curr) => prev + curr.size, 0);
+    if (size > ATTACHMENT_SIZE_LIMITATION) {
+      this._toast.danger({
+        message: t('attachmentSizeLimitation'),
+        ttl: 5000,
+      });
+      return;
+    }
+
+    for (const attachment of attachments) {
+      this._setAttachment(hashId, attachment);
+    }
+  }
+
+  @delegate('server')
+  async removeAttachment(threadId: string, attachment: Attachment) {
+    const hashId = this.getConversationHashId(threadId);
+    this._removeAttachment(hashId, attachment);
+  }
+
   @action
   resetInputValue(threadId: string) {
     const hashId = this.getConversationHashId(threadId);
     delete this.inputValueMap[hashId];
+  }
+
+  @action
+  resetAttachments(threadId: string) {
+    const hashId = this.getConversationHashId(threadId);
+    delete this.attachmentMap[hashId];
   }
 
   @action
@@ -336,6 +494,7 @@ export class MessageThread extends RcModule {
     };
     this.threadMetadataMap = {};
     this.inputValueMap = {};
+    this.attachmentMap = {};
     this.historyLoaded = {
       threadsPageNumber: 1,
       messagesPageNumber: 1,
@@ -346,12 +505,12 @@ export class MessageThread extends RcModule {
   }
 
   @action
-  markThreadAsViewed(threadId: string) {
+  setUnreadCount(threadId: string, count = 0) {
     const group = this.getThreadGroup(threadId);
     group?.threads.forEach(({ threadId }) => {
       const thread = this.getThread(threadId);
       if (thread) {
-        thread.unreadCount = 0;
+        thread.unreadCount = count;
       }
     });
   }
@@ -573,9 +732,26 @@ export class MessageThread extends RcModule {
 
     const thread = this.getThread(record.threadId);
     const threadInfo = thread?.threadInfo;
-
+    const threadOwner = threadInfo?.owner;
+    const threadAuthor = record.author;
     const direction = record.direction || 'Inbound';
     const isOutbound = direction === 'Outbound';
+
+    // Convert attachments for message display
+    const accessToken = this._auth.accessToken;
+    const mmsAttachments =
+      isMessage && record.attachments
+        ? record.attachments.map((att) => ({
+            id: parseInt(att.id, 10),
+            uri: buildAttachmentUri(att.contentUri, accessToken),
+            contentType: att.contentType,
+            fileName: att.filename,
+            size: att.size,
+            width: att.width,
+            height: att.height,
+          }))
+        : [];
+
     return {
       id: record.id as any,
       conversationId: record.threadId,
@@ -591,6 +767,7 @@ export class MessageThread extends RcModule {
       availability: record.availability || 'Alive',
       uri: '',
       attachments: [],
+      mmsAttachments,
       from: {
         phoneNumber: isOutbound
           ? threadInfo?.ownerParty?.phoneNumber
@@ -605,6 +782,8 @@ export class MessageThread extends RcModule {
       ],
       extensionId: '',
       priority: 'Normal',
+      threadOwner,
+      threadAuthor,
     } as Message;
   }
 
@@ -660,6 +839,7 @@ export class MessageThread extends RcModule {
     let self: { phoneNumber?: string; extensionNumber?: string } | undefined =
       undefined;
 
+    const threadOwner = threadInfo?.owner;
     const from = threadInfo.ownerParty;
     const to = threadInfo.guestParty;
 
@@ -669,7 +849,6 @@ export class MessageThread extends RcModule {
     // Get matches using the same approach as ConversationsBase
     const contactMapping = this._contactMatcher?.dataMapping || {};
     const loggingMap = this._conversationLogger?.loggingMap || {};
-    const conversationLogMapping = this._conversationLogger?.dataMapping || {};
 
     const selfNumber = self && (self.phoneNumber || self.extensionNumber);
     const selfMatches = (selfNumber && contactMapping[selfNumber]) || [];
@@ -689,13 +868,30 @@ export class MessageThread extends RcModule {
     }, [] as CorrespondentMatch[]);
 
     // TODO: log still not supported for thread
-    const conversationLogId: string | null | undefined = 'unknown';
+    const conversationLogId = conversationId;
     // this._conversationLogger && messageLike
     //   ? this._conversationLogger.getConversationLogId(messageLike)
     //   : null;
     const isLogging = !!(conversationLogId && loggingMap[conversationLogId]);
-    const conversationMatches =
-      conversationLogMapping[conversationLogId!] || [];
+    const conversationMatches = correspondentMatchesList[0] || [];
+    // const conversationLogMapping = this._conversationLogger?.dataMapping || {};
+    // conversationLogMapping[conversationLogId!] || [];
+
+    // Convert attachments from latest message
+    const accessToken = this._auth.accessToken;
+    const mmsAttachments =
+      latestTextMessage.recordType === 'AliveMessage' &&
+      latestTextMessage.attachments
+        ? latestTextMessage.attachments.map((att) => ({
+            id: parseInt(att.id, 10),
+            uri: buildAttachmentUri(att.contentUri, accessToken),
+            contentType: att.contentType,
+            fileName: att.filename,
+            size: att.size,
+            width: att.width,
+            height: att.height,
+          }))
+        : [];
 
     // Build the conversation object matching FilteredConversation interface
     const conversation: FilteredConversation = {
@@ -721,13 +917,14 @@ export class MessageThread extends RcModule {
       unreadCounts: unreadCount ?? 0,
       self,
       correspondents,
-      mmsAttachments: [],
+      mmsAttachments,
       conversationLogId,
       isLogging,
       correspondentMatches,
       correspondentMatchesList,
       conversationMatches,
       selfMatches,
+      threadOwner,
     } as FilteredConversation;
 
     return conversation;
@@ -930,6 +1127,34 @@ export class MessageThread extends RcModule {
     return groupedMessages;
   }
 
+  getLatestThreadByParties(fromNumber: string, toNumber: string) {
+    if (!fromNumber || !toNumber) {
+      return undefined;
+    }
+
+    const hashId = buildConversationId([toNumber], fromNumber);
+    return this.groupedThreadsMap.get(hashId)?.latestThread;
+  }
+
+  getLatestThreadIdByParties(
+    fromNumber: string,
+    toNumber: string,
+  ): string | undefined {
+    return this.getLatestThreadByParties(fromNumber, toNumber)?.threadId;
+  }
+
+  getThreadLogMessages(threadId: string): Message[] {
+    const messages = this.getThreadMessages(threadId);
+    if (!messages) {
+      return [];
+    }
+
+    return messages?.filter(
+      (message) =>
+        message.conversationId === threadId &&
+        message.messageType === 'message',
+    );
+  }
   /**
    * Check if a conversationId is a threadId
    */
@@ -945,10 +1170,11 @@ export class MessageThread extends RcModule {
     return this.data.entriesToken;
   }
 
-  override onInitOnce() {
-    if (!this._subscription) return;
+  private initListener() {
+    const _subscription = this._subscription;
+    if (!_subscription) return;
 
-    const messageThreadSyncEvent$ = this._subscription
+    const messageThreadSyncEvent$ = _subscription
       .fromMessage$(/\/message-threads\/sync/)
       .pipe(
         tap(() => {
@@ -956,7 +1182,7 @@ export class MessageThread extends RcModule {
         }),
       );
 
-    const messageThreadEntriesSyncEvent$ = this._subscription
+    const messageThreadEntriesSyncEvent$ = _subscription
       .fromMessage$(/\/message-threads\/entries\/sync/)
       .pipe(
         tap(() => {
@@ -983,20 +1209,32 @@ export class MessageThread extends RcModule {
       // use concatMap to ensure the sync api called one by one
       concatMap((token) =>
         defer(async () => {
-          try {
-            if (!token) {
-              this.logger.log('thread info fsync start');
-              await this._threadFSync();
-              this.logger.log('thread info fsync done');
-            } else {
-              this.logger.log('thread info isync start');
-              await this._threadISync();
-              this.logger.log('thread info isync done');
-            }
-          } catch (error: any) {
-            this.logger.error('thread sync error', error);
+          if (!token) {
+            this.logger.log('thread info fsync start');
+            await this._threadFSync();
+            this.logger.log('thread info fsync done');
+          } else {
+            this.logger.log('thread info isync start');
+            await this._threadISync();
+            this.logger.log('thread info isync done');
           }
-        }),
+        }).pipe(
+          retry({
+            count: 3,
+            delay: (err) => {
+              this.logger.error('thread sync error, retry after 1s', err);
+              // error: ApiError
+
+              //     const errResp = error.response;
+              //     let errorJson: SendErrorResponse;
+              return timer(1000);
+            },
+          }),
+          catchError((error) => {
+            this.logger.error('thread sync error', error);
+            return EMPTY;
+          }),
+        ),
       ),
       tap(() => {
         this.syncDone$.next('thread');
@@ -1008,20 +1246,28 @@ export class MessageThread extends RcModule {
       // use concatMap to ensure the sync api called one by one
       concatMap((token) =>
         defer(async () => {
-          try {
-            if (!token) {
-              this.logger.log('entries fsync start');
-              await this._entriesFSync();
-              this.logger.log('entries fsync done');
-            } else {
-              this.logger.log('entries isync start');
-              await this._entriesISync();
-              this.logger.log('entries isync done');
-            }
-          } catch (error: any) {
-            this.logger.error('entries sync error', error);
+          if (!token) {
+            this.logger.log('entries fsync start');
+            await this._entriesFSync();
+            this.logger.log('entries fsync done');
+          } else {
+            this.logger.log('entries isync start');
+            await this._entriesISync();
+            this.logger.log('entries isync done');
           }
-        }),
+        }).pipe(
+          retry({
+            count: 3,
+            delay: (err) => {
+              this.logger.error('entries sync error, retry after 1s', err);
+              return timer(1000);
+            },
+          }),
+          catchError((error) => {
+            this.logger.error('entries sync error', error);
+            return EMPTY;
+          }),
+        ),
       ),
       tap(() => {
         this.syncDone$.next('entries');
@@ -1046,10 +1292,11 @@ export class MessageThread extends RcModule {
       }),
     );
 
-    this.readyState$
+    this.rehydrated$
       .pipe(
-        switchMap(() =>
-          this.ready
+        switchMap(() => _subscription.readyState$),
+        switchMap((ready) =>
+          ready
             ? this.hasPermission$.pipe(
                 startWith(false),
                 pairwise(),
@@ -1069,9 +1316,10 @@ export class MessageThread extends RcModule {
           return hasPermission
             ? merge(
                 smsRecipientCallQueuesIdChange$.pipe(
-                  tap(() => {
+                  tap((smsRecipientCallQueuesIdChange) => {
                     this.logger.log(
                       'queue ids changed, reset data to ensure the user have correct data',
+                      smsRecipientCallQueuesIdChange,
                     );
                     this.resetData();
                   }),
@@ -1110,63 +1358,50 @@ export class MessageThread extends RcModule {
     try {
       this.logger.log('Loading initial history data');
 
-      // Step 1: Get total pages for threads
-      const threadsFirstPage = await this.listThreads({ perPage: 1 }, false);
-      const totalThreadPages = threadsFirstPage.paging.totalPages || 0;
-
-      if (
-        totalThreadPages === 0 ||
-        threadsFirstPage.paging.totalElements === 0
-      ) {
-        this.logger.log('No threads found, skipping history load');
-        return;
-      }
-
-      this.logger.log(`Found ${totalThreadPages} pages of threads`);
-
-      // Step 2: Load the first page of threads (which contains the latest data)
+      // Load the first page of threads; paging info includes totalPages directly
       const firstThreadPage = await this.listThreads({
         perPage: THREADS_PER_PAGE,
         pageNumber: 1,
       });
 
+      const totalThreadPages = firstThreadPage.paging.totalPages || 0;
+
+      if (
+        totalThreadPages === 0 ||
+        firstThreadPage.paging.totalElements === 0
+      ) {
+        this.logger.log('No threads found, skipping history load');
+        return;
+      }
+
       this._setHistoryLoadedThreadsPageNumber(1);
       this._setHistoryLoadedThreadsTotalPages(totalThreadPages);
 
       this.logger.log(
-        `Loaded ${firstThreadPage.records.length} threads from page 1`,
+        `Loaded ${firstThreadPage.records.length} threads from page 1 (total pages: ${totalThreadPages})`,
       );
 
-      // Step 3: Get total pages for messages
-      const messagesFirstPage = await this.listThreadMessages(
-        { perPage: 1 },
-        false,
-      );
-      const totalMessagePages = messagesFirstPage.paging.totalPages || 0;
-
-      if (
-        totalMessagePages === 0 ||
-        messagesFirstPage.paging.totalElements === 0
-      ) {
-        this.logger.log('No messages found, skipping message load');
-        return;
-      }
-
-      this.logger.log(`Found ${totalMessagePages} pages of messages`);
-
-      // Step 4: Load the first page of messages (which contains the latest data)
-      // Messages will be automatically associated with threads via threadId
-
+      // Load the first page of messages; paging info includes totalPages directly
       const firstMessagePage = await this.listThreadMessages({
         perPage: MESSAGES_PER_PAGE,
         pageNumber: 1,
       });
 
+      const totalMessagePages = firstMessagePage.paging.totalPages || 0;
+
+      if (
+        totalMessagePages === 0 ||
+        firstMessagePage.paging.totalElements === 0
+      ) {
+        this.logger.log('No messages found, skipping message load');
+        return;
+      }
+
       this._setHistoryLoadedMessagesPageNumber(1);
       this._setHistoryLoadedMessagesTotalPages(totalMessagePages);
 
       this.logger.log(
-        `Loaded ${firstMessagePage.records.length} messages from page 1`,
+        `Loaded ${firstMessagePage.records.length} messages from page 1 (total pages: ${totalMessagePages})`,
       );
       this.logger.log('Initial history data loaded successfully');
     } catch (error: any) {
@@ -1733,6 +1968,50 @@ export class MessageThread extends RcModule {
   }
 
   /**
+   * Send a new message thread with explicit from/to parties.
+   */
+  @delegate('server')
+  async sendNewThreadMessage({
+    fromNumber,
+    toNumbers,
+    text,
+    attachments = [],
+  }: SendNewThreadMessagePayload) {
+    await this._messageSender.uniqueManager.dismissAll();
+
+    if (!this._messageSender.validateContent(text, attachments, false)) {
+      return;
+    }
+
+    // find does there have exist thread between fromNumber and toNumbers, if yes, send message in that thread, otherwise create a new thread
+    const existingThread = this.getLatestThreadByParties(
+      fromNumber,
+      toNumbers[0],
+    );
+    const isOpen = existingThread?.threadInfo?.status === 'Open';
+    const existingThreadId = existingThread?.threadId;
+    const threadId = isOpen && existingThreadId ? existingThreadId : null;
+    const currentUserId = this._auth.ownerId;
+
+    // when thread exist and be open, assign to me then send message in that thread, otherwise backend api will throw error
+    if (
+      threadId &&
+      currentUserId &&
+      existingThread?.threadInfo?.assignee?.extensionId !== this._auth.ownerId
+    ) {
+      await this.assignThread(threadId, currentUserId);
+    }
+
+    return this._sendThreadMessage({
+      threadId,
+      text,
+      from: { phoneNumber: fromNumber },
+      to: toNumbers.map((phoneNumber) => ({ phoneNumber })),
+      attachments,
+    });
+  }
+
+  /**
    * Send a message in a thread
    */
   @delegate('server')
@@ -1740,6 +2019,7 @@ export class MessageThread extends RcModule {
     threadId: string,
     text: string,
     newThread: boolean = false,
+    attachments: Attachment[] = [],
   ) {
     await this._messageSender.uniqueManager.dismissAll();
 
@@ -1759,7 +2039,9 @@ export class MessageThread extends RcModule {
       const messageText =
         this._smsOptOut?.attachOptOutHint(threadId, text) ?? text;
 
-      if (!this._messageSender.validateContent(messageText, [], false)) {
+      if (
+        !this._messageSender.validateContent(messageText, attachments, false)
+      ) {
         return;
       }
 
@@ -1768,14 +2050,17 @@ export class MessageThread extends RcModule {
         text: messageText,
         from,
         to,
+        attachments,
       });
 
       // when be new thread, revert the reopen state to false
       if (newThread) {
+        this.showAssignedToYouToast();
         this.updateThreadMetaData(threadId, { reopen: false });
       }
 
       this.resetInputValue(threadId);
+      this.resetAttachments(threadId);
       this._smsOptOut?.resetOptOut(threadId);
 
       return response;
@@ -1791,11 +2076,13 @@ export class MessageThread extends RcModule {
     text,
     from,
     to,
+    attachments = [],
   }: {
     threadId: string | null;
     text: string;
     from: { phoneNumber: string };
     to: Array<{ phoneNumber: string }>;
+    attachments?: Attachment[];
   }) {
     if (threadId) {
       this.setThreadLoading(threadId, true);
@@ -1813,13 +2100,32 @@ export class MessageThread extends RcModule {
             to,
             text,
           };
-      const res = await this._client.service
-        .platform()
-        .post(`/restapi/v1.0/account/~/message-threads/messages`, body);
+      const endpoint = `/restapi/v1.0/account/~/message-threads/messages`;
+
+      const response =
+        attachments.length > 0
+          ? await this._client.multipart.post(endpoint, {
+              fields: {
+                metadata: body,
+              },
+              files: {
+                attachments: attachments.map((attachment) =>
+                  attachment.base64Url
+                    ? base64ToFile(attachment.base64Url, attachment.name)
+                    : attachment.file,
+                ),
+              },
+            })
+          : await this._client.service.platform().post(endpoint, body);
 
       await this.emitUpdateAndWaitSyncDone();
 
-      return (await res.json()) as MessageThreadMessageResponse;
+      if (attachments.length > 0) {
+        return response as MessageThreadMessageResponse;
+      }
+
+      const httpResponse = response as Response;
+      return (await httpResponse.json()) as MessageThreadMessageResponse;
     } catch (error: any) {
       this.logger.error('sendThreadMessage error', error);
       throw error;
@@ -1854,5 +2160,9 @@ export class MessageThread extends RcModule {
         }),
       ),
     );
+  }
+
+  showAssignedToYouToast() {
+    this._toast.success({ message: t('assignedToYouTooltip') });
   }
 }

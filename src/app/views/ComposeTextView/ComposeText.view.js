@@ -130,7 +130,7 @@ var ComposeTextView = exports.ComposeTextView = (_dec = (0, _nextCore.injectable
     key: "getUIProps",
     value: function getUIProps(_ref) {
       var _ref$inputExpandable = _ref.inputExpandable,
-        inputExpandable = _ref$inputExpandable === void 0 ? process.env.THEME_SYSTEM === 'spring-ui' : _ref$inputExpandable,
+        inputExpandable = _ref$inputExpandable === void 0 ? true : _ref$inputExpandable,
         _ref$supportAttachmen = _ref.supportAttachment,
         supportAttachment = _ref$supportAttachmen === void 0 ? process.env.THEME_SYSTEM === 'spring-ui' : _ref$supportAttachmen,
         _ref$supportEmoji = _ref.supportEmoji,

@@ -28,9 +28,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.ConversationLogPopover = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
+require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.object.to-string.js");
-var _ReferenceWidgetSpring = require("@ringcentral-integration/micro-phone/src/app/components/ReferenceWidgetSpring");
+var _components = require("@ringcentral-integration/micro-phone/src/app/components");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _springIcon = require("@ringcentral/spring-icon");
@@ -64,8 +65,13 @@ var ConversationLogPopover = exports.ConversationLogPopover = function Conversat
   var mounted = (0, _reactUse.usePromise)();
   var integrationConfig = (0, _nextCore.useContainer)('IntegrationConfig');
   var handleCreateEntity = function handleCreateEntity() {
-    var _ref2;
-    (_ref2 = onCreateEntity || integrationConfig.onCreateEntity) === null || _ref2 === void 0 ? void 0 : _ref2();
+    var _conversation$corresp, _ref2;
+    var phoneNumber = (_conversation$corresp = conversation.correspondents.find(function (correspondent) {
+      return correspondent.phoneNumber;
+    })) === null || _conversation$corresp === void 0 ? void 0 : _conversation$corresp.phoneNumber;
+    (_ref2 = onCreateEntity || integrationConfig.onCreateEntity) === null || _ref2 === void 0 ? void 0 : _ref2({
+      phoneNumber: phoneNumber
+    });
   };
   var _ref3 = conversationLogPopoverOptions || {},
     maxLogRecordsCount = _ref3.maxLogRecordsCount;
@@ -139,9 +145,23 @@ var ConversationLogPopover = exports.ConversationLogPopover = function Conversat
     onClick: function onClick(e) {
       // TODO: spring-ui issue, click event will trigger the host item click event
       e.stopPropagation();
+    },
+    classes: {
+      popper: 'overflow-hidden',
+      paper: 'h-full'
+    },
+    PopperPaperProps: {
+      classes: {
+        content: 'h-full overflow-hidden'
+      }
+    },
+    PopperProps: {
+      middlewares: _components.referencePopperMiddlewares
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex items-center gap-2 p-2 pl-3"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex flex-col h-full"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex items-center gap-2 p-2 pl-3 flex-none"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.TextField, {
     fullWidth: true,
     value: inputValue,
@@ -164,7 +184,7 @@ var ConversationLogPopover = exports.ConversationLogPopover = function Conversat
     color: "secondary",
     variant: "icon",
     onClick: handleCreateEntity
-  })), /*#__PURE__*/_react["default"].createElement(_ReferenceWidgetSpring.ReferenceMainContent, {
+  })), /*#__PURE__*/_react["default"].createElement(_components.ReferenceMainContent, {
     filterTerm: inputValue,
     formKey: formKey,
     allDisplayList: allDisplayList,
@@ -177,7 +197,7 @@ var ConversationLogPopover = exports.ConversationLogPopover = function Conversat
     useMenuList: conversationLogPopoverOptions === null || conversationLogPopoverOptions === void 0 ? void 0 : conversationLogPopoverOptions.useMenuList,
     getIcon: conversationLogPopoverOptions === null || conversationLogPopoverOptions === void 0 ? void 0 : conversationLogPopoverOptions.getIcon
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex justify-between px-3 py-4"
+    className: "flex justify-between px-3 py-4 flex-none"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "w-[135px]"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
@@ -225,7 +245,7 @@ var ConversationLogPopover = exports.ConversationLogPopover = function Conversat
         }
       }, _callee, null, [[0, 2, 3, 4]]);
     }))
-  }, (0, _i18n.t)('save')))))), searchOpened && /*#__PURE__*/_react["default"].createElement(_ReferenceWidgetSpring.ReferenceSearchPanel, {
+  }, (0, _i18n.t)('save')))))), searchOpened && /*#__PURE__*/_react["default"].createElement(_components.ReferenceSearchPanel, {
     closePageFn: closeSearchPage,
     onCreateEntity: handleCreateEntity,
     onBack: function onBack() {

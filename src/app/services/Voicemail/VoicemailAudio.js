@@ -86,7 +86,7 @@ var VoicemailAudio = exports.VoicemailAudio = (_dec = (0, _nextCore.injectable)(
       var ids = Array.isArray(voicemailIds) ? voicemailIds : [voicemailIds];
       ids.forEach(function (id) {
         var status = _this2.audioMap[id];
-        if (status === null || status === void 0 ? void 0 : status.blobUrl) URL.revokeObjectURL(status.blobUrl);
+        if (status !== null && status !== void 0 && status.blobUrl) URL.revokeObjectURL(status.blobUrl);
         delete _this2.audioMap[id];
       });
     }

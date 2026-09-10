@@ -182,7 +182,8 @@ var SmsOptOutView = exports.SmsOptOutView = (_dec = (0, _nextCore.injectable)({
         "data-sign": "optOutButton"
       })), /*#__PURE__*/_react["default"].createElement(_components.GuidePopover, {
         anchorRef: anchorRef,
-        popoverOpen: popoverOpen
+        popoverOpen: popoverOpen,
+        onBackdropClick: close
       }, /*#__PURE__*/_react["default"].createElement("div", {
         className: "mb-3"
       }, /*#__PURE__*/_react["default"].createElement("div", {

@@ -107,6 +107,28 @@ Object.keys(_MessageThreadsView).forEach(function (key) {
     }
   });
 });
+var _SmsConsentDialogView = require("./SmsConsentDialogView");
+Object.keys(_SmsConsentDialogView).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _SmsConsentDialogView[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SmsConsentDialogView[key];
+    }
+  });
+});
+var _SmsConsentManagementView = require("./SmsConsentManagementView");
+Object.keys(_SmsConsentManagementView).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _SmsConsentManagementView[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SmsConsentManagementView[key];
+    }
+  });
+});
 var _SmsTemplateView = require("./SmsTemplateView");
 Object.keys(_SmsTemplateView).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

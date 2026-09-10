@@ -23,7 +23,6 @@ var _default = exports["default"] = {
   assignToMeText: '分配给我',
   resolved: '对话已解决。',
   autoResolved: '对话已自动解决。',
-  assignedToYouTooltip: '对话已分配给您',
   assignedToOtherTooltip: '对话已分配给 {name}',
   conversationUnassigned: '对话已取消分配。',
   failedToAssignThread: '无法分配对话',
@@ -36,7 +35,7 @@ var _default = exports["default"] = {
 // @key: @#@"unassignThread"@#@ @source: @#@"Unassign"@#@
 // @key: @#@"assignToMe"@#@ @source: @#@"Reply"@#@
 // @key: @#@"assignConversationTo"@#@ @source: @#@"Assign conversation to"@#@
-// @key:  @#@"companyContacts"@#@ @source: @#@"Company contacts"@#@
+// @key: @#@"companyContacts"@#@ @source: @#@"Company contacts"@#@
 // @key: @#@"resolvedBanner"@#@ @source: @#@"This conversation is resolved."@#@
 // @key: @#@"unassignedBannerText"@#@ @source: @#@"This conversation is unassigned."@#@
 // @key: @#@"assignedToOtherBanner"@#@ @source: @#@"This conversation is assigned to {name}."@#@
@@ -45,7 +44,6 @@ var _default = exports["default"] = {
 // @key: @#@"assignToMeText"@#@ @source: @#@"Assign to me"@#@
 // @key: @#@"resolved"@#@ @source: @#@"Conversation resolved."@#@
 // @key: @#@"autoResolved"@#@ @source: @#@"Conversation auto-resolved."@#@
-// @key: @#@"assignedToYouTooltip"@#@ @source: @#@"Conversation assigned to You"@#@
 // @key: @#@"assignedToOtherTooltip"@#@ @source: @#@"Conversation assigned to {name}"@#@
 // @key: @#@"conversationUnassigned"@#@ @source: @#@"Conversation unassigned."@#@
 // @key: @#@"failedToAssignThread"@#@ @source: @#@"Failed to assign conversation"@#@

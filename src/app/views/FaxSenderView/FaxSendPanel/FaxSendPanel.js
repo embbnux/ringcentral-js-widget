@@ -119,14 +119,15 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_components.AppHeaderNav, {
     override: true
   }, /*#__PURE__*/_react["default"].createElement(_components2.PageHeader, {
-    onBackClick: onCancel
+    onBackClick: onCancel,
+    className: "h-9 py-0"
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: "sui-text sui-text-root truncate",
     title: title
   }, title))), /*#__PURE__*/_react["default"].createElement(_components2.SpringSpinnerOverlay, {
     loading: !!showSpinner
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex flex-col w-full h-full px-4 gap-4 overflow-auto"
+    className: "flex flex-col w-full h-full px-4 gap-4 overflow-auto mb-2"
   }, /*#__PURE__*/_react["default"].createElement(_components2.FromField, {
     fromNumber: senderNumber,
     fromPlaceholder: t('from'),
@@ -162,7 +163,7 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
   }), showCoverTextInput ? /*#__PURE__*/_react["default"].createElement(_springUi.Textarea, {
     fullWidth: true,
     minRows: 4,
-    clearBtn: !!(faxInfo === null || faxInfo === void 0 ? void 0 : (_faxInfo$coverNotes = faxInfo.coverNotes) === null || _faxInfo$coverNotes === void 0 ? void 0 : _faxInfo$coverNotes.length),
+    clearBtn: !!(faxInfo !== null && faxInfo !== void 0 && (_faxInfo$coverNotes = faxInfo.coverNotes) !== null && _faxInfo$coverNotes !== void 0 && _faxInfo$coverNotes.length),
     value: faxInfo === null || faxInfo === void 0 ? void 0 : faxInfo.coverNotes,
     label: t('coverPageNote'),
     onChange: function onChange(_ref3) {
@@ -174,13 +175,14 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
       'data-sign': 'fax-cover-page-note'
     }
   }) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])('flex items-center gap-2')
+    className: "flex items-center gap-2"
   }, /*#__PURE__*/_react["default"].createElement(_FileAttacher.AttachButton, {
     multiple: true,
     type: "button",
-    size: "medium",
+    size: "xsmall",
     startIcon: /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
-      symbol: _springIcon.LinkMd
+      symbol: _springIcon.LinkMd,
+      size: "xsmall"
     }),
     acceptTypes: acceptFileTypes,
     label: t('attach'),
@@ -191,7 +193,7 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
         return _regenerator().w(function (_context3) {
           while (1) switch (_context3.n) {
             case 0:
-              if (!(data === null || data === void 0 ? void 0 : data.length)) {
+              if (!(data !== null && data !== void 0 && data.length)) {
                 _context3.n = 2;
                 break;
               }
@@ -255,7 +257,7 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
       onRemoveFile === null || onRemoveFile === void 0 ? void 0 : onRemoveFile(id);
     },
     "data-sign": "faxAttachmentsList"
-  })))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_springUi.Divider, null), /*#__PURE__*/_react["default"].createElement("div", {
+  }))))), /*#__PURE__*/_react["default"].createElement(_components.AppFooterNav, null, /*#__PURE__*/_react["default"].createElement(_springUi.Divider, null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "px-4 py-2 flex justify-between items-center"
   }, /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
     variant: "text",
@@ -266,6 +268,6 @@ var FaxSendPanel = exports.FaxSendPanel = function FaxSendPanel(_ref) {
     size: "large",
     disabled: !canSendNow,
     onClick: onSendNow
-  }, t('sendNow'))))), /*#__PURE__*/_react["default"].createElement(_components.AppFooterNav, null));
+  }, t('sendNow')))));
 };
 //# sourceMappingURL=FaxSendPanel.js.map

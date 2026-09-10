@@ -24,6 +24,13 @@ var _default = exports["default"] = {
   IntegrationNumber: '統合',
   all: 'すべて',
   unread: '未読',
+  draft: 'ドラフト',
+  failed: '失敗',
+  done: '完了',
+  cancel: 'キャンセル',
+  byCallQueue: '通話キュー別',
+  allCallQueues: 'すべての通話キュー',
+  searchCallQueues: '通話キューを検索',
   noMessages: 'メッセージなし',
   noText: 'テキストメッセージはまだありません',
   noUnreadText: '未読のテキストメッセージはまだありません',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: 'FAXの検索',
   searchText: 'テキストの検索',
   composeText: '新しいテキストを送信',
+  sendNewTextDisabled: '新しいテキストの送信は無効です',
   composeFax: 'FAXの作成'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=ja-JP.js.map

@@ -26,8 +26,9 @@ var _nextCore = require("@ringcentral-integration/next-core");
 var _react = _interopRequireDefault(require("react"));
 var _services = require("../../services");
 var _PersonalConversation = require("./PersonalConversation.view");
+var _QueueConversation = require("./QueueConversation.view");
 var _SharedConversation = require("./SharedConversation.view");
-var _dec, _dec2, _dec3, _dec4, _dec5, _class;
+var _dec, _dec2, _dec3, _class;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -44,16 +45,14 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 var ConversationViewSpring = exports.ConversationViewSpring = (_dec = (0, _nextCore.injectable)({
   name: 'ConversationViewSpring'
-}), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 1);
-}, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 2);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _PersonalConversation.PersonalConversationViewSpring === "undefined" ? Object : _PersonalConversation.PersonalConversationViewSpring, typeof _services.MessageThread === "undefined" ? Object : _services.MessageThread, typeof _SharedConversation.SharedConversationView === "undefined" ? Object : _SharedConversation.SharedConversationView]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = /*#__PURE__*/function (_RcViewModule) {
-  function ConversationViewSpring(_personalConversationView, _messageThread, _sharedConversationView) {
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _PersonalConversation.PersonalConversationViewSpring === "undefined" ? Object : _PersonalConversation.PersonalConversationViewSpring, typeof _QueueConversation.QueueConversationView === "undefined" ? Object : _QueueConversation.QueueConversationView, typeof _services.QueueConversations === "undefined" ? Object : _services.QueueConversations, typeof _services.MessageThread === "undefined" ? Object : _services.MessageThread, typeof _SharedConversation.SharedConversationView === "undefined" ? Object : _SharedConversation.SharedConversationView]), _dec(_class = _dec2(_class = _dec3(_class = /*#__PURE__*/function (_RcViewModule) {
+  function ConversationViewSpring(_personalConversationView, _queueConversationView, _queueConversations, _messageThread, _sharedConversationView) {
     var _this;
     _classCallCheck(this, ConversationViewSpring);
     _this = _callSuper(this, ConversationViewSpring);
     _this._personalConversationView = _personalConversationView;
+    _this._queueConversationView = _queueConversationView;
+    _this._queueConversations = _queueConversations;
     _this._messageThread = _messageThread;
     _this._sharedConversationView = _sharedConversationView;
     return _this;
@@ -66,18 +65,23 @@ var ConversationViewSpring = exports.ConversationViewSpring = (_dec = (0, _nextC
       var _useParams = (0, _nextCore.useParams)(),
         conversationId = _useParams.conversationId;
       var isThread = (0, _nextCore.useConnector)(function () {
-        if (!conversationId || !_this2._messageThread) {
-          return false;
-        }
+        if (!conversationId) return false;
         return _this2._messageThread.isThreadId(conversationId);
       });
-      if (this._sharedConversationView && isThread) {
+      var isQueueConversation = (0, _nextCore.useConnector)(function () {
+        if (!conversationId) return false;
+        return _this2._queueConversations.formattedConversationsMap.has(conversationId);
+      });
+      if (isThread) {
         return /*#__PURE__*/_react["default"].createElement(this._sharedConversationView.component, _extends({
           conversationId: conversationId
         }, props));
       }
+      if (isQueueConversation) {
+        return /*#__PURE__*/_react["default"].createElement(this._queueConversationView.component, props);
+      }
       return /*#__PURE__*/_react["default"].createElement(this._personalConversationView.component, props);
     }
   }]);
-}(_nextCore.RcViewModule)) || _class) || _class) || _class) || _class) || _class);
+}(_nextCore.RcViewModule)) || _class) || _class) || _class);
 //# sourceMappingURL=Conversation.view.js.map

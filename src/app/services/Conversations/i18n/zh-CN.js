@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
-  textTooLong: '文本过长，上限为 1000',
+  textTooLong: '您最多可以输入 1,000 个字符。',
   attachmentCountLimitation: '每条消息不能超过 10 个附件',
   attachmentSizeLimitation: '每条消息的所有附件大小总计不得超过 1.5 MB。'
 }; // @key: @#@"textTooLong"@#@ @source: @#@"You can enter up to 1,000 characters."@#@

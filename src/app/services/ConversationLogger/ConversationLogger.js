@@ -61,7 +61,7 @@ var _MessageStore = require("../MessageStore");
 var _conversationLoggerHelper = require("./conversationLoggerHelper");
 var _excluded = ["conversation"],
   _excluded2 = ["conversationId", "correspondentEntity", "redirect"];
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor;
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -99,19 +99,17 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
   name: 'ConversationLogger'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.inject)('ConversationLoggerOptions')(target, undefined, 9);
-}, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)('TabManager')(target, undefined, 10);
-}, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _ConversationMatcher.ConversationMatcher === "undefined" ? Object : _ConversationMatcher.ConversationMatcher, typeof _services3.DateTimeFormat === "undefined" ? Object : _services3.DateTimeFormat, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _MessageStore.MessageStore === "undefined" ? Object : _MessageStore.MessageStore, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof ConversationLoggerOptions === "undefined" ? Object : ConversationLoggerOptions, Object]), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [Boolean]), _dec8 = (0, _nextCore.delegate)('server'), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Object]), _dec1 = (0, _nextCore.delegate)('server'), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", [Object]), _dec12 = (0, _nextCore.delegate)('server'), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [Boolean]), _dec15 = (0, _nextCore.computed)(function (that) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _ConversationMatcher.ConversationMatcher === "undefined" ? Object : _ConversationMatcher.ConversationMatcher, typeof _services3.DateTimeFormat === "undefined" ? Object : _services3.DateTimeFormat, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _MessageStore.MessageStore === "undefined" ? Object : _MessageStore.MessageStore, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof ConversationLoggerOptions === "undefined" ? Object : ConversationLoggerOptions]), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [Boolean]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [Object]), _dec0 = (0, _nextCore.delegate)('server'), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Boolean]), _dec14 = (0, _nextCore.computed)(function (that) {
   return [that._messageStore.conversationStore, that._extensionInfo.extensionNumber, that._conversationMatcher.dataMapping];
-}), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", []), _dec18 = (0, _nextCore.computed)(function (that) {
+}), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec17 = (0, _nextCore.computed)(function (that) {
   return [that.conversationLogMap];
-}), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.computed)(function (that) {
+}), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", []), _dec20 = (0, _nextCore.computed)(function (that) {
   return [that.conversationLogMap];
-}), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _services.track)(function (that) {
+}), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _services.track)(function (that) {
   if (that._router.currentPath === '/messages') return [_trackEvents.trackEvents.logSMSFromHistoryPage];
   return [_trackEvents.trackEvents.logSMSFromConversationPage];
-}), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _services.track)(_trackEvents.trackEvents.smsSaveLogManually), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _services.track)(_trackEvents.trackEvents.smsSaveLogAutomatically), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_LoggerBase) {
-  function ConversationLogger(_auth, _storage, _contactMatcher, _conversationMatcher, _dateTimeFormat, _extensionInfo, _messageStore, _appFeatures, _router, _conversationLoggerOptions, _tabManager) {
+}), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _services.track)(_trackEvents.trackEvents.smsSaveLogManually), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = (0, _services.track)(_trackEvents.trackEvents.smsSaveLogAutomatically), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_LoggerBase) {
+  function ConversationLogger(_auth, _storage, _contactMatcher, _conversationMatcher, _dateTimeFormat, _extensionInfo, _messageStore, _appFeatures, _router, _conversationLoggerOptions) {
     var _this$_conversationLo, _this$_conversationLo2, _this$_conversationLo3, _this$_conversationLo4;
     var _this;
     _classCallCheck(this, ConversationLogger);
@@ -126,7 +124,6 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
     _this._appFeatures = _appFeatures;
     _this._router = _router;
     _this._conversationLoggerOptions = _conversationLoggerOptions;
-    _this._tabManager = _tabManager;
     _this._logFunction = _this._conversationLoggerOptions.logFunction;
     _this._readyCheckFunction = _this._conversationLoggerOptions.readyCheckFunction;
     _this._isLoggedContact = (_this$_conversationLo = _this._conversationLoggerOptions.isLoggedContact) !== null && _this$_conversationLo !== void 0 ? _this$_conversationLo : function () {
@@ -359,7 +356,7 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
     key: "accordWithProcessLogRequirement",
     value: function accordWithProcessLogRequirement(conversationLogItem) {
       var _this$_accordWithLogR;
-      return !!((_this$_accordWithLogR = this._accordWithLogRequirement) === null || _this$_accordWithLogR === void 0 ? void 0 : _this$_accordWithLogR.call(this, conversationLogItem));
+      return !!((_this$_accordWithLogR = this._accordWithLogRequirement) !== null && _this$_accordWithLogR !== void 0 && _this$_accordWithLogR.call(this, conversationLogItem));
     }
 
     /**
@@ -382,20 +379,18 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
         this._contactMatcher.triggerMatch();
         var oldMap = this._lastProcessedConversations || {};
         this._lastProcessedConversations = this.conversationLogMap;
-        if (!this._tabManager || this._tabManager.active) {
-          Object.keys(this._lastProcessedConversations).forEach(function (conversationId) {
-            Object.keys(_this5._lastProcessedConversations[conversationId]).forEach(function (date) {
-              var conversation = _this5._lastProcessedConversations[conversationId][date];
-              if (!oldMap[conversationId] || !oldMap[conversationId][date] || conversation.messages[0].id !== oldMap[conversationId][date].messages[0].id) {
-                if (_this5.accordWithProcessLogRequirement(conversation)) {
-                  _this5._queueAutoLogConversation({
-                    conversation: conversation
-                  });
-                }
+        Object.keys(this._lastProcessedConversations).forEach(function (conversationId) {
+          Object.keys(_this5._lastProcessedConversations[conversationId]).forEach(function (date) {
+            var conversation = _this5._lastProcessedConversations[conversationId][date];
+            if (!oldMap[conversationId] || !oldMap[conversationId][date] || conversation.messages[0].id !== oldMap[conversationId][date].messages[0].id) {
+              if (_this5.accordWithProcessLogRequirement(conversation)) {
+                _this5._queueAutoLogConversation({
+                  conversation: conversation
+                });
               }
-            });
+            }
           });
-        }
+        });
       }
     }
   }, {
@@ -592,15 +587,7 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
       if (!message) {
         return;
       }
-      var conversationId = message.conversationId;
-      var date = this._formatDateTime({
-        type: 'date',
-        utcTimestamp: message.creationTime
-      });
-      return (0, _conversationLoggerHelper.getLogId)({
-        conversationId: conversationId,
-        date: date
-      });
+      return (0, _conversationLoggerHelper.getConversationLogIdFromMessage)(message, this._formatDateTime);
     }
   }, {
     key: "dataMapping",
@@ -663,5 +650,5 @@ var ConversationLogger = exports.ConversationLogger = (_dec = (0, _nextCore.inje
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setAutoLog", [_nextCore.action, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAutoLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "log", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "log"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "logConversation", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "logConversation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAutoLog", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "setAutoLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "conversationLogMap", [_dec15, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "conversationLogMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "conversationLogIds", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "conversationLogIds"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "uniqueNumbers", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "uniqueNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackClickLogButton", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "trackClickLogButton"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackSMSSaveLogManually", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "trackSMSSaveLogManually"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackSMSSaveLogAutomatically", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "trackSMSSaveLogAutomatically"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setAutoLog", [_nextCore.action, _dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAutoLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "log", [_dec7, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "log"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "logConversation", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "logConversation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setAutoLog", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "setAutoLog"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "conversationLogMap", [_dec14, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "conversationLogMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "conversationLogIds", [_dec17, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "conversationLogIds"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "uniqueNumbers", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "uniqueNumbers"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackClickLogButton", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "trackClickLogButton"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackSMSSaveLogManually", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "trackSMSSaveLogManually"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackSMSSaveLogAutomatically", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "trackSMSSaveLogAutomatically"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=ConversationLogger.js.map

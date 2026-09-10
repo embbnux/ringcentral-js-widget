@@ -22,8 +22,15 @@ var _default = exports["default"] = {
   NumberPool: 'Nummerpool',
   BusinessMobileNumber: 'Zakelijk mobiel nummer',
   IntegrationNumber: 'Integratie',
-  all: 'ALLE',
+  all: 'Alle',
   unread: 'Ongelezen',
+  draft: 'Concept',
+  failed: 'Mislukt',
+  done: 'Gereed',
+  cancel: 'Annuleren',
+  byCallQueue: 'Op oproepwachtrij',
+  allCallQueues: 'Alle oproepwachtrijen',
+  searchCallQueues: 'Oproepwachtrijen zoeken',
   noMessages: 'Geen berichten',
   noText: 'Nog geen tekstberichten',
   noUnreadText: 'Nog geen ongelezen tekstberichten',
@@ -35,6 +42,7 @@ var _default = exports["default"] = {
   searchFax: 'Faxen zoeken',
   searchText: 'Tekstberichten zoeken',
   composeText: 'Nieuw tekstbericht verzenden',
+  sendNewTextDisabled: 'Nieuw tekstbericht verzenden uitgeschakeld',
   composeFax: 'Fax opstellen'
 }; // @key: @#@"faxTitle"@#@ @source: @#@"Fax"@#@
 // @key: @#@"textTitle"@#@ @source: @#@"Text"@#@
@@ -53,6 +61,13 @@ var _default = exports["default"] = {
 // @key: @#@"IntegrationNumber"@#@ @source: @#@"Integration"@#@
 // @key: @#@"all"@#@ @source: @#@"All"@#@
 // @key: @#@"unread"@#@ @source: @#@"Unread"@#@
+// @key: @#@"draft"@#@ @source: @#@"Draft"@#@
+// @key: @#@"failed"@#@ @source: @#@"Failed"@#@
+// @key: @#@"done"@#@ @source: @#@"Done"@#@
+// @key: @#@"cancel"@#@ @source: @#@"Cancel"@#@
+// @key: @#@"byCallQueue"@#@ @source: @#@"By call queue"@#@
+// @key: @#@"allCallQueues"@#@ @source: @#@"All call queues"@#@
+// @key: @#@"searchCallQueues"@#@ @source: @#@"Search call queues"@#@
 // @key: @#@"noMessages"@#@ @source: @#@"No Messages"@#@
 // @key: @#@"noText"@#@ @source: @#@"No text messages yet"@#@
 // @key: @#@"noUnreadText"@#@ @source: @#@"No unread text messages yet"@#@
@@ -64,5 +79,6 @@ var _default = exports["default"] = {
 // @key: @#@"searchFax"@#@ @source: @#@"Search faxes"@#@
 // @key: @#@"searchText"@#@ @source: @#@"Search texts"@#@
 // @key: @#@"composeText"@#@ @source: @#@"Send new text"@#@
+// @key: @#@"sendNewTextDisabled"@#@ @source: @#@"Send new text disabled"@#@
 // @key: @#@"composeFax"@#@ @source: @#@"Compose fax"@#@
 //# sourceMappingURL=nl-NL.js.map

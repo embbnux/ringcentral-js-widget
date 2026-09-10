@@ -9,8 +9,8 @@ exports["default"] = void 0;
 var _default = exports["default"] = {
   specialNumber: 'No se admite el envío de mensajes a números de emergencia/servicios especiales.',
   textEmpty: 'Introduzca el mensaje por enviar.',
-  textTooLong: 'El mensaje es demasiado largo. El máximo es 1000.',
-  multipartTextTooLong: 'El mensaje es demasiado largo. El máximo es 5000.',
+  textTooLong: 'Puede ingresar hasta 1000 caracteres.',
+  multipartTextTooLong: 'Puede ingresar hasta 5000 caracteres.',
   recipientsEmpty: 'Ingrese un número de destinatario válido.',
   senderNumberInvalid: 'Se requiere un número de teléfono válido para enviar mensajes de texto a destinatarios fuera de su empresa. Comuníquese con su administrador para agregar un número directo a su cuenta.',
   recipientNumberInvalids: 'Ingrese un número de teléfono válido.',

@@ -23,8 +23,7 @@ var _default = exports["default"] = {
   assignToMeText: '自分に割り当てる',
   resolved: '会話が解決されました。',
   autoResolved: '会話が自動的に解決されました。',
-  assignedToYouTooltip: '会話があなたに割り当てられました',
-  assignedToOtherTooltip: '会話が{name}に割り当てられました',
+  assignedToOtherTooltip: '{name}に割り当てられた会話',
   conversationUnassigned: '会話が未割り当てです。',
   failedToAssignThread: '会話の割り当てに失敗しました',
   failedToResolveThread: '会話の解決に失敗しました',
@@ -36,7 +35,7 @@ var _default = exports["default"] = {
 // @key: @#@"unassignThread"@#@ @source: @#@"Unassign"@#@
 // @key: @#@"assignToMe"@#@ @source: @#@"Reply"@#@
 // @key: @#@"assignConversationTo"@#@ @source: @#@"Assign conversation to"@#@
-// @key:  @#@"companyContacts"@#@ @source: @#@"Company contacts"@#@
+// @key: @#@"companyContacts"@#@ @source: @#@"Company contacts"@#@
 // @key: @#@"resolvedBanner"@#@ @source: @#@"This conversation is resolved."@#@
 // @key: @#@"unassignedBannerText"@#@ @source: @#@"This conversation is unassigned."@#@
 // @key: @#@"assignedToOtherBanner"@#@ @source: @#@"This conversation is assigned to {name}."@#@
@@ -45,7 +44,6 @@ var _default = exports["default"] = {
 // @key: @#@"assignToMeText"@#@ @source: @#@"Assign to me"@#@
 // @key: @#@"resolved"@#@ @source: @#@"Conversation resolved."@#@
 // @key: @#@"autoResolved"@#@ @source: @#@"Conversation auto-resolved."@#@
-// @key: @#@"assignedToYouTooltip"@#@ @source: @#@"Conversation assigned to You"@#@
 // @key: @#@"assignedToOtherTooltip"@#@ @source: @#@"Conversation assigned to {name}"@#@
 // @key: @#@"conversationUnassigned"@#@ @source: @#@"Conversation unassigned."@#@
 // @key: @#@"failedToAssignThread"@#@ @source: @#@"Failed to assign conversation"@#@

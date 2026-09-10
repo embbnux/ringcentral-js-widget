@@ -40,6 +40,7 @@ require("core-js/modules/es.array.sort.js");
 require("core-js/modules/es.date.now.js");
 require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.number.constructor.js");
+require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.to-string.js");
@@ -115,9 +116,9 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
   if (conversation.type === 'Fax') {
     return [_trackEvents.trackEvents.deleteFax];
   }
-}), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [Object]), _dec21 = (0, _services.track)(_trackEvents.trackEvents.flagVoicemail), _dec22 = (0, _nextCore.delegate)('server'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Object]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Object]), _dec31 = (0, _nextCore.delegate)('server'), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", [Object]), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", []), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _class = /*#__PURE__*/function (_DataFetcherConsumer) {
+}), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", [Object]), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = (0, _services.track)(_trackEvents.trackEvents.flagVoicemail), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", []), _dec25 = (0, _nextCore.delegate)('server'), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Object]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Object]), _dec31 = (0, _nextCore.delegate)('server'), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", [Object]), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", []), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", []), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", []), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", []), _class = /*#__PURE__*/function (_DataFetcherConsumer) {
   function MessageStoreBase(_toast, _auth, _client, _dataFetcher, _connectivityMonitor, _appFeatures, _messageEventSubscriber, _availabilityMonitor, _tabManager, _messageStoreOptions) {
-    var _this$_messageStoreOp, _this$_messageStoreOp2, _this$_messageStoreOp3, _this$_messageStoreOp4, _this$_messageStoreOp5, _this$_messageStoreOp6, _this$_messageStoreOp7, _this$_messageStoreOp8, _this$_messageStoreOp9, _this$_messageStoreOp0, _this$_messageStoreOp1, _this$_messageStoreOp10, _this$_messageStoreOp11;
+    var _this$_messageStoreOp, _this$_messageStoreOp2, _this$_messageStoreOp3, _this$_messageStoreOp4, _this$_messageStoreOp5, _this$_messageStoreOp6, _this$_messageStoreOp7, _this$_messageStoreOp8, _this$_messageStoreOp9, _this$_messageStoreOp0, _this$_messageStoreOp1, _this$_messageStoreOp10, _this$_messageStoreOp11, _this$_messageStoreOp12, _this$_messageStoreOp13;
     var _this;
     _classCallCheck(this, MessageStoreBase);
     _this = _callSuper(this, MessageStoreBase, [_dataFetcher]);
@@ -137,6 +138,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
     _this._daySpan = (_this$_messageStoreOp7 = (_this$_messageStoreOp8 = _this._messageStoreOptions) === null || _this$_messageStoreOp8 === void 0 ? void 0 : _this$_messageStoreOp8.daySpan) !== null && _this$_messageStoreOp7 !== void 0 ? _this$_messageStoreOp7 : DEFAULT_DAY_SPAN;
     _this._messageType = (_this$_messageStoreOp9 = (_this$_messageStoreOp0 = _this._messageStoreOptions) === null || _this$_messageStoreOp0 === void 0 ? void 0 : _this$_messageStoreOp0.messageType) !== null && _this$_messageStoreOp9 !== void 0 ? _this$_messageStoreOp9 : undefined;
     _this._limitDateFrom = (_this$_messageStoreOp1 = (_this$_messageStoreOp10 = _this._messageStoreOptions) === null || _this$_messageStoreOp10 === void 0 ? void 0 : _this$_messageStoreOp10.limitDateFrom) !== null && _this$_messageStoreOp1 !== void 0 ? _this$_messageStoreOp1 : true;
+    _this._fSyncRequestParams = (_this$_messageStoreOp11 = (_this$_messageStoreOp12 = _this._messageStoreOptions) === null || _this$_messageStoreOp12 === void 0 ? void 0 : _this$_messageStoreOp12.fSyncRequestParams) !== null && _this$_messageStoreOp11 !== void 0 ? _this$_messageStoreOp11 : {};
     _this._message$ = new _rxjs.Subject();
     _this.message$ = _this._message$.asObservable();
     _this._dispatchedMessageIds = [];
@@ -151,7 +153,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
       threshold: 500,
       leading: true
     });
-    var _ref3 = (_this$_messageStoreOp11 = _this._messageStoreOptions) !== null && _this$_messageStoreOp11 !== void 0 ? _this$_messageStoreOp11 : {},
+    var _ref3 = (_this$_messageStoreOp13 = _this._messageStoreOptions) !== null && _this$_messageStoreOp13 !== void 0 ? _this$_messageStoreOp13 : {},
       _ref3$disableCache = _ref3.disableCache,
       disableCache = _ref3$disableCache === void 0 ? false : _ref3$disableCache,
       _ref3$polling = _ref3.polling,
@@ -176,7 +178,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
         return _this._hasPermission;
       },
       readyCheckFunction: function readyCheckFunction() {
-        return _this._appFeatures.ready;
+        return _this._readyCheck;
       },
       fetchFunction: function () {
         var _fetchFunction = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
@@ -198,13 +200,28 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
   }
   _inherits(MessageStoreBase, _DataFetcherConsumer);
   return _createClass(MessageStoreBase, [{
+    key: "_readyCheck",
+    get: function get() {
+      return this._appFeatures.ready;
+    }
+  }, {
+    key: "_shouldHandleInstantMessageEvent",
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: "_shouldHandleMessageStoreEvent",
+    get: function get() {
+      return true;
+    }
+  }, {
     key: "extractTypes",
     value: function extractTypes(body) {
       var _body$changes;
       return ((_body$changes = body === null || body === void 0 ? void 0 : body.changes) !== null && _body$changes !== void 0 ? _body$changes : []).reduce(function (acc, change) {
         // filter out EMail type because we do not support it
         // and so the type system does not complain
-        if ((change === null || change === void 0 ? void 0 : change.type) && change.type !== 'EMail') {
+        if (change !== null && change !== void 0 && change.type && change.type !== 'EMail') {
           acc.push(change.type);
         }
         return acc;
@@ -244,7 +261,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
       var messageEvents = this._messageEventSubscriber.messageEvents;
       if (messageEvents) {
         messageEvents.messageStore$.pipe((0, _rxjs.filter)(function (body) {
-          return _this2.shouldHandleMessageTypes(_this2.extractTypes(body));
+          return _this2._shouldHandleMessageStoreEvent && _this2.shouldHandleMessageTypes(_this2.extractTypes(body));
         }), (0, _rxjs.switchMap)(/*#__PURE__*/function () {
           var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(body) {
             var _t;
@@ -263,7 +280,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
                 case 3:
                   _context2.p = 3;
                   _t = _context2.v;
-                  console.error('[MessageStoreBase] > handlerEventMessage > fetchData', _t);
+                  _this2.logger.error('[MessageStoreBase] > handlerEventMessage > fetchData', _t);
                 case 4:
                   return _context2.a(2);
               }
@@ -274,7 +291,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
           };
         }()), _nextCore.takeUntilAppDestroy).subscribe();
         messageEvents.instantMessage$.pipe((0, _rxjs.filter)(function (_) {
-          return _this2.shouldHandleMessageTypes(['SMS']);
+          return _this2._shouldHandleInstantMessageEvent && _this2.shouldHandleMessageTypes(['SMS']);
         }), (0, _rxjs.switchMap)(function (body) {
           _this2.logger.log('fetchData on message event', body);
           return _this2.pushMessage(_this2.normalizeInstantEvent(body));
@@ -466,7 +483,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
     key: "_syncFunction",
     value: function () {
       var _syncFunction2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(_ref8) {
-        var recordCount, conversationLoadLength, dateFrom, dateTo, syncToken, _ref8$receivedRecords, receivedRecordsLength, messageType, params, _ref9, records, _ref9$syncInfo, syncInfo, olderDateTo, olderRecordResult;
+        var recordCount, conversationLoadLength, dateFrom, dateTo, syncToken, _ref8$receivedRecords, receivedRecordsLength, messageType, params, fSyncRequestParams, _ref9, records, _ref9$syncInfo, syncInfo, olderDateTo, olderRecordResult;
         return _regenerator().w(function (_context4) {
           while (1) switch (_context4.n) {
             case 0:
@@ -479,6 +496,10 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
                 syncToken: syncToken,
                 messageType: messageType
               });
+              fSyncRequestParams = this._fSyncRequestParams;
+              if (params.syncType === 'FSync' && fSyncRequestParams) {
+                Object.assign(params, fSyncRequestParams);
+              }
               _context4.n = 1;
               return this._client.account().extension().messageSync().list(
               // TODO: that type not match with syncType
@@ -583,7 +604,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
               return (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.clone().json();
             case 5:
               responseResult = _context5.v;
-              if (!(responseResult === null || responseResult === void 0 ? void 0 : (_responseResult$error = responseResult.errors) === null || _responseResult$error === void 0 ? void 0 : _responseResult$error.some(function () {
+              if (!(responseResult !== null && responseResult !== void 0 && (_responseResult$error = responseResult.errors) !== null && _responseResult$error !== void 0 && _responseResult$error.some(function () {
                 var _ref1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
                   _ref1$errorCode = _ref1.errorCode,
                   errorCode = _ref1$errorCode === void 0 ? '' : _ref1$errorCode;
@@ -640,7 +661,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
                 _context5.n = 11;
                 break;
               }
-              console.error('[MessageStoreBase] > _syncData', _t3);
+              this.logger.error('[MessageStoreBase] > _syncData', _t3);
               throw _t3;
             case 11:
               return _context5.a(2);
@@ -1103,8 +1124,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
             case 5:
               _context13.p = 5;
               _t4 = _context13.v;
-              // TODO: should check error type with instanceOf
-              console.error(_t4);
+              this.logger.error(_t4);
               _t5 = !this._availabilityMonitor;
               if (_t5) {
                 _context13.n = 7;
@@ -1152,8 +1172,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
             case 2:
               _context14.p = 2;
               _t6 = _context14.v;
-              // TODO: should check error type with instanceOf
-              console.error(_t6);
+              this.logger.error(_t6);
               _t7 = !this._availabilityMonitor;
               if (_t7) {
                 _context14.n = 4;
@@ -1268,7 +1287,7 @@ var MessageStoreBase = exports.MessageStoreBase = (_dec = (0, _nextCore.delegate
             case 5:
               _context17.p = 5;
               _t8 = _context17.v;
-              console.error(_t8);
+              this.logger.error(_t8);
               _t9 = !this._availabilityMonitor;
               if (_t9) {
                 _context17.n = 7;

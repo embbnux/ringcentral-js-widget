@@ -32,7 +32,9 @@ require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.big.js");
 var _isBlank = require("@ringcentral-integration/commons/lib/isBlank");
-var _hooks = require("@ringcentral-integration/micro-phone/src/app/hooks");
+var _hooks = require("@ringcentral-integration/micro-core/src/app/hooks");
+var _hooks2 = require("@ringcentral-integration/micro-phone/src/app/hooks");
+var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _dayjs = _interopRequireDefault(require("dayjs"));
@@ -58,6 +60,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 _dayjs["default"].extend(_localizedFormat["default"]);
 var Message = function Message(_ref) {
   var subject = _ref.subject,
+    deliveryErrorCode = _ref.deliveryErrorCode,
     time = _ref.time,
     direction = _ref.direction,
     mmsAttachments = _ref.mmsAttachments,
@@ -66,7 +69,10 @@ var Message = function Message(_ref) {
     onLinkClick = _ref.onLinkClick,
     handleImageLoad = _ref.handleImageLoad,
     renderSenderName = _ref.renderSenderName,
+    renderLogIndicator = _ref.renderLogIndicator,
     title = _ref.title;
+  var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
+    t = _useLocale.t;
   var subjectNode;
   if (subject && !(0, _isBlank.isBlank)(subject)) {
     subjectNode = /*#__PURE__*/_react["default"].createElement(_SubjectRender.SubjectRender, {
@@ -96,6 +102,12 @@ var Message = function Message(_ref) {
       onLinkClick: onAttachmentDownload
     }));
   });
+  var hasSubject = !(0, _isBlank.isBlank)(subject);
+  var logIndicator = hasSubject ? renderLogIndicator === null || renderLogIndicator === void 0 ? void 0 : renderLogIndicator() : undefined;
+  var messageBody = hasSubject ? /*#__PURE__*/_react["default"].createElement("div", {
+    "data-sign": "".concat(direction, "Text"),
+    className: (0, _clsx["default"])(_styles["default"].messageBody, subject && subject.length > 500 && _styles["default"].big, !logIndicator && (direction === 'Outbound' ? 'float-right' : 'float-left'), direction === 'Outbound' ? 'bg-primary-b text-neutral-w0 rounded-br-none' : 'bg-neutral-b4 text-neutral-b0 rounded-bl-none')
+  }, subjectNode) : null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "message",
     className: (0, _clsx["default"])(_styles["default"].message, 'typography-mainText text-neutral-static-w0'),
@@ -103,13 +115,22 @@ var Message = function Message(_ref) {
   }, time ? /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_styles["default"].time, 'typography-detailBold text-neutral-b2'),
     "data-sign": "conversationSendTime"
-  }, time) : null, renderSenderName === null || renderSenderName === void 0 ? void 0 : renderSenderName(), !(0, _isBlank.isBlank)(subject) && /*#__PURE__*/_react["default"].createElement("div", {
-    "data-sign": "".concat(direction, "Text"),
-    className: (0, _clsx["default"])(_styles["default"].messageBody, subject && subject.length > 500 && _styles["default"].big, direction === 'Outbound' ? 'bg-primary-b text-neutral-w0 float-right rounded-br-none' : 'bg-neutral-b4 text-neutral-b0 float-left rounded-bl-none')
-  }, subjectNode), imageAttachments.length > 0 && /*#__PURE__*/_react["default"].createElement("div", {
+  }, time) : null, renderSenderName === null || renderSenderName === void 0 ? void 0 : renderSenderName(), messageBody && logIndicator ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])('clear-both flex items-center gap-2', direction === 'Outbound' ? 'justify-end' : 'justify-start')
+  }, direction === 'Inbound' && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex-shrink-0"
+  }, logIndicator), messageBody, direction === 'Outbound' && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex-shrink-0"
+  }, logIndicator)) : messageBody, imageAttachments.length > 0 && /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "".concat(direction, "Image"),
     className: (0, _clsx["default"])(_styles["default"].imageBody, direction === 'Outbound' ? 'float-right' : 'float-left')
-  }, imageAttachments), otherAttachments.length > 0 && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, otherAttachments), /*#__PURE__*/_react["default"].createElement("div", {
+  }, imageAttachments), otherAttachments.length > 0 && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, otherAttachments), deliveryErrorCode && /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])('text-danger typography-detail flex items-center mt-2', direction === 'Outbound' ? 'float-right' : 'float-left')
+  }, t('deliveryError'), /*#__PURE__*/_react["default"].createElement(_springUi.Icon, {
+    className: "ml-2",
+    size: "small",
+    symbol: _springIcon.AlertMd
+  })), /*#__PURE__*/_react["default"].createElement("div", {
     className: _styles["default"].clear
   }));
 };
@@ -123,6 +144,7 @@ var ConversationMessageList = exports.ConversationMessageList = function Convers
     onAttachmentDownload = _ref2.onAttachmentDownload,
     onLinkClick = _ref2.onLinkClick,
     renderSenderName = _ref2.renderSenderName,
+    renderLogIndicator = _ref2.renderLogIndicator,
     _ref2$timeKey = _ref2.timeKey,
     timeKey = _ref2$timeKey === void 0 ? 'creationTime' : _ref2$timeKey;
   var listRef = (0, _react.useRef)(null);
@@ -185,7 +207,7 @@ var ConversationMessageList = exports.ConversationMessageList = function Convers
       listRef.current.scrollTop += listRef.current.scrollHeight - scrollHeight;
     }
   }, [messages.length, scrollUp, scrollHeight, scrollToLastMessage]);
-  var formattedDateFromNow = (0, _hooks.useFormattedDateFromNowFn)();
+  var formattedDateFromNow = (0, _hooks2.useFormattedDateFromNowFn)();
   var lastDate = 0;
   var messageList = messages.map(function (message) {
     var date = new Date(message[timeKey] || 0);
@@ -203,7 +225,8 @@ var ConversationMessageList = exports.ConversationMessageList = function Convers
         className: "w-full text-center px-4 py-2 typography-detailBold text-primary-f",
         title: title
       }, /*#__PURE__*/_react["default"].createElement("div", null, message.subject), /*#__PURE__*/_react["default"].createElement("div", {
-        className: "mt-1"
+        className: "mt-1",
+        "data-sign": "conversationInfoTime"
       }, formattedDateFromNow(message.lastModifiedTime, 'withTime')));
     }
     return /*#__PURE__*/_react["default"].createElement(Message, {
@@ -212,6 +235,7 @@ var ConversationMessageList = exports.ConversationMessageList = function Convers
       time: time,
       direction: direction,
       subject: message.subject,
+      deliveryErrorCode: message.deliveryErrorCode,
       mmsAttachments: message.mmsAttachments || [],
       currentLocale: currentLocale,
       onAttachmentDownload: onAttachmentDownload,
@@ -223,6 +247,9 @@ var ConversationMessageList = exports.ConversationMessageList = function Convers
       },
       renderSenderName: renderSenderName && direction === 'Inbound' ? function () {
         return renderSenderName === null || renderSenderName === void 0 ? void 0 : renderSenderName(message);
+      } : undefined,
+      renderLogIndicator: renderLogIndicator ? function () {
+        return renderLogIndicator(message);
       } : undefined
     });
   });

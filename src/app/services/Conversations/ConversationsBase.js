@@ -427,7 +427,7 @@ var ConversationsBase = exports.ConversationsBase = (_dec = function _dec(target
       if (this._contactMatcher) {
         var _this$_conversationsO1;
         this._contactMatcher.triggerMatch({
-          ignoreCache: !!((_this$_conversationsO1 = this._conversationsOptions) === null || _this$_conversationsO1 === void 0 ? void 0 : _this$_conversationsO1.contactMatchIgnoreCache)
+          ignoreCache: !!((_this$_conversationsO1 = this._conversationsOptions) !== null && _this$_conversationsO1 !== void 0 && _this$_conversationsO1.contactMatchIgnoreCache)
         });
       }
     }
@@ -1353,12 +1353,20 @@ var ConversationsBase = exports.ConversationsBase = (_dec = function _dec(target
     get: function get() {
       return getEarliestTime(this.typeFilteredConversations);
     }
+
+    /**
+     * @deprecated this is use in old component
+     */
   }, {
     key: "currentConversation",
     get: function get() {
       var conversationId = this.currentConversationId;
       return this.getConversationFullInfo(conversationId);
     }
+
+    /**
+     * @deprecated this is use in old component
+     */
   }, {
     key: "getConversationFullInfo",
     value: function getConversationFullInfo(conversationId) {
@@ -1527,16 +1535,15 @@ var ConversationsBase = exports.ConversationsBase = (_dec = function _dec(target
     key: "getConversationByPhoneNumbers",
     value: function getConversationByPhoneNumbers(phoneNumbers) {
       var _this$_messageSender5;
-      var senderNumbersList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ((_this$_messageSender5 = this._messageSender) === null || _this$_messageSender5 === void 0 ? void 0 : _this$_messageSender5.senderNumbersList) || [];
       var matchingConversations = [];
       var latestConversation = undefined;
       var latestTime = 0;
-      var _iterator2 = _createForOfIteratorHelper(senderNumbersList),
+      var _iterator2 = _createForOfIteratorHelper(((_this$_messageSender5 = this._messageSender) === null || _this$_messageSender5 === void 0 ? void 0 : _this$_messageSender5.numbers) || []),
         _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var senderNumber = _step2.value;
-          var currentUniqueId = (0, _helper.buildConversationId)(phoneNumbers, senderNumber.phoneNumber);
+          var numberInfo = _step2.value;
+          var currentUniqueId = (0, _helper.buildConversationId)(phoneNumbers, numberInfo.phoneNumber);
           var conversation = this.allConversationsInfo.uniqueConversationMap.get(currentUniqueId);
           if (conversation) {
             matchingConversations.push(conversation);

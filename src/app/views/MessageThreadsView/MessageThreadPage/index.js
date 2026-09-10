@@ -19,15 +19,4 @@ Object.keys(_MessageThreadPage).forEach(function (key) {
     }
   });
 });
-var _FilterPopper = require("./FilterPopper");
-Object.keys(_FilterPopper).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _FilterPopper[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _FilterPopper[key];
-    }
-  });
-});
 //# sourceMappingURL=index.js.map

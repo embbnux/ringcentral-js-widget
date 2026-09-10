@@ -9,6 +9,7 @@ require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.weak-map.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -16,10 +17,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.useThreadInfoDisplay = void 0;
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.regexp.to-string.js");
 var _components = require("@ringcentral-integration/micro-contacts/src/app/components");
 var _hooks = require("@ringcentral-integration/micro-core/src/app/hooks");
 var _components2 = require("@ringcentral-integration/next-widgets/components");
@@ -27,7 +25,8 @@ var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _react = _interopRequireWildcard(require("react"));
-var _i18n = _interopRequireDefault(require("./i18n"));
+var _i18n = _interopRequireDefault(require("../../services/MessageThread/i18n"));
+var _i18n2 = _interopRequireDefault(require("./i18n"));
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -38,7 +37,8 @@ var AlertBanner = function AlertBanner(_ref) {
     actions = _ref.actions;
   return /*#__PURE__*/_react["default"].createElement(_springUi.Alert, {
     severity: severity,
-    className: "m-4"
+    className: "m-4",
+    "data-sign": "thread-banner"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex flex-col gap-2"
   }, /*#__PURE__*/_react["default"].createElement("h4", null, title), /*#__PURE__*/_react["default"].createElement("div", {
@@ -51,7 +51,7 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
     extensionId = _ref2.extensionId,
     onAction = _ref2.onAction,
     metadata = _ref2.metadata;
-  var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
+  var _useLocale = (0, _hooks.useLocale)(_i18n2["default"], _i18n["default"]),
     t = _useLocale.t;
   var isLoading = (_metadata$loading = metadata === null || metadata === void 0 ? void 0 : metadata.loading) !== null && _metadata$loading !== void 0 ? _metadata$loading : false;
   var isReopened = (_metadata$reopen = metadata === null || metadata === void 0 ? void 0 : metadata.reopen) !== null && _metadata$reopen !== void 0 ? _metadata$reopen : false;
@@ -62,8 +62,7 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
     }
     var isResolved = threadInfo.status === 'Resolved';
     var isAssigned = !!threadInfo.assignee;
-    var currentExtensionId = extensionId === null || extensionId === void 0 ? void 0 : extensionId.toString();
-    var isAssignedToMe = ((_threadInfo$assignee = threadInfo.assignee) === null || _threadInfo$assignee === void 0 ? void 0 : _threadInfo$assignee.extensionId) === currentExtensionId;
+    var isAssignedToMe = ((_threadInfo$assignee = threadInfo.assignee) === null || _threadInfo$assignee === void 0 ? void 0 : _threadInfo$assignee.extensionId) === extensionId;
     var showInput = !isResolved && isAssignedToMe || isReopened;
 
     // Get assignee badge info
@@ -71,12 +70,13 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
     var assigneeName = (_threadInfo$assignee2 = threadInfo.assignee) === null || _threadInfo$assignee2 === void 0 ? void 0 : _threadInfo$assignee2.name;
     // Get tooltip text for assignee badge
     var assigneeBadgeTooltip;
-    if (isAssigned && !isResolved && ((_threadInfo$assignee3 = threadInfo.assignee) === null || _threadInfo$assignee3 === void 0 ? void 0 : _threadInfo$assignee3.name)) {
+    if (isAssigned && !isResolved && (_threadInfo$assignee3 = threadInfo.assignee) !== null && _threadInfo$assignee3 !== void 0 && _threadInfo$assignee3.name) {
       assigneeBadge = {
         children: (0, _components.getAvatarLetter)(assigneeName),
         color: isAssignedToMe ? 'warning' : 'primary',
         variant: isAssignedToMe ? 'filled' : 'outlined',
-        className: isAssignedToMe ? 'border-none' : ''
+        className: isAssignedToMe ? 'border-none' : '',
+        'data-status': 'assignee'
       };
     } else if (isResolved) {
       var isExpired = threadInfo.statusReason === 'ThreadExpired';
@@ -86,7 +86,8 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
             symbol: _springIcon.CheckMd,
             size: "xsmall"
           }),
-          color: 'primary'
+          color: 'primary',
+          'data-status': 'resolved'
         };
         assigneeBadgeTooltip = t('resolved');
       } else {
@@ -100,12 +101,13 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
             size: "xsmall"
           })),
           color: 'primary',
-          className: 'border-none'
+          className: 'border-none',
+          'data-status': 'auto-resolved'
         };
         assigneeBadgeTooltip = t('autoResolved');
       }
     }
-    if (isAssigned && !isResolved && ((_threadInfo$assignee4 = threadInfo.assignee) === null || _threadInfo$assignee4 === void 0 ? void 0 : _threadInfo$assignee4.name)) {
+    if (isAssigned && !isResolved && (_threadInfo$assignee4 = threadInfo.assignee) !== null && _threadInfo$assignee4 !== void 0 && _threadInfo$assignee4.name) {
       if (isAssignedToMe) {
         assigneeBadgeTooltip = t('assignedToYouTooltip');
       } else {
@@ -214,7 +216,7 @@ var useThreadInfoDisplay = exports.useThreadInfoDisplay = function useThreadInfo
     }
     var tooltipTitle = threadState === null || threadState === void 0 ? void 0 : threadState.assigneeBadgeTooltip;
     var tagElement = /*#__PURE__*/_react["default"].createElement(_springUi.Tag, _extends({}, assigneeBadge, {
-      className: (0, _clsx["default"])('flex items-center justify-center rounded-full', assigneeBadge.className),
+      className: (0, _clsx["default"])('flex items-center justify-center rounded-full flex-none', assigneeBadge.className),
       variant: assigneeBadge.variant || 'filled',
       "data-sign": "thread-status"
     }));

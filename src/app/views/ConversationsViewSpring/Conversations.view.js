@@ -9,7 +9,6 @@ require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -25,23 +24,24 @@ require("core-js/modules/es.object.get-own-property-descriptors.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.promise.js");
 require("core-js/modules/es.reflect.construct.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.weak-map.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ConversationsViewSpring = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.includes.js");
+require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.promise.js");
+require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 var _messageTypes = require("@ringcentral-integration/commons/enums/messageTypes");
 var _messageHelper = require("@ringcentral-integration/commons/lib/messageHelper");
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
@@ -54,10 +54,13 @@ var _nextCore = require("@ringcentral-integration/next-core");
 var _react = _interopRequireWildcard(require("react"));
 var _rxjs = require("rxjs");
 var _services5 = require("../../services");
+var _ComposeText = require("../ComposeTextViewSpring/ComposeText.view");
 var _MessageThreadsView = require("../MessageThreadsView");
+var _SmsConsentDialogView = require("../SmsConsentDialogView");
 var _ConversationsPage = require("./ConversationsPage");
+var _ConversationsTabs = require("./ConversationsTabs.view");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor0, _descriptor1;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t2 in e) "default" !== _t2 && {}.hasOwnProperty.call(e, _t2) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t2)) && (i.get || i.set) ? o(f, _t2, i) : f[_t2] = e[_t2]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -91,20 +94,29 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var dangerButtonProps = {
   color: 'danger'
 };
+var getConversationSenderPhoneNumber = function getConversationSenderPhoneNumber(conversation) {
+  var _conversation$from, _conversation$to, _conversation$to$, _conversation$self;
+  if (!conversation) {
+    return undefined;
+  }
+  return (conversation.direction === 'Outbound' ? (_conversation$from = conversation.from) === null || _conversation$from === void 0 ? void 0 : _conversation$from.phoneNumber : (_conversation$to = conversation.to) === null || _conversation$to === void 0 ? void 0 : (_conversation$to$ = _conversation$to[0]) === null || _conversation$to$ === void 0 ? void 0 : _conversation$to$.phoneNumber) || ((_conversation$self = conversation.self) === null || _conversation$self === void 0 ? void 0 : _conversation$self.phoneNumber);
+};
 var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nextCore.injectable)({
   name: 'ConversationsViewSpring'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 16);
-}, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 17);
-}, _dec4 = function _dec4(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 18);
+}, _dec3 = function _dec3(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 19);
+}, _dec4 = function _dec4(target, key) {
+  return (0, _nextCore.optional)()(target, undefined, 20);
 }, _dec5 = function _dec5(target, key) {
-  return (0, _nextCore.optional)('ConversationsViewOptions')(target, undefined, 19);
+  return (0, _nextCore.optional)()(target, undefined, 21);
 }, _dec6 = function _dec6(target, key) {
-  return (0, _nextCore.optional)('SmsConversationsOptions')(target, undefined, 20);
-}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services5.Conversations === "undefined" ? Object : _services5.Conversations, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services5.MessageStore === "undefined" ? Object : _services5.MessageStore, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services5.ComposeText === "undefined" ? Object : _services5.ComposeText, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services5.VoicemailAudio === "undefined" ? Object : _services5.VoicemailAudio, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _services5.SmsConversations === "undefined" ? Object : _services5.SmsConversations, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _services5.ConversationLogger === "undefined" ? Object : _services5.ConversationLogger, typeof _services5.SmsOptOut === "undefined" ? Object : _services5.SmsOptOut, typeof ConversationsViewSpringOptions === "undefined" ? Object : ConversationsViewSpringOptions, typeof SmsConversationsOptions === "undefined" ? Object : SmsConversationsOptions]), _dec9 = (0, _nextCore.dynamic)('ConversationsViewableManager'), _dec0 = Reflect.metadata("design:type", typeof ConversationsViewableManager === "undefined" ? Object : ConversationsViewableManager), _dec1 = (0, _nextCore.dynamic)('MessageThreadsView'), _dec10 = Reflect.metadata("design:type", typeof _MessageThreadsView.MessageThreadsView === "undefined" ? Object : _MessageThreadsView.MessageThreadsView), _dec11 = (0, _nextCore.dynamic)('Theme'), _dec12 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec13 = (0, _nextCore.dynamic)('Call'), _dec14 = Reflect.metadata("design:type", typeof Call === "undefined" ? Object : Call), _dec15 = (0, _nextCore.dynamic)('DialerView'), _dec16 = Reflect.metadata("design:type", typeof DialerView === "undefined" ? Object : DialerView), _dec17 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function ConversationsViewSpring(_modalView, _locale, _conversations, _regionSettings, _appFeatures, _connectivityMonitor, _rateLimiter, _messageStore, _connectivityManager, _router, _toast, _composeText, _portManager, _voicemailAudio, _integrationConfig, _smsConversations, _contactMatcher, _conversationLogger, _smsOptOut, _conversationsViewOptions, _smsConversationsOptions) {
+  return (0, _nextCore.optional)('ConversationsViewOptions')(target, undefined, 22);
+}, _dec7 = function _dec7(target, key) {
+  return (0, _nextCore.optional)('SmsConversationsOptions')(target, undefined, 23);
+}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services3.Locale === "undefined" ? Object : _services3.Locale, typeof _services5.Conversations === "undefined" ? Object : _services5.Conversations, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _services.ConnectivityMonitor === "undefined" ? Object : _services.ConnectivityMonitor, typeof _services.RateLimiter === "undefined" ? Object : _services.RateLimiter, typeof _services5.MessageStore === "undefined" ? Object : _services5.MessageStore, typeof _services.ConnectivityManager === "undefined" ? Object : _services.ConnectivityManager, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services5.ComposeText === "undefined" ? Object : _services5.ComposeText, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof _services5.VoicemailAudio === "undefined" ? Object : _services5.VoicemailAudio, typeof _services4.IntegrationConfig === "undefined" ? Object : _services4.IntegrationConfig, typeof _services5.SmsConversations === "undefined" ? Object : _services5.SmsConversations, typeof _ConversationsTabs.ConversationsTabsView === "undefined" ? Object : _ConversationsTabs.ConversationsTabsView, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _services5.ConversationLogger === "undefined" ? Object : _services5.ConversationLogger, typeof _services5.MessageThread === "undefined" ? Object : _services5.MessageThread, typeof _services5.SmsOptOut === "undefined" ? Object : _services5.SmsOptOut, typeof ConversationsViewSpringOptions === "undefined" ? Object : ConversationsViewSpringOptions, typeof SmsConversationsOptions === "undefined" ? Object : SmsConversationsOptions]), _dec0 = (0, _nextCore.dynamic)('ConversationsViewableManager'), _dec1 = Reflect.metadata("design:type", typeof ConversationsViewableManager === "undefined" ? Object : ConversationsViewableManager), _dec10 = (0, _nextCore.dynamic)('MessageThreadsView'), _dec11 = Reflect.metadata("design:type", typeof _MessageThreadsView.MessageThreadsView === "undefined" ? Object : _MessageThreadsView.MessageThreadsView), _dec12 = (0, _nextCore.dynamic)('MessageSender'), _dec13 = Reflect.metadata("design:type", typeof _services5.MessageSender === "undefined" ? Object : _services5.MessageSender), _dec14 = (0, _nextCore.dynamic)('AccountInfo'), _dec15 = Reflect.metadata("design:type", typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo), _dec16 = (0, _nextCore.dynamic)('SmsConsent'), _dec17 = Reflect.metadata("design:type", typeof _services5.SmsConsent === "undefined" ? Object : _services5.SmsConsent), _dec18 = (0, _nextCore.dynamic)('SmsConsentDialogView'), _dec19 = Reflect.metadata("design:type", typeof _SmsConsentDialogView.SmsConsentDialogView === "undefined" ? Object : _SmsConsentDialogView.SmsConsentDialogView), _dec20 = (0, _nextCore.dynamic)('Theme'), _dec21 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec22 = (0, _nextCore.dynamic)('Call'), _dec23 = Reflect.metadata("design:type", typeof Call === "undefined" ? Object : Call), _dec24 = (0, _nextCore.dynamic)('DialerView'), _dec25 = Reflect.metadata("design:type", typeof DialerView === "undefined" ? Object : DialerView), _dec26 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function ConversationsViewSpring(_modalView, _locale, _conversations, _regionSettings, _appFeatures, _connectivityMonitor, _rateLimiter, _messageStore, _connectivityManager, _router, _toast, _composeText, _portManager, _voicemailAudio, _integrationConfig, _smsConversations, _conversationsTabsView, _syncTabView, _contactMatcher, _conversationLogger, _messageThread, _smsOptOut, _conversationsViewOptions, _smsConversationsOptions) {
     var _this;
     _classCallCheck(this, ConversationsViewSpring);
     _this = _callSuper(this, ConversationsViewSpring);
@@ -124,27 +136,34 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
     _this._voicemailAudio = _voicemailAudio;
     _this._integrationConfig = _integrationConfig;
     _this._smsConversations = _smsConversations;
+    _this._conversationsTabsView = _conversationsTabsView;
+    _this._syncTabView = _syncTabView;
     _this._contactMatcher = _contactMatcher;
     _this._conversationLogger = _conversationLogger;
+    _this._messageThread = _messageThread;
     _this._smsOptOut = _smsOptOut;
     _this._conversationsViewOptions = _conversationsViewOptions;
     _this._smsConversationsOptions = _smsConversationsOptions;
     _initializerDefineProperty(_this, "_conversationsViewableManager", _descriptor, _this);
     _initializerDefineProperty(_this, "_messageThreadsView", _descriptor2, _this);
-    _initializerDefineProperty(_this, "confirmDeleteModal", _descriptor3, _this);
-    _initializerDefineProperty(_this, "_theme", _descriptor4, _this);
-    _initializerDefineProperty(_this, "_call", _descriptor5, _this);
-    _initializerDefineProperty(_this, "_dialerView", _descriptor6, _this);
-    _initializerDefineProperty(_this, "lastPosition", _descriptor7, _this);
+    _initializerDefineProperty(_this, "_messageSender", _descriptor3, _this);
+    _initializerDefineProperty(_this, "_accountInfo", _descriptor4, _this);
+    _initializerDefineProperty(_this, "_smsConsent", _descriptor5, _this);
+    _initializerDefineProperty(_this, "_smsConsentDialogView", _descriptor6, _this);
+    _initializerDefineProperty(_this, "confirmDeleteModal", _descriptor7, _this);
+    _initializerDefineProperty(_this, "_theme", _descriptor8, _this);
+    _initializerDefineProperty(_this, "_call", _descriptor9, _this);
+    _initializerDefineProperty(_this, "_dialerView", _descriptor0, _this);
+    _initializerDefineProperty(_this, "lastPosition", _descriptor1, _this);
     _this.useConversationItemInfo = function (conversation) {
       var _this$_messageThreads, _this$_messageThreads2, _this$_smsOptOut$getI, _this$_smsOptOut;
       var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         _ref$pageType = _ref.pageType,
         pageType = _ref$pageType === void 0 ? 'list' : _ref$pageType;
       var beTextMessage = (0, _messageHelper.messageIsTextMessage)(conversation);
-      var conversationId = conversation.conversationId;
+      var conversationLogId = conversation.conversationLogId;
       var _useConnector = (0, _nextCore.useConnector)(function () {
-          var _this$_conversationLo, _this$_conversationLo2, _this$_conversationLo3;
+          var _this$_messageSender$, _this$_messageSender, _this$_smsConsent$can, _this$_smsConsent, _this$_conversationLo, _this$_conversationLo2, _this$_conversationLo3;
           return {
             disableLinks: _this.disableLinks,
             isOfflineMode: _this._connectivityManager.isOfflineMode,
@@ -154,13 +173,15 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
             isIdle: Boolean(_this._call && _this._call.isIdle),
             hasInternalSMSPermission: _this._appFeatures.hasInternalSMSPermission,
             hasOutboundSMSPermission: _this._appFeatures.hasOutboundSMSPermission,
+            hasSmsPermission: (_this$_messageSender$ = (_this$_messageSender = _this._messageSender) === null || _this$_messageSender === void 0 ? void 0 : _this$_messageSender.hasSmsPermission) !== null && _this$_messageSender$ !== void 0 ? _this$_messageSender$ : _this._appFeatures.hasComposeTextPermission,
+            // for backward compatibility, if MessageSender not exist, fallback to appFeatures
+            canReadConsent: (_this$_smsConsent$can = (_this$_smsConsent = _this._smsConsent) === null || _this$_smsConsent === void 0 ? void 0 : _this$_smsConsent.canReadConsent) !== null && _this$_smsConsent$can !== void 0 ? _this$_smsConsent$can : false,
             isCallingEnabled: _this._appFeatures.isCallingEnabled,
-            hasComposeTextPermission: _this._appFeatures.hasComposeTextPermission,
             displayCRMLog: _this._smsConversations.checkIsSupportLog(conversation),
             isLogged:
             // only text message able to log to avoid accidental match the dataMapping
-            beTextMessage && !!conversationId && ((_this$_conversationLo = _this._conversationLogger) === null || _this$_conversationLo === void 0 ? void 0 : _this$_conversationLo.getIsInLoggedStatus(conversationId)),
-            autoLog: !!((_this$_conversationLo2 = _this._conversationLogger) === null || _this$_conversationLo2 === void 0 ? void 0 : _this$_conversationLo2.autoLog) || !!((_this$_conversationLo3 = _this._conversationLogger) === null || _this$_conversationLo3 === void 0 ? void 0 : _this$_conversationLo3.serverAutoLog)
+            beTextMessage && !!conversationLogId && ((_this$_conversationLo = _this._conversationLogger) === null || _this$_conversationLo === void 0 ? void 0 : _this$_conversationLo.getIsInLoggedStatus(conversationLogId)),
+            autoLog: !!((_this$_conversationLo2 = _this._conversationLogger) !== null && _this$_conversationLo2 !== void 0 && _this$_conversationLo2.autoLog) || !!((_this$_conversationLo3 = _this._conversationLogger) !== null && _this$_conversationLo3 !== void 0 && _this$_conversationLo3.serverAutoLog)
           };
         }),
         disableLinks = _useConnector.disableLinks,
@@ -171,8 +192,9 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
         isIdle = _useConnector.isIdle,
         hasInternalSMSPermission = _useConnector.hasInternalSMSPermission,
         hasOutboundSMSPermission = _useConnector.hasOutboundSMSPermission,
+        hasSmsPermission = _useConnector.hasSmsPermission,
+        canReadConsent = _useConnector.canReadConsent,
         isCallingEnabled = _useConnector.isCallingEnabled,
-        hasComposeTextPermission = _useConnector.hasComposeTextPermission,
         displayCRMLog = _useConnector.displayCRMLog,
         isLogged = _useConnector.isLogged,
         autoLog = _useConnector.autoLog;
@@ -202,6 +224,7 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
         signalSourceInfo = info.signalSourceInfo,
         formattedPhoneNumber = info.formattedPhoneNumber,
         matchedContact = info.matchedContact;
+      var canManageConsent = (pageType === 'list' || pageType === 'text') && isTextMessage && canReadConsent && signalTo && !!(0, _services5.getConversationNumbers)(conversation);
       var actions = (0, _react.useMemo)(function () {
         var _this$_smsConversatio;
         var enableModifyLog = (_this$_smsConversatio = _this._smsConversationsOptions) === null || _this$_smsConversatio === void 0 ? void 0 : _this$_smsConversatio.enableModifyLog;
@@ -253,10 +276,10 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
               disabled: isOfflineMode || isWebphoneUnavailableMode || isWebphoneInitializing || restricted || !isIdle || disableLinks
             });
           }
-          if ((pageType === 'list' || pageType === 'voicemail') && !isFax && !isTextMessage && formattedPhoneNumber && hasComposeTextPermission) {
+          if ((pageType === 'list' || pageType === 'voicemail') && !isFax && !isTextMessage && formattedPhoneNumber && hasSmsPermission) {
             actions.push({
               type: 'text',
-              disabled: disableLinks || ((signalSourceInfo === null || signalSourceInfo === void 0 ? void 0 : signalSourceInfo.extensionNumber) ? !hasInternalSMSPermission : !hasOutboundSMSPermission)
+              disabled: disableLinks || (signalSourceInfo !== null && signalSourceInfo !== void 0 && signalSourceInfo.extensionNumber ? !hasInternalSMSPermission : !hasOutboundSMSPermission)
             });
           }
 
@@ -270,6 +293,12 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
             isLogged: isLogged
           });
           actions.push.apply(actions, _toConsumableArray(integrateActions));
+        }
+        if (canManageConsent) {
+          actions.push({
+            type: pageType === 'list' ? 'manageConsent' : 'viewConsent',
+            disabled: disableLinks
+          });
         }
 
         // Mark actions - only available on list page
@@ -306,7 +335,7 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
         // add the thread actions into conversation actions
         actions.push.apply(actions, _toConsumableArray(threadActions));
         return actions;
-      }, [pageType, displayCRMLog, signalTo, faxAttachmentExist, markAble, isVoicemail, voicemailAttachmentExist, formattedPhoneNumber, isFax, threadActions, autoLog, isLogged, disableLinks, faxAttachmentDownloadUri, isTextMessage, matchedContact, isOfflineMode, isWebphoneUnavailableMode, isWebphoneInitializing, restricted, isIdle, signalSourceInfo === null || signalSourceInfo === void 0 ? void 0 : signalSourceInfo.extensionNumber, signalSourceInfo === null || signalSourceInfo === void 0 ? void 0 : signalSourceInfo.phoneNumber, hasInternalSMSPermission, hasOutboundSMSPermission, isCallingEnabled, hasComposeTextPermission, unreadCounts, voicemailAttachmentUri]);
+      }, [pageType, displayCRMLog, signalTo, faxAttachmentExist, markAble, isVoicemail, voicemailAttachmentExist, formattedPhoneNumber, isFax, threadActions, autoLog, isLogged, disableLinks, faxAttachmentDownloadUri, isTextMessage, canManageConsent, matchedContact, isOfflineMode, isWebphoneUnavailableMode, isWebphoneInitializing, restricted, isIdle, signalSourceInfo === null || signalSourceInfo === void 0 ? void 0 : signalSourceInfo.extensionNumber, signalSourceInfo === null || signalSourceInfo === void 0 ? void 0 : signalSourceInfo.phoneNumber, hasInternalSMSPermission, hasOutboundSMSPermission, hasSmsPermission, isCallingEnabled, unreadCounts, voicemailAttachmentUri]);
       return {
         info: info,
         actions: actions,
@@ -321,14 +350,14 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
       return /*#__PURE__*/function () {
         var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(actionType, data) {
           var _this$_integrationCon, _this$_integrationCon2, _this$_integrationCon3, _this$_integrationCon4, _this$_integrationCon5, _this$_integrationCon6;
-          var signalSourceInfo, matchedContact, isTextMessage, isVoicemail, _this$_theme, _this$_integrationCon7, _this$_integrationCon8, actionInfo, _actionInfo, _this$_composeText, result, _this$_messageThreads3, _result, _t;
+          var signalSourceInfo, matchedContact, isTextMessage, isVoicemail, _this$_theme, _this$_integrationCon7, _this$_integrationCon8, actionInfo, _actionInfo, _this$_composeText, _this$_smsConsentDial, _info$matchedContact, numbers, result, _this$_messageThreads3, _result, _t;
           return _regenerator().w(function (_context2) {
             while (1) switch (_context2.n) {
               case 0:
                 _this.logger.log("exec actionType", actionType, conversation);
                 signalSourceInfo = info.signalSourceInfo, matchedContact = info.matchedContact, isTextMessage = info.isTextMessage, isVoicemail = info.isVoicemail;
                 _t = actionType;
-                _context2.n = _t === 'viewDetail' ? 1 : _t === 'addEntity' ? 3 : _t === 'viewLog' ? 4 : _t === 'viewEntity' ? 5 : _t === 'createLog' ? 6 : _t === 'selectRecordsForAutoLog' ? 6 : _t === 'call' ? 7 : _t === 'text' ? 8 : _t === 'mark' ? 9 : _t === 'read' ? 11 : _t === 'unmark' ? 12 : _t === 'delete' ? 13 : _t === 'viewFax' ? 15 : _t === 'downloadFax' ? 17 : _t === 'downloadVoicemail' ? 18 : _t === 'copyNumber' ? 19 : 20;
+                _context2.n = _t === 'viewDetail' ? 1 : _t === 'addEntity' ? 3 : _t === 'viewLog' ? 4 : _t === 'viewEntity' ? 5 : _t === 'createLog' ? 6 : _t === 'selectRecordsForAutoLog' ? 6 : _t === 'call' ? 7 : _t === 'text' ? 8 : _t === 'viewConsent' ? 9 : _t === 'manageConsent' ? 9 : _t === 'mark' ? 12 : _t === 'read' ? 14 : _t === 'unmark' ? 15 : _t === 'delete' ? 16 : _t === 'viewFax' ? 18 : _t === 'downloadFax' ? 20 : _t === 'downloadVoicemail' ? 21 : _t === 'copyNumber' ? 22 : 23;
                 break;
               case 1:
                 if (!(isTextMessage || isVoicemail)) {
@@ -367,23 +396,23 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
                   }, _callee);
                 })), (_this$_theme = _this._theme) === null || _this$_theme === void 0 ? void 0 : _this$_theme.reducedMotion);
               case 2:
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 3:
                 (_this$_integrationCon = (_this$_integrationCon2 = _this._integrationConfig).onCreateEntity) === null || _this$_integrationCon === void 0 ? void 0 : _this$_integrationCon.call(_this$_integrationCon2, signalSourceInfo);
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 4:
                 (_this$_integrationCon3 = (_this$_integrationCon4 = _this._integrationConfig).onViewLog) === null || _this$_integrationCon3 === void 0 ? void 0 : _this$_integrationCon3.call(_this$_integrationCon4, data || matchedContact);
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 5:
                 (_this$_integrationCon5 = (_this$_integrationCon6 = _this._integrationConfig).onViewEntity) === null || _this$_integrationCon5 === void 0 ? void 0 : _this$_integrationCon5.call(_this$_integrationCon6, matchedContact, {
                   conversation: conversation
                 });
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 6:
                 if (conversationId) {
                   (_this$_integrationCon7 = _this._integrationConfig) === null || _this$_integrationCon7 === void 0 ? void 0 : (_this$_integrationCon8 = _this$_integrationCon7.onCreateLog) === null || _this$_integrationCon8 === void 0 ? void 0 : _this$_integrationCon8.call(_this$_integrationCon7, conversationId, actionType);
                 }
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 7:
                 actionInfo = info.getActionInfo();
                 if (actionInfo && _this._dialerView) {
@@ -403,7 +432,7 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
                     conversation: conversation
                   });
                 }
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 8:
                 _actionInfo = info.getActionInfo();
                 if (_actionInfo) {
@@ -419,67 +448,83 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
                     conversation: conversation
                   });
                 }
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 9:
-                if (conversationId) {
+                numbers = (0, _services5.getConversationNumbers)(conversation);
+                if (numbers) {
                   _context2.n = 10;
                   break;
                 }
                 return _context2.a(2);
               case 10:
-                _this._messageStore.unreadMessage(conversationId);
-                return _context2.a(3, 22);
+                _context2.n = 11;
+                return (_this$_smsConsentDial = _this._smsConsentDialogView) === null || _this$_smsConsentDial === void 0 ? void 0 : _this$_smsConsentDial.viewConsentDetails({
+                  numbers: numbers,
+                  contactName: (_info$matchedContact = info.matchedContact) === null || _info$matchedContact === void 0 ? void 0 : _info$matchedContact.name,
+                  consentEntry: actionType === 'viewConsent' ? 'Text conversation' : 'Text list'
+                });
               case 11:
-                _this._messageStore.readMessages(conversationId);
-                return _context2.a(3, 22);
+                return _context2.a(3, 25);
               case 12:
-                _this._messageStore.readMessages(conversationId);
-                _this._messageStore.onUnmarkMessages();
-                return _context2.a(3, 22);
-              case 13:
                 if (conversationId) {
-                  _context2.n = 14;
+                  _context2.n = 13;
                   break;
                 }
                 return _context2.a(2);
+              case 13:
+                _this._messageStore.unreadMessage(conversationId);
+                return _context2.a(3, 25);
               case 14:
+                _this._messageStore.readMessages(conversationId);
+                return _context2.a(3, 25);
+              case 15:
+                _this._messageStore.readMessages(conversationId);
+                _this._messageStore.onUnmarkMessages();
+                return _context2.a(3, 25);
+              case 16:
+                if (conversationId) {
+                  _context2.n = 17;
+                  break;
+                }
+                return _context2.a(2);
+              case 17:
                 _this._modalView.open(_this.confirmDeleteModal, {
                   conversation: conversation
                 });
-                return _context2.a(3, 22);
-              case 15:
+                return _context2.a(3, 25);
+              case 18:
                 if (info.faxAttachmentUri) {
-                  _context2.n = 16;
+                  _context2.n = 19;
                   break;
                 }
                 return _context2.a(2);
-              case 16:
+              case 19:
                 window.open(info.faxAttachmentUri);
                 _this._messageStore.readMessages(conversationId);
-                return _context2.a(3, 22);
-              case 17:
+                return _context2.a(3, 25);
+              case 20:
                 // for download also mark as read done
                 _this._messageStore.readMessages(conversationId);
-                return _context2.a(3, 22);
-              case 18:
+                return _context2.a(3, 25);
+              case 21:
                 _this._voicemailAudio.download(conversationId, info.voicemailAttachmentUri);
-                return _context2.a(3, 22);
-              case 19:
+                return _context2.a(3, 25);
+              case 22:
                 result = info.copyNumber();
                 if (result) {
                   _this._alertSuccess(result);
                 }
-                return _context2.a(3, 22);
-              case 20:
-                _context2.n = 21;
+                return _context2.a(3, 25);
+              case 23:
+                _context2.n = 24;
                 return (_this$_messageThreads3 = _this._messageThreadsView) === null || _this$_messageThreads3 === void 0 ? void 0 : _this$_messageThreads3.processThreadAction(conversationId, actionType);
-              case 21:
+              case 24:
                 _result = _context2.v;
                 // if still not catch the action, log the error
                 if (!_result) {
                   _this.logger.warn("can't handle \"".concat(actionType, "\" action"));
                 }
-              case 22:
+              case 25:
                 return _context2.a(2);
             }
           }, _callee2);
@@ -549,11 +594,58 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
       });
     }
   }, {
+    key: "replyInSharedTab",
+    value: function () {
+      var _replyInSharedTab = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(conversation) {
+        var _this$_smsConversatio4, _toNumbers$;
+        var fromNumber, toNumbers, toNumber, _this$_messageThread, threadId;
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
+            case 0:
+              fromNumber = getConversationSenderPhoneNumber(conversation);
+              toNumbers = (0, _services5.buildToNumbersFromConversation)(conversation, (_this$_smsConversatio4 = this._smsConversationsOptions) === null || _this$_smsConversatio4 === void 0 ? void 0 : _this$_smsConversatio4.dncEntityTypes);
+              toNumber = (_toNumbers$ = toNumbers[0]) === null || _toNumbers$ === void 0 ? void 0 : _toNumbers$.phoneNumber;
+              if (!(fromNumber && toNumber)) {
+                _context4.n = 1;
+                break;
+              }
+              threadId = (_this$_messageThread = this._messageThread) === null || _this$_messageThread === void 0 ? void 0 : _this$_messageThread.getLatestThreadIdByParties(fromNumber, toNumber);
+              if (!threadId) {
+                _context4.n = 1;
+                break;
+              }
+              this._syncTabView.setActive(_views.SyncTabId.CONVERSATIONS, _views.ConversationsSyncTabId.SHARED, {
+                currentPath: "/conversations/".concat(threadId)
+              });
+              return _context4.a(2);
+            case 1:
+              _context4.n = 2;
+              return this._composeText.clean();
+            case 2:
+              _context4.n = 3;
+              return this._router.push('/composeText', _defineProperty({}, _ComposeText.COMPOSE_TEXT_BACK_PATH, this._router.currentPath));
+            case 3:
+              _context4.n = 4;
+              return Promise.all([fromNumber && this._composeText.updateSenderNumber(fromNumber), toNumbers.length > 0 && this._composeText.addToNumbers(toNumbers)]);
+            case 4:
+              return _context4.a(2);
+          }
+        }, _callee4, this);
+      }));
+      function replyInSharedTab(_x5) {
+        return _replyInSharedTab.apply(this, arguments);
+      }
+      return replyInSharedTab;
+    }()
+  }, {
     key: "getUIProps",
     value: function getUIProps(_ref5) {
-      var _this$_conversationsV;
+      var _this$_accountInfo, _this$_messageSender$2, _this$_messageSender2, _this$_messageSender$3, _this$_messageSender3, _this$_conversationsV;
       var typeFilter = _ref5.typeFilter;
       var readStatusFilter = this._conversations.readStatusFilterMap[typeFilter];
+      var smsPermissionReason = typeFilter === 'Text' && (_this$_accountInfo = this._accountInfo) !== null && _this$_accountInfo !== void 0 && _this$_accountInfo.isTCRSupported ? (_this$_messageSender$2 = (_this$_messageSender2 = this._messageSender) === null || _this$_messageSender2 === void 0 ? void 0 : _this$_messageSender2.smsPermissionReason) !== null && _this$_messageSender$2 !== void 0 ? _this$_messageSender$2 : null : null;
+      var hasSmsPermission = (_this$_messageSender$3 = (_this$_messageSender3 = this._messageSender) === null || _this$_messageSender3 === void 0 ? void 0 : _this$_messageSender3.hasSmsPermission) !== null && _this$_messageSender$3 !== void 0 ? _this$_messageSender$3 : this._appFeatures.hasComposeTextPermission;
+      var isNewButtonDisabled = typeFilter === 'Text' ? !hasSmsPermission : false;
       return {
         lastPosition: this.lastPosition["".concat(typeFilter, "-").concat(readStatusFilter)],
         preparing: !(this._locale.ready && this._conversations.ready && (!this._contactMatcher || this._contactMatcher.ready) && this._regionSettings.ready && this._appFeatures.ready && this._connectivityMonitor.ready && this._rateLimiter.ready && (!this._call || this._call.ready) && (!this._conversationLogger || this._conversationLogger.ready)),
@@ -563,6 +655,8 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
         showNewButton:
         // do not block new text entry for current stage
         typeFilter === 'Text' ? true : typeFilter === 'Fax' ? this._appFeatures.hasSendFaxPermission : false,
+        newButtonDisabled: isNewButtonDisabled,
+        smsPermissionReason: smsPermissionReason,
         conversations: this._conversations.typeFilteredConversationsMap[typeFilter],
         loadingNextPage: this._conversations.loadingOldConversations,
         crmName: this._integrationConfig.name,
@@ -614,7 +708,6 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
         _this$_conversationsV3;
       var _useRef = (0, _react.useRef)(this.getUIFunctions(props)),
         uiFunctions = _useRef.current;
-      var isText = props.typeFilter === _messageTypes.messageTypes.text;
       var _props = (0, _nextCore.useConnector)(function () {
         var uiProps = _this4.getUIProps(props);
         return _objectSpread(_objectSpread({}, props), uiProps);
@@ -622,23 +715,44 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
       var PersonalComponent = ((_this$_conversationsV3 = this._conversationsViewOptions) === null || _this$_conversationsV3 === void 0 ? void 0 : _this$_conversationsV3.component) || _ConversationsPage.ConversationsPage;
       var header = /*#__PURE__*/_react["default"].createElement(_ConversationsPage.ConversationsHeader, _extends({}, _props, uiFunctions));
       var children = /*#__PURE__*/_react["default"].createElement(PersonalComponent, _extends({}, _props, uiFunctions));
-      if (!this._messageThreadsView || !isText) {
+      var isText = props.typeFilter === _messageTypes.messageTypes.text;
+      if (!isText) {
         return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, header, children);
       }
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, header, /*#__PURE__*/_react["default"].createElement(this._messageThreadsView.component, uiFunctions, children));
+      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, header, /*#__PURE__*/_react["default"].createElement(this._conversationsTabsView.component, uiFunctions, children));
     }
   }]);
-}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_conversationsViewableManager", [_dec9, _dec0], {
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_conversationsViewableManager", [_dec0, _dec1], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_messageThreadsView", [_dec1, _dec10], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_messageThreadsView", [_dec10, _dec11], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "confirmDeleteModal", [_nextCore.portal], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_messageSender", [_dec12, _dec13], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_accountInfo", [_dec14, _dec15], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_smsConsent", [_dec16, _dec17], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "_smsConsentDialogView", [_dec18, _dec19], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "confirmDeleteModal", [_nextCore.portal], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -667,27 +781,27 @@ var ConversationsViewSpring = exports.ConversationsViewSpring = (_dec = (0, _nex
       }
     });
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_theme", [_dec11, _dec12], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "_theme", [_dec20, _dec21], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_call", [_dec13, _dec14], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "_call", [_dec22, _dec23], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "_dialerView", [_dec15, _dec16], {
+}), _descriptor0 = _applyDecoratedDescriptor(_class2.prototype, "_dialerView", [_dec24, _dec25], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "lastPosition", [_nextCore.state, _dec17], {
+}), _descriptor1 = _applyDecoratedDescriptor(_class2.prototype, "lastPosition", [_nextCore.state, _dec26], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setLastPosition", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastPosition", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastPosition"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setLastPosition", [_nextCore.action, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLastPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setLastPosition", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "setLastPosition"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Conversations.view.js.map

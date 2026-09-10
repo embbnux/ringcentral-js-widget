@@ -35,8 +35,11 @@ var _ConversationsListItem = function _ConversationsListItem(_ref) {
     info = _useConversationItemI.info,
     actions = _useConversationItemI.actions,
     extensionId = _useConversationItemI.extensionId,
-    threadInfo = _useConversationItemI.threadInfo;
-  var onAction = useActionsHandler(conversation, info, typeFilter === 'Text' ? 'Text list' : typeFilter === 'Fax' ? 'Fax list' : 'Voicemail list');
+    threadInfo = _useConversationItemI.threadInfo,
+    itemQueueName = _useConversationItemI.queueName;
+  var onAction = useActionsHandler(conversation, info,
+  // eslint-disable-next-line no-nested-ternary
+  typeFilter === 'Text' ? 'Text list' : typeFilter === 'Fax' ? 'Fax list' : 'Voicemail list');
   useItemRender === null || useItemRender === void 0 ? void 0 : useItemRender(conversation, index);
   var DisplayName = info.DisplayName,
     displayType = info.displayType,
@@ -45,6 +48,7 @@ var _ConversationsListItem = function _ConversationsListItem(_ref) {
     unreadCounts = info.unreadCounts,
     displayDescription = info.displayDescription,
     isFax = info.isFax,
+    isTextMessage = info.isTextMessage,
     creationTime = info.creationTime,
     logged = info.logged;
   var _useThreadInfoDisplay = (0, _useThreadInfoDisplay2.useThreadInfoDisplay)({
@@ -53,7 +57,8 @@ var _ConversationsListItem = function _ConversationsListItem(_ref) {
       onAction: onAction
     }),
     ThreadStatus = _useThreadInfoDisplay.ThreadStatus,
-    queueName = _useThreadInfoDisplay.queueName;
+    threadQueueName = _useThreadInfoDisplay.queueName;
+  var queueName = itemQueueName !== null && itemQueueName !== void 0 ? itemQueueName : threadQueueName;
   var buttons = (0, _useConversationActionButtons.useConversationActionButtons)({
     actions: actions,
     conversation: conversation,
@@ -89,16 +94,22 @@ var _ConversationsListItem = function _ConversationsListItem(_ref) {
         matchCounts: true
       }
     })),
-    secondary: queueName ? /*#__PURE__*/_react["default"].createElement("div", null, displayDescription, queueName) : displayDescription
+    secondary: queueName ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", null, displayDescription), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "truncate text-neutral-b2",
+      "data-sign": "conversationQueueName",
+      title: queueName
+    }, queueName)) : displayDescription
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "text-right min-h-11"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex items-center gap-1"
-  }, /*#__PURE__*/_react["default"].createElement(Unread, {
+    className: "flex items-center gap-1 justify-end"
+  },
+  // only text message need show the unread count, other types always only have one unread, so not need the unread count
+  isTextMessage ? /*#__PURE__*/_react["default"].createElement(Unread, {
     type: "standard",
     color: "secondary",
     size: "small"
-  }), /*#__PURE__*/_react["default"].createElement(ThreadStatus, null), /*#__PURE__*/_react["default"].createElement("span", {
+  }) : null, /*#__PURE__*/_react["default"].createElement(ThreadStatus, null), /*#__PURE__*/_react["default"].createElement("span", {
     className: "typography-descriptor text-neutral-b2",
     "data-sign": "conversationItemTime"
   }, creationTime)), logged), buttons));

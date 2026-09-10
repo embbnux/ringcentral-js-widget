@@ -33,30 +33,36 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var ConversationsHeader = exports.ConversationsHeader = function ConversationsHeader(_ref) {
   var typeFilter = _ref.typeFilter,
     showNewButton = _ref.showNewButton,
+    newButtonDisabled = _ref.newButtonDisabled,
     disableLinks = _ref.disableLinks,
     onNewClick = _ref.onNewClick;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var faxMode = typeFilter === _messageTypes.messageTypes.fax;
   var voiceMailMode = typeFilter === _messageTypes.messageTypes.voiceMail;
+  var showDisabledTextTooltip = newButtonDisabled && !faxMode;
   var title = (0, _react.useMemo)(function () {
     return _defineProperty(_defineProperty({}, _messageTypes.messageTypes.fax, t('faxTitle')), _messageTypes.messageTypes.text, t('textTitle'))[typeFilter];
   }, [t, typeFilter]);
   return /*#__PURE__*/_react["default"].createElement(_components.AppHeaderNav, {
     title: title
-  }, !voiceMailMode && showNewButton && onNewClick ? /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
+  }, !voiceMailMode && showNewButton && onNewClick ? /*#__PURE__*/_react["default"].createElement(_springUi.IconButton
+  // Remount Spring UI Tooltip when switching to the disabled trigger wrapper.
+  , {
+    key: showDisabledTextTooltip ? 'disabled-text' : 'enabled',
     variant: "contained",
     color: "secondary",
-    size: "medium",
+    size: "small",
     symbol: faxMode ? _springIcon.AddFaxMd : _springIcon.NewSmsmd,
     "data-sign": "edit",
     TooltipProps: {
-      title: faxMode ? t('composeFax') : t('composeText')
+      triggerWhenDisabled: showDisabledTextTooltip,
+      title: showDisabledTextTooltip ? t('sendNewTextDisabled') : faxMode ? t('composeFax') : t('composeText')
     },
     onClick: function onClick() {
       onNewClick(typeFilter);
     },
-    disabled: disableLinks
+    disabled: disableLinks || newButtonDisabled
   }) : null);
 };
 //# sourceMappingURL=ConversationsHeader.js.map

@@ -7,7 +7,6 @@ require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.from.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reduce.js");
@@ -17,9 +16,7 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.get-own-property-descriptors.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
@@ -68,18 +65,10 @@ var _MessageThreadPage = require("./MessageThreadPage");
 var _i18n3 = _interopRequireDefault(require("./MessageThreadPage/i18n"));
 var _i18n4 = _interopRequireWildcard(require("./i18n"));
 var _utils = require("./utils");
-var _excluded = ["children"],
-  _excluded2 = ["hasPermission"],
-  _excluded3 = ["textUnreadCounts", "threadUnreadCount"];
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t6 in e) "default" !== _t6 && {}.hasOwnProperty.call(e, _t6) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t6)) && (i.get || i.set) ? o(f, _t6, i) : f[_t6] = e[_t6]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
-function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -108,20 +97,18 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var loadingList = [1, 2, 3];
 var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.injectable)({
   name: 'MessageThreadsView'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services3.CallQueues === "undefined" ? Object : _services3.CallQueues, typeof _views.SyncTabView === "undefined" ? Object : _views.SyncTabView, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services4.MessageThread === "undefined" ? Object : _services4.MessageThread, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services4.MessageStore === "undefined" ? Object : _services4.MessageStore, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec0 = Reflect.metadata("design:type", typeof SharedSearchForm === "undefined" ? Object : SharedSearchForm), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function MessageThreadsView(_conversationAlert, _callQueues, _syncTabView, _modalView, _messageThread, _router, _toast, _extensionInfo, _messageStore, _portManager) {
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services3.CallQueues === "undefined" ? Object : _services3.CallQueues, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services4.MessageThread === "undefined" ? Object : _services4.MessageThread, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec0 = Reflect.metadata("design:type", typeof SharedSearchForm === "undefined" ? Object : SharedSearchForm), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function MessageThreadsView(_conversationAlert, _callQueues, _modalView, _messageThread, _router, _toast, _auth, _portManager) {
     var _this;
     _classCallCheck(this, MessageThreadsView);
     _this = _callSuper(this, MessageThreadsView);
     _this._conversationAlert = _conversationAlert;
     _this._callQueues = _callQueues;
-    _this._syncTabView = _syncTabView;
     _this._modalView = _modalView;
     _this._messageThread = _messageThread;
     _this._router = _router;
     _this._toast = _toast;
-    _this._extensionInfo = _extensionInfo;
-    _this._messageStore = _messageStore;
+    _this._auth = _auth;
     _this._portManager = _portManager;
     _initializerDefineProperty(_this, "assignThreadModal", _descriptor, _this);
     _initializerDefineProperty(_this, "lastPosition", _descriptor2, _this);
@@ -134,7 +121,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
             threadInfo: conversationId ? (_this$_messageThread$ = _this._messageThread.getThread(conversationId)) === null || _this$_messageThread$ === void 0 ? void 0 : _this$_messageThread$.threadInfo : undefined,
             threadLoading: conversationId ? (_this$_messageThread$2 = _this._messageThread.getThreadMetadata(conversationId)) === null || _this$_messageThread$2 === void 0 ? void 0 : _this$_messageThread$2.loading : false,
             isThread: conversationId && _this._messageThread.hasPermission && Boolean(_this._messageThread.getThread(conversationId)),
-            extensionId: _this._extensionInfo.id
+            extensionId: _this._auth.ownerId
           };
         }),
         threadInfo = _useConnector.threadInfo,
@@ -151,7 +138,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         var currentExtensionId = extensionId === null || extensionId === void 0 ? void 0 : extensionId.toString();
         var isAssignedToMe = (threadInfo === null || threadInfo === void 0 ? void 0 : (_threadInfo$assignee = threadInfo.assignee) === null || _threadInfo$assignee === void 0 ? void 0 : _threadInfo$assignee.extensionId) === currentExtensionId;
         var isResolved = (threadInfo === null || threadInfo === void 0 ? void 0 : threadInfo.status) === 'Resolved';
-        var isAssigned = !!(threadInfo === null || threadInfo === void 0 ? void 0 : threadInfo.assignee);
+        var isAssigned = !!(threadInfo !== null && threadInfo !== void 0 && threadInfo.assignee);
 
         // Logic 1: Initial unassigned state
         if (!isAssigned && !isResolved) {
@@ -279,15 +266,14 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
   }, {
     key: "filteredThreadConversations",
     get: function get() {
-      var _this$_extensionInfo$,
-        _this2 = this;
+      var _this2 = this;
       var threads = this._messageThread.threadConversationsInfo.conversations;
       var filter = this.sharedSearchForm.filter;
       var statusFilter = this.sharedSearchForm.statusFilter;
       var searchInput = this.sharedSearchForm.searchInput.toLowerCase().trim();
       var selectedAssignees = this.sharedSearchForm.selectedAssignees;
       var selectedCallQueues = this.sharedSearchForm.selectedCallQueues;
-      var currentExtensionId = (_this$_extensionInfo$ = this._extensionInfo.id) === null || _this$_extensionInfo$ === void 0 ? void 0 : _this$_extensionInfo$.toString();
+      var currentExtensionId = this._auth.ownerId;
       var filtered = threads;
 
       // Filter by status (Open/Resolved)
@@ -450,11 +436,9 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
                 return _this3._messageThread.assignThread(threadId, extensionId);
               case 1:
                 // Show appropriate success message based on who the thread was assigned to
-                isAssignedToCurrentUser = extensionId === String(_this3._extensionInfo.id);
+                isAssignedToCurrentUser = extensionId === _this3._auth.ownerId;
                 if (isAssignedToCurrentUser) {
-                  _this3._toast.success({
-                    message: t('assignedToYouTooltip')
-                  });
+                  _this3._messageThread.showAssignedToYouToast();
                 } else {
                   // Find the recipient's name for the "assigned to other" message
                   recipient = recipients.find(function (r) {
@@ -489,7 +473,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       }();
       var title = t('assignConversationTo');
       return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "flex flex-col h-full relative -my-4"
+        className: "flex flex-col h-full relative -m-3"
       }, /*#__PURE__*/_react["default"].createElement("div", {
         className: "px-6 py-3 border-b border-neutral-b4/50"
       }, /*#__PURE__*/_react["default"].createElement("h3", {
@@ -499,6 +483,9 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         className: "px-4 pt-3 pb-2"
       }, /*#__PURE__*/_react["default"].createElement(_springUi.TextField, {
         fullWidth: true,
+        inputProps: {
+          'data-sign': 'assignRecipientSearch'
+        },
         size: "medium",
         placeholder: messageThreadsT('search'),
         value: searchText,
@@ -573,7 +560,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       }, /*#__PURE__*/_react["default"].createElement(_springUi.CircularProgressIndicator, {
         size: "large"
       })), /*#__PURE__*/_react["default"].createElement("div", {
-        className: "absolute top-0 right-2"
+        className: "absolute top-2 right-2"
       }, /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
         variant: "icon",
         size: "small",
@@ -611,7 +598,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         }).pipe((0, _rxjs.filter)(function (unreadCount) {
           return unreadCount > 0;
         }), (0, _rxjs.tap)(function () {
-          _this4._messageThread.markThreadAsViewed(threadId);
+          _this4._messageThread.setUnreadCount(threadId);
         }));
       }));
 
@@ -684,7 +671,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
     value: function () {
       var _handleAssignToMe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(conversationId) {
         var _this5 = this;
-        var threads, thread, threadInfo, isResolved, postAssignToMe, _this$_extensionInfo$2, extensionId, _t3;
+        var threads, thread, threadInfo, isResolved, currentPath, postAssignToMe, extensionId, _t3;
         return _regenerator().w(function (_context5) {
           while (1) switch (_context5.p = _context5.n) {
             case 0:
@@ -692,18 +679,29 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               thread = threads[conversationId];
               threadInfo = thread === null || thread === void 0 ? void 0 : thread.threadInfo;
               isResolved = (threadInfo === null || threadInfo === void 0 ? void 0 : threadInfo.status) === 'Resolved';
+              currentPath = this._router.currentPath;
               postAssignToMe = /*#__PURE__*/function () {
                 var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
                   return _regenerator().w(function (_context4) {
                     while (1) switch (_context4.n) {
                       case 0:
-                        if (_this5._router.currentPath.includes('/conversations')) {
-                          _context4.n = 1;
+                        if (!(currentPath === _this5._router.currentPath)) {
+                          _context4.n = 2;
                           break;
                         }
+                        _this5.logger.log('assignToMe: redirect to conversation page', conversationId);
                         _context4.n = 1;
                         return _this5._router.push("/conversations/".concat(conversationId));
                       case 1:
+                        _context4.n = 3;
+                        break;
+                      case 2:
+                        _this5.logger.log('assignToMe: current path changed, no redirect', {
+                          conversationId: conversationId,
+                          prevPath: currentPath,
+                          currentPath: _this5._router.currentPath
+                        });
+                      case 3:
                         return _context4.a(2);
                     }
                   }, _callee4);
@@ -725,7 +723,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               return _context5.a(2);
             case 3:
               _context5.p = 3;
-              extensionId = (_this$_extensionInfo$2 = this._extensionInfo.id) === null || _this$_extensionInfo$2 === void 0 ? void 0 : _this$_extensionInfo$2.toString();
+              extensionId = this._auth.ownerId;
               if (extensionId) {
                 _context5.n = 4;
                 break;
@@ -739,9 +737,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               _context5.n = 6;
               return postAssignToMe();
             case 6:
-              this._toast.success({
-                message: (0, _i18n4.t)('assignedToYouTooltip')
-              });
+              this._messageThread.showAssignedToYouToast();
               _context5.n = 8;
               break;
             case 7:
@@ -880,54 +876,16 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
     }()
   }, {
     key: "component",
-    value: function component(_ref4) {
+    value: function component(props) {
       var _this7 = this;
-      var children = _ref4.children,
-        rest = _objectWithoutProperties(_ref4, _excluded);
-      var _useConnector3 = (0, _nextCore.useConnector)(function () {
-          return _objectSpread({
-            textUnreadCounts: _this7._messageStore.textUnreadCounts,
-            threadUnreadCount: _this7._messageThread.threadUnreadCount,
-            hasPermission: _this7._messageThread.hasPermission
-          }, _this7.getUIProps());
-        }),
-        hasPermission = _useConnector3.hasPermission,
-        threadProps = _objectWithoutProperties(_useConnector3, _excluded2);
+      var _props = (0, _nextCore.useConnector)(function () {
+        return _this7.getUIProps();
+      });
       var _useResultRef = (0, _springUi.useResultRef)(function () {
           return _this7.getUIFunctions();
         }),
         uiFunctions = _useResultRef.current;
-      var textUnreadCounts = threadProps.textUnreadCounts,
-        threadUnreadCount = threadProps.threadUnreadCount,
-        _props = _objectWithoutProperties(threadProps, _excluded3);
-      var tabs = (0, _react.useMemo)(function () {
-        if (!hasPermission) {
-          return null;
-        }
-        return [{
-          id: _views.ConversationsSyncTabId.PERSONAL,
-          label: (0, _i18n4.t)('personal'),
-          BadgeProps: {
-            count: textUnreadCounts
-          },
-          component: children
-        }, {
-          id: _views.ConversationsSyncTabId.SHARED,
-          label: (0, _i18n4.t)('shared'),
-          BadgeProps: {
-            count: threadUnreadCount
-          },
-          component: /*#__PURE__*/_react["default"].createElement(_MessageThreadPage.MessageThreadPage, _extends({}, _props, rest, uiFunctions))
-        }];
-      }, [_props, children, hasPermission, rest, threadUnreadCount, uiFunctions, textUnreadCounts]);
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, tabs ? /*#__PURE__*/_react["default"].createElement(this._syncTabView.component, {
-        id: _views.SyncTabId.CONVERSATIONS,
-        tabs: tabs,
-        defaultValue: _views.ConversationsSyncTabId.PERSONAL,
-        "data-sign": "conversationsTabs",
-        className: '[&_.sui-tab]:max-w-none [&_.sui-tab]:flex-none [&_.sui-tab]:w-1/2',
-        variant: "standard"
-      }) : children);
+      return /*#__PURE__*/_react["default"].createElement(_MessageThreadPage.MessageThreadPage, _extends({}, _props, props, uiFunctions));
     }
   }]);
 }(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "assignThreadModal", [_nextCore.portal], {
@@ -940,9 +898,9 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       view: function view() {
         return /*#__PURE__*/_react["default"].createElement(_this8.AssignThreadModalContent, null);
       },
-      props: function props(_ref5) {
+      props: function props(_ref4) {
         var _this8$_messageThread, _this8$_messageThread2;
-        var threadId = _ref5.threadId;
+        var threadId = _ref4.threadId;
         return {
           header: null,
           disableBackdropClick: (_this8$_messageThread = (_this8$_messageThread2 = _this8._messageThread.getThreadMetadata(threadId)) === null || _this8$_messageThread2 === void 0 ? void 0 : _this8$_messageThread2.loading) !== null && _this8$_messageThread !== void 0 ? _this8$_messageThread : false,
