@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.fromSubscribe = void 0;
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _rxjs = require("rxjs");
 /**
  * `subscribe` redux state change notifications to `Observable` flow
@@ -28,7 +28,7 @@ var _rxjs = require("rxjs");
 var fromSubscribe = exports.fromSubscribe = function fromSubscribe(target) {
   var destroy;
   var obs$ = new _rxjs.Observable(function (observer) {
-    destroy = (0, _reactantShare.subscribe)(target, function () {
+    destroy = (0, _reactant.subscribe)(target, function () {
       return observer.next();
     });
   });

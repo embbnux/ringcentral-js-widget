@@ -39,6 +39,7 @@ require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _react = require("react");
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _reactantWeb = require("reactant-web");
 var _lib = require("../lib");
 var _storage = require("../lib/decorators/storage");
@@ -65,12 +66,12 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
-var RouterPlugin = exports.RouterPlugin = (_dec = (0, _reactantShare.injectable)({
+var RouterPlugin = exports.RouterPlugin = (_dec = (0, _reactant.injectable)({
   name: 'Router'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _reactantShare.inject)(_reactantShare.SharedAppOptions)(target, undefined, 3);
+  return (0, _reactant.inject)(_reactantShare.SharedAppOptions)(target, undefined, 3);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _reactantShare.inject)(_reactantShare.RouterOptions)(target, undefined, 4);
+  return (0, _reactant.inject)(_reactantShare.RouterOptions)(target, undefined, 4);
 }, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _Storage.StoragePlugin === "undefined" ? Object : _Storage.StoragePlugin, typeof _modules.PortManager === "undefined" ? Object : _modules.PortManager, typeof _reactantShare.PortDetector === "undefined" ? Object : _reactantShare.PortDetector, typeof ISharedAppOptions === "undefined" ? Object : ISharedAppOptions, typeof IRouterOptions === "undefined" ? Object : IRouterOptions]), _dec6 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_BaseRouter) {
   function RouterPlugin(storage, portManager, portDetector, sharedAppOptions, options) {
     var _this;
@@ -86,7 +87,7 @@ var RouterPlugin = exports.RouterPlugin = (_dec = (0, _reactantShare.injectable)
     if (_this.options.enableCache) {
       _this.storage.enable(_this);
     }
-    (0, _reactantShare.watch)(_this, function () {
+    (0, _reactant.watch)(_this, function () {
       return _this.currentPath;
     }, function (currentPath) {
       _this.callbackSet.forEach(function (callback) {
@@ -116,7 +117,7 @@ var RouterPlugin = exports.RouterPlugin = (_dec = (0, _reactantShare.injectable)
               // if server port is ready, but client port is not ready.
               (_this$portDetector$tr = _this.portDetector.transports.client) === null || _this$portDetector$tr === void 0 ? void 0 : _this$portDetector$tr.emit('@@reactant:syncRouter', _this.portDetector.name, _this.lastRoutedTimestamp, _this.router).then(function (routeState) {
                 if (routeState && _this.compareRouter(routeState, _this.router)) {
-                  (0, _reactantShare.getRef)(_this).store.dispatch(_this.onLocationChanged(routeState, 'REPLACE'));
+                  (0, _reactant.getRef)(_this).store.dispatch(_this.onLocationChanged(routeState, 'REPLACE'));
                 }
               });
             }
@@ -179,7 +180,7 @@ var RouterPlugin = exports.RouterPlugin = (_dec = (0, _reactantShare.injectable)
       []);
     }
   }]);
-}(_reactantShare.Router), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_routers", [_storage.storage, _reactantShare.state, _dec6], {
+}(_reactantShare.Router), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_routers", [_storage.storage, _reactant.state, _dec6], {
   configurable: true,
   enumerable: true,
   writable: true,

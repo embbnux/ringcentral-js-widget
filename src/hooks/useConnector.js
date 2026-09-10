@@ -6,10 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.useConnector = void 0;
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var useConnector = exports.useConnector = function useConnector(selector, shallowEqual) {
-  return (0, _reactantShare.useConnector)(function (container) {
+  return (0, _reactant.useConnector)(function (container) {
     return selector(function (moduleKey) {
-      return (0, _reactantShare.getRef)(container.got(_reactantShare.PortDetector)).modules[moduleKey];
+      return (0, _reactant.getRef)(container.got(_reactantShare.PortDetector)).modules[moduleKey];
     });
   }, shallowEqual);
 };

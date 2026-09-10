@@ -55,6 +55,17 @@ Object.keys(_applyMethod).forEach(function (key) {
     }
   });
 });
+var _browserLocation = require("./browserLocation");
+Object.keys(_browserLocation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _browserLocation[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _browserLocation[key];
+    }
+  });
+});
 var _decorators = require("./decorators");
 Object.keys(_decorators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -96,6 +107,17 @@ Object.keys(_logger).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _logger[key];
+    }
+  });
+});
+var _roleDelegation = require("./roleDelegation");
+Object.keys(_roleDelegation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _roleDelegation[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _roleDelegation[key];
     }
   });
 });

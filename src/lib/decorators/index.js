@@ -30,6 +30,17 @@ Object.keys(_delegate).forEach(function (key) {
     }
   });
 });
+var _delegateRole = require("./delegateRole");
+Object.keys(_delegateRole).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _delegateRole[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _delegateRole[key];
+    }
+  });
+});
 var _globalStorage = require("./globalStorage");
 Object.keys(_globalStorage).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

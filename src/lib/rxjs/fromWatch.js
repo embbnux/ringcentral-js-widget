@@ -22,7 +22,7 @@ exports.fromWatchValue = exports.fromWatch = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.number.constructor.js");
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _rxjs = require("rxjs");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -54,13 +54,13 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var fromWatch = exports.fromWatch = function fromWatch(target, cb, options) {
   var destroy;
   var obs$ = new _rxjs.Observable(function (observer) {
-    destroy = (0, _reactantShare.watch)(target, cb, function (newValue) {
+    destroy = (0, _reactant.watch)(target, cb, function (newValue) {
       return observer.next(newValue);
     }, _objectSpread({}, options));
   });
   return obs$.pipe((0, _rxjs.filter)(function () {
     // Check if target is connected to store (has storeKey)
-    var hasStore = !!(target === null || target === void 0 ? void 0 : target[_reactantShare.storeKey]);
+    var hasStore = !!(target !== null && target !== void 0 && target[_reactant.storeKey]);
     return hasStore;
   }), (0, _rxjs.share)(), (0, _rxjs.finalize)(function () {
     return destroy();

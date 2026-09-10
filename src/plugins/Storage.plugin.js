@@ -55,6 +55,7 @@ require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _localforage = _interopRequireDefault(require("localforage"));
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _constant = require("../constant");
 var _checkIndexDB = require("../lib/checkIndexDB");
 var _globalStorage = require("../lib/decorators/globalStorage");
@@ -104,10 +105,10 @@ var DriverType = exports.DriverType = /*#__PURE__*/function (DriverType) {
   return DriverType;
 }({});
 var defaultUserId = '__default__';
-var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectable)(), _dec2 = function _dec2(target, key) {
-  return (0, _reactantShare.optional)(_reactantShare.StorageOptions)(target, undefined, 1);
+var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactant.injectable)(), _dec2 = function _dec2(target, key) {
+  return (0, _reactant.optional)(_reactantShare.StorageOptions)(target, undefined, 1);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _reactantShare.optional)('Prefix')(target, undefined, 2);
+  return (0, _reactant.optional)('Prefix')(target, undefined, 2);
 }, _dec4 = Reflect.metadata("design:type", Function), _dec5 = Reflect.metadata("design:paramtypes", [typeof _reactantShare.PortDetector === "undefined" ? Object : _reactantShare.PortDetector, typeof IStorageOptions === "undefined" ? Object : IStorageOptions, String]), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", []), _dec8 = Reflect.metadata("design:type", typeof _constant.ModuleStatus === "undefined" ? Object : _constant.ModuleStatus), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", []), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = /*#__PURE__*/function (_BaseStorage) {
   function StoragePlugin(portDetector, options, prefix) {
     var _options$storage, _options$disableClien;
@@ -184,7 +185,7 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
                               return (_this2$_migratedStora = _this2._migratedStorage) === null || _this2$_migratedStora === void 0 ? void 0 : _this2$_migratedStora.getItem(oldKey);
                             case 1:
                               data = _context.v;
-                              if (data === null || data === void 0 ? void 0 : data.value) {
+                              if (data !== null && data !== void 0 && data.value) {
                                 _this2.operationCallbacks.push(function () {
                                   var _this2$_migratedStora2;
                                   target[key] = data.value;
@@ -270,7 +271,7 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
     key: "initialize",
     value: function initialize() {
       var _this3 = this;
-      (0, _reactantShare.watch)(this, function () {
+      (0, _reactant.watch)(this, function () {
         return _this3._userId;
       }, /*#__PURE__*/function () {
         var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(newValue, oldValue) {
@@ -366,7 +367,7 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
         });
       }
       //#region migration storage
-      if (options === null || options === void 0 ? void 0 : options.migrations) {
+      if (options !== null && options !== void 0 && options.migrations) {
         this._migrationMap.set(target, options.migrations);
       }
       //#endregion
@@ -379,33 +380,33 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
       }));
       this.clearStorage.add(function () {
         storageKeys.forEach(function (key) {
-          if (globalStorageKeys === null || globalStorageKeys === void 0 ? void 0 : globalStorageKeys.has(key)) return;
-          if ((userStorageKeys && !userStorageKeys.has(key) || !userStorageKeys) && (!(options === null || options === void 0 ? void 0 : options.whitelist) || !options.whitelist.includes(key))) {
-            target[key] = target[_reactantShare.initStateKey][key];
+          if (globalStorageKeys !== null && globalStorageKeys !== void 0 && globalStorageKeys.has(key)) return;
+          if ((userStorageKeys && !userStorageKeys.has(key) || !userStorageKeys) && (!(options !== null && options !== void 0 && options.whitelist) || !options.whitelist.includes(key))) {
+            target[key] = target[_reactant.initStateKey][key];
           }
         });
       });
       var that = this;
       userStorageKeys === null || userStorageKeys === void 0 ? void 0 : userStorageKeys.forEach(function (key) {
         var _options$blacklist2, _target$defaultStateK;
-        if (options === null || options === void 0 ? void 0 : (_options$blacklist2 = options.blacklist) === null || _options$blacklist2 === void 0 ? void 0 : _options$blacklist2.includes(key)) return;
+        if (options !== null && options !== void 0 && (_options$blacklist2 = options.blacklist) !== null && _options$blacklist2 !== void 0 && _options$blacklist2.includes(key)) return;
         // for map user storage by userId
-        target[_reactantShare.defaultStateKey] = (_target$defaultStateK = target[_reactantShare.defaultStateKey]) !== null && _target$defaultStateK !== void 0 ? _target$defaultStateK : {};
+        target[_reactant.defaultStateKey] = (_target$defaultStateK = target[_reactant.defaultStateKey]) !== null && _target$defaultStateK !== void 0 ? _target$defaultStateK : {};
         target[_constant.userIdReadyKey] = function () {
           return !!_this4._userId;
         };
-        target[_reactantShare.defaultStateKey][key] = _defineAccessor("get", {}, defaultUserId, function () {
-          return target[_reactantShare.initStateKey][key];
+        target[_reactant.defaultStateKey][key] = _defineAccessor("get", {}, defaultUserId, function () {
+          return target[_reactant.initStateKey][key];
         });
         descriptors[key] = {
           configurable: true,
           enumerable: true,
           get: function get() {
             var id = that.userId;
-            var stagedState = (0, _reactantShare.getStagedState)();
-            var current = this[_reactantShare.stateKey][key];
-            var signalMap = this[_reactantShare.signalMapKey];
-            if (!stagedState && signalMap[key] && !(0, _reactantShare.isEqual)(signalMap[key].value, current)) {
+            var stagedState = (0, _reactant.getStagedState)();
+            var current = this[_reactant.stateKey][key];
+            var signalMap = this[_reactant.signalMapKey];
+            if (!stagedState && signalMap[key] && !(0, _reactant.isEqual)(signalMap[key].value, current)) {
               try {
                 // Manual update signal value when the state is changed outside the common reducer.
                 signalMap[key].value = current;
@@ -416,18 +417,18 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
                 }
               }
             }
-            if (typeof this[_reactantShare.stateKey][key][id] === 'undefined') {
+            if (typeof this[_reactant.stateKey][key][id] === 'undefined') {
               if (stagedState) {
-                this[_reactantShare.stateKey][key][id] = JSON.parse(JSON.stringify(target[_reactantShare.initStateKey][key]));
-                return this[_reactantShare.stateKey][key][id];
+                this[_reactant.stateKey][key][id] = JSON.parse(JSON.stringify(target[_reactant.initStateKey][key]));
+                return this[_reactant.stateKey][key][id];
               }
-              return target[_reactantShare.initStateKey][key];
+              return target[_reactant.initStateKey][key];
             }
             return current[id];
           },
           set: function set(value) {
             var id = that.userId;
-            this[_reactantShare.stateKey][key][id] = value;
+            this[_reactant.stateKey][key][id] = value;
           }
         };
       });
@@ -546,7 +547,7 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
           configurable: true,
           enumerable: true,
           get: function get() {
-            var _getRef = (0, _reactantShare.getRef)(this),
+            var _getRef = (0, _reactant.getRef)(this),
               identifier = _getRef.identifier;
             if (process.env.NODE_ENV !== 'production' && !identifier) {
               throw new Error("[StoragePlugin] not found identifierKey '".concat(identifier, "': get '").concat(key, "' value error in ").concat(this.constructor.name, " module, make sure to use it after the module is constructed"));
@@ -564,7 +565,7 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
             return value;
           },
           set: function set(newVal) {
-            var _getRef2 = (0, _reactantShare.getRef)(this),
+            var _getRef2 = (0, _reactant.getRef)(this),
               identifier = _getRef2.identifier;
             if (process.env.NODE_ENV !== 'production' && !identifier) {
               throw new Error("[StoragePlugin] not found identifierKey '".concat(identifier, "': set '").concat(key, "' value error in ").concat(this.constructor.name, " module, make sure to use it after the module is constructed"));
@@ -581,12 +582,12 @@ var StoragePlugin = exports.StoragePlugin = (_dec = (0, _reactantShare.injectabl
       return localStorageOnlyKeys;
     }
   }]);
-}(_reactantShare.Storage), _applyDecoratedDescriptor(_class2.prototype, "_migrate", [_reactantShare.action, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "_migrate"), _class2.prototype), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "status", [_reactantShare.state, _dec8], {
+}(_reactantShare.Storage), _applyDecoratedDescriptor(_class2.prototype, "_migrate", [_reactant.action, _dec6, _dec7], Object.getOwnPropertyDescriptor(_class2.prototype, "_migrate"), _class2.prototype), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "status", [_reactant.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return _constant.ModuleStatus.Ready;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setReady", [_reactantShare.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "_setReady"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setResetting", [_reactantShare.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_setResetting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clear", [_reactantShare.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "clear"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setReady", [_reactant.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "_setReady"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setResetting", [_reactant.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_setResetting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clear", [_reactant.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "clear"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Storage.plugin.js.map

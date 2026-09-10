@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.action = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.date.now.js");
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 var action = exports.action = process.env.NODE_ENV === 'development' ? function (target, key, descriptor) {
@@ -22,7 +22,7 @@ var action = exports.action = process.env.NODE_ENV === 'development' ? function 
     if (count-- === 0) {
       count = 100;
       if (Date.now() - time < 5000) {
-        throw new Error("".concat((0, _reactantShare.getRef)(this).identifier, ".").concat(key, " is called too many times"));
+        throw new Error("".concat((0, _reactant.getRef)(this).identifier, ".").concat(key, " is called too many times"));
       }
       time = Date.now();
     }
@@ -31,6 +31,6 @@ var action = exports.action = process.env.NODE_ENV === 'development' ? function 
     }
     return originalMethod.apply(this, args);
   };
-  return (0, _reactantShare.action)(target, key, descriptor);
-} : _reactantShare.action;
+  return (0, _reactant.action)(target, key, descriptor);
+} : _reactant.action;
 //# sourceMappingURL=action.js.map

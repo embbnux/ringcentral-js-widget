@@ -116,7 +116,7 @@ var createSharedApp = exports.createSharedApp = /*#__PURE__*/function () {
 var workerModeDebugger = exports.workerModeDebugger = function workerModeDebugger(options) {
   if (globalThis.SharedWorker && options.share.type === 'SharedWorker') {
     var _globalThis$localStor, _globalThis$localStor2;
-    if ((_globalThis$localStor = globalThis.localStorage) === null || _globalThis$localStor === void 0 ? void 0 : _globalThis$localStor.getItem(_constant.disableRcSharedWorkerLoggerKey)) {
+    if ((_globalThis$localStor = globalThis.localStorage) !== null && _globalThis$localStor !== void 0 && _globalThis$localStor.getItem(_constant.disableRcSharedWorkerLoggerKey)) {
       options.share.enableTransportDebugger = true;
       options.share.transportLogger = function (listenOptions) {
         var size = JSON.stringify(listenOptions).length / 1024;
@@ -124,7 +124,7 @@ var workerModeDebugger = exports.workerModeDebugger = function workerModeDebugge
         console.log('[next-core] [transportLogger]', listenOptions);
       };
     }
-    if ((_globalThis$localStor2 = globalThis.localStorage) === null || _globalThis$localStor2 === void 0 ? void 0 : _globalThis$localStor2.getItem(_constant.disableRcSharedWorkerKey)) {
+    if ((_globalThis$localStor2 = globalThis.localStorage) !== null && _globalThis$localStor2 !== void 0 && _globalThis$localStor2.getItem(_constant.disableRcSharedWorkerKey)) {
       options.share.type = 'Base';
       delete options.share.port;
 

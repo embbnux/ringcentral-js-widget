@@ -31,7 +31,7 @@ exports.Root = exports.DEFAULT_WIDTH = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/esnext.global-this.js");
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _rxjs = require("rxjs");
 var _constant = require("../constant");
 var _lib = require("../lib");
@@ -60,7 +60,7 @@ var DEFAULT_WIDTH = exports.DEFAULT_WIDTH = _constant.DEFAULT_APP_WINDOW_SIZE.fo
 var Root = exports.Root = (_dec = (0, _lib.injectable)({
   name: 'Root'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _reactantShare.optional)('RootOptions')(target, undefined, 0);
+  return (0, _reactant.optional)('RootOptions')(target, undefined, 0);
 }, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof RootOptions === "undefined" ? Object : RootOptions]), _dec5 = Reflect.metadata("design:type", Boolean), _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [Boolean]), _dec8 = (0, _lib.delegate)('server'), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [Boolean]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function Root(_rootOptions) {
     var _this$_rootOptions$ex, _this$_rootOptions, _this$_rootOptions2;
@@ -77,7 +77,7 @@ var Root = exports.Root = (_dec = (0, _lib.injectable)({
      * get app url when init module
      */
     _this.appUrl = "".concat(globalThis.location.origin).concat(globalThis.location.pathname);
-    _this.expandedLayoutMainClass = (_this$_rootOptions$ex = (_this$_rootOptions = _this._rootOptions) === null || _this$_rootOptions === void 0 ? void 0 : _this$_rootOptions.expandedLayoutMainClass) !== null && _this$_rootOptions$ex !== void 0 ? _this$_rootOptions$ex : ((_this$_rootOptions2 = _this._rootOptions) === null || _this$_rootOptions2 === void 0 ? void 0 : _this$_rootOptions2.onExpand) !== undefined ? // w-[344px] min-w-[344px] max-w-[344px]
+    _this.expandedLayoutMainClass = (_this$_rootOptions$ex = (_this$_rootOptions = _this._rootOptions) === null || _this$_rootOptions === void 0 ? void 0 : _this$_rootOptions.expandedLayoutMainClass) !== null && _this$_rootOptions$ex !== void 0 ? _this$_rootOptions$ex : ((_this$_rootOptions2 = _this._rootOptions) === null || _this$_rootOptions2 === void 0 ? void 0 : _this$_rootOptions2.onExpand) !== undefined ? // w-[300px] min-w-[300px] max-w-[300px]
     "w-[".concat(DEFAULT_WIDTH, "px] min-w-[").concat(DEFAULT_WIDTH, "px] max-w-[").concat(DEFAULT_WIDTH, "px]") : undefined;
     /**
      * operator that make flow be stop when app destroy.
@@ -135,7 +135,7 @@ var Root = exports.Root = (_dec = (0, _lib.injectable)({
       _destroy.GLOBAL_DESTROY$.next();
     }
   }]);
-}(_lib.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "expanded", [_reactantShare.state, _dec5], {
+}(_lib.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "expanded", [_reactant.state, _dec5], {
   configurable: true,
   enumerable: true,
   writable: true,

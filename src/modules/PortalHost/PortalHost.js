@@ -36,6 +36,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 var _utils = require("@ringcentral-integration/utils");
 var _ramda = require("ramda");
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _uuid = require("uuid");
 var _lib = require("../../lib");
 var _Storage = require("../../plugins/Storage.plugin");
@@ -64,10 +65,10 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
 var _resolveFn = '$$__resolveFn__$$';
-var PortalHost = exports.PortalHost = (_dec = (0, _reactantShare.injectable)({
+var PortalHost = exports.PortalHost = (_dec = (0, _reactant.injectable)({
   name: 'PortalHost'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _reactantShare.optional)('PortalHostOptions')(target, undefined, 3);
+  return (0, _reactant.optional)('PortalHostOptions')(target, undefined, 3);
 }, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _PortManager.PortManager === "undefined" ? Object : _PortManager.PortManager, typeof _Initiator.Initiator === "undefined" ? Object : _Initiator.Initiator, typeof _Storage.StoragePlugin === "undefined" ? Object : _Storage.StoragePlugin, typeof PortalHostOptions === "undefined" ? Object : PortalHostOptions]), _dec5 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec6 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [String, String]), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String, String]), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Array]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [Array]), _dec13 = (0, _lib.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Array]), _dec16 = (0, _lib.delegate)('server'), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _lib.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [String, typeof PortalHostResolveData === "undefined" ? Object : PortalHostResolveData]), _dec24 = (0, _lib.delegate)('server'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [String, Number]), _dec27 = (0, _lib.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", [String]), _dec30 = (0, _lib.delegate)('server'), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [String, String, void 0]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function PortalHost(_portManager, _initiator, _storage, _portalHostOptions) {
     var _this;
@@ -174,7 +175,7 @@ var PortalHost = exports.PortalHost = (_dec = (0, _reactantShare.injectable)({
       var _this4 = this;
       var modalKeys = target[_utils2.portalKey];
       if (!modalKeys) return;
-      var _getRef = (0, _reactantShare.getRef)(target),
+      var _getRef = (0, _reactant.getRef)(target),
         identifier = _getRef.identifier;
       modalKeys.forEach(function (key) {
         var portalInstance = target[key];
@@ -407,19 +408,19 @@ var PortalHost = exports.PortalHost = (_dec = (0, _reactantShare.injectable)({
       return closed;
     }
   }]);
-}(_lib.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_idTypeMap", [_reactantShare.state, _dec5], {
+}(_lib.RcModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "_idTypeMap", [_reactant.state, _dec5], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_idTypeCacheMap", [_lib.globalStorage, _reactantShare.state, _dec6], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_idTypeCacheMap", [_lib.globalStorage, _reactant.state, _dec6], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "setIdTypeCacheMap", [_reactantShare.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "setIdTypeCacheMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIdTypeMap", [_reactantShare.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setIdTypeMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeIdTypeMaps", [_reactantShare.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeIdTypeCacheMaps", [_reactantShare.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeIdTypeCacheMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeIdTypeCacheMaps", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "removeIdTypeCacheMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearIdTypeMaps", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "clearIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_clearIdTypeMaps", [_reactantShare.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_clearIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resolveFn", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "resolveFn"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startTimer", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "startTimer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearTimer", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "clearTimer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callOnEvent", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "callOnEvent"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "setIdTypeCacheMap", [_reactant.action, _dec7, _dec8], Object.getOwnPropertyDescriptor(_class2.prototype, "setIdTypeCacheMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIdTypeMap", [_reactant.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "setIdTypeMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeIdTypeMaps", [_reactant.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeIdTypeCacheMaps", [_reactant.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeIdTypeCacheMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeIdTypeCacheMaps", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "removeIdTypeCacheMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearIdTypeMaps", [_dec16, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "clearIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_clearIdTypeMaps", [_reactant.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_clearIdTypeMaps"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resolveFn", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "resolveFn"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "startTimer", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "startTimer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "clearTimer", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "clearTimer"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "callOnEvent", [_dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "callOnEvent"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=PortalHost.js.map

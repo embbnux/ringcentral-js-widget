@@ -29,7 +29,6 @@ require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/esnext.global-this.js");
 require("core-js/modules/esnext.promise.all-settled.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _rxjs = require("rxjs");
@@ -88,7 +87,7 @@ var Reload = exports.Reload = (_dec = (0, _lib.injectable)({
         return _ref.apply(this, arguments);
       };
     }()), (0, _rxjs.tap)(function () {
-      return globalThis.location.reload();
+      return (0, _lib.reloadRuntimeLocation)();
     }), (0, _rxjs.take)(1), _destroy.takeUntilAppDestroy);
     this.reloadProcess$.subscribe();
   }

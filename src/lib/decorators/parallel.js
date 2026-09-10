@@ -26,6 +26,7 @@ require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _validateArgsToWorker = require("./validateArgsToWorker");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -50,7 +51,7 @@ var handleAllPortsOnServer = exports.handleAllPortsOnServer = function handleAll
       return _regenerator().w(function (_context) {
         while (1) switch (_context.n) {
           case 0:
-            module = (0, _reactantShare.getRef)(portDetector).modules[options.module];
+            module = (0, _reactant.getRef)(portDetector).modules[options.module];
             fn = originalFn !== null && originalFn !== void 0 ? originalFn : module[options.method];
             result = fn.apply(module, options.args);
             (0, _reactantShare.fork)(module, options.method, [].concat(_toConsumableArray(options.args), _toConsumableArray(restArgs)), {
@@ -118,7 +119,7 @@ var parallel = exports.parallel = function parallel(target, key, descriptor, isD
           });
           throw new Error('[parallel] the args must be serializable');
         case 3:
-          _getRef = (0, _reactantShare.getRef)(this), container = _getRef.container, identifier = _getRef.identifier; // when the function is called without DI container
+          _getRef = (0, _reactant.getRef)(this), container = _getRef.container, identifier = _getRef.identifier; // when the function is called without DI container
           if (container) {
             _context2.n = 4;
             break;

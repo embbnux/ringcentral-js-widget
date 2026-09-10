@@ -40,12 +40,15 @@ require("core-js/modules/esnext.global-this.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _utils = require("@ringcentral-integration/utils");
+var _reactant = require("reactant");
 var _reactantShare = require("reactant-share");
 var _rxjs = require("rxjs");
 var _constant = require("../constant");
+var _browserLocation = require("../lib/browserLocation");
 var _delegate = require("../lib/decorators/delegate");
 var _getMfeMetaLocal = require("../lib/getMfeMetaLocal");
 var _logger = require("../lib/logger");
+var _Initiator2 = require("./Initiator.utils");
 var _PortManager = require("./PortManager");
 var _destroy = require("./destroy");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _class2, _descriptor;
@@ -66,18 +69,18 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
 var installedUpdate$ = exports.installedUpdate$ = new _rxjs.Subject();
-var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
+var Initiator = exports.Initiator = (_dec = (0, _reactant.injectable)({
   name: 'Initiator'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _reactantShare.optional)(_reactantShare.SharedAppOptions)(target, undefined, 1);
+  return (0, _reactant.optional)(_reactantShare.SharedAppOptions)(target, undefined, 1);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _reactantShare.optional)('Prefix')(target, undefined, 2);
+  return (0, _reactant.optional)('Prefix')(target, undefined, 2);
 }, _dec4 = function _dec4(target, key) {
-  return (0, _reactantShare.optional)('Version')(target, undefined, 3);
+  return (0, _reactant.optional)('Version')(target, undefined, 3);
 }, _dec5 = function _dec5(target, key) {
-  return (0, _reactantShare.optional)('BuildEnv')(target, undefined, 4);
+  return (0, _reactant.optional)('BuildEnv')(target, undefined, 4);
 }, _dec6 = function _dec6(target, key) {
-  return (0, _reactantShare.optional)('InitiatorOptions')(target, undefined, 5);
+  return (0, _reactant.optional)('InitiatorOptions')(target, undefined, 5);
 }, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _PortManager.PortManager === "undefined" ? Object : _PortManager.PortManager, typeof ISharedAppOptions === "undefined" ? Object : ISharedAppOptions, String, String, String, typeof InitiatorOptions === "undefined" ? Object : InitiatorOptions]), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = (0, _delegate.delegate)('server'), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _delegate.delegate)('clients'), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function () {
   function Initiator(_portManager, _sharedAppOptions, _prefix, _version, _buildEnv, _initiatorOptions) {
     var _this = this;
@@ -116,7 +119,7 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
         if (_this._portManager.isWorkerMode) {
           var _this$_initiatorOptio, _globalThis$location, _globalThis$__rc_shar;
           // Priority: basePath > default getHostPath()
-          var hostUrl = ((_this$_initiatorOptio = _this._initiatorOptions) === null || _this$_initiatorOptio === void 0 ? void 0 : _this$_initiatorOptio.basePath) ? "".concat(((_globalThis$location = globalThis.location) === null || _globalThis$location === void 0 ? void 0 : _globalThis$location.origin) || '').concat(_this.basePath) : (0, _utils.getHostPath)();
+          var hostUrl = (_this$_initiatorOptio = _this._initiatorOptions) !== null && _this$_initiatorOptio !== void 0 && _this$_initiatorOptio.basePath ? "".concat(((_globalThis$location = globalThis.location) === null || _globalThis$location === void 0 ? void 0 : _globalThis$location.origin) || '').concat(_this.basePath) : (0, _utils.getHostPath)();
           var currWorkerUrl = hostUrl + ((_globalThis$__rc_shar = globalThis.__rc_shared_worker__) === null || _globalThis$__rc_shar === void 0 ? void 0 : _globalThis$__rc_shar.url);
           _logger.logger.log('[Initiator] worker mode, check should reload to get latest shared worker', {
             fullPrefix: _this.prefix,
@@ -132,12 +135,12 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
           // in order to share the new shared worker.
           transport.listen('reload', /*#__PURE__*/function () {
             var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(receiveWorkerUrl, version) {
-              var _this$_initiatorOptio2;
-              var _this$_initiatorOptio3, _this$_initiatorOptio4, data, locale, _globalThis$location2;
+              var _this$_initiatorOptio2, _this$_initiatorOptio5;
+              var _this$_initiatorOptio3, _this$_initiatorOptio4, data, locale, onlyComparisonWorkerFilename;
               return _regenerator().w(function (_context) {
                 while (1) switch (_context.n) {
                   case 0:
-                    if (!(((_this$_initiatorOptio2 = _this._initiatorOptions) === null || _this$_initiatorOptio2 === void 0 ? void 0 : _this$_initiatorOptio2.enableNewHostDetection) && !receiveWorkerUrl.includes(hostUrl))) {
+                    if (!((_this$_initiatorOptio2 = _this._initiatorOptions) !== null && _this$_initiatorOptio2 !== void 0 && _this$_initiatorOptio2.enableNewHostDetection && !receiveWorkerUrl.includes(hostUrl))) {
                       _context.n = 1;
                       break;
                     }
@@ -151,7 +154,12 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
                     location.href = "".concat(hostUrl, "upgrade.html?locale=").concat(locale);
                     return _context.a(2);
                   case 1:
-                    if (!(receiveWorkerUrl !== currWorkerUrl || version && version !== _this._version)) {
+                    onlyComparisonWorkerFilename = (_this$_initiatorOptio5 = _this._initiatorOptions) === null || _this$_initiatorOptio5 === void 0 ? void 0 : _this$_initiatorOptio5.onlyComparisonWorkerFilename;
+                    if (!(!(0, _Initiator2.isSameWorkerUrl)({
+                      currentWorkerUrl: currWorkerUrl,
+                      receivedWorkerUrl: receiveWorkerUrl,
+                      onlyComparisonWorkerFilename: onlyComparisonWorkerFilename
+                    }) || version && version !== _this._version)) {
                       _context.n = 3;
                       break;
                     }
@@ -164,7 +172,7 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
                       currentVersion: _this._version,
                       receiveVersion: version
                     });
-                    (_globalThis$location2 = globalThis.location) === null || _globalThis$location2 === void 0 ? void 0 : _globalThis$location2.reload();
+                    (0, _browserLocation.reloadRuntimeLocation)();
                   case 3:
                     return _context.a(2);
                 }
@@ -181,8 +189,8 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
           _this.checkMfeInfo();
         }
       });
-      if ((_globalThis$localStor = globalThis.localStorage) === null || _globalThis$localStor === void 0 ? void 0 : _globalThis$localStor.getItem(_constant.disableRcSharedWorkerLoggerKey)) {
-        (0, _reactantShare.watch)(this, function () {
+      if ((_globalThis$localStor = globalThis.localStorage) !== null && _globalThis$localStor !== void 0 && _globalThis$localStor.getItem(_constant.disableRcSharedWorkerLoggerKey)) {
+        (0, _reactant.watch)(this, function () {
           return _this._portManager.portDetector.lastAction.action;
         }, function (action) {
           _this.lastActions.unshift(action);
@@ -259,8 +267,8 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
   }, {
     key: "basePath",
     get: function get() {
-      var _this$_initiatorOptio5;
-      return ((_this$_initiatorOptio5 = this._initiatorOptions) === null || _this$_initiatorOptio5 === void 0 ? void 0 : _this$_initiatorOptio5.basePath) || '/';
+      var _this$_initiatorOptio6;
+      return ((_this$_initiatorOptio6 = this._initiatorOptions) === null || _this$_initiatorOptio6 === void 0 ? void 0 : _this$_initiatorOptio6.basePath) || '/';
     }
   }, {
     key: "beforeInit",
@@ -359,7 +367,7 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
               _context4.n = 11;
               return Promise.resolve();
             case 11:
-              _getRef = (0, _reactantShare.getRef)(this), store = _getRef.store; // Make sure the store is initialized before the module is initialized
+              _getRef = (0, _reactant.getRef)(this), store = _getRef.store; // Make sure the store is initialized before the module is initialized
               if (!this.initialized && store) {
                 // Workaround about support asynchronous externals.localStorage API on RC SDK
                 // Follow this ticket: https://github.com/ringcentral/ringcentral-js/issues/187
@@ -406,11 +414,10 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
     key: "reloadAllClients",
     value: function () {
       var _reloadAllClients = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
-        var _globalThis$location3;
         return _regenerator().w(function (_context6) {
           while (1) switch (_context6.n) {
             case 0:
-              (_globalThis$location3 = globalThis.location) === null || _globalThis$location3 === void 0 ? void 0 : _globalThis$location3.reload();
+              (0, _browserLocation.reloadRuntimeLocation)();
             case 1:
               return _context6.a(2);
           }
@@ -465,12 +472,12 @@ var Initiator = exports.Initiator = (_dec = (0, _reactantShare.injectable)({
       (_globalThis$localStor5 = globalThis.localStorage) === null || _globalThis$localStor5 === void 0 ? void 0 : _globalThis$localStor5.removeItem(_constant.disableRcSharedWorkerLoggerKey);
     }
   }]);
-}(), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "initialized", [_reactantShare.state], {
+}(), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "initialized", [_reactant.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "initModules", [_reactantShare.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "initModules"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "getServerLocalMfeInfo", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "getServerLocalMfeInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reloadAllClients", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "reloadAllClients"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "initModules", [_reactant.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "initModules"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "getServerLocalMfeInfo", [_dec1, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "getServerLocalMfeInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reloadAllClients", [_dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "reloadAllClients"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Initiator.js.map

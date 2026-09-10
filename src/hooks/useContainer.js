@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.useContainer = void 0;
 var _react = require("react");
 var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 /**
  * Get the container from the context.
  *
@@ -17,7 +18,7 @@ var _reactantShare = require("reactant-share");
  * ### !!! if you want to get state via the hook, you should also use `useConnector` hook.
  */
 var useContainer = exports.useContainer = function useContainer(moduleKey) {
-  var container = (0, _react.useContext)(_reactantShare.ContainerContext);
+  var container = (0, _react.useContext)(_reactant.ContainerContext);
   if (process.env.NODE_ENV !== 'production' && !container) {
     throw new Error('Container is not found');
   }
@@ -25,7 +26,7 @@ var useContainer = exports.useContainer = function useContainer(moduleKey) {
   if (!portDetector) {
     throw new Error('PortDetector is not found');
   }
-  var instance = (0, _reactantShare.getRef)(portDetector).modules[moduleKey];
+  var instance = (0, _reactant.getRef)(portDetector).modules[moduleKey];
   return instance;
 };
 //# sourceMappingURL=useContainer.js.map

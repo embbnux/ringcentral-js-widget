@@ -26,11 +26,11 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.set.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-var _loggerV = require("@ringcentral-integration/core/lib/logger/loggerV2");
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 var _rxjs = require("rxjs");
 var _constant = require("../constant");
 var _RcModule = require("./RcModule");
+var _logger = require("./logger");
 var _rxjs2 = require("./rxjs");
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -49,7 +49,7 @@ var RcViewModule = exports.RcViewModule = /*#__PURE__*/function (_ViewModule) {
     var _this;
     _classCallCheck(this, RcViewModule);
     _this = _callSuper(this, RcViewModule);
-    _this.logger = _loggerV.loggerV2.create(_this);
+    _this.logger = _logger.logger.create(_this);
     _this.status$ = (0, _rxjs2.fromWatchValue)(_this, function () {
       return _this.status;
     });
@@ -78,6 +78,6 @@ var RcViewModule = exports.RcViewModule = /*#__PURE__*/function (_ViewModule) {
   }
   _inherits(RcViewModule, _ViewModule);
   return _createClass(RcViewModule);
-}(_reactantShare.ViewModule); // RcViewModule is multi-inherited , it needs to inherit implicitly from RcModule.
+}(_reactant.ViewModule); // RcViewModule is multi-inherited , it needs to inherit implicitly from RcModule.
 Object.defineProperties(RcViewModule.prototype, Object.getOwnPropertyDescriptors(_RcModule.RcModule.prototype));
 //# sourceMappingURL=RcViewModule.js.map

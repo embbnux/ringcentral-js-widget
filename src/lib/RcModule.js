@@ -32,12 +32,13 @@ require("core-js/modules/es.set.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-var _loggerV = require("@ringcentral-integration/core/lib/logger/loggerV2");
+var _reactant = require("reactant");
 var _reactantShare = require("reactant-share");
 var _rxjs = require("rxjs");
 var _constant = require("../constant");
 var _Initiator = require("../modules/Initiator");
 var _decorators = require("./decorators");
+var _logger = require("./logger");
 var _rxjs2 = require("./rxjs");
 var _dec, _dec2, _dec3, _class, _descriptor;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
@@ -56,7 +57,7 @@ var RcModule = exports.RcModule = (_dec = Reflect.metadata("design:type", typeof
   function RcModule() {
     var _this = this;
     _classCallCheck(this, RcModule);
-    this.logger = _loggerV.loggerV2.create(this);
+    this.logger = _logger.logger.create(this);
     this.status$ = (0, _rxjs2.fromWatchValue)(this, function () {
       return _this.status;
     });
@@ -102,9 +103,9 @@ var RcModule = exports.RcModule = (_dec = Reflect.metadata("design:type", typeof
     value: function value() {
       var _this2 = this;
       var initiator;
-      (0, _reactantShare.subscribe)(this, function () {
+      (0, _reactant.subscribe)(this, function () {
         if (!initiator) {
-          var container = (0, _reactantShare.getRef)(_this2).container;
+          var container = (0, _reactant.getRef)(_this2).container;
           if (container.isBound(_Initiator.Initiator)) {
             initiator = container.got(_Initiator.Initiator);
             if (!initiator) {
@@ -196,9 +197,9 @@ var RcModule = exports.RcModule = (_dec = Reflect.metadata("design:type", typeof
         var depsTokens = Reflect.getMetadata('inversify:paramtypes', this.constructor);
         var taggedTokens = Reflect.getMetadata('inversify:tagged', this.constructor);
         this[_constant.depsModulesKey] = [];
-        var container = (0, _reactantShare.getRef)(this).container;
+        var container = (0, _reactant.getRef)(this).container;
         depsTokens.forEach(function (item, index) {
-          var token = (taggedTokens === null || taggedTokens === void 0 ? void 0 : taggedTokens[index]) ?
+          var token = taggedTokens !== null && taggedTokens !== void 0 && taggedTokens[index] ?
           /**
            * from `inversify` lib Meta interface
            * get the actual token
@@ -220,7 +221,7 @@ var RcModule = exports.RcModule = (_dec = Reflect.metadata("design:type", typeof
       var _target$userStorageKe;
       var target = this;
       var rehydrated = (0, _reactantShare.getRehydrated)(target);
-      if ((_target$userStorageKe = target[_decorators.userStorageKey]) === null || _target$userStorageKe === void 0 ? void 0 : _target$userStorageKe.size) {
+      if ((_target$userStorageKe = target[_decorators.userStorageKey]) !== null && _target$userStorageKe !== void 0 && _target$userStorageKe.size) {
         var _target$userIdReadyKe;
         return rehydrated && ((_target$userIdReadyKe = target[_constant.userIdReadyKey]) === null || _target$userIdReadyKe === void 0 ? void 0 : _target$userIdReadyKe.call(target));
       }
@@ -279,16 +280,16 @@ var RcModule = exports.RcModule = (_dec = Reflect.metadata("design:type", typeof
   }, {
     key: "identifier",
     get: function get() {
-      var identifier = (0, _reactantShare.getRef)(this).identifier;
+      var identifier = (0, _reactant.getRef)(this).identifier;
       return identifier;
     }
   }]);
-}(), _descriptor = _applyDecoratedDescriptor(_class.prototype, "status", [_reactantShare.state, _dec], {
+}(), _descriptor = _applyDecoratedDescriptor(_class.prototype, "status", [_reactant.state, _dec], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return _constant.ModuleStatus.Pending;
   }
-}), _applyDecoratedDescriptor(_class.prototype, "_setStatus", [_reactantShare.action, _dec2, _dec3], Object.getOwnPropertyDescriptor(_class.prototype, "_setStatus"), _class.prototype), _class);
+}), _applyDecoratedDescriptor(_class.prototype, "_setStatus", [_reactant.action, _dec2, _dec3], Object.getOwnPropertyDescriptor(_class.prototype, "_setStatus"), _class.prototype), _class);
 //# sourceMappingURL=RcModule.js.map

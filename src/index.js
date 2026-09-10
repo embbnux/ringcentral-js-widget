@@ -10,10 +10,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var _exportNames = {
   computed: true,
-  createBrowserHistory: true,
-  createHashHistory: true,
-  createMemoryHistory: true,
-  createBaseSharedApp: true,
   inject: true,
   lazy: true,
   dynamic: true,
@@ -21,25 +17,29 @@ var _exportNames = {
   ModuleRef: true,
   optional: true,
   PluginModule: true,
-  PortDetector: true,
   state: true,
   subscribe: true,
   watch: true,
-  useLock: true,
-  createTransport: true,
   testBed: true,
-  mockPairTransports: true,
-  merge: true,
-  SharedAppOptions: true,
   autobind: true,
   applyPatches: true,
+  getRef: true,
+  nameKey: true,
+  createBrowserHistory: true,
+  createHashHistory: true,
+  createMemoryHistory: true,
+  createBaseSharedApp: true,
+  PortDetector: true,
+  useLock: true,
+  mockPairTransports: true,
+  SharedAppOptions: true,
   Coworker: true,
   CoworkerOptions: true,
   createCoworker: true,
-  getRef: true,
   fork: true,
   createBroadcastTransport: true,
-  nameKey: true,
+  createTransport: true,
+  merge: true,
   BrowserRouter: true,
   MemoryRouter: true,
   Switch: true,
@@ -54,12 +54,15 @@ var _exportNames = {
   StaticRouter: true,
   matchPath: true,
   withRouter: true,
+  createRoot: true,
+  hydrateRoot: true,
   findDOMNode: true,
   unmountComponentAtNode: true,
   createPortal: true,
   version: true,
   render: true,
   hydrate: true,
+  flushSync: true,
   unstable_batchedUpdates: true,
   unstable_renderSubtreeIntoContainer: true
 };
@@ -90,13 +93,13 @@ Object.defineProperty(exports, "MemoryRouter", {
 Object.defineProperty(exports, "ModuleRef", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.ModuleRef;
+    return _reactant.ModuleRef;
   }
 });
 Object.defineProperty(exports, "PluginModule", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.PluginModule;
+    return _reactant.PluginModule;
   }
 });
 Object.defineProperty(exports, "PortDetector", {
@@ -144,19 +147,19 @@ Object.defineProperty(exports, "Switch", {
 Object.defineProperty(exports, "applyPatches", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.applyPatches;
+    return _reactant.applyPatches;
   }
 });
 Object.defineProperty(exports, "autobind", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.autobind;
+    return _reactant.autobind;
   }
 });
 Object.defineProperty(exports, "computed", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.computed;
+    return _reactant.computed;
   }
 });
 Object.defineProperty(exports, "createBaseSharedApp", {
@@ -201,22 +204,34 @@ Object.defineProperty(exports, "createPortal", {
     return _reactantWeb.createPortal;
   }
 });
+Object.defineProperty(exports, "createRoot", {
+  enumerable: true,
+  get: function get() {
+    return _reactantWeb.createRoot;
+  }
+});
 Object.defineProperty(exports, "createTransport", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.createTransport;
+    return _dataTransport.createTransport;
   }
 });
 Object.defineProperty(exports, "dynamic", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.dynamic;
+    return _reactant.dynamic;
   }
 });
 Object.defineProperty(exports, "findDOMNode", {
   enumerable: true,
   get: function get() {
     return _reactantWeb.findDOMNode;
+  }
+});
+Object.defineProperty(exports, "flushSync", {
+  enumerable: true,
+  get: function get() {
+    return _reactantWeb.flushSync;
   }
 });
 Object.defineProperty(exports, "fork", {
@@ -234,7 +249,7 @@ Object.defineProperty(exports, "generatePath", {
 Object.defineProperty(exports, "getRef", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.getRef;
+    return _reactant.getRef;
   }
 });
 Object.defineProperty(exports, "hydrate", {
@@ -243,22 +258,28 @@ Object.defineProperty(exports, "hydrate", {
     return _reactantWeb.hydrate;
   }
 });
+Object.defineProperty(exports, "hydrateRoot", {
+  enumerable: true,
+  get: function get() {
+    return _reactantWeb.hydrateRoot;
+  }
+});
 Object.defineProperty(exports, "inject", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.inject;
+    return _reactant.inject;
   }
 });
 Object.defineProperty(exports, "lazy", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.lazy;
+    return _reactant.lazy;
   }
 });
 Object.defineProperty(exports, "load", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.load;
+    return _reactant.load;
   }
 });
 Object.defineProperty(exports, "matchPath", {
@@ -270,7 +291,7 @@ Object.defineProperty(exports, "matchPath", {
 Object.defineProperty(exports, "merge", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.merge;
+    return _dataTransport.merge;
   }
 });
 Object.defineProperty(exports, "mockPairTransports", {
@@ -282,13 +303,13 @@ Object.defineProperty(exports, "mockPairTransports", {
 Object.defineProperty(exports, "nameKey", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.nameKey;
+    return _reactant.nameKey;
   }
 });
 Object.defineProperty(exports, "optional", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.optional;
+    return _reactant.optional;
   }
 });
 Object.defineProperty(exports, "render", {
@@ -300,19 +321,19 @@ Object.defineProperty(exports, "render", {
 Object.defineProperty(exports, "state", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.state;
+    return _reactant.state;
   }
 });
 Object.defineProperty(exports, "subscribe", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.subscribe;
+    return _reactant.subscribe;
   }
 });
 Object.defineProperty(exports, "testBed", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.testBed;
+    return _reactant.testBed;
   }
 });
 Object.defineProperty(exports, "unmountComponentAtNode", {
@@ -372,7 +393,7 @@ Object.defineProperty(exports, "version", {
 Object.defineProperty(exports, "watch", {
   enumerable: true,
   get: function get() {
-    return _reactantShare.watch;
+    return _reactant.watch;
   }
 });
 Object.defineProperty(exports, "withRouter", {
@@ -477,6 +498,8 @@ Object.keys(_constant).forEach(function (key) {
     }
   });
 });
+var _reactant = require("reactant");
 var _reactantShare = require("reactant-share");
+var _dataTransport = require("data-transport");
 var _reactantWeb = require("reactant-web");
 //# sourceMappingURL=index.js.map

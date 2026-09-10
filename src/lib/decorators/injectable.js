@@ -7,13 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.injectable = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.function.name.js");
-var _reactantShare = require("reactant-share");
+var _reactant = require("reactant");
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 var injectable = exports.injectable = process.env.NODE_ENV !== 'production' ? function (options) {
-  var decorate = (0, _reactantShare.injectable)(options);
+  var decorate = (0, _reactant.injectable)(options);
   return function (target) {
-    if (!(options === null || options === void 0 ? void 0 : options.name)) {
+    if (!(options !== null && options !== void 0 && options.name)) {
       throw new Error("@injectable() in module ".concat(target, " must have a module name"));
     }
     if (options.name !== target.name) {
@@ -21,5 +21,5 @@ var injectable = exports.injectable = process.env.NODE_ENV !== 'production' ? fu
     }
     return decorate(target);
   };
-} : _reactantShare.injectable;
+} : _reactant.injectable;
 //# sourceMappingURL=injectable.js.map
