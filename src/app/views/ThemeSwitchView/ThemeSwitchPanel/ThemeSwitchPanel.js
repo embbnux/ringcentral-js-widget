@@ -7,9 +7,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.ThemeSwitchPanel = void 0;
 exports.formatCountryDisplay = formatCountryDisplay;
 require("core-js/modules/es.array.concat.js");
+require("core-js/modules/es.array.map.js");
+require("core-js/modules/es.object.to-string.js");
 var _components = require("@ringcentral-integration/micro-core/src/app/components");
 var _hooks = require("@ringcentral-integration/micro-core/src/app/hooks");
 var _components2 = require("@ringcentral-integration/next-widgets/components");
+var _springTheme = require("@ringcentral/spring-theme");
 var _react = _interopRequireDefault(require("react"));
 var _Section = require("../../../components/Section");
 var _i18n = _interopRequireDefault(require("./i18n"));
@@ -18,7 +21,8 @@ function formatCountryDisplay(callingCode, countryName) {
   return "(+".concat(callingCode, ") ").concat(countryName);
 }
 var ThemeSwitchPanel = exports.ThemeSwitchPanel = function ThemeSwitchPanel(_ref) {
-  var themeId = _ref.themeId,
+  var _themeMap$light, _themeMap$light$;
+  var themeIdProp = _ref.themeId,
     onThemeIdChange = _ref.onThemeIdChange,
     themeType = _ref.themeType,
     themeTypeOptions = _ref.themeTypeOptions,
@@ -30,6 +34,7 @@ var ThemeSwitchPanel = exports.ThemeSwitchPanel = function ThemeSwitchPanel(_ref
     reducedMotionOptions = _ref.reducedMotionOptions;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
+  var themeId = themeIdProp || ((_themeMap$light = themeMap.light) === null || _themeMap$light === void 0 ? void 0 : (_themeMap$light$ = _themeMap$light[0]) === null || _themeMap$light$ === void 0 ? void 0 : _themeMap$light$.id);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_components.AppHeaderNav, {
     override: true
   }, /*#__PURE__*/_react["default"].createElement(_components2.PageHeader, {
@@ -48,7 +53,22 @@ var ThemeSwitchPanel = exports.ThemeSwitchPanel = function ThemeSwitchPanel(_ref
     className: "-mt-2"
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: "text-neutral-b2 typography-descriptorMini"
-  }, t('description')))), /*#__PURE__*/_react["default"].createElement(_Section.Section, {
+  }, t('description'))), /*#__PURE__*/_react["default"].createElement(_components2.Line, {
+    className: "pt-2"
+  }, themeMap.light.map(function (_ref2) {
+    var id = _ref2.id,
+      theme = _ref2.theme;
+    return /*#__PURE__*/_react["default"].createElement(_springTheme.ThemeProvider, {
+      scope: "scope-".concat(id),
+      theme: theme,
+      key: id
+    }, /*#__PURE__*/_react["default"].createElement("button", {
+      className: "bg-primary-f size-6 flex items-center justify-center p-2 rounded text-neutral-b5",
+      onClick: function onClick() {
+        onThemeIdChange(id);
+      }
+    }, id === themeId ? '✓' : ''));
+  }))), /*#__PURE__*/_react["default"].createElement(_Section.Section, {
     label: t('accessibility')
   }, /*#__PURE__*/_react["default"].createElement(_components2.SelectLine, {
     value: prefersReducedMotion,

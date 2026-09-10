@@ -169,9 +169,12 @@ var SettingsPanel = exports.SettingsPanel = function SettingsPanel(_ref) {
     enableAcceptQueueCallsControl = _ref$enableAcceptQueu === void 0 ? true : _ref$enableAcceptQueu,
     customRenderInfo = _ref.customRenderInfo,
     onCallQueueManagementClick = _ref.onCallQueueManagementClick,
+    onConsentManagementClick = _ref.onConsentManagementClick,
     autoLogTextUpdating = _ref.autoLogTextUpdating,
     onRefreshLog = _ref.onRefreshLog,
-    isLogRefreshing = _ref.isLogRefreshing;
+    isLogRefreshing = _ref.isLogRefreshing,
+    _ref$showConsentManag = _ref.showConsentManagement,
+    showConsentManagement = _ref$showConsentManag === void 0 ? false : _ref$showConsentManag;
   var _useLocale = (0, _hooks.useLocale)(_i18n["default"]),
     t = _useLocale.t;
   var showPhoneSection = showAudio || showCalling || showRegion || showReport;
@@ -220,7 +223,12 @@ var SettingsPanel = exports.SettingsPanel = function SettingsPanel(_ref) {
     color: "neutral",
     variant: "icon",
     "data-sign": "popUpAppForInboundCall-info-icon"
-  })))), showLogSection && /*#__PURE__*/_react["default"].createElement(_Section.Section, {
+  })))), showConsentManagement && /*#__PURE__*/_react["default"].createElement(_Section.Section, {
+    label: t('text')
+  }, /*#__PURE__*/_react["default"].createElement(_components2.LinkLine, {
+    "data-sign": "consentManagement",
+    onClick: onConsentManagementClick
+  }, t('consentManagement'))), showLogSection && /*#__PURE__*/_react["default"].createElement(_Section.Section, {
     label: t('log'),
     headerEndAdornment: onRefreshLog && /*#__PURE__*/_react["default"].createElement(_springUi.IconButton, {
       size: "xsmall",

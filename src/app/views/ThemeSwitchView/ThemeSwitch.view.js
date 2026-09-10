@@ -128,7 +128,7 @@ var ThemeSwitchView = exports.ThemeSwitchView = (_dec = (0, _nextCore.injectable
           _this2._theme.updateThemeType(type);
         },
         onThemeIdChange: function onThemeIdChange(themeId) {
-          console.log('🐞 ~ themeId:', themeId);
+          _this2._theme.setThemeId(themeId);
         },
         onPrefersReducedMotionChange: function onPrefersReducedMotionChange(val) {
           _this2.logger.log('update prefers reduced motion', val);

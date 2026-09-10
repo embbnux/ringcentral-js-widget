@@ -98,9 +98,15 @@ function _createCPRRequest() {
           });
         case 1:
           response = _context.v;
-          _context.n = 2;
-          return response.json();
+          if (response.ok) {
+            _context.n = 2;
+            break;
+          }
+          throw new Error("CPR request failed with status ".concat(response.status));
         case 2:
+          _context.n = 3;
+          return response.json();
+        case 3:
           return _context.a(2, _context.v);
       }
     }, _callee);

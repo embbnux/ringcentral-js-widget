@@ -54,7 +54,7 @@ var RingtoneUploadButton = exports.RingtoneUploadButton = /*#__PURE__*/(0, _reac
             case 0:
               currentTarget = _ref2.currentTarget;
               _context.p = 1;
-              if (!((currentTarget === null || currentTarget === void 0 ? void 0 : (_currentTarget$files = currentTarget.files) === null || _currentTarget$files === void 0 ? void 0 : _currentTarget$files.length) && isMountedRef.current)) {
+              if (!(currentTarget !== null && currentTarget !== void 0 && (_currentTarget$files = currentTarget.files) !== null && _currentTarget$files !== void 0 && _currentTarget$files.length && isMountedRef.current)) {
                 _context.n = 7;
                 break;
               }

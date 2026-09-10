@@ -60,8 +60,8 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
 var SettingAppView = exports.SettingAppView = (_dec = (0, _nextCore.injectable)({
   name: 'SettingAppView'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _services.Theme === "undefined" ? Object : _services.Theme, typeof _views2.SettingsView === "undefined" ? Object : _views2.SettingsView, typeof _views2.CallingSettingsView === "undefined" ? Object : _views2.CallingSettingsView, typeof _views2.RegionSettingsView === "undefined" ? Object : _views2.RegionSettingsView, typeof _views2.AudioSettingsView === "undefined" ? Object : _views2.AudioSettingsView, typeof _views2.FeedbackView === "undefined" ? Object : _views2.FeedbackView, typeof _views2.IssuesTrackingView === "undefined" ? Object : _views2.IssuesTrackingView, typeof _CallQueueManagementView.CallQueueManagementView === "undefined" ? Object : _CallQueueManagementView.CallQueueManagementView, typeof _views.MFEAppRootView === "undefined" ? Object : _views.MFEAppRootView]), _dec4 = (0, _nextCore.delegate)('server'), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String]), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcMicroAppView) {
-  function SettingAppView(_theme, _settingsView, _callingSettingsView, _regionSettingsView, _audioSettingsView, _feedbackView, _issuesTrackingView, _callQueueManagementView, _mfeAppRootView) {
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _services.Theme === "undefined" ? Object : _services.Theme, typeof _views2.SettingsView === "undefined" ? Object : _views2.SettingsView, typeof _views2.CallingSettingsView === "undefined" ? Object : _views2.CallingSettingsView, typeof _views2.RegionSettingsView === "undefined" ? Object : _views2.RegionSettingsView, typeof _views2.AudioSettingsView === "undefined" ? Object : _views2.AudioSettingsView, typeof _views2.IssuesTrackingView === "undefined" ? Object : _views2.IssuesTrackingView, typeof _CallQueueManagementView.CallQueueManagementView === "undefined" ? Object : _CallQueueManagementView.CallQueueManagementView, typeof _views.MFEAppRootView === "undefined" ? Object : _views.MFEAppRootView]), _dec4 = (0, _nextCore.delegate)('server'), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String]), _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcMicroAppView) {
+  function SettingAppView(_theme, _settingsView, _callingSettingsView, _regionSettingsView, _audioSettingsView, _issuesTrackingView, _callQueueManagementView, _mfeAppRootView) {
     var _this;
     _classCallCheck(this, SettingAppView);
     _this = _callSuper(this, SettingAppView);
@@ -70,7 +70,6 @@ var SettingAppView = exports.SettingAppView = (_dec = (0, _nextCore.injectable)(
     _this._callingSettingsView = _callingSettingsView;
     _this._regionSettingsView = _regionSettingsView;
     _this._audioSettingsView = _audioSettingsView;
-    _this._feedbackView = _feedbackView;
     _this._issuesTrackingView = _issuesTrackingView;
     _this._callQueueManagementView = _callQueueManagementView;
     _this._mfeAppRootView = _mfeAppRootView;
@@ -127,11 +126,6 @@ var SettingAppView = exports.SettingAppView = (_dec = (0, _nextCore.injectable)(
             path: "/settings/audio",
             component: function component() {
               return /*#__PURE__*/_react["default"].createElement(_this2._audioSettingsView.component, null);
-            }
-          }), /*#__PURE__*/_react["default"].createElement(_nextCore.Route, {
-            path: "/settings/feedback",
-            component: function component() {
-              return /*#__PURE__*/_react["default"].createElement(_this2._feedbackView.component, null);
             }
           }), /*#__PURE__*/_react["default"].createElement(_nextCore.Route, {
             path: "/settings/issuesTracking",

@@ -30,21 +30,20 @@ Object.defineProperty(exports, "__esModule", {
 exports.IssuesTrackingView = void 0;
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
+var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _components = require("@ringcentral-integration/micro-core/src/app/components");
 var _hooks = require("@ringcentral-integration/micro-core/src/app/hooks");
-var _services = require("@ringcentral-integration/micro-core/src/app/services");
+var _services2 = require("@ringcentral-integration/micro-core/src/app/services");
 var _views = require("@ringcentral-integration/micro-core/src/app/views");
-var _services2 = require("@ringcentral-integration/micro-auth/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _components2 = require("@ringcentral-integration/next-widgets/components");
 var _PageHeader = require("@ringcentral-integration/next-widgets/deprecated/components/PageHeader");
 var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireDefault(require("react"));
-var _trackEvents = require("../../../enums/trackEvents");
 var _CPRClientView = require("../../views/CPRClientView");
 var _i18n = _interopRequireDefault(require("./i18n"));
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _class, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _class2, _descriptor;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
@@ -69,7 +68,7 @@ var IssuesTrackingView = exports.IssuesTrackingView = (_dec = (0, _nextCore.inje
   name: 'IssuesTrackingView'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('IssuesTrackingViewOptions')(target, undefined, 3);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Brand === "undefined" ? Object : _services.Brand, typeof _CPRClientView.CPRClientView === "undefined" ? Object : _CPRClientView.CPRClientView, typeof IssuesTrackingViewOptions === "undefined" ? Object : IssuesTrackingViewOptions]), _dec5 = (0, _nextCore.dynamic)('Theme'), _dec6 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [void 0]), _dec0 = (0, _services2.track)(_trackEvents.trackEvents.supportCaseCreated), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _CPRClientView.CPRClientView === "undefined" ? Object : _CPRClientView.CPRClientView, typeof IssuesTrackingViewOptions === "undefined" ? Object : IssuesTrackingViewOptions]), _dec5 = (0, _nextCore.dynamic)('Theme'), _dec6 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [void 0]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function IssuesTrackingView(_router, _brand, _cPRClientView, _issuesTrackingViewOptions) {
     var _this;
     _classCallCheck(this, IssuesTrackingView);
@@ -145,7 +144,7 @@ var IssuesTrackingView = exports.IssuesTrackingView = (_dec = (0, _nextCore.inje
           return _this2.goBack(backRoute);
         }
       }), /*#__PURE__*/_react["default"].createElement(_PageHeader.PageHeaderTitle, null, t('header')), /*#__PURE__*/_react["default"].createElement(_PageHeader.PageHeaderRemain, null))), /*#__PURE__*/_react["default"].createElement("main", {
-        className: "flex flex-col gap-6 flex-auto overflow-y-auto overflow-x-hidden px-4 py-2"
+        className: "flex flex-col gap-6 flex-auto min-h-0 overflow-y-auto overflow-x-hidden px-4 py-2"
       }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_springUi.Text, {
         className: "typography-subtitle font-bold mb-2 text-neutral-b0",
         component: "p"
@@ -164,7 +163,8 @@ var IssuesTrackingView = exports.IssuesTrackingView = (_dec = (0, _nextCore.inje
           symbol: _springIcon.ArrowRightUpMd
         }),
         onClick: function onClick() {
-          return _this2.openSupportCase(supportLink);
+          (0, _services.trackEvent)('Support_Case_Created', {});
+          _this2.openSupportCase(supportLink);
         }
       }, t('supportTicketBtn')))), /*#__PURE__*/_react["default"].createElement(_springUi.Divider, null), /*#__PURE__*/_react["default"].createElement(this._cPRClientView.component, null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_springUi.Text, {
         "data-sign": "privacyNoticeDesc",
@@ -188,5 +188,5 @@ var IssuesTrackingView = exports.IssuesTrackingView = (_dec = (0, _nextCore.inje
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "goBack", [_dec7, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "goBack"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "openSupportCase", [_dec0, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "openSupportCase"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "goBack", [_dec7, _dec8, _dec9], Object.getOwnPropertyDescriptor(_class2.prototype, "goBack"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=IssuesTracking.view.js.map

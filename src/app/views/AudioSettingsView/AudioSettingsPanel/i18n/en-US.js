@@ -25,6 +25,7 @@ var _default = exports["default"] = {
   stopRecordButton: 'Stop recording',
   stopPlaybackButton: 'Stop test',
   startTestButton: 'Test speaker',
-  stopTestDescription: 'Playing sample sound...'
+  stopTestDescription: 'Playing sample sound...',
+  noiseReduction: 'Remove my background noise'
 };
 //# sourceMappingURL=en-US.js.map

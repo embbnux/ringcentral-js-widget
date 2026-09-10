@@ -51,6 +51,8 @@ var _default = exports["default"] = {
   contactSupport: 'Ota yhteyttä tukeen',
   selectToDialHint: 'Saat paremman kokemuksen valitsemalla puhelinnumeron, johon soitetaan kohteelle {brandName} suurella puhelinnumerosivulla.',
   phone: 'Puhelin',
+  text: 'Teksti',
+  consentManagement: 'Suostumusten hallinta',
   log: 'Loki',
   general: 'Yleinen',
   showMatches: 'Näytä osumat saapuvista puheluista',
@@ -101,6 +103,8 @@ var _default = exports["default"] = {
 // @key: @#@"contactSupport"@#@ @source: @#@"Contact support"@#@
 // @key: @#@"selectToDialHint"@#@ @source: @#@"For your better experience, select phone number to dial with {brandName} in large quantity phone number page."@#@
 // @key: @#@"phone"@#@ @source: @#@"Phone"@#@
+// @key: @#@"text"@#@ @source: @#@"Text"@#@
+// @key: @#@"consentManagement"@#@ @source: @#@"Consent management"@#@
 // @key: @#@"log"@#@ @source: @#@"Log"@#@
 // @key: @#@"general"@#@ @source: @#@"General"@#@
 // @key: @#@"showMatches"@#@ @source: @#@"Show matches for inbound calls"@#@

@@ -46,7 +46,7 @@ var _SettingsPanel = require("@ringcentral-integration/widgets/components/Settin
 var _react = _interopRequireWildcard(require("react"));
 var _services3 = require("../../services");
 var _SettingsPanel2 = require("./SettingsPanel");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -74,11 +74,11 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var DEFAULT_REGION_SETTINGS_URL = '/settings/region';
 var DEFAULT_CALLING_SETTINGS_URL = '/settings/calling';
 var DEFAULT_AUDIO_SETTINGS_URL = '/settings/audio';
-var DEFAULT_FEEDBACK_SETTINGS_URL = '/settings/feedback';
 var DEFAULT_ISSUE_TACKING_SETTINGS_URL = '/settings/issuesTracking';
 var DEFAULT_THEME_SWITCH_URL = '/settings/theme';
 var DEFAULT_AUTO_LOG_SETTINGS_URL = '/settings/autoCallLogSettings';
 var DEFAULT_CALL_QUEUE_MANAGEMENT_URL = '/settings/callQueueManagement';
+var DEFAULT_CONSENT_MANAGEMENT_URL = '/settings/consentManagement';
 var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
   name: 'SettingsView'
 }), _dec2 = function _dec2(target, key) {
@@ -89,7 +89,7 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 16);
 }, _dec5 = function _dec5(target, key) {
   return (0, _nextCore.optional)('SettingsViewOptions')(target, undefined, 17);
-}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services.UserInfo === "undefined" ? Object : _services.UserInfo, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services2.Theme === "undefined" ? Object : _services2.Theme, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _services2.Locale === "undefined" ? Object : _services2.Locale, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _views2.CPRClientView === "undefined" ? Object : _views2.CPRClientView, typeof _views2.CallQueueManagementView === "undefined" ? Object : _views2.CallQueueManagementView, String, typeof _services3.QuickAccess === "undefined" ? Object : _services3.QuickAccess, typeof _services3.UserGuide === "undefined" ? Object : _services3.UserGuide, typeof SettingsViewOptions === "undefined" ? Object : SettingsViewOptions]), _dec8 = (0, _nextCore.dynamic)('WelcomeView'), _dec9 = Reflect.metadata("design:type", typeof WelcomeView === "undefined" ? Object : WelcomeView), _dec0 = (0, _nextCore.dynamic)('AutoCallLoggingSwitchView'), _dec1 = Reflect.metadata("design:type", typeof AutoCallLoggingSwitchView === "undefined" ? Object : AutoCallLoggingSwitchView), _dec10 = (0, _nextCore.dynamic)('IntegrationConfig'), _dec11 = Reflect.metadata("design:type", typeof IntegrationConfig === "undefined" ? Object : IntegrationConfig), _dec12 = Reflect.metadata("design:type", Boolean), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [Boolean]), _dec15 = (0, _nextCore.dynamic)('CallingSettings'), _dec16 = Reflect.metadata("design:type", typeof CallingSettings === "undefined" ? Object : CallingSettings), _dec17 = Reflect.metadata("design:type", Function), _dec18 = Reflect.metadata("design:paramtypes", []), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _services.track)(_trackEvents.trackEvents.clickFeedback), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", []), _dec27 = (0, _nextCore.delegate)('server'), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec6 = Reflect.metadata("design:type", Function), _dec7 = Reflect.metadata("design:paramtypes", [typeof _services.UserInfo === "undefined" ? Object : _services.UserInfo, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services2.Theme === "undefined" ? Object : _services2.Theme, typeof _services2.Brand === "undefined" ? Object : _services2.Brand, typeof _services2.Locale === "undefined" ? Object : _services2.Locale, typeof _services.AccountInfo === "undefined" ? Object : _services.AccountInfo, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services.RegionSettings === "undefined" ? Object : _services.RegionSettings, typeof _services.ExtensionFeatures === "undefined" ? Object : _services.ExtensionFeatures, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services.Presence === "undefined" ? Object : _services.Presence, typeof _views2.CPRClientView === "undefined" ? Object : _views2.CPRClientView, typeof _views2.CallQueueManagementView === "undefined" ? Object : _views2.CallQueueManagementView, String, typeof _services3.QuickAccess === "undefined" ? Object : _services3.QuickAccess, typeof _services3.UserGuide === "undefined" ? Object : _services3.UserGuide, typeof SettingsViewOptions === "undefined" ? Object : SettingsViewOptions]), _dec8 = (0, _nextCore.dynamic)('WelcomeView'), _dec9 = Reflect.metadata("design:type", typeof WelcomeView === "undefined" ? Object : WelcomeView), _dec0 = (0, _nextCore.dynamic)('AutoCallLoggingSwitchView'), _dec1 = Reflect.metadata("design:type", typeof AutoCallLoggingSwitchView === "undefined" ? Object : AutoCallLoggingSwitchView), _dec10 = (0, _nextCore.dynamic)('IntegrationConfig'), _dec11 = Reflect.metadata("design:type", typeof IntegrationConfig === "undefined" ? Object : IntegrationConfig), _dec12 = (0, _nextCore.dynamic)('SmsConsent'), _dec13 = Reflect.metadata("design:type", typeof SmsConsent === "undefined" ? Object : SmsConsent), _dec14 = Reflect.metadata("design:type", Boolean), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", [Boolean]), _dec17 = (0, _nextCore.dynamic)('CallingSettings'), _dec18 = Reflect.metadata("design:type", typeof CallingSettings === "undefined" ? Object : CallingSettings), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", []), _dec26 = (0, _services.track)(_trackEvents.trackEvents.clickFeedback), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", []), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function SettingsView(_userInfo, _auth, _theme, _brand, _locale, _accountInfo, _extensionInfo, _regionSettings, _extensionFeatures, _appFeatures, _router, _presence, _cPRClientView, _callQueueManagementView, _version, _quickAccess, _userGuide, _settingsViewOptions) {
     var _this;
     _classCallCheck(this, SettingsView);
@@ -115,9 +115,10 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
     _initializerDefineProperty(_this, "welcomeView", _descriptor, _this);
     _initializerDefineProperty(_this, "_autoCallLoggingSwitchView", _descriptor2, _this);
     _initializerDefineProperty(_this, "_integrationConfig", _descriptor3, _this);
-    _initializerDefineProperty(_this, "autoLogTextUpdating", _descriptor4, _this);
-    _initializerDefineProperty(_this, "_callingSettings", _descriptor5, _this);
-    _initializerDefineProperty(_this, "popUpAppForInboundCall", _descriptor6, _this);
+    _initializerDefineProperty(_this, "_smsConsent", _descriptor4, _this);
+    _initializerDefineProperty(_this, "autoLogTextUpdating", _descriptor5, _this);
+    _initializerDefineProperty(_this, "_callingSettings", _descriptor6, _this);
+    _initializerDefineProperty(_this, "popUpAppForInboundCall", _descriptor7, _this);
     return _this;
   }
   _inherits(SettingsView, _RcViewModule);
@@ -164,7 +165,7 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "getUIProps",
     value: function getUIProps(_ref) {
-      var _this$_settingsViewOp, _this$_settingsViewOp2, _this$_presence, _this$_presence2, _this$_presence3, _this$_userGuide, _this$_settingsViewOp3, _this$_settingsViewOp4, _this$_settingsViewOp5, _this$_settingsViewOp6, _this$_settingsViewOp7, _this$_settingsViewOp8, _this$_settingsViewOp9, _this$_settingsViewOp0, _this$_integrationCon, _this$_settingsViewOp1, _this$_settingsViewOp10, _this$_settingsViewOp11, _this$_settingsViewOp12;
+      var _this$_settingsViewOp, _this$_settingsViewOp2, _this$_smsConsent, _this$_presence, _this$_presence2, _this$_presence3, _this$_userGuide, _this$_settingsViewOp3, _this$_settingsViewOp4, _this$_settingsViewOp5, _this$_settingsViewOp6, _this$_settingsViewOp7, _this$_settingsViewOp8, _this$_settingsViewOp9, _this$_settingsViewOp0, _this$_integrationCon, _this$_settingsViewOp1, _this$_settingsViewOp10, _this$_settingsViewOp11, _this$_settingsViewOp12;
       var _ref$showCalling = _ref.showCalling,
         showCalling = _ref$showCalling === void 0 ? true : _ref$showCalling,
         _ref$showAudio = _ref.showAudio,
@@ -194,6 +195,7 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         eulaLabel: this._brand.brandConfig.eulaLabel,
         eulaLink: this._brand.brandConfig.eulaLink,
         outboundSMS: this._appFeatures.hasComposeTextPermission,
+        showConsentManagement: this._appFeatures.hasComposeTextPermission && !!((_this$_smsConsent = this._smsConsent) !== null && _this$_smsConsent !== void 0 && _this$_smsConsent.canReadConsent),
         isCallQueueMember: this._extensionInfo.isCallQueueMember,
         dndStatus: (_this$_presence = this._presence) === null || _this$_presence === void 0 ? void 0 : _this$_presence.dndStatus,
         userStatus:
@@ -204,14 +206,14 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         // https://jira_domain/browse/RCINT-43739
         // TODO: currently we only show the presence settings when has edit permission, but that may consider about the user which only has the read permission also should show but not allow to edit
         showPresenceSettings && this._appFeatures.hasEditPresenceStatus,
-        showUserGuide: showUserGuide && !!((_this$_userGuide = this._userGuide) === null || _this$_userGuide === void 0 ? void 0 : _this$_userGuide.hasPermission),
+        showUserGuide: showUserGuide && !!((_this$_userGuide = this._userGuide) !== null && _this$_userGuide !== void 0 && _this$_userGuide.hasPermission),
         brandConfig: this._brand.brandConfig,
-        showRemoveMeetingWarning: !!((_this$_settingsViewOp3 = this._settingsViewOptions) === null || _this$_settingsViewOp3 === void 0 ? void 0 : _this$_settingsViewOp3.showRemoveMeetingWarning),
+        showRemoveMeetingWarning: !!((_this$_settingsViewOp3 = this._settingsViewOptions) !== null && _this$_settingsViewOp3 !== void 0 && _this$_settingsViewOp3.showRemoveMeetingWarning),
         showTrackingIssue: true,
         showMatchesToggle: (_this$_settingsViewOp4 = this._settingsViewOptions) === null || _this$_settingsViewOp4 === void 0 ? void 0 : _this$_settingsViewOp4.showMatchesToggle,
         showPopUpForInboundCall: this._appFeatures.isCallingEnabled && ((_this$_settingsViewOp5 = this._settingsViewOptions) === null || _this$_settingsViewOp5 === void 0 ? void 0 : _this$_settingsViewOp5.showPopUpForInboundCall),
-        showMatches: !!((_this$_settingsViewOp6 = this._settingsViewOptions) === null || _this$_settingsViewOp6 === void 0 ? void 0 : _this$_settingsViewOp6.showMatches),
-        autoLogSMSEnabled: !!((_this$_settingsViewOp7 = this._settingsViewOptions) === null || _this$_settingsViewOp7 === void 0 ? void 0 : _this$_settingsViewOp7.autoLogSMSEnabled),
+        showMatches: !!((_this$_settingsViewOp6 = this._settingsViewOptions) !== null && _this$_settingsViewOp6 !== void 0 && _this$_settingsViewOp6.showMatches),
+        autoLogSMSEnabled: !!((_this$_settingsViewOp7 = this._settingsViewOptions) !== null && _this$_settingsViewOp7 !== void 0 && _this$_settingsViewOp7.autoLogSMSEnabled),
         showThemeSwitch: this._theme.supportedThemeTypes && this._theme.supportedThemeTypes.length > 1,
         autoLogSMSTitle: (_this$_settingsViewOp8 = this._settingsViewOptions) === null || _this$_settingsViewOp8 === void 0 ? void 0 : _this$_settingsViewOp8.autoLogSMSTitle,
         enableAcceptQueueCallsControl: this._appFeatures.enableAcceptQueueCallsControl,
@@ -222,7 +224,7 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         crmService: (_this$_integrationCon = this._integrationConfig) === null || _this$_integrationCon === void 0 ? void 0 : _this$_integrationCon.name,
         popUpAppForInboundCall: (_this$_settingsViewOp1 = (_this$_settingsViewOp10 = this._settingsViewOptions) === null || _this$_settingsViewOp10 === void 0 ? void 0 : _this$_settingsViewOp10.popUpAppForInboundCall) !== null && _this$_settingsViewOp1 !== void 0 ? _this$_settingsViewOp1 : this.popUpAppForInboundCall,
         customRenderInfo: (_this$_settingsViewOp11 = this._settingsViewOptions) === null || _this$_settingsViewOp11 === void 0 ? void 0 : _this$_settingsViewOp11.customRenderInfo,
-        showAutoLogSMS: !!((_this$_settingsViewOp12 = this._settingsViewOptions) === null || _this$_settingsViewOp12 === void 0 ? void 0 : _this$_settingsViewOp12.showAutoLogSMS)
+        showAutoLogSMS: !!((_this$_settingsViewOp12 = this._settingsViewOptions) !== null && _this$_settingsViewOp12 !== void 0 && _this$_settingsViewOp12.showAutoLogSMS)
       } : undefined);
     }
   }, {
@@ -269,8 +271,6 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         callingSettingsUrl = _ref2$callingSettings === void 0 ? DEFAULT_CALLING_SETTINGS_URL : _ref2$callingSettings,
         _ref2$audioSettingsUr = _ref2.audioSettingsUrl,
         audioSettingsUrl = _ref2$audioSettingsUr === void 0 ? DEFAULT_AUDIO_SETTINGS_URL : _ref2$audioSettingsUr,
-        _ref2$feedbackSetting = _ref2.feedbackSettingsUrl,
-        feedbackSettingsUrl = _ref2$feedbackSetting === void 0 ? DEFAULT_FEEDBACK_SETTINGS_URL : _ref2$feedbackSetting,
         _ref2$autoCallLogSett = _ref2.autoCallLogSettingsUrl,
         autoCallLogSettingsUrl = _ref2$autoCallLogSett === void 0 ? DEFAULT_AUTO_LOG_SETTINGS_URL : _ref2$autoCallLogSett;
       return {
@@ -307,10 +307,8 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         },
         onFeedbackSettingsLinkClick: function onFeedbackSettingsLinkClick() {
           var _this3$_settingsViewO;
-          if ((_this3$_settingsViewO = _this3._settingsViewOptions) === null || _this3$_settingsViewO === void 0 ? void 0 : _this3$_settingsViewO.onFeedBackSettingsLink) {
+          if ((_this3$_settingsViewO = _this3._settingsViewOptions) !== null && _this3$_settingsViewO !== void 0 && _this3$_settingsViewO.onFeedBackSettingsLink) {
             _this3._settingsViewOptions.onFeedBackSettingsLink();
-          } else {
-            _this3._navigateTo(feedbackSettingsUrl);
           }
           _this3.trackOnFeedbackClick();
         },
@@ -364,40 +362,43 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
         },
         onCallQueueManagementClick: this._callQueueManagementView.enableCallQueueManagement ? function () {
           _this3._navigateTo(DEFAULT_CALL_QUEUE_MANAGEMENT_URL);
-        } : undefined
+        } : undefined,
+        onConsentManagementClick: function onConsentManagementClick() {
+          (0, _services.trackEvent)('Int_SMS_consentManagement', {});
+          _this3._navigateTo(DEFAULT_CONSENT_MANAGEMENT_URL);
+        }
       };
     }
   }, {
     key: "component",
     value: function component(props) {
       var _this4 = this,
-        _this$_settingsViewOp16;
+        _this$_settingsViewOp19;
       var _useRef = (0, _react.useRef)(this.getUIFunctions(props)),
         uiFunctions = _useRef.current;
       var _props = (0, _nextCore.useConnector)(function () {
-        var _this4$_settingsViewO, _this4$_settingsViewO2, _this4$_settingsViewO3;
         var uiProps = _this4.getUIProps(props);
-        return _objectSpread(_objectSpread(_objectSpread({}, props), uiProps), process.env.THEME_SYSTEM === 'spring-ui' ? {
-          additional: (_this4$_settingsViewO = _this4._settingsViewOptions) === null || _this4$_settingsViewO === void 0 ? void 0 : _this4$_settingsViewO.additional,
-          additionalLogItems: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null,
-          // when have inject the AutoCallLoggingSwitchView, it will be show the AutoCallLoggingSwitchView in the SettingsView
-          _this4._autoCallLoggingSwitchView ? /*#__PURE__*/_react["default"].createElement(_this4._autoCallLoggingSwitchView.component, null) : null, (_this4$_settingsViewO2 = _this4._settingsViewOptions) === null || _this4$_settingsViewO2 === void 0 ? void 0 : _this4$_settingsViewO2.additionalLogItems),
-          additionalAnalytics: (_this4$_settingsViewO3 = _this4._settingsViewOptions) === null || _this4$_settingsViewO3 === void 0 ? void 0 : _this4$_settingsViewO3.additionalAnalytics
-        } : undefined);
+        return _objectSpread(_objectSpread({}, props), uiProps);
       });
       if (process.env.THEME_SYSTEM === 'spring-ui') {
-        var _this$_settingsViewOp15;
+        var _this$_settingsViewOp15, _this$_settingsViewOp16, _this$_settingsViewOp17, _this$_settingsViewOp18;
         // use connector to ensure the update functions are updated
         var connectorUpdateFunctions = (0, _nextCore.useConnector)(function () {
-          var _this4$_settingsViewO4;
+          var _this4$_settingsViewO;
           return {
-            onRefreshLog: (_this4$_settingsViewO4 = _this4._settingsViewOptions) === null || _this4$_settingsViewO4 === void 0 ? void 0 : _this4$_settingsViewO4.onRefreshLog
+            onRefreshLog: (_this4$_settingsViewO = _this4._settingsViewOptions) === null || _this4$_settingsViewO === void 0 ? void 0 : _this4$_settingsViewO.onRefreshLog
           };
         });
         var _Component = ((_this$_settingsViewOp15 = this._settingsViewOptions) === null || _this$_settingsViewOp15 === void 0 ? void 0 : _this$_settingsViewOp15.component) || _SettingsPanel2.SettingsPanel;
-        return /*#__PURE__*/_react["default"].createElement(_Component, _extends({}, _props, uiFunctions, connectorUpdateFunctions));
+        return /*#__PURE__*/_react["default"].createElement(_Component, _extends({}, _props, {
+          additional: (_this$_settingsViewOp16 = this._settingsViewOptions) === null || _this$_settingsViewOp16 === void 0 ? void 0 : _this$_settingsViewOp16.additional,
+          additionalLogItems: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null,
+          // when have inject the AutoCallLoggingSwitchView, it will be show the AutoCallLoggingSwitchView in the SettingsView
+          this._autoCallLoggingSwitchView ? /*#__PURE__*/_react["default"].createElement(this._autoCallLoggingSwitchView.component, null) : null, (_this$_settingsViewOp17 = this._settingsViewOptions) === null || _this$_settingsViewOp17 === void 0 ? void 0 : _this$_settingsViewOp17.additionalLogItems),
+          additionalAnalytics: (_this$_settingsViewOp18 = this._settingsViewOptions) === null || _this$_settingsViewOp18 === void 0 ? void 0 : _this$_settingsViewOp18.additionalAnalytics
+        }, uiFunctions, connectorUpdateFunctions));
       }
-      var Component = ((_this$_settingsViewOp16 = this._settingsViewOptions) === null || _this$_settingsViewOp16 === void 0 ? void 0 : _this$_settingsViewOp16.component) || _SettingsPanel.SettingsPanel;
+      var Component = ((_this$_settingsViewOp19 = this._settingsViewOptions) === null || _this$_settingsViewOp19 === void 0 ? void 0 : _this$_settingsViewOp19.component) || _SettingsPanel.SettingsPanel;
       return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, _props, uiFunctions));
     }
   }]);
@@ -416,24 +417,29 @@ var SettingsView = exports.SettingsView = (_dec = (0, _nextCore.injectable)({
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "autoLogTextUpdating", [_nextCore.state, _dec12], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_smsConsent", [_dec12, _dec13], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "autoLogTextUpdating", [_nextCore.state, _dec14], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setAutoLogTextUpdating", [_nextCore.action, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAutoLogTextUpdating"), _class2.prototype), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_callingSettings", [_dec15, _dec16], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setAutoLogTextUpdating", [_nextCore.action, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAutoLogTextUpdating"), _class2.prototype), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "_callingSettings", [_dec17, _dec18], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "loginNumber", [_nextCore.computed, _dec17, _dec18], Object.getOwnPropertyDescriptor(_class2.prototype, "loginNumber"), _class2.prototype), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "popUpAppForInboundCall", [_nextCore.userStorage, _nextCore.state], {
+}), _applyDecoratedDescriptor(_class2.prototype, "loginNumber", [_nextCore.computed, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "loginNumber"), _class2.prototype), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "popUpAppForInboundCall", [_nextCore.userStorage, _nextCore.state], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return true;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_togglePopUpAppForInboundCall", [_nextCore.action, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "_togglePopUpAppForInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "togglePopUpAppForInboundCall", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "togglePopUpAppForInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackOnFeedbackClick", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "trackOnFeedbackClick"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onAutoLogSMSChange", [_dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "onAutoLogSMSChange"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_togglePopUpAppForInboundCall", [_nextCore.action, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "_togglePopUpAppForInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "togglePopUpAppForInboundCall", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "togglePopUpAppForInboundCall"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "trackOnFeedbackClick", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "trackOnFeedbackClick"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onAutoLogSMSChange", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "onAutoLogSMSChange"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=Settings.view.js.map

@@ -51,6 +51,8 @@ var _default = exports["default"] = {
   contactSupport: 'Support kontaktieren',
   selectToDialHint: 'Für eine bessere Erfahrung wählen Sie die Telefonnummer, die mit {brandName} gewählt werden soll, auf der Seite für Telefonnummern in großer Menge aus.',
   phone: 'Telefonie',
+  text: 'Text',
+  consentManagement: 'Einwilligungsverwaltung',
   log: 'Protokoll',
   general: 'Allgemein',
   showMatches: 'Übereinstimmungen für eingehende Anrufe anzeigen',
@@ -101,6 +103,8 @@ var _default = exports["default"] = {
 // @key: @#@"contactSupport"@#@ @source: @#@"Contact support"@#@
 // @key: @#@"selectToDialHint"@#@ @source: @#@"For your better experience, select phone number to dial with {brandName} in large quantity phone number page."@#@
 // @key: @#@"phone"@#@ @source: @#@"Phone"@#@
+// @key: @#@"text"@#@ @source: @#@"Text"@#@
+// @key: @#@"consentManagement"@#@ @source: @#@"Consent management"@#@
 // @key: @#@"log"@#@ @source: @#@"Log"@#@
 // @key: @#@"general"@#@ @source: @#@"General"@#@
 // @key: @#@"showMatches"@#@ @source: @#@"Show matches for inbound calls"@#@

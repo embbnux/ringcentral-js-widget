@@ -142,7 +142,7 @@ var PresenceSetting = exports.PresenceSetting = function PresenceSetting(_ref) {
       setStatusAnchor(showSelects ? null : iconRef.current);
       toggleShow();
     },
-    className: "cursor-pointer gap-2"
+    className: "cursor-pointer gap-2 flex-wrap"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     "data-sign": "label",
     className: "text-neutral-b1 truncate"

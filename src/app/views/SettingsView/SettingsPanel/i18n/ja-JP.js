@@ -51,6 +51,8 @@ var _default = exports["default"] = {
   contactSupport: 'サポートへのお問い合わせ',
   selectToDialHint: 'エクスペリエンスを向上させるため、大量の電話番号が記載されているページから{brandName}でダイヤルする電話番号を選択してください。',
   phone: '電話',
+  text: 'テキスト',
+  consentManagement: '同意管理',
   log: 'ログ',
   general: '一般',
   showMatches: '着信呼の一致を表示',
@@ -101,6 +103,8 @@ var _default = exports["default"] = {
 // @key: @#@"contactSupport"@#@ @source: @#@"Contact support"@#@
 // @key: @#@"selectToDialHint"@#@ @source: @#@"For your better experience, select phone number to dial with {brandName} in large quantity phone number page."@#@
 // @key: @#@"phone"@#@ @source: @#@"Phone"@#@
+// @key: @#@"text"@#@ @source: @#@"Text"@#@
+// @key: @#@"consentManagement"@#@ @source: @#@"Consent management"@#@
 // @key: @#@"log"@#@ @source: @#@"Log"@#@
 // @key: @#@"general"@#@ @source: @#@"General"@#@
 // @key: @#@"showMatches"@#@ @source: @#@"Show matches for inbound calls"@#@

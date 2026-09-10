@@ -63,6 +63,17 @@ Object.keys(_CPRClientView).forEach(function (key) {
     }
   });
 });
+var _ExperienceFeedbackView = require("./ExperienceFeedbackView");
+Object.keys(_ExperienceFeedbackView).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ExperienceFeedbackView[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ExperienceFeedbackView[key];
+    }
+  });
+});
 var _FeedbackView = require("./FeedbackView");
 Object.keys(_FeedbackView).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

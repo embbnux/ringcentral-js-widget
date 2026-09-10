@@ -1,0 +1,1 @@
+{"version":3,"file":"ExperienceFeedback.view.interface.js","names":[],"sources":["src/app/views/ExperienceFeedbackView/ExperienceFeedback.view.interface.ts"],"sourcesContent":["export type ExperienceFeedbackValue = 'great' | 'can-be-better';\n"],"mappings":"","ignoreList":[]}

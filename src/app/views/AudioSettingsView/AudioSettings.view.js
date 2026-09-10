@@ -39,13 +39,14 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 var _services = require("@ringcentral-integration/micro-core/src/app/services");
 var _views = require("@ringcentral-integration/micro-core/src/app/views");
+var _VolumeInspector = require("@ringcentral-integration/micro-phone/src/app/services/VolumeInspector");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _AudioSettingsPanel = require("@ringcentral-integration/widgets/components/AudioSettingsPanel");
 var _AudioSettingsPanelV = require("@ringcentral-integration/widgets/components/AudioSettingsPanelV2");
 var _react = _interopRequireWildcard(require("react"));
 var _uuid = require("uuid");
 var _AudioSettingsPanel2 = require("./AudioSettingsPanel");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t3 in e) "default" !== _t3 && {}.hasOwnProperty.call(e, _t3) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t3)) && (i.get || i.set) ? o(f, _t3, i) : f[_t3] = e[_t3]); return f; })(e, t); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -74,7 +75,7 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
   name: 'AudioSettingsView'
 }), _dec2 = function _dec2(target, key) {
   return (0, _nextCore.optional)('AudioSettingsViewOptions')(target, undefined, 2);
-}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof AudioSettingsViewOptions === "undefined" ? Object : AudioSettingsViewOptions]), _dec5 = (0, _nextCore.dynamic)('Theme'), _dec6 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec7 = (0, _nextCore.dynamic)('RingtoneConfiguration'), _dec8 = Reflect.metadata("design:type", typeof RingtoneConfiguration === "undefined" ? Object : RingtoneConfiguration), _dec9 = (0, _nextCore.dynamic)('VolumeInspector'), _dec0 = Reflect.metadata("design:type", typeof VolumeInspector === "undefined" ? Object : VolumeInspector), _dec1 = (0, _nextCore.dynamic)('AudioSettings'), _dec10 = Reflect.metadata("design:type", typeof AudioSettings === "undefined" ? Object : AudioSettings), _dec11 = (0, _nextCore.dynamic)('CallingSettings'), _dec12 = Reflect.metadata("design:type", typeof CallingSettings === "undefined" ? Object : CallingSettings), _dec13 = (0, _nextCore.dynamic)('CallMonitor'), _dec14 = Reflect.metadata("design:type", typeof CallMonitor === "undefined" ? Object : CallMonitor), _dec15 = (0, _nextCore.dynamic)('Webphone'), _dec16 = Reflect.metadata("design:type", typeof Webphone === "undefined" ? Object : Webphone), _dec17 = (0, _nextCore.dynamic)('CallAction'), _dec18 = Reflect.metadata("design:type", typeof CallAction === "undefined" ? Object : CallAction), _dec19 = (0, _nextCore.delegate)('all'), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", []), _dec22 = (0, _nextCore.delegate)('mainClient'), _dec23 = Reflect.metadata("design:type", Function), _dec24 = Reflect.metadata("design:paramtypes", [String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _services.Locale === "undefined" ? Object : _services.Locale, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof AudioSettingsViewOptions === "undefined" ? Object : AudioSettingsViewOptions]), _dec5 = (0, _nextCore.dynamic)('Theme'), _dec6 = Reflect.metadata("design:type", typeof Theme === "undefined" ? Object : Theme), _dec7 = (0, _nextCore.dynamic)('RingtoneConfiguration'), _dec8 = Reflect.metadata("design:type", typeof RingtoneConfiguration === "undefined" ? Object : RingtoneConfiguration), _dec9 = (0, _nextCore.dynamic)('VolumeInspector'), _dec0 = Reflect.metadata("design:type", typeof VolumeInspector === "undefined" ? Object : VolumeInspector), _dec1 = (0, _nextCore.dynamic)('AudioSettings'), _dec10 = Reflect.metadata("design:type", typeof AudioSettings === "undefined" ? Object : AudioSettings), _dec11 = (0, _nextCore.dynamic)('CallingSettings'), _dec12 = Reflect.metadata("design:type", typeof CallingSettings === "undefined" ? Object : CallingSettings), _dec13 = (0, _nextCore.dynamic)('CallMonitor'), _dec14 = Reflect.metadata("design:type", typeof CallMonitor === "undefined" ? Object : CallMonitor), _dec15 = (0, _nextCore.dynamic)('Webphone'), _dec16 = Reflect.metadata("design:type", typeof Webphone === "undefined" ? Object : Webphone), _dec17 = (0, _nextCore.dynamic)('CallAction'), _dec18 = Reflect.metadata("design:type", typeof CallAction === "undefined" ? Object : CallAction), _dec19 = (0, _nextCore.dynamic)('NoiseReduction'), _dec20 = Reflect.metadata("design:type", typeof NoiseReductionLike === "undefined" ? Object : NoiseReductionLike), _dec21 = (0, _nextCore.delegate)('all'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = (0, _nextCore.delegate)('mainClient'), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function AudioSettingsView(_locale, _router, _audioSettingsViewOptions) {
     var _this;
     _classCallCheck(this, AudioSettingsView);
@@ -90,6 +91,7 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
     _initializerDefineProperty(_this, "_callMonitor", _descriptor6, _this);
     _initializerDefineProperty(_this, "_webphone", _descriptor7, _this);
     _initializerDefineProperty(_this, "_callAction", _descriptor8, _this);
+    _initializerDefineProperty(_this, "_noiseReduction", _descriptor9, _this);
     return _this;
   }
   _inherits(AudioSettingsView, _RcViewModule);
@@ -256,7 +258,7 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
   }, {
     key: "getUIProps",
     value: function getUIProps() {
-      var _this$_audioSettingsV, _this$_audioSettingsV2, _this$_volumeInspecto, _this$_ringtoneConfig, _this$_ringtoneConfig2, _this$_ringtoneConfig3, _this$_ringtoneConfig4;
+      var _this$_audioSettingsV, _this$_audioSettingsV2, _this$_noiseReduction, _this$_noiseReduction2, _this$_noiseReduction3, _this$_noiseReduction4, _this$_volumeInspecto, _this$_volumeInspecto2, _this$_ringtoneConfig, _this$_ringtoneConfig2, _this$_ringtoneConfig3, _this$_ringtoneConfig4, _this$_ringtoneConfig5;
       var isHavingCall = !!(this._webphone && this._webphone.sessions.length > 0 || this._callMonitor.activeRingCalls.length + this._callMonitor.activeOnHoldCalls.length + this._callMonitor.activeCurrentCalls.length > 0);
       return {
         currentLocale: this._locale.currentLocale,
@@ -281,11 +283,20 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
         ringtoneSelectDisabled: isHavingCall || !this._audioSettings.availableOutputDevices.length || this.checkAllDevicesAreEmpty(this._audioSettings.availableOutputDevices),
         showCallVolume: (_this$_audioSettingsV = this._audioSettingsViewOptions) === null || _this$_audioSettingsV === void 0 ? void 0 : _this$_audioSettingsV.showCallVolume,
         showRingToneVolume: (_this$_audioSettingsV2 = this._audioSettingsViewOptions) === null || _this$_audioSettingsV2 === void 0 ? void 0 : _this$_audioSettingsV2.showRingToneVolume,
-        volumeTestData: (_this$_volumeInspecto = this._volumeInspector) === null || _this$_volumeInspecto === void 0 ? void 0 : _this$_volumeInspecto.data,
-        selectedRingtoneId: (_this$_ringtoneConfig = this._ringtoneConfiguration) === null || _this$_ringtoneConfig === void 0 ? void 0 : _this$_ringtoneConfig.selectedRingtoneId,
-        fullRingtoneList: ((_this$_ringtoneConfig2 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig2 === void 0 ? void 0 : _this$_ringtoneConfig2.fullRingtoneList) || [],
-        isUploadRingtoneDisabled: (_this$_ringtoneConfig3 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig3 === void 0 ? void 0 : _this$_ringtoneConfig3.isUploadRingtoneDisabled,
-        enableCustomRingtone: (_this$_ringtoneConfig4 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig4 === void 0 ? void 0 : _this$_ringtoneConfig4.enableCustomRingtone
+        showNoiseReductionToggle: (_this$_noiseReduction = (_this$_noiseReduction2 = this._noiseReduction) === null || _this$_noiseReduction2 === void 0 ? void 0 : _this$_noiseReduction2.showNoiseReductionSetting) !== null && _this$_noiseReduction !== void 0 ? _this$_noiseReduction : false,
+        isNoiseReductionEnabled: (_this$_noiseReduction3 = (_this$_noiseReduction4 = this._noiseReduction) === null || _this$_noiseReduction4 === void 0 ? void 0 : _this$_noiseReduction4.enabled) !== null && _this$_noiseReduction3 !== void 0 ? _this$_noiseReduction3 : false,
+        disableNoiseReductionSetting: this._webphone ? this._webphone.sessions.length > 0 : false,
+        volumeTestData: (_this$_volumeInspecto = (_this$_volumeInspecto2 = this._volumeInspector) === null || _this$_volumeInspecto2 === void 0 ? void 0 : _this$_volumeInspecto2.data) !== null && _this$_volumeInspecto !== void 0 ? _this$_volumeInspecto : {
+          volume: 0,
+          countDown: 0,
+          testState: _VolumeInspector.TEST_STATE.IDLE,
+          isRecording: false,
+          type: null
+        },
+        selectedRingtoneId: (_this$_ringtoneConfig = (_this$_ringtoneConfig2 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig2 === void 0 ? void 0 : _this$_ringtoneConfig2.selectedRingtoneId) !== null && _this$_ringtoneConfig !== void 0 ? _this$_ringtoneConfig : '',
+        fullRingtoneList: ((_this$_ringtoneConfig3 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig3 === void 0 ? void 0 : _this$_ringtoneConfig3.fullRingtoneList) || [],
+        isUploadRingtoneDisabled: (_this$_ringtoneConfig4 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig4 === void 0 ? void 0 : _this$_ringtoneConfig4.isUploadRingtoneDisabled,
+        enableCustomRingtone: (_this$_ringtoneConfig5 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig5 === void 0 ? void 0 : _this$_ringtoneConfig5.enableCustomRingtone
       };
     }
   }, {
@@ -344,6 +355,9 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
           var _this5$_ringtoneConfi3;
           (_this5$_ringtoneConfi3 = _this5._ringtoneConfiguration) === null || _this5$_ringtoneConfi3 === void 0 ? void 0 : _this5$_ringtoneConfi3.showDangerAlert(message);
         },
+        onNoiseReductionChange: function onNoiseReductionChange(enabled) {
+          _this5._audioSettings.setNoiseReductionEnabled(enabled);
+        },
         onExit: function () {
           var _onExit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
             var _this5$_volumeInspect3;
@@ -376,9 +390,9 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
   }, {
     key: "selectToRingtone",
     value: function selectToRingtone(id) {
-      var _this$_ringtoneConfig5, _this$_ringtoneConfig6;
-      (_this$_ringtoneConfig5 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig5 === void 0 ? void 0 : _this$_ringtoneConfig5.setSelectedRingtoneId(id);
-      (_this$_ringtoneConfig6 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig6 === void 0 ? void 0 : _this$_ringtoneConfig6.updateIncomingRingtone();
+      var _this$_ringtoneConfig6, _this$_ringtoneConfig7;
+      (_this$_ringtoneConfig6 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig6 === void 0 ? void 0 : _this$_ringtoneConfig6.setSelectedRingtoneId(id);
+      (_this$_ringtoneConfig7 = this._ringtoneConfiguration) === null || _this$_ringtoneConfig7 === void 0 ? void 0 : _this$_ringtoneConfig7.updateIncomingRingtone();
     }
   }, {
     key: "component",
@@ -443,5 +457,10 @@ var AudioSettingsView = exports.AudioSettingsView = (_dec = (0, _nextCore.inject
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "listenToMicrophonePermission", [_dec19, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "listenToMicrophonePermission"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replaceSessionInputStream", [_dec22, _dec23, _dec24], Object.getOwnPropertyDescriptor(_class2.prototype, "replaceSessionInputStream"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "_noiseReduction", [_dec19, _dec20], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _applyDecoratedDescriptor(_class2.prototype, "listenToMicrophonePermission", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "listenToMicrophonePermission"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "replaceSessionInputStream", [_dec24, _dec25, _dec26], Object.getOwnPropertyDescriptor(_class2.prototype, "replaceSessionInputStream"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=AudioSettings.view.js.map

@@ -40,20 +40,20 @@ require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-var _services = require("@ringcentral-integration/micro-core/src/app/services");
-var _services2 = require("@ringcentral-integration/micro-auth/src/app/services");
+var _services = require("@ringcentral-integration/micro-auth/src/app/services");
+var _services2 = require("@ringcentral-integration/micro-core/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _FileAttacher = require("@ringcentral-integration/next-widgets/components/MessageInput/FileAttacher");
+var _reactHooks = require("@ringcentral-integration/react-hooks");
 var _utils = require("@ringcentral-integration/utils");
 var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireDefault(require("react"));
 var _rxjs = require("rxjs");
 var _useFileUpload3 = require("use-file-upload");
-var _trackEvents = require("../../../enums/trackEvents");
 var _CPRClient = require("../../services/CPRClient");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -90,14 +90,17 @@ var MINIMUM_SUBMISSION_DELAY = 500;
 var MAX_USER_ATTACHMENT_SIZE = 10 * 1024 * 1024; // 10MB limit for individual user attachments
 var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   name: 'CPRClientView'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _CPRClient.CPRClient === "undefined" ? Object : _CPRClient.CPRClient, typeof _services.Toast === "undefined" ? Object : _services.Toast, typeof _services.BrowserLogger === "undefined" ? Object : _services.BrowserLogger]), _dec4 = Reflect.metadata("design:type", String), _dec5 = Reflect.metadata("design:type", Array), _dec6 = Reflect.metadata("design:type", Boolean), _dec7 = Reflect.metadata("design:type", Number), _dec8 = (0, _services2.track)(_trackEvents.trackEvents.cprLogsDownloaded), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", []), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [String]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", [Boolean]), _dec13 = (0, _nextCore.delegate)('server'), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [Boolean]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [typeof FileMeta === "undefined" ? Object : FileMeta]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [Array]), _dec20 = (0, _nextCore.delegate)('server'), _dec21 = Reflect.metadata("design:type", Function), _dec22 = Reflect.metadata("design:paramtypes", []), _dec23 = (0, _nextCore.delegate)('server'), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [String]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", [Array]), _dec28 = (0, _nextCore.delegate)('server'), _dec29 = Reflect.metadata("design:type", Function), _dec30 = Reflect.metadata("design:paramtypes", [Array]), _dec31 = (0, _nextCore.delegate)('server'), _dec32 = Reflect.metadata("design:type", Function), _dec33 = Reflect.metadata("design:paramtypes", [String]), _dec34 = (0, _services2.track)(_trackEvents.trackEvents.cprSubmitted), _dec35 = Reflect.metadata("design:type", Function), _dec36 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
-  function CPRClientView(_cPRClient, _toast, _browserLogger) {
+}), _dec2 = function _dec2(target, key) {
+  return (0, _nextCore.optional)('CPRClientViewOptions')(target, undefined, 3);
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _CPRClient.CPRClient === "undefined" ? Object : _CPRClient.CPRClient, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services2.BrowserLogger === "undefined" ? Object : _services2.BrowserLogger, typeof CPRClientViewOptions === "undefined" ? Object : CPRClientViewOptions]), _dec5 = Reflect.metadata("design:type", String), _dec6 = Reflect.metadata("design:type", Array), _dec7 = Reflect.metadata("design:type", Boolean), _dec8 = Reflect.metadata("design:type", Number), _dec9 = Reflect.metadata("design:type", Function), _dec0 = Reflect.metadata("design:paramtypes", [String]), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Boolean]), _dec11 = (0, _nextCore.delegate)('server'), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [Boolean]), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", [typeof FileMeta === "undefined" ? Object : FileMeta]), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [Array]), _dec18 = (0, _nextCore.delegate)('server'), _dec19 = Reflect.metadata("design:type", Function), _dec20 = Reflect.metadata("design:paramtypes", []), _dec21 = (0, _nextCore.delegate)('server'), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [String]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [Array]), _dec26 = (0, _nextCore.delegate)('server'), _dec27 = Reflect.metadata("design:type", Function), _dec28 = Reflect.metadata("design:paramtypes", [Array]), _dec29 = (0, _nextCore.delegate)('server'), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", [String]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+  function CPRClientView(_cPRClient, _toast, _browserLogger, _cPRClientViewOptions) {
     var _this;
     _classCallCheck(this, CPRClientView);
     _this = _callSuper(this, CPRClientView);
     _this._cPRClient = _cPRClient;
     _this._toast = _toast;
     _this._browserLogger = _browserLogger;
+    _this._cPRClientViewOptions = _cPRClientViewOptions;
     _initializerDefineProperty(_this, "details", _descriptor, _this);
     _initializerDefineProperty(_this, "attachments", _descriptor2, _this);
     _initializerDefineProperty(_this, "isSubmitting", _descriptor3, _this);
@@ -107,9 +110,23 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   _inherits(CPRClientView, _RcViewModule);
   return _createClass(CPRClientView, [{
     key: "downloadLogs",
-    value: function downloadLogs() {
-      this._browserLogger.saveLog();
-    }
+    value: function () {
+      var _downloadLogs = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              _context.n = 1;
+              return this._browserLogger.saveLog();
+            case 1:
+              return _context.a(2);
+          }
+        }, _callee, this);
+      }));
+      function downloadLogs() {
+        return _downloadLogs.apply(this, arguments);
+      }
+      return downloadLogs;
+    }()
   }, {
     key: "_setDetails",
     value: function _setDetails(value) {
@@ -123,15 +140,15 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "setIsSubmitting",
     value: function () {
-      var _setIsSubmitting2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(value) {
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
+      var _setIsSubmitting2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(value) {
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
             case 0:
               this._setIsSubmitting(value);
             case 1:
-              return _context.a(2);
+              return _context2.a(2);
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
       function setIsSubmitting(_x) {
         return _setIsSubmitting2.apply(this, arguments);
@@ -151,16 +168,16 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "resetForm",
     value: function () {
-      var _resetForm = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.n) {
+      var _resetForm = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
             case 0:
               this._setDetails('');
               this._setAttachments([]);
             case 1:
-              return _context2.a(2);
+              return _context3.a(2);
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
       function resetForm() {
         return _resetForm.apply(this, arguments);
@@ -170,15 +187,15 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "onDetailsValueChange",
     value: function () {
-      var _onDetailsValueChange = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(value) {
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.n) {
+      var _onDetailsValueChange = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(value) {
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
             case 0:
               this._setDetails(value);
             case 1:
-              return _context3.a(2);
+              return _context4.a(2);
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
       function onDetailsValueChange(_x2) {
         return _onDetailsValueChange.apply(this, arguments);
@@ -220,15 +237,15 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "addAttachments",
     value: function () {
-      var _addAttachments2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(files) {
-        return _regenerator().w(function (_context4) {
-          while (1) switch (_context4.n) {
+      var _addAttachments2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(files) {
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.n) {
             case 0:
               this._addAttachments(files);
             case 1:
-              return _context4.a(2);
+              return _context5.a(2);
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
       function addAttachments(_x3) {
         return _addAttachments2.apply(this, arguments);
@@ -238,17 +255,17 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "removeAttachment",
     value: function () {
-      var _removeAttachment = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(id) {
-        return _regenerator().w(function (_context5) {
-          while (1) switch (_context5.n) {
+      var _removeAttachment = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(id) {
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.n) {
             case 0:
               this._setAttachments(this.attachments.filter(function (x) {
                 return x.id !== id;
               }));
             case 1:
-              return _context5.a(2);
+              return _context6.a(2);
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
       function removeAttachment(_x4) {
         return _removeAttachment.apply(this, arguments);
@@ -258,24 +275,24 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "submitReport",
     value: function () {
-      var _submitReport = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+      var _submitReport = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
         var _yield$firstValueFrom, _yield$firstValueFrom2, result;
-        return _regenerator().w(function (_context6) {
-          while (1) switch (_context6.n) {
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.n) {
             case 0:
               if (this.details.trim()) {
-                _context6.n = 1;
+                _context7.n = 1;
                 break;
               }
-              return _context6.a(2);
+              return _context7.a(2);
             case 1:
               this.setIsSubmitting(true);
-              _context6.n = 2;
+              _context7.n = 2;
               return (0, _rxjs.firstValueFrom)((0, _rxjs.combineLatest)([(0, _rxjs.from)(this._cPRClient.sendCPR(this.details, this.attachments)),
               // submit report at least take 500ms, if not, wait that until 500ms
               (0, _rxjs.timer)(MINIMUM_SUBMISSION_DELAY)]));
             case 2:
-              _yield$firstValueFrom = _context6.v;
+              _yield$firstValueFrom = _context7.v;
               _yield$firstValueFrom2 = _slicedToArray(_yield$firstValueFrom, 1);
               result = _yield$firstValueFrom2[0];
               this.setIsSubmitting(false);
@@ -292,9 +309,9 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
                 });
                 this.resetForm();
               }
-              return _context6.a(2, result);
+              return _context7.a(2, result);
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
       function submitReport() {
         return _submitReport.apply(this, arguments);
@@ -304,7 +321,11 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "component",
     value: function component() {
-      var _this3 = this;
+      var _this3 = this,
+        _this$_cPRClientViewO,
+        _this$_cPRClientViewO2,
+        _this$_cPRClientViewO3,
+        _this$_cPRClientViewO4;
       var _useConnector = (0, _nextCore.useConnector)(function () {
           return {
             details: _this3.details,
@@ -320,6 +341,14 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
       var _useFileUpload = (0, _useFileUpload3.useFileUpload)(),
         _useFileUpload2 = _slicedToArray(_useFileUpload, 2),
         selectFile = _useFileUpload2[1];
+      var showDownloadLogs = (_this$_cPRClientViewO = (_this$_cPRClientViewO2 = this._cPRClientViewOptions) === null || _this$_cPRClientViewO2 === void 0 ? void 0 : _this$_cPRClientViewO2.showDownloadLogs) !== null && _this$_cPRClientViewO !== void 0 ? _this$_cPRClientViewO : true;
+      var showUserAttachments = (_this$_cPRClientViewO3 = (_this$_cPRClientViewO4 = this._cPRClientViewOptions) === null || _this$_cPRClientViewO4 === void 0 ? void 0 : _this$_cPRClientViewO4.showUserAttachments) !== null && _this$_cPRClientViewO3 !== void 0 ? _this$_cPRClientViewO3 : true;
+      var _useAsyncState = (0, _reactHooks.useAsyncState)(details, function (value) {
+          return _this3.onDetailsValueChange(value);
+        }),
+        _useAsyncState2 = _slicedToArray(_useAsyncState, 2),
+        inputValue = _useAsyncState2[0],
+        setInputValue = _useAsyncState2[1];
       return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_springUi.Text, {
         className: "typography-subtitle font-bold mb-2 text-neutral-b0",
         component: "p"
@@ -333,14 +362,14 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
         label: (0, _i18n.t)('DescriptionLabel'),
         rows: 3,
         fullWidth: true,
-        value: details,
+        value: inputValue,
         onChange: function onChange(_ref) {
           var value = _ref.target.value;
-          return _this3.onDetailsValueChange(value);
+          return setInputValue(value);
         },
         required: true,
         disabled: isSubmitting
-      })), /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
+      })), showUserAttachments && /*#__PURE__*/_react["default"].createElement(_springUi.Button, {
         className: "typography-mainText mb-4",
         "data-sign": "attachFileBtn",
         variant: "text",
@@ -354,47 +383,47 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
             accept: '*',
             multiple: true
           }, /*#__PURE__*/function () {
-            var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(result) {
+            var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(result) {
               var files;
-              return _regenerator().w(function (_context8) {
-                while (1) switch (_context8.n) {
+              return _regenerator().w(function (_context9) {
+                while (1) switch (_context9.n) {
                   case 0:
                     if (!Array.isArray(result)) {
-                      _context8.n = 2;
+                      _context9.n = 2;
                       break;
                     }
-                    _context8.n = 1;
+                    _context9.n = 1;
                     return Promise.all(result.map(/*#__PURE__*/function () {
-                      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(uploadFile) {
+                      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(uploadFile) {
                         var name, size, file, base64Url;
-                        return _regenerator().w(function (_context7) {
-                          while (1) switch (_context7.n) {
+                        return _regenerator().w(function (_context8) {
+                          while (1) switch (_context8.n) {
                             case 0:
                               name = uploadFile.name, size = uploadFile.size, file = uploadFile.file;
-                              _context7.n = 1;
+                              _context8.n = 1;
                               return (0, _utils.fileToBase64)(file);
                             case 1:
-                              base64Url = _context7.v;
-                              return _context7.a(2, {
+                              base64Url = _context8.v;
+                              return _context8.a(2, {
                                 id: crypto.randomUUID(),
                                 name: name,
                                 size: size,
                                 base64Url: base64Url
                               });
                           }
-                        }, _callee7);
+                        }, _callee8);
                       }));
                       return function (_x6) {
                         return _ref3.apply(this, arguments);
                       };
                     }()));
                   case 1:
-                    files = _context8.v;
+                    files = _context9.v;
                     _this3.addAttachments(files);
                   case 2:
-                    return _context8.a(2);
+                    return _context9.a(2);
                 }
-              }, _callee8);
+              }, _callee9);
             }));
             return function (_x5) {
               return _ref2.apply(this, arguments);
@@ -405,7 +434,7 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
       }, (0, _i18n.t)('attachFile')), /*#__PURE__*/_react["default"].createElement("div", {
         className: "typography-mainText mb-4",
         "data-sign": "attachments"
-      }, /*#__PURE__*/_react["default"].createElement(_FileAttacher.FileInfoWithAction, {
+      }, showDownloadLogs && /*#__PURE__*/_react["default"].createElement(_FileAttacher.FileInfoWithAction, {
         key: AUTO_LOG_META.id,
         symbol: _springIcon.FileMd,
         fileName: AUTO_LOG_META.name,
@@ -424,6 +453,7 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
           disabled: isSubmitting,
           variant: "icon",
           onClick: function onClick() {
+            (0, _services.trackEvent)('CPR_Logs_Downloaded', {});
             _this3.downloadLogs();
           },
           TooltipProps: {
@@ -431,7 +461,7 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
             placement: 'top'
           }
         })
-      }), attachments.map(function (file) {
+      }), showUserAttachments && attachments.map(function (file) {
         return /*#__PURE__*/_react["default"].createElement(_FileAttacher.FileInfoWithAction, {
           key: file.id,
           symbol: _springIcon.FileMd,
@@ -457,7 +487,8 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
         "data-sign": "submitBtn",
         fullWidth: true,
         onClick: function onClick() {
-          return _this3.submitReport();
+          (0, _services.trackEvent)('CPR_Submitted', {});
+          _this3.submitReport();
         },
         disabled: !details.trim() || isSubmitting || downloading
       }, isSubmitting ? /*#__PURE__*/_react["default"].createElement(_springUi.CircularProgressIndicator, {
@@ -466,33 +497,33 @@ var CPRClientView = exports.CPRClientView = (_dec = (0, _nextCore.injectable)({
       }) : (0, _i18n.t)('submit')))));
     }
   }]);
-}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "details", [_nextCore.state, _dec4], {
+}(_nextCore.RcViewModule), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "details", [_nextCore.state, _dec5], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "attachments", [_nextCore.state, _dec5], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "attachments", [_nextCore.state, _dec6], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "isSubmitting", [_nextCore.state, _dec6], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "isSubmitting", [_nextCore.state, _dec7], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "maxSizeInBytes", [_nextCore.state, _dec7], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "maxSizeInBytes", [_nextCore.state, _dec8], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return 120 * 1024 * 1024;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "downloadLogs", [_dec8, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "downloadLogs"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setDetails", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_setDetails"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setIsSubmitting", [_nextCore.action, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "_setIsSubmitting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIsSubmitting", [_dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "setIsSubmitting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_addAttachment", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_addAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAttachments", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetForm", [_dec20, _dec21, _dec22], Object.getOwnPropertyDescriptor(_class2.prototype, "resetForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onDetailsValueChange", [_dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "onDetailsValueChange"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_addAttachments", [_nextCore.action, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "_addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "addAttachments", [_dec28, _dec29, _dec30], Object.getOwnPropertyDescriptor(_class2.prototype, "addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeAttachment", [_dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "removeAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "submitReport", [_dec34, _dec35, _dec36], Object.getOwnPropertyDescriptor(_class2.prototype, "submitReport"), _class2.prototype), _class2)) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setDetails", [_nextCore.action, _dec9, _dec0], Object.getOwnPropertyDescriptor(_class2.prototype, "_setDetails"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setIsSubmitting", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "_setIsSubmitting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setIsSubmitting", [_dec11, _dec12, _dec13], Object.getOwnPropertyDescriptor(_class2.prototype, "setIsSubmitting"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_addAttachment", [_nextCore.action, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2.prototype, "_addAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAttachments", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetForm", [_dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "resetForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "onDetailsValueChange", [_dec21, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "onDetailsValueChange"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_addAttachments", [_nextCore.action, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "_addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "addAttachments", [_dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeAttachment", [_dec29, _dec30, _dec31], Object.getOwnPropertyDescriptor(_class2.prototype, "removeAttachment"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=CPRClient.view.js.map

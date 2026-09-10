@@ -51,6 +51,8 @@ var _default = exports["default"] = {
   contactSupport: 'Contactar con el servicio de asistencia técnica',
   selectToDialHint: 'Para mejorar su experiencia, seleccione el número de teléfono para marcar con {brandName} en la página de números de teléfono en gran cantidad.',
   phone: 'Teléfono',
+  text: 'Texto',
+  consentManagement: 'Gestión de consentimientos',
   log: 'Registro',
   general: 'General',
   showMatches: 'Mostrar coincidencias de llamadas entrantes',
@@ -101,6 +103,8 @@ var _default = exports["default"] = {
 // @key: @#@"contactSupport"@#@ @source: @#@"Contact support"@#@
 // @key: @#@"selectToDialHint"@#@ @source: @#@"For your better experience, select phone number to dial with {brandName} in large quantity phone number page."@#@
 // @key: @#@"phone"@#@ @source: @#@"Phone"@#@
+// @key: @#@"text"@#@ @source: @#@"Text"@#@
+// @key: @#@"consentManagement"@#@ @source: @#@"Consent management"@#@
 // @key: @#@"log"@#@ @source: @#@"Log"@#@
 // @key: @#@"general"@#@ @source: @#@"General"@#@
 // @key: @#@"showMatches"@#@ @source: @#@"Show matches for inbound calls"@#@

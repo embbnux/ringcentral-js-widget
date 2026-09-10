@@ -169,7 +169,7 @@ var IntegrationConfig = exports.IntegrationConfig = (_dec = (0, _nextCore.inject
         isLogged = _ref.isLogged;
       var actions = [];
       if (dialToPhoneNumber) {
-        if ((matchedContact === null || matchedContact === void 0 ? void 0 : matchedContact.type) && this.viewableEntityTypes.includes(matchedContact.type)) {
+        if (matchedContact !== null && matchedContact !== void 0 && matchedContact.type && this.viewableEntityTypes.includes(matchedContact.type)) {
           if (this.supportViewEntity && !isLogged) {
             actions.push({
               type: 'viewEntity',

@@ -262,7 +262,7 @@ var WelcomeView = exports.WelcomeView = (_dec = (0, _nextCore.injectable)({
               this._router.replace(this.backToRoute);
               return _context2.a(2);
             case 1:
-              if (!((_this$_welcomeViewOpt = this._welcomeViewOptions) === null || _this$_welcomeViewOpt === void 0 ? void 0 : _this$_welcomeViewOpt.routeAfterStart)) {
+              if (!((_this$_welcomeViewOpt = this._welcomeViewOptions) !== null && _this$_welcomeViewOpt !== void 0 && _this$_welcomeViewOpt.routeAfterStart)) {
                 _context2.n = 2;
                 break;
               }

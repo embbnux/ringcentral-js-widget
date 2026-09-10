@@ -89,7 +89,7 @@ var CallingSettingsView = exports.CallingSettingsView = (_dec = (0, _nextCore.in
     key: "showSpinner",
     get: function get() {
       var _this$_callingSetting;
-      return !(((_this$_callingSetting = this._callingSettings) === null || _this$_callingSetting === void 0 ? void 0 : _this$_callingSetting.ready) && this._brand.ready && this._locale.ready && (!this._webphone || this._webphone.ready));
+      return !((_this$_callingSetting = this._callingSettings) !== null && _this$_callingSetting !== void 0 && _this$_callingSetting.ready && this._brand.ready && this._locale.ready && (!this._webphone || this._webphone.ready));
     }
   }, {
     key: "locationSearchable",

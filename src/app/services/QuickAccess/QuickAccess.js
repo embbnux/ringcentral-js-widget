@@ -78,7 +78,7 @@ var QuickAccess = exports.QuickAccess = (_dec = (0, _nextCore.injectable)({
         return (_this2$_webphone = _this2._webphone) === null || _this2$_webphone === void 0 ? void 0 : _this2$_webphone.ringSession;
       }, function (ringSession) {
         var _this2$_webphone2;
-        if (ringSession && ((_this2$_webphone2 = _this2._webphone) === null || _this2$_webphone2 === void 0 ? void 0 : _this2$_webphone2.ready) && !_this2.entered) {
+        if (ringSession && (_this2$_webphone2 = _this2._webphone) !== null && _this2$_webphone2 !== void 0 && _this2$_webphone2.ready && !_this2.entered) {
           _this2.exit();
         }
       });

@@ -72,7 +72,14 @@ var AudioSettingsPanel = exports.AudioSettingsPanel = function AudioSettingsPane
     uploadCustomRingtone = _ref.uploadCustomRingtone,
     updateCurrentRingtone = _ref.updateCurrentRingtone,
     removeCustomRingtone = _ref.removeCustomRingtone,
-    onExit = _ref.onExit;
+    onExit = _ref.onExit,
+    _ref$showNoiseReducti = _ref.showNoiseReductionToggle,
+    showNoiseReductionToggle = _ref$showNoiseReducti === void 0 ? false : _ref$showNoiseReducti,
+    _ref$isNoiseReduction = _ref.isNoiseReductionEnabled,
+    isNoiseReductionEnabled = _ref$isNoiseReduction === void 0 ? false : _ref$isNoiseReduction,
+    _ref$disableNoiseRedu = _ref.disableNoiseReductionSetting,
+    disableNoiseReductionSetting = _ref$disableNoiseRedu === void 0 ? false : _ref$disableNoiseRedu,
+    onNoiseReductionChange = _ref.onNoiseReductionChange;
   (0, _react.useEffect)(function () {
     checkAudioAvailable();
     return function () {
@@ -122,6 +129,18 @@ var AudioSettingsPanel = exports.AudioSettingsPanel = function AudioSettingsPane
       onSave({
         isAGCEnabled: e.target.checked
       });
+    }
+  })), showNoiseReductionToggle && /*#__PURE__*/_react["default"].createElement(_springUi.FormLabel, {
+    label: (0, _i18n.t)('noiseReduction'),
+    placement: "start",
+    className: "justify-between w-full"
+  }, /*#__PURE__*/_react["default"].createElement(_springUi.Switch, {
+    "data-sign": "noiseReduction",
+    disabled: disableNoiseReductionSetting,
+    className: "flex-none",
+    checked: isNoiseReductionEnabled,
+    onChange: function onChange(e) {
+      onNoiseReductionChange === null || onNoiseReductionChange === void 0 ? void 0 : onNoiseReductionChange(e.target.checked);
     }
   }))), /*#__PURE__*/_react["default"].createElement(_Section.Section, {
     label: (0, _i18n.t)('output'),

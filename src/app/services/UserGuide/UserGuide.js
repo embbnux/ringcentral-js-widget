@@ -204,7 +204,7 @@ var UserGuide = exports.UserGuide = (_dec = (0, _nextCore.injectable)({
         return (_this3$_webphone = _this3._webphone) === null || _this3$_webphone === void 0 ? void 0 : _this3$_webphone.ringSession;
       }, function (ringSession) {
         var _this3$_webphone2;
-        if (((_this3$_webphone2 = _this3._webphone) === null || _this3$_webphone2 === void 0 ? void 0 : _this3$_webphone2.ready) && ringSession) {
+        if ((_this3$_webphone2 = _this3._webphone) !== null && _this3$_webphone2 !== void 0 && _this3$_webphone2.ready && ringSession) {
           _this3.dismiss();
         }
       });

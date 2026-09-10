@@ -7,6 +7,7 @@ require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
+require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -21,25 +22,17 @@ require("core-js/modules/es.object.get-own-property-descriptors.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.set-prototype-of.js");
+require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
+require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.for-each.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getBrandedIntegrationConsoleEndpoint = exports.AutoCallLoggingSwitchView = void 0;
-require("core-js/modules/es.array.iterator.js");
-require("core-js/modules/es.date.to-string.js");
+exports.AutoCallLoggingSwitchView = void 0;
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.regexp.exec.js");
-require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/es.string.replace.js");
-require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/web.url.js");
-require("core-js/modules/web.url.to-json.js");
-require("core-js/modules/web.url-search-params.js");
 var _trackEvents = require("@ringcentral-integration/commons/enums/trackEvents");
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
 var _services2 = require("@ringcentral-integration/micro-core/src/app/services");
@@ -67,18 +60,6 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
-var getBrandedIntegrationConsoleEndpoint = exports.getBrandedIntegrationConsoleEndpoint = function getBrandedIntegrationConsoleEndpoint(integrationConsoleEndpoint, brandConfig) {
-  if (brandConfig.code !== 'rc' && brandConfig.code !== 'att') {
-    var url = new URL(integrationConsoleEndpoint);
-    url.searchParams.set('brandId', brandConfig.id);
-    var href = url.toString();
-    // Remove the root trailing slash only when it sits right before the query string
-    // e.g. https://example.com/?a=b -> https://example.com?a=b
-    var normalized = href.replace('/?', '?');
-    return normalized;
-  }
-  return integrationConsoleEndpoint;
-};
 var AutoCallLoggingSwitchView = exports.AutoCallLoggingSwitchView = (_dec = (0, _nextCore.injectable)({
   name: 'AutoCallLoggingSwitchView'
 }), _dec2 = function _dec2(target, key) {
@@ -122,7 +103,7 @@ var AutoCallLoggingSwitchView = exports.AutoCallLoggingSwitchView = (_dec = (0, 
   }, {
     key: "aalEndpointWithBrandId",
     get: function get() {
-      return getBrandedIntegrationConsoleEndpoint(this._aalOptions.endpoint, this._brand.brandConfig);
+      return null;
     }
   }, {
     key: "getUIProps",
