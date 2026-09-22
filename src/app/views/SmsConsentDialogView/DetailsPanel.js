@@ -14,8 +14,8 @@ var _springIcon = require("@ringcentral/spring-icon");
 var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireDefault(require("react"));
 var _services = require("../../services");
-var _SmsConsentDialog = require("./SmsConsentDialog.helper");
 var _i18n = require("./i18n");
+var _SmsConsentDialog = require("./SmsConsentDialog.helper");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var DetailsPanel = exports.DetailsPanel = function DetailsPanel(_ref) {
   var record = _ref.record,

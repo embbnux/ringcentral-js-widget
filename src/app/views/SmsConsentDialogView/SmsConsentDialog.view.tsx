@@ -53,12 +53,12 @@ import {
 
 import { AddConsentNumberDrawerPanel } from './AddConsentNumberDrawer';
 import { DetailsPanel } from './DetailsPanel';
+import { t } from './i18n';
 import { getSmsConsentRecordTrackProperties } from './SmsConsentDialog.helper';
 import {
   SmsConsentDialogPanel,
   type SmsConsentDialogPayload,
 } from './SmsConsentDialogPanel';
-import { t } from './i18n';
 
 type SmsConsentDialogOpenPayload = Pick<
   SmsConsentDialogPayload,

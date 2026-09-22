@@ -25,7 +25,7 @@ export type FilterPopperProps = {
   selectedAssignees: AssignmentOptionValue[];
   statusFilter: ('Open' | 'Resolved')[];
   callQueues?: CallQueueInfo[];
-  selectedCallQueues: string[];
+  selectedRecipientExtensionIds: string[];
   filter: SharedFilterType;
   onSharedSearchFormUpdate?: (updates: Partial<SharedSearchForm>) => void;
 };
@@ -37,7 +37,7 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
   selectedAssignees,
   statusFilter,
   callQueues = [],
-  selectedCallQueues,
+  selectedRecipientExtensionIds,
   filter,
   onSharedSearchFormUpdate,
 }) => {
@@ -47,8 +47,10 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
   );
   const [tempSelectedAssignees, setTempSelectedAssignees] =
     useState<AssignmentOptionValue[]>(selectedAssignees);
-  const [tempSelectedCallQueues, setTempSelectedCallQueues] =
-    useState<string[]>(selectedCallQueues);
+  const [
+    tempSelectedRecipientExtensionIds,
+    setTempSelectedRecipientExtensionIds,
+  ] = useState<string[]>(selectedRecipientExtensionIds);
   const [tempStatusFilter, setTempStatusFilter] =
     useState<('Open' | 'Resolved')[]>(statusFilter);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -57,12 +59,12 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
     if (open) {
       setView('main');
       setTempSelectedAssignees(selectedAssignees);
-      setTempSelectedCallQueues(selectedCallQueues);
+      setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
       setSearchQuery('');
     } else {
       setView('main');
     }
-  }, [open, selectedAssignees, selectedCallQueues]);
+  }, [open, selectedAssignees, selectedRecipientExtensionIds]);
 
   const isShowAllSelected = useMemo(() => {
     return assignmentOptions.every((option) =>
@@ -84,7 +86,7 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
 
   const handleBackToMainAssignment = () => {
     setTempSelectedAssignees(selectedAssignees);
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setSearchQuery('');
     setView('main');
   };
@@ -108,14 +110,14 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
   };
 
   const handleBackToMainFromShared = () => {
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setSearchQuery('');
     setView('main');
   };
 
   const handleSharedWithMeDone = () => {
     onSharedSearchFormUpdate?.({
-      selectedCallQueues: tempSelectedCallQueues,
+      selectedRecipientExtensionIds: tempSelectedRecipientExtensionIds,
     });
     setView('main');
     onClose?.();
@@ -124,9 +126,9 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
   const handleShowAllCallQueuesChange = (checked: boolean) => {
     if (checked) {
       const allQueueIds = callQueues.map((queue) => queue.id);
-      setTempSelectedCallQueues(allQueueIds);
+      setTempSelectedRecipientExtensionIds(allQueueIds);
     } else {
-      setTempSelectedCallQueues([]);
+      setTempSelectedRecipientExtensionIds([]);
     }
   };
 
@@ -137,58 +139,58 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
     const lowerQuery = searchQuery.toLowerCase();
     return callQueues.filter(
       (queue) =>
-        queue.name.toLowerCase().includes(lowerQuery) ||
-        queue.extensionNumber.toLowerCase().includes(lowerQuery) ||
-        queue.site?.name.toLowerCase().includes(lowerQuery),
+        queue.name?.toLowerCase().includes(lowerQuery) ||
+        queue.extensionNumber?.toLowerCase().includes(lowerQuery) ||
+        queue.site?.name?.toLowerCase().includes(lowerQuery),
     );
   }, [callQueues, searchQuery]);
 
   const isShowAllCallQueuesSelected = useMemo(() => {
     if (callQueues.length === 0) return false;
     return (
-      tempSelectedCallQueues.length === callQueues.length &&
-      callQueues.every((queue) => tempSelectedCallQueues.includes(queue.id))
+      tempSelectedRecipientExtensionIds.length === callQueues.length &&
+      callQueues.every((queue) =>
+        tempSelectedRecipientExtensionIds.includes(queue.id),
+      )
     );
-  }, [tempSelectedCallQueues, callQueues]);
+  }, [tempSelectedRecipientExtensionIds, callQueues]);
 
   const isShowAllCallQueuesIndeterminate = useMemo(() => {
     if (callQueues.length === 0) return false;
-    const selectedCount = tempSelectedCallQueues.length;
+    const selectedCount = tempSelectedRecipientExtensionIds.length;
     return selectedCount > 0 && selectedCount < callQueues.length;
-  }, [tempSelectedCallQueues, callQueues]);
+  }, [tempSelectedRecipientExtensionIds, callQueues]);
 
   const getSharedWithMeText = useMemo(() => {
     if (
-      tempSelectedCallQueues.length === 0 ||
+      tempSelectedRecipientExtensionIds.length === 0 ||
       (callQueues.length > 0 &&
-        tempSelectedCallQueues.length === callQueues.length)
+        tempSelectedRecipientExtensionIds.length === callQueues.length)
     ) {
       return t('all');
     }
 
-    if (tempSelectedCallQueues.length === 1) {
-      const queue = callQueues.find((q) => q.id === tempSelectedCallQueues[0]);
-      const displayName = queue
-        ? queue.site
-          ? `${queue.name} | ${queue.site.name}`
-          : queue.name
-        : '';
-      return displayName;
+    const formatQueueDisplayName = (q?: CallQueueInfo) => {
+      if (!q) return '';
+      return q.site ? `${q.name} | ${q.site.name}` : q.name;
+    };
+
+    if (tempSelectedRecipientExtensionIds.length === 1) {
+      const queue = callQueues.find(
+        (q) => q.id === tempSelectedRecipientExtensionIds[0],
+      );
+      return formatQueueDisplayName(queue);
     }
 
     const firstQueue = callQueues.find(
-      (q) => q.id === tempSelectedCallQueues[0],
+      (q) => q.id === tempSelectedRecipientExtensionIds[0],
     );
-    const firstDisplayName = firstQueue
-      ? firstQueue.site
-        ? `${firstQueue.name} | ${firstQueue.site.name}`
-        : firstQueue.name
-      : '';
+    const firstDisplayName = formatQueueDisplayName(firstQueue);
 
-    return `${firstDisplayName} + ${tempSelectedCallQueues.length - 1} ${t(
-      'more',
-    )}`;
-  }, [tempSelectedCallQueues, callQueues, t]);
+    return `${firstDisplayName} + ${
+      tempSelectedRecipientExtensionIds.length - 1
+    } ${t('more')}`;
+  }, [tempSelectedRecipientExtensionIds, callQueues, t]);
 
   const getAssignmentText = useMemo(() => {
     if (
@@ -253,7 +255,7 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
   const handleMenuClose = () => {
     setView('main');
     setTempSelectedAssignees(selectedAssignees);
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setTempStatusFilter(statusFilter);
     setSearchQuery('');
     onClose?.();
@@ -310,11 +312,11 @@ export const FilterPopper: React.FC<FilterPopperProps> = ({
           searchQuery={searchQuery}
           onSearchQueryChange={setSearchQuery}
           filteredCallQueues={filteredCallQueues}
-          tempSelectedCallQueues={tempSelectedCallQueues}
+          tempSelectedRecipientExtensionIds={tempSelectedRecipientExtensionIds}
           isShowAllCallQueuesSelected={isShowAllCallQueuesSelected}
           isShowAllCallQueuesIndeterminate={isShowAllCallQueuesIndeterminate}
           onShowAllCallQueuesChange={handleShowAllCallQueuesChange}
-          onCallQueuesChange={setTempSelectedCallQueues}
+          onCallQueuesChange={setTempSelectedRecipientExtensionIds}
           onBack={handleBackToMainFromShared}
           onDone={handleSharedWithMeDone}
         />

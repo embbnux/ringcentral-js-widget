@@ -26,6 +26,10 @@ export type QueueMessage = Omit<Message, 'messageStatus'> & {
   owner?: QueueMessageOwner;
 };
 
-export interface QueueConversationsOptions extends ConversationsOptions {}
+export interface QueueConversationsOptions extends ConversationsOptions {
+  enable?: boolean;
+}
 
-export interface QueueMessageStoreOptions extends MessageStoreOptions {}
+export interface QueueMessageStoreOptions extends MessageStoreOptions {
+  enable?: boolean;
+}

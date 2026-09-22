@@ -22,10 +22,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ConversationAlert = void 0;
 var _services = require("@ringcentral-integration/micro-auth/src/app/services");
-var _services2 = require("@ringcentral-integration/micro-phone/src/app/services");
 var _nextCore = require("@ringcentral-integration/next-core");
 var _react = _interopRequireDefault(require("react"));
-var _services3 = require("../../services");
+var _services2 = require("../../services");
 var _SmsConsentDialogView = require("../SmsConsentDialogView");
 var _ConversationPanel = require("./ConversationPanel");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
@@ -45,24 +44,22 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 var ConversationAlert = exports.ConversationAlert = (_dec = (0, _nextCore.injectable)({
   name: 'ConversationAlert'
 }), _dec2 = function _dec2(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 4);
+  return (0, _nextCore.optional)()(target, undefined, 2);
 }, _dec3 = function _dec3(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 5);
+  return (0, _nextCore.optional)()(target, undefined, 3);
 }, _dec4 = function _dec4(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 6);
+  return (0, _nextCore.optional)()(target, undefined, 4);
 }, _dec5 = function _dec5(target, key) {
-  return (0, _nextCore.optional)()(target, undefined, 7);
+  return (0, _nextCore.optional)()(target, undefined, 5);
 }, _dec6 = function _dec6(target, key) {
-  return (0, _nextCore.optional)('ConversationViewOptions')(target, undefined, 8);
-}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _services3.MessageSender === "undefined" ? Object : _services3.MessageSender, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _services3.QueueConversations === "undefined" ? Object : _services3.QueueConversations, typeof _services2.Grant === "undefined" ? Object : _services2.Grant, typeof _services3.SmsOptOut === "undefined" ? Object : _services3.SmsOptOut, typeof _services3.MessageThread === "undefined" ? Object : _services3.MessageThread, typeof _services3.SmsConsent === "undefined" ? Object : _services3.SmsConsent, typeof _SmsConsentDialogView.SmsConsentDialogView === "undefined" ? Object : _SmsConsentDialogView.SmsConsentDialogView, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = /*#__PURE__*/function (_RcModule) {
-  function ConversationAlert(_messageSender, _numberFormatter, _queueConversations, _grant, _smsOptOut, _messageThread, _smsConsent, _smsConsentDialogView, _conversationViewOptions) {
+  return (0, _nextCore.optional)('ConversationViewOptions')(target, undefined, 6);
+}, _dec7 = Reflect.metadata("design:type", Function), _dec8 = Reflect.metadata("design:paramtypes", [typeof _services2.MessageSender === "undefined" ? Object : _services2.MessageSender, typeof _services.NumberFormatter === "undefined" ? Object : _services.NumberFormatter, typeof _services2.SmsOptOut === "undefined" ? Object : _services2.SmsOptOut, typeof _services2.MessageThread === "undefined" ? Object : _services2.MessageThread, typeof _services2.SmsConsent === "undefined" ? Object : _services2.SmsConsent, typeof _SmsConsentDialogView.SmsConsentDialogView === "undefined" ? Object : _SmsConsentDialogView.SmsConsentDialogView, typeof ConversationViewSpringOptions === "undefined" ? Object : ConversationViewSpringOptions]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = /*#__PURE__*/function (_RcModule) {
+  function ConversationAlert(_messageSender, _numberFormatter, _smsOptOut, _messageThread, _smsConsent, _smsConsentDialogView, _conversationViewOptions) {
     var _this;
     _classCallCheck(this, ConversationAlert);
     _this = _callSuper(this, ConversationAlert);
     _this._messageSender = _messageSender;
     _this._numberFormatter = _numberFormatter;
-    _this._queueConversations = _queueConversations;
-    _this._grant = _grant;
     _this._smsOptOut = _smsOptOut;
     _this._messageThread = _messageThread;
     _this._smsConsent = _smsConsent;
@@ -90,13 +87,6 @@ var ConversationAlert = exports.ConversationAlert = (_dec = (0, _nextCore.inject
       }
       var shouldSendShared = this._messageThread.isSharedSmsSenderNumber(phoneNumber);
       if (!shouldSendShared) {
-        return null;
-      }
-      var queueExtensionId = this._queueConversations.getConversationQueueExtensionId(conversation === null || conversation === void 0 ? void 0 : conversation.conversationId);
-      var isQueueSiteExtension = !!queueExtensionId && this._grant.isSharedSmsRecipientGrant(queueExtensionId);
-
-      // Queue conversations can only continue on shared numbers.
-      if (isQueueSiteExtension && !shouldSendShared) {
         return null;
       }
       return {
@@ -187,7 +177,7 @@ var ConversationAlert = exports.ConversationAlert = (_dec = (0, _nextCore.inject
           children: /*#__PURE__*/_react["default"].createElement(_ConversationPanel.SmsConsentRequiredAlert, {
             canAddConsent: (_this$_smsConsent2 = this._smsConsent) === null || _this$_smsConsent2 === void 0 ? void 0 : _this$_smsConsent2.canAddConsent,
             onAddConsentClick: function onAddConsentClick() {
-              var numbers = (0, _services3.getConversationNumbers)(conversation);
+              var numbers = (0, _services2.getConversationNumbers)(conversation);
               if (numbers) {
                 var _this2$_smsConsentDia;
                 (_this2$_smsConsentDia = _this2._smsConsentDialogView) === null || _this2$_smsConsentDia === void 0 ? void 0 : _this2$_smsConsentDia.openAddConsentDialog({

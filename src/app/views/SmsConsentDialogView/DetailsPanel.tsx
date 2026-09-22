@@ -23,13 +23,13 @@ import {
   SMSOptStatus,
 } from '../../services';
 
+import { t } from './i18n';
 import {
   getSmsCampaignTypeLabel,
   getSmsConsentCoverageLabel,
   getSmsConsentSourceLabel,
   getSmsConsentStatusLabel,
 } from './SmsConsentDialog.helper';
-import { t } from './i18n';
 
 export interface DetailsPanelProps {
   record?: SMSConsent | null;

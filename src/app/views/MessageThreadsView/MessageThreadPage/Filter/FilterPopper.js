@@ -57,7 +57,7 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     statusFilter = _ref.statusFilter,
     _ref$callQueues = _ref.callQueues,
     callQueues = _ref$callQueues === void 0 ? [] : _ref$callQueues,
-    selectedCallQueues = _ref.selectedCallQueues,
+    selectedRecipientExtensionIds = _ref.selectedRecipientExtensionIds,
     filter = _ref.filter,
     onSharedSearchFormUpdate = _ref.onSharedSearchFormUpdate;
   var _useLocale = (0, _hooks.useLocale)(_i18n2["default"], _i18n["default"]),
@@ -70,10 +70,10 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     tempSelectedAssignees = _useState4[0],
     setTempSelectedAssignees = _useState4[1];
-  var _useState5 = (0, _react.useState)(selectedCallQueues),
+  var _useState5 = (0, _react.useState)(selectedRecipientExtensionIds),
     _useState6 = _slicedToArray(_useState5, 2),
-    tempSelectedCallQueues = _useState6[0],
-    setTempSelectedCallQueues = _useState6[1];
+    tempSelectedRecipientExtensionIds = _useState6[0],
+    setTempSelectedRecipientExtensionIds = _useState6[1];
   var _useState7 = (0, _react.useState)(statusFilter),
     _useState8 = _slicedToArray(_useState7, 2),
     tempStatusFilter = _useState8[0],
@@ -86,12 +86,12 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     if (open) {
       setView('main');
       setTempSelectedAssignees(selectedAssignees);
-      setTempSelectedCallQueues(selectedCallQueues);
+      setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
       setSearchQuery('');
     } else {
       setView('main');
     }
-  }, [open, selectedAssignees, selectedCallQueues]);
+  }, [open, selectedAssignees, selectedRecipientExtensionIds]);
   var isShowAllSelected = (0, _react.useMemo)(function () {
     return _constants.assignmentOptions.every(function (option) {
       return tempSelectedAssignees.includes(option.value);
@@ -109,7 +109,7 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
   };
   var handleBackToMainAssignment = function handleBackToMainAssignment() {
     setTempSelectedAssignees(selectedAssignees);
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setSearchQuery('');
     setView('main');
   };
@@ -131,13 +131,13 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     setView('sharedWithMe');
   };
   var handleBackToMainFromShared = function handleBackToMainFromShared() {
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setSearchQuery('');
     setView('main');
   };
   var handleSharedWithMeDone = function handleSharedWithMeDone() {
     onSharedSearchFormUpdate === null || onSharedSearchFormUpdate === void 0 ? void 0 : onSharedSearchFormUpdate({
-      selectedCallQueues: tempSelectedCallQueues
+      selectedRecipientExtensionIds: tempSelectedRecipientExtensionIds
     });
     setView('main');
     onClose === null || onClose === void 0 ? void 0 : onClose();
@@ -147,9 +147,9 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
       var allQueueIds = callQueues.map(function (queue) {
         return queue.id;
       });
-      setTempSelectedCallQueues(allQueueIds);
+      setTempSelectedRecipientExtensionIds(allQueueIds);
     } else {
-      setTempSelectedCallQueues([]);
+      setTempSelectedRecipientExtensionIds([]);
     }
   };
   var filteredCallQueues = (0, _react.useMemo)(function () {
@@ -158,38 +158,41 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     }
     var lowerQuery = searchQuery.toLowerCase();
     return callQueues.filter(function (queue) {
-      var _queue$site;
-      return queue.name.toLowerCase().includes(lowerQuery) || queue.extensionNumber.toLowerCase().includes(lowerQuery) || ((_queue$site = queue.site) === null || _queue$site === void 0 ? void 0 : _queue$site.name.toLowerCase().includes(lowerQuery));
+      var _queue$name, _queue$extensionNumbe, _queue$site, _queue$site$name;
+      return ((_queue$name = queue.name) === null || _queue$name === void 0 ? void 0 : _queue$name.toLowerCase().includes(lowerQuery)) || ((_queue$extensionNumbe = queue.extensionNumber) === null || _queue$extensionNumbe === void 0 ? void 0 : _queue$extensionNumbe.toLowerCase().includes(lowerQuery)) || ((_queue$site = queue.site) === null || _queue$site === void 0 ? void 0 : (_queue$site$name = _queue$site.name) === null || _queue$site$name === void 0 ? void 0 : _queue$site$name.toLowerCase().includes(lowerQuery));
     });
   }, [callQueues, searchQuery]);
   var isShowAllCallQueuesSelected = (0, _react.useMemo)(function () {
     if (callQueues.length === 0) return false;
-    return tempSelectedCallQueues.length === callQueues.length && callQueues.every(function (queue) {
-      return tempSelectedCallQueues.includes(queue.id);
+    return tempSelectedRecipientExtensionIds.length === callQueues.length && callQueues.every(function (queue) {
+      return tempSelectedRecipientExtensionIds.includes(queue.id);
     });
-  }, [tempSelectedCallQueues, callQueues]);
+  }, [tempSelectedRecipientExtensionIds, callQueues]);
   var isShowAllCallQueuesIndeterminate = (0, _react.useMemo)(function () {
     if (callQueues.length === 0) return false;
-    var selectedCount = tempSelectedCallQueues.length;
+    var selectedCount = tempSelectedRecipientExtensionIds.length;
     return selectedCount > 0 && selectedCount < callQueues.length;
-  }, [tempSelectedCallQueues, callQueues]);
+  }, [tempSelectedRecipientExtensionIds, callQueues]);
   var getSharedWithMeText = (0, _react.useMemo)(function () {
-    if (tempSelectedCallQueues.length === 0 || callQueues.length > 0 && tempSelectedCallQueues.length === callQueues.length) {
+    if (tempSelectedRecipientExtensionIds.length === 0 || callQueues.length > 0 && tempSelectedRecipientExtensionIds.length === callQueues.length) {
       return t('all');
     }
-    if (tempSelectedCallQueues.length === 1) {
+    var formatQueueDisplayName = function formatQueueDisplayName(q) {
+      if (!q) return '';
+      return q.site ? "".concat(q.name, " | ").concat(q.site.name) : q.name;
+    };
+    if (tempSelectedRecipientExtensionIds.length === 1) {
       var queue = callQueues.find(function (q) {
-        return q.id === tempSelectedCallQueues[0];
+        return q.id === tempSelectedRecipientExtensionIds[0];
       });
-      var displayName = queue ? queue.site ? "".concat(queue.name, " | ").concat(queue.site.name) : queue.name : '';
-      return displayName;
+      return formatQueueDisplayName(queue);
     }
     var firstQueue = callQueues.find(function (q) {
-      return q.id === tempSelectedCallQueues[0];
+      return q.id === tempSelectedRecipientExtensionIds[0];
     });
-    var firstDisplayName = firstQueue ? firstQueue.site ? "".concat(firstQueue.name, " | ").concat(firstQueue.site.name) : firstQueue.name : '';
-    return "".concat(firstDisplayName, " + ").concat(tempSelectedCallQueues.length - 1, " ").concat(t('more'));
-  }, [tempSelectedCallQueues, callQueues, t]);
+    var firstDisplayName = formatQueueDisplayName(firstQueue);
+    return "".concat(firstDisplayName, " + ").concat(tempSelectedRecipientExtensionIds.length - 1, " ").concat(t('more'));
+  }, [tempSelectedRecipientExtensionIds, callQueues, t]);
   var getAssignmentText = (0, _react.useMemo)(function () {
     if (tempSelectedAssignees.length === 0 || _constants.assignmentOptions.every(function (option) {
       return tempSelectedAssignees.includes(option.value);
@@ -240,7 +243,7 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
   var handleMenuClose = function handleMenuClose() {
     setView('main');
     setTempSelectedAssignees(selectedAssignees);
-    setTempSelectedCallQueues(selectedCallQueues);
+    setTempSelectedRecipientExtensionIds(selectedRecipientExtensionIds);
     setTempStatusFilter(statusFilter);
     setSearchQuery('');
     onClose === null || onClose === void 0 ? void 0 : onClose();
@@ -292,11 +295,11 @@ var FilterPopper = exports.FilterPopper = function FilterPopper(_ref) {
     searchQuery: searchQuery,
     onSearchQueryChange: setSearchQuery,
     filteredCallQueues: filteredCallQueues,
-    tempSelectedCallQueues: tempSelectedCallQueues,
+    tempSelectedRecipientExtensionIds: tempSelectedRecipientExtensionIds,
     isShowAllCallQueuesSelected: isShowAllCallQueuesSelected,
     isShowAllCallQueuesIndeterminate: isShowAllCallQueuesIndeterminate,
     onShowAllCallQueuesChange: handleShowAllCallQueuesChange,
-    onCallQueuesChange: setTempSelectedCallQueues,
+    onCallQueuesChange: setTempSelectedRecipientExtensionIds,
     onBack: handleBackToMainFromShared,
     onDone: handleSharedWithMeDone
   })));

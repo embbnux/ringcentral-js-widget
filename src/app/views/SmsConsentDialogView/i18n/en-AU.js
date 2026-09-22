@@ -8,14 +8,14 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   addConsentTitle: 'Add consent',
-  addConsentSubtitle: "Track the contact's opt-in or opt-out status for text messaging.",
+  addConsentSubtitle: 'Track the contact’s opt-in or opt-out status for text messaging.',
   consentStatus: 'Consent status',
   optIn: 'Opt-in',
   optOut: 'Opt out',
   externalNumber: 'External Number',
-  smsRegisteredNumber: 'SMS Registered Number',
+  smsRegisteredNumber: 'SMS registered number',
   registrationType: 'Registration type',
-  registrationTypeTooltip: 'Mobile carriers identify 3 different categories of messages: Conversational, informational, promotional. Click here for a detailed description:',
+  registrationTypeTooltip: 'Mobile carriers identify 3 different categories of messages: Conversational, informational, and promotional. Click here for a detailed description:',
   learnMore: 'Learn more',
   notes: 'Notes',
   notesPlaceholder: 'Enter notes for your consent.',
@@ -49,7 +49,7 @@ var _default = exports["default"] = {
   campaignNotIncluded: 'Not included',
   unknownUser: 'Unknown',
   userAddedConsentNotePrefix: '{userName} added this consent.',
-  saveError: "We're having trouble saving your consent. Please try again.",
+  saveError: 'We’re having trouble saving your consent. Please try again.',
   openSettingsError: "Sorry, something went wrong on our end and we weren't able to open consent details. Try again later."
 }; // @key: @#@"addConsentTitle"@#@ @source: @#@"Add consent"@#@
 // @key: @#@"addConsentSubtitle"@#@ @source: @#@"Track the contact's opt-in or opt-out status for text messaging."@#@

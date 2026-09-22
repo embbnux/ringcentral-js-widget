@@ -221,11 +221,11 @@ export function shouldRequireSmsOptInConsent(
   }
   return Boolean(
     configuration?.smsCampaignInfo?.consentSettings?.optInRequired &&
-      !hasValidSmsOptInConsent(
-        consents,
-        configuration?.smsCampaignInfo
-          ?.coverageType as unknown as SmsCampaignType,
-      ),
+    !hasValidSmsOptInConsent(
+      consents,
+      configuration?.smsCampaignInfo
+        ?.coverageType as unknown as SmsCampaignType,
+    ),
   );
 }
 

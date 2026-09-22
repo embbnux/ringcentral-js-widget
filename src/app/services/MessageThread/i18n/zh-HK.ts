@@ -9,7 +9,7 @@ export default {
   threadExpiredHint: '對話已自動解決。',
   assignedToYouTooltip: '對話已指派給您',
   attachmentCountLimitation: '您最多可附加 10 個檔案。',
-  attachmentSizeLimitation: '所有附件的總大小不得超過 1.5 MB。',
+  attachmentSizeLimitation: '附件的總大小不可超過 1.5 MB。',
   someone: '某人',
 } as const;
 

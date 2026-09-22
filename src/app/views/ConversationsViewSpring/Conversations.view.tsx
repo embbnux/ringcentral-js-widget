@@ -733,7 +733,7 @@ export class ConversationsViewSpring extends RcViewModule {
       this._conversations.readStatusFilterMap[typeFilter];
     const smsPermissionReason =
       typeFilter === 'Text' && this._accountInfo?.isTCRSupported
-        ? this._messageSender?.smsPermissionReason ?? null
+        ? (this._messageSender?.smsPermissionReason ?? null)
         : null;
     const hasSmsPermission =
       this._messageSender?.hasSmsPermission ??
@@ -761,8 +761,8 @@ export class ConversationsViewSpring extends RcViewModule {
         typeFilter === 'Text'
           ? true
           : typeFilter === 'Fax'
-          ? this._appFeatures.hasSendFaxPermission
-          : false,
+            ? this._appFeatures.hasSendFaxPermission
+            : false,
       newButtonDisabled: isNewButtonDisabled,
       smsPermissionReason,
       conversations:

@@ -17,7 +17,6 @@ import {
   CallQueueInfo,
   CallQueues,
   Grant,
-  type ExtensionGrantRecord,
 } from '@ringcentral-integration/micro-phone/src/app/services';
 import {
   action,
@@ -76,6 +75,7 @@ import { ATTACHMENT_SIZE_LIMITATION, MessageSender } from '../MessageSender';
 import type { Attachment } from '../MessageSender/MessageSender.interface';
 import { SmsOptOut } from '../SmsOptOut';
 
+import { t } from './i18n';
 import type {
   ListThreadMessagesOptions,
   ListThreadNotesOptions,
@@ -100,7 +100,6 @@ import type {
   ThreadsMap,
   ThreadSyncSuccessOptions,
 } from './MessageThread.interface';
-import { t } from './i18n';
 
 const DEFAULT_TTL = 5 * 60 * 1000; // 5 min
 const RECORD_COUNT = 250;
@@ -152,9 +151,9 @@ export class MessageThread extends RcModule {
   get hasPermission() {
     return Boolean(
       this._enable &&
-        this._appFeatures.hasReadMessagesPermission &&
-        this._appFeatures.hasMessageThreadsPermission &&
-        (this.smsRecipientCallQueues.length > 0 || this.hasCompanySiteSupport),
+      this._appFeatures.hasReadMessagesPermission &&
+      this._appFeatures.hasMessageThreadsPermission &&
+      (this.smsRecipients.length > 0 || this.hasCompanySiteSupport),
     );
   }
 
@@ -221,23 +220,49 @@ export class MessageThread extends RcModule {
   }
 
   @computed
-  get smsRecipientCallQueues() {
-    if (!this._appFeatures.hasMessageThreadCallQueueSupported) {
+  get smsRecipients(): CallQueueInfo[] {
+    if (
+      !this._appFeatures.hasMessageThreadCallQueueSupported &&
+      !this._appFeatures.hasMessageThreadSiteSupported
+    ) {
       return [];
     }
 
     return this._grant.grants.reduce((acc, grant) => {
-      const queueInfo = this._callQueues.getQueue(grant.extension.id);
+      if (!grant.smsRecipient && !grant.callQueueSmsRecipient) {
+        return acc;
+      }
+
+      const extensionType = grant.extension.type;
 
       if (
-        queueInfo &&
-        this._isDepartmentGrant(grant) &&
-        this._isSmsRecipientGrant(grant)
+        extensionType === 'Department' &&
+        this._appFeatures.hasMessageThreadCallQueueSupported
       ) {
-        acc.push(queueInfo);
+        const queueInfo = this._callQueues.getQueue(grant.extension.id);
+        if (queueInfo) {
+          acc.push(queueInfo);
+        }
+      } else if (
+        (extensionType === 'Site' || extensionType === 'CompanyExtension') &&
+        this._appFeatures.hasMessageThreadSiteSupported
+      ) {
+        acc.push({
+          id: grant.extension.id,
+          name: grant.extension.name,
+          extensionNumber: grant.extension.extensionNumber,
+          extensionType,
+          uri: grant.extension.uri,
+        });
       }
+
       return acc;
     }, [] as CallQueueInfo[]);
+  }
+
+  @computed
+  get smsRecipientExtensionIds(): string[] {
+    return this.smsRecipients.map((queue) => queue.id);
   }
 
   isSharedSmsSenderNumber(fromNumber: string) {
@@ -261,23 +286,18 @@ export class MessageThread extends RcModule {
 
     const id = senderNumber.extension?.id;
 
+    const isQueue = senderNumber.extension?.type === 'Department';
+
     return Boolean(
       // when be main company grant should have MessageThreadSiteSupported permission
       (isMainCompanyGrant && this._appFeatures.hasMessageThreadSiteSupported) ||
-        // when be normal shared SMS recipient grant, should have hasMessageThreadCallQueueSupported
-        (id &&
-          this._grant.isSharedSmsRecipientGrant(id.toString()) &&
-          this._appFeatures.hasMessageThreadCallQueueSupported),
+      // when be normal shared SMS recipient grant, should have hasMessageThreadCallQueueSupported
+      (id &&
+        this._grant.isSharedSmsRecipientGrant(id.toString()) &&
+        (isQueue
+          ? this._appFeatures.hasMessageThreadCallQueueSupported
+          : this._appFeatures.hasMessageThreadSiteSupported)),
     );
-  }
-
-  private _isSmsRecipientGrant(grant: ExtensionGrantRecord) {
-    return !!(grant.smsRecipient || grant.callQueueSmsRecipient);
-  }
-
-  private _isDepartmentGrant(grant: ExtensionGrantRecord) {
-    const extensionType = grant.extension.type;
-    return !!(extensionType === 'Department');
   }
 
   @dynamic('NumberFormatter')
@@ -675,6 +695,15 @@ export class MessageThread extends RcModule {
     });
   }
 
+  private isNotEligibleRecipient(ownerExtensionId: string | undefined) {
+    const eligibleRecipientIds = this.eligibleRecipientIds;
+
+    return (
+      eligibleRecipientIds.size > 0 &&
+      (!ownerExtensionId || !eligibleRecipientIds.has(ownerExtensionId))
+    );
+  }
+
   /**
    * Convert timestamp from ISO string to number
    */
@@ -867,15 +896,10 @@ export class MessageThread extends RcModule {
         : acc;
     }, [] as CorrespondentMatch[]);
 
-    // TODO: log still not supported for thread
     const conversationLogId = conversationId;
-    // this._conversationLogger && messageLike
-    //   ? this._conversationLogger.getConversationLogId(messageLike)
-    //   : null;
     const isLogging = !!(conversationLogId && loggingMap[conversationLogId]);
-    const conversationMatches = correspondentMatchesList[0] || [];
-    // const conversationLogMapping = this._conversationLogger?.dataMapping || {};
-    // conversationLogMapping[conversationLogId!] || [];
+    const conversationLogMapping = this._conversationLogger?.dataMapping || {};
+    const conversationMatches = conversationLogMapping[conversationLogId] || [];
 
     // Convert attachments from latest message
     const accessToken = this._auth.accessToken;
@@ -977,6 +1001,12 @@ export class MessageThread extends RcModule {
 
     Object.values(this.data.threads).forEach((thread) => {
       const threadInfo = thread.threadInfo;
+      const ownerExtensionId = threadInfo?.owner?.extensionId;
+
+      if (this.isNotEligibleRecipient(ownerExtensionId)) {
+        return;
+      }
+
       const hashId = this.getConversationHashId(thread.threadId);
 
       if (!hashId) {
@@ -1092,10 +1122,20 @@ export class MessageThread extends RcModule {
     return groupsMap;
   }
 
+  @computed
+  get eligibleRecipientIds() {
+    return new Set(this.smsRecipientExtensionIds);
+  }
+
   // Local unread count including thread messages
   @computed
   get threadUnreadCount(): number {
     return Object.values(this.data.threads).reduce((total, thread) => {
+      const ownerExtensionId = thread?.threadInfo?.owner?.extensionId;
+
+      if (this.isNotEligibleRecipient(ownerExtensionId)) {
+        return total;
+      }
       return total + (thread?.unreadCount ?? 0);
     }, 0);
   }
@@ -1274,9 +1314,9 @@ export class MessageThread extends RcModule {
       }),
     );
 
-    const smsRecipientCallQueuesIdChange$ = fromWatchValue(
+    const smsRecipientsIdChange$ = fromWatchValue(
       this,
-      () => this.smsRecipientCallQueues,
+      () => this.smsRecipients,
     ).pipe(
       map((queues) => queues.map((queue) => queue.id).join('_')),
       distinctUntilChanged(),
@@ -1315,11 +1355,11 @@ export class MessageThread extends RcModule {
         switchMap((hasPermission) => {
           return hasPermission
             ? merge(
-                smsRecipientCallQueuesIdChange$.pipe(
-                  tap((smsRecipientCallQueuesIdChange) => {
+                smsRecipientsIdChange$.pipe(
+                  tap((smsRecipientsIdChange) => {
                     this.logger.log(
-                      'queue ids changed, reset data to ensure the user have correct data',
-                      smsRecipientCallQueuesIdChange,
+                      'recipient ids changed, reset data to ensure the user have correct data',
+                      smsRecipientsIdChange,
                     );
                     this.resetData();
                   }),
@@ -1358,10 +1398,33 @@ export class MessageThread extends RcModule {
     try {
       this.logger.log('Loading initial history data');
 
+      // Wait for dependent services' data to be ready before evaluating recipients filter
+      const dataReadyTasks: Promise<any>[] = [];
+      if (this._grant?.dataReady$) {
+        dataReadyTasks.push(firstValueFrom(this._grant.dataReady$));
+      }
+      if (
+        this._appFeatures.hasMessageThreadCallQueueSupported &&
+        this._callQueues?.dataReady$
+      ) {
+        dataReadyTasks.push(firstValueFrom(this._callQueues.dataReady$));
+      }
+
+      if (dataReadyTasks.length > 0) {
+        await Promise.all(dataReadyTasks);
+      }
+
+      const ownerExtensionIds = this.smsRecipientExtensionIds;
+      if (ownerExtensionIds.length === 0) {
+        this.logger.log('No sms recipients found, skipping history load');
+        return;
+      }
+
       // Load the first page of threads; paging info includes totalPages directly
       const firstThreadPage = await this.listThreads({
         perPage: THREADS_PER_PAGE,
         pageNumber: 1,
+        ownerExtensionIds,
       });
 
       const totalThreadPages = firstThreadPage.paging.totalPages || 0;
@@ -1385,6 +1448,9 @@ export class MessageThread extends RcModule {
       const firstMessagePage = await this.listThreadMessages({
         perPage: MESSAGES_PER_PAGE,
         pageNumber: 1,
+        availability: ['Alive'],
+        threadStatus: 'Resolved',
+        ownerExtensionIds,
       });
 
       const totalMessagePages = firstMessagePage.paging.totalPages || 0;
@@ -1774,6 +1840,9 @@ export class MessageThread extends RcModule {
             const response = await this.listThreads({
               perPage: THREADS_PER_PAGE,
               pageNumber: nextPage,
+              ...(options.ownerExtensionIds?.length
+                ? { ownerExtensionIds: options.ownerExtensionIds }
+                : {}),
             });
 
             this._setHistoryLoadedThreadsPageNumber(nextPage);
@@ -1830,10 +1899,12 @@ export class MessageThread extends RcModule {
       this._setLoadingHistory(true);
 
       const nextPage = currentPage + 1;
+      const ownerExtensionIds = this.smsRecipientExtensionIds;
 
       const response = await this.listThreadMessages({
         perPage: MESSAGES_PER_PAGE,
         pageNumber: nextPage,
+        ...(ownerExtensionIds.length > 0 ? { ownerExtensionIds } : {}),
       });
       this._setHistoryLoadedMessagesPageNumber(nextPage);
 

@@ -62,7 +62,12 @@ export const Filter: React.FC<FilterProps> = ({
     setFilterPopperOpen((prev) => !prev);
   };
 
-  const { filter, statusFilter, selectedAssignees, selectedCallQueues } = form;
+  const {
+    filter,
+    statusFilter,
+    selectedAssignees,
+    selectedRecipientExtensionIds,
+  } = form;
 
   const activeFilterCount = useMemo(() => {
     let count = 0;
@@ -75,16 +80,17 @@ export const Filter: React.FC<FilterProps> = ({
       selectedAssignees.length === assignmentOptions.length
         ? 0
         : selectedAssignees.length;
-    // If selectedCallQueues length equals max possible (callQueues.length), treat as 0 (all selected)
+    // If selectedRecipientExtensionIds length equals max possible (callQueues.length), treat as 0 (all selected)
     count +=
-      selectedCallQueues.length === callQueues.length && callQueues.length > 0
+      selectedRecipientExtensionIds.length === callQueues.length &&
+      callQueues.length > 0
         ? 0
-        : selectedCallQueues.length;
+        : selectedRecipientExtensionIds.length;
     return count;
   }, [
     statusFilter,
     selectedAssignees,
-    selectedCallQueues,
+    selectedRecipientExtensionIds,
     callQueues,
     assignmentOptions,
   ]);
@@ -99,7 +105,7 @@ export const Filter: React.FC<FilterProps> = ({
     const isActive = filter === 'Unread' || filter === 'AssignedToMe';
 
     const filterValue: SharedFilterType =
-      filter === 'All' ? prevFilter ?? 'AssignedToMe' : filter;
+      filter === 'All' ? (prevFilter ?? 'AssignedToMe') : filter;
     return {
       filter: filterValue,
       isActive,
@@ -175,22 +181,25 @@ export const Filter: React.FC<FilterProps> = ({
           data-sign="filterButtons"
         >
           {/* When search is expanded, only show active filter */}
-          {searchExpanded ? (
-            rightButtonState.isActive ? (
-              <div className="sui-single-filter sui-single-filter-root">
-                {rightButton}
-              </div>
+          {
+            // eslint-disable-next-line no-nested-ternary
+            searchExpanded ? (
+              rightButtonState.isActive ? (
+                <div className="sui-single-filter sui-single-filter-root">
+                  {rightButton}
+                </div>
+              ) : (
+                <div className="sui-single-filter sui-single-filter-root">
+                  {allButton}
+                </div>
+              )
             ) : (
               <div className="sui-single-filter sui-single-filter-root">
                 {allButton}
+                {rightButton}
               </div>
             )
-          ) : (
-            <div className="sui-single-filter sui-single-filter-root">
-              {allButton}
-              {rightButton}
-            </div>
-          )}
+          }
           <div className="relative flex items-center">
             <IconButton
               ref={filterIconRef}
@@ -219,7 +228,7 @@ export const Filter: React.FC<FilterProps> = ({
         selectedAssignees={selectedAssignees}
         statusFilter={statusFilter}
         callQueues={callQueues}
-        selectedCallQueues={form.selectedCallQueues}
+        selectedRecipientExtensionIds={form.selectedRecipientExtensionIds}
         filter={filter}
         onSharedSearchFormUpdate={onSharedSearchFormUpdate}
       />

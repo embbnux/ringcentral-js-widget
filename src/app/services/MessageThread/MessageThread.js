@@ -69,7 +69,7 @@ var _Conversations = require("../Conversations");
 var _MessageSender = require("../MessageSender");
 var _SmsOptOut = require("../SmsOptOut");
 var _i18n = require("./i18n");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -122,7 +122,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
   return (0, _nextCore.optional)()(target, undefined, 14);
 }, _dec7 = function _dec7(target, key) {
   return (0, _nextCore.optional)()(target, undefined, 15);
-}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services4.CallQueues === "undefined" ? Object : _services4.CallQueues, typeof _services4.Grant === "undefined" ? Object : _services4.Grant, typeof _MessageSender.MessageSender === "undefined" ? Object : _MessageSender.MessageSender, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof Subscription === "undefined" ? Object : Subscription, typeof MessageThreadOptions === "undefined" ? Object : MessageThreadOptions, typeof _SmsOptOut.SmsOptOut === "undefined" ? Object : _SmsOptOut.SmsOptOut, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _ConversationLogger.ConversationLogger === "undefined" ? Object : _ConversationLogger.ConversationLogger]), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", []), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", []), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [Boolean]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [Number]), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [Number]), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [Number]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [Number]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = (0, _nextCore.dynamic)('NumberFormatter'), _dec29 = Reflect.metadata("design:type", typeof NumberFormatter === "undefined" ? Object : NumberFormatter), _dec30 = Reflect.metadata("design:type", typeof MessageThreadData === "undefined" ? Object : MessageThreadData), _dec31 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec32 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec33 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec34 = Reflect.metadata("design:type", Function), _dec35 = Reflect.metadata("design:paramtypes", [String, String]), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec40 = (0, _nextCore.delegate)('server'), _dec41 = Reflect.metadata("design:type", Function), _dec42 = Reflect.metadata("design:paramtypes", [String, String]), _dec43 = (0, _nextCore.delegate)('server'), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", [String, Array]), _dec46 = (0, _nextCore.delegate)('server'), _dec47 = Reflect.metadata("design:type", Function), _dec48 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", [String]), _dec51 = Reflect.metadata("design:type", Function), _dec52 = Reflect.metadata("design:paramtypes", [String]), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", []), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec57 = Reflect.metadata("design:type", Function), _dec58 = Reflect.metadata("design:paramtypes", [String, typeof ThreadMetaData === "undefined" ? Object : ThreadMetaData]), _dec59 = (0, _nextCore.delegate)('server'), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", [String]), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", [typeof SyncSuccessOptions === "undefined" ? Object : SyncSuccessOptions, void 0]), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", [typeof ThreadSyncSuccessOptions === "undefined" ? Object : ThreadSyncSuccessOptions]), _dec68 = Reflect.metadata("design:type", Function), _dec69 = Reflect.metadata("design:paramtypes", []), _dec70 = Reflect.metadata("design:type", Function), _dec71 = Reflect.metadata("design:paramtypes", []), _dec72 = Reflect.metadata("design:type", Function), _dec73 = Reflect.metadata("design:paramtypes", []), _dec74 = (0, _nextCore.delegate)('server'), _dec75 = Reflect.metadata("design:type", Function), _dec76 = Reflect.metadata("design:paramtypes", []), _dec77 = (0, _nextCore.delegate)('server'), _dec78 = Reflect.metadata("design:type", Function), _dec79 = Reflect.metadata("design:paramtypes", []), _dec80 = (0, _nextCore.delegate)('server'), _dec81 = Reflect.metadata("design:type", Function), _dec82 = Reflect.metadata("design:paramtypes", []), _dec83 = (0, _nextCore.delegate)('server'), _dec84 = Reflect.metadata("design:type", Function), _dec85 = Reflect.metadata("design:paramtypes", []), _dec86 = (0, _nextCore.delegate)('server'), _dec87 = Reflect.metadata("design:type", Function), _dec88 = Reflect.metadata("design:paramtypes", []), _dec89 = (0, _nextCore.delegate)('server'), _dec90 = Reflect.metadata("design:type", Function), _dec91 = Reflect.metadata("design:paramtypes", [String]), _dec92 = (0, _nextCore.delegate)('server'), _dec93 = Reflect.metadata("design:type", Function), _dec94 = Reflect.metadata("design:paramtypes", [String, String]), _dec95 = (0, _nextCore.delegate)('server'), _dec96 = Reflect.metadata("design:type", Function), _dec97 = Reflect.metadata("design:paramtypes", [typeof ListThreadsOptions === "undefined" ? Object : ListThreadsOptions, Boolean]), _dec98 = (0, _nextCore.delegate)('server'), _dec99 = Reflect.metadata("design:type", Function), _dec100 = Reflect.metadata("design:paramtypes", [typeof ListThreadMessagesOptions === "undefined" ? Object : ListThreadMessagesOptions, Boolean]), _dec101 = (0, _nextCore.delegate)('server'), _dec102 = Reflect.metadata("design:type", Function), _dec103 = Reflect.metadata("design:paramtypes", []), _dec104 = (0, _nextCore.delegate)('server'), _dec105 = Reflect.metadata("design:type", Function), _dec106 = Reflect.metadata("design:paramtypes", [typeof ListThreadNotesOptions === "undefined" ? Object : ListThreadNotesOptions]), _dec107 = (0, _nextCore.delegate)('server'), _dec108 = Reflect.metadata("design:type", Function), _dec109 = Reflect.metadata("design:paramtypes", [typeof ThreadNoteCreateRequest === "undefined" ? Object : ThreadNoteCreateRequest]), _dec110 = (0, _nextCore.delegate)('server'), _dec111 = Reflect.metadata("design:type", Function), _dec112 = Reflect.metadata("design:paramtypes", [String, typeof ThreadNoteUpdateRequest === "undefined" ? Object : ThreadNoteUpdateRequest]), _dec113 = (0, _nextCore.delegate)('server'), _dec114 = Reflect.metadata("design:type", Function), _dec115 = Reflect.metadata("design:paramtypes", [typeof ThreadNotesDeleteRequest === "undefined" ? Object : ThreadNotesDeleteRequest]), _dec116 = (0, _nextCore.delegate)('server'), _dec117 = Reflect.metadata("design:type", Function), _dec118 = Reflect.metadata("design:paramtypes", [typeof SendNewThreadMessagePayload === "undefined" ? Object : SendNewThreadMessagePayload]), _dec119 = (0, _nextCore.delegate)('server'), _dec120 = Reflect.metadata("design:type", Function), _dec121 = Reflect.metadata("design:paramtypes", [String, String, Boolean, Array]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
+}, _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [typeof _services3.Toast === "undefined" ? Object : _services3.Toast, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _services.Client === "undefined" ? Object : _services.Client, typeof _services.AppFeatures === "undefined" ? Object : _services.AppFeatures, typeof _nextCore.StoragePlugin === "undefined" ? Object : _nextCore.StoragePlugin, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services4.CallQueues === "undefined" ? Object : _services4.CallQueues, typeof _services4.Grant === "undefined" ? Object : _services4.Grant, typeof _MessageSender.MessageSender === "undefined" ? Object : _MessageSender.MessageSender, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager, typeof Subscription === "undefined" ? Object : Subscription, typeof MessageThreadOptions === "undefined" ? Object : MessageThreadOptions, typeof _SmsOptOut.SmsOptOut === "undefined" ? Object : _SmsOptOut.SmsOptOut, typeof _services.ExtensionInfo === "undefined" ? Object : _services.ExtensionInfo, typeof _services2.ContactMatcher === "undefined" ? Object : _services2.ContactMatcher, typeof _ConversationLogger.ConversationLogger === "undefined" ? Object : _ConversationLogger.ConversationLogger]), _dec0 = Reflect.metadata("design:type", Function), _dec1 = Reflect.metadata("design:paramtypes", []), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", []), _dec14 = Reflect.metadata("design:type", Function), _dec15 = Reflect.metadata("design:paramtypes", []), _dec16 = Reflect.metadata("design:type", Function), _dec17 = Reflect.metadata("design:paramtypes", [Boolean]), _dec18 = Reflect.metadata("design:type", Function), _dec19 = Reflect.metadata("design:paramtypes", [Number]), _dec20 = Reflect.metadata("design:type", Function), _dec21 = Reflect.metadata("design:paramtypes", [Number]), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", [Number]), _dec24 = Reflect.metadata("design:type", Function), _dec25 = Reflect.metadata("design:paramtypes", [Number]), _dec26 = Reflect.metadata("design:type", Function), _dec27 = Reflect.metadata("design:paramtypes", []), _dec28 = Reflect.metadata("design:type", Function), _dec29 = Reflect.metadata("design:paramtypes", []), _dec30 = (0, _nextCore.dynamic)('NumberFormatter'), _dec31 = Reflect.metadata("design:type", typeof NumberFormatter === "undefined" ? Object : NumberFormatter), _dec32 = Reflect.metadata("design:type", typeof MessageThreadData === "undefined" ? Object : MessageThreadData), _dec33 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec34 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec35 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec36 = Reflect.metadata("design:type", Function), _dec37 = Reflect.metadata("design:paramtypes", [String, String]), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec40 = Reflect.metadata("design:type", Function), _dec41 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec42 = (0, _nextCore.delegate)('server'), _dec43 = Reflect.metadata("design:type", Function), _dec44 = Reflect.metadata("design:paramtypes", [String, String]), _dec45 = (0, _nextCore.delegate)('server'), _dec46 = Reflect.metadata("design:type", Function), _dec47 = Reflect.metadata("design:paramtypes", [String, Array]), _dec48 = (0, _nextCore.delegate)('server'), _dec49 = Reflect.metadata("design:type", Function), _dec50 = Reflect.metadata("design:paramtypes", [String, typeof Attachment === "undefined" ? Object : Attachment]), _dec51 = Reflect.metadata("design:type", Function), _dec52 = Reflect.metadata("design:paramtypes", [String]), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", [String]), _dec55 = Reflect.metadata("design:type", Function), _dec56 = Reflect.metadata("design:paramtypes", []), _dec57 = Reflect.metadata("design:type", Function), _dec58 = Reflect.metadata("design:paramtypes", [String, void 0]), _dec59 = Reflect.metadata("design:type", Function), _dec60 = Reflect.metadata("design:paramtypes", [String, typeof ThreadMetaData === "undefined" ? Object : ThreadMetaData]), _dec61 = (0, _nextCore.delegate)('server'), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", [String]), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", [String, Boolean]), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", [typeof SyncSuccessOptions === "undefined" ? Object : SyncSuccessOptions, void 0]), _dec68 = Reflect.metadata("design:type", Function), _dec69 = Reflect.metadata("design:paramtypes", [typeof ThreadSyncSuccessOptions === "undefined" ? Object : ThreadSyncSuccessOptions]), _dec70 = Reflect.metadata("design:type", Function), _dec71 = Reflect.metadata("design:paramtypes", []), _dec72 = Reflect.metadata("design:type", Function), _dec73 = Reflect.metadata("design:paramtypes", []), _dec74 = Reflect.metadata("design:type", Function), _dec75 = Reflect.metadata("design:paramtypes", []), _dec76 = Reflect.metadata("design:type", Function), _dec77 = Reflect.metadata("design:paramtypes", []), _dec78 = (0, _nextCore.delegate)('server'), _dec79 = Reflect.metadata("design:type", Function), _dec80 = Reflect.metadata("design:paramtypes", []), _dec81 = (0, _nextCore.delegate)('server'), _dec82 = Reflect.metadata("design:type", Function), _dec83 = Reflect.metadata("design:paramtypes", []), _dec84 = (0, _nextCore.delegate)('server'), _dec85 = Reflect.metadata("design:type", Function), _dec86 = Reflect.metadata("design:paramtypes", []), _dec87 = (0, _nextCore.delegate)('server'), _dec88 = Reflect.metadata("design:type", Function), _dec89 = Reflect.metadata("design:paramtypes", []), _dec90 = (0, _nextCore.delegate)('server'), _dec91 = Reflect.metadata("design:type", Function), _dec92 = Reflect.metadata("design:paramtypes", []), _dec93 = (0, _nextCore.delegate)('server'), _dec94 = Reflect.metadata("design:type", Function), _dec95 = Reflect.metadata("design:paramtypes", [String]), _dec96 = (0, _nextCore.delegate)('server'), _dec97 = Reflect.metadata("design:type", Function), _dec98 = Reflect.metadata("design:paramtypes", [String, String]), _dec99 = (0, _nextCore.delegate)('server'), _dec100 = Reflect.metadata("design:type", Function), _dec101 = Reflect.metadata("design:paramtypes", [typeof ListThreadsOptions === "undefined" ? Object : ListThreadsOptions, Boolean]), _dec102 = (0, _nextCore.delegate)('server'), _dec103 = Reflect.metadata("design:type", Function), _dec104 = Reflect.metadata("design:paramtypes", [typeof ListThreadMessagesOptions === "undefined" ? Object : ListThreadMessagesOptions, Boolean]), _dec105 = (0, _nextCore.delegate)('server'), _dec106 = Reflect.metadata("design:type", Function), _dec107 = Reflect.metadata("design:paramtypes", []), _dec108 = (0, _nextCore.delegate)('server'), _dec109 = Reflect.metadata("design:type", Function), _dec110 = Reflect.metadata("design:paramtypes", [typeof ListThreadNotesOptions === "undefined" ? Object : ListThreadNotesOptions]), _dec111 = (0, _nextCore.delegate)('server'), _dec112 = Reflect.metadata("design:type", Function), _dec113 = Reflect.metadata("design:paramtypes", [typeof ThreadNoteCreateRequest === "undefined" ? Object : ThreadNoteCreateRequest]), _dec114 = (0, _nextCore.delegate)('server'), _dec115 = Reflect.metadata("design:type", Function), _dec116 = Reflect.metadata("design:paramtypes", [String, typeof ThreadNoteUpdateRequest === "undefined" ? Object : ThreadNoteUpdateRequest]), _dec117 = (0, _nextCore.delegate)('server'), _dec118 = Reflect.metadata("design:type", Function), _dec119 = Reflect.metadata("design:paramtypes", [typeof ThreadNotesDeleteRequest === "undefined" ? Object : ThreadNotesDeleteRequest]), _dec120 = (0, _nextCore.delegate)('server'), _dec121 = Reflect.metadata("design:type", Function), _dec122 = Reflect.metadata("design:paramtypes", [typeof SendNewThreadMessagePayload === "undefined" ? Object : SendNewThreadMessagePayload]), _dec123 = (0, _nextCore.delegate)('server'), _dec124 = Reflect.metadata("design:type", Function), _dec125 = Reflect.metadata("design:paramtypes", [String, String, Boolean, Array]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function MessageThread(_toast, _auth, _client, _appFeatures, _storage, _router, _callQueues, _grant, _messageSender, _portManager, _subscription, _messageThreadOptions, _smsOptOut, _extensionInfo, _contactMatcher, _conversationLogger) {
     var _this$_subscription, _this$_contactMatcher;
     var _this;
@@ -212,7 +212,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "hasPermission",
     get: function get() {
-      return Boolean(this._enable && this._appFeatures.hasReadMessagesPermission && this._appFeatures.hasMessageThreadsPermission && (this.smsRecipientCallQueues.length > 0 || this.hasCompanySiteSupport));
+      return Boolean(this._enable && this._appFeatures.hasReadMessagesPermission && this._appFeatures.hasMessageThreadsPermission && (this.smsRecipients.length > 0 || this.hasCompanySiteSupport));
     }
   }, {
     key: "uniqueNumbers",
@@ -261,24 +261,45 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       this.historyLoaded.messagesTotalPages = totalPages;
     }
   }, {
-    key: "smsRecipientCallQueues",
+    key: "smsRecipients",
     get: function get() {
       var _this3 = this;
-      if (!this._appFeatures.hasMessageThreadCallQueueSupported) {
+      if (!this._appFeatures.hasMessageThreadCallQueueSupported && !this._appFeatures.hasMessageThreadSiteSupported) {
         return [];
       }
       return this._grant.grants.reduce(function (acc, grant) {
-        var queueInfo = _this3._callQueues.getQueue(grant.extension.id);
-        if (queueInfo && _this3._isDepartmentGrant(grant) && _this3._isSmsRecipientGrant(grant)) {
-          acc.push(queueInfo);
+        if (!grant.smsRecipient && !grant.callQueueSmsRecipient) {
+          return acc;
+        }
+        var extensionType = grant.extension.type;
+        if (extensionType === 'Department' && _this3._appFeatures.hasMessageThreadCallQueueSupported) {
+          var queueInfo = _this3._callQueues.getQueue(grant.extension.id);
+          if (queueInfo) {
+            acc.push(queueInfo);
+          }
+        } else if ((extensionType === 'Site' || extensionType === 'CompanyExtension') && _this3._appFeatures.hasMessageThreadSiteSupported) {
+          acc.push({
+            id: grant.extension.id,
+            name: grant.extension.name,
+            extensionNumber: grant.extension.extensionNumber,
+            extensionType: extensionType,
+            uri: grant.extension.uri
+          });
         }
         return acc;
       }, []);
     }
   }, {
+    key: "smsRecipientExtensionIds",
+    get: function get() {
+      return this.smsRecipients.map(function (queue) {
+        return queue.id;
+      });
+    }
+  }, {
     key: "isSharedSmsSenderNumber",
     value: function isSharedSmsSenderNumber(fromNumber) {
-      var _this$_numberFormatte, _senderNumber$extensi;
+      var _this$_numberFormatte, _senderNumber$extensi, _senderNumber$extensi2;
       var formattedPhoneNumber = (_this$_numberFormatte = this._numberFormatter) === null || _this$_numberFormatte === void 0 ? void 0 : _this$_numberFormatte.formatNumber(fromNumber);
       var senderNumber = formattedPhoneNumber && this._messageSender.senderNumberMap.get(formattedPhoneNumber);
       if (!senderNumber) {
@@ -288,22 +309,12 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       // must have CompanyExtension mens able to send shared sms
       this._grant.hasCompanyExtensionGrant;
       var id = (_senderNumber$extensi = senderNumber.extension) === null || _senderNumber$extensi === void 0 ? void 0 : _senderNumber$extensi.id;
+      var isQueue = ((_senderNumber$extensi2 = senderNumber.extension) === null || _senderNumber$extensi2 === void 0 ? void 0 : _senderNumber$extensi2.type) === 'Department';
       return Boolean(
       // when be main company grant should have MessageThreadSiteSupported permission
       isMainCompanyGrant && this._appFeatures.hasMessageThreadSiteSupported ||
       // when be normal shared SMS recipient grant, should have hasMessageThreadCallQueueSupported
-      id && this._grant.isSharedSmsRecipientGrant(id.toString()) && this._appFeatures.hasMessageThreadCallQueueSupported);
-    }
-  }, {
-    key: "_isSmsRecipientGrant",
-    value: function _isSmsRecipientGrant(grant) {
-      return !!(grant.smsRecipient || grant.callQueueSmsRecipient);
-    }
-  }, {
-    key: "_isDepartmentGrant",
-    value: function _isDepartmentGrant(grant) {
-      var extensionType = grant.extension.type;
-      return !!(extensionType === 'Department');
+      id && this._grant.isSharedSmsRecipientGrant(id.toString()) && (isQueue ? this._appFeatures.hasMessageThreadCallQueueSupported : this._appFeatures.hasMessageThreadSiteSupported));
     }
   }, {
     key: "listenMessageUpdate$",
@@ -692,6 +703,12 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
         _this7.data.threads[threadId].threadInfo = record;
       });
     }
+  }, {
+    key: "isNotEligibleRecipient",
+    value: function isNotEligibleRecipient(ownerExtensionId) {
+      var eligibleRecipientIds = this.eligibleRecipientIds;
+      return eligibleRecipientIds.size > 0 && (!ownerExtensionId || !eligibleRecipientIds.has(ownerExtensionId));
+    }
 
     /**
      * Convert timestamp from ISO string to number
@@ -813,7 +830,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "convertThreadToConversation",
     value: function convertThreadToConversation(thread, messages, unreadCount) {
-      var _this$_extensionInfo, _this$_contactMatcher2, _this$_conversationLo;
+      var _this$_extensionInfo, _this$_contactMatcher2, _this$_conversationLo, _this$_conversationLo2;
       var latestMessage = messages[messages.length - 1];
       var threadInfo = thread.threadInfo;
 
@@ -857,16 +874,10 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
         }
         return phoneNumber && contactMapping[phoneNumber] && contactMapping[phoneNumber].length ? acc.concat(contactMapping[phoneNumber]) : acc;
       }, []);
-
-      // TODO: log still not supported for thread
       var conversationLogId = conversationId;
-      // this._conversationLogger && messageLike
-      //   ? this._conversationLogger.getConversationLogId(messageLike)
-      //   : null;
       var isLogging = !!(conversationLogId && loggingMap[conversationLogId]);
-      var conversationMatches = correspondentMatchesList[0] || [];
-      // const conversationLogMapping = this._conversationLogger?.dataMapping || {};
-      // conversationLogMapping[conversationLogId!] || [];
+      var conversationLogMapping = ((_this$_conversationLo2 = this._conversationLogger) === null || _this$_conversationLo2 === void 0 ? void 0 : _this$_conversationLo2.dataMapping) || {};
+      var conversationMatches = conversationLogMapping[conversationLogId] || [];
 
       // Convert attachments from latest message
       var accessToken = this._auth.accessToken;
@@ -962,8 +973,12 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       var _this9 = this;
       var groupsMap = new Map();
       Object.values(this.data.threads).forEach(function (thread) {
-        var _thread$threadInfo3, _item$latestThread$th, _thread$unreadCount2;
+        var _threadInfo$owner, _thread$threadInfo3, _item$latestThread$th, _thread$unreadCount2;
         var threadInfo = thread.threadInfo;
+        var ownerExtensionId = threadInfo === null || threadInfo === void 0 ? void 0 : (_threadInfo$owner = threadInfo.owner) === null || _threadInfo$owner === void 0 ? void 0 : _threadInfo$owner.extensionId;
+        if (_this9.isNotEligibleRecipient(ownerExtensionId)) {
+          return;
+        }
         var hashId = _this9.getConversationHashId(thread.threadId);
         if (!hashId) {
           // Skip threads without valid phone numbers
@@ -1048,13 +1063,23 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       });
       return groupsMap;
     }
+  }, {
+    key: "eligibleRecipientIds",
+    get: function get() {
+      return new Set(this.smsRecipientExtensionIds);
+    }
 
     // Local unread count including thread messages
   }, {
     key: "threadUnreadCount",
     get: function get() {
+      var _this0 = this;
       return Object.values(this.data.threads).reduce(function (total, thread) {
-        var _thread$unreadCount3;
+        var _thread$threadInfo4, _thread$threadInfo4$o, _thread$unreadCount3;
+        var ownerExtensionId = thread === null || thread === void 0 ? void 0 : (_thread$threadInfo4 = thread.threadInfo) === null || _thread$threadInfo4 === void 0 ? void 0 : (_thread$threadInfo4$o = _thread$threadInfo4.owner) === null || _thread$threadInfo4$o === void 0 ? void 0 : _thread$threadInfo4$o.extensionId;
+        if (_this0.isNotEligibleRecipient(ownerExtensionId)) {
+          return total;
+        }
         return total + ((_thread$unreadCount3 = thread === null || thread === void 0 ? void 0 : thread.unreadCount) !== null && _thread$unreadCount3 !== void 0 ? _thread$unreadCount3 : 0);
       }, 0);
     }
@@ -1135,14 +1160,14 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "initListener",
     value: function initListener() {
-      var _this0 = this;
+      var _this1 = this;
       var _subscription = this._subscription;
       if (!_subscription) return;
       var messageThreadSyncEvent$ = _subscription.fromMessage$(/\/message-threads\/sync/).pipe((0, _rxjs.tap)(function () {
-        _this0.logger.log('thread sync event detected');
+        _this1.logger.log('thread sync event detected');
       }));
       var messageThreadEntriesSyncEvent$ = _subscription.fromMessage$(/\/message-threads\/entries\/sync/).pipe((0, _rxjs.tap)(function () {
-        _this0.logger.log('entries sync event detected');
+        _this1.logger.log('entries sync event detected');
       }));
       var messageThreadChanges$ = (0, _rxjs.merge)(messageThreadSyncEvent$, messageThreadEntriesSyncEvent$, this.manualSync$,
       // a polling to avoid some miss server side push event
@@ -1152,7 +1177,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       // to avoid too many sync events, because the events may trigger together in a short time, use debounce to avoid too many sync events
       (0, _rxjs.debounceTime)(500), (0, _rxjs.startWith)(null));
       var messageThreadEvent$ = messageThreadChanges$.pipe((0, _rxjs.map)(function () {
-        return _this0.token;
+        return _this1.token;
       }),
       // use concatMap to ensure the sync api called one by one
       (0, _rxjs.concatMap)(function (token) {
@@ -1164,19 +1189,19 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
                   _context5.n = 2;
                   break;
                 }
-                _this0.logger.log('thread info fsync start');
+                _this1.logger.log('thread info fsync start');
                 _context5.n = 1;
-                return _this0._threadFSync();
+                return _this1._threadFSync();
               case 1:
-                _this0.logger.log('thread info fsync done');
+                _this1.logger.log('thread info fsync done');
                 _context5.n = 4;
                 break;
               case 2:
-                _this0.logger.log('thread info isync start');
+                _this1.logger.log('thread info isync start');
                 _context5.n = 3;
-                return _this0._threadISync();
+                return _this1._threadISync();
               case 3:
-                _this0.logger.log('thread info isync done');
+                _this1.logger.log('thread info isync done');
               case 4:
                 return _context5.a(2);
             }
@@ -1184,7 +1209,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
         }))).pipe((0, _rxjs.retry)({
           count: 3,
           delay: function delay(err) {
-            _this0.logger.error('thread sync error, retry after 1s', err);
+            _this1.logger.error('thread sync error, retry after 1s', err);
             // error: ApiError
 
             //     const errResp = error.response;
@@ -1192,14 +1217,14 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
             return (0, _rxjs.timer)(1000);
           }
         }), (0, _rxjs.catchError)(function (error) {
-          _this0.logger.error('thread sync error', error);
+          _this1.logger.error('thread sync error', error);
           return _rxjs.EMPTY;
         }));
       }), (0, _rxjs.tap)(function () {
-        _this0.syncDone$.next('thread');
+        _this1.syncDone$.next('thread');
       }));
       var messageThreadEntriesEvent$ = messageThreadChanges$.pipe((0, _rxjs.map)(function () {
-        return _this0.entriesToken;
+        return _this1.entriesToken;
       }),
       // use concatMap to ensure the sync api called one by one
       (0, _rxjs.concatMap)(function (token) {
@@ -1211,19 +1236,19 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
                   _context6.n = 2;
                   break;
                 }
-                _this0.logger.log('entries fsync start');
+                _this1.logger.log('entries fsync start');
                 _context6.n = 1;
-                return _this0._entriesFSync();
+                return _this1._entriesFSync();
               case 1:
-                _this0.logger.log('entries fsync done');
+                _this1.logger.log('entries fsync done');
                 _context6.n = 4;
                 break;
               case 2:
-                _this0.logger.log('entries isync start');
+                _this1.logger.log('entries isync start');
                 _context6.n = 3;
-                return _this0._entriesISync();
+                return _this1._entriesISync();
               case 3:
-                _this0.logger.log('entries isync done');
+                _this1.logger.log('entries isync done');
               case 4:
                 return _context6.a(2);
             }
@@ -1231,18 +1256,18 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
         }))).pipe((0, _rxjs.retry)({
           count: 3,
           delay: function delay(err) {
-            _this0.logger.error('entries sync error, retry after 1s', err);
+            _this1.logger.error('entries sync error, retry after 1s', err);
             return (0, _rxjs.timer)(1000);
           }
         }), (0, _rxjs.catchError)(function (error) {
-          _this0.logger.error('entries sync error', error);
+          _this1.logger.error('entries sync error', error);
           return _rxjs.EMPTY;
         }));
       }), (0, _rxjs.tap)(function () {
-        _this0.syncDone$.next('entries');
+        _this1.syncDone$.next('entries');
       }));
-      var smsRecipientCallQueuesIdChange$ = (0, _nextCore.fromWatchValue)(this, function () {
-        return _this0.smsRecipientCallQueues;
+      var smsRecipientsIdChange$ = (0, _nextCore.fromWatchValue)(this, function () {
+        return _this1.smsRecipients;
       }).pipe((0, _rxjs.map)(function (queues) {
         return queues.map(function (queue) {
           return queue.id;
@@ -1251,25 +1276,25 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       // skip the first value, only trigger when change
       (0, _rxjs.skip)(1));
       var uniqueNumbers$ = (0, _nextCore.fromWatchValue)(this, function () {
-        return _this0.uniqueNumbers;
+        return _this1.uniqueNumbers;
       }).pipe((0, _rxjs.filter)(function (numbers) {
         return numbers.length > 0;
       }), (0, _rxjs.distinctUntilChanged)(function (a, b) {
         return (0, _isEqual["default"])(a, b);
       }), (0, _rxjs.tap)(function () {
-        var _this0$_contactMatche;
-        (_this0$_contactMatche = _this0._contactMatcher) === null || _this0$_contactMatche === void 0 ? void 0 : _this0$_contactMatche.triggerMatch();
+        var _this1$_contactMatche;
+        (_this1$_contactMatche = _this1._contactMatcher) === null || _this1$_contactMatche === void 0 ? void 0 : _this1$_contactMatche.triggerMatch();
       }));
       this.rehydrated$.pipe((0, _rxjs.switchMap)(function () {
         return _subscription.readyState$;
       }), (0, _rxjs.switchMap)(function (ready) {
-        return ready ? _this0.hasPermission$.pipe((0, _rxjs.startWith)(false), (0, _rxjs.pairwise)(), (0, _rxjs.tap)(function (_ref6) {
+        return ready ? _this1.hasPermission$.pipe((0, _rxjs.startWith)(false), (0, _rxjs.pairwise)(), (0, _rxjs.tap)(function (_ref6) {
           var _ref7 = _slicedToArray(_ref6, 2),
             prev = _ref7[0],
             current = _ref7[1];
           if (prev && !current) {
-            _this0.logger.log('from permission become no permission, reset data');
-            _this0.resetData();
+            _this1.logger.log('from permission become no permission, reset data');
+            _this1.resetData();
           }
         }), (0, _rxjs.map)(function (_ref8) {
           var _ref9 = _slicedToArray(_ref8, 2),
@@ -1277,14 +1302,14 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
           return current;
         })) : _rxjs.EMPTY;
       }), (0, _rxjs.switchMap)(function (hasPermission) {
-        return hasPermission ? (0, _rxjs.merge)(smsRecipientCallQueuesIdChange$.pipe((0, _rxjs.tap)(function (smsRecipientCallQueuesIdChange) {
-          _this0.logger.log('queue ids changed, reset data to ensure the user have correct data', smsRecipientCallQueuesIdChange);
-          _this0.resetData();
+        return hasPermission ? (0, _rxjs.merge)(smsRecipientsIdChange$.pipe((0, _rxjs.tap)(function (smsRecipientsIdChange) {
+          _this1.logger.log('recipient ids changed, reset data to ensure the user have correct data', smsRecipientsIdChange);
+          _this1.resetData();
         }), (0, _rxjs.startWith)(null), (0, _rxjs.switchMap)(function () {
           return (0, _rxjs.merge)(messageThreadEvent$, messageThreadEntriesEvent$, (0, _rxjs.defer)(function () {
-            return _this0._loadInitialHistory();
+            return _this1._loadInitialHistory();
           }));
-        }), (0, _rxjs.takeUntil)(_this0._auth.beforeLogout$)), uniqueNumbers$) : _rxjs.EMPTY;
+        }), (0, _rxjs.takeUntil)(_this1._auth.beforeLogout$)), uniqueNumbers$) : _rxjs.EMPTY;
       }), _nextCore.takeUntilAppDestroy).subscribe();
     }
 
@@ -1296,7 +1321,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
     key: "_loadInitialHistory",
     value: (function () {
       var _loadInitialHistory2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-        var firstThreadPage, totalThreadPages, firstMessagePage, totalMessagePages, _t;
+        var _this$_grant, _this$_callQueues, dataReadyTasks, ownerExtensionIds, firstThreadPage, totalThreadPages, firstMessagePage, totalMessagePages, _t;
         return _regenerator().w(function (_context7) {
           while (1) switch (_context7.p = _context7.n) {
             case 0:
@@ -1311,61 +1336,87 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
               _context7.p = 2;
               this.logger.log('Loading initial history data');
 
-              // Load the first page of threads; paging info includes totalPages directly
+              // Wait for dependent services' data to be ready before evaluating recipients filter
+              dataReadyTasks = [];
+              if ((_this$_grant = this._grant) !== null && _this$_grant !== void 0 && _this$_grant.dataReady$) {
+                dataReadyTasks.push((0, _rxjs.firstValueFrom)(this._grant.dataReady$));
+              }
+              if (this._appFeatures.hasMessageThreadCallQueueSupported && (_this$_callQueues = this._callQueues) !== null && _this$_callQueues !== void 0 && _this$_callQueues.dataReady$) {
+                dataReadyTasks.push((0, _rxjs.firstValueFrom)(this._callQueues.dataReady$));
+              }
+              if (!(dataReadyTasks.length > 0)) {
+                _context7.n = 3;
+                break;
+              }
               _context7.n = 3;
+              return Promise.all(dataReadyTasks);
+            case 3:
+              ownerExtensionIds = this.smsRecipientExtensionIds;
+              if (!(ownerExtensionIds.length === 0)) {
+                _context7.n = 4;
+                break;
+              }
+              this.logger.log('No sms recipients found, skipping history load');
+              return _context7.a(2);
+            case 4:
+              _context7.n = 5;
               return this.listThreads({
                 perPage: THREADS_PER_PAGE,
-                pageNumber: 1
+                pageNumber: 1,
+                ownerExtensionIds: ownerExtensionIds
               });
-            case 3:
+            case 5:
               firstThreadPage = _context7.v;
               totalThreadPages = firstThreadPage.paging.totalPages || 0;
               if (!(totalThreadPages === 0 || firstThreadPage.paging.totalElements === 0)) {
-                _context7.n = 4;
+                _context7.n = 6;
                 break;
               }
               this.logger.log('No threads found, skipping history load');
               return _context7.a(2);
-            case 4:
+            case 6:
               this._setHistoryLoadedThreadsPageNumber(1);
               this._setHistoryLoadedThreadsTotalPages(totalThreadPages);
               this.logger.log("Loaded ".concat(firstThreadPage.records.length, " threads from page 1 (total pages: ").concat(totalThreadPages, ")"));
 
               // Load the first page of messages; paging info includes totalPages directly
-              _context7.n = 5;
+              _context7.n = 7;
               return this.listThreadMessages({
                 perPage: MESSAGES_PER_PAGE,
-                pageNumber: 1
+                pageNumber: 1,
+                availability: ['Alive'],
+                threadStatus: 'Resolved',
+                ownerExtensionIds: ownerExtensionIds
               });
-            case 5:
+            case 7:
               firstMessagePage = _context7.v;
               totalMessagePages = firstMessagePage.paging.totalPages || 0;
               if (!(totalMessagePages === 0 || firstMessagePage.paging.totalElements === 0)) {
-                _context7.n = 6;
+                _context7.n = 8;
                 break;
               }
               this.logger.log('No messages found, skipping message load');
               return _context7.a(2);
-            case 6:
+            case 8:
               this._setHistoryLoadedMessagesPageNumber(1);
               this._setHistoryLoadedMessagesTotalPages(totalMessagePages);
               this.logger.log("Loaded ".concat(firstMessagePage.records.length, " messages from page 1 (total pages: ").concat(totalMessagePages, ")"));
               this.logger.log('Initial history data loaded successfully');
-              _context7.n = 8;
+              _context7.n = 10;
               break;
-            case 7:
-              _context7.p = 7;
+            case 9:
+              _context7.p = 9;
               _t = _context7.v;
               this.logger.error('Failed to load initial history', _t);
               // Don't throw - allow app to continue with sync mechanism
-            case 8:
-              _context7.p = 8;
+            case 10:
+              _context7.p = 10;
               this._setLoadingHistory(false);
-              return _context7.f(8);
-            case 9:
+              return _context7.f(10);
+            case 11:
               return _context7.a(2);
           }
-        }, _callee7, this, [[2, 7, 8, 9]]);
+        }, _callee7, this, [[2, 9, 10, 11]]);
       }));
       function _loadInitialHistory() {
         return _loadInitialHistory2.apply(this, arguments);
@@ -1800,7 +1851,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
     key: "listThreadMessages",
     value: (function () {
       var _listThreadMessages = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee14() {
-        var _this1 = this;
+        var _this10 = this;
         var options,
           saveSync,
           _options$ownerExtensi2,
@@ -1812,6 +1863,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
           data,
           notExistThreadDataIds,
           recordsWithType,
+          _options$ownerExtensi3,
           currentPage,
           totalPages,
           nextPage,
@@ -1868,7 +1920,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
               notExistThreadDataIds = new Set(); // Add recordType to records since API response doesn't include it
               recordsWithType = data.records.map(function (record) {
                 // when found some record belong thread is not exist, accumulate them and sync later
-                var thread = _this1.getThread(record.threadId);
+                var thread = _this10.getThread(record.threadId);
                 if (!thread) {
                   notExistThreadDataIds.add(record.threadId);
                 }
@@ -1897,10 +1949,12 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
               // Increment page number and fetch
               nextPage = currentPage + 1;
               _context14.n = 6;
-              return this.listThreads({
+              return this.listThreads(_objectSpread({
                 perPage: THREADS_PER_PAGE,
                 pageNumber: nextPage
-              });
+              }, (_options$ownerExtensi3 = options.ownerExtensionIds) !== null && _options$ownerExtensi3 !== void 0 && _options$ownerExtensi3.length ? {
+                ownerExtensionIds: options.ownerExtensionIds
+              } : {}));
             case 6:
               response = _context14.v;
               this._setHistoryLoadedThreadsPageNumber(nextPage);
@@ -1944,7 +1998,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
     key: "loadMoreMessages",
     value: function () {
       var _loadMoreMessages = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15() {
-        var currentPage, totalPages, nextPage, response;
+        var currentPage, totalPages, nextPage, ownerExtensionIds, response;
         return _regenerator().w(function (_context15) {
           while (1) switch (_context15.p = _context15.n) {
             case 0:
@@ -1968,11 +2022,14 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
             case 3:
               this._setLoadingHistory(true);
               nextPage = currentPage + 1;
+              ownerExtensionIds = this.smsRecipientExtensionIds;
               _context15.n = 4;
-              return this.listThreadMessages({
+              return this.listThreadMessages(_objectSpread({
                 perPage: MESSAGES_PER_PAGE,
                 pageNumber: nextPage
-              });
+              }, ownerExtensionIds.length > 0 ? {
+                ownerExtensionIds: ownerExtensionIds
+              } : {}));
             case 4:
               response = _context15.v;
               this._setHistoryLoadedMessagesPageNumber(nextPage);
@@ -2003,7 +2060,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
     value: (function () {
       var _listThreadNotes = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16() {
         var options,
-          _options$ownerExtensi3,
+          _options$ownerExtensi4,
           _options$availability3,
           _options$threadIds,
           _options$noteIds,
@@ -2019,7 +2076,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
               options = _args16.length > 0 && _args16[0] !== undefined ? _args16[0] : {};
               _context16.p = 1;
               params = new URLSearchParams();
-              if ((_options$ownerExtensi3 = options.ownerExtensionIds) !== null && _options$ownerExtensi3 !== void 0 && _options$ownerExtensi3.length) {
+              if ((_options$ownerExtensi4 = options.ownerExtensionIds) !== null && _options$ownerExtensi4 !== void 0 && _options$ownerExtensi4.length) {
                 options.ownerExtensionIds.forEach(function (id) {
                   params.append('ownerExtensionIds', id);
                 });
@@ -2419,7 +2476,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
     key: "waitSyncDone",
     value: function () {
       var _waitSyncDone = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee23(type) {
-        var _this10 = this;
+        var _this11 = this;
         return _regenerator().w(function (_context23) {
           while (1) switch (_context23.n) {
             case 0:
@@ -2429,7 +2486,7 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
               }), (0, _rxjs.timeout)({
                 each: 10000,
                 "with": function _with() {
-                  _this10.logger.error("wait ".concat(type, " sync done timeout after 10 seconds"));
+                  _this11.logger.error("wait ".concat(type, " sync done timeout after 10 seconds"));
                   return (0, _rxjs.of)(false);
                 }
               })));
@@ -2470,12 +2527,12 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
   initializer: function initializer() {
     return false;
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setLoadingHistory", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLoadingHistory"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedThreadsPageNumber", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedThreadsPageNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedMessagesPageNumber", [_nextCore.action, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedMessagesPageNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedThreadsTotalPages", [_nextCore.action, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedThreadsTotalPages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedMessagesTotalPages", [_nextCore.action, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedMessagesTotalPages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "smsRecipientCallQueues", [_nextCore.computed, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "smsRecipientCallQueues"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_numberFormatter", [_dec28, _dec29], {
+}), _applyDecoratedDescriptor(_class2.prototype, "_setLoadingHistory", [_nextCore.action, _dec16, _dec17], Object.getOwnPropertyDescriptor(_class2.prototype, "_setLoadingHistory"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedThreadsPageNumber", [_nextCore.action, _dec18, _dec19], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedThreadsPageNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedMessagesPageNumber", [_nextCore.action, _dec20, _dec21], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedMessagesPageNumber"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedThreadsTotalPages", [_nextCore.action, _dec22, _dec23], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedThreadsTotalPages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setHistoryLoadedMessagesTotalPages", [_nextCore.action, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "_setHistoryLoadedMessagesTotalPages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "smsRecipients", [_nextCore.computed, _dec26, _dec27], Object.getOwnPropertyDescriptor(_class2.prototype, "smsRecipients"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "smsRecipientExtensionIds", [_nextCore.computed, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "smsRecipientExtensionIds"), _class2.prototype), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_numberFormatter", [_dec30, _dec31], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.storage, _nextCore.state, _dec30], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "data", [_nextCore.storage, _nextCore.state, _dec32], {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -2487,26 +2544,26 @@ var MessageThread = exports.MessageThread = (_dec = (0, _nextCore.injectable)({
       entriesToken: null
     };
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "threadMetadataMap", [_nextCore.state, _dec31], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "threadMetadataMap", [_nextCore.state, _dec33], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "inputValueMap", [_nextCore.state, _dec32], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "inputValueMap", [_nextCore.state, _dec34], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "attachmentMap", [_nextCore.state, _dec33], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "attachmentMap", [_nextCore.state, _dec35], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return {};
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "_setInputValue", [_nextCore.action, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "_setInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAttachment", [_nextCore.action, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeAttachment", [_nextCore.action, _dec38, _dec39], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInputValue", [_dec40, _dec41, _dec42], Object.getOwnPropertyDescriptor(_class2.prototype, "setInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "addAttachments", [_dec43, _dec44, _dec45], Object.getOwnPropertyDescriptor(_class2.prototype, "addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeAttachment", [_dec46, _dec47, _dec48], Object.getOwnPropertyDescriptor(_class2.prototype, "removeAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetInputValue", [_nextCore.action, _dec49, _dec50], Object.getOwnPropertyDescriptor(_class2.prototype, "resetInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetAttachments", [_nextCore.action, _dec51, _dec52], Object.getOwnPropertyDescriptor(_class2.prototype, "resetAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec53, _dec54], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUnreadCount", [_nextCore.action, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "setUnreadCount"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThreadMetaData", [_nextCore.action, _dec57, _dec58], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThreadMetaData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reopenResolvedThread", [_dec59, _dec60, _dec61], Object.getOwnPropertyDescriptor(_class2.prototype, "reopenResolvedThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThreadLoading", [_nextCore.action, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "setThreadLoading"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncEntriesSuccess", [_nextCore.action, _dec64, _dec65], Object.getOwnPropertyDescriptor(_class2.prototype, "syncEntriesSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncThreadSuccess", [_nextCore.action, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "syncThreadSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "threadConversationsInfo", [_nextCore.computed, _dec68, _dec69], Object.getOwnPropertyDescriptor(_class2.prototype, "threadConversationsInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "groupedThreadsMap", [_nextCore.computed, _dec70, _dec71], Object.getOwnPropertyDescriptor(_class2.prototype, "groupedThreadsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "threadUnreadCount", [_nextCore.computed, _dec72, _dec73], Object.getOwnPropertyDescriptor(_class2.prototype, "threadUnreadCount"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadInitialHistory", [_dec74, _dec75, _dec76], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadInitialHistory"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_entriesFSync", [_dec77, _dec78, _dec79], Object.getOwnPropertyDescriptor(_class2.prototype, "_entriesFSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_entriesISync", [_dec80, _dec81, _dec82], Object.getOwnPropertyDescriptor(_class2.prototype, "_entriesISync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_threadFSync", [_dec83, _dec84, _dec85], Object.getOwnPropertyDescriptor(_class2.prototype, "_threadFSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_threadISync", [_dec86, _dec87, _dec88], Object.getOwnPropertyDescriptor(_class2.prototype, "_threadISync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resolveThread", [_dec89, _dec90, _dec91], Object.getOwnPropertyDescriptor(_class2.prototype, "resolveThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "assignThread", [_dec92, _dec93, _dec94], Object.getOwnPropertyDescriptor(_class2.prototype, "assignThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreads", [_dec95, _dec96, _dec97], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreads"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreadMessages", [_dec98, _dec99, _dec100], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreadMessages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadMoreMessages", [_dec101, _dec102, _dec103], Object.getOwnPropertyDescriptor(_class2.prototype, "loadMoreMessages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreadNotes", [_dec104, _dec105, _dec106], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreadNotes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "createThreadNote", [_dec107, _dec108, _dec109], Object.getOwnPropertyDescriptor(_class2.prototype, "createThreadNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThreadNote", [_dec110, _dec111, _dec112], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThreadNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deleteThreadNotes", [_dec113, _dec114, _dec115], Object.getOwnPropertyDescriptor(_class2.prototype, "deleteThreadNotes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendNewThreadMessage", [_dec116, _dec117, _dec118], Object.getOwnPropertyDescriptor(_class2.prototype, "sendNewThreadMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendThreadMessage", [_dec119, _dec120, _dec121], Object.getOwnPropertyDescriptor(_class2.prototype, "sendThreadMessage"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "_setInputValue", [_nextCore.action, _dec36, _dec37], Object.getOwnPropertyDescriptor(_class2.prototype, "_setInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_setAttachment", [_nextCore.action, _dec38, _dec39], Object.getOwnPropertyDescriptor(_class2.prototype, "_setAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_removeAttachment", [_nextCore.action, _dec40, _dec41], Object.getOwnPropertyDescriptor(_class2.prototype, "_removeAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setInputValue", [_dec42, _dec43, _dec44], Object.getOwnPropertyDescriptor(_class2.prototype, "setInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "addAttachments", [_dec45, _dec46, _dec47], Object.getOwnPropertyDescriptor(_class2.prototype, "addAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "removeAttachment", [_dec48, _dec49, _dec50], Object.getOwnPropertyDescriptor(_class2.prototype, "removeAttachment"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetInputValue", [_nextCore.action, _dec51, _dec52], Object.getOwnPropertyDescriptor(_class2.prototype, "resetInputValue"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetAttachments", [_nextCore.action, _dec53, _dec54], Object.getOwnPropertyDescriptor(_class2.prototype, "resetAttachments"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resetData", [_nextCore.action, _dec55, _dec56], Object.getOwnPropertyDescriptor(_class2.prototype, "resetData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setUnreadCount", [_nextCore.action, _dec57, _dec58], Object.getOwnPropertyDescriptor(_class2.prototype, "setUnreadCount"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThreadMetaData", [_nextCore.action, _dec59, _dec60], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThreadMetaData"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "reopenResolvedThread", [_dec61, _dec62, _dec63], Object.getOwnPropertyDescriptor(_class2.prototype, "reopenResolvedThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "setThreadLoading", [_nextCore.action, _dec64, _dec65], Object.getOwnPropertyDescriptor(_class2.prototype, "setThreadLoading"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncEntriesSuccess", [_nextCore.action, _dec66, _dec67], Object.getOwnPropertyDescriptor(_class2.prototype, "syncEntriesSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "syncThreadSuccess", [_nextCore.action, _dec68, _dec69], Object.getOwnPropertyDescriptor(_class2.prototype, "syncThreadSuccess"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "threadConversationsInfo", [_nextCore.computed, _dec70, _dec71], Object.getOwnPropertyDescriptor(_class2.prototype, "threadConversationsInfo"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "groupedThreadsMap", [_nextCore.computed, _dec72, _dec73], Object.getOwnPropertyDescriptor(_class2.prototype, "groupedThreadsMap"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "eligibleRecipientIds", [_nextCore.computed, _dec74, _dec75], Object.getOwnPropertyDescriptor(_class2.prototype, "eligibleRecipientIds"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "threadUnreadCount", [_nextCore.computed, _dec76, _dec77], Object.getOwnPropertyDescriptor(_class2.prototype, "threadUnreadCount"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_loadInitialHistory", [_dec78, _dec79, _dec80], Object.getOwnPropertyDescriptor(_class2.prototype, "_loadInitialHistory"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_entriesFSync", [_dec81, _dec82, _dec83], Object.getOwnPropertyDescriptor(_class2.prototype, "_entriesFSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_entriesISync", [_dec84, _dec85, _dec86], Object.getOwnPropertyDescriptor(_class2.prototype, "_entriesISync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_threadFSync", [_dec87, _dec88, _dec89], Object.getOwnPropertyDescriptor(_class2.prototype, "_threadFSync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "_threadISync", [_dec90, _dec91, _dec92], Object.getOwnPropertyDescriptor(_class2.prototype, "_threadISync"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "resolveThread", [_dec93, _dec94, _dec95], Object.getOwnPropertyDescriptor(_class2.prototype, "resolveThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "assignThread", [_dec96, _dec97, _dec98], Object.getOwnPropertyDescriptor(_class2.prototype, "assignThread"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreads", [_dec99, _dec100, _dec101], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreads"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreadMessages", [_dec102, _dec103, _dec104], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreadMessages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "loadMoreMessages", [_dec105, _dec106, _dec107], Object.getOwnPropertyDescriptor(_class2.prototype, "loadMoreMessages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "listThreadNotes", [_dec108, _dec109, _dec110], Object.getOwnPropertyDescriptor(_class2.prototype, "listThreadNotes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "createThreadNote", [_dec111, _dec112, _dec113], Object.getOwnPropertyDescriptor(_class2.prototype, "createThreadNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "updateThreadNote", [_dec114, _dec115, _dec116], Object.getOwnPropertyDescriptor(_class2.prototype, "updateThreadNote"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "deleteThreadNotes", [_dec117, _dec118, _dec119], Object.getOwnPropertyDescriptor(_class2.prototype, "deleteThreadNotes"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendNewThreadMessage", [_dec120, _dec121, _dec122], Object.getOwnPropertyDescriptor(_class2.prototype, "sendNewThreadMessage"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sendThreadMessage", [_dec123, _dec124, _dec125], Object.getOwnPropertyDescriptor(_class2.prototype, "sendThreadMessage"), _class2.prototype), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 //# sourceMappingURL=MessageThread.js.map

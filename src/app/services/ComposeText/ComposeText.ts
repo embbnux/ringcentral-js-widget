@@ -145,7 +145,7 @@ export class ComposeText extends RcModule {
         this.getConsentStatus(number.phoneNumber);
       const isOptOut = Boolean(
         consentOptOut ||
-          this._smsOptOut?.isOptOut(number.phoneNumber, this.senderNumber),
+        this._smsOptOut?.isOptOut(number.phoneNumber, this.senderNumber),
       );
       const error = number.error || isOptOut || requiredOptInLoss;
       const value: ToNumber = {
@@ -155,8 +155,8 @@ export class ComposeText extends RcModule {
           ? isOptOut
             ? 'optOut'
             : requiredOptInLoss
-            ? 'requiredOptIn'
-            : 'invalidPhoneNumber'
+              ? 'requiredOptIn'
+              : 'invalidPhoneNumber'
           : undefined,
       };
 
@@ -385,9 +385,8 @@ export class ComposeText extends RcModule {
   ): Promise<T extends string ? boolean : boolean[]> {
     const isList = Array.isArray(phoneNumbers);
     const phoneNumberArray: string[] = isList ? phoneNumbers : [phoneNumbers];
-    const isOnlyPagerResults = await this._validateIsOnlyPager(
-      phoneNumberArray,
-    );
+    const isOnlyPagerResults =
+      await this._validateIsOnlyPager(phoneNumberArray);
     const isOnlyPagerArray = Array.isArray(isOnlyPagerResults)
       ? isOnlyPagerResults
       : [isOnlyPagerResults];
@@ -488,7 +487,7 @@ export class ComposeText extends RcModule {
       } = this.getConsentStatus(typingToNumber);
       const typingToOptOut = Boolean(
         typingToConsentOptOut ||
-          this._smsOptOut?.isOptOut(typingToNumber, this.senderNumber),
+        this._smsOptOut?.isOptOut(typingToNumber, this.senderNumber),
       );
 
       if (

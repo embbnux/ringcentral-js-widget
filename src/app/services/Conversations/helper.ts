@@ -2,6 +2,7 @@ import { format } from '@ringcentral-integration/phone-number';
 import MD5 from 'crypto-js/md5';
 
 import type { ToNumber } from '../ComposeText/ComposeText.interface';
+
 import type { FormattedConversation } from './Conversations.interface';
 
 function getE164PhoneNumber(to: string): string | null | undefined {

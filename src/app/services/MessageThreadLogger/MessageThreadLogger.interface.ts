@@ -1,4 +1,5 @@
 import type { LogOptions as BaseLogOptions } from '@ringcentral-integration/micro-core/src/app/services';
+
 import type { ConversationLogItem } from '../ConversationLogger/ConversationLogger.interface';
 
 export interface MessageThreadLoggerOptions {

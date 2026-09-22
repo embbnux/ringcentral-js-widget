@@ -10,10 +10,10 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { FileAttachmentRender } from './FileAttachmentRender';
-import { ImageAttachmentRender } from './ImageAttachmentRender';
-import { SubjectRender } from './SubjectRender';
 import i18n from './i18n';
+import { ImageAttachmentRender } from './ImageAttachmentRender';
 import styles from './styles.scss';
+import { SubjectRender } from './SubjectRender';
 
 dayjs.extend(localizedFormat);
 

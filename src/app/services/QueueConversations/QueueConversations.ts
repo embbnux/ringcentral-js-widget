@@ -105,10 +105,15 @@ export class QueueConversations extends ConversationsBase<QueueMessageStore> {
     return this.selectedCallQueueIds[0] ?? null;
   }
 
+  private get _enable() {
+    return this._conversationsOptions?.enable ?? true;
+  }
+
   override get _hasPermission() {
     return Boolean(
+      this._enable &&
       this._appFeatures.hasReadTextPermission &&
-        this.smsRecipientCallQueues.length > 0,
+      this.smsRecipientCallQueues.length > 0,
     );
   }
 
@@ -191,8 +196,8 @@ export class QueueConversations extends ConversationsBase<QueueMessageStore> {
             this.inputContents[String(conversation.conversationId)];
           return Boolean(
             (conversation as QueueMessage).messageStatus === 'Draft' ||
-              inputContent?.text?.trim() ||
-              inputContent?.attachments?.length,
+            inputContent?.text?.trim() ||
+            inputContent?.attachments?.length,
           );
         }
         case 'Failed':
@@ -205,6 +210,10 @@ export class QueueConversations extends ConversationsBase<QueueMessageStore> {
 
   @computed
   get unreadCount() {
+    if (!this.hasPermission) {
+      return 0;
+    }
+
     return this.formattedConversations.reduce(
       (count, conversation) => count + conversation.unreadCounts,
       0,

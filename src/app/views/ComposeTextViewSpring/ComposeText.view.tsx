@@ -217,9 +217,10 @@ export class ComposeTextViewSpring extends RcViewModule {
                   { phoneNumber: trimmedTypingToNumber, freeSolo: true },
                 ]
               : toNumbers;
-            const send = await this._composeTextViewOptions?.onDncVerify(
-              effectiveToNumbers,
-            );
+            const send =
+              await this._composeTextViewOptions?.onDncVerify(
+                effectiveToNumbers,
+              );
             if (!send) {
               return;
             }

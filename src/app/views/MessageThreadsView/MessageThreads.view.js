@@ -59,13 +59,13 @@ var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 var _rxjs = require("rxjs");
 var _services4 = require("../../services");
-var _ConversationAlert = require("../ConversationViewSpring/ConversationAlert");
 var _i18n2 = _interopRequireDefault(require("../ConversationsViewSpring/ConversationsPage/i18n"));
+var _ConversationAlert = require("../ConversationViewSpring/ConversationAlert");
+var _i18n3 = _interopRequireWildcard(require("./i18n"));
 var _MessageThreadPage = require("./MessageThreadPage");
-var _i18n3 = _interopRequireDefault(require("./MessageThreadPage/i18n"));
-var _i18n4 = _interopRequireWildcard(require("./i18n"));
+var _i18n4 = _interopRequireDefault(require("./MessageThreadPage/i18n"));
 var _utils = require("./utils");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t6 in e) "default" !== _t6 && {}.hasOwnProperty.call(e, _t6) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t6)) && (i.get || i.set) ? o(f, _t6, i) : f[_t6] = e[_t6]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -97,7 +97,7 @@ function _initializerWarningHelper(r, e) { throw Error("Decorating class propert
 var loadingList = [1, 2, 3];
 var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.injectable)({
   name: 'MessageThreadsView'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services3.CallQueues === "undefined" ? Object : _services3.CallQueues, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services4.MessageThread === "undefined" ? Object : _services4.MessageThread, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec0 = Reflect.metadata("design:type", typeof SharedSearchForm === "undefined" ? Object : SharedSearchForm), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec15 = Reflect.metadata("design:type", Function), _dec16 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [typeof _ConversationAlert.ConversationAlert === "undefined" ? Object : _ConversationAlert.ConversationAlert, typeof _services3.CallQueues === "undefined" ? Object : _services3.CallQueues, typeof _views.ModalView === "undefined" ? Object : _views.ModalView, typeof _services4.MessageThread === "undefined" ? Object : _services4.MessageThread, typeof _nextCore.RouterPlugin === "undefined" ? Object : _nextCore.RouterPlugin, typeof _services2.Toast === "undefined" ? Object : _services2.Toast, typeof _services.Auth === "undefined" ? Object : _services.Auth, typeof _nextCore.PortManager === "undefined" ? Object : _nextCore.PortManager]), _dec4 = Reflect.metadata("design:type", typeof Record === "undefined" ? Object : Record), _dec5 = Reflect.metadata("design:type", Function), _dec6 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec7 = (0, _nextCore.delegate)('server'), _dec8 = Reflect.metadata("design:type", Function), _dec9 = Reflect.metadata("design:paramtypes", [String, typeof StateSnapshot === "undefined" ? Object : StateSnapshot]), _dec0 = Reflect.metadata("design:type", typeof SharedSearchForm === "undefined" ? Object : SharedSearchForm), _dec1 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [Object]), _dec11 = Reflect.metadata("design:type", Function), _dec12 = Reflect.metadata("design:paramtypes", []), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_RcViewModule) {
   function MessageThreadsView(_conversationAlert, _callQueues, _modalView, _messageThread, _router, _toast, _auth, _portManager) {
     var _this;
     _classCallCheck(this, MessageThreadsView);
@@ -238,9 +238,9 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       return setLastPosition;
     }()
   }, {
-    key: "smsRecipientCallQueues",
+    key: "smsRecipients",
     get: function get() {
-      return this._messageThread.smsRecipientCallQueues;
+      return this._messageThread.smsRecipients;
     }
   }, {
     key: "updateSharedSearchForm",
@@ -250,18 +250,11 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
           filter: 'All',
           statusFilter: ['Open', 'Resolved'],
           selectedAssignees: ['__CURRENT_USER__', '__ASSIGNED_TO_OTHERS__', '__UNASSIGNED__'],
-          selectedCallQueues: this.allCallQueueIds
+          selectedRecipientExtensionIds: this._messageThread.smsRecipientExtensionIds
         });
         return;
       }
       Object.assign(this.sharedSearchForm, updates);
-    }
-  }, {
-    key: "allCallQueueIds",
-    get: function get() {
-      return this.smsRecipientCallQueues.map(function (queue) {
-        return queue.id;
-      });
     }
   }, {
     key: "filteredThreadConversations",
@@ -272,7 +265,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       var statusFilter = this.sharedSearchForm.statusFilter;
       var searchInput = this.sharedSearchForm.searchInput.toLowerCase().trim();
       var selectedAssignees = this.sharedSearchForm.selectedAssignees;
-      var selectedCallQueues = this.sharedSearchForm.selectedCallQueues;
+      var selectedRecipientExtensionIds = this.sharedSearchForm.selectedRecipientExtensionIds;
       var currentExtensionId = this._auth.ownerId;
       var filtered = threads;
 
@@ -320,13 +313,13 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       }
 
       // Filter by call queues
-      if (selectedCallQueues.length < this.smsRecipientCallQueues.length) {
+      if (selectedRecipientExtensionIds.length > 0 && selectedRecipientExtensionIds.length < this.smsRecipients.length) {
         filtered = filtered.filter(function (conversation) {
-          var _this2$_messageThread5, _threadInfo$owner;
+          var _this2$_messageThread5, _threadInfo$owner$ext, _threadInfo$owner, _threadOwner;
           var threadId = conversation.conversationId;
           var threadInfo = (_this2$_messageThread5 = _this2._messageThread.getThread(threadId)) === null || _this2$_messageThread5 === void 0 ? void 0 : _this2$_messageThread5.threadInfo;
-          var ownerExtensionId = threadInfo === null || threadInfo === void 0 ? void 0 : (_threadInfo$owner = threadInfo.owner) === null || _threadInfo$owner === void 0 ? void 0 : _threadInfo$owner.extensionId;
-          return ownerExtensionId && selectedCallQueues.includes(ownerExtensionId);
+          var ownerExtensionId = (_threadInfo$owner$ext = threadInfo === null || threadInfo === void 0 ? void 0 : (_threadInfo$owner = threadInfo.owner) === null || _threadInfo$owner === void 0 ? void 0 : _threadInfo$owner.extensionId) !== null && _threadInfo$owner$ext !== void 0 ? _threadInfo$owner$ext : (_threadOwner = conversation.threadOwner) === null || _threadOwner === void 0 ? void 0 : _threadOwner.extensionId;
+          return Boolean(ownerExtensionId && selectedRecipientExtensionIds.includes(ownerExtensionId));
         });
       }
 
@@ -367,11 +360,11 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         action = _useModalItemView.action;
       var _ref = props.payload,
         threadId = _ref.threadId;
-      var _useLocale = (0, _hooks.useLocale)(_i18n4["default"], _i18n2["default"]),
+      var _useLocale = (0, _hooks.useLocale)(_i18n3["default"], _i18n2["default"]),
         t = _useLocale.t;
       var _useLocale2 = (0, _hooks.useLocale)(_i18n["default"]),
         contactsT = _useLocale2.t;
-      var _useLocale3 = (0, _hooks.useLocale)(_i18n3["default"]),
+      var _useLocale3 = (0, _hooks.useLocale)(_i18n4["default"]),
         messageThreadsT = _useLocale3.t;
       var _useState = (0, _react.useState)(''),
         _useState2 = _slicedToArray(_useState, 2),
@@ -505,7 +498,9 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         size: "small"
       }))), /*#__PURE__*/_react["default"].createElement("div", {
         className: "flex-1 overflow-auto relative"
-      }, loading && !hasData ?
+      },
+      // eslint-disable-next-line no-nested-ternary
+      loading && !hasData ?
       /*#__PURE__*/
       // First time loading - show skeleton
       _react["default"].createElement("div", {
@@ -603,28 +598,28 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       }));
 
       // when able to selected queue change, should remove the not exist queue from the selected call queues
-      var verifySelectedCallQueues$ = (0, _nextCore.fromWatchValue)(this, function () {
-        return _this4.smsRecipientCallQueues;
-      }).pipe((0, _rxjs.tap)(function (selectedCallQueues) {
-        var validQueues = _this4.sharedSearchForm.selectedCallQueues.filter(function (queue) {
-          return selectedCallQueues.some(function (q) {
+      var verifySelectedRecipientExtensionIds$ = (0, _nextCore.fromWatchValue)(this, function () {
+        return _this4.smsRecipients;
+      }).pipe((0, _rxjs.tap)(function (selectedRecipientExtensionIds) {
+        var validQueues = _this4.sharedSearchForm.selectedRecipientExtensionIds.filter(function (queue) {
+          return selectedRecipientExtensionIds.some(function (q) {
             return q.id === queue;
           });
         });
         var validQueuesLength = validQueues.length;
         // if that filter is same as the all call queue ids, should reset the selected call queues
-        if (validQueuesLength === 0 || validQueuesLength === selectedCallQueues.length) {
+        if (validQueuesLength === 0 || validQueuesLength === selectedRecipientExtensionIds.length) {
           _this4.updateSharedSearchForm({
-            selectedCallQueues: _this4.allCallQueueIds
+            selectedRecipientExtensionIds: _this4._messageThread.smsRecipientExtensionIds
           });
         } else {
           _this4.updateSharedSearchForm({
-            selectedCallQueues: validQueues
+            selectedRecipientExtensionIds: validQueues
           });
         }
       }));
       this._messageThread.hasPermission$.pipe((0, _rxjs.switchMap)(function (permission) {
-        return permission ? (0, _rxjs.merge)(markThreadAsViewed$, verifySelectedCallQueues$) : _rxjs.EMPTY;
+        return permission ? (0, _rxjs.merge)(markThreadAsViewed$, verifySelectedRecipientExtensionIds$) : _rxjs.EMPTY;
       }), _nextCore.takeUntilAppDestroy).subscribe();
     }
   }, {
@@ -653,7 +648,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               _t2 = _context3.v;
               this.logger.error('resolveThread error', _t2);
               this._toast.danger({
-                message: (0, _i18n4.t)('failedToResolveThread')
+                message: (0, _i18n3.t)('failedToResolveThread')
               });
               throw _t2;
             case 3:
@@ -745,7 +740,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               _t3 = _context5.v;
               this.logger.error('assignToMe error', _t3);
               this._toast.danger({
-                message: (0, _i18n4.t)('failedToAssignThread')
+                message: (0, _i18n3.t)('failedToAssignThread')
               });
               throw _t3;
             case 8:
@@ -776,7 +771,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               return this._messageThread.unassignThread(conversationId);
             case 1:
               this._toast.success({
-                message: (0, _i18n4.t)('conversationUnassigned')
+                message: (0, _i18n3.t)('conversationUnassigned')
               });
               _context6.n = 3;
               break;
@@ -785,7 +780,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
               _t4 = _context6.v;
               this.logger.error('unassignThread error', _t4);
               this._toast.danger({
-                message: (0, _i18n4.t)('failedToUnassignThread')
+                message: (0, _i18n3.t)('failedToUnassignThread')
               });
               throw _t4;
             case 3:
@@ -807,7 +802,7 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
         form: this.sharedSearchForm,
         lastPosition: this.lastPosition['shared'],
         loading: this._messageThread.historyLoading,
-        callQueues: this.smsRecipientCallQueues,
+        callQueues: this.smsRecipients,
         assignmentOptions: _utils.assignmentOptions
       };
     }
@@ -927,8 +922,8 @@ var MessageThreadsView = exports.MessageThreadsView = (_dec = (0, _nextCore.inje
       filter: 'All',
       statusFilter: ['Open', 'Resolved'],
       selectedAssignees: ['__CURRENT_USER__', '__ASSIGNED_TO_OTHERS__', '__UNASSIGNED__'],
-      selectedCallQueues: []
+      selectedRecipientExtensionIds: []
     };
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "updateSharedSearchForm", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSharedSearchForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "allCallQueueIds", [_nextCore.computed, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "allCallQueueIds"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "filteredThreadConversations", [_nextCore.computed, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "filteredThreadConversations"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "AssignThreadModalContent", [_nextCore.autobind, _dec15, _dec16], Object.getOwnPropertyDescriptor(_class2.prototype, "AssignThreadModalContent"), _class2.prototype), _class2)) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "updateSharedSearchForm", [_nextCore.action, _dec1, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "updateSharedSearchForm"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "filteredThreadConversations", [_nextCore.computed, _dec11, _dec12], Object.getOwnPropertyDescriptor(_class2.prototype, "filteredThreadConversations"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "AssignThreadModalContent", [_nextCore.autobind, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2.prototype, "AssignThreadModalContent"), _class2.prototype), _class2)) || _class) || _class) || _class);
 //# sourceMappingURL=MessageThreads.view.js.map

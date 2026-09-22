@@ -54,8 +54,8 @@ export const ConversationsHeader: React.FC<ConversationsHeaderProps> = ({
             title: showDisabledTextTooltip
               ? t('sendNewTextDisabled')
               : faxMode
-              ? t('composeFax')
-              : t('composeText'),
+                ? t('composeFax')
+                : t('composeText'),
           }}
           onClick={() => {
             onNewClick(typeFilter);

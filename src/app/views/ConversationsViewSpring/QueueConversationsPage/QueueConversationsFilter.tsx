@@ -70,7 +70,7 @@ export const QueueConversationsFilter: React.FC<
     }
 
     return callQueues.filter((queue) =>
-      [queue.name, queue.extensionNumber, queue.site?.name]
+      [queue.name, queue.site?.name]
         .filter(Boolean)
         .some((value) => value!.toLowerCase().includes(normalizedSearch)),
     );

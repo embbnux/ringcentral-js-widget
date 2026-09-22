@@ -25,8 +25,8 @@ import {
   SmsCampaignType,
 } from '../../services';
 
-import { getSmsCampaignTypeLabel } from './SmsConsentDialog.helper';
 import { t } from './i18n';
+import { getSmsCampaignTypeLabel } from './SmsConsentDialog.helper';
 
 const statusOptions = [SMSOptStatus.OptIn, SMSOptStatus.OptOut] as const;
 

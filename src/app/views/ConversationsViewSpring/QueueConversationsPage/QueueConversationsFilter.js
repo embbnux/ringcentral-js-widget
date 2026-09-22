@@ -92,7 +92,7 @@ var QueueConversationsFilter = exports.QueueConversationsFilter = function Queue
     }
     return callQueues.filter(function (queue) {
       var _queue$site;
-      return [queue.name, queue.extensionNumber, (_queue$site = queue.site) === null || _queue$site === void 0 ? void 0 : _queue$site.name].filter(Boolean).some(function (value) {
+      return [queue.name, (_queue$site = queue.site) === null || _queue$site === void 0 ? void 0 : _queue$site.name].filter(Boolean).some(function (value) {
         return value.toLowerCase().includes(normalizedSearch);
       });
     });

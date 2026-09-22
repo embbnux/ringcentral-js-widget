@@ -146,9 +146,15 @@ var QueueConversations = exports.QueueConversations = (_dec = (0, _nextCore.inje
       return (_this$selectedCallQue = this.selectedCallQueueIds[0]) !== null && _this$selectedCallQue !== void 0 ? _this$selectedCallQue : null;
     }
   }, {
+    key: "_enable",
+    get: function get() {
+      var _this$_conversationsO, _this$_conversationsO2;
+      return (_this$_conversationsO = (_this$_conversationsO2 = this._conversationsOptions) === null || _this$_conversationsO2 === void 0 ? void 0 : _this$_conversationsO2.enable) !== null && _this$_conversationsO !== void 0 ? _this$_conversationsO : true;
+    }
+  }, {
     key: "_hasPermission",
     get: function get() {
-      return Boolean(this._appFeatures.hasReadTextPermission && this.smsRecipientCallQueues.length > 0);
+      return Boolean(this._enable && this._appFeatures.hasReadTextPermission && this.smsRecipientCallQueues.length > 0);
     }
   }, {
     key: "hasPermission",
@@ -233,6 +239,9 @@ var QueueConversations = exports.QueueConversations = (_dec = (0, _nextCore.inje
   }, {
     key: "unreadCount",
     get: function get() {
+      if (!this.hasPermission) {
+        return 0;
+      }
       return this.formattedConversations.reduce(function (count, conversation) {
         return count + conversation.unreadCounts;
       }, 0);

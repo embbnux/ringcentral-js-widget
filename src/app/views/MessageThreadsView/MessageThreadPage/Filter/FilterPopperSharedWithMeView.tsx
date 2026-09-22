@@ -27,7 +27,7 @@ export type FilterPopperSharedWithMeViewProps = {
   searchQuery: string;
   onSearchQueryChange: (value: string) => void;
   filteredCallQueues: CallQueueInfo[];
-  tempSelectedCallQueues: string[];
+  tempSelectedRecipientExtensionIds: string[];
   isShowAllCallQueuesSelected: boolean;
   isShowAllCallQueuesIndeterminate: boolean;
   onShowAllCallQueuesChange: (checked: boolean) => void;
@@ -43,7 +43,7 @@ export const FilterPopperSharedWithMeView: React.FC<
   searchQuery,
   onSearchQueryChange,
   filteredCallQueues,
-  tempSelectedCallQueues,
+  tempSelectedRecipientExtensionIds,
   isShowAllCallQueuesSelected,
   isShowAllCallQueuesIndeterminate,
   onShowAllCallQueuesChange,
@@ -60,10 +60,10 @@ export const FilterPopperSharedWithMeView: React.FC<
 
   const handleQueueClick = (queue: CallQueueInfo) => (e: any) => {
     e.stopPropagation();
-    const isSelected = tempSelectedCallQueues.includes(queue.id);
+    const isSelected = tempSelectedRecipientExtensionIds.includes(queue.id);
     const newSelected = isSelected
-      ? tempSelectedCallQueues.filter((id) => id !== queue.id)
-      : [...tempSelectedCallQueues, queue.id];
+      ? tempSelectedRecipientExtensionIds.filter((id) => id !== queue.id)
+      : [...tempSelectedRecipientExtensionIds, queue.id];
     onCallQueuesChange(newSelected);
   };
 
@@ -150,7 +150,9 @@ export const FilterPopperSharedWithMeView: React.FC<
         ) : null}
 
         {filteredCallQueues.map((queue) => {
-          const isSelected = tempSelectedCallQueues.includes(queue.id);
+          const isSelected = tempSelectedRecipientExtensionIds.includes(
+            queue.id,
+          );
           const displayName = queue.site
             ? `${queue.name} | ${queue.site.name}`
             : queue.name;
@@ -195,7 +197,7 @@ export const FilterPopperSharedWithMeView: React.FC<
           variant="contained"
           size="medium"
           fullWidth
-          disabled={tempSelectedCallQueues.length === 0}
+          disabled={tempSelectedRecipientExtensionIds.length === 0}
           onClick={(e) => {
             e.stopPropagation();
             onDone();

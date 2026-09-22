@@ -40,8 +40,8 @@ var _springUi = require("@ringcentral/spring-ui");
 var _react = _interopRequireWildcard(require("react"));
 var _services = require("../../services");
 var _i18n2 = _interopRequireDefault(require("../ConversationViewSpring/ConversationPanel/i18n"));
-var _SMSMD = _interopRequireDefault(require("./SMSMD.svg"));
 var _i18n3 = _interopRequireDefault(require("./i18n"));
+var _SMSMD = _interopRequireDefault(require("./SMSMD.svg"));
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _class, _class2, _descriptor; // TODO: wait spring-ui release a new version to get the icon component
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

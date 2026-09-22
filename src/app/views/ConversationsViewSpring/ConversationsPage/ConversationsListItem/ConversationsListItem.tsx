@@ -45,8 +45,8 @@ const _ConversationsListItem: React.FC<ConversationsListItemProps> = ({
     typeFilter === 'Text'
       ? 'Text list'
       : typeFilter === 'Fax'
-      ? 'Fax list'
-      : 'Voicemail list',
+        ? 'Fax list'
+        : 'Voicemail list',
   );
 
   useItemRender?.(conversation, index);

@@ -135,9 +135,9 @@ export class SharedConversationView extends RcViewModule {
       acceptFileTypes: this._conversations.acceptFileTypes,
       sendButtonDisabled: Boolean(
         disableLinks ||
-          !(threadInputValue.length || attachments.length > 0) ||
-          showSpinner ||
-          sending,
+        !(threadInputValue.length || attachments.length > 0) ||
+        showSpinner ||
+        sending,
       ),
       threadInfo: thread?.threadInfo,
       threadMetadata,

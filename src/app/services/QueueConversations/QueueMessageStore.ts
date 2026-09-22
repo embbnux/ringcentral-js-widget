@@ -38,7 +38,10 @@ import {
 import { MessageStoreBase } from '../MessageStore/MessageStoreBase';
 import { MessageStoreEventSubscriber } from '../MessageStoreEventSubscriber';
 
-import type { QueueMessageStoreOptions } from './QueueConversations.interface';
+import type {
+  QueueConversationsOptions,
+  QueueMessageStoreOptions,
+} from './QueueConversations.interface';
 
 @injectable({
   name: 'QueueMessageStore',
@@ -61,6 +64,8 @@ export class QueueMessageStore extends MessageStoreBase {
     @optional('TabManager') protected override _tabManager?: any,
     @optional('QueueMessageStoreOptions')
     protected override _messageStoreOptions?: QueueMessageStoreOptions,
+    @optional('QueueConversationsOptions')
+    private _queueConversationsOptions?: QueueConversationsOptions,
   ) {
     super(
       _toast,
@@ -111,10 +116,18 @@ export class QueueMessageStore extends MessageStoreBase {
     return false;
   }
 
+  private get _enable() {
+    return (
+      (this._messageStoreOptions?.enable ?? true) &&
+      (this._queueConversationsOptions?.enable ?? true)
+    );
+  }
+
   override get _hasPermission() {
     return Boolean(
+      this._enable &&
       this._appFeatures.hasReadTextPermission &&
-        this.eligibleGrantIds.length > 0,
+      this.eligibleGrantIds.length > 0,
     );
   }
 

@@ -23,8 +23,8 @@ import {
 import { MessageThreadsView } from '../MessageThreadsView';
 
 import type { ConversationListViewProps } from './Conversations.view.interface';
-import { QueueConversationsView } from './QueueConversations.view';
 import { t } from './i18n';
+import { QueueConversationsView } from './QueueConversations.view';
 
 type ConversationsTabsViewProps = PropsWithChildren<ConversationListViewProps>;
 

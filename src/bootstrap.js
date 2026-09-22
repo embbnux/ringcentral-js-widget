@@ -91,8 +91,8 @@ var _default = exports["default"] = (0, _nextMicro.exposeMicroApp)({
   }, {
     provide: 'SdkConfig',
     useValue: {
-      clientId: 'JP9sPJnkSeKMVS6jdsEAeA',
-      clientSecret: 'Sx2ndvhVTdyANgfuNqZFRwPEFvuIrCQnqpdeSIqFioVQ',
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
       // server: 'https://api-rcapps.ringcentral.com',
       server: 'https://api-xmrupxmn.intlabs_domain',
       cachePrefix: "sdk-".concat(brandConfig.code)

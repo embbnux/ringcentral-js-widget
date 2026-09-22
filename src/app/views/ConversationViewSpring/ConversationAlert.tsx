@@ -1,5 +1,4 @@
 import { NumberFormatter } from '@ringcentral-integration/micro-auth/src/app/services';
-import { Grant } from '@ringcentral-integration/micro-phone/src/app/services';
 import {
   injectable,
   optional,
@@ -13,7 +12,6 @@ import {
   getConversationNumbers,
   MessageSender,
   MessageThread,
-  QueueConversations,
   SmsConsent,
   SmsOptOut,
 } from '../../services';
@@ -39,8 +37,6 @@ export class ConversationAlert extends RcModule {
   constructor(
     private _messageSender: MessageSender,
     private _numberFormatter: NumberFormatter,
-    private _queueConversations: QueueConversations,
-    private _grant: Grant,
     @optional() private _smsOptOut?: SmsOptOut,
     @optional() private _messageThread?: MessageThread,
     @optional() private _smsConsent?: SmsConsent,
@@ -78,19 +74,6 @@ export class ConversationAlert extends RcModule {
       this._messageThread.isSharedSmsSenderNumber(phoneNumber);
 
     if (!shouldSendShared) {
-      return null;
-    }
-
-    const queueExtensionId =
-      this._queueConversations.getConversationQueueExtensionId(
-        conversation?.conversationId,
-      );
-    const isQueueSiteExtension =
-      !!queueExtensionId &&
-      this._grant.isSharedSmsRecipientGrant(queueExtensionId);
-
-    // Queue conversations can only continue on shared numbers.
-    if (isQueueSiteExtension && !shouldSendShared) {
       return null;
     }
 

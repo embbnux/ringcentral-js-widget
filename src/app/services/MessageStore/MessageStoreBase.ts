@@ -40,6 +40,7 @@ import { filter, Subject, switchMap, tap } from 'rxjs';
 
 import { MessageStoreEventSubscriber } from '../MessageStoreEventSubscriber';
 
+import { t } from './i18n';
 import type {
   DispatchedMessageIds,
   MessageHandler,
@@ -51,7 +52,6 @@ import type {
   ProcessRawConversationStoreOptions,
   SyncFunctionOptions,
 } from './MessageStore.interface';
-import { t } from './i18n';
 import { getSyncParams } from './messageStoreHelper';
 
 const DEFAULT_CONVERSATIONS_LOAD_LENGTH = 10;

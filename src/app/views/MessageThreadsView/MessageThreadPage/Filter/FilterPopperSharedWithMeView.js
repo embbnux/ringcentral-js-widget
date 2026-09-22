@@ -45,7 +45,7 @@ var FilterPopperSharedWithMeView = exports.FilterPopperSharedWithMeView = functi
     searchQuery = _ref.searchQuery,
     onSearchQueryChange = _ref.onSearchQueryChange,
     filteredCallQueues = _ref.filteredCallQueues,
-    tempSelectedCallQueues = _ref.tempSelectedCallQueues,
+    tempSelectedRecipientExtensionIds = _ref.tempSelectedRecipientExtensionIds,
     isShowAllCallQueuesSelected = _ref.isShowAllCallQueuesSelected,
     isShowAllCallQueuesIndeterminate = _ref.isShowAllCallQueuesIndeterminate,
     onShowAllCallQueuesChange = _ref.onShowAllCallQueuesChange,
@@ -61,10 +61,10 @@ var FilterPopperSharedWithMeView = exports.FilterPopperSharedWithMeView = functi
   var handleQueueClick = function handleQueueClick(queue) {
     return function (e) {
       e.stopPropagation();
-      var isSelected = tempSelectedCallQueues.includes(queue.id);
-      var newSelected = isSelected ? tempSelectedCallQueues.filter(function (id) {
+      var isSelected = tempSelectedRecipientExtensionIds.includes(queue.id);
+      var newSelected = isSelected ? tempSelectedRecipientExtensionIds.filter(function (id) {
         return id !== queue.id;
-      }) : [].concat(_toConsumableArray(tempSelectedCallQueues), [queue.id]);
+      }) : [].concat(_toConsumableArray(tempSelectedRecipientExtensionIds), [queue.id]);
       onCallQueuesChange(newSelected);
     };
   };
@@ -133,7 +133,7 @@ var FilterPopperSharedWithMeView = exports.FilterPopperSharedWithMeView = functi
   }, /*#__PURE__*/_react["default"].createElement(_springUi.MenuItemText, {
     className: "typography-descriptor text-neutral-b2 text-center mb-2"
   }, t('noSearchResults'))) : null, filteredCallQueues.map(function (queue) {
-    var isSelected = tempSelectedCallQueues.includes(queue.id);
+    var isSelected = tempSelectedRecipientExtensionIds.includes(queue.id);
     var displayName = queue.site ? "".concat(queue.name, " | ").concat(queue.site.name) : queue.name;
     return /*#__PURE__*/_react["default"].createElement(_springUi.MenuItem, {
       key: queue.id
@@ -168,7 +168,7 @@ var FilterPopperSharedWithMeView = exports.FilterPopperSharedWithMeView = functi
     variant: "contained",
     size: "medium",
     fullWidth: true,
-    disabled: tempSelectedCallQueues.length === 0,
+    disabled: tempSelectedRecipientExtensionIds.length === 0,
     onClick: function onClick(e) {
       e.stopPropagation();
       onDone();

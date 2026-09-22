@@ -42,6 +42,7 @@ import { v4 } from 'uuid';
 
 import type { MessageThread } from '../MessageThread';
 
+import { t } from './i18n';
 import type {
   Attachment,
   EventParameter,
@@ -49,7 +50,6 @@ import type {
   SendErrorResponse,
   SmsPermissionReason,
 } from './MessageSender.interface';
-import { t } from './i18n';
 import { messageSenderEvents } from './messageSenderEvents';
 import { messageSenderStatus } from './messageSenderStatus';
 
@@ -215,9 +215,8 @@ export class MessageSender extends RcModule {
       return result;
     }
     if (isEDPEnabled) {
-      const parsedNumbers = await this._numberValidate.parseNumbers(
-        recipientNumbers,
-      );
+      const parsedNumbers =
+        await this._numberValidate.parseNumbers(recipientNumbers);
       if (parsedNumbers) {
         result.result = true;
         parsedNumbers.forEach((item) => {

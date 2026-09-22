@@ -94,7 +94,7 @@ var Filter = exports.Filter = function Filter(_ref) {
   var filter = form.filter,
     statusFilter = form.statusFilter,
     selectedAssignees = form.selectedAssignees,
-    selectedCallQueues = form.selectedCallQueues;
+    selectedRecipientExtensionIds = form.selectedRecipientExtensionIds;
   var activeFilterCount = (0, _react.useMemo)(function () {
     var count = 0;
     // If not all statuses are selected (meaning some are filtered out)
@@ -103,10 +103,10 @@ var Filter = exports.Filter = function Filter(_ref) {
     }
     // If selectedAssignees length equals max possible (assignmentOptions.length), treat as 0 (all selected)
     count += selectedAssignees.length === assignmentOptions.length ? 0 : selectedAssignees.length;
-    // If selectedCallQueues length equals max possible (callQueues.length), treat as 0 (all selected)
-    count += selectedCallQueues.length === callQueues.length && callQueues.length > 0 ? 0 : selectedCallQueues.length;
+    // If selectedRecipientExtensionIds length equals max possible (callQueues.length), treat as 0 (all selected)
+    count += selectedRecipientExtensionIds.length === callQueues.length && callQueues.length > 0 ? 0 : selectedRecipientExtensionIds.length;
     return count;
-  }, [statusFilter, selectedAssignees, selectedCallQueues, callQueues, assignmentOptions]);
+  }, [statusFilter, selectedAssignees, selectedRecipientExtensionIds, callQueues, assignmentOptions]);
   var hasActiveFilters = activeFilterCount > 0;
   var prevFilter = (0, _springUi.usePrevious)(function () {
     return filter;
@@ -170,7 +170,9 @@ var Filter = exports.Filter = function Filter(_ref) {
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex items-center flex-shrink-0 gap-1",
     "data-sign": "filterButtons"
-  }, searchExpanded ? rightButtonState.isActive ? /*#__PURE__*/_react["default"].createElement("div", {
+  },
+  // eslint-disable-next-line no-nested-ternary
+  searchExpanded ? rightButtonState.isActive ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "sui-single-filter sui-single-filter-root"
   }, rightButton) : /*#__PURE__*/_react["default"].createElement("div", {
     className: "sui-single-filter sui-single-filter-root"
@@ -201,7 +203,7 @@ var Filter = exports.Filter = function Filter(_ref) {
     selectedAssignees: selectedAssignees,
     statusFilter: statusFilter,
     callQueues: callQueues,
-    selectedCallQueues: form.selectedCallQueues,
+    selectedRecipientExtensionIds: form.selectedRecipientExtensionIds,
     filter: filter,
     onSharedSearchFormUpdate: onSharedSearchFormUpdate
   }));
