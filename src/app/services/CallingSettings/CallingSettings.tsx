@@ -38,10 +38,10 @@ import { ForwardingNumber } from '../ForwardingNumber';
 import { Softphone } from '../Softphone';
 import { Webphone } from '../Webphone';
 
-import type { CallingSettingsOptions } from './CallingSettings.interface';
 import { callingModes } from './callingModes';
 import type { CallingOptionsType } from './callingOptions';
 import { callingOptions } from './callingOptions';
+import type { CallingSettingsOptions } from './CallingSettings.interface';
 import i18n, { t } from './i18n';
 import { mapOptionToMode } from './mapOptionToMode';
 
@@ -441,13 +441,10 @@ class CallingSettings extends RcModule {
     };
 
     if (callerId?.type === 'Blocked' && !this.isBlockedIdDisabled) {
-      this.logger.info(
-        'default caller ID resolved to blocked',
-        {
-          ...baseLogContext,
-          selectedFromNumber: { phoneNumber: BLOCKED_ID_VALUE },
-        },
-      );
+      this.logger.info('default caller ID resolved to blocked', {
+        ...baseLogContext,
+        selectedFromNumber: { phoneNumber: BLOCKED_ID_VALUE },
+      });
       return { phoneNumber: BLOCKED_ID_VALUE };
     }
 
@@ -497,14 +494,11 @@ class CallingSettings extends RcModule {
       return fallback;
     }
 
-    this.logger.info(
-      'default caller ID matched from number',
-      {
-        ...baseLogContext,
-        matchedBy,
-        selectedFromNumber: this._getFromNumberLogData(defaultEntry),
-      },
-    );
+    this.logger.info('default caller ID matched from number', {
+      ...baseLogContext,
+      matchedBy,
+      selectedFromNumber: this._getFromNumberLogData(defaultEntry),
+    });
 
     return defaultEntry;
   }

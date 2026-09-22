@@ -30,9 +30,9 @@ import {
 } from '../ReferenceWidget.interface';
 
 import { FilterAndSearchHint } from './FilterAndSearchHint';
-import { ReferenceList } from './ReferenceList';
 import i18n from './i18n';
 import NoResult from './no_search_results.svg';
+import { ReferenceList } from './ReferenceList';
 
 interface ReferenceSearchPanelProps {
   initValue: string;

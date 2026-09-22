@@ -86,6 +86,7 @@ import {
 import type { CallLogFormViewProps } from '../CallLogFormView';
 import { CallLogFormView } from '../CallLogFormView';
 import { QuickCallActionView } from '../QuickCallActionView';
+import { SmartNotesLogView } from '../SmartNotesLogView';
 
 import type { CallViewOptions } from './Call.view.interface';
 import i18n from './i18n';
@@ -186,8 +187,8 @@ export class CallView extends RcViewModule implements ModalRef {
     @optional() private _callLogFormView?: CallLogFormView,
     @optional('CallViewOptions')
     private _callViewOptions?: CallViewOptions,
-    @optional('SmartNotesLogView')
-    protected _smartNotesLogView?: any,
+    @optional()
+    protected _smartNotesLogView?: SmartNotesLogView,
   ) {
     super();
 
@@ -457,8 +458,8 @@ export class CallView extends RcViewModule implements ModalRef {
       {
         currentPath: isRingingView ? 'incoming' : 'controls',
         minimized: isRingingView
-          ? this._callAction.existRingingOpenCallMetaInfo?.meta?.minimized ??
-            true
+          ? (this._callAction.existRingingOpenCallMetaInfo?.meta?.minimized ??
+            true)
           : false,
       },
       {

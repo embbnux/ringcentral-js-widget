@@ -96,7 +96,7 @@ var RTCAudioMeter = exports.RTCAudioMeter = /*#__PURE__*/function () {
         this._analyser.minDecibels = kMinDecibels;
         this._analyser.maxDecibels = kMaxDecibels;
         this._analyser.smoothingTimeConstant = kSmoothingTimeConstant;
-        this._data = new Uint8Array(this._analyser.frequencyBinCount);
+        this._data = new Uint8Array(new ArrayBuffer(this._analyser.frequencyBinCount));
         console.info(LOG_TAG, "data length is ".concat(this._data.length, " ").concat(this._data.byteLength));
       } catch (e) {
         // in test not need show this warning

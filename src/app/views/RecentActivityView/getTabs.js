@@ -8,13 +8,13 @@ exports.getTabs = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
-var _DynamicsFont = _interopRequireDefault(require("@ringcentral-integration/widgets/assets/DynamicsFont/DynamicsFont.scss"));
 var _Fax = _interopRequireDefault(require("@ringcentral-integration/widgets/assets/images/Fax.svg"));
 var _VoicemailIcon = _interopRequireDefault(require("@ringcentral-integration/widgets/assets/images/VoicemailIcon.svg"));
 var _RecentActivityCalls2 = _interopRequireDefault(require("@ringcentral-integration/widgets/components/RecentActivityCalls"));
 var _RecentActivityMessages2 = _interopRequireDefault(require("@ringcentral-integration/widgets/components/RecentActivityMessages"));
 var _react = _interopRequireDefault(require("react"));
 var _i18n = require("./i18n");
+var _DynamicsFont = _interopRequireDefault(require("@ringcentral-integration/widgets/assets/DynamicsFont/DynamicsFont.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // TODO: fix type
 var RecentActivityCalls = _RecentActivityCalls2["default"];

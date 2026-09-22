@@ -21,13 +21,13 @@ import {
 } from '../../../../services';
 import { CallViewState } from '../../services';
 
+import { t } from './i18n';
 import type {
   TransferViewOptions,
   TransferViewPanelProps,
   TransferViewProps,
 } from './Transfer.view.interface';
 import { TransferPage } from './TransferPage';
-import { t } from './i18n';
 
 @injectable({
   name: 'TransferView',

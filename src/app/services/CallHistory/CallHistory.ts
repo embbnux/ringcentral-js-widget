@@ -35,9 +35,9 @@ import dayjs from 'dayjs';
 import { EMPTY, map, merge, switchMap, tap } from 'rxjs';
 
 import { isProceeding, isQueueCall } from '../ActiveCallControl';
+import { callingModes, CallingSettings } from '../CallingSettings';
 import { CallLog } from '../CallLog';
 import { CallMonitor } from '../CallMonitor';
-import { callingModes, CallingSettings } from '../CallingSettings';
 import { PreinsertCall } from '../PreinsertCall';
 
 import type { CallHistoryOptions, HistoryCall } from './CallHistory.interface';

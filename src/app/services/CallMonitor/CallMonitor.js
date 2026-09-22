@@ -59,6 +59,7 @@ var _PreinsertCall = require("../PreinsertCall");
 var _Webphone = require("../Webphone");
 var _callEvents = require("./callEvents");
 var _const = require("./const");
+var _helpers = require("./helpers");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -98,7 +99,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
   return [_trackEvents.trackEvents.clickMergeMergeCallControl];
 }), _dec38 = Reflect.metadata("design:type", Function), _dec39 = Reflect.metadata("design:paramtypes", []), _dec40 = (0, _services.track)(_trackEvents.trackEvents.clickCloseConfirmMergeModal), _dec41 = Reflect.metadata("design:type", Function), _dec42 = Reflect.metadata("design:paramtypes", []), _dec43 = (0, _services.track)(_trackEvents.trackEvents.clickMergeConfirmMergeModal), _dec44 = Reflect.metadata("design:type", Function), _dec45 = Reflect.metadata("design:paramtypes", []), _dec46 = (0, _services.track)(_trackEvents.trackEvents.clickAddCallsOnHold), _dec47 = Reflect.metadata("design:type", Function), _dec48 = Reflect.metadata("design:paramtypes", []), _dec49 = (0, _services.track)(_trackEvents.trackEvents.clickMergeCallsOnHold), _dec50 = Reflect.metadata("design:type", Function), _dec51 = Reflect.metadata("design:paramtypes", []), _dec52 = (0, _services.track)(_trackEvents.trackEvents.clickHangupCallsOnHold), _dec53 = Reflect.metadata("design:type", Function), _dec54 = Reflect.metadata("design:paramtypes", []), _dec55 = (0, _services.track)(_trackEvents.trackEvents.clickParticipantAreaCallControl), _dec56 = Reflect.metadata("design:type", Function), _dec57 = Reflect.metadata("design:paramtypes", []), _dec58 = Reflect.metadata("design:type", Function), _dec59 = Reflect.metadata("design:paramtypes", []), _dec60 = Reflect.metadata("design:type", Function), _dec61 = Reflect.metadata("design:paramtypes", []), _dec62 = Reflect.metadata("design:type", Function), _dec63 = Reflect.metadata("design:paramtypes", []), _dec64 = Reflect.metadata("design:type", Function), _dec65 = Reflect.metadata("design:paramtypes", []), _dec66 = Reflect.metadata("design:type", Function), _dec67 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = (_class2 = /*#__PURE__*/function (_RcModule) {
   function CallMonitor(_accountInfo, _storage, _presence, _extensionInfo, _numberFormatter, _activeCallControl, _preInsertCall, _webphone, _contactMatcher, _call, _activityMatcher, _callMonitorOptions) {
-    var _this$_callMonitorOpt, _this$_callMonitorOpt2, _this$_activityMatche;
+    var _this$_contactMatcher, _this$_activityMatche;
     var _this;
     _classCallCheck(this, CallMonitor);
     _this = _callSuper(this, CallMonitor);
@@ -115,9 +116,9 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
     _this._activityMatcher = _activityMatcher;
     _this._callMonitorOptions = _callMonitorOptions;
     _this._eventEmitter = new _events.EventEmitter();
+    _this._answeredSessionIds = new Set();
     _initializerDefineProperty(_this, "_recentCallDirectionMap", _descriptor, _this);
     _initializerDefineProperty(_this, "_recentCallDirectionSessionIds", _descriptor2, _this);
-    _this._enableContactMatchWhenNewCall = (_this$_callMonitorOpt = (_this$_callMonitorOpt2 = _this._callMonitorOptions) === null || _this$_callMonitorOpt2 === void 0 ? void 0 : _this$_callMonitorOpt2.enableContactMatchWhenNewCall) !== null && _this$_callMonitorOpt !== void 0 ? _this$_callMonitorOpt : true;
     /**
      * use state to trigger event, so the event can trigger in every clients and server, alway use when you want to listen the event in component
      */
@@ -136,17 +137,14 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
     _this.onNewCall(function (call) {
       _this._storeRecentCallDirection(call);
     });
-    if (_this._enableContactMatchWhenNewCall) {
-      var _this$_contactMatcher;
-      (_this$_contactMatcher = _this._contactMatcher) === null || _this$_contactMatcher === void 0 ? void 0 : _this$_contactMatcher.addQuerySource({
-        getQueriesFn: function getQueriesFn() {
-          return _this.uniqueNumbers;
-        },
-        readyCheckFn: function readyCheckFn() {
-          return _this._accountInfo.ready && _this._presence.ready;
-        }
-      });
-    }
+    (_this$_contactMatcher = _this._contactMatcher) === null || _this$_contactMatcher === void 0 ? void 0 : _this$_contactMatcher.addQuerySource({
+      getQueriesFn: function getQueriesFn() {
+        return _this.uniqueNumbers;
+      },
+      readyCheckFn: function readyCheckFn() {
+        return _this._accountInfo.ready && _this._presence.ready;
+      }
+    });
     (_this$_activityMatche = _this._activityMatcher) === null || _this$_activityMatche === void 0 ? void 0 : _this$_activityMatche.addQuerySource({
       getQueriesFn: function getQueriesFn() {
         return _this.sessionIds;
@@ -200,6 +198,14 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       this._eventEmitter.on(_callEvents.callEvents.callUpdated, callback);
       return this;
     }
+
+    /** Subscribe to the first observed answered state of each call. */
+  }, {
+    key: "onCallAnswered",
+    value: function onCallAnswered(callback) {
+      this._eventEmitter.on(_callEvents.callEvents.callAnswered, callback);
+      return this;
+    }
   }, {
     key: "_storeRecentCallDirection",
     value: function _storeRecentCallDirection(call) {
@@ -237,7 +243,7 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       }, function (uniqueNumbers, lastProcessedNumbers) {
         if (!_this2.ready) return;
         var newNumbers = (0, _ramda.difference)(uniqueNumbers, lastProcessedNumbers || []);
-        if (_this2._contactMatcher && _this2._contactMatcher.ready && _this2._enableContactMatchWhenNewCall) {
+        if (_this2._contactMatcher && _this2._contactMatcher.ready) {
           _this2._contactMatcher.match({
             queries: newNumbers,
             ignoreQueue: true
@@ -288,16 +294,16 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
           return item.sessionId === call.sessionId;
         });
         if (oldCallIndex === -1) {
-          _this3._eventEmitter.emit(_callEvents.callEvents.newCall, call);
+          _this3.emitEvent(_callEvents.callEvents.newCall, call);
           // loop to execute the onRinging handlers
           if ((0, _callLogHelpers.isRinging)(call)) {
-            _this3._eventEmitter.emit(_callEvents.callEvents.callRinging, call);
+            _this3.emitEvent(_callEvents.callEvents.callRinging, call);
           }
         } else {
           var oldCall = oldCalls[oldCallIndex];
           oldCalls.splice(oldCallIndex, 1);
           if (call.telephonyStatus !== oldCall.telephonyStatus || (oldCall.from && oldCall.from.phoneNumber) !== (call.from && call.from.phoneNumber)) {
-            _this3._eventEmitter.emit(_callEvents.callEvents.callUpdated, call);
+            _this3.emitEvent(_callEvents.callEvents.callUpdated, call);
             if (call.telephonyStatus === 'CallConnected') {
               if ((0, _callLogHelpers.isInbound)(call)) {
                 _this3.inboundCallConnectedTrack();
@@ -306,6 +312,10 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
               }
             }
           }
+        }
+        if (!_this3._answeredSessionIds.has(call.sessionId) && (0, _helpers.checkIsCallAnswered)(call.telephonySession)) {
+          _this3._answeredSessionIds.add(call.sessionId);
+          _this3.emitEvent(_callEvents.callEvents.callAnswered, call);
         }
         entities.forEach(function (entity) {
           var _call$toMatches;
@@ -324,7 +334,8 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
       });
       if (oldCalls.length > 0) {
         oldCalls.forEach(function (call) {
-          _this3._eventEmitter.emit(_callEvents.callEvents.callEnded, call);
+          _this3._answeredSessionIds["delete"](call.sessionId);
+          _this3.emitEvent(_callEvents.callEvents.callEnded, call);
         });
 
         // in old project, never clean current warm transfer data, but should clean when some call be ended, but some bad logic base on that to test, due to we will deprecated the old project, so just use flag to control here, will be remove in the future
@@ -332,6 +343,12 @@ var CallMonitor = exports.CallMonitor = (_dec = (0, _nextCore.injectable)({
           this._activeCallControl.cleanCurrentWarmTransferData(oldCalls);
         }
       }
+    }
+  }, {
+    key: "emitEvent",
+    value: function emitEvent(event, call) {
+      this.logger.log(event, call);
+      this._eventEmitter.emit(event, call);
     }
   }, {
     key: "_removeMatched",

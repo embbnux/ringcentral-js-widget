@@ -17,8 +17,8 @@ import React, { useRef } from 'react';
 import { noop } from 'rxjs';
 
 import { useCallControlLayout } from '../../CallControlViewSpring/CallControlPanel';
-import type { KeypadViewPanelProps } from '../Keypad.view.interface';
 import i18n from '../i18n';
+import type { KeypadViewPanelProps } from '../Keypad.view.interface';
 
 export const KeypadPage: FunctionComponent<KeypadViewPanelProps> = (props) => {
   const {

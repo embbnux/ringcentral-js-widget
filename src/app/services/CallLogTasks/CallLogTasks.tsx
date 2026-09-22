@@ -259,10 +259,13 @@ export class CallLogTasks extends RcModule {
 
   @computed
   get loggedMap() {
-    return Object.keys(this.callsMappingState).reduce((acc, key) => {
-      acc[key] = this.callsMappingState[key].isSucceed;
-      return acc;
-    }, {} as Record<string, boolean>);
+    return Object.keys(this.callsMappingState).reduce(
+      (acc, key) => {
+        acc[key] = this.callsMappingState[key].isSucceed;
+        return acc;
+      },
+      {} as Record<string, boolean>,
+    );
   }
 
   get callSelectionMap(): CallSelectionMap {

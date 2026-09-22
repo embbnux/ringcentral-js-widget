@@ -199,7 +199,7 @@ export const useContactRenderInfoFromCall = (
             });
             const participantBeQueue = Boolean(
               participantQueueName ||
-                participantRenderInfo.matchedContact?.isCallQueueNumber,
+              participantRenderInfo.matchedContact?.isCallQueueNumber,
             );
 
             const Avatar = ({ size }: Pick<AvatarProps, 'size'>) => (
@@ -782,8 +782,8 @@ export const useContactRenderInfoFromConversation = (
   const messageStatus = conversation.messageStatus;
   const faxAttachmentExist = Boolean(
     isFax &&
-      (messageStatus === 'Sent' || messageStatus === 'Received') &&
-      conversation.faxAttachment?.uri,
+    (messageStatus === 'Sent' || messageStatus === 'Received') &&
+    conversation.faxAttachment?.uri,
   );
   const voicemailAttachmentExist = Boolean(
     isVoicemail && conversation.voicemailAttachment?.uri,
@@ -872,8 +872,8 @@ export const useContactRenderInfoFromConversation = (
               conversation.conversationId,
             )
           : selectedIndex
-          ? correspondentMatchesList[index][selectedIndex]
-          : undefined,
+            ? correspondentMatchesList[index][selectedIndex]
+            : undefined,
         selections: nonSupportSelectionType ? undefined : conversationMatches,
         // TODO: support the multiple match display in multiple correspondents scenario
         alwaysShowFirstMatch: isMultipleCorrespondent,

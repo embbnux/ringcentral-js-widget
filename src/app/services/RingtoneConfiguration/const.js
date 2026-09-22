@@ -20,6 +20,7 @@ var _Fairy = _interopRequireDefault(require("./audio/Fairy.mp3"));
 var _FastBells = _interopRequireDefault(require("./audio/FastBells.mp3"));
 var _HighGong = _interopRequireDefault(require("./audio/HighGong.mp3"));
 var _Immersion = _interopRequireDefault(require("./audio/Immersion.mp3"));
+var _incoming = _interopRequireDefault(require("./audio/incoming.mp3"));
 var _Indeed = _interopRequireDefault(require("./audio/Indeed.mp3"));
 var _LazyDay = _interopRequireDefault(require("./audio/LazyDay.mp3"));
 var _NeuralFunk = _interopRequireDefault(require("./audio/NeuralFunk.mp3"));
@@ -30,7 +31,6 @@ var _RingingBells = _interopRequireDefault(require("./audio/RingingBells.mp3"));
 var _Simple = _interopRequireDefault(require("./audio/Simple.mp3"));
 var _Soothing = _interopRequireDefault(require("./audio/Soothing.mp3"));
 var _Sunshine = _interopRequireDefault(require("./audio/Sunshine.mp3"));
-var _incoming = _interopRequireDefault(require("./audio/incoming.mp3"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var RINGS_TYPE = exports.RINGS_TYPE = /*#__PURE__*/function (RINGS_TYPE) {
   RINGS_TYPE["Phone_Ring1"] = "phone_ring1";

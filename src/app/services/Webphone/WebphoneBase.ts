@@ -57,10 +57,9 @@ import {
 
 import type { AudioSettings } from '../AudioSettings';
 
-import { WebphoneAudioHelper } from './AudioHelper';
-import type { WebphoneOptions } from './Webphone.interface';
 import defaultIncomingAudio from './audio/incoming.mp3';
 import defaultOutgoingAudio from './audio/outgoing.mp3';
+import { WebphoneAudioHelper } from './AudioHelper';
 import { connectionStatus } from './connectionStatus';
 import { EVENTS } from './events';
 import { t } from './i18n';
@@ -70,6 +69,7 @@ import {
   setSinkIdSafely,
   type SinkIdMediaElement,
 } from './setSinkId';
+import type { WebphoneOptions } from './Webphone.interface';
 import {
   isBrowserSupport,
   isChrome,

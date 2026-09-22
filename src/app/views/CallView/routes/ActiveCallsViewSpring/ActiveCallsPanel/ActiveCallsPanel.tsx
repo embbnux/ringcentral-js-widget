@@ -221,8 +221,8 @@ export const ActiveCallsPanel: React.FC<ActiveCallsPanelProps> = ({
                   ringing
                     ? 'incomingCall'
                     : holding
-                    ? 'onHoldCall'
-                    : 'activeCall',
+                      ? 'onHoldCall'
+                      : 'activeCall',
                 )}
               </span>
             }

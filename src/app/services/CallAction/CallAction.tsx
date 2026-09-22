@@ -59,8 +59,8 @@ import type {
   CallMetaInfo,
 } from './CallAction.interface';
 import { ConferenceCallAction } from './ConferenceCallAction';
-import { SwitchCallConfirm } from './SwitchCallConfirm';
 import { t } from './i18n';
+import { SwitchCallConfirm } from './SwitchCallConfirm';
 import { lastAvailableValue, mapActionTypeToCallActions } from './utils';
 
 type OpenAndNavigateOptions = {
@@ -124,17 +124,20 @@ export class CallAction extends RcModule {
 
   @computed
   get callMetaInfoMap() {
-    return Object.keys(this._callMetaInfoMap).reduce((acc, key) => {
-      const metaInfo = this._callMetaInfoMap[key];
-      acc[key] = metaInfo
-        ? {
-            ...metaInfo,
-            actionsDisabled:
-              metaInfo?.actionsDisabled || this.callActionsDisabled,
-          }
-        : undefined;
-      return acc;
-    }, {} as Record<string, CallMetaInfo | undefined>);
+    return Object.keys(this._callMetaInfoMap).reduce(
+      (acc, key) => {
+        const metaInfo = this._callMetaInfoMap[key];
+        acc[key] = metaInfo
+          ? {
+              ...metaInfo,
+              actionsDisabled:
+                metaInfo?.actionsDisabled || this.callActionsDisabled,
+            }
+          : undefined;
+        return acc;
+      },
+      {} as Record<string, CallMetaInfo | undefined>,
+    );
   }
 
   getCallMetaInfo(telephonySessionId: string) {
@@ -708,9 +711,8 @@ export class CallAction extends RcModule {
     const control = this._activeCallControl;
 
     const hangUp = this.processing(control.hangUp.bind(control), 'end');
-    const isConferenceCall = await control.checkIfConferenceCall(
-      telephonySessionId,
-    );
+    const isConferenceCall =
+      await control.checkIfConferenceCall(telephonySessionId);
 
     if (isConferenceCall && control.enableLeaveConferenceAsHost) {
       const hangupOnlyHost =
@@ -732,9 +734,8 @@ export class CallAction extends RcModule {
 
     const switchFn = this.processing(control.switch.bind(control));
 
-    const result = await this._switchCallConfirm.confirmProcess(
-      telephonySessionId,
-    );
+    const result =
+      await this._switchCallConfirm.confirmProcess(telephonySessionId);
 
     if (!result) return;
 
@@ -1279,8 +1280,8 @@ export class CallAction extends RcModule {
             !extensionNumber && !phoneNumber
               ? 'Anonymous'
               : extensionNumber
-              ? 'Extension'
-              : 'PSTN',
+                ? 'Extension'
+                : 'PSTN',
           callContactMatch,
           callActions,
           callQueueCall: isQueueCall(call),

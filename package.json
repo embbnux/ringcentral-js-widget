@@ -1,6 +1,6 @@
 {
   "name": "@ringcentral-integration/micro-phone",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Phone micro-frontend module for RingCentral Integration next-generation architecture.",
   "homepage": "https://github.com/ringcentral/ringcentral-js-widgets/tree/master/next/micro-phone#readme",
   "bugs": {
@@ -25,8 +25,8 @@
     "@ringcentral-integration/utils": "*",
     "@ringcentral-integration/widgets": "*",
     "@ringcentral-integration/rjsf-juno": "*",
-    "@ringcentral/juno": "^3.0.0-alpha.19",
-    "@ringcentral/juno-icon": "^3.0.0-alpha.19",
+    "@ringcentral/juno": "^3.0.0-alpha.13",
+    "@ringcentral/juno-icon": "^3.0.0-alpha.13",
     "@rjsf/core": "^5.18.3",
     "@rjsf/utils": "^5.18.3",
     "@rjsf/validator-ajv8": "^5.18.3",

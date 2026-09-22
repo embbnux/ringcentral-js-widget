@@ -8,7 +8,11 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   suggested: 'Suggested',
-  associated: 'Associated'
+  associated: 'Associated',
+  saveToCRM: 'Save to CRM',
+  saved: 'Saved to CRM'
 }; // @key: @#@"suggested"@#@ @source: @#@"Suggested"@#@
 // @key: @#@"associated"@#@ @source: @#@"Associated"@#@
+// @key: @#@"saveToCRM"@#@ @source: @#@"Save to CRM"@#@
+// @key: @#@"saved"@#@ @source: @#@"Saved to CRM"@#@
 //# sourceMappingURL=en-GB.js.map

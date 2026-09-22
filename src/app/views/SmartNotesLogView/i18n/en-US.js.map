@@ -1,0 +1,1 @@
+{"version":3,"file":"en-US.js","names":["saveToCRM","saved"],"sources":["src/app/views/SmartNotesLogView/i18n/en-US.ts"],"sourcesContent":["export default {\n  saveToCRM: 'Save to CRM',\n  saved: 'Saved to CRM',\n} as const;\n"],"mappings":";;;;;;;oCAAe;EACbA,SAAS,EAAE,aAAa;EACxBC,KAAK,EAAE;AACT,CAAC","ignoreList":[]}

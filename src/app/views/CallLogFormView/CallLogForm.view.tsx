@@ -31,8 +31,7 @@ import type {
   UpdateCallLogOptions,
 } from './CallLogForm.view.interface';
 import { CallLogFormPage } from './CallLogFormPage';
-import panelI18n from './CallLogFormPage/i18n';
-import { I18nKey, t } from './i18n';
+import i18n, { I18nKey, t } from './i18n';
 
 @injectable({
   name: 'CallLogFormView',
@@ -58,9 +57,9 @@ export class CallLogFormView extends RcViewModule {
 
   async _onSaveCallLog() {
     // should be override
+
     return false;
   }
-
   _onUpdateCallLog(
     _newData: CallLogFormViewPanelProps['task'],
     _options?: UpdateCallLogOptions,
@@ -146,7 +145,7 @@ export class CallLogFormView extends RcViewModule {
   }
 
   Save = forwardRef<HTMLDivElement, {}>((_, ref) => {
-    const { t } = useLocale(panelI18n);
+    const { t } = useLocale(i18n);
 
     const { isSaved, isSaving, disabled, show } = useConnector(() => {
       const currentLogState = this.currentLogState;

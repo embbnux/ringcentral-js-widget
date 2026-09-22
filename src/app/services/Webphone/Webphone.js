@@ -61,11 +61,11 @@ var _utils = require("@ringcentral-integration/utils");
 var _ramda = require("ramda");
 var _rxjs = require("rxjs");
 var _AudioSettings = require("../AudioSettings");
-var _WebphoneBase2 = require("./WebphoneBase");
 var _events = require("./events");
 var _i18n = require("./i18n");
 var _recordStatus = require("./recordStatus");
 var _sessionStatus = require("./sessionStatus");
+var _WebphoneBase2 = require("./WebphoneBase");
 var _webphoneHelper = require("./webphoneHelper");
 var _webphoneLogSanitizer = require("./webphoneLogSanitizer");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _dec46, _dec47, _dec48, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _dec61, _dec62, _dec63, _dec64, _dec65, _dec66, _dec67, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
@@ -151,7 +151,6 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   return [ringSessions];
 }), _dec135 = Reflect.metadata("design:type", Function), _dec136 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = /*#__PURE__*/function (_WebphoneBase) {
   function Webphone(_initiator, _regionSettings, _numberValidate, _auth, _toast, _client, _appFeatures, _extensionFeatures, _brand, _audioSettings, _storage, _portManager, _extensionDevice, _ringCentralExtensions, _webphoneOptions, _subscription, _contactMatcher, _availabilityMonitor, _prefix) {
-    var _this$_webphoneOption, _this$_webphoneOption2;
     var _this;
     _classCallCheck(this, Webphone);
     _this = _callSuper(this, Webphone, [_brand, _auth, _toast, _client, _numberValidate, _appFeatures, _extensionFeatures, _extensionDevice, _audioSettings, _storage, _portManager, _ringCentralExtensions, _webphoneOptions, _subscription, _prefix]);
@@ -203,8 +202,7 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
     _initializerDefineProperty(_this, "sessions", _descriptor5, _this);
     globalThis.externalClearTimeout = clearTimeout;
     globalThis.externalSetTimeout = setTimeout;
-    var enableContactMatchWhenNewCall = (_this$_webphoneOption = (_this$_webphoneOption2 = _this._webphoneOptions) === null || _this$_webphoneOption2 === void 0 ? void 0 : _this$_webphoneOption2.enableContactMatchWhenNewCall) !== null && _this$_webphoneOption !== void 0 ? _this$_webphoneOption : true;
-    if (enableContactMatchWhenNewCall && _this._contactMatcher) {
+    if (_this._contactMatcher) {
       _this._contactMatcher.addQuerySource({
         getQueriesFn: function getQueriesFn() {
           return _this.sessionPhoneNumbers;
@@ -344,8 +342,8 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   return _createClass(Webphone, [{
     key: "_permissionCheck",
     get: function get() {
-      var _this$_webphoneOption3, _this$_webphoneOption4;
-      return (_this$_webphoneOption3 = (_this$_webphoneOption4 = this._webphoneOptions) === null || _this$_webphoneOption4 === void 0 ? void 0 : _this$_webphoneOption4.permissionCheck) !== null && _this$_webphoneOption3 !== void 0 ? _this$_webphoneOption3 : true;
+      var _this$_webphoneOption, _this$_webphoneOption2;
+      return (_this$_webphoneOption = (_this$_webphoneOption2 = this._webphoneOptions) === null || _this$_webphoneOption2 === void 0 ? void 0 : _this$_webphoneOption2.permissionCheck) !== null && _this$_webphoneOption !== void 0 ? _this$_webphoneOption : true;
     }
   }, {
     key: "ignore$",
@@ -414,39 +412,39 @@ var Webphone = exports.Webphone = (_dec = (0, _nextCore.injectable)({
   }, {
     key: "initialize",
     value: function initialize() {
-      var _this$_webphoneOption5, _this$_webphoneOption7, _this$_webphoneOption9, _this$_webphoneOption1, _this$_webphoneOption11, _this$_webphoneOption13, _this$_webphoneOption15, _this$_webphoneOption17;
+      var _this$_webphoneOption3, _this$_webphoneOption5, _this$_webphoneOption7, _this$_webphoneOption9, _this$_webphoneOption1, _this$_webphoneOption11, _this$_webphoneOption13, _this$_webphoneOption15;
       _superPropGet(Webphone, "initialize", this, 3)([]);
-      if (typeof ((_this$_webphoneOption5 = this._webphoneOptions) === null || _this$_webphoneOption5 === void 0 ? void 0 : _this$_webphoneOption5.onCallEnd) === 'function') {
+      if (typeof ((_this$_webphoneOption3 = this._webphoneOptions) === null || _this$_webphoneOption3 === void 0 ? void 0 : _this$_webphoneOption3.onCallEnd) === 'function') {
+        var _this$_webphoneOption4;
+        this._eventEmitter.on(_events.EVENTS.callEnd, (_this$_webphoneOption4 = this._webphoneOptions) === null || _this$_webphoneOption4 === void 0 ? void 0 : _this$_webphoneOption4.onCallEnd);
+      }
+      if (typeof ((_this$_webphoneOption5 = this._webphoneOptions) === null || _this$_webphoneOption5 === void 0 ? void 0 : _this$_webphoneOption5.onCallRing) === 'function') {
         var _this$_webphoneOption6;
-        this._eventEmitter.on(_events.EVENTS.callEnd, (_this$_webphoneOption6 = this._webphoneOptions) === null || _this$_webphoneOption6 === void 0 ? void 0 : _this$_webphoneOption6.onCallEnd);
+        this._eventEmitter.on(_events.EVENTS.callRing, (_this$_webphoneOption6 = this._webphoneOptions) === null || _this$_webphoneOption6 === void 0 ? void 0 : _this$_webphoneOption6.onCallRing);
       }
-      if (typeof ((_this$_webphoneOption7 = this._webphoneOptions) === null || _this$_webphoneOption7 === void 0 ? void 0 : _this$_webphoneOption7.onCallRing) === 'function') {
+      if (typeof ((_this$_webphoneOption7 = this._webphoneOptions) === null || _this$_webphoneOption7 === void 0 ? void 0 : _this$_webphoneOption7.onCallStart) === 'function') {
         var _this$_webphoneOption8;
-        this._eventEmitter.on(_events.EVENTS.callRing, (_this$_webphoneOption8 = this._webphoneOptions) === null || _this$_webphoneOption8 === void 0 ? void 0 : _this$_webphoneOption8.onCallRing);
+        this._eventEmitter.on(_events.EVENTS.callStart, (_this$_webphoneOption8 = this._webphoneOptions) === null || _this$_webphoneOption8 === void 0 ? void 0 : _this$_webphoneOption8.onCallStart);
       }
-      if (typeof ((_this$_webphoneOption9 = this._webphoneOptions) === null || _this$_webphoneOption9 === void 0 ? void 0 : _this$_webphoneOption9.onCallStart) === 'function') {
+      if (typeof ((_this$_webphoneOption9 = this._webphoneOptions) === null || _this$_webphoneOption9 === void 0 ? void 0 : _this$_webphoneOption9.onCallResume) === 'function') {
         var _this$_webphoneOption0;
-        this._eventEmitter.on(_events.EVENTS.callStart, (_this$_webphoneOption0 = this._webphoneOptions) === null || _this$_webphoneOption0 === void 0 ? void 0 : _this$_webphoneOption0.onCallStart);
+        this._eventEmitter.on(_events.EVENTS.callResume, (_this$_webphoneOption0 = this._webphoneOptions) === null || _this$_webphoneOption0 === void 0 ? void 0 : _this$_webphoneOption0.onCallResume);
       }
-      if (typeof ((_this$_webphoneOption1 = this._webphoneOptions) === null || _this$_webphoneOption1 === void 0 ? void 0 : _this$_webphoneOption1.onCallResume) === 'function') {
+      if (typeof ((_this$_webphoneOption1 = this._webphoneOptions) === null || _this$_webphoneOption1 === void 0 ? void 0 : _this$_webphoneOption1.onCallHold) === 'function') {
         var _this$_webphoneOption10;
-        this._eventEmitter.on(_events.EVENTS.callResume, (_this$_webphoneOption10 = this._webphoneOptions) === null || _this$_webphoneOption10 === void 0 ? void 0 : _this$_webphoneOption10.onCallResume);
+        this._eventEmitter.on(_events.EVENTS.callHold, (_this$_webphoneOption10 = this._webphoneOptions) === null || _this$_webphoneOption10 === void 0 ? void 0 : _this$_webphoneOption10.onCallHold);
       }
-      if (typeof ((_this$_webphoneOption11 = this._webphoneOptions) === null || _this$_webphoneOption11 === void 0 ? void 0 : _this$_webphoneOption11.onCallHold) === 'function') {
+      if (typeof ((_this$_webphoneOption11 = this._webphoneOptions) === null || _this$_webphoneOption11 === void 0 ? void 0 : _this$_webphoneOption11.onCallInit) === 'function') {
         var _this$_webphoneOption12;
-        this._eventEmitter.on(_events.EVENTS.callHold, (_this$_webphoneOption12 = this._webphoneOptions) === null || _this$_webphoneOption12 === void 0 ? void 0 : _this$_webphoneOption12.onCallHold);
+        this._eventEmitter.on(_events.EVENTS.callInit, (_this$_webphoneOption12 = this._webphoneOptions) === null || _this$_webphoneOption12 === void 0 ? void 0 : _this$_webphoneOption12.onCallInit);
       }
-      if (typeof ((_this$_webphoneOption13 = this._webphoneOptions) === null || _this$_webphoneOption13 === void 0 ? void 0 : _this$_webphoneOption13.onCallInit) === 'function') {
+      if (typeof ((_this$_webphoneOption13 = this._webphoneOptions) === null || _this$_webphoneOption13 === void 0 ? void 0 : _this$_webphoneOption13.onBeforeCallResume) === 'function') {
         var _this$_webphoneOption14;
-        this._eventEmitter.on(_events.EVENTS.callInit, (_this$_webphoneOption14 = this._webphoneOptions) === null || _this$_webphoneOption14 === void 0 ? void 0 : _this$_webphoneOption14.onCallInit);
+        this._eventEmitter.on(_events.EVENTS.beforeCallResume, (_this$_webphoneOption14 = this._webphoneOptions) === null || _this$_webphoneOption14 === void 0 ? void 0 : _this$_webphoneOption14.onBeforeCallResume);
       }
-      if (typeof ((_this$_webphoneOption15 = this._webphoneOptions) === null || _this$_webphoneOption15 === void 0 ? void 0 : _this$_webphoneOption15.onBeforeCallResume) === 'function') {
+      if (typeof ((_this$_webphoneOption15 = this._webphoneOptions) === null || _this$_webphoneOption15 === void 0 ? void 0 : _this$_webphoneOption15.onBeforeCallEnd) === 'function') {
         var _this$_webphoneOption16;
-        this._eventEmitter.on(_events.EVENTS.beforeCallResume, (_this$_webphoneOption16 = this._webphoneOptions) === null || _this$_webphoneOption16 === void 0 ? void 0 : _this$_webphoneOption16.onBeforeCallResume);
-      }
-      if (typeof ((_this$_webphoneOption17 = this._webphoneOptions) === null || _this$_webphoneOption17 === void 0 ? void 0 : _this$_webphoneOption17.onBeforeCallEnd) === 'function') {
-        var _this$_webphoneOption18;
-        this._eventEmitter.on(_events.EVENTS.beforeCallEnd, (_this$_webphoneOption18 = this._webphoneOptions) === null || _this$_webphoneOption18 === void 0 ? void 0 : _this$_webphoneOption18.onBeforeCallEnd);
+        this._eventEmitter.on(_events.EVENTS.beforeCallEnd, (_this$_webphoneOption16 = this._webphoneOptions) === null || _this$_webphoneOption16 === void 0 ? void 0 : _this$_webphoneOption16.onBeforeCallEnd);
       }
       this._reconnectAfterSessionEnd = null;
     }

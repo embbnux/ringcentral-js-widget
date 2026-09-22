@@ -10,8 +10,8 @@ import {
 } from '../ReferenceWidget.interface';
 
 import { FilterAndSearchHint } from './FilterAndSearchHint';
-import { ReferenceList } from './ReferenceList';
 import { t } from './i18n';
+import { ReferenceList } from './ReferenceList';
 
 export const referencePopperMiddlewares = [
   flip({ padding: 12 }),

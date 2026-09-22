@@ -87,12 +87,10 @@ var MyCallerIdDropdown = exports.MyCallerIdDropdown = function MyCallerIdDropdow
     },
     MenuProps: {
       // The anchor sits at the top of the dialer pages, so opening downwards
-      // is the product expectation. Since spring-ui 1.12 the positioning
-      // system honors the Dropdown's built-in `placement: 'top'` default
-      // (it was previously masked by an always-on maxHeight that defeated
-      // flip), so request the placement explicitly instead of relying on
-      // runtime flip behavior. `-end` aligns the menu's right edge with the
-      // trigger so the wider menu extends to the left on wide viewports.
+      // is the product expectation. Spring UI 1.13 defaults Dropdown placement
+      // to `bottom`; keep `bottom-end` explicit so the menu's right edge
+      // aligns with the trigger and the wider menu extends left on wide
+      // viewports, instead of relying on flip.
       placement: 'bottom-end',
       PopperProps: {
         padding: 16
@@ -123,7 +121,11 @@ var MyCallerIdDropdown = exports.MyCallerIdDropdown = function MyCallerIdDropdow
     data: options
   }), function (_, option) {
     var callerIdOption = option;
-    return /*#__PURE__*/_react["default"].createElement(_springUi.Option, {
+    return /*#__PURE__*/_react["default"].createElement(_springUi.Option
+    // Dropdown now defaults to nowrap/truncate (UXSYS-4227). Caller ID
+    // options render two lines (label + number) at h-12, so keep wrap.
+    , {
+      nowrap: false,
       classes: {
         container: '[&&]:h-12'
       },

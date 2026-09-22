@@ -225,19 +225,22 @@ export class PreinsertCall extends RcModule {
       map(([preinsertStatusMap, sessionsMap]) => {
         const preinsertEndSessionStatusMap = Object.entries(
           preinsertStatusMap,
-        ).reduce((acc, [telephonySessionId, status]) => {
-          if (status === 'end') {
-            const session = sessionsMap[telephonySessionId];
+        ).reduce(
+          (acc, [telephonySessionId, status]) => {
+            if (status === 'end') {
+              const session = sessionsMap[telephonySessionId];
 
-            const telephonyStatus = mapTelephonyStatus(
-              session?.party?.status?.code!,
-            );
+              const telephonyStatus = mapTelephonyStatus(
+                session?.party?.status?.code!,
+              );
 
-            acc[telephonySessionId] = telephonyStatus;
-          }
+              acc[telephonySessionId] = telephonyStatus;
+            }
 
-          return acc;
-        }, {} as Record<string, ReturnType<typeof mapTelephonyStatus>>);
+            return acc;
+          },
+          {} as Record<string, ReturnType<typeof mapTelephonyStatus>>,
+        );
         return preinsertEndSessionStatusMap;
       }),
       pairwise(),
@@ -361,7 +364,7 @@ export class PreinsertCall extends RcModule {
       this._cancelledPreinsertTelephonySessionIds.has(telephonySessionId) ||
       Boolean(
         webphoneSessionId &&
-          this._cancelledPreinsertWebphoneSessionIds.has(webphoneSessionId),
+        this._cancelledPreinsertWebphoneSessionIds.has(webphoneSessionId),
       )
     );
   }

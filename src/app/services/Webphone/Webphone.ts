@@ -62,6 +62,10 @@ import {
 import { AudioSettings } from '../AudioSettings';
 import type { NoiseReductionLike } from '../AudioSettings/NoiseReductionLike';
 
+import { EVENTS } from './events';
+import { t } from './i18n';
+import { recordStatus } from './recordStatus';
+import { sessionStatus } from './sessionStatus';
 import type {
   BeforeCallEndHandler,
   BeforeCallResumeHandler,
@@ -79,10 +83,6 @@ import type {
   WebphoneOptions,
 } from './Webphone.interface';
 import { WebphoneBase } from './WebphoneBase';
-import { EVENTS } from './events';
-import { t } from './i18n';
-import { recordStatus } from './recordStatus';
-import { sessionStatus } from './sessionStatus';
 import {
   extractHeadersData,
   isOnHold,
@@ -196,9 +196,7 @@ export class Webphone extends WebphoneBase {
     globalThis.externalClearTimeout = clearTimeout;
     globalThis.externalSetTimeout = setTimeout;
 
-    const enableContactMatchWhenNewCall =
-      this._webphoneOptions?.enableContactMatchWhenNewCall ?? true;
-    if (enableContactMatchWhenNewCall && this._contactMatcher) {
+    if (this._contactMatcher) {
       this._contactMatcher.addQuerySource({
         getQueriesFn: () => this.sessionPhoneNumbers,
         readyCheckFn: () => this.ready,

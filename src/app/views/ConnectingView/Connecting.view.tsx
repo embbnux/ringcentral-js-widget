@@ -439,7 +439,7 @@ export class ConnectingView extends RcViewModule {
     return Boolean(
       (telephonySessionId &&
         activeCall.telephonySessionId === telephonySessionId) ||
-        (sessionId && activeCall.webphoneSession?.id === sessionId),
+      (sessionId && activeCall.webphoneSession?.id === sessionId),
     );
   }
 

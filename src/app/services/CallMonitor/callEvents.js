@@ -9,6 +9,7 @@ var callEvents = exports.callEvents = {
   newCall: 'NewCall',
   callRinging: 'CallRinging',
   callEnded: 'CallEnded',
-  callUpdated: 'CallUpdated'
+  callUpdated: 'CallUpdated',
+  callAnswered: 'CallAnswered'
 };
 //# sourceMappingURL=callEvents.js.map

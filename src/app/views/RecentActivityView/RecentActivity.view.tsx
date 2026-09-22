@@ -21,13 +21,13 @@ import React, { useRef } from 'react';
 
 import { RecentCalls } from '../../services';
 
+import type { getTabs } from './getTabs';
+import { t } from './i18n';
 import type {
   RecentActivityContainerProps,
   RecentActivityViewOptions,
   RecentActivityViewProps,
 } from './RecentActivity.view.interface';
-import type { getTabs } from './getTabs';
-import { t } from './i18n';
 
 export const trackTabsMap = {
   recentCalls: trackEvents.clickRecentActivityCall,

@@ -11,6 +11,9 @@ import {
 } from '@ringcentral/spring-ui';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 
+import { useReferencePopper } from './components/ReferencePopper';
+import { ReferenceSearchPanel } from './components/ReferenceSearchPanel';
+import i18n from './i18n';
 import {
   ReferenceItemClickHandler,
   ReferenceWidgetAddEntityMenuProps,
@@ -18,9 +21,6 @@ import {
   SelectedIdMap,
   SimpleCrmObject,
 } from './ReferenceWidget.interface';
-import { useReferencePopper } from './components/ReferencePopper';
-import { ReferenceSearchPanel } from './components/ReferenceSearchPanel';
-import i18n from './i18n';
 
 export const ReferenceWidget = (filedProps: any) => {
   const {
@@ -126,9 +126,7 @@ export const ReferenceWidget = (filedProps: any) => {
     anchorEl,
   });
 
-  const renderTags = useCallback<
-    NonNullable<AutocompleteProps['renderTags']>
-  >(
+  const renderTags = useCallback<NonNullable<AutocompleteProps['renderTags']>>(
     (values, getTagProps) => {
       const selectedItems = values as SimpleCrmObject[];
 

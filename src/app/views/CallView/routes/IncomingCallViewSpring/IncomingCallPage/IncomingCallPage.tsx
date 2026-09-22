@@ -340,8 +340,8 @@ export const IncomingCallPage: FunctionComponent<IncomingCallViewPanelProps> = (
                 onlyOneButton
                   ? 'justify-center'
                   : minimizedTwoColumn
-                  ? 'justify-center gap-2'
-                  : 'justify-between'
+                    ? 'justify-center gap-2'
+                    : 'justify-between'
               }`,
 
           {

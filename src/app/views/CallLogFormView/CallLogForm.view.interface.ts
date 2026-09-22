@@ -28,21 +28,23 @@ export type UpdateCallLogOptions = {
   changedKeys?: string[];
 };
 
-export type CallLogFormViewPanelProps = PropsWithChildren<{
-  disabled: boolean;
-  formKey?: string;
-  formRef?: React.ReactElement;
-  editSectionSchema: {
-    uiOrder: string[];
-    uiSchema: any;
-    renderSchema?: any;
-  };
-  task: Record<string, any>;
-  referenceFields: Record<
-    string,
-    ReferenceWidgetProps | InputSelectWidgetProps
-  >;
-  onUpdateCallLog: (formData: any, options?: UpdateCallLogOptions) => void;
-} & CallLogFormViewProps>;
+export type CallLogFormViewPanelProps = PropsWithChildren<
+  {
+    disabled: boolean;
+    formKey?: string;
+    formRef?: React.ReactElement;
+    editSectionSchema: {
+      uiOrder: string[];
+      uiSchema: any;
+      renderSchema?: any;
+    };
+    task: Record<string, any>;
+    referenceFields: Record<
+      string,
+      ReferenceWidgetProps | InputSelectWidgetProps
+    >;
+    onUpdateCallLog: (formData: any, options?: UpdateCallLogOptions) => void;
+  } & CallLogFormViewProps
+>;
 
 export { ReferenceWidgetProps };
