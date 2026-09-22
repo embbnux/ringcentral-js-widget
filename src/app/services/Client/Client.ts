@@ -12,13 +12,13 @@ import {
 import type { SDK, SDKOptions } from '@ringcentral/sdk';
 import localforage from 'localforage';
 import { Client as RingCentralClient } from 'ringcentral-client';
-import PathSegment from 'ringcentral-client/build/PathSegment';
 import Account from 'ringcentral-client/build/paths/Account';
 import ClientInfo from 'ringcentral-client/build/paths/ClientInfo';
 import Dictionary from 'ringcentral-client/build/paths/Dictionary';
 import Glip from 'ringcentral-client/build/paths/Glip';
 import NumberParser from 'ringcentral-client/build/paths/NumberParser';
 import Subscription from 'ringcentral-client/build/paths/Subscription';
+import PathSegment from 'ringcentral-client/build/PathSegment';
 
 import type { ClientOptions } from './Client.interface';
 import { createSDK } from './createSDK';
@@ -204,9 +204,7 @@ export class Client extends RingCentralClient {
         ...sdkConfig,
         localStorage: sdkConfig.localStorage ?? createStorage(this.prefix),
       },
-      this._clientOptions?.omitDiscoveryBrandId
-        ? undefined
-        : this._brandConfig,
+      this._clientOptions?.omitDiscoveryBrandId ? undefined : this._brandConfig,
     );
   }
 

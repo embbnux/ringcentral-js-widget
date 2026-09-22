@@ -2,7 +2,7 @@
 export default {
   loginButton: 'Se connecter',
   newUser: 'Nouveau sur {brandName}?',
-  tryForFree: 'Inscrivez-vous dès maintenant',
+  tryForFree: 'Inscrivez-vous maintenant',
   version: 'Version',
   description:
     '{appName} fournit une intégration native pour une expérience d’appel en toute simplicité.',

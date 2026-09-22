@@ -15,8 +15,8 @@ import { filter, firstValueFrom, of, timeout } from 'rxjs';
 import { trackEvent } from '../Analytics';
 import { Auth } from '../Auth';
 
-import type { OAuthBaseOptions } from './OAuthBase.interface';
 import { t } from './i18n';
+import type { OAuthBaseOptions } from './OAuthBase.interface';
 
 const DEFAULT_UI_OPTIONS: string[] = [];
 
@@ -55,10 +55,7 @@ export abstract class OAuthBase extends RcModule {
     this.oAuthReady = val;
   }
 
-  async handleCallbackLogin(
-    callbackUri: string,
-    redirectUriOverride?: string,
-  ) {
+  async handleCallbackLogin(callbackUri: string, redirectUriOverride?: string) {
     const result = await this._handleCallbackUri(
       callbackUri,
       redirectUriOverride,
@@ -187,8 +184,7 @@ export abstract class OAuthBase extends RcModule {
 
   async getOAuthUri(redirectUriOverride?: string) {
     const authState = await this.getAuthState();
-    const redirectUri =
-      redirectUriOverride ?? (await this.getRedirectUri());
+    const redirectUri = redirectUriOverride ?? (await this.getRedirectUri());
     const loginUrl = await this._auth.getLoginUrl({
       redirectUri,
       brandId: this._brand.defaultConfig.id,

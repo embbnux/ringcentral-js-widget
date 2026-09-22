@@ -1,6 +1,6 @@
 {
   "name": "@ringcentral-integration/micro-auth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Authentication micro-frontend module for RingCentral Integration next-generation architecture.",
   "homepage": "https://github.com/ringcentral/ringcentral-js-widgets/tree/master/next/micro-auth#readme",
   "bugs": {

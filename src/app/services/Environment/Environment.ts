@@ -292,8 +292,8 @@ export class Environment extends RcModule {
         process.env.NODE_ENV === 'test') &&
         process.env.BUILD_ENVIRONMENT &&
         ['dev', 'local', 'reg'].includes(process.env.BUILD_ENVIRONMENT)) ||
-        // in development mode always use data tracking setting, to avoid data tracking in dev mode
-        process.env.NODE_ENV === 'development',
+      // in development mode always use data tracking setting, to avoid data tracking in dev mode
+      process.env.NODE_ENV === 'development',
     );
   }
 

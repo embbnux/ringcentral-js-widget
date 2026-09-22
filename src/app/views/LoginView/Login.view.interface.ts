@@ -59,7 +59,8 @@ export interface LoginViewOptions {
 }
 
 export interface LoginViewPanelProps
-  extends Pick<LoginViewOptions, 'variant' | 'showSignUp'>,
+  extends
+    Pick<LoginViewOptions, 'variant' | 'showSignUp'>,
     AuthPageTextOptions {
   brandName: string;
   appName: string;

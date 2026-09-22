@@ -744,7 +744,7 @@ export class Auth extends RcModule {
       this.setBeforeLogout();
       if (dismissAllAlert) {
         const rateLimiterId = this._rateLimiter?.identifier;
-        // fix bug [https://jira_domain/browse/RCINT-17381]
+        // fix bug [https://jia_domain/browse/RCINT-17381]
         if (rateLimiterId) {
           await this._toast.dismissAllExpectSpecifiedGroup(rateLimiterId);
         } else {

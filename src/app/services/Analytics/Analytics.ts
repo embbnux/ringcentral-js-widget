@@ -361,6 +361,8 @@ export class Analytics extends RcModule implements IAnalytics {
     } else if (routes.length > 1) {
       formatRoute = `/${routes[1]}`;
     }
-    return formatRoute ? this._trackRoutersMap.get(formatRoute) ?? null : null;
+    return formatRoute
+      ? (this._trackRoutersMap.get(formatRoute) ?? null)
+      : null;
   }
 }

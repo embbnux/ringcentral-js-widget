@@ -36,13 +36,13 @@ var _multipartHttpRequest = require("@ringcentral-integration/commons/lib/multip
 var _nextCore = require("@ringcentral-integration/next-core");
 var _localforage = _interopRequireDefault(require("localforage"));
 var _ringcentralClient = require("ringcentral-client");
-var _PathSegment2 = _interopRequireDefault(require("ringcentral-client/build/PathSegment"));
 var _Account = _interopRequireDefault(require("ringcentral-client/build/paths/Account"));
 var _ClientInfo = _interopRequireDefault(require("ringcentral-client/build/paths/ClientInfo"));
 var _Dictionary = _interopRequireDefault(require("ringcentral-client/build/paths/Dictionary"));
 var _Glip = _interopRequireDefault(require("ringcentral-client/build/paths/Glip"));
 var _NumberParser = _interopRequireDefault(require("ringcentral-client/build/paths/NumberParser"));
 var _Subscription = _interopRequireDefault(require("ringcentral-client/build/paths/Subscription"));
+var _PathSegment2 = _interopRequireDefault(require("ringcentral-client/build/PathSegment"));
 var _createSDK = require("./createSDK");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec0, _dec1, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _class2;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

@@ -8,6 +8,7 @@ require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
@@ -106,6 +107,32 @@ var RingCentralExtensions = exports.RingCentralExtensions = (_dec = (0, _nextCor
       var readyState = (_this$_webSocketExten = _this._webSocketExtension.ws) === null || _this$_webSocketExten === void 0 ? void 0 : _this$_webSocketExten.readyState;
       _this._setWebSocketReadyState(readyState);
     };
+    /**
+     * Emits when the WebSocket connection becomes ready again after a real
+     * disconnect (closed/closing -> ... -> ready). A normal reconnect
+     * transitions closed -> connecting -> open -> ready, so a previous-state
+     * check at ready never matches; consumers should react to this stream
+     * instead of watching raw state transitions.
+     */
+    _this.webSocketRecovered$ = (0, _nextCore.fromWatchValue)(_this, function () {
+      return _this.webSocketReadyState;
+    }).pipe((0, _rxjs.scan)(function (acc, state) {
+      var recovered = acc.disconnected && state === _webSocketReadyStates.webSocketReadyStates.ready;
+      return {
+        // reset after a recovery so a later ready without a new
+        // disconnect does not emit a false positive
+        disconnected: recovered ? false : state === _webSocketReadyStates.webSocketReadyStates.closed || state === _webSocketReadyStates.webSocketReadyStates.closing || acc.disconnected,
+        recovered: recovered
+      };
+    }, {
+      disconnected: false,
+      recovered: false
+    }), (0, _rxjs.filter)(function (_ref) {
+      var recovered = _ref.recovered;
+      return recovered;
+    }), (0, _rxjs.map)(function () {
+      return undefined;
+    }), (0, _rxjs.share)());
     _initializerDefineProperty(_this, "webSocketReadyState", _descriptor4, _this);
     _this._storage.enable(_this);
     _this._portManager.onClient(function () {
@@ -218,7 +245,7 @@ var RingCentralExtensions = exports.RingCentralExtensions = (_dec = (0, _nextCor
               });
               // expose WebSocket events
               this._webSocketExtension.eventEmitter.addListener(_ws.Events.newWebSocketObject, /*#__PURE__*/function () {
-                var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(ws) {
+                var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(ws) {
                   var _ws$_onCreated;
                   return _regenerator().w(function (_context3) {
                     while (1) switch (_context3.n) {
@@ -234,7 +261,7 @@ var RingCentralExtensions = exports.RingCentralExtensions = (_dec = (0, _nextCor
                   }, _callee3);
                 }));
                 return function (_x) {
-                  return _ref.apply(this, arguments);
+                  return _ref2.apply(this, arguments);
                 };
               }());
               this._webSocketExtension.eventEmitter.addListener(_ws.Events.connectionReady, function () {

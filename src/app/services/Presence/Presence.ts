@@ -42,11 +42,11 @@ import { DataFetcher, DataFetcherConsumer, DataSource } from '../DataFetcher';
 import { ExtensionFeatures } from '../ExtensionFeatures';
 import type { WebSocketSubscription as Subscription } from '../WebSocketSubscription';
 
+import { dndStatus } from './dndStatus';
 import type {
   PresenceOptions,
   UpdatePresenceParams,
 } from './Presence.interface';
-import { dndStatus } from './dndStatus';
 import { removeIntermediateCall } from './removeIntermediateCall';
 
 const DEFAULT_TTL = 62 * 1000;
@@ -192,25 +192,30 @@ export class Presence extends DataFetcherConsumer<PresenceInfoModel> {
     if (activeCalls.length < totalActiveCalls) {
       return this.activeCalls;
     }
-    return map((activeCall) => {
-      const existingCall = this.activeCalls.find(
-        (call) => call.sessionId === activeCall.sessionId,
-      );
-      if (!existingCall) {
-        const normalizedCall = normalizeStartTime(normalizeFromTo(activeCall));
-        const startTime = Number(normalizedCall.startTime || timestamp);
-        const offset = Math.min(timestamp - startTime, 0);
+    return map(
+      (activeCall) => {
+        const existingCall = this.activeCalls.find(
+          (call) => call.sessionId === activeCall.sessionId,
+        );
+        if (!existingCall) {
+          const normalizedCall = normalizeStartTime(
+            normalizeFromTo(activeCall),
+          );
+          const startTime = Number(normalizedCall.startTime || timestamp);
+          const offset = Math.min(timestamp - startTime, 0);
+          return {
+            ...normalizedCall,
+            startTime,
+            offset,
+          };
+        }
         return {
-          ...normalizedCall,
-          startTime,
-          offset,
+          ...existingCall,
+          ...normalizeStartTime(normalizeFromTo(activeCall)),
         };
-      }
-      return {
-        ...existingCall,
-        ...normalizeStartTime(normalizeFromTo(activeCall)),
-      };
-    }, removeIntermediateCall([], activeCalls)) as ActiveCall[];
+      },
+      removeIntermediateCall([], activeCalls),
+    ) as ActiveCall[];
   }
 
   protected _handleSubscription(message?: DetailedExtensionPresenceEvent) {

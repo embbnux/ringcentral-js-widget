@@ -8,7 +8,7 @@ exports["default"] = void 0;
 /* eslint-disable */
 var _default = exports["default"] = {
   loginButton: '登入',
-  newUser: '首次使用 {brandName}？',
+  newUser: '第一次使用 {brandName}？',
   tryForFree: '立即註冊',
   version: '版本',
   description: '{appName} 提供原生整合，可帶來順暢的通話體驗。',

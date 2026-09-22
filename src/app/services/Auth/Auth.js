@@ -1044,7 +1044,7 @@ var Auth = exports.Auth = (_dec = (0, _nextCore.injectable)({
                           _context16.n = 3;
                           break;
                         }
-                        rateLimiterId = (_this4$_rateLimiter = _this4._rateLimiter) === null || _this4$_rateLimiter === void 0 ? void 0 : _this4$_rateLimiter.identifier; // fix bug [https://jira_domain/browse/RCINT-17381]
+                        rateLimiterId = (_this4$_rateLimiter = _this4._rateLimiter) === null || _this4$_rateLimiter === void 0 ? void 0 : _this4$_rateLimiter.identifier; // fix bug [https://jia_domain/browse/RCINT-17381]
                         if (!rateLimiterId) {
                           _context16.n = 2;
                           break;
