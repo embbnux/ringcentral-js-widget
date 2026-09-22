@@ -39,9 +39,8 @@ const VENDOR_KEY = 'vendor';
 const reactantPackageAlias = {
   './node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
   '../node_modules/tslib/tslib.es6.js$': require.resolve('tslib/tslib.es6.js'),
-  './node_modules/redux-persist/es/integration/react.js$': require.resolve(
-    'redux-persist/es/integration/react',
-  ),
+  './node_modules/redux-persist/es/integration/react.js$':
+    require.resolve('redux-persist/es/integration/react'),
 };
 const reactantPreservedModuleReplacementPlugins = [
   new NormalModuleReplacementPlugin(
@@ -232,8 +231,10 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
           ]
         : []),
       new DefinePlugin({
-        // TODO: processDefaultDarkAndHighContactTheme
-        'process.env.APP_CONFIG': JSON.stringify(appConfig),
+        'process.env.APP_CONFIG': JSON.stringify({
+          ...appConfig,
+          brandConfig: appConfig.brandConfig,
+        }),
         'process.env.THEME_SYSTEM': JSON.stringify(themeSystem),
         'process.env.BLOCK_PENDO_SOURCE_CODE':
           JSON.stringify(blockPendoSourceCode),
@@ -387,11 +388,8 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
         .map((x) => path.basename(x.main).split('.')[0]);
 
       const chunks = (chunk: Chunk) => {
-        const notBePureEntryFile = Boolean(
-          chunk.name && !pureEntryFiles.includes(chunk.name),
-        );
-        // only non pure entry files should be split
-        return notBePureEntryFile;
+        // Include unnamed async chunks while keeping pure entry files standalone.
+        return !chunk.name || !pureEntryFiles.includes(chunk.name);
       };
 
       // always optimize vendor and commons chunk to separate file into small size
@@ -429,11 +427,21 @@ export const getBaseWebpackConfig = <T extends BaseAppConfig>({
             // chunkReason: 'split chunk (cache group: vendor)',
             const cacheGroupName = chunkReason
               .split(' (cache group: ')[1]
-              .split(')')[0];
+              ?.split(')')[0];
             // cacheGroups
-            return (
-              cacheGroups[cacheGroupName].filename || DEFAULT_CHUNK_FILENAME
-            );
+            const cacheGroup = cacheGroupName
+              ? cacheGroups[cacheGroupName]
+              : undefined;
+
+            if (
+              cacheGroup &&
+              typeof cacheGroup !== 'boolean' &&
+              cacheGroup.filename
+            ) {
+              return cacheGroup.filename;
+            }
+
+            return DEFAULT_CHUNK_FILENAME;
           }
 
           return DEFAULT_FILENAME;

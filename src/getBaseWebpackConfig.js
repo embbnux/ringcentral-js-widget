@@ -183,8 +183,9 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
     })].concat(reactantPreservedModuleReplacementPlugins, _toConsumableArray((_projectConfig$assets = projectConfig.assetsEntries) !== null && _projectConfig$assets !== void 0 && _projectConfig$assets.length ? [new _copyWebpackPlugin["default"]({
       patterns: projectConfig.assetsEntries
     })] : []), [new _webpack.DefinePlugin({
-      // TODO: processDefaultDarkAndHighContactTheme
-      'process.env.APP_CONFIG': JSON.stringify(appConfig),
+      'process.env.APP_CONFIG': JSON.stringify(_objectSpread(_objectSpread({}, appConfig), {}, {
+        brandConfig: appConfig.brandConfig
+      })),
       'process.env.THEME_SYSTEM': JSON.stringify(themeSystem),
       'process.env.BLOCK_PENDO_SOURCE_CODE': JSON.stringify(blockPendoSourceCode),
       'process.env.BLOCK_SEGMENT_SOURCE_CODE': JSON.stringify(blockSegmentSourceCode)
@@ -304,9 +305,8 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
         return _path["default"].basename(x.main).split('.')[0];
       });
       var chunks = function chunks(chunk) {
-        var notBePureEntryFile = Boolean(chunk.name && !pureEntryFiles.includes(chunk.name));
-        // only non pure entry files should be split
-        return notBePureEntryFile;
+        // Include unnamed async chunks while keeping pure entry files standalone.
+        return !chunk.name || !pureEntryFiles.includes(chunk.name);
       };
 
       // always optimize vendor and commons chunk to separate file into small size
@@ -343,10 +343,15 @@ var getBaseWebpackConfig = exports.getBaseWebpackConfig = function getBaseWebpac
           // when have reason means those file from the splitChunks, which we need also use chunk file name instead of use the DEFAULT_FILENAME
           var chunkReason = pathData === null || pathData === void 0 ? void 0 : (_pathData$chunk2 = pathData.chunk) === null || _pathData$chunk2 === void 0 ? void 0 : _pathData$chunk2.chunkReason;
           if (chunkReason) {
+            var _chunkReason$split$;
             // chunkReason: 'split chunk (cache group: vendor)',
-            var cacheGroupName = chunkReason.split(' (cache group: ')[1].split(')')[0];
+            var cacheGroupName = (_chunkReason$split$ = chunkReason.split(' (cache group: ')[1]) === null || _chunkReason$split$ === void 0 ? void 0 : _chunkReason$split$.split(')')[0];
             // cacheGroups
-            return cacheGroups[cacheGroupName].filename || DEFAULT_CHUNK_FILENAME;
+            var cacheGroup = cacheGroupName ? cacheGroups[cacheGroupName] : undefined;
+            if (cacheGroup && typeof cacheGroup !== 'boolean' && cacheGroup.filename) {
+              return cacheGroup.filename;
+            }
+            return DEFAULT_CHUNK_FILENAME;
           }
           return DEFAULT_FILENAME;
         },
